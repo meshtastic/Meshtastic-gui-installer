@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
+import os
 import sys
 import time
+import urllib
 from github import Github
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
@@ -11,7 +13,7 @@ class Form(QDialog):
 
     def __init__(self, parent=None):
         super(Form, self).__init__(parent)
-        
+
         self.setWindowTitle("Meshtastic Installer")
 
         # Create widgets
@@ -49,9 +51,18 @@ class Form(QDialog):
         print(f"in firmware_stuff")
 
         token = Github()
-        asset_one = token.get_repo('meshtastic/Meshtastic-device').get_latest_release().get_assets()[0]
+        asset_one = token.get_repo('meshtastic/Meshtastic-device').get_latest_release().get_assets()[1]
         print(f'asset_one:{asset_one}')
 
+        latest_zip_file_url = asset_one.browser_download_url
+        print(f'latest_zip_file_url:{latest_zip_file_url}')
+        tmp = latest_zip_file_url.split('/')
+        zip_file_name = tmp[-1]
+        print(f'zip_file_name:{zip_file_name}')
+
+        # if the file is not already downloaded, download it
+        if not os.path.exists(zip_file_name):
+            urllib.request.urlretrieve(latest_zip_file_url, zip_file_name)
 
         dlg = QMessageBox(self)
         dlg.setWindowTitle("Firmware")

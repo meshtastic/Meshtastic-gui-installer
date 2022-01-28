@@ -133,3 +133,6 @@ venv/
 
 # vim swap files
 .*swp
+
+# zip files
+*.zip
