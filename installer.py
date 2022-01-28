@@ -11,7 +11,7 @@ import esptool
 
 from meshtastic.util import findPorts
 from github import Github
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import (QPixmap, QIcon)
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
     QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox, QComboBox)
 
@@ -21,6 +21,7 @@ class Form(QDialog):
 
     def __init__(self, parent=None):
         super(Form, self).__init__(parent)
+        logo_filename = "logo.png"
 
         self.port = None
         self.speed = '921600'
@@ -28,7 +29,7 @@ class Form(QDialog):
         self.devices = None
 
         self.setWindowTitle("Meshtastic Installer")
-
+        self.setWindowIcon(QIcon(logo_filename))
         # Create widgets
         self.select_firmware = QPushButton("Select firmware")
 
