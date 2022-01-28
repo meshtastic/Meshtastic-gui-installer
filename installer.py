@@ -2,6 +2,7 @@
 
 import sys
 import time
+from github import Github
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
     QVBoxLayout, QDialog, QLabel, QMessageBox)
@@ -44,6 +45,11 @@ class Form(QDialog):
     # do firmware stuff
     def firmware_stuff(self):
         print(f"in firmware_stuff")
+
+        token = Github()
+        asset_one = token.get_repo('meshtastic/Meshtastic-device').get_latest_release().get_assets()[0]
+        print(f'asset_one:{asset_one}')
+
 
         dlg = QMessageBox(self)
         dlg.setWindowTitle("Firmware")
