@@ -127,3 +127,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# python virtual env
+venv/
+
+# vim swap files
+.*swp
