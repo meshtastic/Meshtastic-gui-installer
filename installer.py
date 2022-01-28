@@ -15,7 +15,7 @@ from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
     QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox, QComboBox)
 
-version="1.0.2"
+version="1.0.3"
 
 class Form(QDialog):
 
@@ -40,8 +40,9 @@ class Form(QDialog):
         self.select_flash = QPushButton("Flash")
         self.select_flash.setEnabled(False)
 
-        logo_filename = "logo.png"
+        logo_filename = "./logo.png"
 
+        self.logo = None
         try:
             with open(logo_filename):
                 self.logo = QLabel(self)
@@ -52,7 +53,9 @@ class Form(QDialog):
 
         # Create layout and add widgets
         mainLayout = QVBoxLayout()
-        mainLayout.addWidget(self.logo)
+
+        if self.logo:
+            mainLayout.addWidget(self.logo)
 
         buttonLayout = QHBoxLayout()
 
