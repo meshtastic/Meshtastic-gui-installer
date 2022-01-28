@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
 
 import sys
+import time
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
-    QVBoxLayout, QDialog, QLabel)
+    QVBoxLayout, QDialog, QLabel, QMessageBox)
 
 class Form(QDialog):
 
@@ -44,13 +45,28 @@ class Form(QDialog):
     def firmware_stuff(self):
         print(f"in firmware_stuff")
 
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Firmware")
+        dlg.setText("hello from firmware")
+        dlg.exec()
+
     # do dest stuff
     def dest_stuff(self):
         print(f"in dest_stuff")
 
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Destination")
+        dlg.setText("hello from destination")
+        dlg.exec()
+
     # do flash stuff
     def flash_stuff(self):
         print(f"in flash_stuff")
+
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("Flash")
+        dlg.setText("hello from flash")
+        dlg.exec()
 
 if __name__ == '__main__':
 
