@@ -137,3 +137,6 @@ venv/
 # zip files
 *.zip
 1.*/
+
+# if we build the single executable binaries
+dist/
