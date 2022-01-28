@@ -22,6 +22,8 @@ class Form(QDialog):
     def __init__(self, parent=None):
         super(Form, self).__init__(parent)
         logo_filename = "logo.png"
+        self.setStyleSheet("background-color: #67EA94;")
+
 
         self.port = None
         self.speed = '921600'
