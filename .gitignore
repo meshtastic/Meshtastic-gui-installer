@@ -136,3 +136,4 @@ venv/
 
 # zip files
 *.zip
+1.*/

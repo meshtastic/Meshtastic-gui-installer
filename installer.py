@@ -5,6 +5,7 @@ import sys
 import time
 import urllib
 import subprocess
+import zipfile
 
 import esptool
 
@@ -73,22 +74,28 @@ class Form(QDialog):
         tmp = latest_zip_file_url.split('/')
         zip_file_name = tmp[-1]
         print(f'zip_file_name:{zip_file_name}')
-        firmware_version = zip_file_name
-        firmware_version.replace("firmware-", "")
-        firmware_version.replace(".zip-", "")
+        firmware_version = zip_file_name.replace("firmware-", "")
+        firmware_version = firmware_version.replace(".zip", "")
         print(f"firmware_version:{firmware_version}")
         self.firmware_version = firmware_version
 
         # if the file is not already downloaded, download it
         if not os.path.exists(zip_file_name):
+            print(f"Need to download...")
             urllib.request.urlretrieve(latest_zip_file_url, zip_file_name)
+            print(f"done downloading")
+
+        # unzip into directory named the same name as the firmware_version
+        if not os.path.exists(firmware_version):
+            print(f"Unzipping files now...")
+            with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
+                zip_ref.extractall(firmware_version)
+            print(f"done unzipping")
 
         dlg = QMessageBox(self)
         dlg.setWindowTitle("Firmware")
         dlg.setText("Downloaded latest firmware.")
         dlg.exec()
-
-        # TODO: unzip the files
 
         # only enable Flash button if we have both values
         if self.port and self.firmware_version:
@@ -120,7 +127,6 @@ class Form(QDialog):
 
     # do flash stuff
     def flash_stuff(self):
-        # TODO: how to disable a button until self.port is not None?
         print(f"in flash_stuff")
 
         dlg = QMessageBox(self)
@@ -129,18 +135,27 @@ class Form(QDialog):
         # TODO: change to OK/Cancel?
         dlg.exec()
 
-        return_value, out = subprocess.getstatusoutput('python3 -m esptool erase_flash')
-        command = ['--baud', self.speed, '--port', self.port, 'erase_flash']
-        print('Using command %s' % ' '.join(command))
+        command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
+        print('ESPTOOL Using command %s' % ' '.join(command))
         esptool.main(command)
 
-        # TODO: run the other 3 commands
-        #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x1000 system-info.bin')
-        #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x00390000 spiffs-*.bin')
-        #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x10000 {TODO_filename}')
-        #print(f"return_value:{return_value} out:{out}")
+        system_info_file = f"{self.firmware_version}/system-info.bin"
+        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
+        print('ESPTOOL Using command %s' % ' '.join(command))
+        esptool.main(command)
 
-        if return_value == 0:
+        bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
+        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
+        print('ESPTOOL Using command %s' % ' '.join(command))
+        esptool.main(command)
+
+        # TODO: other command
+        #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x10000 {TODO_filename}')
+
+        # TODO: how to know if successful?
+        bool esptool_successful = True
+
+        if esptool_successful:
             dlg2 = QMessageBox(self)
             dlg2.setWindowTitle("Flashed")
             dlg2.setText("Done")
