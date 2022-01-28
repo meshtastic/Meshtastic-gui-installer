@@ -7,7 +7,7 @@ import urllib
 from github import Github
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
-    QVBoxLayout, QDialog, QLabel, QMessageBox)
+    QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox)
 
 class Form(QDialog):
 
@@ -32,14 +32,17 @@ class Form(QDialog):
             print(f"Logo not found {logo_filename}")
 
         # Create layout and add widgets
-        layout = QVBoxLayout()
-        layout.addWidget(self.logo)
-        layout.addWidget(self.select_firmware)
-        layout.addWidget(self.select_dest)
-        layout.addWidget(self.select_flash)
+        mainLayout = QVBoxLayout()
+        mainLayout.addWidget(self.logo)
 
+        buttonLayout = QHBoxLayout()
+
+        buttonLayout.addWidget(self.select_firmware)
+        buttonLayout.addWidget(self.select_dest)
+        buttonLayout.addWidget(self.select_flash)
+        mainLayout.addLayout(buttonLayout)
         # Set dialog layout
-        self.setLayout(layout)
+        self.setLayout(mainLayout)
 
         # Add button signals to slots
         self.select_firmware.clicked.connect(self.firmware_stuff)
