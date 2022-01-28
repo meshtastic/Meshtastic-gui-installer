@@ -5,6 +5,9 @@ import sys
 import time
 import urllib
 import subprocess
+
+import esptool
+
 from meshtastic.util import findPorts
 from github import Github
 from PySide6.QtGui import QPixmap
@@ -17,6 +20,7 @@ class Form(QDialog):
         super(Form, self).__init__(parent)
 
         self.port = None
+        self.speed = '921600'
         self.firmware_version = None
 
         self.setWindowTitle("Meshtastic Installer")
@@ -125,14 +129,16 @@ class Form(QDialog):
         # TODO: change to OK/Cancel?
         dlg.exec()
 
-        # TODO: hmm... this requires python3 and esptool to be installed...
         return_value, out = subprocess.getstatusoutput('python3 -m esptool erase_flash')
+        command = ['--baud', self.speed, '--port', self.port, 'erase_flash']
+        print('Using command %s' % ' '.join(command))
+        esptool.main(command)
 
         # TODO: run the other 3 commands
         #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x1000 system-info.bin')
         #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x00390000 spiffs-*.bin')
         #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x10000 {TODO_filename}')
-        print(f"return_value:{return_value} out:{out}")
+        #print(f"return_value:{return_value} out:{out}")
 
         if return_value == 0:
             dlg2 = QMessageBox(self)
