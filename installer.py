@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import sys
+from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
-    QVBoxLayout, QDialog)
+    QVBoxLayout, QDialog, QLabel)
 
 class Form(QDialog):
 
@@ -14,8 +15,19 @@ class Form(QDialog):
         self.select_dest = QPushButton("Select destination")
         self.select_flash = QPushButton("Flash")
 
+        logo_filename = "logo.png"
+
+        try:
+            with open(logo_filename):
+                self.logo = QLabel(self)
+                pixmap = QPixmap(logo_filename)
+                self.logo.setPixmap(pixmap)
+        except FileNotFoundError:
+            print(f"Logo not found {logo_filename}")
+
         # Create layout and add widgets
         layout = QVBoxLayout()
+        layout.addWidget(self.logo)
         layout.addWidget(self.select_firmware)
         layout.addWidget(self.select_dest)
         layout.addWidget(self.select_flash)
