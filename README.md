@@ -1,4 +1,5 @@
 # Meshtastic-gui-installer
+
 Cross Platform GUI for installing Meshtastic Firmware, aggressively alpha software.
 
 # install
@@ -21,3 +22,7 @@ chmod +x installer.py
 ```
 ./installer.py
 ```
+
+# for more info
+
+https://wiki.qt.io/Qt_for_Python
