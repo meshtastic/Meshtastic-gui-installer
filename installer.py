@@ -13,7 +13,7 @@ from meshtastic.util import findPorts
 from github import Github
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
-    QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox)
+    QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox, QComboBox)
 
 class Form(QDialog):
 
@@ -23,12 +23,18 @@ class Form(QDialog):
         self.port = None
         self.speed = '921600'
         self.firmware_version = None
+        self.devices = None
 
         self.setWindowTitle("Meshtastic Installer")
 
         # Create widgets
         self.select_firmware = QPushButton("Select firmware")
-        self.select_dest = QPushButton("Select destination")
+
+        self.select_port = QPushButton("Port")
+
+        self.select_device = QComboBox()
+        self.select_device.currentIndexChanged.connect(self.selection_change)
+
         self.select_flash = QPushButton("Flash")
         self.select_flash.setEnabled(False)
 
@@ -49,7 +55,8 @@ class Form(QDialog):
         buttonLayout = QHBoxLayout()
 
         buttonLayout.addWidget(self.select_firmware)
-        buttonLayout.addWidget(self.select_dest)
+        buttonLayout.addWidget(self.select_port)
+        buttonLayout.addWidget(self.select_device)
         buttonLayout.addWidget(self.select_flash)
 
         # Set layout
@@ -58,22 +65,46 @@ class Form(QDialog):
 
         # Add button signals to slots
         self.select_firmware.clicked.connect(self.firmware_stuff)
-        self.select_dest.clicked.connect(self.dest_stuff)
+        self.select_port.clicked.connect(self.port_stuff)
         self.select_flash.clicked.connect(self.flash_stuff)
+
+    # for combo box
+    def selection_change(self, i):
+        print(f"Devices are:")
+        for count in range(self.select_device.count()):
+            print(f"{self.select_device.itemText(count)}")
+        print(f"Current index:{i} current:{self.select_device.currentText()}")
 
     # do firmware stuff
     def firmware_stuff(self):
         print(f"in firmware_stuff")
 
-        token = Github()
-        asset_one = token.get_repo('meshtastic/Meshtastic-device').get_latest_release().get_assets()[1]
-        print(f'asset_one:{asset_one}')
+        zip_file_name = None
+        try:
+            token = Github()
+            asset_one = token.get_repo('meshtastic/Meshtastic-device').get_latest_release().get_assets()[1]
+            print(f'asset_one:{asset_one}')
+            latest_zip_file_url = asset_one.browser_download_url
+            print(f'latest_zip_file_url:{latest_zip_file_url}')
+            tmp = latest_zip_file_url.split('/')
+            zip_file_name = tmp[-1]
+            print(f'zip_file_name:{zip_file_name}')
+        except:
+            pass
 
-        latest_zip_file_url = asset_one.browser_download_url
-        print(f'latest_zip_file_url:{latest_zip_file_url}')
-        tmp = latest_zip_file_url.split('/')
-        zip_file_name = tmp[-1]
-        print(f'zip_file_name:{zip_file_name}')
+        # in development, hit this exception:
+        #    github.GithubException.RateLimitExceededException: 403 {"message": "API rate limit exceeded for <IP redacted>. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)", "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"}
+
+        if not zip_file_name:
+            # look in current dir for zip files
+            # and set zip_file_name to first zip we find (just for testing)
+            filenames = next(os.walk("."), (None, None, []))[2]
+            for filename in filenames:
+                #print(f"filename:{filename}")
+                if filename.endswith(".zip"):
+                    zip_file_name = filename
+                    break
+
         firmware_version = zip_file_name.replace("firmware-", "")
         firmware_version = firmware_version.replace(".zip", "")
         print(f"firmware_version:{firmware_version}")
@@ -92,6 +123,21 @@ class Form(QDialog):
                 zip_ref.extractall(firmware_version)
             print(f"done unzipping")
 
+        # populate the devices
+        if not self.devices:
+            filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
+            filenames.sort()
+            for filename in filenames:
+                #print(f"filename:{filename}")
+                if filename.startswith("firmware-") and filename.endswith(".bin"):
+                    print(f"firmware only filename:{filename}")
+
+                    device = filename.replace("firmware-", "")
+                    device = device.replace(f"-{self.firmware_version}", "")
+                    device = device.replace(".bin", "")
+                    print(f"device:{device}")
+                    self.select_device.addItem(device)
+
         dlg = QMessageBox(self)
         dlg.setWindowTitle("Firmware")
         dlg.setText("Downloaded latest firmware.")
@@ -101,9 +147,9 @@ class Form(QDialog):
         if self.port and self.firmware_version:
             self.select_flash.setEnabled(True)
 
-    # do dest stuff
-    def dest_stuff(self):
-        print(f"in dest_stuff")
+    # do port stuff
+    def port_stuff(self):
+        print(f"in port_stuff")
 
         ports = findPorts()
         print(f"ports:{ports}")
@@ -111,12 +157,12 @@ class Form(QDialog):
             self.port = ports[0]
 
             dlg = QMessageBox(self)
-            dlg.setWindowTitle("Destination")
+            dlg.setWindowTitle("Port")
             dlg.setText(f"Will write to port:{self.port}")
             dlg.exec()
         else:
             dlg = QMessageBox(self)
-            dlg.setWindowTitle("Destination")
+            dlg.setWindowTitle("Port")
             dlg.setText(f"Plugin a device")
             dlg.exec()
 
@@ -149,8 +195,10 @@ class Form(QDialog):
         print('ESPTOOL Using command %s' % ' '.join(command))
         esptool.main(command)
 
-        # TODO: other command
-        #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x10000 {TODO_filename}')
+        device_file = f"{self.firmware_version}/firmware-{self.select_device.currentText()}-{self.firmware_version}.bin"
+        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
+        print('ESPTOOL Using command %s' % ' '.join(command))
+        esptool.main(command)
 
         # TODO: how to know if successful?
         esptool_successful = True
