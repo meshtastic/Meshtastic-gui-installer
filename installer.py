@@ -16,12 +16,16 @@ class Form(QDialog):
     def __init__(self, parent=None):
         super(Form, self).__init__(parent)
 
+        self.port = None
+        self.firmware_version = None
+
         self.setWindowTitle("Meshtastic Installer")
 
         # Create widgets
         self.select_firmware = QPushButton("Select firmware")
         self.select_dest = QPushButton("Select destination")
         self.select_flash = QPushButton("Flash")
+        self.select_flash.setEnabled(False)
 
         logo_filename = "logo.png"
 
@@ -42,8 +46,9 @@ class Form(QDialog):
         buttonLayout.addWidget(self.select_firmware)
         buttonLayout.addWidget(self.select_dest)
         buttonLayout.addWidget(self.select_flash)
+
+        # Set layout
         mainLayout.addLayout(buttonLayout)
-        # Set dialog layout
         self.setLayout(mainLayout)
 
         # Add button signals to slots
@@ -64,6 +69,11 @@ class Form(QDialog):
         tmp = latest_zip_file_url.split('/')
         zip_file_name = tmp[-1]
         print(f'zip_file_name:{zip_file_name}')
+        firmware_version = zip_file_name
+        firmware_version.replace("firmware-", "")
+        firmware_version.replace(".zip-", "")
+        print(f"firmware_version:{firmware_version}")
+        self.firmware_version = firmware_version
 
         # if the file is not already downloaded, download it
         if not os.path.exists(zip_file_name):
@@ -76,21 +86,37 @@ class Form(QDialog):
 
         # TODO: unzip the files
 
+        # only enable Flash button if we have both values
+        if self.port and self.firmware_version:
+            self.select_flash.setEnabled(True)
+
     # do dest stuff
     def dest_stuff(self):
         print(f"in dest_stuff")
 
         ports = findPorts()
         print(f"ports:{ports}")
-
-        dlg = QMessageBox(self)
-        dlg.setWindowTitle("Destination")
         if len(ports) == 1:
-            dlg.setText(f"Will write to port:{ports[0]}")
-        dlg.exec()
+            self.port = ports[0]
+
+            dlg = QMessageBox(self)
+            dlg.setWindowTitle("Destination")
+            dlg.setText(f"Will write to port:{self.port}")
+            dlg.exec()
+        else:
+            dlg = QMessageBox(self)
+            dlg.setWindowTitle("Destination")
+            dlg.setText(f"Plugin a device")
+            dlg.exec()
+
+        # only enable Flash button if we have both values
+        if self.port and self.firmware_version:
+            self.select_flash.setEnabled(True)
+
 
     # do flash stuff
     def flash_stuff(self):
+        # TODO: how to disable a button until self.port is not None?
         print(f"in flash_stuff")
 
         dlg = QMessageBox(self)
