@@ -153,7 +153,7 @@ class Form(QDialog):
         #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x10000 {TODO_filename}')
 
         # TODO: how to know if successful?
-        bool esptool_successful = True
+        esptool_successful = True
 
         if esptool_successful:
             dlg2 = QMessageBox(self)
