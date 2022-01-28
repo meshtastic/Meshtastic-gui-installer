@@ -4,6 +4,8 @@ import os
 import sys
 import time
 import urllib
+import subprocess
+from meshtastic.util import findPorts
 from github import Github
 from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
@@ -66,16 +68,22 @@ class Form(QDialog):
 
         dlg = QMessageBox(self)
         dlg.setWindowTitle("Firmware")
-        dlg.setText("hello from firmware")
+        dlg.setText("Downloaded latest firmware.")
         dlg.exec()
+
+        # TODO: unzip the files
 
     # do dest stuff
     def dest_stuff(self):
         print(f"in dest_stuff")
 
+        ports = findPorts()
+        print(f"ports:{ports}")
+
         dlg = QMessageBox(self)
         dlg.setWindowTitle("Destination")
-        dlg.setText("hello from destination")
+        if len(ports) == 1:
+            dlg.setText(f"Will write to port:{ports[0]}")
         dlg.exec()
 
     # do flash stuff
@@ -84,8 +92,26 @@ class Form(QDialog):
 
         dlg = QMessageBox(self)
         dlg.setWindowTitle("Flash")
-        dlg.setText("hello from flash")
+        dlg.setText("Going to flash you now")
+        # TODO: change to OK/Cancel?
         dlg.exec()
+
+        # TODO: hmm... this requires python3 and esptool to be installed...
+        return_value, out = subprocess.getstatusoutput('python3 -m esptool erase_flash')
+
+        # TODO: run the other 3 commands
+        #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x1000 system-info.bin')
+        #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x00390000 spiffs-*.bin')
+        #return_value, out = subprocess.getstatusoutput('python3 -m esptool write_flash 0x10000 {TODO_filename}')
+        print(f"return_value:{return_value} out:{out}")
+
+        if return_value == 0:
+            dlg2 = QMessageBox(self)
+            dlg2.setWindowTitle("Flashed")
+            dlg2.setText("Done")
+            dlg2.exec()
+        # TODO: there should be an else
+
 
 if __name__ == '__main__':
 
