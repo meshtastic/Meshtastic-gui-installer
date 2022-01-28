@@ -2,7 +2,9 @@
 
 Cross Platform GUI for installing Meshtastic Firmware, aggressively alpha software.
 
-# install
+# Installation
+
+* Setup virtual environment and install required packages
 
 ```
 python3 -m venv venv
@@ -10,15 +12,14 @@ venv/bin/activate
 pip install -r requirements.txt
 ```
 
-# running
+# Setup
 
-* ensure the file is executable:
-
+* Ensure the file is executable:
 ```
 chmod +x installer.py
 ```
 
-* run it
+* Run the application
 ```
 ./installer.py
 ```
