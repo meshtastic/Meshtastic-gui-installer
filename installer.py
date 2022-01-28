@@ -15,7 +15,7 @@ from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
     QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox, QComboBox)
 
-version="1.0.0"
+version="1.0.1"
 
 class Form(QDialog):
 
