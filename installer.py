@@ -15,7 +15,7 @@ from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
     QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox, QComboBox)
 
-version="1.0.3"
+version="1.0.4"
 
 class Form(QDialog):
 
@@ -109,6 +109,10 @@ class Form(QDialog):
                 if filename.endswith(".zip"):
                     zip_file_name = filename
                     break
+
+        if not zip_file_name:
+            print("We should have a zip_file_name.")
+            sys.exit(1)
 
         firmware_version = zip_file_name.replace("firmware-", "")
         firmware_version = firmware_version.replace(".zip", "")
