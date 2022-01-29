@@ -182,6 +182,16 @@ class Form(QDialog):
         dlg = QMessageBox(self)
         dlg.setStyleSheet(f"background-color: {meshtastic_color_green}")
         dlg.setWindowTitle("Destination")
+
+        # deal with weird TLora (single device connected, but shows up as 2 ports)
+        # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
+        # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
+        if len(ports) == 2:
+            a = ports[0].replace("usbmodem", "")
+            b = ports[1].replace("wchusbserial", "")
+            if a == b:
+                self.port = ports[1]
+
         if len(ports) == 1:
             self.port = ports[0]
 
