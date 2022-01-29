@@ -18,9 +18,9 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-VERSION="1.0.9"
+VERSION="1.0.10"
 
-MESHTASTIC_LOGO_FILENAME = "logo.png"
+MESHTASTIC_LOGO_FILENAME = "/logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
 
@@ -54,7 +54,6 @@ class Form(QDialog):
         self.logo = QLabel(self)
         pixmap = QPixmap(MESHTASTIC_LOGO_FILENAME)
         self.logo.setPixmap(pixmap)
-        #self.setWindowIcon(QIcon(MESHTASTIC_LOGO_FILENAME))
 
         # Create layout and add widgets
         main_layout = QVBoxLayout()
