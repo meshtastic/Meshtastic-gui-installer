@@ -14,7 +14,8 @@ from meshtastic.util import findPorts
 from github import Github
 from PySide6.QtGui import (QPixmap, QIcon)
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
-    QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox, QComboBox)
+                               QVBoxLayout, QHBoxLayout, QDialog, QLabel,
+                               QMessageBox, QComboBox)
 from qt_material import apply_stylesheet
 
 version="1.0.5"
@@ -35,23 +36,25 @@ class Form(QDialog):
 
         #self.setStyleSheet(f"background-color: {meshtastic_color_dark};")
         self.setWindowTitle("Meshtastic Installer")
+
+
         # Create widgets
         self.select_firmware = QPushButton("Select firmware")
 
         self.select_port = QPushButton("Port")
 
         self.select_device = QComboBox()
-        self.select_device.currentIndexChanged.connect(self.selection_change)
 
         self.select_flash = QPushButton("Flash")
         self.select_flash.setEnabled(False)
+
 
         self.logo = None
         try:
             with open(meshtastic_logo_filename):
                 self.logo = QLabel(self)
                 pixmap = QPixmap(meshtastic_logo_filename)
-                self.logo.setPixmap(pixmap)        
+                self.logo.setPixmap(pixmap)
             self.setWindowIcon(QIcon(meshtastic_logo_filename))
 
         except FileNotFoundError:
@@ -78,12 +81,12 @@ class Form(QDialog):
         self.select_port.clicked.connect(self.port_stuff)
         self.select_flash.clicked.connect(self.flash_stuff)
 
-    # for combo box
-    def selection_change(self, i):
-        print(f"Devices are:")
-        for count in range(self.select_device.count()):
-            print(f"{self.select_device.itemText(count)}")
-        print(f"Current index:{i} current:{self.select_device.currentText()}")
+
+    def aboutAction(self):
+        dlg = QMessageBox(self)
+        dlg.setWindowTitle("About")
+        dlg.setText("This is info about this program.")
+        dlg.exec()
 
     # do firmware stuff
     def firmware_stuff(self):
@@ -143,15 +146,14 @@ class Form(QDialog):
         if not self.devices:
             filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
             filenames.sort()
+            self.select_device.clear()
             for filename in filenames:
                 #print(f"filename:{filename}")
                 if filename.startswith("firmware-") and filename.endswith(".bin"):
-                    print(f"firmware only filename:{filename}")
 
                     device = filename.replace("firmware-", "")
                     device = device.replace(f"-{self.firmware_version}", "")
                     device = device.replace(".bin", "")
-                    print(f"device:{device}")
                     self.select_device.addItem(device)
 
         dlg = QMessageBox(self)
@@ -195,42 +197,43 @@ class Form(QDialog):
     def flash_stuff(self):
         print(f"in flash_stuff")
 
-        dlg = QMessageBox(self)
-        dlg.setStyleSheet(f"background-color: {meshtastic_color_green}")
-        dlg.setWindowTitle("Flash")
-        dlg.setText("Going to flash you now")
-        # TODO: change to OK/Cancel?
-        dlg.exec()
+        proceed = False
 
-        command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
-        print('ESPTOOL Using command %s' % ' '.join(command))
-        esptool.main(command)
+        reply = QMessageBox.question(self, 'Flash', 'Are you sure you want to flash?',
+        QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            proceed = True
 
-        system_info_file = f"{self.firmware_version}/system-info.bin"
-        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
-        print('ESPTOOL Using command %s' % ' '.join(command))
-        esptool.main(command)
+        if proceed:
+            command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
+            print('ESPTOOL Using command %s' % ' '.join(command))
+            esptool.main(command)
 
-        bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
-        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
-        print('ESPTOOL Using command %s' % ' '.join(command))
-        esptool.main(command)
+            system_info_file = f"{self.firmware_version}/system-info.bin"
+            command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
+            print('ESPTOOL Using command %s' % ' '.join(command))
+            esptool.main(command)
 
-        device_file = f"{self.firmware_version}/firmware-{self.select_device.currentText()}-{self.firmware_version}.bin"
-        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
-        print('ESPTOOL Using command %s' % ' '.join(command))
-        esptool.main(command)
+            bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
+            command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
+            print('ESPTOOL Using command %s' % ' '.join(command))
+            esptool.main(command)
 
-        # TODO: how to know if successful?
-        esptool_successful = True
+            device_file = f"{self.firmware_version}/firmware-{self.select_device.currentText()}-{self.firmware_version}.bin"
+            command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
+            print('ESPTOOL Using command %s' % ' '.join(command))
+            esptool.main(command)
 
-        if esptool_successful:
-            dlg2 = QMessageBox(self)
-            dlg2.setStyleSheet(f"background-color: {meshtastic_color_green}")
-            dlg2.setWindowTitle("Flashed")
-            dlg2.setText("Done")
-            dlg2.exec()
-        # TODO: there should be an else
+            # TODO: how to know if successful?
+            esptool_successful = True
+
+            if esptool_successful:
+                dlg2 = QMessageBox(self)
+                dlg2.setStyleSheet(f"background-color: {meshtastic_color_dark}")
+                dlg2.setWindowTitle("Flashed")
+                dlg2.setText("Done")
+                dlg2.exec()
+            # TODO: there should be an else
 
 
 if __name__ == '__main__':
