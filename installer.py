@@ -33,7 +33,6 @@ class Form(QDialog):
 
         #self.setStyleSheet(f"background-color: {meshtastic_color_dark};")
         self.setWindowTitle("Meshtastic Installer")
-        self.setWindowIcon(QIcon(meshtastic_logo_filename))
         # Create widgets
         self.select_firmware = QPushButton("Select firmware")
 
@@ -45,14 +44,13 @@ class Form(QDialog):
         self.select_flash = QPushButton("Flash")
         self.select_flash.setEnabled(False)
 
-        logo_filename = "./logo.png"
-
         self.logo = None
         try:
             with open(meshtastic_logo_filename):
                 self.logo = QLabel(self)
                 pixmap = QPixmap(meshtastic_logo_filename)
                 self.logo.setPixmap(pixmap)        
+            self.setWindowIcon(QIcon(meshtastic_logo_filename))
 
         except FileNotFoundError:
             print(f"Logo not found {meshtastic_logo_filename}")
