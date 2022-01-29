@@ -7,6 +7,7 @@ import urllib
 import ssl
 import subprocess
 import zipfile
+import time
 
 import esptool
 
@@ -15,7 +16,7 @@ from github import Github
 from PySide6.QtGui import (QPixmap, QIcon)
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
-                               QMessageBox, QComboBox)
+                               QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
 version="1.0.5"
@@ -48,6 +49,8 @@ class Form(QDialog):
         self.select_flash = QPushButton("Flash")
         self.select_flash.setEnabled(False)
 
+        self.progress = QProgressBar()
+
 
         self.logo = None
         try:
@@ -71,6 +74,7 @@ class Form(QDialog):
         buttonLayout.addWidget(self.select_port)
         buttonLayout.addWidget(self.select_device)
         buttonLayout.addWidget(self.select_flash)
+        buttonLayout.addWidget(self.progress)
 
         # Set layout
         mainLayout.addLayout(buttonLayout)
@@ -205,24 +209,34 @@ class Form(QDialog):
             proceed = True
 
         if proceed:
+            QApplication.processEvents()
+
             command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
             print('ESPTOOL Using command %s' % ' '.join(command))
             esptool.main(command)
+            self.progress.setValue(25)
+            QApplication.processEvents()
 
             system_info_file = f"{self.firmware_version}/system-info.bin"
             command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
             print('ESPTOOL Using command %s' % ' '.join(command))
             esptool.main(command)
+            self.progress.setValue(50)
+            QApplication.processEvents()
 
             bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
             command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
             print('ESPTOOL Using command %s' % ' '.join(command))
             esptool.main(command)
+            self.progress.setValue(75)
+            QApplication.processEvents()
 
             device_file = f"{self.firmware_version}/firmware-{self.select_device.currentText()}-{self.firmware_version}.bin"
             command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
             print('ESPTOOL Using command %s' % ' '.join(command))
             esptool.main(command)
+            self.progress.setValue(100)
+            QApplication.processEvents()
 
             # TODO: how to know if successful?
             esptool_successful = True
