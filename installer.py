@@ -18,7 +18,7 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-VERSION="1.0.8"
+VERSION="1.0.9"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -51,16 +51,10 @@ class Form(QDialog):
 
         self.progress = QProgressBar()
 
-        self.logo = None
-        try:
-            with open(MESHTASTIC_LOGO_FILENAME, encoding='utf-8'):
-                self.logo = QLabel(self)
-                pixmap = QPixmap(MESHTASTIC_LOGO_FILENAME)
-                self.logo.setPixmap(pixmap)
-            self.setWindowIcon(QIcon(MESHTASTIC_LOGO_FILENAME))
-
-        except FileNotFoundError:
-            print(f"Logo not found {MESHTASTIC_LOGO_FILENAME}")
+        self.logo = QLabel(self)
+        pixmap = QPixmap(MESHTASTIC_LOGO_FILENAME)
+        self.logo.setPixmap(pixmap)
+        #self.setWindowIcon(QIcon(MESHTASTIC_LOGO_FILENAME))
 
         # Create layout and add widgets
         main_layout = QVBoxLayout()
@@ -265,6 +259,7 @@ if __name__ == '__main__':
 
     # Create the Qt Application
     app = QApplication(sys.argv)
+    app.setWindowIcon(QIcon(MESHTASTIC_LOGO_FILENAME))
     apply_stylesheet(app, theme='dark_teal.xml')
 
     # Create and show the form
