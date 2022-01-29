@@ -12,11 +12,16 @@ import esptool
 
 from meshtastic.util import findPorts
 from github import Github
-from PySide6.QtGui import QPixmap
+from PySide6.QtGui import (QPixmap, QIcon)
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
     QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox, QComboBox)
+from qt_material import apply_stylesheet
 
 version="1.0.5"
+
+meshtastic_logo_filename = "logo.png"
+meshtastic_color_dark = "#2C2D3C"
+meshtastic_color_green = "#67EA94"
 
 class Form(QDialog):
 
@@ -28,8 +33,8 @@ class Form(QDialog):
         self.firmware_version = None
         self.devices = None
 
+        #self.setStyleSheet(f"background-color: {meshtastic_color_dark};")
         self.setWindowTitle("Meshtastic Installer")
-
         # Create widgets
         self.select_firmware = QPushButton("Select firmware")
 
@@ -41,16 +46,16 @@ class Form(QDialog):
         self.select_flash = QPushButton("Flash")
         self.select_flash.setEnabled(False)
 
-        logo_filename = "./logo.png"
-
         self.logo = None
         try:
-            with open(logo_filename):
+            with open(meshtastic_logo_filename):
                 self.logo = QLabel(self)
-                pixmap = QPixmap(logo_filename)
-                self.logo.setPixmap(pixmap)
+                pixmap = QPixmap(meshtastic_logo_filename)
+                self.logo.setPixmap(pixmap)        
+            self.setWindowIcon(QIcon(meshtastic_logo_filename))
+
         except FileNotFoundError:
-            print(f"Logo not found {logo_filename}")
+            print(f"Logo not found {meshtastic_logo_filename}")
 
         # Create layout and add widgets
         mainLayout = QVBoxLayout()
@@ -59,7 +64,6 @@ class Form(QDialog):
             mainLayout.addWidget(self.logo)
 
         buttonLayout = QHBoxLayout()
-
         buttonLayout.addWidget(self.select_firmware)
         buttonLayout.addWidget(self.select_port)
         buttonLayout.addWidget(self.select_device)
@@ -165,6 +169,10 @@ class Form(QDialog):
 
         ports = findPorts()
         print(f"ports:{ports}")
+
+        dlg = QMessageBox(self)
+        dlg.setStyleSheet(f"background-color: {meshtastic_color_green}")
+        dlg.setWindowTitle("Destination")
         if len(ports) == 1:
             self.port = ports[0]
 
@@ -188,6 +196,7 @@ class Form(QDialog):
         print(f"in flash_stuff")
 
         dlg = QMessageBox(self)
+        dlg.setStyleSheet(f"background-color: {meshtastic_color_green}")
         dlg.setWindowTitle("Flash")
         dlg.setText("Going to flash you now")
         # TODO: change to OK/Cancel?
@@ -217,6 +226,7 @@ class Form(QDialog):
 
         if esptool_successful:
             dlg2 = QMessageBox(self)
+            dlg2.setStyleSheet(f"background-color: {meshtastic_color_green}")
             dlg2.setWindowTitle("Flashed")
             dlg2.setText("Done")
             dlg2.exec()
@@ -227,6 +237,8 @@ if __name__ == '__main__':
 
     # Create the Qt Application
     app = QApplication(sys.argv)
+    apply_stylesheet(app, theme='dark_teal.xml')
+
     # Create and show the form
     form = Form()
     form.show()
