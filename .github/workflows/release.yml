@@ -63,7 +63,6 @@ jobs:
           pip install pyinstaller
           pip install -r requirements.txt
           pyinstaller -F -n meshtastic-flasher --add-binary "logo.png:." --collect-all meshtastic --collect-all esptool --codesign-identity "$MACOS_SIGNING_IDENTITY" installer.py
-          python3 zipit.py dist/meshtastic-flasher dist/meshtastic-flasher-mac.zip
 
       - name: Add mac to release
         uses: actions/upload-release-asset@v1
@@ -71,8 +70,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release_create.outputs.upload_url }}
-          asset_path: dist/meshtastic-flasher-mac.zip
-          asset_name: meshtastic-flasher-mac.zip
+          asset_path: dist/meshtastic-flasher-mac
+          asset_name: meshtastic-flasher-mac
           asset_content_type: application/zip
 
   build-and-publish-ubuntu:
@@ -93,7 +92,6 @@ jobs:
           pip install pyinstaller
           pip install -r requirements.txt
           pyinstaller -F -n meshtastic-flasher --add-binary "logo.png:." --collect-all meshtastic --collect-all esptool installer.py
-          python3 zipit.py dist/meshtastic-flasher dist/meshtastic-flasher-ubuntu.zip
 
       - name: Add ubuntu to release
         uses: actions/upload-release-asset@v1
@@ -101,8 +99,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release_create.outputs.upload_url }}
-          asset_path: dist/meshtastic-flasher-ubuntu.zip
-          asset_name: meshtastic-flasher-ubuntu.zip
+          asset_path: dist/meshtastic-flasher-ubuntu
+          asset_name: meshtastic-flasher-ubuntu
           asset_content_type: application/zip
 
       - name: Add readme.txt to release
@@ -133,7 +131,6 @@ jobs:
           pip install pyinstaller
           pip install -r requirements.txt
           pyinstaller -F -n meshtastic-flasher --add-binary "logo.png;." --collect-all meshtastic --collect-all esptool installer.py
-          python3 zipit.py dist/meshtastic-flasher.exe dist/meshtastic-flasher-win.zip
 
       - name: Add windows to release
         uses: actions/upload-release-asset@v1
@@ -141,6 +138,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release_create.outputs.upload_url }}
-          asset_path: dist/meshtastic-flasher-win.zip
-          asset_name: meshtastic-flasher-win.zip
+          asset_path: dist/meshtastic-flasher-win.exe
+          asset_name: meshtastic-flasher-win.exe
           asset_content_type: application/zip
