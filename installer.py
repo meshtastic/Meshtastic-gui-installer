@@ -18,11 +18,18 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-VERSION="1.0.10"
+VERSION="1.0.11"
 
-MESHTASTIC_LOGO_FILENAME = "/logo.png"
+MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
+
+# see https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file
+def get_path(filename):
+    """return the path to the logo file"""
+    if hasattr(sys, "_MEIPASS"):
+        return os.path.join(sys._MEIPASS, filename)
+    return filename
 
 class Form(QDialog):
     """Main application"""
@@ -52,7 +59,7 @@ class Form(QDialog):
         self.progress = QProgressBar()
 
         self.logo = QLabel(self)
-        pixmap = QPixmap(MESHTASTIC_LOGO_FILENAME)
+        pixmap = QPixmap(get_path(MESHTASTIC_LOGO_FILENAME))
         self.logo.setPixmap(pixmap)
 
         # Create layout and add widgets
@@ -258,7 +265,7 @@ if __name__ == '__main__':
 
     # Create the Qt Application
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(MESHTASTIC_LOGO_FILENAME))
+    app.setWindowIcon(QIcon(get_path(MESHTASTIC_LOGO_FILENAME)))
     apply_stylesheet(app, theme='dark_teal.xml')
 
     # Create and show the form

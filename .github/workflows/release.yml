@@ -62,7 +62,7 @@ jobs:
         run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller -F -n installer --add-binary "./logo.png:." --collect-all meshtastic --collect-all esptool --codesign-identity "$MACOS_SIGNING_IDENTITY" installer.py
+          pyinstaller -F -n installer --add-binary "logo.png:." --collect-all meshtastic --collect-all esptool --codesign-identity "$MACOS_SIGNING_IDENTITY" installer.py
 
       - name: Add mac to release
         uses: actions/upload-release-asset@v1
@@ -91,7 +91,7 @@ jobs:
         run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller -F -n installer --add-binary "./logo.png:." --collect-all meshtastic --collect-all esptool installer.py
+          pyinstaller -F -n installer --add-binary "logo.png:." --collect-all meshtastic --collect-all esptool installer.py
 
       - name: Add ubuntu to release
         uses: actions/upload-release-asset@v1
@@ -130,7 +130,7 @@ jobs:
         run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller -F -n installer --add-binary "./logo.png;." --collect-all meshtastic --collect-all esptool installer.py
+          pyinstaller -F -n installer --add-binary "logo.png;." --collect-all meshtastic --collect-all esptool installer.py
 
       - name: Add windows to release
         uses: actions/upload-release-asset@v1
