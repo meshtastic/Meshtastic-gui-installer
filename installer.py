@@ -4,6 +4,7 @@ import os
 import sys
 import time
 import urllib
+import ssl
 import subprocess
 import zipfile
 
@@ -15,7 +16,7 @@ from PySide6.QtGui import QPixmap
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
     QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox, QComboBox)
 
-version="1.0.4"
+version="1.0.5"
 
 class Form(QDialog):
 
@@ -122,6 +123,8 @@ class Form(QDialog):
         # if the file is not already downloaded, download it
         if not os.path.exists(zip_file_name):
             print(f"Need to download...")
+            # TODO: do we care about ssl
+            ssl._create_default_https_context = ssl._create_unverified_context
             urllib.request.urlretrieve(latest_zip_file_url, zip_file_name)
             print(f"done downloading")
 
