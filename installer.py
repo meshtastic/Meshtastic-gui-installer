@@ -195,6 +195,7 @@ class Form(QDialog):
         if len(ports) == 1:
             self.port = ports[0]
 
+        if self.port:
             dlg = QMessageBox(self)
             dlg.setWindowTitle("Port")
             dlg.setText(f"Will write to port:{self.port}")
