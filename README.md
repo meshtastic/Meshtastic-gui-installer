@@ -24,6 +24,12 @@ chmod +x installer.py
 ./installer.py
 ```
 
+# To lint
+
+```
+pylint *.py
+```
+
 # for more info
 
 https://wiki.qt.io/Qt_for_Python

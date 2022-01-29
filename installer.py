@@ -1,33 +1,34 @@
 #!/usr/bin/env python3
+""" installer for Meshtastic firmware (aka "Meshtastic flasher")
+"""
 
 import os
 import sys
-import time
 import urllib
 import ssl
-import subprocess
 import zipfile
-import time
 
 import esptool
 
 from meshtastic.util import findPorts
 from github import Github
 from PySide6.QtGui import (QPixmap, QIcon)
-from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
+from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-version="1.0.7"
+VERSION="1.0.8"
 
-meshtastic_logo_filename = "logo.png"
-meshtastic_color_dark = "#2C2D3C"
-meshtastic_color_green = "#67EA94"
+MESHTASTIC_LOGO_FILENAME = "logo.png"
+MESHTASTIC_COLOR_DARK = "#2C2D3C"
+MESHTASTIC_COLOR_GREEN = "#67EA94"
 
 class Form(QDialog):
+    """Main application"""
 
     def __init__(self, parent=None):
+        """constructor"""
         super(Form, self).__init__(parent)
 
         self.port = None
@@ -35,9 +36,7 @@ class Form(QDialog):
         self.firmware_version = None
         self.devices = None
 
-        #self.setStyleSheet(f"background-color: {meshtastic_color_dark};")
         self.setWindowTitle("Meshtastic Installer")
-
 
         # Create widgets
         self.select_firmware = QPushButton("Select firmware")
@@ -45,43 +44,43 @@ class Form(QDialog):
         self.select_port = QPushButton("Port")
 
         self.select_device = QComboBox()
+        self.select_device.setMinimumContentsLength(17)
 
         self.select_flash = QPushButton("Flash")
         self.select_flash.setEnabled(False)
 
         self.progress = QProgressBar()
 
-
         self.logo = None
         try:
-            with open(meshtastic_logo_filename):
+            with open(MESHTASTIC_LOGO_FILENAME, encoding='utf-8'):
                 self.logo = QLabel(self)
-                pixmap = QPixmap(meshtastic_logo_filename)
+                pixmap = QPixmap(MESHTASTIC_LOGO_FILENAME)
                 self.logo.setPixmap(pixmap)
-            self.setWindowIcon(QIcon(meshtastic_logo_filename))
+            self.setWindowIcon(QIcon(MESHTASTIC_LOGO_FILENAME))
 
         except FileNotFoundError:
-            print(f"Logo not found {meshtastic_logo_filename}")
+            print(f"Logo not found {MESHTASTIC_LOGO_FILENAME}")
 
         # Create layout and add widgets
-        mainLayout = QVBoxLayout()
+        main_layout = QVBoxLayout()
 
         if self.logo:
-            mainLayout.addWidget(self.logo)
+            main_layout.addWidget(self.logo)
 
-        buttonLayout = QHBoxLayout()
-        buttonLayout.addWidget(self.select_firmware)
-        buttonLayout.addWidget(self.select_port)
-        buttonLayout.addWidget(self.select_device)
-        buttonLayout.addWidget(self.select_flash)
+        button_layout = QHBoxLayout()
+        button_layout.addWidget(self.select_firmware)
+        button_layout.addWidget(self.select_port)
+        button_layout.addWidget(self.select_device)
+        button_layout.addWidget(self.select_flash)
 
-        progressLayout = QHBoxLayout()
-        progressLayout.addWidget(self.progress)
+        progress_layout = QHBoxLayout()
+        progress_layout.addWidget(self.progress)
 
         # Set layout
-        mainLayout.addLayout(buttonLayout)
-        mainLayout.addLayout(progressLayout)
-        self.setLayout(mainLayout)
+        main_layout.addLayout(button_layout)
+        main_layout.addLayout(progress_layout)
+        self.setLayout(main_layout)
 
         # Add button signals to slots
         self.select_firmware.clicked.connect(self.firmware_stuff)
@@ -89,7 +88,8 @@ class Form(QDialog):
         self.select_flash.clicked.connect(self.flash_stuff)
 
 
-    def aboutAction(self):
+    def about_action(self):
+        """About menu (TODO: create it)"""
         dlg = QMessageBox(self)
         dlg.setWindowTitle("About")
         dlg.setText("This is info about this program.")
@@ -97,7 +97,7 @@ class Form(QDialog):
 
     # do firmware stuff
     def firmware_stuff(self):
-        print(f"in firmware_stuff")
+        """Do the firmware part"""
 
         zip_file_name = None
         try:
@@ -136,18 +136,18 @@ class Form(QDialog):
 
         # if the file is not already downloaded, download it
         if not os.path.exists(zip_file_name):
-            print(f"Need to download...")
+            print("Need to download...")
             # TODO: do we care about ssl
             ssl._create_default_https_context = ssl._create_unverified_context
             urllib.request.urlretrieve(latest_zip_file_url, zip_file_name)
-            print(f"done downloading")
+            print("done downloading")
 
         # unzip into directory named the same name as the firmware_version
         if not os.path.exists(firmware_version):
-            print(f"Unzipping files now...")
+            print("Unzipping files now...")
             with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
                 zip_ref.extractall(firmware_version)
-            print(f"done unzipping")
+            print("done unzipping")
 
         # populate the devices
         if not self.devices:
@@ -157,7 +157,6 @@ class Form(QDialog):
             for filename in filenames:
                 #print(f"filename:{filename}")
                 if filename.startswith("firmware-") and filename.endswith(".bin"):
-
                     device = filename.replace("firmware-", "")
                     device = device.replace(f"-{self.firmware_version}", "")
                     device = device.replace(".bin", "")
@@ -174,22 +173,21 @@ class Form(QDialog):
 
     # do port stuff
     def port_stuff(self):
-        print(f"in port_stuff")
-
+        """Detect port"""
         ports = findPorts()
         print(f"ports:{ports}")
 
         dlg = QMessageBox(self)
-        dlg.setStyleSheet(f"background-color: {meshtastic_color_green}")
+        dlg.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_GREEN}")
         dlg.setWindowTitle("Destination")
 
         # deal with weird TLora (single device connected, but shows up as 2 ports)
         # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
         # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
         if len(ports) == 2:
-            a = ports[0].replace("usbmodem", "")
-            b = ports[1].replace("wchusbserial", "")
-            if a == b:
+            first = ports[0].replace("usbmodem", "")
+            second = ports[1].replace("wchusbserial", "")
+            if first == second:
                 self.port = ports[1]
 
         if len(ports) == 1:
@@ -203,7 +201,7 @@ class Form(QDialog):
         else:
             dlg = QMessageBox(self)
             dlg.setWindowTitle("Port")
-            dlg.setText(f"Plugin a device")
+            dlg.setText("Plugin a device")
             dlg.exec()
 
         # only enable Flash button if we have both values
@@ -213,8 +211,7 @@ class Form(QDialog):
 
     # do flash stuff
     def flash_stuff(self):
-        print(f"in flash_stuff")
-
+        """Do the flash parts"""
         proceed = False
 
         reply = QMessageBox.question(self, 'Flash', 'Are you sure you want to flash?',
@@ -226,28 +223,28 @@ class Form(QDialog):
             QApplication.processEvents()
 
             command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
-            print('ESPTOOL Using command %s' % ' '.join(command))
+            print(f"ESPTOOL Using command:{' '.join(command)}")
             esptool.main(command)
             self.progress.setValue(25)
             QApplication.processEvents()
 
             system_info_file = f"{self.firmware_version}/system-info.bin"
             command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
-            print('ESPTOOL Using command %s' % ' '.join(command))
+            print(f"ESPTOOL Using command:{' '.join(command)}")
             esptool.main(command)
             self.progress.setValue(50)
             QApplication.processEvents()
 
             bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
             command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
-            print('ESPTOOL Using command %s' % ' '.join(command))
+            print(f"ESPTOOL Using command:{' '.join(command)}")
             esptool.main(command)
             self.progress.setValue(75)
             QApplication.processEvents()
 
             device_file = f"{self.firmware_version}/firmware-{self.select_device.currentText()}-{self.firmware_version}.bin"
             command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
-            print('ESPTOOL Using command %s' % ' '.join(command))
+            print(f"ESPTOOL Using command:{' '.join(command)}")
             esptool.main(command)
             self.progress.setValue(100)
             QApplication.processEvents()
@@ -257,7 +254,7 @@ class Form(QDialog):
 
             if esptool_successful:
                 dlg2 = QMessageBox(self)
-                dlg2.setStyleSheet(f"background-color: {meshtastic_color_dark}")
+                dlg2.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_DARK}")
                 dlg2.setWindowTitle("Flashed")
                 dlg2.setText("Done")
                 dlg2.exec()

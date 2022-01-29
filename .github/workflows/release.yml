@@ -71,7 +71,7 @@ jobs:
         with:
           upload_url: ${{ needs.release_create.outputs.upload_url }}
           asset_path: dist/installer
-          asset_name: meshtastic-flasher-mac.zip
+          asset_name: meshtastic-flasher-mac
           asset_content_type: application/zip
 
   build-and-publish-ubuntu:
@@ -100,7 +100,7 @@ jobs:
         with:
           upload_url: ${{ needs.release_create.outputs.upload_url }}
           asset_path: dist/installer
-          asset_name: meshtastic-flasher-ubuntu.zip
+          asset_name: meshtastic-flasher-ubuntu
           asset_content_type: application/zip
 
       - name: Add readme.txt to release
@@ -139,5 +139,5 @@ jobs:
         with:
           upload_url: ${{ needs.release_create.outputs.upload_url }}
           asset_path: dist/installer.exe
-          asset_name: meshtastic-flasher-win.zip
+          asset_name: meshtastic-flasher-win
           asset_content_type: application/zip
