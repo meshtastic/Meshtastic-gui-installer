@@ -19,7 +19,7 @@ from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-version="1.0.6"
+version="1.0.7"
 
 meshtastic_logo_filename = "logo.png"
 meshtastic_color_dark = "#2C2D3C"
