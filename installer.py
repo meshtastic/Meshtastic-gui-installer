@@ -74,10 +74,13 @@ class Form(QDialog):
         buttonLayout.addWidget(self.select_port)
         buttonLayout.addWidget(self.select_device)
         buttonLayout.addWidget(self.select_flash)
-        buttonLayout.addWidget(self.progress)
+
+        progressLayout = QHBoxLayout()
+        progressLayout.addWidget(self.progress)
 
         # Set layout
         mainLayout.addLayout(buttonLayout)
+        mainLayout.addLayout(progressLayout)
         self.setLayout(mainLayout)
 
         # Add button signals to slots
