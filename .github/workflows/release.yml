@@ -62,7 +62,7 @@ jobs:
         run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller -F -n meshtastic-flasher --add-binary "logo.png:." --collect-all meshtastic --collect-all esptool --codesign-identity "$MACOS_SIGNING_IDENTITY" installer.py
+          pyinstaller -F -n meshtastic-flasher-mac --add-binary "logo.png:." --collect-all meshtastic --collect-all esptool --codesign-identity "$MACOS_SIGNING_IDENTITY" installer.py
 
       - name: Add mac to release
         uses: actions/upload-release-asset@v1
@@ -91,7 +91,7 @@ jobs:
         run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller -F -n meshtastic-flasher --add-binary "logo.png:." --collect-all meshtastic --collect-all esptool installer.py
+          pyinstaller -F -n meshtastic-flasher-ubuntu --add-binary "logo.png:." --collect-all meshtastic --collect-all esptool installer.py
 
       - name: Add ubuntu to release
         uses: actions/upload-release-asset@v1
@@ -130,7 +130,7 @@ jobs:
         run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller -F -n meshtastic-flasher --add-binary "logo.png;." --collect-all meshtastic --collect-all esptool installer.py
+          pyinstaller -F -n meshtastic-flasher.exe --add-binary "logo.png;." --collect-all meshtastic --collect-all esptool installer.py
 
       - name: Add windows to release
         uses: actions/upload-release-asset@v1
@@ -138,6 +138,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ needs.release_create.outputs.upload_url }}
-          asset_path: dist/meshtastic-flasher-win.exe
+          asset_path: dist/meshtastic-flasher.exe
           asset_name: meshtastic-flasher-win.exe
           asset_content_type: application/zip
