@@ -14,6 +14,7 @@ from github import Github
 from PySide6.QtGui import (QPixmap, QIcon)
 from PySide6.QtWidgets import (QLineEdit, QPushButton, QApplication,
     QVBoxLayout, QHBoxLayout, QDialog, QLabel, QMessageBox, QComboBox)
+from qt_material import apply_stylesheet
 
 version="1.0.4"
 
@@ -233,6 +234,8 @@ if __name__ == '__main__':
 
     # Create the Qt Application
     app = QApplication(sys.argv)
+    apply_stylesheet(app, theme='dark_teal.xml')
+
     # Create and show the form
     form = Form()
     form.show()
