@@ -60,7 +60,7 @@ class Form(QDialog):
         self.setWindowTitle("Meshtastic Flasher")
 
         # Create widgets
-        self.select_firmware = QPushButton("firmware")
+        self.select_firmware = QPushButton("Select Firmware")
         self.select_firmware.setToolTip("Click to check for more recent firmware.")
 
         self.select_firmware_version = QComboBox()
@@ -68,11 +68,11 @@ class Form(QDialog):
         self.select_firmware_version.setMinimumContentsLength(18)
         self.select_firmware_version.hide()
 
-        self.select_port = QPushButton("Port")
+        self.select_port = QPushButton("Select Port")
         self.select_port.setToolTip("Click to detect port.")
 
         self.select_device = QComboBox()
-        self.select_device.setToolTip("Click the firmware button before you can select the device.")
+        self.select_device.setToolTip("You must Select firmware before you can select the device.")
         self.select_device.setMinimumContentsLength(17)
 
         self.select_flash = QPushButton("Flash")
@@ -114,8 +114,6 @@ class Form(QDialog):
         self.select_firmware.clicked.connect(self.download_firmware_versions)
         self.select_port.clicked.connect(self.port_stuff)
         self.select_flash.clicked.connect(self.flash_stuff)
-
-
 
     def download_firmware_versions(self):
         """Download versions from GitHub"""
