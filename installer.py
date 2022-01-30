@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-VERSION="1.0.18"
+VERSION="1.0.19"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
