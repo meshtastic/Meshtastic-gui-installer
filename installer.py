@@ -13,7 +13,8 @@ import esptool
 
 from meshtastic.util import findPorts
 from github import Github
-from PySide6.QtGui import (QPixmap, QIcon)
+from PySide6 import QtCore
+from PySide6.QtGui import (QPixmap, QIcon, QPainter)
 from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
                                QMessageBox, QComboBox, QProgressBar)
@@ -81,15 +82,16 @@ class Form(QDialog):
         self.progress = QProgressBar()
         self.progress.setToolTip("Progress will be shown during the Flash step.")
 
-        # TODO: how to keep this centered?
         self.logo = QLabel(self)
         self.logo.setToolTip("This is the Meshtastic logo. It represents the starting packets used in LoRa transmissions.")
-        pixmap = QPixmap(get_path(MESHTASTIC_LOGO_FILENAME))
+        pixmap = QPixmap(512, 512)
+        pixmap.load(get_path(MESHTASTIC_LOGO_FILENAME))
         self.logo.setPixmap(pixmap)
-
+        self.logo.setAlignment(QtCore.Qt.AlignCenter)
+        
         # Create layout and add widgets
         main_layout = QVBoxLayout()
-
+        
         if self.logo:
             main_layout.addWidget(self.logo)
 
