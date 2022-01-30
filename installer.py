@@ -14,7 +14,7 @@ import esptool
 from meshtastic.util import findPorts
 from github import Github
 from PySide6 import QtCore
-from PySide6.QtGui import (QPixmap, QIcon, QPainter)
+from PySide6.QtGui import (QPixmap, QIcon)
 from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
                                QMessageBox, QComboBox, QProgressBar)
@@ -54,7 +54,6 @@ class Form(QDialog):
         self.port = None
         self.speed = '921600'
         self.firmware_version = None
-        self.firmware_versions = {}
         self.devices = None
 
         self.setWindowTitle("Meshtastic Flasher")
@@ -89,8 +88,10 @@ class Form(QDialog):
         pixmap = QPixmap(get_path(MESHTASTIC_LOGO_FILENAME))
         self.logo.setPixmap(pixmap.scaled(256, 256, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
-        self.logo.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_GREEN}; border-color: {MESHTASTIC_COLOR_GREEN}; border-radius: 0px; color: {MESHTASTIC_COLOR_DARK}; ")
-        
+        style_for_logo = (f"background-color: {MESHTASTIC_COLOR_GREEN}; border-color: "
+                          f"{MESHTASTIC_COLOR_GREEN}; border-radius: 0px; color: {MESHTASTIC_COLOR_DARK};")
+        self.logo.setStyleSheet(style_for_logo)
+
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
@@ -128,7 +129,6 @@ class Form(QDialog):
 
         # save first_tag in case we need to populate list with *some* value
         first_tag = None
-        first_id = None
 
         if not self.select_firmware.isHidden():
 
@@ -142,25 +142,15 @@ class Form(QDialog):
                     r = repo.get_release(release.id)
                     if not first_tag:
                         first_tag = r.tag_name
-                        first_id = release.id
                     #print(f'r:{r} release.id:{release.id} tag_name:{r.tag_name} count:{count}')
                     if populate_tag_in_firmware_dropdown(r.tag_name):
                         # add tags to drop down
                         self.select_firmware_version.addItem(r.tag_name)
-                        self.firmware_versions[r.tag_name] = release.id
                     count = count + 1
                     # simple check to make sure we don't get too many versions
                     if count > 5:
                         break
 
-# get latest
-#                asset_one = token.get_repo('meshtastic/Meshtastic-device').get_latest_release().get_assets()[1]
-#                print(f'asset_one:{asset_one}')
-#                latest_zip_file_url = asset_one.browser_download_url
-#                print(f'latest_zip_file_url:{latest_zip_file_url}')
-#                tmp = latest_zip_file_url.split('/')
-#                zip_file_name = tmp[-1]
-#                print(f'zip_file_name:{zip_file_name}')
             except Exception as e:
                 print(e)
 
@@ -174,13 +164,11 @@ class Form(QDialog):
                 # huh, no versions are acceptable? check the populate method
                 print('Warning: No versions pass our popluate check.')
                 self.select_firmware_version.addItem(first_tag)
-                self.firmware_versions[first_tag] = first_id
             else:
                 # there was a problem, so just set it to this "latest" (at the time of writing)
                 print('Warning: Had to fall back to a hard coded version/id.')
                 fall_back_tag = 'v1.2.53.19c1f9f'
                 self.select_firmware_version.addItem(fall_back_tag)
-                self.firmware_versions[fall_back_tag] = '58155501'
 
         # if we checked for latest versions, so hide the "Firmware" button, and show the combo box to select version
         self.select_firmware.hide()
@@ -191,61 +179,41 @@ class Form(QDialog):
             self.select_flash.setEnabled(True)
 
     def port_stuff(self):
-        """Detect port"""
+        """Detect port, download zip file from github if we need to, and unzip it"""
+
         ports = findPorts()
         print(f"ports:{ports}")
 
         # also, see if we need to download the zip file
+        self.firmware_version = self.select_firmware_version.currentText()[1:] # drop leading v
+        print(f"self.firmware_version:{self.firmware_version}")
 
         # zip filename from tag
-        tmp_tag = self.select_firmware_version.currentText()
-        tmp_id = self.firmware_versions[tmp_tag]
-        print(f'tmp_tag:{tmp_tag} tmp_id:{tmp_id}')
         zip_file_name = "firmware-"
-        zip_file_name += tmp_tag[1:] # drop the leading "v"
+        zip_file_name += self.firmware_version
         zip_file_name += ".zip"
         print(f'zip_file_name:{zip_file_name}')
-
-        # this is really only for testing.. TODO: remove?
-#        if not zip_file_name:
-#            # look in current dir for zip files
-#            # and set zip_file_name to first zip we find (just for testing)
-#            filenames = next(os.walk("."), (None, None, []))[2]
-#            for filename in filenames:
-#                #print(f"filename:{filename}")
-#                if filename.endswith(".zip"):
-#                    zip_file_name = filename
-#                    break
 
         if not zip_file_name:
             print("We should have a zip_file_name.")
             sys.exit(1)
 
-        # TODO: can prob simplify this
-        firmware_version = zip_file_name.replace("firmware-", "")
-        firmware_version = firmware_version.replace(".zip", "")
-        print(f"firmware_version:{firmware_version}")
-        self.firmware_version = firmware_version
-
         # if the file is not already downloaded, download it
         if not os.path.exists(zip_file_name):
             print("Need to download...")
 
-            # TODO: just found out you can get by tag... do not need the collection
-
             # get the url from the release
-            # TODO: commented out because I'm tired of GitHub rate limiting me during development.
-#            token = Github()
-#            repo = token.get_repo(MESHTATIC_REPO)
-#            r = repo.get_release(tmp_id)
-#            print(f'r:{r}')
-#            print(f'r.assets:{r.assets}')
-#            print(f'r.assets[0]:{r.assets[0]}')
-#            print(f'r.assets[0]["browser_download_url"]:{r.assets[0]["browser_download_url"]}')
-#            # TODO: figure this out
-#            zip_file_url = r.assets[0].browser_download_url
-            # TODO: for now
-            zip_file_url = 'https://github.com/meshtastic/Meshtastic-device/releases/download/v1.2.53.19c1f9f/firmware-1.2.53.19c1f9f.zip'
+            token = Github()
+            repo = token.get_repo(MESHTATIC_REPO)
+            r = repo.get_release(f'v{self.firmware_version}')
+            print(f'r:{r}')
+            print(f'r.assets:{r.assets}')
+            print(f'r.assets[0]:{r.assets[0]}')
+            print(f'r.assets[0]["browser_download_url"]:{r.assets[0]["browser_download_url"]}')
+            # TODO: not sure what this should be yet, keep getting hit with rate limit
+            zip_file_url = r.assets[0]["browser_download_url"]
+            # This is in case we have to temp-disable GitHub during dev due to rate-limiting.
+            #zip_file_url = 'https://github.com/meshtastic/Meshtastic-device/releases/download/v1.2.53.19c1f9f/firmware-1.2.53.19c1f9f.zip'
             print('zip_file_url:{zip_file_url}')
 
             if not zip_file_url:
@@ -258,10 +226,10 @@ class Form(QDialog):
             print("done downloading")
 
         # unzip into directory named the same name as the firmware_version
-        if not os.path.exists(firmware_version):
+        if not os.path.exists(self.firmware_version):
             print("Unzipping files now...")
             with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
-                zip_ref.extractall(firmware_version)
+                zip_ref.extractall(self.firmware_version)
             print("done unzipping")
 
         # populate the devices
