@@ -68,8 +68,9 @@ class Form(QDialog):
         self.select_firmware_version.setMinimumContentsLength(18)
         self.select_firmware_version.hide()
 
-        self.select_port = QPushButton("Select Port")
+        self.select_port = QPushButton("SELECT PORT")
         self.select_port.setToolTip("Click to detect port.")
+        self.select_port.setStyleSheet("text-transform: none")
 
         self.select_device = QComboBox()
         self.select_device.setToolTip("You must Select firmware before you can select the device.")
@@ -289,7 +290,7 @@ class Form(QDialog):
             self.port = ports[0]
 
         if self.port:
-            self.select_port.setText(f"Port:{self.port}")
+            self.select_port.setText(f"PORT:{self.port}")
         else:
             dlg = QMessageBox(self)
             dlg.setWindowTitle("Port")
