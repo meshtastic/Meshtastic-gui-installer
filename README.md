@@ -30,6 +30,23 @@ chmod +x installer.py
 pylint *.py
 ```
 
+or
+
+```
+make lint
+```
+
 # for more info
 
 https://wiki.qt.io/Qt_for_Python
+
+https://pygithub.readthedocs.io/en/latest/introduction.html
+
+https://meshtastic.org/
+
+https://github.com/meshtastic/Meshtastic-device
+
+
+# Note to Devs
+
+Please keep code as simple as possible. PyQT has a tendency to get complicated.

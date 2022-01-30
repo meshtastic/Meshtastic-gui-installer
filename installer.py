@@ -7,6 +7,7 @@ import sys
 import urllib
 import ssl
 import zipfile
+import re
 
 import esptool
 
@@ -24,12 +25,23 @@ MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
 
+MESHTATIC_REPO = 'meshtastic/Meshtastic-device'
+
 # see https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file
 def get_path(filename):
     """return the path to the logo file"""
     if hasattr(sys, "_MEIPASS"):
         return os.path.join(sys._MEIPASS, filename)
     return filename
+
+def populate_tag_in_firmware_dropdown(tag):
+    """Populate this tag in the firmware dropdown?"""
+    retval = False
+    # TODO: better way?
+    if re.search(r"v1.2.5[2-9]", tag):
+        retval = True
+    print(f'tag:{tag} populate in dropdown?:{retval}')
+    return retval
 
 class Form(QDialog):
     """Main application"""
@@ -41,24 +53,37 @@ class Form(QDialog):
         self.port = None
         self.speed = '921600'
         self.firmware_version = None
+        self.firmware_versions = {}
         self.devices = None
 
-        self.setWindowTitle("Meshtastic Installer")
+        self.setWindowTitle("Meshtastic Flasher")
 
         # Create widgets
-        self.select_firmware = QPushButton("Select firmware")
+        self.select_firmware = QPushButton("firmware")
+        self.select_firmware.setToolTip("Click to check for more recent firmware.")
+
+        self.select_firmware_version = QComboBox()
+        self.select_firmware_version.setToolTip("Select which firmware to flash.")
+        self.select_firmware_version.setMinimumContentsLength(18)
+        self.select_firmware_version.hide()
 
         self.select_port = QPushButton("Port")
+        self.select_port.setToolTip("Click to detect port.")
 
         self.select_device = QComboBox()
+        self.select_device.setToolTip("Click the firmware button before you can select the device.")
         self.select_device.setMinimumContentsLength(17)
 
         self.select_flash = QPushButton("Flash")
+        self.select_flash.setToolTip("Click to flash the firmware. If button is not enabled, need to click the buttons to the left.")
         self.select_flash.setEnabled(False)
 
         self.progress = QProgressBar()
+        self.progress.setToolTip("Progress will be shown during the Flash step.")
 
+        # TODO: how to keep this centered?
         self.logo = QLabel(self)
+        self.logo.setToolTip("This is the Meshtastic logo. It represents the starting packets used in LoRa transmissions.")
         pixmap = QPixmap(get_path(MESHTASTIC_LOGO_FILENAME))
         self.logo.setPixmap(pixmap)
 
@@ -70,6 +95,7 @@ class Form(QDialog):
 
         button_layout = QHBoxLayout()
         button_layout.addWidget(self.select_firmware)
+        button_layout.addWidget(self.select_firmware_version)
         button_layout.addWidget(self.select_port)
         button_layout.addWidget(self.select_device)
         button_layout.addWidget(self.select_flash)
@@ -83,52 +109,111 @@ class Form(QDialog):
         self.setLayout(main_layout)
 
         # Add button signals to slots
-        self.select_firmware.clicked.connect(self.firmware_stuff)
+        self.select_firmware.clicked.connect(self.download_firmware_versions)
         self.select_port.clicked.connect(self.port_stuff)
         self.select_flash.clicked.connect(self.flash_stuff)
 
 
-    def about_action(self):
-        """About menu (TODO: create it)"""
-        dlg = QMessageBox(self)
-        dlg.setWindowTitle("About")
-        dlg.setText("This is info about this program.")
-        dlg.exec()
 
-    # do firmware stuff
-    def firmware_stuff(self):
-        """Do the firmware part"""
+    def download_firmware_versions(self):
+        """Download versions from GitHub"""
 
-        zip_file_name = None
-        try:
-            token = Github()
-            asset_one = token.get_repo('meshtastic/Meshtastic-device').get_latest_release().get_assets()[1]
-            print(f'asset_one:{asset_one}')
-            latest_zip_file_url = asset_one.browser_download_url
-            print(f'latest_zip_file_url:{latest_zip_file_url}')
-            tmp = latest_zip_file_url.split('/')
-            zip_file_name = tmp[-1]
-            print(f'zip_file_name:{zip_file_name}')
-        except:
-            pass
+        # save first_tag in case we need to populate list with *some* value
+        first_tag = None
+        first_id = None
 
-        # in development, hit this exception:
-        #    github.GithubException.RateLimitExceededException: 403 {"message": "API rate limit exceeded for <IP redacted>. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)", "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"}
+        if not self.select_firmware.isHidden():
 
-        if not zip_file_name:
-            # look in current dir for zip files
-            # and set zip_file_name to first zip we find (just for testing)
-            filenames = next(os.walk("."), (None, None, []))[2]
-            for filename in filenames:
-                #print(f"filename:{filename}")
-                if filename.endswith(".zip"):
-                    zip_file_name = filename
-                    break
+            try:
+                token = Github()
+                repo = token.get_repo(MESHTATIC_REPO)
+                releases = repo.get_releases()
+                #print(f'releases:{releases}')
+                count = 0
+                for release in releases:
+                    r = repo.get_release(release.id)
+                    if not first_tag:
+                        first_tag = r.tag_name
+                        first_id = release.id
+                    #print(f'r:{r} release.id:{release.id} tag_name:{r.tag_name} count:{count}')
+                    if populate_tag_in_firmware_dropdown(r.tag_name):
+                        # add tags to drop down
+                        self.select_firmware_version.addItem(r.tag_name)
+                        self.firmware_versions[r.tag_name] = release.id
+                    count = count + 1
+                    # simple check to make sure we don't get too many versions
+                    if count > 5:
+                        break
+
+# get latest
+#                asset_one = token.get_repo('meshtastic/Meshtastic-device').get_latest_release().get_assets()[1]
+#                print(f'asset_one:{asset_one}')
+#                latest_zip_file_url = asset_one.browser_download_url
+#                print(f'latest_zip_file_url:{latest_zip_file_url}')
+#                tmp = latest_zip_file_url.split('/')
+#                zip_file_name = tmp[-1]
+#                print(f'zip_file_name:{zip_file_name}')
+            except Exception as e:
+                print(e)
+
+            # in development, hit this exception:
+            #    github.GithubException.RateLimitExceededException: 403 {"message": "API rate limit exceeded for <IP redacted>. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)", "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"}
+        else:
+            self.select_device.setToolTip("Select your Meshtastic device.")
+
+        if self.select_firmware_version.count() == 0:
+            if first_tag:
+                # huh, no versions are acceptable? check the populate method
+                print('Warning: No versions pass our popluate check.')
+                self.select_firmware_version.addItem(first_tag)
+                self.firmware_versions[first_tag] = first_id
+            else:
+                # there was a problem, so just set it to this "latest" (at the time of writing)
+                print('Warning: Had to fall back to a hard coded version/id.')
+                fall_back_tag = 'v1.2.53.19c1f9f'
+                self.select_firmware_version.addItem(fall_back_tag)
+                self.firmware_versions[fall_back_tag] = '58155501'
+
+        # if we checked for latest versions, so hide the "Firmware" button, and show the combo box to select version
+        self.select_firmware.hide()
+        self.select_firmware_version.show()
+
+        # only enable Flash button if we have both values
+        if self.port and self.firmware_version:
+            self.select_flash.setEnabled(True)
+
+    def port_stuff(self):
+        """Detect port"""
+        ports = findPorts()
+        print(f"ports:{ports}")
+
+        # also, see if we need to download the zip file
+
+        # zip filename from tag
+        tmp_tag = self.select_firmware_version.currentText()
+        tmp_id = self.firmware_versions[tmp_tag]
+        print(f'tmp_tag:{tmp_tag} tmp_id:{tmp_id}')
+        zip_file_name = "firmware-"
+        zip_file_name += tmp_tag[1:] # drop the leading "v"
+        zip_file_name += ".zip"
+        print(f'zip_file_name:{zip_file_name}')
+
+        # this is really only for testing.. TODO: remove?
+#        if not zip_file_name:
+#            # look in current dir for zip files
+#            # and set zip_file_name to first zip we find (just for testing)
+#            filenames = next(os.walk("."), (None, None, []))[2]
+#            for filename in filenames:
+#                #print(f"filename:{filename}")
+#                if filename.endswith(".zip"):
+#                    zip_file_name = filename
+#                    break
 
         if not zip_file_name:
             print("We should have a zip_file_name.")
             sys.exit(1)
 
+        # TODO: can prob simplify this
         firmware_version = zip_file_name.replace("firmware-", "")
         firmware_version = firmware_version.replace(".zip", "")
         print(f"firmware_version:{firmware_version}")
@@ -137,9 +222,31 @@ class Form(QDialog):
         # if the file is not already downloaded, download it
         if not os.path.exists(zip_file_name):
             print("Need to download...")
+
+            # TODO: just found out you can get by tag... do not need the collection
+
+            # get the url from the release
+            # TODO: commented out because I'm tired of GitHub rate limiting me during development.
+#            token = Github()
+#            repo = token.get_repo(MESHTATIC_REPO)
+#            r = repo.get_release(tmp_id)
+#            print(f'r:{r}')
+#            print(f'r.assets:{r.assets}')
+#            print(f'r.assets[0]:{r.assets[0]}')
+#            print(f'r.assets[0]["browser_download_url"]:{r.assets[0]["browser_download_url"]}')
+#            # TODO: figure this out
+#            zip_file_url = r.assets[0].browser_download_url
+            # TODO: for now
+            zip_file_url = 'https://github.com/meshtastic/Meshtastic-device/releases/download/v1.2.53.19c1f9f/firmware-1.2.53.19c1f9f.zip'
+            print('zip_file_url:{zip_file_url}')
+
+            if not zip_file_url:
+                print("We should have a zip_file_url.")
+                sys.exit(1)
+
             # TODO: do we care about ssl
             ssl._create_default_https_context = ssl._create_unverified_context
-            urllib.request.urlretrieve(latest_zip_file_url, zip_file_name)
+            urllib.request.urlretrieve(zip_file_url, zip_file_name)
             print("done downloading")
 
         # unzip into directory named the same name as the firmware_version
@@ -162,25 +269,6 @@ class Form(QDialog):
                     device = device.replace(".bin", "")
                     self.select_device.addItem(device)
 
-        dlg = QMessageBox(self)
-        dlg.setWindowTitle("Firmware")
-        dlg.setText("Downloaded latest firmware.")
-        dlg.exec()
-
-        # only enable Flash button if we have both values
-        if self.port and self.firmware_version:
-            self.select_flash.setEnabled(True)
-
-    # do port stuff
-    def port_stuff(self):
-        """Detect port"""
-        ports = findPorts()
-        print(f"ports:{ports}")
-
-        dlg = QMessageBox(self)
-        dlg.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_GREEN}")
-        dlg.setWindowTitle("Destination")
-
         # deal with weird TLora (single device connected, but shows up as 2 ports)
         # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
         # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
@@ -194,10 +282,7 @@ class Form(QDialog):
             self.port = ports[0]
 
         if self.port:
-            dlg = QMessageBox(self)
-            dlg.setWindowTitle("Port")
-            dlg.setText(f"Will write to port:{self.port}")
-            dlg.exec()
+            self.select_port.setText(f"Port:{self.port}")
         else:
             dlg = QMessageBox(self)
             dlg.setWindowTitle("Port")
@@ -207,6 +292,7 @@ class Form(QDialog):
         # only enable Flash button if we have both values
         if self.port and self.firmware_version:
             self.select_flash.setEnabled(True)
+            self.select_flash.setToolTip('Click the Flash button to write to the device.')
 
 
     # do flash stuff
