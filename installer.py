@@ -21,7 +21,7 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-VERSION="1.0.19"
+VERSION="1.0.20"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -366,7 +366,7 @@ if __name__ == '__main__':
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(get_path(MESHTASTIC_LOGO_FILENAME)))
     app.setApplicationName("Meshtastic Flasher")
-    apply_stylesheet(app, theme='meshtastic_theme.xml')
+    apply_stylesheet(app, theme=get_path('meshtastic_theme.xml'))
 
     # Create and show the form
     form = Form()
