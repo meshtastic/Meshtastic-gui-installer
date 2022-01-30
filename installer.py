@@ -202,25 +202,18 @@ class Form(QDialog):
         if not os.path.exists(zip_file_name):
             print("Need to download...")
 
-            # get the url from the release
-            token = Github()
-            repo = token.get_repo(MESHTATIC_REPO)
-            r = repo.get_release(f'v{self.firmware_version}')
-            print(f'r:{r}')
-            print(f'r.assets:{r.assets}')
-            print(f'r.assets[0]:{r.assets[0]}')
-            print(f'r.assets[0]["browser_download_url"]:{r.assets[0]["browser_download_url"]}')
-            # TODO: not sure what this should be yet, keep getting hit with rate limit
-            zip_file_url = r.assets[0]["browser_download_url"]
+            # Note: Probably should use the browser_download_url
+            zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{self.firmware_version}/firmware-{self.firmware_version}.zip'
             # This is in case we have to temp-disable GitHub during dev due to rate-limiting.
             #zip_file_url = 'https://github.com/meshtastic/Meshtastic-device/releases/download/v1.2.53.19c1f9f/firmware-1.2.53.19c1f9f.zip'
-            print('zip_file_url:{zip_file_url}')
+            print(f'zip_file_url:{zip_file_url}')
 
             if not zip_file_url:
                 print("We should have a zip_file_url.")
                 sys.exit(1)
 
             # TODO: do we care about ssl
+            print("downloading...")
             ssl._create_default_https_context = ssl._create_unverified_context
             urllib.request.urlretrieve(zip_file_url, zip_file_name)
             print("done downloading")
