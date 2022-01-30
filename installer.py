@@ -88,6 +88,7 @@ class Form(QDialog):
         pixmap.load(get_path(MESHTASTIC_LOGO_FILENAME))
         self.logo.setPixmap(pixmap)
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
+        self.logo.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_GREEN}; color: {MESHTASTIC_COLOR_DARK}")
         
         # Create layout and add widgets
         main_layout = QVBoxLayout()
