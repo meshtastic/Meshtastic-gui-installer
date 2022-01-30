@@ -81,33 +81,40 @@ class Form(QDialog):
 
         self.progress = QProgressBar()
         self.progress.setToolTip("Progress will be shown during the Flash step.")
+        self.progress.hide()
 
         self.logo = QLabel(self)
         self.logo.setToolTip("This is the Meshtastic logo. It represents the starting packets used in LoRa transmissions.")
-        pixmap = QPixmap(512, 512)
-        pixmap.load(get_path(MESHTASTIC_LOGO_FILENAME))
-        self.logo.setPixmap(pixmap)
+        pixmap = QPixmap(get_path(MESHTASTIC_LOGO_FILENAME))
+        self.logo.setPixmap(pixmap.scaled(256, 256, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
+        self.logo.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_GREEN}; border-color: {MESHTASTIC_COLOR_GREEN}; border-radius: 0px; color: {MESHTASTIC_COLOR_DARK}; ")
         
         # Create layout and add widgets
         main_layout = QVBoxLayout()
-        
+        main_layout.setContentsMargins(0, 0, 0, 0)
+        # main_layout.setSpacing(0)
         if self.logo:
             main_layout.addWidget(self.logo)
-
+        main_layout.addStretch(1)
         button_layout = QHBoxLayout()
+        button_layout.addStretch(1)
         button_layout.addWidget(self.select_firmware)
         button_layout.addWidget(self.select_firmware_version)
         button_layout.addWidget(self.select_port)
         button_layout.addWidget(self.select_device)
         button_layout.addWidget(self.select_flash)
+        button_layout.addStretch(1)
+        button_layout.setContentsMargins(20, 20, 20, 20)
 
         progress_layout = QHBoxLayout()
         progress_layout.addWidget(self.progress)
+        button_layout.addStretch(1)
 
         # Set layout
         main_layout.addLayout(button_layout)
         main_layout.addLayout(progress_layout)
+        main_layout.addStretch(1)
         self.setLayout(main_layout)
 
         # Add button signals to slots
@@ -307,7 +314,7 @@ class Form(QDialog):
 
         if proceed:
             QApplication.processEvents()
-
+            self.progress.show()
             command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             esptool.main(command)
@@ -352,7 +359,8 @@ if __name__ == '__main__':
     # Create the Qt Application
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(get_path(MESHTASTIC_LOGO_FILENAME)))
-    apply_stylesheet(app, theme='dark_teal.xml')
+    app.setApplicationName("Meshtastic Flasher")
+    apply_stylesheet(app, theme='meshtastic_theme.xml')
 
     # Create and show the form
     form = Form()
