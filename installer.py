@@ -11,7 +11,8 @@ import re
 
 import esptool
 
-from meshtastic.util import findPorts
+from meshtastic.util import detect_supported_devices, findPorts, detect_windows_needs_driver
+from meshtastic.supported_device import active_ports_on_supported_devices
 from github import Github
 from PySide6 import QtCore
 from PySide6.QtGui import (QPixmap, QIcon)
@@ -59,7 +60,7 @@ class Form(QDialog):
         self.setWindowTitle("Meshtastic Flasher")
 
         # Create widgets
-        self.select_firmware = QPushButton("Select Firmware")
+        self.select_firmware = QPushButton("SELECT FIRMWARE")
         self.select_firmware.setToolTip("Click to check for more recent firmware.")
 
         self.select_firmware_version = QComboBox()
@@ -67,15 +68,22 @@ class Form(QDialog):
         self.select_firmware_version.setMinimumContentsLength(18)
         self.select_firmware_version.hide()
 
-        self.select_port = QPushButton("SELECT PORT")
-        self.select_port.setToolTip("Click to detect port.")
-        self.select_port.setStyleSheet("text-transform: none")
+        self.select_detect = QPushButton("DETECT")
+        self.select_detect.setToolTip("Click to detect supported device and port info.")
+        # Note: The text of the buttons is done in the styles, need to override it
+        self.select_detect.setStyleSheet("text-transform: none")
+
+        self.select_port = QComboBox()
+        self.select_port.setToolTip("Select which port to use.")
+        self.select_port.setMinimumContentsLength(25)
+        self.select_port.setDisabled(True)
 
         self.select_device = QComboBox()
-        self.select_device.setToolTip("You must Select firmware before you can select the device.")
+        self.select_device.setToolTip("You must click SELECT FIRMWARE before you can select the device.")
         self.select_device.setMinimumContentsLength(17)
+        self.select_device.setDisabled(True)
 
-        self.select_flash = QPushButton("Flash")
+        self.select_flash = QPushButton("FLASH")
         self.select_flash.setToolTip("Click to flash the firmware. If button is not enabled, need to click the buttons to the left.")
         self.select_flash.setEnabled(False)
 
@@ -103,6 +111,7 @@ class Form(QDialog):
         button_layout.addStretch(1)
         button_layout.addWidget(self.select_firmware)
         button_layout.addWidget(self.select_firmware_version)
+        button_layout.addWidget(self.select_detect)
         button_layout.addWidget(self.select_port)
         button_layout.addWidget(self.select_device)
         button_layout.addWidget(self.select_flash)
@@ -121,7 +130,7 @@ class Form(QDialog):
 
         # Add button signals to slots
         self.select_firmware.clicked.connect(self.download_firmware_versions)
-        self.select_port.clicked.connect(self.port_stuff)
+        self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
 
     def download_firmware_versions(self):
@@ -175,15 +184,51 @@ class Form(QDialog):
         self.select_firmware_version.show()
 
         # only enable Flash button if we have both values
-        if self.port and self.firmware_version:
+        if self.select_port.count() > 0 and self.firmware_version:
             self.select_flash.setEnabled(True)
 
-    def port_stuff(self):
+    def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
 
-        ports = findPorts()
-        print(f"ports:{ports}")
+        # detect supported devices
+        supported_devices_detected = detect_supported_devices()
+        if len(supported_devices_detected) == 0:
+            dlg = QMessageBox(self)
+            dlg.setWindowTitle("No devices detected.")
+            dlg.setText("Plugin a device?")
+            dlg.exec()
+            # TODO: enumerate devices from the files?
+        else:
+            if len(supported_devices_detected) > 0:
+                self.select_device.clear()
+                for device in supported_devices_detected:
+                    self.select_device.addItem(device.for_firmware)
 
+        # detect which ports and populate the dropdown
+        ports = active_ports_on_supported_devices(supported_devices_detected)
+        #print(f"from active_ports_on_supported_devices() ports:{ports}")
+        ports_sorted = list(ports)
+        ports_sorted.sort()
+        for port in ports_sorted:
+            self.select_port.addItem(port)
+
+        # our auto-detect did not work
+        if len(ports) == 0:
+            print("Warning: Could not find any ports using the autodetection method.")
+
+            # for now, use the Serial method to discover ports
+            ports = findPorts()
+            #print(f"from findPorts() ports:{ports}")
+            if len(ports) == 0:
+                print("Warning: Could not find any ports using the Serial library method.")
+
+                for device in supported_devices_detected:
+                    detect_windows_needs_driver(device, True)
+            else:
+                for port in ports:
+                    self.select_port.addItem(port)
+
+        # TODO: self.firmware_version and checking if we need to download should be in a "changed" method
         # also, see if we need to download the zip file
         self.firmware_version = self.select_firmware_version.currentText()[1:] # drop leading v
         print(f"self.firmware_version:{self.firmware_version}")
@@ -229,39 +274,32 @@ class Form(QDialog):
         if not self.devices:
             filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
             filenames.sort()
-            self.select_device.clear()
-            for filename in filenames:
-                #print(f"filename:{filename}")
-                if filename.startswith("firmware-") and filename.endswith(".bin"):
-                    device = filename.replace("firmware-", "")
-                    device = device.replace(f"-{self.firmware_version}", "")
-                    device = device.replace(".bin", "")
-                    self.select_device.addItem(device)
+#            self.select_device.clear()
+#            for filename in filenames:
+#                #print(f"filename:{filename}")
+#                if filename.startswith("firmware-") and filename.endswith(".bin"):
+#                    device = filename.replace("firmware-", "")
+#                    device = device.replace(f"-{self.firmware_version}", "")
+#                    device = device.replace(".bin", "")
+#                    self.select_device.addItem(device)
 
         # deal with weird TLora (single device connected, but shows up as 2 ports)
         # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
         # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
-        if len(ports) == 2:
-            first = ports[0].replace("usbmodem", "")
-            second = ports[1].replace("wchusbserial", "")
-            if first == second:
-                self.port = ports[1]
+        # TODO: add this back in later
+#        if len(ports) == 2:
+#            first = ports[0].replace("usbmodem", "")
+#            second = ports[1].replace("wchusbserial", "")
+#            if first == second:
+#                self.port = ports[1]
 
-        if len(ports) == 1:
-            self.port = ports[0]
-
-        if self.port:
-            self.select_port.setText(f"PORT:{self.port}")
-        else:
-            dlg = QMessageBox(self)
-            dlg.setWindowTitle("Port")
-            dlg.setText("Plugin a device")
-            dlg.exec()
-
-        # only enable Flash button if we have both values
-        if self.port and self.firmware_version:
+        # only enable Flash button and Device dropdown if we have firmware and ports
+        if self.select_port.count() > 0 and self.firmware_version:
             self.select_flash.setEnabled(True)
             self.select_flash.setToolTip('Click the Flash button to write to the device.')
+            self.select_detect.hide()
+            self.select_port.setDisabled(False)
+            self.select_device.setDisabled(False)
 
 
     # do flash stuff
@@ -269,8 +307,14 @@ class Form(QDialog):
         """Do the flash parts"""
         proceed = False
 
-        reply = QMessageBox.question(self, 'Flash', 'Are you sure you want to flash?',
-        QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        # TODO: what happens if they change version after DETECT was pressed?
+
+        self.port = self.select_port.currentText()
+
+        confirm_msg = f'Are you sure you want to flash:\n{self.firmware_version}\n'
+        confirm_msg += f'{self.port}\n{self.select_device.currentText()}?'
+        reply = QMessageBox.question(self, 'Flash', confirm_msg,
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             proceed = True
 
