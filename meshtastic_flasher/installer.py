@@ -38,11 +38,14 @@ MESHTASTIC_COLOR_GREEN = "#67EA94"
 MESHTATIC_REPO = 'meshtastic/Meshtastic-device'
 
 # see https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file
+# but had to tweak for pypi
 def get_path(filename):
     """return the path to the logo file"""
     if hasattr(sys, "_MEIPASS"):
         return os.path.join(sys._MEIPASS, filename)
-    return filename
+    # return path to where this file is located
+    path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(path, filename)
 
 def populate_tag_in_firmware_dropdown(tag):
     """Populate this tag in the firmware dropdown?"""
