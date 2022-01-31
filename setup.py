@@ -4,6 +4,8 @@
 import pathlib
 from setuptools import setup
 
+from meshtastic_flasher.version import __version__
+
 # The directory containing this file
 HERE = pathlib.Path(__file__).parent
 
@@ -11,9 +13,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 # This call to setup() does all the work
+# Note: Version is now in meshtastic_flasher/__version__.py
 setup(
     name="meshtastic_flasher",
-    version="1.0.42",
+    version=f"{__version__}",
     description="Graphical user interface to flash Meshtastic firmware to devices",
     long_description=long_description,
     long_description_content_type="text/markdown",
