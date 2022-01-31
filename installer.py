@@ -10,6 +10,7 @@ import urllib
 import ssl
 import zipfile
 import re
+import subprocess
 import webbrowser
 import psutil
 
@@ -29,7 +30,7 @@ from qt_material import apply_stylesheet
 if platform.system() != "Windows":
     import grp
 
-VERSION="1.0.25"
+VERSION="1.0.26"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -347,13 +348,31 @@ class Form(QDialog):
             #print(f'partitions:{partitions}')
             search_for_partition = 'FTHR840BOOT'
             found_partition = False
-            for partition in partitions:
-                print(f'partition:{partition}')
-                if search_for_partition in partition.mountpoint:
-                    print('*** found search_for_partition')
-                    self.select_port.addItem(partition.mountpoint)
+
+            if platform.system() == "Windows":
+                # need to run some power shell
+                _, gv_output = subprocess.getstatusoutput('powershell.exe "Get-Volume"')
+                if re.search(search_for_partition, gv_output, re.MULTILINE):
                     found_partition = True
-                    break
+                    if len(gv_output) > 0:
+                        # for each line of output
+                        lines = gv_output.split('\n')
+                        #print(f'lines:{lines}')
+                        for line in lines:
+                            parts = line.split(' ')
+                            #print(f'parts:{parts}')
+                            if len(parts) > 2:
+                                if parts[1] == search_for_partition:
+                                    ports.add(f"{parts[0]}:/")
+                                    break
+            else: # Linux or Darwin
+                for partition in partitions:
+                    print(f'partition:{partition}')
+                    if search_for_partition in partition.mountpoint:
+                        print('*** found search_for_partition')
+                        self.select_port.addItem(partition.mountpoint)
+                        found_partition = True
+                        break
 
             if found_partition:
                 # the 19003 reports same as 5005, so we cannot really trust it
