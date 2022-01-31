@@ -2,7 +2,19 @@
 
 Cross Platform GUI for installing Meshtastic Firmware
 
-# Installation
+* Steps to install from PyPi
+
+```
+python3 -m venv venv
+venv/bin/activate
+pip install meshtastic-flasher
+```
+
+To run, type in "meshtastic-flasher" from a command prompt.
+
+
+
+# Installation for Development
 
 * Setup virtual environment and install required packages
 
@@ -11,7 +23,6 @@ python3 -m venv venv
 venv/bin/activate
 pip install -r requirements.txt
 pip install .
-meshtastic-flasher
 ```
 
 # Setup
