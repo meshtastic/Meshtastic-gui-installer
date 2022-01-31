@@ -26,7 +26,7 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-VERSION="1.0.22"
+VERSION="1.0.23"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -63,7 +63,7 @@ class Form(QDialog):
         self.nrf = False
         self.device = None
 
-        self.setWindowTitle("Meshtastic Flasher")
+        self.setWindowTitle(f"Meshtastic Flasher v{VERSION}")
 
         # Create widgets
         self.select_firmware = QPushButton("SELECT FIRMWARE")
@@ -324,12 +324,13 @@ class Form(QDialog):
 
             partitions = psutil.disk_partitions()
             #print(f'partitions:{partitions}')
-            mac_partition = '/Volumes/FTHR840BOOT'
+            search_for_partition = 'FTHR840BOOT'
             found_partition = False
             for partition in partitions:
-                if partition.mountpoint == mac_partition:
-                    print('found mac_partition')
-                    self.select_port.addItem(mac_partition)
+                print(f'partition:{partition}')
+                if search_for_partition in partition.mountpoint:
+                    print('*** found search_for_partition')
+                    self.select_port.addItem(partition.mountpoint)
                     found_partition = True
                     break
 
