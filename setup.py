@@ -13,7 +13,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 # This call to setup() does all the work
 setup(
     name="meshtastic_flasher",
-    version="1.0.39",
+    version="1.0.40",
     description="Graphical user interface to flash Meshtastic firmware to devices",
     long_description=long_description,
     long_description_content_type="text/markdown",
