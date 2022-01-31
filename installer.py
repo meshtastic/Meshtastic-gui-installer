@@ -26,7 +26,7 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-VERSION="1.0.23"
+VERSION="1.0.24"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -293,8 +293,26 @@ class Form(QDialog):
         ports = active_ports_on_supported_devices(supported_devices_detected)
         ports_sorted = list(ports)
         ports_sorted.sort()
+        possible_weird = False
         for port in ports_sorted:
+            if 'usbmodem' in port:
+                possible_weird = True
             self.select_port.addItem(port)
+
+        if possible_weird:
+            # deal with weird TLora (single device connected, but shows up as 2 ports)
+            # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
+            # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
+            tmp_ports = findPorts()
+            if len(tmp_ports) == 2:
+                first = tmp_ports[0].replace("usbmodem", "")
+                second = tmp_ports[1].replace("wchusbserial", "")
+                if first == second:
+                    print('We are dealing with a weird TLora port situation.')
+                    self.select_port.clear()
+                    self.select_port.addItem(ports[1])
+                    self.select_port.addItem(ports[0]) # delete this one?
+                    ports = tmp_ports
 
         # our auto-detect did not work
         if len(ports) == 0:
