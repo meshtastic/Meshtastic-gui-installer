@@ -13,7 +13,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 # This call to setup() does all the work
 setup(
     name="meshtastic_flasher",
-    version="1.0.32",
+    version="1.0.33",
     description="Graphical user interface to flash Meshtastic firmware to devices",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -39,7 +39,7 @@ setup(
     python_requires='>=3.6',
     entry_points={
         "console_scripts": [
-            "meshtastic_flasher=meshtastic_flasher.installer:main",
+            "meshtastic-flasher=meshtastic_flasher.installer:main",
         ]
     },
 )
