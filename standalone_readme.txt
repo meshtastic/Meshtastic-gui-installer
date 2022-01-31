@@ -14,4 +14,5 @@ mac:
   # it will probably warn you, click "Open"
 
 windows:
-  .\meshtastic-flasher.exe
+  # Tip: Run from a command prompt so you can watch output as the command runs
+  meshtastic-flasher.exe
