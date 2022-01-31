@@ -83,6 +83,8 @@ class Form(QDialog):
         self.select_device.setMinimumContentsLength(17)
         self.select_device.setDisabled(True)
 
+        self.select_all_devices = QPushButton("AD")
+
         self.select_flash = QPushButton("FLASH")
         self.select_flash.setToolTip("Click to flash the firmware. If button is not enabled, need to click the buttons to the left.")
         self.select_flash.setEnabled(False)
@@ -114,6 +116,7 @@ class Form(QDialog):
         button_layout.addWidget(self.select_detect)
         button_layout.addWidget(self.select_port)
         button_layout.addWidget(self.select_device)
+        button_layout.addWidget(self.select_all_devices)
         button_layout.addWidget(self.select_flash)
         button_layout.addStretch(1)
         button_layout.setContentsMargins(20, 20, 20, 20)
@@ -132,6 +135,7 @@ class Form(QDialog):
         self.select_firmware.clicked.connect(self.download_firmware_versions)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
+        self.select_all_devices.clicked.connect(self.all_devices)
 
     def download_firmware_versions(self):
         """Download versions from GitHub"""
@@ -187,6 +191,28 @@ class Form(QDialog):
         if self.select_port.count() > 0 and self.firmware_version:
             self.select_flash.setEnabled(True)
 
+    def all_devices(self):
+        """Show all devices from zip file"""
+        print('in all_devices')
+
+        if self.firmware_version:
+            #print(f'self.firmware_version:{self.firmware_version}')
+            if os.path.exists(self.firmware_version):
+                self.select_device.clear()
+                #print('path exists')
+                filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
+                filenames.sort()
+                #print(f'filenames:{filenames}')
+                for filename in filenames:
+                    #print(f"filename:{filename}")
+                    if filename.startswith("firmware-") and filename.endswith(".bin"):
+                        device = filename.replace("firmware-", "")
+                        device = device.replace(f"-{self.firmware_version}", "")
+                        device = device.replace(".bin", "")
+                        #print(f'device:{device}')
+                        self.select_device.addItem(device)
+                #self.select_device.setDisabled(False)
+
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
 
@@ -197,7 +223,6 @@ class Form(QDialog):
             dlg.setWindowTitle("No devices detected.")
             dlg.setText("Plugin a device?")
             dlg.exec()
-            # TODO: enumerate devices from the files?
         else:
             if len(supported_devices_detected) > 0:
                 self.select_device.clear()
@@ -227,6 +252,9 @@ class Form(QDialog):
             else:
                 for port in ports:
                     self.select_port.addItem(port)
+
+        # TODO: see if Meshtastic is already installed? If so, get the hwModel
+        # TODO: enumerate devices from the files?
 
         # TODO: self.firmware_version and checking if we need to download should be in a "changed" method
         # also, see if we need to download the zip file
@@ -274,14 +302,6 @@ class Form(QDialog):
         if not self.devices:
             filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
             filenames.sort()
-#            self.select_device.clear()
-#            for filename in filenames:
-#                #print(f"filename:{filename}")
-#                if filename.startswith("firmware-") and filename.endswith(".bin"):
-#                    device = filename.replace("firmware-", "")
-#                    device = device.replace(f"-{self.firmware_version}", "")
-#                    device = device.replace(".bin", "")
-#                    self.select_device.addItem(device)
 
         # deal with weird TLora (single device connected, but shows up as 2 ports)
         # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
