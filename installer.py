@@ -83,7 +83,7 @@ class Form(QDialog):
         self.select_device.setMinimumContentsLength(17)
         self.select_device.setDisabled(True)
 
-        self.select_all_devices = QPushButton("AD")
+        #self.select_all_devices = QPushButton("AD")
 
         self.select_flash = QPushButton("FLASH")
         self.select_flash.setToolTip("Click to flash the firmware. If button is not enabled, need to click the buttons to the left.")
@@ -116,7 +116,7 @@ class Form(QDialog):
         button_layout.addWidget(self.select_detect)
         button_layout.addWidget(self.select_port)
         button_layout.addWidget(self.select_device)
-        button_layout.addWidget(self.select_all_devices)
+        #button_layout.addWidget(self.select_all_devices)
         button_layout.addWidget(self.select_flash)
         button_layout.addStretch(1)
         button_layout.setContentsMargins(20, 20, 20, 20)
@@ -135,7 +135,7 @@ class Form(QDialog):
         self.select_firmware.clicked.connect(self.download_firmware_versions)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
-        self.select_all_devices.clicked.connect(self.all_devices)
+        #self.select_all_devices.clicked.connect(self.all_devices)
 
     def download_firmware_versions(self):
         """Download versions from GitHub"""
@@ -198,7 +198,11 @@ class Form(QDialog):
         if self.firmware_version:
             #print(f'self.firmware_version:{self.firmware_version}')
             if os.path.exists(self.firmware_version):
-                self.select_device.clear()
+                #self.select_device.clear()
+                self.select_device.insertSeparator(self.select_device.count())
+                self.select_device.addItem('All')
+                count = self.select_device.count() - 1
+                self.select_device.model().item(count).setEnabled(False)
                 #print('path exists')
                 filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
                 filenames.sort()
@@ -209,9 +213,7 @@ class Form(QDialog):
                         device = filename.replace("firmware-", "")
                         device = device.replace(f"-{self.firmware_version}", "")
                         device = device.replace(".bin", "")
-                        #print(f'device:{device}')
                         self.select_device.addItem(device)
-                #self.select_device.setDisabled(False)
 
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
@@ -226,8 +228,12 @@ class Form(QDialog):
         else:
             if len(supported_devices_detected) > 0:
                 self.select_device.clear()
+                self.select_device.addItem('Detected')
+                self.select_device.model().item(0).setEnabled(False)
                 for device in supported_devices_detected:
                     self.select_device.addItem(device.for_firmware)
+                if self.select_device.count() > 1:
+                    self.select_device.setCurrentIndex(1)
 
         # detect which ports and populate the dropdown
         ports = active_ports_on_supported_devices(supported_devices_detected)
@@ -253,8 +259,7 @@ class Form(QDialog):
                 for port in ports:
                     self.select_port.addItem(port)
 
-        # TODO: see if Meshtastic is already installed? If so, get the hwModel
-        # TODO: enumerate devices from the files?
+        # FUTURE: see if Meshtastic is already installed? If so, get the hwModel
 
         # TODO: self.firmware_version and checking if we need to download should be in a "changed" method
         # also, see if we need to download the zip file
@@ -312,6 +317,8 @@ class Form(QDialog):
 #            second = ports[1].replace("wchusbserial", "")
 #            if first == second:
 #                self.port = ports[1]
+
+        self.all_devices()
 
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
