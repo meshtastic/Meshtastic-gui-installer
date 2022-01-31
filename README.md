@@ -2,7 +2,9 @@
 
 Cross Platform GUI for installing Meshtastic Firmware
 
-* Steps to install from PyPi
+* For the single file executable see [Releases](https://github.com/meshtastic/Meshtastic-gui-installer/releases). There is a readme.txt that shows the steps to get started.
+
+* Steps to install from PyPi (if you do not want the sigle executable method described above):
 
 ```
 python3 -m venv venv
@@ -23,18 +25,6 @@ python3 -m venv venv
 venv/bin/activate
 pip install -r requirements.txt
 pip install .
-```
-
-# Setup
-
-* Ensure the file is executable:
-```
-chmod +x installer.py
-```
-
-* Run the application
-```
-./installer.py
 ```
 
 # To lint
