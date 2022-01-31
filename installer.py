@@ -3,7 +3,9 @@
 """
 
 import os
+import grp
 import sys
+import platform
 import urllib
 import ssl
 import zipfile
@@ -249,6 +251,21 @@ class Form(QDialog):
 
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
+
+        system = platform.system()
+        if system == 'Linux':
+            username = os.getlogin()
+            groups = [g.gr_name for g in grp.getgrall() if username in g.gr_mem]
+            if "dialout" not in groups:
+                # We need to let the user know that they should be in the dialout group
+                dlg = QMessageBox(self)
+                message = f'Warning: The user ({username}) is not in the (dialout) group. Either:\n'
+                message += 'a) run this command as "sudo", or\n'
+                message += 'b) add this user to the dialout group using this command:\n'
+                message += f"     sudo usermod -a -G dialout {username}\n"
+                message += "  After running that command, log out and re-login for it to take effect.\n"
+                dlg.setText(message)
+                dlg.exec()
 
         # detect supported devices
         supported_devices_detected = detect_supported_devices()
