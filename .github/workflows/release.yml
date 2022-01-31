@@ -95,7 +95,7 @@ jobs:
         run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller -F -n meshtastic-flasher-mac --add-binary "logo.png:." --add-binary "meshtastic_theme.xml:." --collect-all meshtastic --collect-all esptool --codesign-identity "$MACOS_SIGNING_IDENTITY" meshtastic_flasher/installer.py
+          pyinstaller -F -n meshtastic-flasher-mac --add-binary "meshtastic_flasher/logo.png:." --add-binary "meshtastic_flasher/meshtastic_theme.xml:." --collect-all meshtastic --collect-all esptool --codesign-identity "$MACOS_SIGNING_IDENTITY" meshtastic_flasher/installer.py
 
       - name: Add mac to release
         uses: actions/upload-release-asset@v1
@@ -124,7 +124,7 @@ jobs:
         run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller -F -n meshtastic-flasher-ubuntu --add-binary "logo.png:." --add-binary "meshtastic_theme.xml:." --collect-all meshtastic --collect-all esptool meshtastic_flasher/installer.py
+          pyinstaller -F -n meshtastic-flasher-ubuntu --add-binary "meshtastic_flasher/logo.png:." --add-binary "meshtastic_flasher/meshtastic_theme.xml:." --collect-all meshtastic --collect-all esptool meshtastic_flasher/installer.py
 
       - name: Add ubuntu to release
         uses: actions/upload-release-asset@v1
@@ -163,7 +163,7 @@ jobs:
         run: |
           pip install pyinstaller
           pip install -r requirements.txt
-          pyinstaller -F -n meshtastic-flasher.exe --add-binary "logo.png;." --add-binary "meshtastic_theme.xml;." --hidden-import pyserial --collect-all meshtastic --collect-all esptool meshtastic_flasher/installer.py
+          pyinstaller -F -n meshtastic-flasher.exe --add-binary "meshtastic_flasher/logo.png;." --add-binary "meshtastic_flasher/meshtastic_theme.xml;." --hidden-import pyserial --collect-all meshtastic --collect-all esptool meshtastic_flasher/installer.py
 
       - name: Add windows to release
         uses: actions/upload-release-asset@v1
