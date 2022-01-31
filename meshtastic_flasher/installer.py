@@ -10,7 +10,6 @@ import urllib
 import ssl
 import zipfile
 import re
-import pkg_resources
 import subprocess
 import webbrowser
 import psutil
@@ -30,6 +29,8 @@ from qt_material import apply_stylesheet
 # windows does not like this one
 if platform.system() != "Windows":
     import grp
+
+from meshtastic_flasher.version import __version__
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -69,8 +70,7 @@ class Form(QDialog):
         self.nrf = False
         self.device = None
 
-        version = pkg_resources.get_distribution("meshtastic-flasher").version
-        self.setWindowTitle(f"Meshtastic Flasher v{version}")
+        self.setWindowTitle(f"Meshtastic Flasher v{__version__}")
 
         # Create widgets
         self.select_firmware = QPushButton("SELECT FIRMWARE")
