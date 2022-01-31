@@ -31,7 +31,7 @@ from qt_material import apply_stylesheet
 if platform.system() != "Windows":
     import grp
 
-MESHTASTIC_LOGO_FILENAME = "meshtastic_flasher/logo.png"
+MESHTASTIC_LOGO_FILENAME = "./logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
 
@@ -487,7 +487,7 @@ def main():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(get_path(MESHTASTIC_LOGO_FILENAME)))
     app.setApplicationName("Meshtastic Flasher")
-    apply_stylesheet(app, theme=get_path('meshtastic_flasher/meshtastic_theme.xml'))
+    apply_stylesheet(app, theme=get_path('./meshtastic_theme.xml'))
 
     # Create and show the form
     form = Form()
