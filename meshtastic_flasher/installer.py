@@ -69,7 +69,7 @@ class Form(QDialog):
         self.nrf = False
         self.device = None
 
-        version = pkg_resources.get_distribution("meshtastic_flasher").version
+        version = pkg_resources.get_distribution("meshtastic-flasher").version
         self.setWindowTitle(f"Meshtastic Flasher v{version}")
 
         # Create widgets
