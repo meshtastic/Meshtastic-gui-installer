@@ -8,6 +8,7 @@ import urllib
 import ssl
 import zipfile
 import re
+import webbrowser
 
 import esptool
 
@@ -21,7 +22,7 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-VERSION="1.0.20"
+VERSION="1.0.21"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -73,12 +74,12 @@ class Form(QDialog):
         self.select_detect.setStyleSheet("text-transform: none")
 
         self.select_port = QComboBox()
-        self.select_port.setToolTip("Select which port to use.")
+        self.select_port.setToolTip("Click SELECT FIRMWARE before you can select the port.")
         self.select_port.setMinimumContentsLength(25)
         self.select_port.setDisabled(True)
 
         self.select_device = QComboBox()
-        self.select_device.setToolTip("You must click SELECT FIRMWARE before you can select the device.")
+        self.select_device.setToolTip("Click SELECT FIRMWARE before you can select the device.")
         self.select_device.setMinimumContentsLength(17)
         self.select_device.setDisabled(True)
 
@@ -87,11 +88,11 @@ class Form(QDialog):
         self.select_flash.setEnabled(False)
 
         self.progress = QProgressBar()
-        self.progress.setToolTip("Progress will be shown during the Flash step.")
+        self.progress.setToolTip("Progress will be shown during the FLASH step.")
         self.progress.hide()
 
         self.logo = QLabel(self)
-        self.logo.setToolTip("This is the Meshtastic logo. It represents the starting packets used in LoRa transmissions.")
+        self.logo.setToolTip("This is the Meshtastic logo. It represents the starting packets used in LoRa transmissions. Click visit the Meshtastic website.")
         pixmap = QPixmap(get_path(MESHTASTIC_LOGO_FILENAME))
         self.logo.setPixmap(pixmap.scaled(256, 256, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
@@ -127,6 +128,7 @@ class Form(QDialog):
         self.setLayout(main_layout)
 
         # Add button signals to slots
+        self.logo.mousePressEvent = self.logo_clicked
         self.select_firmware.clicked.connect(self.download_firmware_versions)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
@@ -137,7 +139,6 @@ class Form(QDialog):
         """When the select_firmware drop down value is changed."""
         print(f'on_select_firmware_changed value:{value}')
         self.firmware_version = self.select_firmware_version.currentText()[1:] # drop leading v
-        #print(f"self.firmware_version:{self.firmware_version}")
 
         # zip filename from tag
         zip_file_name = "firmware-"
@@ -230,7 +231,6 @@ class Form(QDialog):
 
     def all_devices(self):
         """Show all devices from zip file"""
-
         if self.firmware_version:
             if os.path.exists(self.firmware_version):
                 self.select_device.insertSeparator(self.select_device.count())
@@ -295,14 +295,21 @@ class Form(QDialog):
             filenames.sort()
         self.all_devices()
 
+        self.select_port.setToolTip("Select the port.")
+        self.select_device.setToolTip("Select the device.")
+
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
             self.select_flash.setEnabled(True)
-            self.select_flash.setToolTip('Click the Flash button to write to the device.')
+            self.select_flash.setToolTip('Click the FLASH button to write to the device.')
             self.select_detect.hide()
             self.select_port.setDisabled(False)
             self.select_device.setDisabled(False)
 
+
+    def logo_clicked(self, event):
+        """The logo was clicked."""
+        webbrowser.open('https://meshtastic.org')
 
     # do flash stuff
     def flash_stuff(self):
