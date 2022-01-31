@@ -20,7 +20,7 @@ from meshtastic.util import detect_supported_devices, findPorts, detect_windows_
 from meshtastic.supported_device import active_ports_on_supported_devices
 from github import Github
 from PySide6 import QtCore
-from PySide6.QtGui import (QPixmap, QIcon)
+from PySide6.QtGui import (QPixmap, QIcon, QCursor)
 from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
                                QMessageBox, QComboBox, QProgressBar)
@@ -78,7 +78,7 @@ class Form(QDialog):
         self.select_firmware_version.setMinimumContentsLength(18)
         self.select_firmware_version.hide()
 
-        self.select_detect = QPushButton("DETECT")
+        self.select_detect = QPushButton("DETECT DEVICE")
         self.select_detect.setToolTip("Click to detect supported device and port info.")
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
@@ -102,13 +102,14 @@ class Form(QDialog):
         self.progress.hide()
 
         self.logo = QLabel(self)
-        self.logo.setToolTip("This is the Meshtastic logo. It represents the starting packets used in LoRa transmissions. Click visit the Meshtastic website.")
+        self.logo.setToolTip("This is the Meshtastic logo. Click to visit Meshtastic.org.")
         pixmap = QPixmap(get_path(MESHTASTIC_LOGO_FILENAME))
         self.logo.setPixmap(pixmap.scaled(256, 256, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
         style_for_logo = (f"background-color: {MESHTASTIC_COLOR_GREEN}; border-color: "
                           f"{MESHTASTIC_COLOR_GREEN}; border-radius: 0px; color: {MESHTASTIC_COLOR_DARK};")
         self.logo.setStyleSheet(style_for_logo)
+        self.logo.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
 
         # Create layout and add widgets
         main_layout = QVBoxLayout()
