@@ -1,6 +1,6 @@
 # Meshtastic-gui-installer
 
-Cross Platform GUI for installing Meshtastic Firmware, aggressively alpha software.
+Cross Platform GUI for installing Meshtastic Firmware
 
 # Installation
 
@@ -10,6 +10,8 @@ Cross Platform GUI for installing Meshtastic Firmware, aggressively alpha softwa
 python3 -m venv venv
 venv/bin/activate
 pip install -r requirements.txt
+pip install .
+meshtastic_flasher
 ```
 
 # Setup

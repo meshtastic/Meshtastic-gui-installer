@@ -10,6 +10,7 @@ import urllib
 import ssl
 import zipfile
 import re
+import pkg_resources
 import subprocess
 import webbrowser
 import psutil
@@ -29,8 +30,6 @@ from qt_material import apply_stylesheet
 # windows does not like this one
 if platform.system() != "Windows":
     import grp
-
-VERSION="1.0.30"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -67,7 +66,8 @@ class Form(QDialog):
         self.nrf = False
         self.device = None
 
-        self.setWindowTitle(f"Meshtastic Flasher v{VERSION}")
+        version = pkg_resources.get_distribution("meshtastic_flasher").version
+        self.setWindowTitle(f"Meshtastic Flasher v{version}")
 
         # Create widgets
         self.select_firmware = QPushButton("SELECT FIRMWARE")
@@ -480,7 +480,8 @@ class Form(QDialog):
                 dlg2.exec()
 
 
-if __name__ == '__main__':
+def main():
+    """Main loop"""
 
     # Create the Qt Application
     app = QApplication(sys.argv)
@@ -494,3 +495,7 @@ if __name__ == '__main__':
 
     # Run the main Qt loop
     sys.exit(app.exec())
+
+
+if __name__ == '__main__':
+    main()
