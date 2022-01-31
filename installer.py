@@ -5,12 +5,14 @@
 import os
 import grp
 import sys
+import shutil
 import platform
 import urllib
 import ssl
 import zipfile
 import re
 import webbrowser
+import psutil
 
 import esptool
 
@@ -24,7 +26,7 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QMessageBox, QComboBox, QProgressBar)
 from qt_material import apply_stylesheet
 
-VERSION="1.0.21"
+VERSION="1.0.22"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -57,7 +59,9 @@ class Form(QDialog):
         self.port = None
         self.speed = '921600'
         self.firmware_version = None
-        self.devices = None
+
+        self.nrf = False
+        self.device = None
 
         self.setWindowTitle("Meshtastic Flasher")
 
@@ -280,6 +284,7 @@ class Form(QDialog):
                 self.select_device.addItem('Detected')
                 self.select_device.model().item(0).setEnabled(False)
                 for device in supported_devices_detected:
+                    print(f'Detected {device.name}')
                     self.select_device.addItem(device.for_firmware)
                 if self.select_device.count() > 1:
                     self.select_device.setCurrentIndex(1)
@@ -306,17 +311,53 @@ class Form(QDialog):
                 for port in ports:
                     self.select_port.addItem(port)
 
-        # populate the devices
-        if not self.devices:
-            filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
-            filenames.sort()
         self.all_devices()
 
-        self.select_port.setToolTip("Select the port.")
-        self.select_device.setToolTip("Select the device.")
+        # NRF52 devices
+        for device in supported_devices_detected:
+            if device.for_firmware in ['rak4631_5005', 'rak4631_19003', 't-echo']:
+                print('nrf52 device detected')
+                self.nrf = True
+
+        if self.nrf:
+            self.select_port.clear()
+
+            partitions = psutil.disk_partitions()
+            #print(f'partitions:{partitions}')
+            mac_partition = '/Volumes/FTHR840BOOT'
+            found_partition = False
+            for partition in partitions:
+                if partition.mountpoint == mac_partition:
+                    print('found mac_partition')
+                    self.select_port.addItem(mac_partition)
+                    found_partition = True
+                    break
+
+            if found_partition:
+                # the 19003 reports same as 5005, so we cannot really trust it
+                # for now add both 5005 and 19003 to devices, also add separator line
+                # and the T-Echo
+                self.select_device.clear()
+                self.select_device.addItem('Detected')
+                self.select_device.model().item(0).setEnabled(False)
+                self.select_device.addItem('rak4631_5005')
+                self.select_device.addItem('rak4631_19003')
+                self.select_device.insertSeparator(self.select_device.count())
+                self.select_device.addItem('Other')
+                count = self.select_device.count() - 1
+                self.select_device.model().item(count).setEnabled(False)
+                self.select_device.addItem('t-echo')
+                self.select_device.setCurrentIndex(1)
+            else:
+                dlg = QMessageBox(self)
+                message = 'Warning: Could not find the partition. Press the RST button twice, then re-try the DETECT again.'
+                dlg.setText(message)
+                dlg.exec()
 
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
+            self.select_port.setToolTip("Select the port.")
+            self.select_device.setToolTip("Select the device.")
             self.select_flash.setEnabled(True)
             self.select_flash.setToolTip('Click the FLASH button to write to the device.')
             self.select_detect.hide()
@@ -334,49 +375,68 @@ class Form(QDialog):
         proceed = False
 
         self.port = self.select_port.currentText()
+        self.device = self.select_device.currentText()
 
-        confirm_msg = f'Are you sure you want to flash:\n{self.firmware_version}\n'
-        confirm_msg += f'{self.port}\n{self.select_device.currentText()}?'
+        verb = 'flash'
+        if self.nrf:
+            verb = 'copy'
+        confirm_msg = f'Are you sure you want to {verb}\n{self.firmware_version}\n'
+        confirm_msg += f'{self.port}\n{self.device}?'
         reply = QMessageBox.question(self, 'Flash', confirm_msg,
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             proceed = True
 
         if proceed:
-            QApplication.processEvents()
-            self.progress.show()
-            command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
-            print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
-            self.progress.setValue(25)
-            QApplication.processEvents()
 
-            system_info_file = f"{self.firmware_version}/system-info.bin"
-            command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
-            print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
-            self.progress.setValue(50)
-            QApplication.processEvents()
+            if self.nrf:
+                # nrf52 devices
+                uf2_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.uf2"
+                dest = f'{self.port}/firmware-{self.device}-{self.firmware_version}.uf2'
+                print(f'copying file:{uf2_file} to dest:{dest}')
+                shutil.copyfile(uf2_file, dest)
+                print('done copying')
 
-            bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
-            command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
-            print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
-            self.progress.setValue(75)
-            QApplication.processEvents()
+                dlg = QMessageBox(self)
+                dlg.setText("File copied. Press RST button on the device to boot to Meshtastic.")
+                dlg.exec()
 
-            device_file = f"{self.firmware_version}/firmware-{self.select_device.currentText()}-{self.firmware_version}.bin"
-            command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
-            print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
-            self.progress.setValue(100)
-            QApplication.processEvents()
+            else:
+                # esp32 devices
+                QApplication.processEvents()
+                self.progress.show()
+                command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
+                print(f"ESPTOOL Using command:{' '.join(command)}")
+                esptool.main(command)
+                self.progress.setValue(25)
+                QApplication.processEvents()
 
-            dlg2 = QMessageBox(self)
-            dlg2.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_DARK}")
-            dlg2.setWindowTitle("Flashed")
-            dlg2.setText("Done")
-            dlg2.exec()
+                system_info_file = f"{self.firmware_version}/system-info.bin"
+                command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
+                print(f"ESPTOOL Using command:{' '.join(command)}")
+                esptool.main(command)
+                self.progress.setValue(50)
+                QApplication.processEvents()
+
+                bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
+                command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
+                print(f"ESPTOOL Using command:{' '.join(command)}")
+                esptool.main(command)
+                self.progress.setValue(75)
+                QApplication.processEvents()
+
+                device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
+                command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
+                print(f"ESPTOOL Using command:{' '.join(command)}")
+                esptool.main(command)
+                self.progress.setValue(100)
+                QApplication.processEvents()
+
+                dlg2 = QMessageBox(self)
+                dlg2.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_DARK}")
+                dlg2.setWindowTitle("Flashed")
+                dlg2.setText("Done")
+                dlg2.exec()
 
 
 if __name__ == '__main__':

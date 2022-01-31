@@ -3,3 +3,4 @@ PyGithub
 esptool
 meshtastic
 qt-material
+psutil
