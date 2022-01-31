@@ -30,7 +30,7 @@ from qt_material import apply_stylesheet
 if platform.system() != "Windows":
     import grp
 
-VERSION="1.0.26"
+VERSION="1.0.27"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -352,19 +352,19 @@ class Form(QDialog):
             if platform.system() == "Windows":
                 # need to run some power shell
                 _, gv_output = subprocess.getstatusoutput('powershell.exe "Get-Volume"')
-                if re.search(search_for_partition, gv_output, re.MULTILINE):
+                if re.search(search_for_partition, str(gv_output), re.MULTILINE):
+                    print('found partition on windows!')
                     found_partition = True
-                    if len(gv_output) > 0:
-                        # for each line of output
-                        lines = gv_output.split('\n')
-                        #print(f'lines:{lines}')
-                        for line in lines:
-                            parts = line.split(' ')
-                            #print(f'parts:{parts}')
-                            if len(parts) > 2:
-                                if parts[1] == search_for_partition:
-                                    ports.add(f"{parts[0]}:/")
-                                    break
+                    # for each line of output
+                    lines = str(gv_output).split('\\n')
+                    print(f'lines:{lines}')
+                    for line in lines:
+                        parts = line.split(' ')
+                        print(f'parts:{parts}')
+                        if len(parts) > 2:
+                            if parts[1] == search_for_partition:
+                                ports.add(f"{parts[0]}:/")
+                                break
             else: # Linux or Darwin
                 for partition in partitions:
                     print(f'partition:{partition}')
