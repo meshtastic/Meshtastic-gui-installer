@@ -31,18 +31,21 @@ from qt_material import apply_stylesheet
 if platform.system() != "Windows":
     import grp
 
-MESHTASTIC_LOGO_FILENAME = ":logo.png"
+MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
 
 MESHTATIC_REPO = 'meshtastic/Meshtastic-device'
 
 # see https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file
+# but had to tweak for pypi
 def get_path(filename):
     """return the path to the logo file"""
     if hasattr(sys, "_MEIPASS"):
         return os.path.join(sys._MEIPASS, filename)
-    return filename
+    # return path to where this file is located
+    path = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(path, filename)
 
 def populate_tag_in_firmware_dropdown(tag):
     """Populate this tag in the firmware dropdown?"""
@@ -487,7 +490,7 @@ def main():
     app = QApplication(sys.argv)
     app.setWindowIcon(QIcon(get_path(MESHTASTIC_LOGO_FILENAME)))
     app.setApplicationName("Meshtastic Flasher")
-    apply_stylesheet(app, theme=get_path(':meshtastic_theme.xml'))
+    apply_stylesheet(app, theme=get_path('meshtastic_theme.xml'))
 
     # Create and show the form
     form = Form()
