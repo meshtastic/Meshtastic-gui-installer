@@ -30,7 +30,7 @@ from qt_material import apply_stylesheet
 if platform.system() != "Windows":
     import grp
 
-VERSION="1.0.27"
+VERSION="1.0.28"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -356,7 +356,7 @@ class Form(QDialog):
                     print('found partition on windows!')
                     found_partition = True
                     # for each line of output
-                    lines = str(gv_output).split('\\n')
+                    lines = str(gv_output).split('\n')
                     print(f'lines:{lines}')
                     for line in lines:
                         parts = line.split(' ')
