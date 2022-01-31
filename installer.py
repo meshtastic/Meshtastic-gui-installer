@@ -39,7 +39,6 @@ def get_path(filename):
 def populate_tag_in_firmware_dropdown(tag):
     """Populate this tag in the firmware dropdown?"""
     retval = False
-    # TODO: better way?
     if re.search(r"v1.2.5[2-9]", tag):
         retval = True
     print(f'tag:{tag} populate in dropdown?:{retval}')
@@ -83,8 +82,6 @@ class Form(QDialog):
         self.select_device.setMinimumContentsLength(17)
         self.select_device.setDisabled(True)
 
-        #self.select_all_devices = QPushButton("AD")
-
         self.select_flash = QPushButton("FLASH")
         self.select_flash.setToolTip("Click to flash the firmware. If button is not enabled, need to click the buttons to the left.")
         self.select_flash.setEnabled(False)
@@ -105,7 +102,6 @@ class Form(QDialog):
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
-        # main_layout.setSpacing(0)
         if self.logo:
             main_layout.addWidget(self.logo)
         main_layout.addStretch(1)
@@ -116,7 +112,6 @@ class Form(QDialog):
         button_layout.addWidget(self.select_detect)
         button_layout.addWidget(self.select_port)
         button_layout.addWidget(self.select_device)
-        #button_layout.addWidget(self.select_all_devices)
         button_layout.addWidget(self.select_flash)
         button_layout.addStretch(1)
         button_layout.setContentsMargins(20, 20, 20, 20)
@@ -135,7 +130,49 @@ class Form(QDialog):
         self.select_firmware.clicked.connect(self.download_firmware_versions)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
-        #self.select_all_devices.clicked.connect(self.all_devices)
+        self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
+
+
+    def on_select_firmware_changed(self, value):
+        """When the select_firmware drop down value is changed."""
+        print(f'on_select_firmware_changed value:{value}')
+        self.firmware_version = self.select_firmware_version.currentText()[1:] # drop leading v
+        #print(f"self.firmware_version:{self.firmware_version}")
+
+        # zip filename from tag
+        zip_file_name = "firmware-"
+        zip_file_name += self.firmware_version
+        zip_file_name += ".zip"
+
+        if not zip_file_name:
+            print("We should have a zip_file_name.")
+            sys.exit(1)
+
+        # if the file is not already downloaded, download it
+        if not os.path.exists(zip_file_name):
+            print("Need to download...")
+
+            # Note: Probably should use the browser_download_url
+            zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{self.firmware_version}/firmware-{self.firmware_version}.zip'
+            # This is in case we have to temp-disable GitHub during dev due to rate-limiting.
+            #zip_file_url = 'https://github.com/meshtastic/Meshtastic-device/releases/download/v1.2.53.19c1f9f/firmware-1.2.53.19c1f9f.zip'
+            print(f'zip_file_url:{zip_file_url}')
+
+            if not zip_file_url:
+                print("We should have a zip_file_url.")
+                sys.exit(1)
+
+            print("downloading...")
+            ssl._create_default_https_context = ssl._create_unverified_context
+            urllib.request.urlretrieve(zip_file_url, zip_file_name)
+            print("done downloading")
+
+        # unzip into directory named the same name as the firmware_version
+        if not os.path.exists(self.firmware_version):
+            print("Unzipping files now...")
+            with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
+                zip_ref.extractall(self.firmware_version)
+            print("done unzipping")
 
     def download_firmware_versions(self):
         """Download versions from GitHub"""
@@ -193,27 +230,22 @@ class Form(QDialog):
 
     def all_devices(self):
         """Show all devices from zip file"""
-        print('in all_devices')
 
         if self.firmware_version:
-            #print(f'self.firmware_version:{self.firmware_version}')
             if os.path.exists(self.firmware_version):
-                #self.select_device.clear()
                 self.select_device.insertSeparator(self.select_device.count())
                 self.select_device.addItem('All')
                 count = self.select_device.count() - 1
                 self.select_device.model().item(count).setEnabled(False)
-                #print('path exists')
                 filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
                 filenames.sort()
-                #print(f'filenames:{filenames}')
                 for filename in filenames:
-                    #print(f"filename:{filename}")
                     if filename.startswith("firmware-") and filename.endswith(".bin"):
                         device = filename.replace("firmware-", "")
                         device = device.replace(f"-{self.firmware_version}", "")
                         device = device.replace(".bin", "")
                         self.select_device.addItem(device)
+
 
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
@@ -237,7 +269,6 @@ class Form(QDialog):
 
         # detect which ports and populate the dropdown
         ports = active_ports_on_supported_devices(supported_devices_detected)
-        #print(f"from active_ports_on_supported_devices() ports:{ports}")
         ports_sorted = list(ports)
         ports_sorted.sort()
         for port in ports_sorted:
@@ -249,7 +280,6 @@ class Form(QDialog):
 
             # for now, use the Serial method to discover ports
             ports = findPorts()
-            #print(f"from findPorts() ports:{ports}")
             if len(ports) == 0:
                 print("Warning: Could not find any ports using the Serial library method.")
 
@@ -259,65 +289,10 @@ class Form(QDialog):
                 for port in ports:
                     self.select_port.addItem(port)
 
-        # FUTURE: see if Meshtastic is already installed? If so, get the hwModel
-
-        # TODO: self.firmware_version and checking if we need to download should be in a "changed" method
-        # also, see if we need to download the zip file
-        self.firmware_version = self.select_firmware_version.currentText()[1:] # drop leading v
-        print(f"self.firmware_version:{self.firmware_version}")
-
-        # zip filename from tag
-        zip_file_name = "firmware-"
-        zip_file_name += self.firmware_version
-        zip_file_name += ".zip"
-        print(f'zip_file_name:{zip_file_name}')
-
-        if not zip_file_name:
-            print("We should have a zip_file_name.")
-            sys.exit(1)
-
-        # if the file is not already downloaded, download it
-        if not os.path.exists(zip_file_name):
-            print("Need to download...")
-
-            # Note: Probably should use the browser_download_url
-            zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{self.firmware_version}/firmware-{self.firmware_version}.zip'
-            # This is in case we have to temp-disable GitHub during dev due to rate-limiting.
-            #zip_file_url = 'https://github.com/meshtastic/Meshtastic-device/releases/download/v1.2.53.19c1f9f/firmware-1.2.53.19c1f9f.zip'
-            print(f'zip_file_url:{zip_file_url}')
-
-            if not zip_file_url:
-                print("We should have a zip_file_url.")
-                sys.exit(1)
-
-            # TODO: do we care about ssl
-            print("downloading...")
-            ssl._create_default_https_context = ssl._create_unverified_context
-            urllib.request.urlretrieve(zip_file_url, zip_file_name)
-            print("done downloading")
-
-        # unzip into directory named the same name as the firmware_version
-        if not os.path.exists(self.firmware_version):
-            print("Unzipping files now...")
-            with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
-                zip_ref.extractall(self.firmware_version)
-            print("done unzipping")
-
         # populate the devices
         if not self.devices:
             filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
             filenames.sort()
-
-        # deal with weird TLora (single device connected, but shows up as 2 ports)
-        # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
-        # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
-        # TODO: add this back in later
-#        if len(ports) == 2:
-#            first = ports[0].replace("usbmodem", "")
-#            second = ports[1].replace("wchusbserial", "")
-#            if first == second:
-#                self.port = ports[1]
-
         self.all_devices()
 
         # only enable Flash button and Device dropdown if we have firmware and ports
@@ -333,8 +308,6 @@ class Form(QDialog):
     def flash_stuff(self):
         """Do the flash parts"""
         proceed = False
-
-        # TODO: what happens if they change version after DETECT was pressed?
 
         self.port = self.select_port.currentText()
 
@@ -375,16 +348,11 @@ class Form(QDialog):
             self.progress.setValue(100)
             QApplication.processEvents()
 
-            # TODO: how to know if successful?
-            esptool_successful = True
-
-            if esptool_successful:
-                dlg2 = QMessageBox(self)
-                dlg2.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_DARK}")
-                dlg2.setWindowTitle("Flashed")
-                dlg2.setText("Done")
-                dlg2.exec()
-            # TODO: there should be an else
+            dlg2 = QMessageBox(self)
+            dlg2.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_DARK}")
+            dlg2.setWindowTitle("Flashed")
+            dlg2.setText("Done")
+            dlg2.exec()
 
 
 if __name__ == '__main__':
