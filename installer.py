@@ -30,7 +30,7 @@ from qt_material import apply_stylesheet
 if platform.system() != "Windows":
     import grp
 
-VERSION="1.0.28"
+VERSION="1.0.29"
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
@@ -361,10 +361,9 @@ class Form(QDialog):
                     for line in lines:
                         parts = line.split(' ')
                         print(f'parts:{parts}')
-                        if len(parts) > 2:
-                            if parts[1] == search_for_partition:
-                                ports.add(f"{parts[0]}:/")
-                                break
+                        if search_for_partition in line:
+                            self.select_port.add(f"{parts[0]}:/")
+                            break
             else: # Linux or Darwin
                 for partition in partitions:
                     print(f'partition:{partition}')
