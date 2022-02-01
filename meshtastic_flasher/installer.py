@@ -318,8 +318,9 @@ class Form(QDialog):
                 if first == second:
                     print('We are dealing with a weird TLora port situation.')
                     self.select_port.clear()
-                    self.select_port.addItem(ports[1])
-                    self.select_port.addItem(ports[0]) # delete this one?
+                    tmp_list = list(ports)
+                    self.select_port.addItem(tmp_list[1])
+                    self.select_port.addItem(tmp_list[0]) # delete this one?
                     ports = tmp_ports
 
         # our auto-detect did not work
