@@ -1,6 +1,6 @@
 # lint the codebase
 lint:
-	pylint *.py
+	pylint *.py meshtastic_flasher/*.py
 
 upload:
 	# generate token in pypi
