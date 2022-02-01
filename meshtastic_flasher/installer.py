@@ -356,7 +356,7 @@ class Form(QDialog):
 
             if platform.system() == "Windows":
                 # need to run some power shell
-                _, gv_output = subprocess.getstatusoutput('powershell.exe "Get-Volume"')
+                _, gv_output = subprocess.getstatusoutput('powershell.exe "[Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8; Get-Volume"')
                 if re.search(search_for_partition, str(gv_output), re.MULTILINE):
                     print('found partition on windows!')
                     found_partition = True
