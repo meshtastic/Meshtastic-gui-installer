@@ -228,6 +228,11 @@ class Form(QDialog):
     def on_select_firmware_changed(self, value):
         """When the select_firmware drop down value is changed."""
         print(f'on_select_firmware_changed value:{value}')
+
+        QApplication.processEvents()
+        self.progress.setValue(0)
+        self.progress.show()
+
         self.firmware_version = self.select_firmware_version.currentText()[1:] # drop leading v
 
         # zip filename from tag
@@ -242,6 +247,9 @@ class Form(QDialog):
         # if the file is not already downloaded, download it
         if not os.path.exists(zip_file_name):
             print("Need to download...")
+
+            self.progress.setValue(20)
+            QApplication.processEvents()
 
             # Note: Probably should use the browser_download_url
             zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{self.firmware_version}/firmware-{self.firmware_version}.zip'
@@ -258,12 +266,17 @@ class Form(QDialog):
             urllib.request.urlretrieve(zip_file_url, zip_file_name)
             print("done downloading")
 
+            self.progress.setValue(80)
+            QApplication.processEvents()
+
         # unzip into directory named the same name as the firmware_version
         if not os.path.exists(self.firmware_version):
             print("Unzipping files now...")
             with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
                 zip_ref.extractall(self.firmware_version)
             print("done unzipping")
+        self.progress.setValue(100)
+        QApplication.processEvents()
 
     def get_versions_from_github(self):
         """Download versions from GitHub"""
@@ -344,6 +357,10 @@ class Form(QDialog):
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
 
+        QApplication.processEvents()
+        self.progress.setValue(0)
+        self.progress.show()
+
         system = platform.system()
         if system == 'Linux':
             username = os.getlogin()
@@ -358,6 +375,9 @@ class Form(QDialog):
                 message += "  After running that command, log out and re-login for it to take effect.\n"
                 dlg.setText(message)
                 dlg.exec()
+
+        self.progress.setValue(10)
+        QApplication.processEvents()
 
         # detect supported devices
         supported_devices_detected = detect_supported_devices()
@@ -378,6 +398,9 @@ class Form(QDialog):
                 if self.select_device.count() > 1:
                     self.select_device.setCurrentIndex(1)
 
+        self.progress.setValue(40)
+        QApplication.processEvents()
+
         # detect which ports and populate the dropdown
         ports = active_ports_on_supported_devices(supported_devices_detected)
         ports_sorted = list(ports)
@@ -387,6 +410,9 @@ class Form(QDialog):
             if 'usbmodem' in port:
                 possible_weird = True
             self.select_port.addItem(port)
+
+        self.progress.setValue(70)
+        QApplication.processEvents()
 
         if possible_weird:
             # deal with weird TLora (single device connected, but shows up as 2 ports)
@@ -403,6 +429,9 @@ class Form(QDialog):
                     self.select_port.addItem(tmp_ports[0]) # delete this one?
                     ports = tmp_ports
 
+        self.progress.setValue(80)
+        QApplication.processEvents()
+
         # our auto-detect did not work
         if len(ports) == 0:
             print("Warning: Could not find any ports using the autodetection method.")
@@ -417,6 +446,9 @@ class Form(QDialog):
             else:
                 for port in ports:
                     self.select_port.addItem(port)
+
+        self.progress.setValue(90)
+        QApplication.processEvents()
 
         self.all_devices()
 
@@ -491,6 +523,8 @@ class Form(QDialog):
             self.select_port.setDisabled(False)
             self.select_device.setDisabled(False)
 
+        self.progress.setValue(100)
+        QApplication.processEvents()
 
     def logo_clicked(self, event):
         """The logo was clicked."""
@@ -500,6 +534,10 @@ class Form(QDialog):
     def flash_stuff(self):
         """Do the flash parts"""
         proceed = False
+
+        QApplication.processEvents()
+        self.progress.setValue(0)
+        self.progress.show()
 
         update_only = self.advanced_form.update_only_cb.isChecked()
         update_only_message = ""
@@ -538,8 +576,6 @@ class Form(QDialog):
 
             else:
                 # esp32 devices
-                QApplication.processEvents()
-                self.progress.show()
 
                 if update_only:
                     device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
