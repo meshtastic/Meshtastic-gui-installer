@@ -218,6 +218,7 @@ class Form(QDialog):
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
 
+
     def keyPressEvent(self, event):
         """Deal with a key press"""
         if event.key() == QtCore.Qt.Key_A:
@@ -226,6 +227,12 @@ class Form(QDialog):
         elif event.key() == QtCore.Qt.Key_Q:
             print("Q was pressed... so quitting")
             QApplication.quit()
+        elif event.key() == QtCore.Qt.Key_G:
+            print("G was pressed...")
+            self.get_versions_from_github()
+        elif event.key() == QtCore.Qt.Key_D:
+            print("D was pressed...")
+            self.detect()
 
 
     def on_select_firmware_changed(self, value):
@@ -369,15 +376,13 @@ class Form(QDialog):
             username = os.getlogin()
             groups = [g.gr_name for g in grp.getgrall() if username in g.gr_mem]
             if "dialout" not in groups:
-                # We need to let the user know that they should be in the dialout group
-                dlg = QMessageBox(self)
-                message = f'Warning: The user ({username}) is not in the (dialout) group. Either:\n'
-                message += 'a) run this command as "sudo", or\n'
-                message += 'b) add this user to the dialout group using this command:\n'
-                message += f"     sudo usermod -a -G dialout {username}\n"
-                message += "  After running that command, log out and re-login for it to take effect.\n"
-                dlg.setText(message)
-                dlg.exec()
+                # Let the user know that they should be in the dialout group
+                QMessageBox.information(self, "Info",
+                                        (f'Warning: The user ({username}) is not in the (dialout) group. Either:\n'
+                                        'a) run this command as "sudo", or\n'
+                                        'b) add this user to the dialout group using this command:\n'
+                                        f"     sudo usermod -a -G dialout {username}\n"
+                                        "  After running that command, log out and re-login for it to take effect.\n"))
 
         self.progress.setValue(10)
         QApplication.processEvents()
@@ -385,10 +390,7 @@ class Form(QDialog):
         # detect supported devices
         supported_devices_detected = detect_supported_devices()
         if len(supported_devices_detected) == 0:
-            dlg = QMessageBox(self)
-            dlg.setWindowTitle("No devices detected.")
-            dlg.setText("Plugin a device?")
-            dlg.exec()
+            QMessageBox.information(self, "Info", "No devices detected.\nPlugin a device?")
         else:
             if len(supported_devices_detected) > 0:
                 self.select_device.clear()
@@ -526,22 +528,16 @@ class Form(QDialog):
                         print(line)
                         rak_bootloader_current = True
                         print('*** rak bootloader is current')
-                        dlg = QMessageBox(self)
-                        message = 'The RAK bootloader is current.'
-                        dlg.setText(message)
-                        dlg.exec()
+                        QMessageBox.information(self, "Info", "The RAK bootloader is current.")
 
                 if (not rak_bootloader_current) and (not self.advanced_form.rak_bootloader_cb.isChecked()):
-                    dlg = QMessageBox(self)
-                    message = 'The RAK bootloader is not current. If you want to udpate, go into advanced options by pressing the letter "A" at the main screen, and check the update RAK bootloader then press DETECT again.'
-                    dlg.setText(message)
-                    dlg.exec()
+                    QMessageBox.information(self, "Info", ('The RAK bootloader is not current.\n',
+                                            'If you want to udpate the bootlader,\n'
+                                            'go into advanced options by pressing the letter "A" at the main screen,\n'
+                                            'and check the update RAK bootloader then press DETECT again.'))
 
                 if (not rak_bootloader_current) and self.advanced_form.rak_bootloader_cb.isChecked() and self.select_device.currentText().startswith('rak'):
-                    dlg = QMessageBox(self)
-                    message = 'Option to update the RAK bootloader was requested. Press the RST button ONCE to get out of bootloader mode, then continue.'
-                    dlg.setText(message)
-                    dlg.exec()
+                    QMessageBox.information(self, "Info", "Update RAK bootloader was requested.\nPress the RST button ONCE to get out of bootloader mode, then continue.")
 
                     print('Checking boot loader version')
                     # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
@@ -560,16 +556,10 @@ class Form(QDialog):
                         _, nrfutil_output = subprocess.getstatusoutput(command)
                         print(nrfutil_output)
 
-                        dlg = QMessageBox(self)
-                        message = 'Done updating bootloader.'
-                        dlg.setText(message)
-                        dlg.exec()
+                        QMessageBox.information(self, "Info", "Done updating bootloader.")
 
             else:
-                dlg = QMessageBox(self)
-                message = 'Warning: Could not find the partition. Press the RST button TWICE, then re-try the DETECT again.'
-                dlg.setText(message)
-                dlg.exec()
+                QMessageBox.information(self, "Info", "Could not find the partition.\nPress the RST button TWICE\nthen re-try the pressing the DETECT button again.")
 
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
@@ -627,9 +617,7 @@ class Form(QDialog):
                 shutil.copyfile(uf2_file, dest)
                 print('done copying')
 
-                dlg = QMessageBox(self)
-                dlg.setText("File copied. Wait for the device to reboot. Or wait a minute and press RST button ONCE on the device to boot to Meshtastic.")
-                dlg.exec()
+                QMessageBox.information(self, "Info", "File was copied.\nWait for the device to reboot.")
 
             else:
                 # esp32 devices
@@ -676,11 +664,7 @@ class Form(QDialog):
                     self.progress.setValue(100)
                     QApplication.processEvents()
 
-                dlg2 = QMessageBox(self)
-                dlg2.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_DARK}")
-                dlg2.setWindowTitle("Flashed")
-                dlg2.setText("Done")
-                dlg2.exec()
+                QMessageBox.information(self, "Info", "Flashed")
 
 
 def main():
