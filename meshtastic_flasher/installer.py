@@ -545,8 +545,7 @@ class Form(QDialog):
 
                     print('Checking boot loader version')
                     # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
-                    # https://github.com/RAKWireless/WisBlock/blob/master/bootloader/RAK4630/Latest/WisCore_RAK4631_Board_Bootloader.zip
-                    bootloader_zip_url = "https://github.com/RAKWireless/WisBlock/raw/master/bootloader/RAK4630/Latest/WisCore_RAK4631_Board_Bootloader.zip"
+                    bootloader_zip_url = "https://github.com/RAKWireless/WisBlock/releases/download/0.4.2/WisCore_RAK4631_Board_Bootloader.zip"
                     bootloader_zip_filename = "WisCore_RAK4631_Board_Bootloader.zip"
                     if not os.path.exists(bootloader_zip_filename):
                         print(f"Need to download the {bootloader_zip_filename} downloading...")
