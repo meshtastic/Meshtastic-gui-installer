@@ -30,7 +30,7 @@ from qt_material import apply_stylesheet
 from meshtastic_flasher.version import __version__
 
 # windows does not like this one
-if platform.system() != "Windows":
+if platform.system() == "Linux":
     import grp
 
 
@@ -589,6 +589,7 @@ class Form(QDialog):
 
     def logo_clicked(self, event):
         """The logo was clicked."""
+        print("The logo was clicked")
         webbrowser.open('https://meshtastic.org')
 
     # do flash stuff
