@@ -66,6 +66,13 @@ https://meshtastic.org/
 https://github.com/meshtastic/Meshtastic-device
 
 
+# Known limitations
+
+The following are known limitations:
+
+* Raspberry Pi is not available, since it is arm-based and there are no pre-built libraries for PySide
+* Ubuntu 20.04 is the version used for testing, it may work with other versions
+
 # Note to Devs
 
 Please keep code as simple as possible. PyQT has a tendency to get complicated.
