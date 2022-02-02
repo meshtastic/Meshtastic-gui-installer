@@ -23,7 +23,14 @@ pip install meshtastic-flasher
 
 To run, type in "meshtastic-flasher" from a command prompt.
 
+# Advanced options
 
+To go into the Advanced options page, press the "A" key. 
+
+The options are:
+
+* Update mode for esp32 devices
+* RAK Bootloader update (for RAK4631 nrf52)
 
 # Installation for Development
 
