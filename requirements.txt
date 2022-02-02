@@ -1,7 +1,7 @@
 pyside6
 PyGithub
 esptool
-meshtastic
+meshtastic>=1.2.80
 qt-material
 psutil
 adafruit-nrfutil
