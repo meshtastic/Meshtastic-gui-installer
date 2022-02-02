@@ -383,32 +383,34 @@ class Form(QDialog):
 
             partitions = psutil.disk_partitions()
             #print(f'partitions:{partitions}')
-            search_for_partition = 'FTHR840BOOT'
+            search_for_partition = ['FTHR840BOOT', 'TECHOBOOT']
             found_partition = False
 
             if platform.system() == "Windows":
                 # need to run some power shell
                 _, gv_output = subprocess.getstatusoutput('powershell.exe "[Console]::OutputEncoding = [Text.UTF8Encoding]::UTF8; Get-Volume"')
-                if re.search(search_for_partition, str(gv_output), re.MULTILINE):
-                    print('found partition on windows!')
-                    found_partition = True
-                    # for each line of output
-                    lines = str(gv_output).split('\n')
-                    print(f'lines:{lines}')
-                    for line in lines:
-                        parts = line.split(' ')
-                        #print(f'parts:{parts}')
-                        if search_for_partition in line:
-                            self.select_port.addItem(f"{parts[0]}:/")
-                            break
+                for search in search_for_partition:
+                    if re.search(search, str(gv_output), re.MULTILINE):
+                        print('found partition on windows!')
+                        found_partition = True
+                        # for each line of output
+                        lines = str(gv_output).split('\n')
+                        print(f'lines:{lines}')
+                        for line in lines:
+                            parts = line.split(' ')
+                            #print(f'parts:{parts}')
+                            if search in line:
+                                self.select_port.addItem(f"{parts[0]}:/")
+                                break
             else: # Linux or Darwin
                 for partition in partitions:
                     print(f'partition:{partition}')
-                    if search_for_partition in partition.mountpoint:
-                        print('*** found search_for_partition')
-                        self.select_port.addItem(partition.mountpoint)
-                        found_partition = True
-                        break
+                    for search in search_for_partition:
+                        if search in partition.mountpoint:
+                            print(f'*** found {search}')
+                            self.select_port.addItem(partition.mountpoint)
+                            found_partition = True
+                            break
 
             if found_partition:
                 # the 19003 reports same as 5005, so we cannot really trust it
