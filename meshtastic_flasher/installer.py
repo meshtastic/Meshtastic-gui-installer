@@ -224,15 +224,18 @@ class Form(QDialog):
         if event.key() == QtCore.Qt.Key_A:
             print("A was pressed... showing advanced options form")
             self.show_advanced_options()
-        elif event.key() == QtCore.Qt.Key_Q:
-            print("Q was pressed... so quitting")
-            QApplication.quit()
-        elif event.key() == QtCore.Qt.Key_G:
-            print("G was pressed...")
-            self.get_versions_from_github()
         elif event.key() == QtCore.Qt.Key_D:
             print("D was pressed...")
             self.detect()
+        elif event.key() == QtCore.Qt.Key_G:
+            print("G was pressed...")
+            self.get_versions_from_github()
+        elif event.key() == QtCore.Qt.Key_H:
+            print("H was pressed...")
+            self.hotkeys()
+        elif event.key() == QtCore.Qt.Key_Q:
+            print("Q was pressed... so quitting")
+            QApplication.quit()
 
 
     def on_select_firmware_changed(self, value):
@@ -358,6 +361,15 @@ class Form(QDialog):
                         device = device.replace(f"-{self.firmware_version}", "")
                         device = device.replace(".bin", "")
                         self.select_device.addItem(device)
+
+    def hotkeys(self):
+        """Show hotkeys"""
+        QMessageBox.information(self, "Info", ("Hotkeys:\n"
+                                "A - Advanced options\n"
+                                "G - Get versions\n"
+                                "H - Hotkeys\n"
+                                "D - Detect\n"
+                                "Q - Quit\n"))
 
     def show_advanced_options(self):
         """Advanced Options"""
@@ -531,13 +543,14 @@ class Form(QDialog):
                         QMessageBox.information(self, "Info", "The RAK bootloader is current.")
 
                 if (not rak_bootloader_current) and (not self.advanced_form.rak_bootloader_cb.isChecked()):
-                    QMessageBox.information(self, "Info", ('The RAK bootloader is not current.\n',
+                    QMessageBox.information(self, "Info", ('The RAK bootloader is not current.\n'
                                             'If you want to udpate the bootlader,\n'
                                             'go into advanced options by pressing the letter "A" at the main screen,\n'
                                             'and check the update RAK bootloader then press DETECT again.'))
 
                 if (not rak_bootloader_current) and self.advanced_form.rak_bootloader_cb.isChecked() and self.select_device.currentText().startswith('rak'):
-                    QMessageBox.information(self, "Info", "Update RAK bootloader was requested.\nPress the RST button ONCE to get out of bootloader mode, then continue.")
+                    QMessageBox.information(self, "Info", ("Update RAK bootloader was requested.\n"
+                                            "Press the RST button ONCE to get out of bootloader mode, then continue."))
 
                     print('Checking boot loader version')
                     # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
@@ -563,7 +576,7 @@ class Form(QDialog):
 
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
-            self.select_port.setToolTip("Select the communication device")
+            self.select_port.setToolTip("Select the communication port/destination")
             self.select_device.setToolTip("Select the device variant")
             self.select_flash.setEnabled(True)
             self.select_flash.setToolTip('Click the FLASH button to write to the device.')
