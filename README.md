@@ -18,8 +18,6 @@ Cross Platform GUI for installing Meshtastic Firmware
 * Steps to install from PyPi (if you do not want the sigle executable method described above):
 
 ```
-python3 -m venv venv
-venv/bin/activate
 pip install meshtastic-flasher
 ```
 
