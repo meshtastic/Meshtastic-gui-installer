@@ -1,6 +1,6 @@
 # Meshtastic-gui-installer
 
-Cross Platform GUI for installing Meshtastic Firmware
+Cross Platform GUI for installing Meshtastic Firmware. It also checks and updates the RAK 4631 bootloader.
 
 
 
