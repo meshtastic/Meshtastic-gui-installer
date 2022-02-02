@@ -23,7 +23,8 @@ from PySide6 import QtCore
 from PySide6.QtGui import (QPixmap, QIcon, QCursor)
 from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
-                               QMessageBox, QComboBox, QProgressBar)
+                               QMessageBox, QComboBox, QProgressBar,
+                               QCheckBox, QFormLayout)
 from qt_material import apply_stylesheet
 
 from meshtastic_flasher.version import __version__
@@ -57,6 +58,38 @@ def populate_tag_in_firmware_dropdown(tag):
     print(f'tag:{tag} populate in dropdown?:{retval}')
     return retval
 
+class AdvancedForm(QDialog):
+    """Advanced options form"""
+
+    def __init__(self, parent=None):
+        """constructor"""
+        super(AdvancedForm, self).__init__(parent)
+
+        width = 200
+        height = 100
+        self.setMinimumSize(width, height)
+        self.setWindowTitle("Advanced Options")
+
+        # Create widgets
+        self.update_only_cb = QCheckBox()
+        self.update_only_cb.setToolTip("If enabled, the device will be updated (not completely erased).")
+
+        self.ok_button = QPushButton("OK")
+
+        # create form
+        form_layout = QFormLayout()
+        form_layout.addRow(self.tr("&Update only"), self.update_only_cb)
+        form_layout.addRow(self.tr(""), self.ok_button)
+        self.setLayout(form_layout)
+
+        self.ok_button.clicked.connect(self.close_advanced_options)
+
+    def close_advanced_options(self):
+        """Test if works"""
+        print('OK button was clicked in advanced options')
+        self.close()
+
+
 class Form(QDialog):
     """Main application"""
 
@@ -70,6 +103,8 @@ class Form(QDialog):
 
         self.nrf = False
         self.device = None
+
+        self.advanced_form = AdvancedForm()
 
         self.setWindowTitle(f"Meshtastic Flasher v{__version__}")
 
@@ -175,15 +210,29 @@ class Form(QDialog):
 
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked
-        self.get_versions.clicked.connect(self.download_firmware_versions)
+        self.get_versions.clicked.connect(self.get_versions_from_github)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
+
+    def keyPressEvent(self, event):
+        """Deal with a key press"""
+        if event.key() == QtCore.Qt.Key_A:
+            print("A was pressed... showing advanced options form")
+            self.show_advanced_options()
+        elif event.key() == QtCore.Qt.Key_Q:
+            print("Q was pressed... so quitting")
+            QApplication.quit()
 
 
     def on_select_firmware_changed(self, value):
         """When the select_firmware drop down value is changed."""
         print(f'on_select_firmware_changed value:{value}')
+
+        QApplication.processEvents()
+        self.progress.setValue(0)
+        self.progress.show()
+
         self.firmware_version = self.select_firmware_version.currentText()[1:] # drop leading v
 
         # zip filename from tag
@@ -198,6 +247,9 @@ class Form(QDialog):
         # if the file is not already downloaded, download it
         if not os.path.exists(zip_file_name):
             print("Need to download...")
+
+            self.progress.setValue(20)
+            QApplication.processEvents()
 
             # Note: Probably should use the browser_download_url
             zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{self.firmware_version}/firmware-{self.firmware_version}.zip'
@@ -214,14 +266,19 @@ class Form(QDialog):
             urllib.request.urlretrieve(zip_file_url, zip_file_name)
             print("done downloading")
 
+            self.progress.setValue(80)
+            QApplication.processEvents()
+
         # unzip into directory named the same name as the firmware_version
         if not os.path.exists(self.firmware_version):
             print("Unzipping files now...")
             with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
                 zip_ref.extractall(self.firmware_version)
             print("done unzipping")
+        self.progress.setValue(100)
+        QApplication.processEvents()
 
-    def download_firmware_versions(self):
+    def get_versions_from_github(self):
         """Download versions from GitHub"""
 
         # save first_tag in case we need to populate list with *some* value
@@ -292,9 +349,17 @@ class Form(QDialog):
                         device = device.replace(".bin", "")
                         self.select_device.addItem(device)
 
+    def show_advanced_options(self):
+        """Advanced Options"""
+        print("advanced options")
+        self.advanced_form.show()
 
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
+
+        QApplication.processEvents()
+        self.progress.setValue(0)
+        self.progress.show()
 
         system = platform.system()
         if system == 'Linux':
@@ -310,6 +375,9 @@ class Form(QDialog):
                 message += "  After running that command, log out and re-login for it to take effect.\n"
                 dlg.setText(message)
                 dlg.exec()
+
+        self.progress.setValue(10)
+        QApplication.processEvents()
 
         # detect supported devices
         supported_devices_detected = detect_supported_devices()
@@ -330,6 +398,9 @@ class Form(QDialog):
                 if self.select_device.count() > 1:
                     self.select_device.setCurrentIndex(1)
 
+        self.progress.setValue(40)
+        QApplication.processEvents()
+
         # detect which ports and populate the dropdown
         ports = active_ports_on_supported_devices(supported_devices_detected)
         ports_sorted = list(ports)
@@ -339,6 +410,9 @@ class Form(QDialog):
             if 'usbmodem' in port:
                 possible_weird = True
             self.select_port.addItem(port)
+
+        self.progress.setValue(70)
+        QApplication.processEvents()
 
         if possible_weird:
             # deal with weird TLora (single device connected, but shows up as 2 ports)
@@ -355,6 +429,9 @@ class Form(QDialog):
                     self.select_port.addItem(tmp_ports[0]) # delete this one?
                     ports = tmp_ports
 
+        self.progress.setValue(80)
+        QApplication.processEvents()
+
         # our auto-detect did not work
         if len(ports) == 0:
             print("Warning: Could not find any ports using the autodetection method.")
@@ -369,6 +446,9 @@ class Form(QDialog):
             else:
                 for port in ports:
                     self.select_port.addItem(port)
+
+        self.progress.setValue(90)
+        QApplication.processEvents()
 
         self.all_devices()
 
@@ -443,6 +523,8 @@ class Form(QDialog):
             self.select_port.setDisabled(False)
             self.select_device.setDisabled(False)
 
+        self.progress.setValue(100)
+        QApplication.processEvents()
 
     def logo_clicked(self, event):
         """The logo was clicked."""
@@ -453,13 +535,25 @@ class Form(QDialog):
         """Do the flash parts"""
         proceed = False
 
+        QApplication.processEvents()
+        self.progress.setValue(0)
+        self.progress.show()
+
+        update_only = self.advanced_form.update_only_cb.isChecked()
+        update_only_message = ""
+        if update_only:
+            print('update only is checked')
+            update_only_message = "**update only** "
+        else:
+            print('update only is not checked')
+
         self.port = self.select_port.currentText()
         self.device = self.select_device.currentText()
 
         verb = 'flash'
         if self.nrf:
             verb = 'copy'
-        confirm_msg = f'Are you sure you want to {verb}\n{self.firmware_version}\n'
+        confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
         confirm_msg += f'{self.port}\n{self.device}?'
         reply = QMessageBox.question(self, 'Flash', confirm_msg,
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
@@ -482,34 +576,48 @@ class Form(QDialog):
 
             else:
                 # esp32 devices
-                QApplication.processEvents()
-                self.progress.show()
-                command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
-                print(f"ESPTOOL Using command:{' '.join(command)}")
-                esptool.main(command)
-                self.progress.setValue(25)
-                QApplication.processEvents()
 
-                system_info_file = f"{self.firmware_version}/system-info.bin"
-                command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
-                print(f"ESPTOOL Using command:{' '.join(command)}")
-                esptool.main(command)
-                self.progress.setValue(50)
-                QApplication.processEvents()
+                if update_only:
+                    device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
+                    command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
+                    print(f"ESPTOOL Using command:{' '.join(command)}")
+                    esptool.main(command)
+                    self.progress.setValue(50)
+                    QApplication.processEvents()
 
-                bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
-                command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
-                print(f"ESPTOOL Using command:{' '.join(command)}")
-                esptool.main(command)
-                self.progress.setValue(75)
-                QApplication.processEvents()
+                    command = ["--baud", self.speed, "--port", self.port, "erase_region", "0xe000", "0x2000"]
+                    print(f"ESPTOOL Using command:{' '.join(command)}")
+                    esptool.main(command)
+                    self.progress.setValue(100)
+                    QApplication.processEvents()
 
-                device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
-                command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
-                print(f"ESPTOOL Using command:{' '.join(command)}")
-                esptool.main(command)
-                self.progress.setValue(100)
-                QApplication.processEvents()
+                else:
+                    command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
+                    print(f"ESPTOOL Using command:{' '.join(command)}")
+                    esptool.main(command)
+                    self.progress.setValue(25)
+                    QApplication.processEvents()
+
+                    system_info_file = f"{self.firmware_version}/system-info.bin"
+                    command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
+                    print(f"ESPTOOL Using command:{' '.join(command)}")
+                    esptool.main(command)
+                    self.progress.setValue(50)
+                    QApplication.processEvents()
+
+                    bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
+                    command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
+                    print(f"ESPTOOL Using command:{' '.join(command)}")
+                    esptool.main(command)
+                    self.progress.setValue(75)
+                    QApplication.processEvents()
+
+                    device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
+                    command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
+                    print(f"ESPTOOL Using command:{' '.join(command)}")
+                    esptool.main(command)
+                    self.progress.setValue(100)
+                    QApplication.processEvents()
 
                 dlg2 = QMessageBox(self)
                 dlg2.setStyleSheet(f"background-color: {MESHTASTIC_COLOR_DARK}")
