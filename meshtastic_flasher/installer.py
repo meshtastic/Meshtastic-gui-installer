@@ -364,6 +364,7 @@ class Form(QDialog):
 
     def hotkeys(self):
         """Show hotkeys"""
+        print("hotkeys")
         QMessageBox.information(self, "Info", ("Hotkeys:\n"
                                 "A - Advanced options\n"
                                 "G - Get versions\n"

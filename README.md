@@ -55,6 +55,13 @@ or
 make lint
 ```
 
+# To test
+
+```
+pytest
+```
+
+
 # for more info
 
 https://wiki.qt.io/Qt_for_Python
@@ -76,3 +83,5 @@ The following are known limitations:
 # Note to Devs
 
 Please keep code as simple as possible. PyQT has a tendency to get complicated.
+
+
