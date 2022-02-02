@@ -287,7 +287,7 @@ class Form(QDialog):
         # save first_tag in case we need to populate list with *some* value
         first_tag = None
 
-        if not self.select_firmware_version.count() == 0:
+        if self.firmware_version is None:
 
             try:
                 token = Github()
