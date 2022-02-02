@@ -628,7 +628,7 @@ class Form(QDialog):
                 print('done copying')
 
                 dlg = QMessageBox(self)
-                dlg.setText("File copied. Press RST button ONCE on the device to boot to Meshtastic.")
+                dlg.setText("File copied. Wait for the device to reboot. Or wait a minute and press RST button ONCE on the device to boot to Meshtastic.")
                 dlg.exec()
 
             else:
