@@ -74,13 +74,13 @@ class Form(QDialog):
         self.setWindowTitle(f"Meshtastic Flasher v{__version__}")
 
         # Create widgets
-        self.select_firmware = QPushButton("SELECT FIRMWARE")
-        self.select_firmware.setToolTip("Click to check for more recent firmware.")
+        self.get_versions = QPushButton("GET VERSIONS")
+        self.get_versions.setToolTip("Click to check for more recent firmware.")
 
         self.select_firmware_version = QComboBox()
-        self.select_firmware_version.setToolTip("Select which firmware to flash.")
+        self.select_firmware_version.setToolTip("Click GET VERSIONS for the list of firmware versions.")
         self.select_firmware_version.setMinimumContentsLength(18)
-        self.select_firmware_version.hide()
+        self.select_firmware_version.setDisabled(True)
 
         self.select_detect = QPushButton("DETECT DEVICE")
         self.select_detect.setToolTip("Click to detect supported device and port info.")
@@ -88,17 +88,17 @@ class Form(QDialog):
         self.select_detect.setStyleSheet("text-transform: none")
 
         self.select_port = QComboBox()
-        self.select_port.setToolTip("Click SELECT FIRMWARE before you can select the port.")
+        self.select_port.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the port.")
         self.select_port.setMinimumContentsLength(25)
         self.select_port.setDisabled(True)
 
         self.select_device = QComboBox()
-        self.select_device.setToolTip("Click SELECT FIRMWARE before you can select the device.")
+        self.select_device.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the device.")
         self.select_device.setMinimumContentsLength(17)
         self.select_device.setDisabled(True)
 
         self.select_flash = QPushButton("FLASH")
-        self.select_flash.setToolTip("Click to flash the firmware. If button is not enabled, need to click the buttons to the left.")
+        self.select_flash.setToolTip("Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options.")
         self.select_flash.setEnabled(False)
 
         self.progress = QProgressBar()
@@ -115,36 +115,67 @@ class Form(QDialog):
         self.logo.setStyleSheet(style_for_logo)
         self.logo.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
 
+        # labels for over the drop downs/combo boxes
+        self.label_version = QLabel(self)
+        self.label_version.setText("                         Version")
+
+        self.label_port = QLabel(self)
+        self.label_port.setText("                           Port")
+
+        self.label_device = QLabel(self)
+        self.label_device.setText("                        Device")
+
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
         if self.logo:
             main_layout.addWidget(self.logo)
+
         main_layout.addStretch(1)
+
+        detect_layout = QHBoxLayout()
+        detect_layout.addStretch(1)
+        detect_layout.addWidget(self.get_versions)
+        detect_layout.addWidget(self.select_detect)
+        detect_layout.setContentsMargins(0, 0, 0, 0)
+        detect_layout.addStretch(1)
+
+        label_layout = QHBoxLayout()
+        label_layout.addWidget(self.label_version)
+        label_layout.addWidget(self.label_port)
+        label_layout.addWidget(self.label_device)
+        label_layout.setContentsMargins(0, 0, 0, 0)
+
         button_layout = QHBoxLayout()
         button_layout.addStretch(1)
-        button_layout.addWidget(self.select_firmware)
         button_layout.addWidget(self.select_firmware_version)
-        button_layout.addWidget(self.select_detect)
         button_layout.addWidget(self.select_port)
         button_layout.addWidget(self.select_device)
-        button_layout.addWidget(self.select_flash)
         button_layout.addStretch(1)
-        button_layout.setContentsMargins(20, 20, 20, 20)
+        button_layout.setContentsMargins(20, 0, 20, 0)
+
+        flash_layout = QHBoxLayout()
+        flash_layout.addStretch(1)
+        flash_layout.addWidget(self.select_flash)
+        flash_layout.addStretch(1)
+        flash_layout.setContentsMargins(20, 0, 20, 20)
 
         progress_layout = QHBoxLayout()
         progress_layout.addWidget(self.progress)
         button_layout.addStretch(1)
 
         # Set layout
+        main_layout.addLayout(detect_layout)
+        main_layout.addLayout(label_layout)
         main_layout.addLayout(button_layout)
+        main_layout.addLayout(flash_layout)
         main_layout.addLayout(progress_layout)
         main_layout.addStretch(1)
         self.setLayout(main_layout)
 
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked
-        self.select_firmware.clicked.connect(self.download_firmware_versions)
+        self.get_versions.clicked.connect(self.download_firmware_versions)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
@@ -196,7 +227,7 @@ class Form(QDialog):
         # save first_tag in case we need to populate list with *some* value
         first_tag = None
 
-        if not self.select_firmware.isHidden():
+        if not self.select_firmware_version.count() == 0:
 
             try:
                 token = Github()
@@ -236,9 +267,8 @@ class Form(QDialog):
                 fall_back_tag = 'v1.2.53.19c1f9f'
                 self.select_firmware_version.addItem(fall_back_tag)
 
-        # if we checked for latest versions, so hide the "Firmware" button, and show the combo box to select version
-        self.select_firmware.hide()
-        self.select_firmware_version.show()
+        self.select_firmware_version.setEnabled(True)
+        self.select_firmware_version.setToolTip("Select desired firmware version to flash.")
 
         # only enable Flash button if we have both values
         if self.select_port.count() > 0 and self.firmware_version:
@@ -251,6 +281,7 @@ class Form(QDialog):
                 self.select_device.insertSeparator(self.select_device.count())
                 self.select_device.addItem('All')
                 count = self.select_device.count() - 1
+                # not make the label 'All' selectable
                 self.select_device.model().item(count).setEnabled(False)
                 filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
                 filenames.sort()
@@ -291,6 +322,7 @@ class Form(QDialog):
             if len(supported_devices_detected) > 0:
                 self.select_device.clear()
                 self.select_device.addItem('Detected')
+                # not make the label 'Detected' selectable
                 self.select_device.model().item(0).setEnabled(False)
                 for device in supported_devices_detected:
                     print(f'Detected {device.name}')
@@ -365,7 +397,7 @@ class Form(QDialog):
                     print(f'lines:{lines}')
                     for line in lines:
                         parts = line.split(' ')
-                        print(f'parts:{parts}')
+                        #print(f'parts:{parts}')
                         if search_for_partition in line:
                             self.select_port.addItem(f"{parts[0]}:/")
                             break
@@ -384,6 +416,7 @@ class Form(QDialog):
                 # and the T-Echo
                 self.select_device.clear()
                 self.select_device.addItem('Detected')
+                # do not make the label 'Detected' selectable
                 self.select_device.model().item(0).setEnabled(False)
                 self.select_device.addItem('rak4631_5005')
                 self.select_device.addItem('rak4631_19003')
@@ -401,11 +434,10 @@ class Form(QDialog):
 
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
-            self.select_port.setToolTip("Select the port.")
-            self.select_device.setToolTip("Select the device.")
+            self.select_port.setToolTip("Select the communication device")
+            self.select_device.setToolTip("Select the device variant")
             self.select_flash.setEnabled(True)
             self.select_flash.setToolTip('Click the FLASH button to write to the device.')
-            self.select_detect.hide()
             self.select_port.setDisabled(False)
             self.select_device.setDisabled(False)
 
