@@ -65,20 +65,23 @@ class AdvancedForm(QDialog):
         """constructor"""
         super(AdvancedForm, self).__init__(parent)
 
-        width = 200
-        height = 100
+        width = 240
+        height = 120
         self.setMinimumSize(width, height)
         self.setWindowTitle("Advanced Options")
 
         # Create widgets
         self.update_only_cb = QCheckBox()
         self.update_only_cb.setToolTip("If enabled, the device will be updated (not completely erased).")
+        self.rak_bootloader_cb = QCheckBox()
+        self.rak_bootloader_cb.setToolTip("If enabled, the NRF52 bootloader on RAK devices will be checked and updated in DETECT step.")
 
         self.ok_button = QPushButton("OK")
 
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.tr("&Update only"), self.update_only_cb)
+        form_layout.addRow(self.tr("&RAK Bootloader Update"), self.rak_bootloader_cb)
         form_layout.addRow(self.tr(""), self.ok_button)
         self.setLayout(form_layout)
 
@@ -463,7 +466,7 @@ class Form(QDialog):
 
             partitions = psutil.disk_partitions()
             #print(f'partitions:{partitions}')
-            search_for_partition = ['FTHR840BOOT', 'TECHOBOOT']
+            search_for_partition = ['FTHR840BOOT', 'TECHOBOOT', 'RAK4631']
             found_partition = False
 
             if platform.system() == "Windows":
@@ -508,9 +511,64 @@ class Form(QDialog):
                 self.select_device.model().item(count).setEnabled(False)
                 self.select_device.addItem('t-echo')
                 self.select_device.setCurrentIndex(1)
+
+                # check the bootloder version
+                command = f"cat {self.select_port.currentText()}/INFO_UF2.TXT"
+                _, info_output = subprocess.getstatusoutput(command)
+                #print('info_output:{info_output}')
+
+                rak_bootloader_date = "Date: Dec  1 2021"
+                rak_bootloader_current = False
+                lines = str(info_output).split('\n')
+                print('Bootloader info:')
+                for line in lines:
+                    if line == rak_bootloader_date:
+                        print(line)
+                        rak_bootloader_current = True
+                        print('*** rak bootloader is current')
+                        dlg = QMessageBox(self)
+                        message = 'The RAK bootloader is current.'
+                        dlg.setText(message)
+                        dlg.exec()
+
+                if (not rak_bootloader_current) and (not self.advanced_form.rak_bootloader_cb.isChecked()):
+                    dlg = QMessageBox(self)
+                    message = 'The RAK bootloader is not current. If you want to udpate, go into advanced options by pressing the letter "A" at the main screen, and check the update RAK bootloader then press DETECT again.'
+                    dlg.setText(message)
+                    dlg.exec()
+
+                if (not rak_bootloader_current) and self.advanced_form.rak_bootloader_cb.isChecked() and self.select_device.currentText().startswith('rak'):
+                    dlg = QMessageBox(self)
+                    message = 'Option to update the RAK bootloader was requested. Press the RST button ONCE to get out of bootloader mode, then continue.'
+                    dlg.setText(message)
+                    dlg.exec()
+
+                    print('Checking boot loader version')
+                    # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
+                    # https://github.com/RAKWireless/WisBlock/blob/master/bootloader/RAK4630/Latest/WisCore_RAK4631_Board_Bootloader.zip
+                    bootloader_zip_url = "https://github.com/RAKWireless/WisBlock/raw/master/bootloader/RAK4630/Latest/WisCore_RAK4631_Board_Bootloader.zip"
+                    bootloader_zip_filename = "WisCore_RAK4631_Board_Bootloader.zip"
+                    if not os.path.exists(bootloader_zip_filename):
+                        print(f"Need to download the {bootloader_zip_filename} downloading...")
+                        ssl._create_default_https_context = ssl._create_unverified_context
+                        urllib.request.urlretrieve(bootloader_zip_url, bootloader_zip_filename)
+                        print("done downloading")
+
+                    query_ports_again = findPorts()
+                    if len(query_ports_again) == 1:
+                        port_to_use = query_ports_again[0]
+                        command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
+                        _, nrfutil_output = subprocess.getstatusoutput(command)
+                        print(nrfutil_output)
+
+                        dlg = QMessageBox(self)
+                        message = 'Done updating bootloader.'
+                        dlg.setText(message)
+                        dlg.exec()
+
             else:
                 dlg = QMessageBox(self)
-                message = 'Warning: Could not find the partition. Press the RST button twice, then re-try the DETECT again.'
+                message = 'Warning: Could not find the partition. Press the RST button TWICE, then re-try the DETECT again.'
                 dlg.setText(message)
                 dlg.exec()
 
@@ -571,7 +629,7 @@ class Form(QDialog):
                 print('done copying')
 
                 dlg = QMessageBox(self)
-                dlg.setText("File copied. Press RST button on the device to boot to Meshtastic.")
+                dlg.setText("File copied. Press RST button ONCE on the device to boot to Meshtastic.")
                 dlg.exec()
 
             else:
