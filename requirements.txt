@@ -4,3 +4,4 @@ esptool
 meshtastic
 qt-material
 psutil
+adafruit-nrfutil

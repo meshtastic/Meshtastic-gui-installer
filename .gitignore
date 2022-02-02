@@ -140,3 +140,8 @@ venv/
 
 # if we build the single executable binaries
 dist/
+
+# WisBlock firmware files
+sd_bl.bin
+sd_bl.dat
+manifest.json

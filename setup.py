@@ -39,7 +39,7 @@ setup(
         '': ['logo.png', 'meshtastic_theme.xml'],
     },
     install_requires=["pyside6", "PyGithub", "esptool", "meshtastic", "qt-material",
-                      "psutil"],
+                      "psutil", "adafruit-nrfutil"],
     extras_require={
     },
     python_requires='>=3.6',

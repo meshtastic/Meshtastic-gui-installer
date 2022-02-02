@@ -66,19 +66,22 @@ class AdvancedForm(QDialog):
         super(AdvancedForm, self).__init__(parent)
 
         width = 200
-        height = 100
+        height = 120
         self.setMinimumSize(width, height)
         self.setWindowTitle("Advanced Options")
 
         # Create widgets
         self.update_only_cb = QCheckBox()
         self.update_only_cb.setToolTip("If enabled, the device will be updated (not completely erased).")
+        self.bootloader_cb = QCheckBox()
+        self.bootloader_cb.setToolTip("If enabled, the NRF52 bootloader will be checked in DETECT and updated in FLASH.")
 
         self.ok_button = QPushButton("OK")
 
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.tr("&Update only"), self.update_only_cb)
+        form_layout.addRow(self.tr("&Bootloader Update"), self.bootloader_cb)
         form_layout.addRow(self.tr(""), self.ok_button)
         self.setLayout(form_layout)
 
@@ -508,6 +511,37 @@ class Form(QDialog):
                 self.select_device.model().item(count).setEnabled(False)
                 self.select_device.addItem('t-echo')
                 self.select_device.setCurrentIndex(1)
+
+                if self.advanced_form.bootloader_cb.isChecked():
+                    dlg = QMessageBox(self)
+                    message = 'Option to update the bootloader was requested. Press the RST button to get out of bootloader mode, then continue.'
+                    dlg.setText(message)
+                    dlg.exec()
+
+                    print('Checking boot loader version')
+                    # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
+                    # https://github.com/RAKWireless/WisBlock/blob/master/bootloader/RAK4630/Latest/WisCore_RAK4631_Board_Bootloader.zip
+                    #bootloader_zip_url = "https://github.com/RAKWireless/WisBlock/blob/master/bootloader/RAK4630/Latest/WisCore_RAK4631_Board_Bootloader.zip"
+                    bootloader_zip_url = "https://github.com/RAKWireless/WisBlock/raw/master/bootloader/RAK4630/Latest/WisCore_RAK4631_Board_Bootloader.zip"
+                    bootloader_zip_filename = "WisCore_RAK4631_Board_Bootloader.zip"
+                    if not os.path.exists(bootloader_zip_filename):
+                        print(f"Need to download the {bootloader_zip_filename} downloading...")
+                        ssl._create_default_https_context = ssl._create_unverified_context
+                        urllib.request.urlretrieve(bootloader_zip_url, bootloader_zip_filename)
+                        print("done downloading")
+
+                    query_ports_again = findPorts()
+                    if len(query_ports_again) == 1:
+                        port_to_use = query_ports_again[0]
+                        command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
+                        _, nrfutil_output = subprocess.getstatusoutput(command)
+                        print(nrfutil_output)
+
+                        dlg = QMessageBox(self)
+                        message = 'Done updating bootloader.'
+                        dlg.setText(message)
+                        dlg.exec()
+
             else:
                 dlg = QMessageBox(self)
                 message = 'Warning: Could not find the partition. Press the RST button twice, then re-try the DETECT again.'
