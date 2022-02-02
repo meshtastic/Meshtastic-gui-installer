@@ -1,8 +1,8 @@
 # Meshtastic-gui-installer
 
+[![Pylint](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml/badge.svg)](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml) ![PyPI - Downloads](https://img.shields.io/pypi/dm/meshtastic-flasher)
+
 Cross Platform GUI for installing Meshtastic Firmware. It also checks and updates the RAK 4631 bootloader.
-
-
 
 
 # Example showing a Heltec (esp32) device:
