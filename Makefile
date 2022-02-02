@@ -1,6 +1,6 @@
 # lint the codebase
 lint:
-	pylint *.py meshtastic_flasher/*.py
+	pylint *.py meshtastic_flasher/*.py meshtastic_flasher/tests/*.py
 
 test:
 	pytest
