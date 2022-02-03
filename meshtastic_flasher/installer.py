@@ -58,6 +58,52 @@ def populate_tag_in_firmware_dropdown(tag):
     print(f'tag:{tag} populate in dropdown?:{retval}')
     return retval
 
+def tag_to_version(tag):
+    """Return version from a tag by dropping the leading 'v'."""
+    version = ""
+    if len(tag) > 0:
+        if tag.startswith('v'):
+            version = tag[1:]
+        else:
+            version = tag
+    return version
+
+def tags_to_versions(tags):
+    """Return a collection of versions from a collection of tags."""
+    versions = []
+    for tag in tags:
+        versions.append(tag_to_version(tag))
+    return versions
+
+def get_tags_from_github():
+    """Get tags from GitHub"""
+    tags = []
+    try:
+        token = Github()
+        repo = token.get_repo(MESHTATIC_REPO)
+        releases = repo.get_releases()
+        count = 0
+        for release in releases:
+            r = repo.get_release(release.id)
+            tags.append(r.tag_name)
+            count = count + 1
+            if count > 5:
+                break
+    except Exception as e:
+        print(e)
+    return tags
+
+def get_tags():
+    """Ensure we have some tag to use."""
+    tags = []
+    tags_from_github = get_tags_from_github()
+    for tag in tags_from_github:
+        if populate_tag_in_firmware_dropdown(tag):
+            tags.append(tag)
+    if len(tags) == 0:
+        tags.append('v1.2.53.19c1f9f')
+    return tags
+
 class AdvancedForm(QDialog):
     """Advanced options form"""
 
@@ -112,8 +158,8 @@ class Form(QDialog):
         self.setWindowTitle(f"Meshtastic Flasher v{__version__}")
 
         # Create widgets
-        self.get_versions = QPushButton("GET VERSIONS")
-        self.get_versions.setToolTip("Click to check for more recent firmware.")
+        self.get_versions_button = QPushButton("GET VERSIONS")
+        self.get_versions_button.setToolTip("Click to check for more recent firmware.")
 
         self.select_firmware_version = QComboBox()
         self.select_firmware_version.setToolTip("Click GET VERSIONS for the list of firmware versions.")
@@ -173,7 +219,7 @@ class Form(QDialog):
 
         detect_layout = QHBoxLayout()
         detect_layout.addStretch(1)
-        detect_layout.addWidget(self.get_versions)
+        detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
@@ -213,7 +259,7 @@ class Form(QDialog):
 
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked
-        self.get_versions.clicked.connect(self.get_versions_from_github)
+        self.get_versions_button.clicked.connect(self.get_versions)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
@@ -229,7 +275,7 @@ class Form(QDialog):
             self.detect()
         elif event.key() == QtCore.Qt.Key_G:
             print("G was pressed...")
-            self.get_versions_from_github()
+            self.get_versions()
         elif event.key() == QtCore.Qt.Key_H:
             print("H was pressed...")
             self.hotkeys()
@@ -291,52 +337,16 @@ class Form(QDialog):
         self.progress.setValue(100)
         QApplication.processEvents()
 
-    def get_versions_from_github(self):
-        """Download versions from GitHub"""
 
-        # save first_tag in case we need to populate list with *some* value
-        first_tag = None
-
+    def get_versions(self):
+        """Get versions: populate the drop down of available versions from Github tagged releases"""
+        tags = []
         if self.firmware_version is None:
-
-            try:
-                token = Github()
-                repo = token.get_repo(MESHTATIC_REPO)
-                releases = repo.get_releases()
-                #print(f'releases:{releases}')
-                count = 0
-                for release in releases:
-                    r = repo.get_release(release.id)
-                    if not first_tag:
-                        first_tag = r.tag_name
-                    #print(f'r:{r} release.id:{release.id} tag_name:{r.tag_name} count:{count}')
-                    if populate_tag_in_firmware_dropdown(r.tag_name):
-                        # add tags to drop down
-                        self.select_firmware_version.addItem(r.tag_name)
-                    count = count + 1
-                    # simple check to make sure we don't get too many versions
-                    if count > 5:
-                        break
-
-            except Exception as e:
-                print(e)
-
-            # in development, hit this exception:
-            #    github.GithubException.RateLimitExceededException: 403 {"message": "API rate limit exceeded for <IP redacted>. (But here's the good news: Authenticated requests get a higher rate limit. Check out the documentation for more details.)", "documentation_url": "https://docs.github.com/rest/overview/resources-in-the-rest-api#rate-limiting"}
+            tags = get_tags()
+            for tag in tags:
+                self.select_firmware_version.addItem(tag)
         else:
             self.select_device.setToolTip("Select your Meshtastic device.")
-
-        if self.select_firmware_version.count() == 0:
-            if first_tag:
-                # huh, no versions are acceptable? check the populate method
-                print('Warning: No versions pass our popluate check.')
-                self.select_firmware_version.addItem(first_tag)
-            else:
-                # there was a problem, so just set it to this "latest" (at the time of writing)
-                print('Warning: Had to fall back to a hard coded version/id.')
-                fall_back_tag = 'v1.2.53.19c1f9f'
-                self.select_firmware_version.addItem(fall_back_tag)
-
         self.select_firmware_version.setEnabled(True)
         self.select_firmware_version.setToolTip("Select desired firmware version to flash.")
 
@@ -587,6 +597,7 @@ class Form(QDialog):
         self.progress.setValue(100)
         QApplication.processEvents()
 
+    # pylint: disable=unused-argument
     def logo_clicked(self, event):
         """The logo was clicked."""
         print("The logo was clicked")
