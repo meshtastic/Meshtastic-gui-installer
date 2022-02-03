@@ -1,0 +1,3 @@
+[run]
+omit = meshtastic_flasher/tests/*.py
+
