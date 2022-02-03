@@ -40,6 +40,7 @@ MESHTASTIC_COLOR_GREEN = "#67EA94"
 
 MESHTATIC_REPO = 'meshtastic/Meshtastic-device'
 
+
 # see https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file
 # but had to tweak for pypi
 def get_path(filename):
@@ -50,6 +51,7 @@ def get_path(filename):
     path = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(path, filename)
 
+
 def populate_tag_in_firmware_dropdown(tag):
     """Populate this tag in the firmware dropdown?"""
     retval = False
@@ -57,6 +59,7 @@ def populate_tag_in_firmware_dropdown(tag):
         retval = True
     print(f'tag:{tag} populate in dropdown?:{retval}')
     return retval
+
 
 def tag_to_version(tag):
     """Return version from a tag by dropping the leading 'v'."""
@@ -68,12 +71,14 @@ def tag_to_version(tag):
             version = tag
     return version
 
+
 def tags_to_versions(tags):
     """Return a collection of versions from a collection of tags."""
     versions = []
     for tag in tags:
         versions.append(tag_to_version(tag))
     return versions
+
 
 def get_tags_from_github():
     """Get tags from GitHub"""
@@ -93,6 +98,7 @@ def get_tags_from_github():
         print(e)
     return tags
 
+
 def get_tags():
     """Ensure we have some tag to use."""
     tags = []
@@ -103,6 +109,7 @@ def get_tags():
     if len(tags) == 0:
         tags.append('v1.2.53.19c1f9f')
     return tags
+
 
 def zip_file_name_from_version(version):
     """Get the filename for a zip file for a version."""
@@ -348,6 +355,7 @@ class Form(QDialog):
 
     def get_versions(self):
         """Get versions: populate the drop down of available versions from Github tagged releases"""
+        print("start of get_versions")
         tags = []
         if self.firmware_version is None:
             tags = get_tags()
@@ -361,6 +369,8 @@ class Form(QDialog):
         # only enable Flash button if we have both values
         if self.select_port.count() > 0 and self.firmware_version:
             self.select_flash.setEnabled(True)
+        print("got versions")
+
 
     def all_devices(self):
         """Show all devices from zip file"""
@@ -380,6 +390,8 @@ class Form(QDialog):
                         device = device.replace(".bin", "")
                         self.select_device.addItem(device)
 
+
+
     def hotkeys(self):
         """Show hotkeys"""
         print("hotkeys")
@@ -390,35 +402,15 @@ class Form(QDialog):
                                 "D - Detect\n"
                                 "Q - Quit\n"))
 
+
     def show_advanced_options(self):
         """Advanced Options"""
         print("advanced options")
         self.advanced_form.show()
 
-    def detect(self):
-        """Detect port, download zip file from github if we need to, and unzip it"""
 
-        QApplication.processEvents()
-        self.progress.setValue(0)
-        self.progress.show()
-
-        system = platform.system()
-        if system == 'Linux':
-            username = os.getlogin()
-            groups = [g.gr_name for g in grp.getgrall() if username in g.gr_mem]
-            if "dialout" not in groups:
-                # Let the user know that they should be in the dialout group
-                QMessageBox.information(self, "Info",
-                                        (f'Warning: The user ({username}) is not in the (dialout) group. Either:\n'
-                                        'a) run this command as "sudo", or\n'
-                                        'b) add this user to the dialout group using this command:\n'
-                                        f"     sudo usermod -a -G dialout {username}\n"
-                                        "  After running that command, log out and re-login for it to take effect.\n"))
-
-        self.progress.setValue(10)
-        QApplication.processEvents()
-
-        # detect supported devices
+    def detect_devices(self):
+        """Detect devices"""
         supported_devices_detected = detect_supported_devices()
         if len(supported_devices_detected) == 0:
             QMessageBox.information(self, "Info", "No devices detected.\nPlugin a device?")
@@ -433,11 +425,59 @@ class Form(QDialog):
                     self.select_device.addItem(device.for_firmware)
                 if self.select_device.count() > 1:
                     self.select_device.setCurrentIndex(1)
+        return supported_devices_detected
 
-        self.progress.setValue(40)
-        QApplication.processEvents()
 
-        # detect which ports and populate the dropdown
+    def warn_linux_users_if_not_in_dialout_group(self):
+        """Need to warn Linux users if the logged in user is not in the dialout group?"""
+        system = platform.system()
+        if system == 'Linux':
+            username = os.getlogin()
+            groups = [g.gr_name for g in grp.getgrall() if username in g.gr_mem]
+            if "dialout" not in groups:
+                # Let the user know that they should be in the dialout group
+                QMessageBox.information(self, "Info",
+                                        (f'Warning: The user ({username}) is not in the (dialout) group. Either:\n'
+                                        'a) run this command as "sudo", or\n'
+                                        'b) add this user to the dialout group using this command:\n'
+                                        f"     sudo usermod -a -G dialout {username}\n"
+                                        "  After running that command, log out and re-login for it to take effect.\n"))
+
+
+    def update_ports_for_weird_tlora(self):
+        """Dea with weird T-Lora device (single device connected, but shows up as 2 ports)"""
+        # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
+        # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
+        tmp_ports = findPorts()
+        if len(tmp_ports) == 2:
+            first = tmp_ports[0].replace("usbmodem", "")
+            second = tmp_ports[1].replace("wchusbserial", "")
+            if first == second:
+                print('We are dealing with a weird TLora port situation.')
+                self.select_port.clear()
+                self.select_port.addItem(tmp_ports[1])
+                self.select_port.addItem(tmp_ports[0]) # delete this one?
+                ports = tmp_ports
+        return ports
+
+
+    def detect_ports_using_find_ports(self, ports, supported_devices_detected):
+        """Detect ports using the Serial method"""
+        if len(ports) == 0:
+            print("Warning: Could not find any ports using the Meshtstic python autodetection method.")
+
+            ports = findPorts()
+            if len(ports) == 0:
+                print("Warning: Could not find any ports using the Serial library method.")
+                for device in supported_devices_detected:
+                    detect_windows_needs_driver(device, True)
+            else:
+                for port in ports:
+                    self.select_port.addItem(port)
+
+
+    def detect_ports_on_supported_devices(self, supported_devices_detected):
+        """Detect ports on supported devices."""
         ports = active_ports_on_supported_devices(supported_devices_detected)
         ports_sorted = list(ports)
         ports_sorted.sort()
@@ -446,48 +486,13 @@ class Form(QDialog):
             if 'usbmodem' in port:
                 possible_weird = True
             self.select_port.addItem(port)
-
-        self.progress.setValue(70)
-        QApplication.processEvents()
-
         if possible_weird:
-            # deal with weird TLora (single device connected, but shows up as 2 ports)
-            # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
-            # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
-            tmp_ports = findPorts()
-            if len(tmp_ports) == 2:
-                first = tmp_ports[0].replace("usbmodem", "")
-                second = tmp_ports[1].replace("wchusbserial", "")
-                if first == second:
-                    print('We are dealing with a weird TLora port situation.')
-                    self.select_port.clear()
-                    self.select_port.addItem(tmp_ports[1])
-                    self.select_port.addItem(tmp_ports[0]) # delete this one?
-                    ports = tmp_ports
+            ports = self.update_ports_for_weird_tlora()
+        return ports
 
-        self.progress.setValue(80)
-        QApplication.processEvents()
 
-        # our auto-detect did not work
-        if len(ports) == 0:
-            print("Warning: Could not find any ports using the autodetection method.")
-
-            # for now, use the Serial method to discover ports
-            ports = findPorts()
-            if len(ports) == 0:
-                print("Warning: Could not find any ports using the Serial library method.")
-
-                for device in supported_devices_detected:
-                    detect_windows_needs_driver(device, True)
-            else:
-                for port in ports:
-                    self.select_port.addItem(port)
-
-        self.progress.setValue(90)
-        QApplication.processEvents()
-
-        self.all_devices()
-
+    def nrf_stuff(self, supported_devices_detected):
+        """Do nrf stuff in detection"""
         # NRF52 devices
         for device in supported_devices_detected:
             if device.for_firmware in ['rak4631_5005', 'rak4631_19003', 't-echo']:
@@ -593,6 +598,42 @@ class Form(QDialog):
             else:
                 QMessageBox.information(self, "Info", "Could not find the partition.\nPress the RST button TWICE\nthen re-try the pressing the DETECT button again.")
 
+
+    def detect(self):
+        """Detect port, download zip file from github if we need to, and unzip it"""
+        print("start of detect")
+
+        QApplication.processEvents()
+        self.progress.setValue(0)
+        self.progress.show()
+
+        self.warn_linux_users_if_not_in_dialout_group()
+
+        self.progress.setValue(10)
+        QApplication.processEvents()
+
+        supported_devices_detected = self.detect_devices()
+
+        self.progress.setValue(30)
+        QApplication.processEvents()
+
+        ports = self.detect_ports_on_supported_devices(supported_devices_detected)
+
+        self.progress.setValue(50)
+        QApplication.processEvents()
+
+        self.detect_ports_using_find_ports(ports, supported_devices_detected)
+
+        self.progress.setValue(70)
+        QApplication.processEvents()
+
+        self.all_devices()
+
+        self.progress.setValue(80)
+        QApplication.processEvents()
+
+        self.nrf_stuff(supported_devices_detected)
+
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
             self.select_port.setToolTip("Select the communication port/destination")
@@ -604,6 +645,7 @@ class Form(QDialog):
 
         self.progress.setValue(100)
         QApplication.processEvents()
+        print("end of detect")
 
     # pylint: disable=unused-argument
     def logo_clicked(self, event):
