@@ -20,7 +20,7 @@ def test_hotkey_a(qtbot, capsys):
     assert err == ''
 
 
-@patch('meshtastic_flasher.installer.Form.nrf_stuff')
+@patch('meshtastic_flasher.installer.Form.detect_nrf_stuff')
 @patch('meshtastic_flasher.installer.Form.all_devices')
 @patch('meshtastic_flasher.installer.Form.detect_ports_using_find_ports')
 @patch('meshtastic_flasher.installer.Form.detect_ports_on_supported_devices')

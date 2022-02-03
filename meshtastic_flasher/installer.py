@@ -195,6 +195,7 @@ class Form(QDialog):
 
         self.nrf = False
         self.device = None
+        self.update_only = False
 
         self.advanced_form = AdvancedForm()
 
@@ -491,7 +492,7 @@ class Form(QDialog):
         return ports
 
 
-    def nrf_stuff(self, supported_devices_detected):
+    def detect_nrf_stuff(self, supported_devices_detected):
         """Do nrf stuff in detection"""
         # NRF52 devices
         for device in supported_devices_detected:
@@ -632,7 +633,7 @@ class Form(QDialog):
         self.progress.setValue(80)
         QApplication.processEvents()
 
-        self.nrf_stuff(supported_devices_detected)
+        self.detect_nrf_stuff(supported_devices_detected)
 
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
@@ -647,32 +648,105 @@ class Form(QDialog):
         QApplication.processEvents()
         print("end of detect")
 
+
     # pylint: disable=unused-argument
     def logo_clicked(self, event):
         """The logo was clicked."""
         print("The logo was clicked")
         webbrowser.open('https://meshtastic.org')
 
-    # do flash stuff
-    def flash_stuff(self):
-        """Do the flash parts"""
-        proceed = False
-
+    def flash_esp32_update_only_step1(self, percent_complete):
+        """Do step 1 of 2 for esp32 update_only"""
+        print("Step 1/2 esp32 update_only")
+        device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
+        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
+        print(f"ESPTOOL Using command:{' '.join(command)}")
+        esptool.main(command)
+        self.progress.setValue(percent_complete)
         QApplication.processEvents()
-        self.progress.setValue(0)
-        self.progress.show()
 
-        update_only = self.advanced_form.update_only_cb.isChecked()
+    def flash_esp32_update_only_step2(self, percent_complete):
+        """Do step 2 of 2 for esp32 update_only"""
+        print("Step 2/2 esp32 update_only")
+        command = ["--baud", self.speed, "--port", self.port, "erase_region", "0xe000", "0x2000"]
+        print(f"ESPTOOL Using command:{' '.join(command)}")
+        esptool.main(command)
+        self.progress.setValue(percent_complete)
+        QApplication.processEvents()
+
+
+    def flash_esp32_full_step1(self, percent_complete):
+        """Do step 1 of 4 for esp32 full flash"""
+        print("Step 1/4 esp32 full")
+        command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
+        print(f"ESPTOOL Using command:{' '.join(command)}")
+        esptool.main(command)
+        self.progress.setValue(percent_complete)
+        QApplication.processEvents()
+
+
+    def flash_esp32_full_step2(self, percent_complete):
+        """Do step 2 of 4 for esp32 full flash"""
+        print("Step 2/4 esp32 full")
+        system_info_file = f"{self.firmware_version}/system-info.bin"
+        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
+        print(f"ESPTOOL Using command:{' '.join(command)}")
+        esptool.main(command)
+        self.progress.setValue(percent_complete)
+        QApplication.processEvents()
+
+
+    def flash_esp32_full_step3(self, percent_complete):
+        """Do step 3 of 4 for esp32 full flash"""
+        print("Step 3/4 esp32 full")
+        bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
+        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
+        print(f"ESPTOOL Using command:{' '.join(command)}")
+        esptool.main(command)
+        self.progress.setValue(percent_complete)
+        QApplication.processEvents()
+
+
+    def flash_esp32_full_step4(self, percent_complete):
+        """Do step 4 of 4 for esp32 full flash"""
+        print("Step 4/4 esp32 full")
+        device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
+        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
+        print(f"ESPTOOL Using command:{' '.join(command)}")
+        esptool.main(command)
+        self.progress.setValue(percent_complete)
+        QApplication.processEvents()
+
+    def flash_nrf52(self):
+        """Flash nrf52 devices"""
+        print("Flash nrf52")
+        uf2_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.uf2"
+        dest = f'{self.port}/firmware-{self.device}-{self.firmware_version}.uf2'
+        print(f'copying file:{uf2_file} to dest:{dest}')
+        shutil.copyfile(uf2_file, dest)
+        print('done copying')
+
+
+    def check_update_only(self):
+        """Check if the user selected the advanced options "update only" option.
+           Sets self.update_only based on the form value.
+           Returns text for confirmation dialog
+        """
+        self.update_only = self.advanced_form.update_only_cb.isChecked()
         update_only_message = ""
-        if update_only:
+        if self.update_only:
             print('update only is checked')
             update_only_message = "**update only** "
         else:
             print('update only is not checked')
+        return update_only_message
 
-        self.port = self.select_port.currentText()
-        self.device = self.select_device.currentText()
 
+    def confirm_flash_question(self, update_only_message):
+        """Prompt the user to confirm if they want to proceed with the flashing.
+           Returns True if user answered Yes, otherwise returns False
+        """
+        want_to_proceed = False
         verb = 'flash'
         if self.nrf:
             verb = 'copy'
@@ -681,64 +755,48 @@ class Form(QDialog):
         reply = QMessageBox.question(self, 'Flash', confirm_msg,
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
-            proceed = True
+            want_to_proceed = True
+            print("User confirmed they want to flash")
+        return want_to_proceed
+
+
+    def flash_stuff(self):
+        """Flash to the device."""
+        print("Flash was clicked.")
+
+        QApplication.processEvents()
+        self.progress.setValue(0)
+        self.progress.show()
+
+        self.port = self.select_port.currentText()
+        self.device = self.select_device.currentText()
+
+        update_only_message = self.check_update_only()
+
+        proceed = self.confirm_flash_question(update_only_message)
 
         if proceed:
-
             if self.nrf:
                 # nrf52 devices
-                uf2_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.uf2"
-                dest = f'{self.port}/firmware-{self.device}-{self.firmware_version}.uf2'
-                print(f'copying file:{uf2_file} to dest:{dest}')
-                shutil.copyfile(uf2_file, dest)
-                print('done copying')
-
+                self.flash_nrf52()
+                print("nrf52 file was copied")
                 QMessageBox.information(self, "Info", "File was copied.\nWait for the device to reboot.")
-
             else:
                 # esp32 devices
-
-                if update_only:
-                    device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
-                    command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
-                    print(f"ESPTOOL Using command:{' '.join(command)}")
-                    esptool.main(command)
-                    self.progress.setValue(50)
-                    QApplication.processEvents()
-
-                    command = ["--baud", self.speed, "--port", self.port, "erase_region", "0xe000", "0x2000"]
-                    print(f"ESPTOOL Using command:{' '.join(command)}")
-                    esptool.main(command)
-                    self.progress.setValue(100)
-                    QApplication.processEvents()
-
+                if self.update_only:
+                    self.flash_esp32_update_only_step1(50)
+                    self.flash_esp32_update_only_step2(100)
+                    print("esp32 update_only complete")
                 else:
-                    command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
-                    print(f"ESPTOOL Using command:{' '.join(command)}")
-                    esptool.main(command)
-                    self.progress.setValue(25)
+                    # move the progress bar a bit so user sees something is happening
+                    self.progress.setValue(10)
                     QApplication.processEvents()
 
-                    system_info_file = f"{self.firmware_version}/system-info.bin"
-                    command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
-                    print(f"ESPTOOL Using command:{' '.join(command)}")
-                    esptool.main(command)
-                    self.progress.setValue(50)
-                    QApplication.processEvents()
-
-                    bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
-                    command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
-                    print(f"ESPTOOL Using command:{' '.join(command)}")
-                    esptool.main(command)
-                    self.progress.setValue(75)
-                    QApplication.processEvents()
-
-                    device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
-                    command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
-                    print(f"ESPTOOL Using command:{' '.join(command)}")
-                    esptool.main(command)
-                    self.progress.setValue(100)
-                    QApplication.processEvents()
+                    self.flash_esp32_full_step1(25)
+                    self.flash_esp32_full_step2(50)
+                    self.flash_esp32_full_step3(75)
+                    self.flash_esp32_full_step4(100)
+                    print("esp32 full complete")
 
                 QMessageBox.information(self, "Info", "Flashed")
 

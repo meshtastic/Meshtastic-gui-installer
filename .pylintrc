@@ -23,7 +23,7 @@
 # no Warning level messages displayed, use"--disable=all --enable=classes
 # --disable=W"
 #
-disable=line-too-long,fixme,no-name-in-module,super-with-arguments,bare-except,protected-access,import-error,broad-except,too-many-branches,too-many-statements,c-extension-no-member,no-self-use,too-many-locals,too-few-public-methods,invalid-name
+disable=line-too-long,fixme,no-name-in-module,super-with-arguments,bare-except,protected-access,import-error,broad-except,too-many-branches,too-many-statements,c-extension-no-member,no-self-use,too-many-locals,too-few-public-methods,invalid-name,too-many-public-methods
 
 
 [BASIC]
