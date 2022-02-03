@@ -104,6 +104,42 @@ def get_tags():
         tags.append('v1.2.53.19c1f9f')
     return tags
 
+def zip_file_name_from_version(version):
+    """Get the filename for a zip file for a version."""
+    # zip filename from version
+    zip_file_name = "firmware-"
+    zip_file_name += version
+    zip_file_name += ".zip"
+    return zip_file_name
+
+
+def download_if_zip_does_not_exist(zip_file_name, version):
+    """Download the zip_file_name"""
+    # if the file is not already downloaded, download it
+    if not os.path.exists(zip_file_name):
+        print("Need to download...")
+
+        # Note: Probably should use the browser_download_url. Sample url
+        #   https://github.com/meshtastic/Meshtastic-device/releases/download/v1.2.53.19c1f9f/firmware-1.2.53.19c1f9f.zip
+        zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{version}/firmware-{version}.zip'
+        print(f'zip_file_url:{zip_file_url}')
+
+        # TODO: what if error in download?
+        print("downloading...")
+        ssl._create_default_https_context = ssl._create_unverified_context
+        urllib.request.urlretrieve(zip_file_url, zip_file_name)
+        print("done downloading")
+
+
+def unzip_if_necessary(directory, zip_file_name):
+    """Unzip the zip_file_name into the directory"""
+    if not os.path.exists(directory):
+        print("Unzipping files now...")
+        with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
+            zip_ref.extractall(directory)
+        print("done unzipping")
+
+
 class AdvancedForm(QDialog):
     """Advanced options form"""
 
@@ -292,48 +328,20 @@ class Form(QDialog):
         self.progress.setValue(0)
         self.progress.show()
 
-        self.firmware_version = self.select_firmware_version.currentText()[1:] # drop leading v
+        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
+        zip_file_name = zip_file_name_from_version(self.firmware_version)
 
-        # zip filename from tag
-        zip_file_name = "firmware-"
-        zip_file_name += self.firmware_version
-        zip_file_name += ".zip"
+        self.progress.setValue(20)
+        QApplication.processEvents()
 
-        if not zip_file_name:
-            print("We should have a zip_file_name.")
-            sys.exit(1)
+        download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
 
-        # if the file is not already downloaded, download it
-        if not os.path.exists(zip_file_name):
-            print("Need to download...")
+        self.progress.setValue(80)
+        QApplication.processEvents()
 
-            self.progress.setValue(20)
-            QApplication.processEvents()
+        # Note: unzip into directory named the same name as the firmware_version
+        unzip_if_necessary(self.firmware_version, zip_file_name)
 
-            # Note: Probably should use the browser_download_url
-            zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{self.firmware_version}/firmware-{self.firmware_version}.zip'
-            # This is in case we have to temp-disable GitHub during dev due to rate-limiting.
-            #zip_file_url = 'https://github.com/meshtastic/Meshtastic-device/releases/download/v1.2.53.19c1f9f/firmware-1.2.53.19c1f9f.zip'
-            print(f'zip_file_url:{zip_file_url}')
-
-            if not zip_file_url:
-                print("We should have a zip_file_url.")
-                sys.exit(1)
-
-            print("downloading...")
-            ssl._create_default_https_context = ssl._create_unverified_context
-            urllib.request.urlretrieve(zip_file_url, zip_file_name)
-            print("done downloading")
-
-            self.progress.setValue(80)
-            QApplication.processEvents()
-
-        # unzip into directory named the same name as the firmware_version
-        if not os.path.exists(self.firmware_version):
-            print("Unzipping files now...")
-            with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
-                zip_ref.extractall(self.firmware_version)
-            print("done unzipping")
         self.progress.setValue(100)
         QApplication.processEvents()
 
@@ -361,7 +369,7 @@ class Form(QDialog):
                 self.select_device.insertSeparator(self.select_device.count())
                 self.select_device.addItem('All')
                 count = self.select_device.count() - 1
-                # not make the label 'All' selectable
+                # make the label 'All' un-selectable
                 self.select_device.model().item(count).setEnabled(False)
                 filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
                 filenames.sort()

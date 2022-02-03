@@ -35,7 +35,7 @@ def test_get_tags_got_no_tags(fake_get_tags):
     assert len(tags) == 1
     fake_get_tags.assert_called()
 
-@patch('meshtastic_flasher.installer.get_tags_from_github', return_value=['v1.2.53aa', 'v1.2.53fff', '1.2.51f'])
+@patch('meshtastic_flasher.installer.get_tags_from_github', return_value=['v1.2.53aa', 'v1.2.53fff', 'v1.2.51f'])
 def test_get_tags_got_some_tags(fake_get_tags):
     """Test get_tags() when we got some tags"""
     tags = get_tags()
