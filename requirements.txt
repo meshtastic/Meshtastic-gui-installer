@@ -8,3 +8,4 @@ adafruit-nrfutil
 pytest
 pytest-qt
 pytest-cov
+pylint
