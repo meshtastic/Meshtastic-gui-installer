@@ -555,7 +555,10 @@ class Form(QDialog):
                 self.select_device.setCurrentIndex(1)
 
                 # check the bootloder version
-                command = f"cat {self.select_port.currentText()}/INFO_UF2.TXT"
+                verb = "cat"
+                if platform.system() == "Windows":
+                    verb = "type"
+                command = f"{verb} {self.select_port.currentText()}/INFO_UF2.TXT"
                 _, info_output = subprocess.getstatusoutput(command)
                 print(f'info_output:{info_output}')
 

@@ -248,6 +248,105 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     assert err == ''
 
 
+# TODO: findPorts is not being patched
+#@patch('meshtastic.util.findPorts', return_value=['/dev/fake'])
+#@patch('urllib.request.urlretrieve')
+#@patch('os.path.exists', return_value=False)
+#@patch('subprocess.getstatusoutput')
+#@patch('platform.system', return_value='Linux')
+#@patch('psutil.disk_partitions')
+#def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, fake_system,
+#                                                               fake_subprocess, fake_exists,
+#                                                               fake_url, fake_find_ports, monkeypatch,
+#                                                               qtbot, capsys):
+#    """Test when advanced option update RAK boot loader is checked"""
+#
+#    # setup
+#    widget = Form()
+#    qtbot.addWidget(widget)
+#
+#    widget.advanced_form.rak_bootloader_cb.setChecked(True)
+#
+#    mock_partition1 = MagicMock()
+#    mock_partition1.mountpoint = '/dev/fakevolume'
+#    mock_partition2 = MagicMock()
+#    mock_partition2.mountpoint = '/dev/RAK4631'
+#    mock_partitions = [mock_partition1, mock_partition2]
+#    fake_partitions.return_value = mock_partitions
+#
+#    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+#    fake_supported_devices = [fake_device]
+#
+#    fake_subprocess.return_value = None , 'some fake stuff\nDate: Sep  1 2020\neven more'
+#
+#    assert not widget.nrf
+#
+#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+#
+#    # make the call under test
+#    widget.detect_nrf_stuff(fake_supported_devices)
+#
+#    assert widget.nrf
+#    fake_partitions.assert_called()
+#    fake_system.assert_called()
+#    fake_subprocess.assert_called()
+#    fake_exists.assert_called()
+#    fake_url.assert_called()
+#    fake_find_ports.assert_called()
+#    out, err = capsys.readouterr()
+#    assert re.search(r'nrf52 device detected', out, re.MULTILINE)
+#    assert re.search(r'partition:', out, re.MULTILINE)
+#    assert re.search(r'found RAK4631', out, re.MULTILINE)
+#    assert re.search(r'Bootloader info', out, re.MULTILINE)
+#    #assert re.search(r'rak bootloader is not current', out, re.MULTILINE)
+#    assert re.search(r'Checking boot loader version', out, re.MULTILINE)
+#    assert re.search(r'Need to download', out, re.MULTILINE)
+#    assert re.search(r'done downloading', out, re.MULTILINE)
+#    assert err == ''
+
+@patch('subprocess.getstatusoutput')
+@patch('platform.system', return_value='Windows')
+@patch('psutil.disk_partitions')
+def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_windows(fake_partitions, fake_system,
+                                                                     fake_subprocess, monkeypatch,
+                                                                     qtbot, capsys):
+    """Test detect_nrf_stuff()"""
+
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    mock_partition1 = MagicMock()
+    mock_partition1.mountpoint = 'some fake windows drive'
+    mock_partition2 = MagicMock()
+    mock_partition2.mountpoint = 'RAK4631'
+    mock_partitions = [mock_partition1, mock_partition2]
+    fake_partitions.return_value = mock_partitions
+
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+
+    # Note: There are two calls to the subprocess, I'm just making one output work for both
+    fake_subprocess.return_value = None , 'some fake stuff\nDate: Dec  1 2021\neven more\nRAK4631\n'
+
+    assert not widget.nrf
+
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+
+    # make the call under test
+    widget.detect_nrf_stuff(fake_supported_devices)
+
+    assert widget.nrf
+    fake_partitions.assert_called()
+    fake_system.assert_called()
+    fake_subprocess.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'nrf52 device detected', out, re.MULTILINE)
+    assert re.search(r'found partition on windows', out, re.MULTILINE)
+    assert re.search(r'Bootloader info', out, re.MULTILINE)
+    assert re.search(r'rak bootloader is current', out, re.MULTILINE)
+    assert err == ''
+
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_partition_not_found_on_linux(fake_partitions, fake_system,
