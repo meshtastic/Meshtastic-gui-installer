@@ -45,12 +45,9 @@ def test_logo_clicked(fake_open, qtbot, capsys):
     fake_open.assert_called()
 
 
-@patch('meshtastic_flasher.installer.Form.flash_esp32_full_step4')
-@patch('meshtastic_flasher.installer.Form.flash_esp32_full_step3')
-@patch('meshtastic_flasher.installer.Form.flash_esp32_full_step2')
-@patch('meshtastic_flasher.installer.Form.flash_esp32_full_step1')
+@patch('esptool.main')
 @patch('meshtastic_flasher.installer.Form.confirm_flash_question', return_value=True)
-def test_flash_esp32_full_clicked_user_said_yes(fake_confirm, fake1, fake2, fake3, fake4, monkeypatch, qtbot, capsys):
+def test_flash_esp32_full_clicked_user_said_yes(fake_confirm, fake_esp, monkeypatch, qtbot, capsys):
     """Test clicked Flash in Form"""
     widget = Form()
     qtbot.addWidget(widget)
@@ -72,19 +69,19 @@ def test_flash_esp32_full_clicked_user_said_yes(fake_confirm, fake1, fake2, fake
     out, err = capsys.readouterr()
     assert re.search(r'Flash was clicked', out, re.MULTILINE)
     assert re.search(r'update only is not checked', out, re.MULTILINE)
+    assert re.search(r'Step 1/4 esp32 full', out, re.MULTILINE)
+    assert re.search(r'Step 2/4 esp32 full', out, re.MULTILINE)
+    assert re.search(r'Step 3/4 esp32 full', out, re.MULTILINE)
+    assert re.search(r'Step 4/4 esp32 full', out, re.MULTILINE)
     assert re.search(r'esp32 full complete', out, re.MULTILINE)
     assert err == ''
     fake_confirm.assert_called()
-    fake1.assert_called()
-    fake2.assert_called()
-    fake3.assert_called()
-    fake4.assert_called()
+    fake_esp.assert_called()
 
 
-@patch('meshtastic_flasher.installer.Form.flash_esp32_update_only_step2')
-@patch('meshtastic_flasher.installer.Form.flash_esp32_update_only_step1')
+@patch('esptool.main')
 @patch('meshtastic_flasher.installer.Form.confirm_flash_question', return_value=True)
-def test_flash_esp32_update_only_clicked_user_said_yes(fake_confirm, fake1, fake2, monkeypatch, qtbot, capsys):
+def test_flash_esp32_update_only_clicked_user_said_yes(fake_confirm, fake_esp, monkeypatch, qtbot, capsys):
     """Test clicked Flash in Form"""
     widget = Form()
     qtbot.addWidget(widget)
@@ -107,16 +104,17 @@ def test_flash_esp32_update_only_clicked_user_said_yes(fake_confirm, fake1, fake
     out, err = capsys.readouterr()
     assert re.search(r'Flash was clicked', out, re.MULTILINE)
     assert re.search(r'update only is checked', out, re.MULTILINE)
+    assert re.search(r'Step 1/2 esp32 update_only', out, re.MULTILINE)
+    assert re.search(r'Step 2/2 esp32 update_only', out, re.MULTILINE)
     assert re.search(r'esp32 update_only complete', out, re.MULTILINE)
     assert err == ''
     fake_confirm.assert_called()
-    fake1.assert_called()
-    fake2.assert_called()
+    fake_esp.assert_called()
 
 
-@patch('meshtastic_flasher.installer.Form.flash_nrf52')
+@patch('shutil.copyfile')
 @patch('meshtastic_flasher.installer.Form.confirm_flash_question', return_value=True)
-def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake1, monkeypatch, qtbot, capsys):
+def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake_copy, monkeypatch, qtbot, capsys):
     """Test clicked Flash in Form"""
     widget = Form()
     qtbot.addWidget(widget)
@@ -138,10 +136,11 @@ def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake1, monkeypatch, qtbot
     qtbot.mouseClick(widget.select_flash, qt_api.QtCore.Qt.MouseButton.LeftButton)
     out, err = capsys.readouterr()
     assert re.search(r'Flash was clicked', out, re.MULTILINE)
+    assert re.search(r'Flash nrf52', out, re.MULTILINE)
     assert re.search(r'nrf52 file was copied', out, re.MULTILINE)
     assert err == ''
     fake_confirm.assert_called()
-    fake1.assert_called()
+    fake_copy.assert_called()
 
 
 # TODO: Not sure why the patch is not working.
@@ -467,7 +466,7 @@ def test_all_devices(fake_exists, fake_glob, qtbot):
     widget = Form()
     qtbot.addWidget(widget)
     widget.firmware_version = '1.2.3'
-    items = ['firmware-heltec-2.0-1.2.3abacdf.bin', 'firmware-heltec-2.1-1.2.3abacdf.bin']
+    items = ['1.2.3/firmware-heltec-2.0-1.2.3abacdf.bin', '1.2.3/firmware-heltec-2.1-1.2.3abacdf.bin']
     fake_glob.return_value = iter(items)
     assert widget.select_device.count() == 0
     widget.all_devices()
