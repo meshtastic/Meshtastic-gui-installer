@@ -1,11 +1,12 @@
 """tests for Form"""
 import re
 
-from unittest.mock import patch
+from unittest.mock import patch, MagicMock
 
 from pytestqt.qt_compat import qt_api
 from PySide6.QtWidgets import QMessageBox
 
+from meshtastic.supported_device import SupportedDevice
 from meshtastic_flasher.installer import Form
 
 
@@ -143,7 +144,7 @@ def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake1, monkeypatch, qtbot
     fake1.assert_called()
 
 
-# Not sure why the patch is not working.
+# TODO: Not sure why the patch is not working.
 #@patch('meshtastic.util.detect_supported_devices', return_value=set())
 #def test_detect_devices_none_found(faked, capsys, monkeypatch, qtbot):
 #    """Test detect_devices()"""
@@ -158,7 +159,7 @@ def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake1, monkeypatch, qtbot
 #    assert err == ''
 
 
-# Not sure why patch is not working
+# TODO: Not sure why patch is not working
 #@patch('meshtastic.util.findPorts', return_value=[])
 #def test_update_ports_for_weird_tlora_no_ports(faked, capsys, monkeypatch, qtbot):
 #    """Test update_ports_for_weird_tlora()"""
@@ -173,7 +174,7 @@ def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake1, monkeypatch, qtbot
 #    assert re.search(r'No devices detected', out, re.MULTILINE)
 #    assert err == ''
 
-# grp is not available on any system other than Linux... change?
+# TODO: grp is not available on any system other than Linux... change?
 #@patch('grp.getgrall')
 #@patch('os.getlogin', return_value="bob")
 #@patch('platform.system', return_value="Linux")
@@ -191,3 +192,138 @@ def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake1, monkeypatch, qtbot
 #    out, err = capsys.readouterr()
 #    assert re.search(r'user is not in dialout group', out, re.MULTILINE)
 #    assert err == ''
+
+# TODO: Not sure why patch not working
+#@patch('meshtastic_flasher.installer.active_ports_on_supported_devices')
+#def test_detect_ports_on_supported_devices(faked, qtbot):
+#    """Test detect_ports_on_supported_devices()"""
+#    widget = Form()
+#    qtbot.addWidget(widget)
+#
+#    ports = faked.assert_called()
+#    assert len(ports) == 0
+#    # TODO: ... more assertions here
+
+@patch('subprocess.getstatusoutput')
+@patch('platform.system', return_value='Linux')
+@patch('psutil.disk_partitions')
+def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitions, fake_system,
+                                                                   fake_subprocess, monkeypatch,
+                                                                   qtbot, capsys):
+    """Test detect_nrf_stuff()"""
+
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    mock_partition1 = MagicMock()
+    mock_partition1.mountpoint = '/dev/fakevolume'
+    mock_partition2 = MagicMock()
+    mock_partition2.mountpoint = '/dev/RAK4631'
+    mock_partitions = [mock_partition1, mock_partition2]
+    fake_partitions.return_value = mock_partitions
+
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+
+    fake_subprocess.return_value = None , 'some fake stuff\nDate: Dec  1 2021\neven more'
+
+    assert not widget.nrf
+
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+
+    # make the call under test
+    widget.detect_nrf_stuff(fake_supported_devices)
+
+    assert widget.nrf
+    fake_partitions.assert_called()
+    fake_system.assert_called()
+    fake_subprocess.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'nrf52 device detected', out, re.MULTILINE)
+    assert re.search(r'partition:', out, re.MULTILINE)
+    assert re.search(r'found RAK4631', out, re.MULTILINE)
+    assert re.search(r'Bootloader info', out, re.MULTILINE)
+    assert re.search(r'rak bootloader is current', out, re.MULTILINE)
+    assert err == ''
+
+
+@patch('platform.system', return_value='Linux')
+@patch('psutil.disk_partitions')
+def test_detect_nrf_stuff_partition_not_found_on_linux(fake_partitions, fake_system,
+                                                       monkeypatch,
+                                                       qtbot, capsys):
+    """Test detect_nrf_stuff()"""
+
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    mock_partition1 = MagicMock()
+    mock_partition1.mountpoint = '/dev/fakevolume'
+    mock_partition2 = MagicMock()
+    mock_partition2.mountpoint = '/dev/foo'
+    mock_partitions = [mock_partition1, mock_partition2]
+    fake_partitions.return_value = mock_partitions
+
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+
+    assert not widget.nrf
+
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+
+    # make the call under test
+    widget.detect_nrf_stuff(fake_supported_devices)
+
+    assert widget.nrf
+    fake_partitions.assert_called()
+    fake_system.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'nrf52 device detected', out, re.MULTILINE)
+    assert re.search(r'Could not find the partition', out, re.MULTILINE)
+    assert err == ''
+
+
+@patch('subprocess.getstatusoutput')
+@patch('platform.system', return_value='Linux')
+@patch('psutil.disk_partitions')
+def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_partitions, fake_system,
+                                                                       fake_subprocess, monkeypatch,
+                                                                       qtbot, capsys):
+    """Test detect_nrf_stuff()"""
+
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    mock_partition1 = MagicMock()
+    mock_partition1.mountpoint = '/dev/fakevolume'
+    mock_partition2 = MagicMock()
+    mock_partition2.mountpoint = '/dev/RAK4631'
+    mock_partitions = [mock_partition1, mock_partition2]
+    fake_partitions.return_value = mock_partitions
+
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+
+    fake_subprocess.return_value = None , 'some fake stuff\neven more'
+
+    assert not widget.nrf
+
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+
+    # make the call under test
+    widget.detect_nrf_stuff(fake_supported_devices)
+
+    assert widget.nrf
+    fake_partitions.assert_called()
+    fake_system.assert_called()
+    fake_subprocess.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'nrf52 device detected', out, re.MULTILINE)
+    assert re.search(r'partition:', out, re.MULTILINE)
+    assert re.search(r'found RAK4631', out, re.MULTILINE)
+    assert re.search(r'Bootloader info', out, re.MULTILINE)
+    assert re.search(r'rak bootloader is not current', out, re.MULTILINE)
+    assert err == ''

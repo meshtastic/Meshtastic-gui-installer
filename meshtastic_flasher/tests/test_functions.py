@@ -1,10 +1,13 @@
 """ Test functions in installer.py
 """
 
+import re
+
 from unittest.mock import patch
 
 from meshtastic_flasher.installer import (get_path, populate_tag_in_firmware_dropdown,
-                                          tag_to_version, tags_to_versions, get_tags)
+                                          tag_to_version, tags_to_versions, get_tags,
+                                          download_if_zip_does_not_exist, unzip_if_necessary)
 
 
 def test_get_path():
@@ -47,3 +50,32 @@ def test_get_tags_got_some_tags(fake_get_tags):
     tags = get_tags()
     assert len(tags) == 2
     fake_get_tags.assert_called()
+
+
+@patch('urllib.request.urlretrieve')
+@patch('os.path.exists', return_value=False)
+def test_download_if_zip_does_not_exist(patched_exists, patched_url, capsys):
+    """Test download_if_zip_does_not_exist()"""
+
+    download_if_zip_does_not_exist('foo.zip', '1.2.3')
+
+    out, err = capsys.readouterr()
+    assert re.search(r'Need to download', out, re.MULTILINE)
+    assert re.search(r'done downloading', out, re.MULTILINE)
+    assert err == ''
+    patched_exists.assert_called()
+    patched_url.assert_called()
+
+
+@patch('zipfile.ZipFile')
+@patch('os.path.exists', return_value=False)
+def test_unzip_if_necessary(patched_exists, patched_zipfile, capsys):
+    """Test unzip_if_necessary()"""
+
+    unzip_if_necessary('1.2.3', 'foo.zip')
+
+    out, err = capsys.readouterr()
+    assert re.search(r'Unzipping files', out, re.MULTILINE)
+    assert err == ''
+    patched_exists.assert_called()
+    patched_zipfile.assert_called()

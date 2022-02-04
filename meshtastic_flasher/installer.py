@@ -557,7 +557,7 @@ class Form(QDialog):
                 # check the bootloder version
                 command = f"cat {self.select_port.currentText()}/INFO_UF2.TXT"
                 _, info_output = subprocess.getstatusoutput(command)
-                #print('info_output:{info_output}')
+                print(f'info_output:{info_output}')
 
                 rak_bootloader_date = "Date: Dec  1 2021"
                 rak_bootloader_current = False
@@ -565,12 +565,13 @@ class Form(QDialog):
                 print('Bootloader info:')
                 for line in lines:
                     if line == rak_bootloader_date:
-                        print(line)
+                        #print(line)
                         rak_bootloader_current = True
-                        print('*** rak bootloader is current')
+                        print('rak bootloader is current')
                         QMessageBox.information(self, "Info", "The RAK bootloader is current.")
 
                 if (not rak_bootloader_current) and (not self.advanced_form.rak_bootloader_cb.isChecked()):
+                    print('rak bootloader is not current')
                     QMessageBox.information(self, "Info", ('The RAK bootloader is not current.\n'
                                             'If you want to udpate the bootlader,\n'
                                             'go into advanced options by pressing the letter "A" at the main screen,\n'
@@ -600,6 +601,7 @@ class Form(QDialog):
                         QMessageBox.information(self, "Info", "Done updating bootloader.")
 
             else:
+                print("Could not find the partition")
                 QMessageBox.information(self, "Info", "Could not find the partition.\nPress the RST button TWICE\nthen re-try the pressing the DETECT button again.")
 
 
