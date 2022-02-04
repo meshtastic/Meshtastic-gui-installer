@@ -333,7 +333,7 @@ class Form(QDialog):
         self.setLayout(main_layout)
 
         # move version
-        self.label_detected_meshtastic_version.move(45, 275)
+        self.label_detected_meshtastic_version.move(45, 270)
         self.label_detected_meshtastic_version.show()
 
         # Add button signals to slots
@@ -687,8 +687,9 @@ class Form(QDialog):
         version = None
         hwModel = None
         if len(ports) > 0:
+            use_port = ports[0]
             print("Getting version and hwModel from Meshtastic python library")
-            iface = meshtastic.serial_interface.SerialInterface()
+            iface = meshtastic.serial_interface.SerialInterface(devPath=use_port)
             if iface:
                 if iface.myInfo:
                     version = iface.myInfo.firmware_version
