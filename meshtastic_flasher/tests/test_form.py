@@ -8,11 +8,13 @@ from PySide6.QtWidgets import QMessageBox
 
 from meshtastic_flasher.installer import Form
 
+
 def test_Form_title(qtbot):
     """Test for title var in Form"""
     widget = Form()
     qtbot.addWidget(widget)
     assert re.search(r'Meshtastic Flasher v1.0.', widget.windowTitle(), re.MULTILINE)
+
 
 def test_buttons_and_combo_boxes(qtbot):
     """Test initial state of buttons and combo boxes in Form"""
@@ -28,6 +30,7 @@ def test_buttons_and_combo_boxes(qtbot):
     assert not widget.select_port.isEnabled()
     assert not widget.select_device.isEnabled()
     assert not widget.select_flash.isEnabled()
+
 
 @patch('webbrowser.open')
 def test_logo_clicked(fake_open, qtbot, capsys):
@@ -138,3 +141,53 @@ def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake1, monkeypatch, qtbot
     assert err == ''
     fake_confirm.assert_called()
     fake1.assert_called()
+
+
+# Not sure why the patch is not working.
+#@patch('meshtastic.util.detect_supported_devices', return_value=set())
+#def test_detect_devices_none_found(faked, capsys, monkeypatch, qtbot):
+#    """Test detect_devices()"""
+#    widget = Form()
+#    qtbot.addWidget(widget)
+#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+#
+#    widget.detect_devices()
+#    faked.assert_called()
+#    out, err = capsys.readouterr()
+#    assert re.search(r'No devices detected', out, re.MULTILINE)
+#    assert err == ''
+
+
+# Not sure why patch is not working
+#@patch('meshtastic.util.findPorts', return_value=[])
+#def test_update_ports_for_weird_tlora_no_ports(faked, capsys, monkeypatch, qtbot):
+#    """Test update_ports_for_weird_tlora()"""
+#    widget = Form()
+#    qtbot.addWidget(widget)
+#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+#
+#    widget.update_ports_for_weird_tlora()
+#
+#    faked.assert_called()
+#    out, err = capsys.readouterr()
+#    assert re.search(r'No devices detected', out, re.MULTILINE)
+#    assert err == ''
+
+# grp is not available on any system other than Linux... change?
+#@patch('grp.getgrall')
+#@patch('os.getlogin', return_value="bob")
+#@patch('platform.system', return_value="Linux")
+#def test_warn_linux_users_if_not_in_dialout_group(faked_system, faked_getlogin, faked_gr, capsys, monkeypatch, qtbot):
+#    """Test update_ports_for_weird_tlora()"""
+#    widget = Form()
+#    qtbot.addWidget(widget)
+#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+#
+#    widget.warn_linux_users_if_not_in_dialout_group()
+#
+#    faked_system.assert_called()
+#    faked_getlogin.assert_called()
+#    faked_gr.assert_called()
+#    out, err = capsys.readouterr()
+#    assert re.search(r'user is not in dialout group', out, re.MULTILINE)
+#    assert err == ''

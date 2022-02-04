@@ -414,6 +414,7 @@ class Form(QDialog):
         """Detect devices"""
         supported_devices_detected = detect_supported_devices()
         if len(supported_devices_detected) == 0:
+            print("No devices detected")
             QMessageBox.information(self, "Info", "No devices detected.\nPlugin a device?")
         else:
             if len(supported_devices_detected) > 0:
@@ -436,6 +437,7 @@ class Form(QDialog):
             username = os.getlogin()
             groups = [g.gr_name for g in grp.getgrall() if username in g.gr_mem]
             if "dialout" not in groups:
+                print("user is not in dialout group")
                 # Let the user know that they should be in the dialout group
                 QMessageBox.information(self, "Info",
                                         (f'Warning: The user ({username}) is not in the (dialout) group. Either:\n'
@@ -446,7 +448,8 @@ class Form(QDialog):
 
 
     def update_ports_for_weird_tlora(self):
-        """Dea with weird T-Lora device (single device connected, but shows up as 2 ports)"""
+        """Deal with weird T-Lora device (single device connected, but shows up as 2 ports)"""
+        ports = []
         # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
         # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
         tmp_ports = findPorts()
