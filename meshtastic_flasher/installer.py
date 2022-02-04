@@ -71,6 +71,9 @@ def wrapped_detect_windows_needs_driver(device, want_output):
     """Run detect_windows_needs_driver()"""
     return detect_windows_needs_driver(device, want_output)
 
+def wrapped_active_ports_on_supported_devices(supported_devices):
+    """Run active_ports_on_supported_devices()"""
+    return active_ports_on_supported_devices(supported_devices)
 
 def populate_tag_in_firmware_dropdown(tag):
     """Populate this tag in the firmware dropdown?"""
@@ -503,7 +506,7 @@ class Form(QDialog):
 
     def detect_ports_on_supported_devices(self, supported_devices_detected):
         """Detect ports on supported devices."""
-        ports = active_ports_on_supported_devices(supported_devices_detected)
+        ports = wrapped_active_ports_on_supported_devices(supported_devices_detected)
         ports_sorted = list(ports)
         ports_sorted.sort()
         possible_weird = False

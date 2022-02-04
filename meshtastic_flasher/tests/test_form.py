@@ -249,16 +249,37 @@ def test_update_ports_for_weird_tlora_two_ports(faked, monkeypatch, qtbot):
 #    assert re.search(r'user is not in dialout group', out, re.MULTILINE)
 #    assert err == ''
 
-# TODO: Not sure why patch not working
-#@patch('meshtastic_flasher.installer.active_ports_on_supported_devices')
-#def test_detect_ports_on_supported_devices(faked, qtbot):
-#    """Test detect_ports_on_supported_devices()"""
-#    widget = Form()
-#    qtbot.addWidget(widget)
-#
-#    ports = faked.assert_called()
-#    assert len(ports) == 0
-#    # TODO: ... more assertions here
+@patch('meshtastic_flasher.installer.wrapped_active_ports_on_supported_devices')
+def test_detect_ports_on_supported_devices_none_found(faked, qtbot):
+    """Test detect_ports_on_supported_devices()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    faked.return_value = set()
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+    ports = widget.detect_ports_on_supported_devices(fake_supported_devices)
+    faked.assert_called()
+    assert len(ports) == 0
+
+
+@patch('meshtastic_flasher.installer.Form.update_ports_for_weird_tlora')
+@patch('meshtastic_flasher.installer.wrapped_active_ports_on_supported_devices')
+def test_detect_ports_on_supported_devices_some_found(faked_active_ports, faked_update_ports, qtbot):
+    """Test detect_ports_on_supported_devices()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    faked_active_ports.return_value = ('/dev/fake_usbmodem', '/dev/fake2')
+    faked_update_ports.return_value = ['/dev/fake_usbmodem']
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+
+    ports = widget.detect_ports_on_supported_devices(fake_supported_devices)
+    print(ports)
+
+    faked_active_ports.assert_called()
+    faked_update_ports.assert_called()
+    assert len(ports) == 1
+
 
 @patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Linux')
