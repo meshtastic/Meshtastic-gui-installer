@@ -5,3 +5,7 @@ meshtastic>=1.2.80
 qt-material
 psutil
 adafruit-nrfutil
+pytest
+pytest-qt
+pytest-cov
+pylint
