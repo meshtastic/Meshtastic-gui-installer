@@ -737,17 +737,17 @@ class Form(QDialog):
         elif hwModel == 'T_ECHO':
             device = 't-echo'
         elif hwModel == 'TBEAM':
-            device = 't-beam'
+            device = 'tbeam'
         elif hwModel == 'TBEAM0_7': # TODO: not sure about this value
-            device = 't-beam0.7'
+            device = 'tbeam0.7'
         elif hwModel == 'TLORA_V1':
-            device = 't-lora-v1'
+            device = 'tlora-v1'
         elif hwModel == 'TLORA_V2':
-            device = 't-lora-v2'
+            device = 'tlora-v2'
         elif hwModel == 'TLORA_V2_1_1.6': # TODO: not sure about this value
-            device = 't-lora-v2-1-1.6'
+            device = 'tlora-v2-1-1.6'
         elif hwModel == 'TLORA_V1_3': # TODO: not sure about this value
-            device = 't-lora-v1_3'
+            device = 'tlora_v1_3'
         return device
 
 
@@ -829,6 +829,7 @@ class Form(QDialog):
         print("The logo was clicked")
         webbrowser.open('https://meshtastic.org')
 
+
     def flash_esp32_update_only_step1(self, percent_complete):
         """Do step 1 of 2 for esp32 update_only"""
         print("Step 1/2 esp32 update_only")
@@ -838,6 +839,7 @@ class Form(QDialog):
         esptool.main(command)
         self.progress.setValue(percent_complete)
         QApplication.processEvents()
+
 
     def flash_esp32_update_only_step2(self, percent_complete):
         """Do step 2 of 2 for esp32 update_only"""
@@ -891,6 +893,7 @@ class Form(QDialog):
         self.progress.setValue(percent_complete)
         QApplication.processEvents()
 
+
     def flash_nrf52(self):
         """Flash nrf52 devices"""
         print("Flash nrf52")
@@ -942,6 +945,7 @@ class Form(QDialog):
         self.progress.setValue(0)
         self.progress.show()
 
+        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
         self.port = self.select_port.currentText()
         self.device = self.select_device.currentText()
 
