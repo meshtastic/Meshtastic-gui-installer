@@ -175,15 +175,44 @@ def test_detect_devices_some_found(faked, capsys, monkeypatch, qtbot):
     assert widget.select_device.currentText() == "rak4631_5005"
 
 
+@patch('meshtastic_flasher.installer.wrapped_detect_windows_needs_driver')
+@patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=[])
+def test_detect_ports_using_find_ports_none_found(faked, faked_windows, monkeypatch, qtbot, capsys):
+    """Test detect_ports_using_find_ports()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+    widget.detect_ports_using_find_ports([], fake_supported_devices)
+    assert widget.select_port.count() == 0
+    faked.assert_called()
+    faked_windows.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'Warning: Could not find any ports', out, re.MULTILINE)
+    assert err == ''
+
+
+@patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=['/dev/fake1','/dev/fake2'])
+def test_detect_ports_using_find_ports_some_found(faked, monkeypatch, qtbot):
+    """Test detect_ports_using_find_ports()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+    widget.detect_ports_using_find_ports([], fake_supported_devices)
+    assert widget.select_port.count() == 2
+    faked.assert_called()
+
+
 @patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=[])
 def test_update_ports_for_weird_tlora_no_ports(faked, monkeypatch, qtbot):
     """Test update_ports_for_weird_tlora()"""
     widget = Form()
     qtbot.addWidget(widget)
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
-
     ports = widget.update_ports_for_weird_tlora()
-
     assert len(ports) == 0
     faked.assert_called()
 

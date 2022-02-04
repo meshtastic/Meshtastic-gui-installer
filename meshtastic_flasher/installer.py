@@ -55,19 +55,21 @@ def get_path(filename):
 
 def wrapped_findPorts():
     """Run findPorts()
-       This wrapper is because I could not figure out how to patch
+       These wrappers are because I could not figure out how to patch
        meshtastic.util.findPorts(). But, if I wrap it, here,
        I can patch this function.
     """
     return findPorts()
 
+
 def wrapped_detect_supported_devices():
-    """Run detect_supported_devices()
-       This wrapper is because I could not figure out how to patch
-       meshtastic.util.detect_supported_devices(). But, if I wrap it, here,
-       I can patch this function.
-    """
+    """Run detect_supported_devices()"""
     return detect_supported_devices()
+
+
+def wrapped_detect_windows_needs_driver(device, want_output):
+    """Run detect_windows_needs_driver()"""
+    return detect_windows_needs_driver(device, want_output)
 
 
 def populate_tag_in_firmware_dropdown(tag):
@@ -493,7 +495,7 @@ class Form(QDialog):
             if len(ports) == 0:
                 print("Warning: Could not find any ports using the Serial library method.")
                 for device in supported_devices_detected:
-                    detect_windows_needs_driver(device, True)
+                    wrapped_detect_windows_needs_driver(device, True)
             else:
                 for port in ports:
                     self.select_port.addItem(port)
