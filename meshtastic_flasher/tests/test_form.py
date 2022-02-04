@@ -1,5 +1,7 @@
-"""tests for Form"""
+"""Tests for Form()"""
+
 import re
+
 
 from unittest.mock import patch, MagicMock
 
@@ -7,6 +9,8 @@ from pytestqt.qt_compat import qt_api
 from PySide6.QtWidgets import QMessageBox
 
 from meshtastic.supported_device import SupportedDevice
+#from meshtastic.serial_interface import SerialInterface
+
 from meshtastic_flasher.installer import Form
 
 
@@ -325,6 +329,49 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     assert err == ''
 
 
+@patch('subprocess.getstatusoutput')
+@patch('platform.system', return_value='Linux')
+@patch('psutil.disk_partitions')
+def test_detect_nrf_stuff_with_techo_and_current_bootloader_on_linux(fake_partitions, fake_system,
+                                                                     fake_subprocess, monkeypatch,
+                                                                     qtbot, capsys):
+    """Test detect_nrf_stuff()"""
+
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    mock_partition1 = MagicMock()
+    mock_partition1.mountpoint = '/dev/fakevolume'
+    mock_partition2 = MagicMock()
+    mock_partition2.mountpoint = '/dev/TECHOBOOT'
+    mock_partitions = [mock_partition1, mock_partition2]
+    fake_partitions.return_value = mock_partitions
+
+    fake_device = SupportedDevice(name='b', for_firmware='t-echo')
+    fake_supported_devices = [fake_device]
+
+    fake_subprocess.return_value = None , 'some fake stuff\nDate: Oct 13 2021\neven more\nModel: LilyGo T-Echo\nfoo'
+
+    assert not widget.nrf
+
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+
+    # make the call under test
+    widget.detect_nrf_stuff(fake_supported_devices)
+
+    assert widget.nrf
+    fake_partitions.assert_called()
+    fake_system.assert_called()
+    fake_subprocess.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'nrf52 device detected', out, re.MULTILINE)
+    assert re.search(r'partition:', out, re.MULTILINE)
+    assert re.search(r'definitely a T-Echo', out, re.MULTILINE)
+    assert re.search(r't-echo bootloader is current', out, re.MULTILINE)
+    assert err == ''
+
+
 @patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=['/dev/fake'])
 @patch('urllib.request.urlretrieve')
 @patch('os.path.exists', return_value=False)
@@ -536,6 +583,7 @@ def test_confirm_flash_question_nrf(qtbot, capsys, monkeypatch):
     assert re.search(r'User confirmed they want to flash', out, re.MULTILINE)
     assert err == ''
 
+
 @patch('glob.glob')
 @patch('os.path.exists', return_value=True)
 def test_all_devices(fake_exists, fake_glob, qtbot):
@@ -552,3 +600,47 @@ def test_all_devices(fake_exists, fake_glob, qtbot):
     assert widget.select_device.count() == 4
     fake_exists.assert_called()
     fake_glob.assert_called()
+
+
+# TODO: not sure why this is not patching
+#@patch('meshtastic.serial_interface.SerialInterface')
+#def test_version_and_device_from_info_with_ports(faked, qtbot):
+#    """Test version_and_device_from_info()"""
+#    # setup
+#    widget = Form()
+#    qtbot.addWidget(widget)
+#    faked = MagicMock(autospec=SerialInterface)
+#    ports=['/dev/fake1']
+#
+#    widget.version_and_device_from_info(ports)
+#
+#    faked.assert_called()
+
+
+def test_update_device_dropdown(qtbot):
+    """Test all_devices()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    assert widget.select_device.count() == 0
+    device='foo'
+    widget.update_device_dropdown(device)
+    # 'Detected' and the device 'foo'
+    assert widget.select_device.count() == 2
+
+
+def test_hwModel_to_device(qtbot):
+    """Test hwModel_to_device()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    assert widget.hwModel_to_device("HELTEC_V1") == "heltec-v1"
+    assert widget.hwModel_to_device("HELTEC_V2_1") == "heltec-v2.1"
+    assert widget.hwModel_to_device("HELTEC_V2_0") == "heltec-v2.0"
+    assert widget.hwModel_to_device("MESHTASTIC_DIY_V1") == "meshtastic-diy-v1"
+    assert widget.hwModel_to_device("RAK4631") == "rak4631_5005"
+    assert widget.hwModel_to_device("T_ECHO") == "t-echo"
+    assert widget.hwModel_to_device("TBEAM") == "t-beam"
+    assert widget.hwModel_to_device("TBEAM0_7") == "t-beam0.7"
+    assert widget.hwModel_to_device("TLORA_V1") == "t-lora-v1"
+    assert widget.hwModel_to_device("TLORA_V2") == "t-lora-v2"
+    assert widget.hwModel_to_device("TLORA_V2_1_1.6") == "t-lora-v2-1-1.6"
+    assert widget.hwModel_to_device("TLORA_V1_3") == "t-lora-v1_3"

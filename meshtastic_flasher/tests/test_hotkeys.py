@@ -5,6 +5,7 @@ import re
 from unittest.mock import patch
 
 from PySide6.QtWidgets import QMessageBox
+from meshtastic.supported_device import SupportedDevice
 
 from meshtastic_flasher.installer import Form
 
@@ -24,7 +25,7 @@ def test_hotkey_a(qtbot, capsys):
 @patch('meshtastic_flasher.installer.Form.detect_nrf_stuff')
 @patch('meshtastic_flasher.installer.Form.all_devices')
 @patch('meshtastic_flasher.installer.Form.detect_ports_using_find_ports')
-@patch('meshtastic_flasher.installer.Form.detect_ports_on_supported_devices')
+@patch('meshtastic_flasher.installer.Form.detect_ports_on_supported_devices', return_value=['/dev/foo'])
 @patch('meshtastic_flasher.installer.Form.detect_devices')
 @patch('meshtastic_flasher.installer.Form.warn_linux_users_if_not_in_dialout_group', return_value=False)
 def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported_devices,
@@ -34,14 +35,17 @@ def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported
     widget = Form()
     qtbot.addWidget(widget)
 
-    widget.select_port.addItem("foo")
+    #widget.select_port.addItem("foo")
+    widget.select_device.addItem("bar")
     widget.firmware_version="1.0.3"
+
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+    fake_detect_devices.return_value = fake_supported_devices
 
     assert not widget.select_flash.isEnabled()
 
     qtbot.keyPress(widget, "d")
-
-    assert not widget.select_flash.isEnabled()
 
     out, err = capsys.readouterr()
     assert re.search(r'D was pressed', out, re.MULTILINE)

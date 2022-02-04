@@ -699,7 +699,6 @@ class Form(QDialog):
                 print(f'version:{version} hwModel:{hwModel}')
                 device = self.hwModel_to_device(hwModel)
                 self.update_device_dropdown(device)
-                #QMessageBox.information(self, "Info", f"Detected that v{version} of Meshtastic is installed")
         else:
             print("No devices detected")
             QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
@@ -727,7 +726,7 @@ class Form(QDialog):
         elif hwModel == 'HELTEC_V2_0':
             device = 'heltec-v2.0'
         elif hwModel == 'MESHTASTIC_DIY_V1': # TODO: not sure about this value
-            device = 'meshastic-diy-v1'
+            device = 'meshtastic-diy-v1'
         elif hwModel == 'RAK4631':
             # NOTE: *still* could be 19003
             device = 'rak4631_5005'
