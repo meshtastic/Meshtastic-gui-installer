@@ -458,3 +458,20 @@ def test_confirm_flash_question_nrf(qtbot, capsys, monkeypatch):
     out, err = capsys.readouterr()
     assert re.search(r'User confirmed they want to flash', out, re.MULTILINE)
     assert err == ''
+
+@patch('glob.glob')
+@patch('os.path.exists', return_value=True)
+def test_all_devices(fake_exists, fake_glob, qtbot):
+    """Test all_devices()"""
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+    widget.firmware_version = '1.2.3'
+    items = ['firmware-heltec-2.0-1.2.3abacdf.bin', 'firmware-heltec-2.1-1.2.3abacdf.bin']
+    fake_glob.return_value = iter(items)
+    assert widget.select_device.count() == 0
+    widget.all_devices()
+    # 'Detected', 'All', and 2 devices above
+    assert widget.select_device.count() == 4
+    fake_exists.assert_called()
+    fake_glob.assert_called()

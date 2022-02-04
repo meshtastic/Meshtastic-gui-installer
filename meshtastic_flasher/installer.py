@@ -5,6 +5,7 @@
 import os
 import sys
 import shutil
+import glob
 import platform
 import urllib
 import ssl
@@ -382,14 +383,15 @@ class Form(QDialog):
                 count = self.select_device.count() - 1
                 # make the label 'All' un-selectable
                 self.select_device.model().item(count).setEnabled(False)
-                filenames = next(os.walk(self.firmware_version), (None, None, []))[2]
-                filenames.sort()
+                filenames = glob.glob(f'{self.firmware_version}/firmware-*.bin')
+                print(f'filenames:{filenames}')
+                filenames = sorted(filenames)
                 for filename in filenames:
-                    if filename.startswith("firmware-") and filename.endswith(".bin"):
-                        device = filename.replace("firmware-", "")
-                        device = device.replace(f"-{self.firmware_version}", "")
-                        device = device.replace(".bin", "")
-                        self.select_device.addItem(device)
+                    device = filename.replace(f"{self.firmware_version}/", "")
+                    device = device.replace("firmware-", "")
+                    device = device.replace(f"-{self.firmware_version}", "")
+                    device = device.replace(".bin", "")
+                    self.select_device.addItem(device)
 
 
 

@@ -31,7 +31,16 @@ def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported
     """Test hot key 'd' """
     widget = Form()
     qtbot.addWidget(widget)
+
+    widget.select_port.addItem("foo")
+    widget.firmware_version="1.0.3"
+
+    assert not widget.select_flash.isEnabled()
+
     qtbot.keyPress(widget, "d")
+
+    assert widget.select_flash.isEnabled()
+
     out, err = capsys.readouterr()
     assert re.search(r'D was pressed', out, re.MULTILINE)
     assert re.search(r'start of detect', out, re.MULTILINE)
