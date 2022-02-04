@@ -327,3 +327,35 @@ def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_part
     assert re.search(r'Bootloader info', out, re.MULTILINE)
     assert re.search(r'rak bootloader is not current', out, re.MULTILINE)
     assert err == ''
+
+
+def test_confirm_flash_question_not_nrf(qtbot, capsys, monkeypatch):
+    """Test confirm_flash_question()"""
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.Yes)
+
+    widget.confirm_flash_question("")
+
+    out, err = capsys.readouterr()
+    assert re.search(r'User confirmed they want to flash', out, re.MULTILINE)
+    assert err == ''
+
+
+def test_confirm_flash_question_nrf(qtbot, capsys, monkeypatch):
+    """Test confirm_flash_question()"""
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    widget.nrf = True
+
+    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.Yes)
+
+    widget.confirm_flash_question("")
+
+    out, err = capsys.readouterr()
+    assert re.search(r'User confirmed they want to flash', out, re.MULTILINE)
+    assert err == ''
