@@ -1,6 +1,8 @@
 # Meshtastic-gui-installer
 
-[![Pylint](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml/badge.svg)](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml) ![PyPI - Downloads](https://img.shields.io/pypi/dm/meshtastic-flasher)
+[![Pylint](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml/badge.svg)](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml) 
+[![codecov](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer/branch/master/graph/badge.svg?token=CEnDhjIJFU)](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/meshtastic-flasher)
 
 Cross Platform GUI for installing Meshtastic Firmware. It also checks and updates the RAK 4631 bootloader.
 
