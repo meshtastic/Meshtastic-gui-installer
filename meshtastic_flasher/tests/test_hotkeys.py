@@ -41,11 +41,13 @@ def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported
 
     fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
     fake_supported_devices = [fake_device]
-    fake_detect_devices.return_value = fake_supported_devices
+    fake_all_devices.return_value = fake_supported_devices
 
     assert not widget.select_flash.isEnabled()
 
     qtbot.keyPress(widget, "d")
+
+    #assert widget.select_flash.isEnabled()
 
     out, err = capsys.readouterr()
     assert re.search(r'D was pressed', out, re.MULTILINE)

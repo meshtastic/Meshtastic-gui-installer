@@ -387,6 +387,9 @@ class Form(QDialog):
 
         self.all_devices()
 
+        if self.select_port.count() > 0 and self.firmware_version:
+            self.select_flash.setEnabled(True)
+
         self.progress.setValue(100)
         QApplication.processEvents()
 
@@ -399,8 +402,10 @@ class Form(QDialog):
             tags = get_tags()
             for tag in tags:
                 self.select_firmware_version.addItem(tag)
+            self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
         else:
             self.select_device.setToolTip("Select your Meshtastic device.")
+
         self.select_firmware_version.setEnabled(True)
         self.select_firmware_version.setToolTip("Select desired firmware version to flash.")
 
@@ -530,8 +535,7 @@ class Form(QDialog):
         for port in ports_sorted:
             if 'usbmodem' in port:
                 possible_weird = True
-            if self.select_port.findText(port) == -1:
-                self.select_port.addItem(port)
+            self.select_port.addItem(port)
         if possible_weird:
             ports = self.update_ports_for_weird_tlora()
         return ports
@@ -801,14 +805,18 @@ class Form(QDialog):
 
         self.detect_nrf_stuff(supported_devices_detected)
 
+        if self.select_port.count() > 0:
+            self.select_port.setToolTip("Select the communication port/destination")
+            self.select_port.setDisabled(False)
+
+        if self.select_device.count() > 0:
+            self.select_device.setToolTip("Select the device variant")
+            self.select_device.setDisabled(False)
+
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
-            self.select_port.setToolTip("Select the communication port/destination")
-            self.select_device.setToolTip("Select the device variant")
             self.select_flash.setEnabled(True)
             self.select_flash.setToolTip('Click the FLASH button to write to the device.')
-            self.select_port.setDisabled(False)
-            self.select_device.setDisabled(False)
 
         self.progress.setValue(100)
         QApplication.processEvents()
