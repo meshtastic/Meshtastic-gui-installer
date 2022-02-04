@@ -143,35 +143,63 @@ def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake_copy, monkeypatch, q
     fake_copy.assert_called()
 
 
-# TODO: Not sure why the patch is not working.
-#@patch('meshtastic.util.detect_supported_devices', return_value=set())
-#def test_detect_devices_none_found(faked, capsys, monkeypatch, qtbot):
-#    """Test detect_devices()"""
-#    widget = Form()
-#    qtbot.addWidget(widget)
-#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
-#
-#    widget.detect_devices()
-#    faked.assert_called()
-#    out, err = capsys.readouterr()
-#    assert re.search(r'No devices detected', out, re.MULTILINE)
-#    assert err == ''
+@patch('meshtastic_flasher.installer.wrapped_detect_supported_devices', return_value=[])
+def test_detect_devices_none_found(faked, capsys, monkeypatch, qtbot):
+    """Test detect_devices()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+
+    widget.detect_devices()
+    faked.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'No devices detected', out, re.MULTILINE)
+    assert err == ''
 
 
-# TODO: Not sure why patch is not working
-#@patch('meshtastic.util.findPorts', return_value=[])
-#def test_update_ports_for_weird_tlora_no_ports(faked, capsys, monkeypatch, qtbot):
-#    """Test update_ports_for_weird_tlora()"""
-#    widget = Form()
-#    qtbot.addWidget(widget)
-#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
-#
-#    widget.update_ports_for_weird_tlora()
-#
-#    faked.assert_called()
-#    out, err = capsys.readouterr()
-#    assert re.search(r'No devices detected', out, re.MULTILINE)
-#    assert err == ''
+@patch('meshtastic_flasher.installer.wrapped_detect_supported_devices')
+def test_detect_devices_some_found(faked, capsys, monkeypatch, qtbot):
+    """Test detect_devices()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+    faked.return_value = fake_supported_devices
+
+    widget.detect_devices()
+    faked.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'Detected', out, re.MULTILINE)
+    assert err == ''
+    assert widget.select_device.currentText() == "rak4631_5005"
+
+
+@patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=[])
+def test_update_ports_for_weird_tlora_no_ports(faked, monkeypatch, qtbot):
+    """Test update_ports_for_weird_tlora()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+
+    ports = widget.update_ports_for_weird_tlora()
+
+    assert len(ports) == 0
+    faked.assert_called()
+
+
+@patch('meshtastic_flasher.installer.wrapped_findPorts')
+def test_update_ports_for_weird_tlora_two_ports(faked, monkeypatch, qtbot):
+    """Test update_ports_for_weird_tlora()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    faked.return_value = ['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
+    ports = widget.update_ports_for_weird_tlora()
+    assert len(ports) == 2
+    assert widget.select_port.currentText() == '/dev/cu.wchusbserial533C0052151'
+    faked.assert_called()
+
 
 # TODO: grp is not available on any system other than Linux... change?
 #@patch('grp.getgrall')
@@ -247,61 +275,61 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     assert err == ''
 
 
-# TODO: findPorts is not being patched
-#@patch('meshtastic.util.findPorts', return_value=['/dev/fake'])
-#@patch('urllib.request.urlretrieve')
-#@patch('os.path.exists', return_value=False)
-#@patch('subprocess.getstatusoutput')
-#@patch('platform.system', return_value='Linux')
-#@patch('psutil.disk_partitions')
-#def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, fake_system,
-#                                                               fake_subprocess, fake_exists,
-#                                                               fake_url, fake_find_ports, monkeypatch,
-#                                                               qtbot, capsys):
-#    """Test when advanced option update RAK boot loader is checked"""
-#
-#    # setup
-#    widget = Form()
-#    qtbot.addWidget(widget)
-#
-#    widget.advanced_form.rak_bootloader_cb.setChecked(True)
-#
-#    mock_partition1 = MagicMock()
-#    mock_partition1.mountpoint = '/dev/fakevolume'
-#    mock_partition2 = MagicMock()
-#    mock_partition2.mountpoint = '/dev/RAK4631'
-#    mock_partitions = [mock_partition1, mock_partition2]
-#    fake_partitions.return_value = mock_partitions
-#
-#    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
-#    fake_supported_devices = [fake_device]
-#
-#    fake_subprocess.return_value = None , 'some fake stuff\nDate: Sep  1 2020\neven more'
-#
-#    assert not widget.nrf
-#
-#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
-#
-#    # make the call under test
-#    widget.detect_nrf_stuff(fake_supported_devices)
-#
-#    assert widget.nrf
-#    fake_partitions.assert_called()
-#    fake_system.assert_called()
-#    fake_subprocess.assert_called()
-#    fake_exists.assert_called()
-#    fake_url.assert_called()
-#    fake_find_ports.assert_called()
-#    out, err = capsys.readouterr()
-#    assert re.search(r'nrf52 device detected', out, re.MULTILINE)
-#    assert re.search(r'partition:', out, re.MULTILINE)
-#    assert re.search(r'found RAK4631', out, re.MULTILINE)
-#    assert re.search(r'Bootloader info', out, re.MULTILINE)
-#    #assert re.search(r'rak bootloader is not current', out, re.MULTILINE)
-#    assert re.search(r'Checking boot loader version', out, re.MULTILINE)
-#    assert re.search(r'Need to download', out, re.MULTILINE)
-#    assert re.search(r'done downloading', out, re.MULTILINE)
-#    assert err == ''
+@patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=['/dev/fake'])
+@patch('urllib.request.urlretrieve')
+@patch('os.path.exists', return_value=False)
+@patch('subprocess.getstatusoutput')
+@patch('platform.system', return_value='Linux')
+@patch('psutil.disk_partitions')
+def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, fake_system,
+                                                               fake_subprocess, fake_exists,
+                                                               fake_url, fake_find_ports, monkeypatch,
+                                                               qtbot, capsys):
+    """Test when advanced option update RAK boot loader is checked"""
+
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    widget.advanced_form.rak_bootloader_cb.setChecked(True)
+
+    mock_partition1 = MagicMock()
+    mock_partition1.mountpoint = '/dev/fakevolume'
+    mock_partition2 = MagicMock()
+    mock_partition2.mountpoint = '/dev/RAK4631'
+    mock_partitions = [mock_partition1, mock_partition2]
+    fake_partitions.return_value = mock_partitions
+
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+
+    fake_subprocess.return_value = None , 'some fake stuff\nDate: Sep  1 2020\neven more'
+
+    assert not widget.nrf
+
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+
+    # make the call under test
+    widget.detect_nrf_stuff(fake_supported_devices)
+
+    assert widget.nrf
+    fake_partitions.assert_called()
+    fake_system.assert_called()
+    fake_subprocess.assert_called()
+    fake_exists.assert_called()
+    fake_url.assert_called()
+    fake_find_ports.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'nrf52 device detected', out, re.MULTILINE)
+    assert re.search(r'partition:', out, re.MULTILINE)
+    assert re.search(r'found RAK4631', out, re.MULTILINE)
+    assert re.search(r'Bootloader info', out, re.MULTILINE)
+    #assert re.search(r'rak bootloader is not current', out, re.MULTILINE)
+    assert re.search(r'Checking boot loader version', out, re.MULTILINE)
+    assert re.search(r'Need to download', out, re.MULTILINE)
+    assert re.search(r'done downloading', out, re.MULTILINE)
+    assert err == ''
+
 
 @patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Windows')

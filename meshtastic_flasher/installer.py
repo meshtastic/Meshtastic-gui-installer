@@ -53,6 +53,23 @@ def get_path(filename):
     return os.path.join(path, filename)
 
 
+def wrapped_findPorts():
+    """Run findPorts()
+       This wrapper is because I could not figure out how to patch
+       meshtastic.util.findPorts(). But, if I wrap it, here,
+       I can patch this function.
+    """
+    return findPorts()
+
+def wrapped_detect_supported_devices():
+    """Run detect_supported_devices()
+       This wrapper is because I could not figure out how to patch
+       meshtastic.util.detect_supported_devices(). But, if I wrap it, here,
+       I can patch this function.
+    """
+    return detect_supported_devices()
+
+
 def populate_tag_in_firmware_dropdown(tag):
     """Populate this tag in the firmware dropdown?"""
     retval = False
@@ -414,7 +431,7 @@ class Form(QDialog):
 
     def detect_devices(self):
         """Detect devices"""
-        supported_devices_detected = detect_supported_devices()
+        supported_devices_detected = wrapped_detect_supported_devices()
         if len(supported_devices_detected) == 0:
             print("No devices detected")
             QMessageBox.information(self, "Info", "No devices detected.\nPlugin a device?")
@@ -452,12 +469,12 @@ class Form(QDialog):
     def update_ports_for_weird_tlora(self):
         """Deal with weird T-Lora device (single device connected, but shows up as 2 ports)"""
         ports = []
-        # ports:['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
         # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
-        tmp_ports = findPorts()
+        tmp_ports = wrapped_findPorts()
         if len(tmp_ports) == 2:
             first = tmp_ports[0].replace("usbmodem", "")
             second = tmp_ports[1].replace("wchusbserial", "")
+            print(f'first:{first} second:{second}')
             if first == second:
                 print('We are dealing with a weird TLora port situation.')
                 self.select_port.clear()
@@ -472,7 +489,7 @@ class Form(QDialog):
         if len(ports) == 0:
             print("Warning: Could not find any ports using the Meshtstic python autodetection method.")
 
-            ports = findPorts()
+            ports = wrapped_findPorts()
             if len(ports) == 0:
                 print("Warning: Could not find any ports using the Serial library method.")
                 for device in supported_devices_detected:
@@ -596,7 +613,7 @@ class Form(QDialog):
                         urllib.request.urlretrieve(bootloader_zip_url, bootloader_zip_filename)
                         print("done downloading")
 
-                    query_ports_again = findPorts()
+                    query_ports_again = wrapped_findPorts()
                     if len(query_ports_again) == 1:
                         port_to_use = query_ports_again[0]
                         command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
