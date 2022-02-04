@@ -20,6 +20,7 @@ def test_hotkey_a(qtbot, capsys):
     assert err == ''
 
 
+@patch('meshtastic_flasher.installer.Form.version_and_device_from_info')
 @patch('meshtastic_flasher.installer.Form.detect_nrf_stuff')
 @patch('meshtastic_flasher.installer.Form.all_devices')
 @patch('meshtastic_flasher.installer.Form.detect_ports_using_find_ports')
@@ -27,7 +28,8 @@ def test_hotkey_a(qtbot, capsys):
 @patch('meshtastic_flasher.installer.Form.detect_devices')
 @patch('meshtastic_flasher.installer.Form.warn_linux_users_if_not_in_dialout_group', return_value=False)
 def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported_devices,
-                  fake_detect_ports_using_find_ports, fake_all_devices, fake_nrf_stuff, qtbot, capsys):
+                  fake_detect_ports_using_find_ports, fake_all_devices, fake_nrf_stuff,
+                  fake_version_and_device_from_info, qtbot, capsys):
     """Test hot key 'd' """
     widget = Form()
     qtbot.addWidget(widget)
@@ -39,7 +41,7 @@ def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported
 
     qtbot.keyPress(widget, "d")
 
-    assert widget.select_flash.isEnabled()
+    assert not widget.select_flash.isEnabled()
 
     out, err = capsys.readouterr()
     assert re.search(r'D was pressed', out, re.MULTILINE)
@@ -52,6 +54,7 @@ def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported
     fake_detect_ports_using_find_ports.assert_called()
     fake_all_devices.assert_called()
     fake_nrf_stuff.assert_called()
+    fake_version_and_device_from_info.assert_called()
 
 
 @patch('meshtastic_flasher.installer.unzip_if_necessary')
