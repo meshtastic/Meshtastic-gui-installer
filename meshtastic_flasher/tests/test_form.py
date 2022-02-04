@@ -643,4 +643,4 @@ def test_hwModel_to_device(qtbot):
     assert widget.hwModel_to_device("TLORA_V1") == "tlora-v1"
     assert widget.hwModel_to_device("TLORA_V2") == "tlora-v2"
     assert widget.hwModel_to_device("TLORA_V2_1_1.6") == "tlora-v2-1-1.6"
-    assert widget.hwModel_to_device("TLORA_V1_3") == "tlora-v1_3"
+    assert widget.hwModel_to_device("TLORA_V1_3") == "tlora_v1_3"
