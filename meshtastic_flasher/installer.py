@@ -785,6 +785,22 @@ class Form(QDialog):
         self.label_detected_meshtastic_version.setText('')
 
 
+    def enable_at_end_of_detect(self):
+        """Set combo boxes and flash button if appropriate."""
+        if self.select_port.count() > 0:
+            self.select_port.setToolTip("Select the communication port/destination")
+            self.select_port.setEnabled(True)
+
+        if self.select_device.count() > 0:
+            self.select_device.setToolTip("Select the device variant")
+            self.select_device.setEnabled(True)
+
+        # only enable Flash button and Device dropdown if we have firmware and ports
+        if self.select_port.count() > 0 and self.firmware_version:
+            self.select_flash.setEnabled(True)
+            self.select_flash.setToolTip('Click the FLASH button to write to the device.')
+
+
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
         print("start of detect")
@@ -830,18 +846,7 @@ class Form(QDialog):
                 self.progress.setValue(80)
                 QApplication.processEvents()
 
-        if self.select_port.count() > 0:
-            self.select_port.setToolTip("Select the communication port/destination")
-            self.select_port.setDisabled(False)
-
-        if self.select_device.count() > 0:
-            self.select_device.setToolTip("Select the device variant")
-            self.select_device.setDisabled(False)
-
-        # only enable Flash button and Device dropdown if we have firmware and ports
-        if self.select_port.count() > 0 and self.firmware_version:
-            self.select_flash.setEnabled(True)
-            self.select_flash.setToolTip('Click the FLASH button to write to the device.')
+        self.enable_at_end_of_detect()
 
         self.progress.setValue(100)
         QApplication.processEvents()
