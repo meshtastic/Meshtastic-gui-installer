@@ -385,7 +385,7 @@ class Form(QDialog):
         # Note: unzip into directory named the same name as the firmware_version
         unzip_if_necessary(self.firmware_version, zip_file_name)
 
-        self.all_devices()
+        #self.all_devices()
 
         if self.select_port.count() > 0 and self.firmware_version:
             self.select_flash.setEnabled(True)
@@ -429,6 +429,7 @@ class Form(QDialog):
                 filenames = sorted(filenames)
                 for filename in filenames:
                     device = filename.replace(f"{self.firmware_version}/", "")
+                    device = device.replace(f"{self.firmware_version}\\", "")
                     device = device.replace("firmware-", "")
                     device = device.replace(f"-{self.firmware_version}", "")
                     device = device.replace(".bin", "")
@@ -457,16 +458,15 @@ class Form(QDialog):
         """Detect devices"""
         supported_devices_detected = wrapped_detect_supported_devices()
         if len(supported_devices_detected) > 0:
-            if len(supported_devices_detected) > 0:
-                self.select_device.clear()
-                self.select_device.addItem('Detected')
-                # not make the label 'Detected' selectable
-                self.select_device.model().item(0).setEnabled(False)
-                for device in supported_devices_detected:
-                    print(f'Detected {device.name}')
-                    self.select_device.addItem(device.for_firmware)
-                if self.select_device.count() > 1:
-                    self.select_device.setCurrentIndex(1)
+            self.select_device.clear()
+            self.select_device.addItem('Detected')
+            # not make the label 'Detected' selectable
+            self.select_device.model().item(0).setEnabled(False)
+            for device in supported_devices_detected:
+                print(f'Detected {device.name}')
+                self.select_device.addItem(device.for_firmware)
+            if self.select_device.count() > 1:
+                self.select_device.setCurrentIndex(1)
         else:
             print("No devices detected")
         return supported_devices_detected
@@ -541,14 +541,16 @@ class Form(QDialog):
         return ports
 
 
-    def detect_nrf_stuff(self, supported_devices_detected):
-        """Do nrf stuff in detection"""
+    def detect_nrf(self, supported_devices_detected):
+        """See if nrf device"""
         # NRF52 devices
         for device in supported_devices_detected:
             if device.for_firmware in ['rak4631_5005', 'rak4631_19003', 't-echo']:
                 print('nrf52 device detected')
                 self.nrf = True
 
+    def detect_nrf_stuff(self):
+        """Do nrf stuff in detection"""
         if self.nrf:
             self.select_port.clear()
 
@@ -683,30 +685,33 @@ class Form(QDialog):
 
 
     def version_and_device_from_info(self, ports):
-        """Get firmware version and "for firmware" device info from meshtastic python lib"""
-        version = None
-        hwModel = None
+        """Get firmware version and "for firmware" device info from meshtastic python lib
+           returns True if detected device is nrf (so we do not continue the detection path)
+        """
+        is_nrf = False
         if len(ports) > 0:
             use_port = ports[0]
             print("Getting version and hwModel from Meshtastic python library")
             iface = meshtastic.serial_interface.SerialInterface(devPath=use_port)
             if iface:
                 if iface.myInfo:
-                    version = iface.myInfo.firmware_version
-                    self.detected_meshtastic_version = version
-                    self.label_detected_meshtastic_version.setText(f'Detected:\n{version}')
+                    self.detected_meshtastic_version = iface.myInfo.firmware_version
+                    self.label_detected_meshtastic_version.setText(f'Detected:\n{self.detected_meshtastic_version}')
+                hwModel = None
                 if iface.nodes:
                     for n in iface.nodes.values():
                         if n['num'] == iface.myInfo.my_node_num:
                             hwModel = n['user']['hwModel']
                             break
                 iface.close()
-                print(f'version:{version} hwModel:{hwModel}')
-                device = self.hwModel_to_device(hwModel)
-                self.update_device_dropdown(device)
-        else:
-            print("No devices detected")
-            QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
+                if self.is_hwModel_nrf(hwModel):
+                    # this is an NRF device but not in boot mode
+                    is_nrf = True
+                    QMessageBox.information(self, "Info", "NRF device detected.\n\nPress RST button twice then click the DETECT button again.")
+                else:
+                    device = self.hwModel_to_device(hwModel)
+                    self.update_device_dropdown(device)
+        return is_nrf
 
 
     def update_device_dropdown(self, device):
@@ -751,6 +756,13 @@ class Form(QDialog):
             device = 'tlora_v1_3'
         return device
 
+    def is_hwModel_nrf(self, hwModel):
+        """Return True if hwModel is nrf"""
+        is_nrf = False
+        if hwModel in ['RAK4631', 'T_ECHO']:
+            is_nrf = True
+        return is_nrf
+
 
     def reset_for_detect(self):
         """Reset the devices and ports when you hit DETECT."""
@@ -792,32 +804,39 @@ class Form(QDialog):
         self.progress.setValue(50)
         QApplication.processEvents()
 
-        ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
+        self.detect_nrf(supported_devices_detected)
+        if self.nrf:
+            self.detect_nrf_stuff()
+        else:
+            ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
 
         self.progress.setValue(70)
         QApplication.processEvents()
 
-        self.version_and_device_from_info(ports)
+        is_nrf = self.version_and_device_from_info(ports)
+        if not is_nrf:
 
-        self.all_devices()
+            if self.select_port.count() > 0:
+                self.all_devices()
+            else:
+                print("No devices detected")
+                QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
 
-        self.progress.setValue(80)
-        QApplication.processEvents()
+            self.progress.setValue(80)
+            QApplication.processEvents()
 
-        self.detect_nrf_stuff(supported_devices_detected)
+            if self.select_port.count() > 0:
+                self.select_port.setToolTip("Select the communication port/destination")
+                self.select_port.setDisabled(False)
 
-        if self.select_port.count() > 0:
-            self.select_port.setToolTip("Select the communication port/destination")
-            self.select_port.setDisabled(False)
+            if self.select_device.count() > 0:
+                self.select_device.setToolTip("Select the device variant")
+                self.select_device.setDisabled(False)
 
-        if self.select_device.count() > 0:
-            self.select_device.setToolTip("Select the device variant")
-            self.select_device.setDisabled(False)
-
-        # only enable Flash button and Device dropdown if we have firmware and ports
-        if self.select_port.count() > 0 and self.firmware_version:
-            self.select_flash.setEnabled(True)
-            self.select_flash.setToolTip('Click the FLASH button to write to the device.')
+            # only enable Flash button and Device dropdown if we have firmware and ports
+            if self.select_port.count() > 0 and self.firmware_version:
+                self.select_flash.setEnabled(True)
+                self.select_flash.setToolTip('Click the FLASH button to write to the device.')
 
         self.progress.setValue(100)
         QApplication.processEvents()

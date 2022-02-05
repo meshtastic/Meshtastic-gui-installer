@@ -304,17 +304,19 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
+    assert not widget.nrf
     fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
     fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
 
     fake_subprocess.return_value = None , 'some fake stuff\nDate: Dec  1 2021\neven more'
 
-    assert not widget.nrf
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
@@ -348,17 +350,18 @@ def test_detect_nrf_stuff_with_techo_and_current_bootloader_on_linux(fake_partit
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
+    assert not widget.nrf
     fake_device = SupportedDevice(name='b', for_firmware='t-echo')
     fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
 
     fake_subprocess.return_value = None , 'some fake stuff\nDate: Oct 13 2021\neven more\nModel: LilyGo T-Echo\nfoo'
-
-    assert not widget.nrf
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
@@ -397,17 +400,18 @@ def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, 
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
+    assert not widget.nrf
     fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
     fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
 
     fake_subprocess.return_value = None , 'some fake stuff\nDate: Sep  1 2020\neven more'
-
-    assert not widget.nrf
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
@@ -447,18 +451,19 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_windows(fake_partit
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
+    assert not widget.nrf
     fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
     fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
 
     # Note: There are two calls to the subprocess, I'm just making one output work for both
     fake_subprocess.return_value = None , 'some fake stuff\nDate: Dec  1 2021\neven more\nRAK4631\n'
 
-    assert not widget.nrf
-
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
@@ -489,15 +494,16 @@ def test_detect_nrf_stuff_partition_not_found_on_linux(fake_partitions, fake_sys
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
+    assert not widget.nrf
     fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
     fake_supported_devices = [fake_device]
-
-    assert not widget.nrf
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
@@ -527,17 +533,19 @@ def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_part
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
-    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
-    fake_supported_devices = [fake_device]
 
     fake_subprocess.return_value = None , 'some fake stuff\neven more'
 
     assert not widget.nrf
 
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
+
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
