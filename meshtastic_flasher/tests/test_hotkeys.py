@@ -6,6 +6,8 @@ from unittest.mock import patch
 
 from PySide6.QtWidgets import QMessageBox
 
+from meshtastic.supported_device import SupportedDevice
+
 from meshtastic_flasher.installer import Form
 
 def test_hotkey_a(qtbot, capsys):
@@ -49,6 +51,38 @@ def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported
     fake_detect_ports_on_supported_devices.assert_called()
     fake_detect_ports_using_find_ports.assert_called()
     fake_version_and_device_from_info.assert_called()
+
+
+@patch('meshtastic_flasher.installer.Form.detect_nrf_stuff')
+@patch('meshtastic_flasher.installer.Form.detect_ports_on_supported_devices')
+@patch('meshtastic_flasher.installer.Form.detect_devices')
+@patch('meshtastic_flasher.installer.Form.warn_linux_users_if_not_in_dialout_group')
+def test_hotkey_d_with_nrf(fake_warn, fake_detect_devices, fake_detect_ports_on_supported_devices,
+                           fake_detect_nrf_stuff, qtbot, capsys):
+    """Test hot key 'd' """
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    widget.select_device.addItem("bar")
+    widget.firmware_version="1.0.3"
+
+    assert not widget.select_flash.isEnabled()
+
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+    fake_detect_devices.return_value = fake_supported_devices
+
+    qtbot.keyPress(widget, "d")
+
+    out, err = capsys.readouterr()
+    assert re.search(r'D was pressed', out, re.MULTILINE)
+    assert re.search(r'start of detect', out, re.MULTILINE)
+    assert re.search(r'end of detect', out, re.MULTILINE)
+    assert err == ''
+    fake_warn.assert_called()
+    fake_detect_devices.assert_called()
+    fake_detect_ports_on_supported_devices.assert_called()
+    fake_detect_nrf_stuff.assert_called()
 
 
 @patch('meshtastic_flasher.installer.unzip_if_necessary')

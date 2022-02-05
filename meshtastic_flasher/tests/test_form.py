@@ -658,3 +658,22 @@ def test_is_hwModel_nrf(qtbot):
     assert widget.is_hwModel_nrf("T_ECHO")
     assert not widget.is_hwModel_nrf("")
     assert not widget.is_hwModel_nrf("HELTEC_V1")
+
+
+def test_enable_at_end_of_detect(qtbot):
+    """Test enable_at_end_of_detect()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    widget.select_port.addItem("fake")
+    widget.select_device.addItem("fake")
+    widget.firmware_version = '1.2.3'
+
+    assert not widget.select_port.isEnabled()
+    assert not widget.select_device.isEnabled()
+    assert not widget.select_flash.isEnabled()
+
+    widget.enable_at_end_of_detect()
+
+    assert widget.select_port.isEnabled()
+    assert widget.select_device.isEnabled()
+    assert widget.select_flash.isEnabled()
