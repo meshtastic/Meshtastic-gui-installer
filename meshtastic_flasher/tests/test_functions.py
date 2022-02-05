@@ -2,7 +2,6 @@
 """
 
 import re
-import sys
 
 from unittest.mock import patch
 
