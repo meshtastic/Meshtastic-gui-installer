@@ -28,6 +28,9 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
                                QCheckBox, QFormLayout)
 from qt_material import apply_stylesheet
 
+import meshtastic
+import meshtastic.serial_interface
+
 from meshtastic_flasher.version import __version__
 
 # windows does not like this one
@@ -212,13 +215,14 @@ class Form(QDialog):
         """constructor"""
         super(Form, self).__init__(parent)
 
-        self.port = None
         self.speed = '921600'
-        self.firmware_version = None
 
+        self.port = None
+        self.firmware_version = None
         self.nrf = False
         self.device = None
         self.update_only = False
+        self.detected_meshtastic_version = None
 
         self.advanced_form = AdvancedForm()
 
@@ -242,6 +246,7 @@ class Form(QDialog):
         self.select_port.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the port.")
         self.select_port.setMinimumContentsLength(25)
         self.select_port.setDisabled(True)
+        self.select_port.setDuplicatesEnabled(False)
 
         self.select_device = QComboBox()
         self.select_device.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the device.")
@@ -275,6 +280,9 @@ class Form(QDialog):
 
         self.label_device = QLabel(self)
         self.label_device.setText("                        Device")
+
+        self.label_detected_meshtastic_version = QLabel(self)
+        self.label_detected_meshtastic_version.setText("")
 
         # Create layout and add widgets
         main_layout = QVBoxLayout()
@@ -323,6 +331,10 @@ class Form(QDialog):
         main_layout.addLayout(progress_layout)
         main_layout.addStretch(1)
         self.setLayout(main_layout)
+
+        # move version
+        self.label_detected_meshtastic_version.move(45, 270)
+        self.label_detected_meshtastic_version.show()
 
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked
@@ -373,6 +385,11 @@ class Form(QDialog):
         # Note: unzip into directory named the same name as the firmware_version
         unzip_if_necessary(self.firmware_version, zip_file_name)
 
+        #self.all_devices()
+
+        if self.select_port.count() > 0 and self.firmware_version:
+            self.select_flash.setEnabled(True)
+
         self.progress.setValue(100)
         QApplication.processEvents()
 
@@ -385,8 +402,10 @@ class Form(QDialog):
             tags = get_tags()
             for tag in tags:
                 self.select_firmware_version.addItem(tag)
+            self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
         else:
             self.select_device.setToolTip("Select your Meshtastic device.")
+
         self.select_firmware_version.setEnabled(True)
         self.select_firmware_version.setToolTip("Select desired firmware version to flash.")
 
@@ -410,6 +429,7 @@ class Form(QDialog):
                 filenames = sorted(filenames)
                 for filename in filenames:
                     device = filename.replace(f"{self.firmware_version}/", "")
+                    device = device.replace(f"{self.firmware_version}\\", "")
                     device = device.replace("firmware-", "")
                     device = device.replace(f"-{self.firmware_version}", "")
                     device = device.replace(".bin", "")
@@ -437,20 +457,18 @@ class Form(QDialog):
     def detect_devices(self):
         """Detect devices"""
         supported_devices_detected = wrapped_detect_supported_devices()
-        if len(supported_devices_detected) == 0:
-            print("No devices detected")
-            QMessageBox.information(self, "Info", "No devices detected.\nPlugin a device?")
+        if len(supported_devices_detected) > 0:
+            self.select_device.clear()
+            self.select_device.addItem('Detected')
+            # not make the label 'Detected' selectable
+            self.select_device.model().item(0).setEnabled(False)
+            for device in supported_devices_detected:
+                print(f'Detected {device.name}')
+                self.select_device.addItem(device.for_firmware)
+            if self.select_device.count() > 1:
+                self.select_device.setCurrentIndex(1)
         else:
-            if len(supported_devices_detected) > 0:
-                self.select_device.clear()
-                self.select_device.addItem('Detected')
-                # not make the label 'Detected' selectable
-                self.select_device.model().item(0).setEnabled(False)
-                for device in supported_devices_detected:
-                    print(f'Detected {device.name}')
-                    self.select_device.addItem(device.for_firmware)
-                if self.select_device.count() > 1:
-                    self.select_device.setCurrentIndex(1)
+            print("No devices detected")
         return supported_devices_detected
 
 
@@ -462,6 +480,8 @@ class Form(QDialog):
             groups = [g.gr_name for g in grp.getgrall() if username in g.gr_mem]
             if "dialout" not in groups:
                 print("user is not in dialout group")
+                print(f"  sudo usermod -a -G dialout {username}")
+                print("Then logout. And re-login.")
                 # Let the user know that they should be in the dialout group
                 QMessageBox.information(self, "Info",
                                         (f'Warning: The user ({username}) is not in the (dialout) group. Either:\n'
@@ -477,20 +497,22 @@ class Form(QDialog):
         # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
         tmp_ports = wrapped_findPorts()
         if len(tmp_ports) == 2:
-            first = tmp_ports[0].replace("usbmodem", "")
-            second = tmp_ports[1].replace("wchusbserial", "")
-            print(f'first:{first} second:{second}')
-            if first == second:
-                print('We are dealing with a weird TLora port situation.')
-                self.select_port.clear()
-                self.select_port.addItem(tmp_ports[1])
-                self.select_port.addItem(tmp_ports[0]) # delete this one?
-                ports = tmp_ports
+            if 'wchusbserial' in tmp_ports[1]:
+                first = tmp_ports[0].replace("usbmodem", "")
+                second = tmp_ports[1].replace("wchusbserial", "")
+                print(f'first:{first} second:{second}')
+                if first == second:
+                    print('We are dealing with a weird TLora port situation.')
+                    self.select_port.clear()
+                    self.select_port.addItem(tmp_ports[1])
+                    self.select_port.addItem(tmp_ports[0]) # delete this one?
+                    ports = tmp_ports
         return ports
 
 
     def detect_ports_using_find_ports(self, ports, supported_devices_detected):
         """Detect ports using the Serial method"""
+        ports = []
         if len(ports) == 0:
             print("Warning: Could not find any ports using the Meshtstic python autodetection method.")
 
@@ -501,7 +523,9 @@ class Form(QDialog):
                     wrapped_detect_windows_needs_driver(device, True)
             else:
                 for port in ports:
-                    self.select_port.addItem(port)
+                    if self.select_port.findText(port) == -1:
+                        self.select_port.addItem(port)
+        return ports
 
 
     def detect_ports_on_supported_devices(self, supported_devices_detected):
@@ -519,14 +543,16 @@ class Form(QDialog):
         return ports
 
 
-    def detect_nrf_stuff(self, supported_devices_detected):
-        """Do nrf stuff in detection"""
+    def detect_nrf(self, supported_devices_detected):
+        """See if nrf device"""
         # NRF52 devices
         for device in supported_devices_detected:
             if device.for_firmware in ['rak4631_5005', 'rak4631_19003', 't-echo']:
                 print('nrf52 device detected')
                 self.nrf = True
 
+    def detect_nrf_stuff(self):
+        """Do nrf stuff in detection"""
         if self.nrf:
             self.select_port.clear()
 
@@ -550,6 +576,7 @@ class Form(QDialog):
                             #print(f'parts:{parts}')
                             if search in line:
                                 self.select_port.addItem(f"{parts[0]}:/")
+                                self.select_port.setEnabled(True)
                                 break
             else: # Linux or Darwin
                 for partition in partitions:
@@ -558,83 +585,211 @@ class Form(QDialog):
                         if search in partition.mountpoint:
                             print(f'*** found {search}')
                             self.select_port.addItem(partition.mountpoint)
+                            self.select_port.setEnabled(True)
                             found_partition = True
                             break
 
             if found_partition:
-                # the 19003 reports same as 5005, so we cannot really trust it
-                # for now add both 5005 and 19003 to devices, also add separator line
-                # and the T-Echo
-                self.select_device.clear()
-                self.select_device.addItem('Detected')
-                # do not make the label 'Detected' selectable
-                self.select_device.model().item(0).setEnabled(False)
-                self.select_device.addItem('rak4631_5005')
-                self.select_device.addItem('rak4631_19003')
-                self.select_device.insertSeparator(self.select_device.count())
-                self.select_device.addItem('Other')
-                count = self.select_device.count() - 1
-                self.select_device.model().item(count).setEnabled(False)
-                self.select_device.addItem('t-echo')
-                self.select_device.setCurrentIndex(1)
+                rak_bootloader_date = "Date: Dec  1 2021"
+                techo_bootloader_date = "Date: Oct 13 2021"
+                techo_uf2_line = "Model: LilyGo T-Echo"
+                is_techo = False
+                rak_bootloader_current = False
+                techo_bootloader_current = False
 
                 # check the bootloder version
-                verb = "cat"
-                if platform.system() == "Windows":
-                    verb = "type"
-                command = f"{verb} {self.select_port.currentText()}/INFO_UF2.TXT"
-                _, info_output = subprocess.getstatusoutput(command)
-                print(f'info_output:{info_output}')
-
-                rak_bootloader_date = "Date: Dec  1 2021"
-                rak_bootloader_current = False
-                lines = str(info_output).split('\n')
+                with open(f"{self.select_port.currentText()}/INFO_UF2.TXT", encoding='utf-8') as f:
+                    lines = f.readlines()
                 print('Bootloader info:')
+                print(f'lines:{lines}')
                 for line in lines:
+                    line = line.replace('\n', '')
+                    if line == techo_uf2_line:
+                        is_techo=True
+                        print('definitely a T-Echo')
+                    if line == techo_bootloader_date:
+                        techo_bootloader_current = True
+                        print('t-echo bootloader is current')
+                        QMessageBox.information(self, "Info", "The T-Echo bootloader is current.")
                     if line == rak_bootloader_date:
                         #print(line)
                         rak_bootloader_current = True
                         print('rak bootloader is current')
                         QMessageBox.information(self, "Info", "The RAK bootloader is current.")
 
-                if (not rak_bootloader_current) and (not self.advanced_form.rak_bootloader_cb.isChecked()):
-                    print('rak bootloader is not current')
-                    QMessageBox.information(self, "Info", ('The RAK bootloader is not current.\n'
-                                            'If you want to udpate the bootlader,\n'
-                                            'go into advanced options by pressing the letter "A" at the main screen,\n'
-                                            'and check the update RAK bootloader then press DETECT again.'))
+                # the 19003 reports same as 5005, so we cannot really trust it
+                # for now add both 5005 and 19003 to devices
+                # if we found the t-echo line, then swap
+                self.select_device.clear()
+                self.select_device.addItem('Detected')
+                if is_techo:
+                    # do not make the label 'Detected' selectable
+                    self.select_device.model().item(0).setEnabled(False)
+                    self.select_device.addItem('t-echo')
+                    self.select_device.insertSeparator(self.select_device.count())
+                    self.select_device.addItem('Other')
+                    count = self.select_device.count() - 1
+                    self.select_device.model().item(count).setEnabled(False)
+                    self.select_device.addItem('rak4631_5005')
+                    self.select_device.addItem('rak4631_19003')
+                    self.select_device.setCurrentIndex(1)
+                    self.select_device.setEnabled(True)
+                else:
+                    # do not make the label 'Detected' selectable
+                    self.select_device.model().item(0).setEnabled(False)
+                    self.select_device.addItem('rak4631_5005')
+                    self.select_device.addItem('rak4631_19003')
+                    self.select_device.insertSeparator(self.select_device.count())
+                    self.select_device.addItem('Other')
+                    count = self.select_device.count() - 1
+                    self.select_device.model().item(count).setEnabled(False)
+                    self.select_device.addItem('t-echo')
+                    self.select_device.setCurrentIndex(1)
+                    self.select_device.setEnabled(True)
 
-                if (not rak_bootloader_current) and self.advanced_form.rak_bootloader_cb.isChecked() and self.select_device.currentText().startswith('rak'):
-                    QMessageBox.information(self, "Info", ("Update RAK bootloader was requested.\n"
-                                            "Press the RST button ONCE to get out of bootloader mode, then continue."))
+                if is_techo:
+                    if not techo_bootloader_current:
+                        print("t-echo bootloader is not current")
+                else:
+                    if (not rak_bootloader_current) and (not self.advanced_form.rak_bootloader_cb.isChecked()):
+                        print('rak bootloader is not current')
+                        QMessageBox.information(self, "Info", ('The RAK bootloader is not current.\n'
+                                                'If you want to udpate the bootlader,\n'
+                                                'go into advanced options by pressing the letter "A" at the main screen,\n'
+                                                'and check the update RAK bootloader then press DETECT again.'))
 
-                    print('Checking boot loader version')
-                    # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
-                    bootloader_zip_url = "https://github.com/RAKWireless/WisBlock/releases/download/0.4.2/WisCore_RAK4631_Board_Bootloader.zip"
-                    bootloader_zip_filename = "WisCore_RAK4631_Board_Bootloader.zip"
-                    if not os.path.exists(bootloader_zip_filename):
-                        print(f"Need to download the {bootloader_zip_filename} downloading...")
-                        ssl._create_default_https_context = ssl._create_unverified_context
-                        urllib.request.urlretrieve(bootloader_zip_url, bootloader_zip_filename)
-                        print("done downloading")
+                    if (not rak_bootloader_current) and self.advanced_form.rak_bootloader_cb.isChecked() and self.select_device.currentText().startswith('rak'):
+                        QMessageBox.information(self, "Info", ("Update RAK bootloader was requested.\n"
+                                                "Press the RST button ONCE to get out of bootloader mode, then continue."))
 
-                    query_ports_again = wrapped_findPorts()
-                    if len(query_ports_again) == 1:
-                        port_to_use = query_ports_again[0]
-                        command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
-                        _, nrfutil_output = subprocess.getstatusoutput(command)
-                        print(nrfutil_output)
+                        print('Checking boot loader version')
+                        # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
+                        bootloader_zip_url = "https://github.com/RAKWireless/WisBlock/releases/download/0.4.2/WisCore_RAK4631_Board_Bootloader.zip"
+                        bootloader_zip_filename = "WisCore_RAK4631_Board_Bootloader.zip"
+                        if not os.path.exists(bootloader_zip_filename):
+                            print(f"Need to download the {bootloader_zip_filename} downloading...")
+                            ssl._create_default_https_context = ssl._create_unverified_context
+                            urllib.request.urlretrieve(bootloader_zip_url, bootloader_zip_filename)
+                            print("done downloading")
 
-                        QMessageBox.information(self, "Info", "Done updating bootloader.")
+                        query_ports_again = wrapped_findPorts()
+                        if len(query_ports_again) == 1:
+                            port_to_use = query_ports_again[0]
+                            command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
+                            _, nrfutil_output = subprocess.getstatusoutput(command)
+                            print(nrfutil_output)
+
+                            QMessageBox.information(self, "Info", "Done updating bootloader.")
 
             else:
                 print("Could not find the partition")
                 QMessageBox.information(self, "Info", "Could not find the partition.\nPress the RST button TWICE\nthen re-try the pressing the DETECT button again.")
 
 
+    def version_and_device_from_info(self, ports):
+        """Get firmware version and "for firmware" device info from meshtastic python lib
+           returns True if detected device is nrf (so we do not continue the detection path)
+        """
+        is_nrf = False
+        if len(ports) > 0:
+            use_port = list(ports)[0]
+            print("Getting version and hwModel from Meshtastic python library")
+            try:
+                iface = meshtastic.serial_interface.SerialInterface(devPath=use_port)
+                if iface:
+                    if iface.myInfo:
+                        self.detected_meshtastic_version = iface.myInfo.firmware_version
+                        self.label_detected_meshtastic_version.setText(f'Detected:\n{self.detected_meshtastic_version}')
+                    hwModel = None
+                    if iface.nodes:
+                        for n in iface.nodes.values():
+                            if n['num'] == iface.myInfo.my_node_num:
+                                hwModel = n['user']['hwModel']
+                                break
+                    iface.close()
+                    if self.is_hwModel_nrf(hwModel):
+                        # this is an NRF device but not in boot mode
+                        is_nrf = True
+                        QMessageBox.information(self, "Info", "NRF device detected.\n\nPress RST button twice then click the DETECT button again.")
+                    else:
+                        device = self.hwModel_to_device(hwModel)
+                        self.update_device_dropdown(device)
+            except Exception as e:
+                print(f'Exception:{e}')
+                QMessageBox.warning(self, "Warning", "Had a problem talking with the device.\nMaybe disconnect and reconnect the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put in boot mode by pressing RST button twice.")
+        return is_nrf
+
+
+    def update_device_dropdown(self, device):
+        """Update the device drop down with the device detected"""
+        if device:
+            self.select_device.clear()
+            self.select_device.addItem('Detected')
+            # not make the label 'Detected' selectable
+            self.select_device.model().item(0).setEnabled(False)
+            self.select_device.addItem(device)
+            if self.select_device.count() > 1:
+                self.select_device.setCurrentIndex(1)
+
+
+    def hwModel_to_device(self, hwModel):
+        """Convert the hwModel from python lib to device for drop downlist"""
+        device = None
+        if hwModel == 'HELTEC_V1':
+            device = 'heltec-v1'
+        elif hwModel == 'HELTEC_V2_1':
+            device = 'heltec-v2.1'
+        elif hwModel == 'HELTEC_V2_0':
+            device = 'heltec-v2.0'
+        elif hwModel == 'DIY_V1':
+            device = 'meshtastic-diy-v1'
+        elif hwModel == 'RAK4631':
+            # NOTE: *still* could be 19003
+            device = 'rak4631_5005'
+        elif hwModel == 'T_ECHO':
+            device = 't-echo'
+        elif hwModel == 'TBEAM': # TODO: double check value might be TBEAM_V10
+            device = 'tbeam'
+        elif hwModel == 'TBEAM_V07':
+            device = 'tbeam0.7'
+        elif hwModel == 'TLORA_V1':
+            device = 'tlora-v1'
+        elif hwModel == 'TLORA_V2':
+            device = 'tlora-v2'
+        elif hwModel == 'TLORA_V2_1_16':
+            device = 'tlora-v2-1-1.6'
+        elif hwModel == 'TLORA_V1_3':
+            device = 'tlora_v1_3'
+        return device
+
+    def is_hwModel_nrf(self, hwModel):
+        """Return True if hwModel is nrf"""
+        is_nrf = False
+        if hwModel in ['RAK4631', 'T_ECHO']:
+            is_nrf = True
+        return is_nrf
+
+
+    def reset_for_detect(self):
+        """Reset the devices and ports when you hit DETECT."""
+        self.port = None
+        self.nrf = False
+        self.device = None
+        self.update_only = False
+        self.select_device.clear()
+        self.select_port.clear()
+        self.select_flash.setEnabled(False)
+        self.select_port.setEnabled(False)
+        self.select_device.setEnabled(False)
+        self.detected_meshtastic_version = None
+        self.label_detected_meshtastic_version.setText('')
+
+
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
         print("start of detect")
+
+        self.reset_for_detect()
 
         QApplication.processEvents()
         self.progress.setValue(0)
@@ -655,26 +810,38 @@ class Form(QDialog):
         self.progress.setValue(50)
         QApplication.processEvents()
 
-        self.detect_ports_using_find_ports(ports, supported_devices_detected)
+        self.detect_nrf(supported_devices_detected)
+        if self.nrf:
+            # we must be in boot mode
+            self.detect_nrf_stuff()
+        else:
+            ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
 
-        self.progress.setValue(70)
-        QApplication.processEvents()
+            # probably not in boot mode, see if this device is an nrf device
+            is_nrf = self.version_and_device_from_info(ports)
+            if not is_nrf:
 
-        self.all_devices()
+                if self.select_port.count() > 0:
+                    self.all_devices()
+                else:
+                    print("No devices detected")
+                    QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
 
-        self.progress.setValue(80)
-        QApplication.processEvents()
+                self.progress.setValue(80)
+                QApplication.processEvents()
 
-        self.detect_nrf_stuff(supported_devices_detected)
+        if self.select_port.count() > 0:
+            self.select_port.setToolTip("Select the communication port/destination")
+            self.select_port.setDisabled(False)
+
+        if self.select_device.count() > 0:
+            self.select_device.setToolTip("Select the device variant")
+            self.select_device.setDisabled(False)
 
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
-            self.select_port.setToolTip("Select the communication port/destination")
-            self.select_device.setToolTip("Select the device variant")
             self.select_flash.setEnabled(True)
             self.select_flash.setToolTip('Click the FLASH button to write to the device.')
-            self.select_port.setDisabled(False)
-            self.select_device.setDisabled(False)
 
         self.progress.setValue(100)
         QApplication.processEvents()
@@ -687,6 +854,7 @@ class Form(QDialog):
         print("The logo was clicked")
         webbrowser.open('https://meshtastic.org')
 
+
     def flash_esp32_update_only_step1(self, percent_complete):
         """Do step 1 of 2 for esp32 update_only"""
         print("Step 1/2 esp32 update_only")
@@ -696,6 +864,7 @@ class Form(QDialog):
         esptool.main(command)
         self.progress.setValue(percent_complete)
         QApplication.processEvents()
+
 
     def flash_esp32_update_only_step2(self, percent_complete):
         """Do step 2 of 2 for esp32 update_only"""
@@ -749,6 +918,7 @@ class Form(QDialog):
         self.progress.setValue(percent_complete)
         QApplication.processEvents()
 
+
     def flash_nrf52(self):
         """Flash nrf52 devices"""
         print("Flash nrf52")
@@ -782,6 +952,7 @@ class Form(QDialog):
         verb = 'flash'
         if self.nrf:
             verb = 'copy'
+            update_only_message = ''
         confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
         confirm_msg += f'{self.port}\n{self.device}?'
         reply = QMessageBox.question(self, 'Flash', confirm_msg,
@@ -800,6 +971,7 @@ class Form(QDialog):
         self.progress.setValue(0)
         self.progress.show()
 
+        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
         self.port = self.select_port.currentText()
         self.device = self.select_device.currentText()
 

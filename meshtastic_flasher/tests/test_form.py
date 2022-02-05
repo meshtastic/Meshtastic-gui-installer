@@ -1,12 +1,16 @@
-"""tests for Form"""
+"""Tests for Form()"""
+
 import re
 
-from unittest.mock import patch, MagicMock
+
+from unittest.mock import patch, MagicMock, mock_open
 
 from pytestqt.qt_compat import qt_api
 from PySide6.QtWidgets import QMessageBox
 
 from meshtastic.supported_device import SupportedDevice
+#from meshtastic.serial_interface import SerialInterface
+
 from meshtastic_flasher.installer import Form
 
 
@@ -281,11 +285,10 @@ def test_detect_ports_on_supported_devices_some_found(faked_active_ports, faked_
     assert len(ports) == 1
 
 
-@patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitions, fake_system,
-                                                                   fake_subprocess, monkeypatch,
+                                                                   monkeypatch,
                                                                    qtbot, capsys):
     """Test detect_nrf_stuff()"""
 
@@ -300,22 +303,23 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
+    assert not widget.nrf
     fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
     fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
 
-    fake_subprocess.return_value = None , 'some fake stuff\nDate: Dec  1 2021\neven more'
-
-    assert not widget.nrf
+    fake_data = 'some fake stuff\nDate: Dec  1 2021\neven more'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
     fake_system.assert_called()
-    fake_subprocess.assert_called()
     out, err = capsys.readouterr()
     assert re.search(r'nrf52 device detected', out, re.MULTILINE)
     assert re.search(r'partition:', out, re.MULTILINE)
@@ -325,14 +329,56 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     assert err == ''
 
 
+@patch('platform.system', return_value='Linux')
+@patch('psutil.disk_partitions')
+def test_detect_nrf_stuff_with_techo_and_current_bootloader_on_linux(fake_partitions, fake_system,
+                                                                     monkeypatch,
+                                                                     qtbot, capsys):
+    """Test detect_nrf_stuff()"""
+
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    mock_partition1 = MagicMock()
+    mock_partition1.mountpoint = '/dev/fakevolume'
+    mock_partition2 = MagicMock()
+    mock_partition2.mountpoint = '/dev/TECHOBOOT'
+    mock_partitions = [mock_partition1, mock_partition2]
+    fake_partitions.return_value = mock_partitions
+
+    assert not widget.nrf
+    fake_device = SupportedDevice(name='b', for_firmware='t-echo')
+    fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
+
+    fake_data = 'some fake stuff\nDate: Oct 13 2021\neven more\nModel: LilyGo T-Echo\nfoo'
+
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+
+    # make the call under test
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
+
+    assert widget.nrf
+    fake_partitions.assert_called()
+    fake_system.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'nrf52 device detected', out, re.MULTILINE)
+    assert re.search(r'partition:', out, re.MULTILINE)
+    assert re.search(r'definitely a T-Echo', out, re.MULTILINE)
+    assert re.search(r't-echo bootloader is current', out, re.MULTILINE)
+    assert err == ''
+
+
 @patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=['/dev/fake'])
 @patch('urllib.request.urlretrieve')
 @patch('os.path.exists', return_value=False)
-@patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, fake_system,
-                                                               fake_subprocess, fake_exists,
+                                                               fake_exists,
                                                                fake_url, fake_find_ports, monkeypatch,
                                                                qtbot, capsys):
     """Test when advanced option update RAK boot loader is checked"""
@@ -350,22 +396,23 @@ def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, 
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
+    assert not widget.nrf
     fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
     fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
 
-    fake_subprocess.return_value = None , 'some fake stuff\nDate: Sep  1 2020\neven more'
-
-    assert not widget.nrf
+    fake_data = 'some fake stuff\nDate: Sep  1 2020\neven more'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
     fake_system.assert_called()
-    fake_subprocess.assert_called()
     fake_exists.assert_called()
     fake_url.assert_called()
     fake_find_ports.assert_called()
@@ -400,18 +447,21 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_windows(fake_partit
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
+    assert not widget.nrf
     fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
     fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
 
     # Note: There are two calls to the subprocess, I'm just making one output work for both
     fake_subprocess.return_value = None , 'some fake stuff\nDate: Dec  1 2021\neven more\nRAK4631\n'
-
-    assert not widget.nrf
+    fake_data = 'some fake stuff\nDate: Dec  1 2021\neven more\nRAK4631\n'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
@@ -442,15 +492,16 @@ def test_detect_nrf_stuff_partition_not_found_on_linux(fake_partitions, fake_sys
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
+    assert not widget.nrf
     fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
     fake_supported_devices = [fake_device]
-
-    assert not widget.nrf
+    widget.detect_nrf(fake_supported_devices)
+    assert widget.nrf
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
@@ -461,11 +512,10 @@ def test_detect_nrf_stuff_partition_not_found_on_linux(fake_partitions, fake_sys
     assert err == ''
 
 
-@patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_partitions, fake_system,
-                                                                       fake_subprocess, monkeypatch,
+                                                                       monkeypatch,
                                                                        qtbot, capsys):
     """Test detect_nrf_stuff()"""
 
@@ -480,22 +530,23 @@ def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_part
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
-    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
-    fake_supported_devices = [fake_device]
-
-    fake_subprocess.return_value = None , 'some fake stuff\neven more'
+    fake_data = 'some fake stuff\neven more'
 
     assert not widget.nrf
+
+    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
+    fake_supported_devices = [fake_device]
+    widget.detect_nrf(fake_supported_devices)
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff(fake_supported_devices)
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
     fake_system.assert_called()
-    fake_subprocess.assert_called()
     out, err = capsys.readouterr()
     assert re.search(r'nrf52 device detected', out, re.MULTILINE)
     assert re.search(r'partition:', out, re.MULTILINE)
@@ -536,6 +587,7 @@ def test_confirm_flash_question_nrf(qtbot, capsys, monkeypatch):
     assert re.search(r'User confirmed they want to flash', out, re.MULTILINE)
     assert err == ''
 
+
 @patch('glob.glob')
 @patch('os.path.exists', return_value=True)
 def test_all_devices(fake_exists, fake_glob, qtbot):
@@ -552,3 +604,57 @@ def test_all_devices(fake_exists, fake_glob, qtbot):
     assert widget.select_device.count() == 4
     fake_exists.assert_called()
     fake_glob.assert_called()
+
+
+# TODO: not sure why this is not patching
+#@patch('meshtastic.serial_interface.SerialInterface')
+#def test_version_and_device_from_info_with_ports(faked, qtbot):
+#    """Test version_and_device_from_info()"""
+#    # setup
+#    widget = Form()
+#    qtbot.addWidget(widget)
+#    faked = MagicMock(autospec=SerialInterface)
+#    ports=['/dev/fake1']
+#
+#    widget.version_and_device_from_info(ports)
+#
+#    faked.assert_called()
+
+
+def test_update_device_dropdown(qtbot):
+    """Test all_devices()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    assert widget.select_device.count() == 0
+    device='foo'
+    widget.update_device_dropdown(device)
+    # 'Detected' and the device 'foo'
+    assert widget.select_device.count() == 2
+
+
+def test_hwModel_to_device(qtbot):
+    """Test hwModel_to_device()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    assert widget.hwModel_to_device("HELTEC_V1") == "heltec-v1"
+    assert widget.hwModel_to_device("HELTEC_V2_1") == "heltec-v2.1"
+    assert widget.hwModel_to_device("HELTEC_V2_0") == "heltec-v2.0"
+    assert widget.hwModel_to_device("DIY_V1") == "meshtastic-diy-v1"
+    assert widget.hwModel_to_device("RAK4631") == "rak4631_5005"
+    assert widget.hwModel_to_device("T_ECHO") == "t-echo"
+    assert widget.hwModel_to_device("TBEAM") == "tbeam"
+    assert widget.hwModel_to_device("TBEAM_V07") == "tbeam0.7"
+    assert widget.hwModel_to_device("TLORA_V1") == "tlora-v1"
+    assert widget.hwModel_to_device("TLORA_V2") == "tlora-v2"
+    assert widget.hwModel_to_device("TLORA_V2_1_16") == "tlora-v2-1-1.6"
+    assert widget.hwModel_to_device("TLORA_V1_3") == "tlora_v1_3"
+
+
+def test_is_hwModel_nrf(qtbot):
+    """Test is_hwModel_nrf()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    assert widget.is_hwModel_nrf("RAK4631")
+    assert widget.is_hwModel_nrf("T_ECHO")
+    assert not widget.is_hwModel_nrf("")
+    assert not widget.is_hwModel_nrf("HELTEC_V1")
