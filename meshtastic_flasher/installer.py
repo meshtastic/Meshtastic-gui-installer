@@ -648,7 +648,6 @@ class Form(QDialog):
                     self.select_device.setEnabled(True)
 
                 if is_techo:
-                    # TODO: do T-Echo things
                     if not techo_bootloader_current:
                         print("t-echo bootloader is not current")
                 else:
