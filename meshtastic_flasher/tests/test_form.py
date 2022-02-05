@@ -3,7 +3,7 @@
 import re
 
 
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch, MagicMock, mock_open
 
 from pytestqt.qt_compat import qt_api
 from PySide6.QtWidgets import QMessageBox
@@ -285,11 +285,10 @@ def test_detect_ports_on_supported_devices_some_found(faked_active_ports, faked_
     assert len(ports) == 1
 
 
-@patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitions, fake_system,
-                                                                   fake_subprocess, monkeypatch,
+                                                                   monkeypatch,
                                                                    qtbot, capsys):
     """Test detect_nrf_stuff()"""
 
@@ -310,18 +309,17 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     widget.detect_nrf(fake_supported_devices)
     assert widget.nrf
 
-    fake_subprocess.return_value = None , 'some fake stuff\nDate: Dec  1 2021\neven more'
-
+    fake_data = 'some fake stuff\nDate: Dec  1 2021\neven more'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff()
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
     fake_system.assert_called()
-    fake_subprocess.assert_called()
     out, err = capsys.readouterr()
     assert re.search(r'nrf52 device detected', out, re.MULTILINE)
     assert re.search(r'partition:', out, re.MULTILINE)
@@ -331,11 +329,10 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     assert err == ''
 
 
-@patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_techo_and_current_bootloader_on_linux(fake_partitions, fake_system,
-                                                                     fake_subprocess, monkeypatch,
+                                                                     monkeypatch,
                                                                      qtbot, capsys):
     """Test detect_nrf_stuff()"""
 
@@ -356,17 +353,17 @@ def test_detect_nrf_stuff_with_techo_and_current_bootloader_on_linux(fake_partit
     widget.detect_nrf(fake_supported_devices)
     assert widget.nrf
 
-    fake_subprocess.return_value = None , 'some fake stuff\nDate: Oct 13 2021\neven more\nModel: LilyGo T-Echo\nfoo'
+    fake_data = 'some fake stuff\nDate: Oct 13 2021\neven more\nModel: LilyGo T-Echo\nfoo'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff()
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
     fake_system.assert_called()
-    fake_subprocess.assert_called()
     out, err = capsys.readouterr()
     assert re.search(r'nrf52 device detected', out, re.MULTILINE)
     assert re.search(r'partition:', out, re.MULTILINE)
@@ -378,11 +375,10 @@ def test_detect_nrf_stuff_with_techo_and_current_bootloader_on_linux(fake_partit
 @patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=['/dev/fake'])
 @patch('urllib.request.urlretrieve')
 @patch('os.path.exists', return_value=False)
-@patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, fake_system,
-                                                               fake_subprocess, fake_exists,
+                                                               fake_exists,
                                                                fake_url, fake_find_ports, monkeypatch,
                                                                qtbot, capsys):
     """Test when advanced option update RAK boot loader is checked"""
@@ -406,17 +402,17 @@ def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, 
     widget.detect_nrf(fake_supported_devices)
     assert widget.nrf
 
-    fake_subprocess.return_value = None , 'some fake stuff\nDate: Sep  1 2020\neven more'
+    fake_data = 'some fake stuff\nDate: Sep  1 2020\neven more'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff()
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
     fake_system.assert_called()
-    fake_subprocess.assert_called()
     fake_exists.assert_called()
     fake_url.assert_called()
     fake_find_ports.assert_called()
@@ -459,11 +455,13 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_windows(fake_partit
 
     # Note: There are two calls to the subprocess, I'm just making one output work for both
     fake_subprocess.return_value = None , 'some fake stuff\nDate: Dec  1 2021\neven more\nRAK4631\n'
+    fake_data = 'some fake stuff\nDate: Dec  1 2021\neven more\nRAK4631\n'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff()
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
@@ -514,11 +512,10 @@ def test_detect_nrf_stuff_partition_not_found_on_linux(fake_partitions, fake_sys
     assert err == ''
 
 
-@patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_partitions, fake_system,
-                                                                       fake_subprocess, monkeypatch,
+                                                                       monkeypatch,
                                                                        qtbot, capsys):
     """Test detect_nrf_stuff()"""
 
@@ -533,8 +530,7 @@ def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_part
     mock_partitions = [mock_partition1, mock_partition2]
     fake_partitions.return_value = mock_partitions
 
-
-    fake_subprocess.return_value = None , 'some fake stuff\neven more'
+    fake_data = 'some fake stuff\neven more'
 
     assert not widget.nrf
 
@@ -545,12 +541,12 @@ def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_part
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
 
     # make the call under test
-    widget.detect_nrf_stuff()
+    with patch("builtins.open", mock_open(read_data=fake_data)):
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
     fake_system.assert_called()
-    fake_subprocess.assert_called()
     out, err = capsys.readouterr()
     assert re.search(r'nrf52 device detected', out, re.MULTILINE)
     assert re.search(r'partition:', out, re.MULTILINE)
