@@ -947,6 +947,7 @@ class Form(QDialog):
         verb = 'flash'
         if self.nrf:
             verb = 'copy'
+            update_only_message = ''
         confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
         confirm_msg += f'{self.port}\n{self.device}?'
         reply = QMessageBox.question(self, 'Flash', confirm_msg,
