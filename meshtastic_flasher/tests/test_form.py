@@ -639,12 +639,22 @@ def test_hwModel_to_device(qtbot):
     assert widget.hwModel_to_device("HELTEC_V1") == "heltec-v1"
     assert widget.hwModel_to_device("HELTEC_V2_1") == "heltec-v2.1"
     assert widget.hwModel_to_device("HELTEC_V2_0") == "heltec-v2.0"
-    assert widget.hwModel_to_device("MESHTASTIC_DIY_V1") == "meshtastic-diy-v1"
+    assert widget.hwModel_to_device("DIY_V1") == "meshtastic-diy-v1"
     assert widget.hwModel_to_device("RAK4631") == "rak4631_5005"
     assert widget.hwModel_to_device("T_ECHO") == "t-echo"
     assert widget.hwModel_to_device("TBEAM") == "tbeam"
-    assert widget.hwModel_to_device("TBEAM0_7") == "tbeam0.7"
+    assert widget.hwModel_to_device("TBEAM_V07") == "tbeam0.7"
     assert widget.hwModel_to_device("TLORA_V1") == "tlora-v1"
     assert widget.hwModel_to_device("TLORA_V2") == "tlora-v2"
-    assert widget.hwModel_to_device("TLORA_V2_1_1.6") == "tlora-v2-1-1.6"
+    assert widget.hwModel_to_device("TLORA_V2_1_16") == "tlora-v2-1-1.6"
     assert widget.hwModel_to_device("TLORA_V1_3") == "tlora_v1_3"
+
+
+def test_is_hwModel_nrf(qtbot):
+    """Test is_hwModel_nrf()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    assert widget.is_hwModel_nrf("RAK4631")
+    assert widget.is_hwModel_nrf("T_ECHO")
+    assert not widget.is_hwModel_nrf("")
+    assert not widget.is_hwModel_nrf("HELTEC_V1")

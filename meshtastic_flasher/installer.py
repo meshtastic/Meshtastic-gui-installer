@@ -741,24 +741,24 @@ class Form(QDialog):
             device = 'heltec-v2.1'
         elif hwModel == 'HELTEC_V2_0':
             device = 'heltec-v2.0'
-        elif hwModel == 'MESHTASTIC_DIY_V1': # TODO: not sure about this value
+        elif hwModel == 'DIY_V1':
             device = 'meshtastic-diy-v1'
         elif hwModel == 'RAK4631':
             # NOTE: *still* could be 19003
             device = 'rak4631_5005'
         elif hwModel == 'T_ECHO':
             device = 't-echo'
-        elif hwModel == 'TBEAM':
+        elif hwModel == 'TBEAM': # TODO: double check value might be TBEAM_V10
             device = 'tbeam'
-        elif hwModel == 'TBEAM0_7': # TODO: not sure about this value
+        elif hwModel == 'TBEAM_V07':
             device = 'tbeam0.7'
         elif hwModel == 'TLORA_V1':
             device = 'tlora-v1'
         elif hwModel == 'TLORA_V2':
             device = 'tlora-v2'
-        elif hwModel == 'TLORA_V2_1_1.6': # TODO: not sure about this value
+        elif hwModel == 'TLORA_V2_1_16':
             device = 'tlora-v2-1-1.6'
-        elif hwModel == 'TLORA_V1_3': # TODO: not sure about this value
+        elif hwModel == 'TLORA_V1_3':
             device = 'tlora_v1_3'
         return device
 
