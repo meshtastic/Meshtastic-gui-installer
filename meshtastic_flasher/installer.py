@@ -480,6 +480,8 @@ class Form(QDialog):
             groups = [g.gr_name for g in grp.getgrall() if username in g.gr_mem]
             if "dialout" not in groups:
                 print("user is not in dialout group")
+                print(f"  sudo usermod -a -G dialout {username}")
+                print(f"Then logout. And re-login.")
                 # Let the user know that they should be in the dialout group
                 QMessageBox.information(self, "Info",
                                         (f'Warning: The user ({username}) is not in the (dialout) group. Either:\n'
