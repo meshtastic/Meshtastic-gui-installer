@@ -790,10 +790,14 @@ class Form(QDialog):
         if self.select_port.count() > 0:
             self.select_port.setToolTip("Select the communication port/destination")
             self.select_port.setEnabled(True)
+        else:
+            self.select_port.setEnabled(False)
 
         if self.select_device.count() > 0:
             self.select_device.setToolTip("Select the device variant")
             self.select_device.setEnabled(True)
+        else:
+            self.select_device.setEnabled(False)
 
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
