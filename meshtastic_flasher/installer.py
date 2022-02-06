@@ -343,6 +343,9 @@ class Form(QDialog):
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
 
+        # pre-populate the versions that have already been downloaded and unzipped
+        self.get_versions_from_disk()
+
 
     def keyPressEvent(self, event):
         """Deal with a key press"""
@@ -392,6 +395,15 @@ class Form(QDialog):
 
         self.progress.setValue(100)
         QApplication.processEvents()
+
+
+    def get_versions_from_disk(self):
+        """Populate the versions from the directories on disk, "newest" first"""
+        directories = glob.glob('1.*.*.*')
+        for directory in sorted(directories, reverse=True):
+            self.select_firmware_version.addItem(directory)
+        if self.select_firmware_version.count() > 0:
+            self.select_firmware_version.setEnabled(True)
 
 
     def get_versions(self):
