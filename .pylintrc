@@ -41,7 +41,7 @@ bad-names=foo,bar,baz,toto,tutu,tata
 max-line-length=150
 
 # Maximum number of lines in a module
-max-module-lines=1200
+max-module-lines=2000
 
 
 
@@ -80,4 +80,4 @@ ignore-imports=yes
 max-args=10
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=20
+max-attributes=40

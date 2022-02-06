@@ -42,7 +42,9 @@ MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
 
-MESHTATIC_REPO = 'meshtastic/Meshtastic-device'
+MESHTASTIC_REPO = 'meshtastic/Meshtastic-device'
+# TODO do not commit this
+MESHTASTIC_TOKEN = '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'
 
 
 # see https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file
@@ -106,12 +108,39 @@ def tags_to_versions(tags):
     return versions
 
 
+def get_workflow_runs_from_github(branch=None):
+    """Get workflow runs from GitHub"""
+    runs = []
+    if branch:
+        try:
+            token = Github(MESHTASTIC_TOKEN)
+            repo = token.get_repo(MESHTASTIC_REPO)
+            runs = list(repo.get_workflow_runs(branch=branch))
+            print(f'runs:{runs}')
+        except Exception as e:
+            print(e)
+    return runs
+
+
+def get_branches_from_github():
+    """Get branches from GitHub"""
+    branches = []
+    try:
+        token = Github(MESHTASTIC_TOKEN)
+        repo = token.get_repo(MESHTASTIC_REPO)
+        branches = list(repo.get_branches())
+        print(f'branches:{branches}')
+    except Exception as e:
+        print(e)
+    return branches
+
+
 def get_tags_from_github():
     """Get tags from GitHub"""
     tags = []
     try:
-        token = Github()
-        repo = token.get_repo(MESHTATIC_REPO)
+        token = Github(MESHTASTIC_TOKEN)
+        repo = token.get_repo(MESHTASTIC_REPO)
         releases = repo.get_releases()
         count = 0
         for release in releases:
@@ -139,11 +168,18 @@ def get_tags():
 
 def zip_file_name_from_version(version):
     """Get the filename for a zip file for a version."""
-    # zip filename from version
     zip_file_name = "firmware-"
     zip_file_name += version
     zip_file_name += ".zip"
     return zip_file_name
+
+
+def version_from_zip_file_name(zip_file_name):
+    """Get the version using just the name of the zip file."""
+    version = ""
+    version = zip_file_name.replace("firmware-", "")
+    version = version.replace(".zip", "")
+    return version
 
 
 def download_if_zip_does_not_exist(zip_file_name, version):
@@ -164,6 +200,14 @@ def download_if_zip_does_not_exist(zip_file_name, version):
         print("done downloading")
 
 
+def list_files_in_zip(zip_file_name):
+    """List the files in zip_file_name"""
+    files = []
+    with zipfile.ZipFile(zip_file_name, 'r') as zip_object:
+        files = zip_object.namelist()
+    return files
+
+
 def unzip_if_necessary(directory, zip_file_name):
     """Unzip the zip_file_name into the directory"""
     if not os.path.exists(directory):
@@ -171,6 +215,101 @@ def unzip_if_necessary(directory, zip_file_name):
         with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
             zip_ref.extractall(directory)
         print("done unzipping")
+
+
+class BranchesForm(QDialog):
+    """Branches form"""
+
+    def __init__(self, parent=None):
+        """constructor"""
+        super(BranchesForm, self).__init__(parent)
+
+        width = 240
+        height = 120
+        self.setMinimumSize(width, height)
+        self.setWindowTitle("Branches")
+
+        # Create widgets
+        self.select_branch = QComboBox()
+        self.select_branch.setToolTip("Select the desired branch")
+        self.select_branch.setMinimumContentsLength(45)
+        self.select_branch.setDisabled(True)
+
+        self.select_workflow_run = QComboBox()
+        self.select_workflow_run.setToolTip("Select the workflow run")
+        self.select_workflow_run.setMinimumContentsLength(20)
+        self.select_workflow_run.setDisabled(True)
+
+        self.download_button = QPushButton("Download")
+
+        # create form
+        form_layout = QFormLayout()
+        form_layout.addRow(self.tr("Branch"), self.select_branch)
+        form_layout.addRow(self.tr("Workflow Run"), self.select_workflow_run)
+        form_layout.addRow(self.tr(""), self.download_button)
+        self.setLayout(form_layout)
+
+        self.download_button.clicked.connect(self.download)
+        self.select_branch.currentTextChanged.connect(self.on_select_branch_changed)
+
+
+    def download(self):
+        """Download the artifact"""
+        artifact='built.zip'
+        print(f'Download the {artifact}')
+        # ex: https://github.com/meshtastic/Meshtastic-device/actions/runs/1789823637
+        # call https://nightly.link/   with url of the above
+        # (we use nightly because that app makes it so much easier to download)
+        # https://nightly.link/meshtastic/Meshtastic-device/actions/runs/1789823637/built.zip
+        # delete the artifact, if it exists
+        if os.path.exists(artifact):
+            os.remove(artifact)
+        nightly_url = f'https://nightly.link/meshtastic/Meshtastic-device/actions/runs/{self.select_workflow_run.currentText()}/{artifact}'
+        print(f'print downloading:{nightly_url}')
+        urllib.request.urlretrieve(nightly_url, artifact)
+        print('downloaded')
+
+        firmware_zip_file_name = ""
+        files = list_files_in_zip(artifact)
+        if len(files) > 0:
+            firmware_version = version_from_zip_file_name(files[0])
+            firmware_zip_file_name = files[0]
+            print(f'firmware_version:{firmware_version}')
+            print(f'firmware_zip_file_name:{firmware_zip_file_name}')
+
+        tmp_dir = "_tmpdir"
+        if os.path.exists(tmp_dir):
+            shutil.rmtree(tmp_dir)
+
+        # this extracts firmware-1.2.53.ce848ac.zip from build.zip
+        unzip_if_necessary(tmp_dir, artifact)
+
+        shutil.move(f'{tmp_dir}/{firmware_zip_file_name}', f'{firmware_zip_file_name}')
+
+        # add this version to the list, and make it the active entry
+        sfv = self.parent().select_firmware_version
+        sfv.addItem(firmware_version)
+        sfv.setCurrentIndex(sfv.count()-1)
+
+        # cleanup
+        if os.path.exists(artifact):
+            os.remove(artifact)
+        if os.path.exists(tmp_dir):
+            shutil.rmtree(tmp_dir)
+
+        QMessageBox.information(self, "Info", "Firmware has been downloaded and added to the versions")
+        self.close()
+
+
+    def on_select_branch_changed(self, value):
+        """When the select_branch drop down value is changed."""
+        print(f'on_select_branch_changed value:{value}')
+        self.select_workflow_run.setEnabled(False)
+        runs = get_workflow_runs_from_github(value)
+        for run in runs:
+            self.select_workflow_run.addItem(f'{run.id}')
+        if self.select_workflow_run.count() > 0:
+            self.select_workflow_run.setEnabled(True)
 
 
 class AdvancedForm(QDialog):
@@ -203,7 +342,7 @@ class AdvancedForm(QDialog):
         self.ok_button.clicked.connect(self.close_advanced_options)
 
     def close_advanced_options(self):
-        """Test if works"""
+        """Close advanced options form"""
         print('OK button was clicked in advanced options')
         self.close()
 
@@ -224,7 +363,8 @@ class Form(QDialog):
         self.update_only = False
         self.detected_meshtastic_version = None
 
-        self.advanced_form = AdvancedForm()
+        self.branches_form = BranchesForm(self)
+        self.advanced_form = AdvancedForm(self)
 
         self.setWindowTitle(f"Meshtastic Flasher v{__version__}")
 
@@ -352,6 +492,9 @@ class Form(QDialog):
         if event.key() == QtCore.Qt.Key_A:
             print("A was pressed... showing advanced options form")
             self.show_advanced_options()
+        elif event.key() == QtCore.Qt.Key_B:
+            print("B was pressed...")
+            self.show_branches()
         elif event.key() == QtCore.Qt.Key_D:
             print("D was pressed...")
             self.detect()
@@ -375,20 +518,21 @@ class Form(QDialog):
         self.progress.show()
 
         self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
-        zip_file_name = zip_file_name_from_version(self.firmware_version)
 
-        self.progress.setValue(20)
-        QApplication.processEvents()
+        # if we do not already have the version extracted
+        if not os.path.exists(self.firmware_version):
+            zip_file_name = zip_file_name_from_version(self.firmware_version)
 
-        download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
+            self.progress.setValue(20)
+            QApplication.processEvents()
 
-        self.progress.setValue(80)
-        QApplication.processEvents()
+            download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
 
-        # Note: unzip into directory named the same name as the firmware_version
-        unzip_if_necessary(self.firmware_version, zip_file_name)
+            self.progress.setValue(80)
+            QApplication.processEvents()
 
-        #self.all_devices()
+            # Note: unzip into directory named the same name as the firmware_version
+            unzip_if_necessary(self.firmware_version, zip_file_name)
 
         if self.select_port.count() > 0 and self.firmware_version:
             self.select_flash.setEnabled(True)
@@ -399,6 +543,7 @@ class Form(QDialog):
 
     def get_versions_from_disk(self):
         """Populate the versions from the directories on disk, "newest" first"""
+        # TODO: should we have a clear versions capability?
         directories = glob.glob('1.*.*.*')
         for directory in sorted(directories, reverse=True):
             self.select_firmware_version.addItem(directory)
@@ -454,6 +599,7 @@ class Form(QDialog):
         print("hotkeys")
         QMessageBox.information(self, "Info", ("Hotkeys:\n"
                                 "A - Advanced options\n"
+                                "B - Branches\n"
                                 "G - Get versions\n"
                                 "H - Hotkeys\n"
                                 "D - Detect\n"
@@ -464,6 +610,20 @@ class Form(QDialog):
         """Advanced Options"""
         print("advanced options")
         self.advanced_form.show()
+
+
+    def show_branches(self):
+        """Branches"""
+        print("branches")
+        # TODO move this into branches_form
+        if self.branches_form.select_branch.count() == 0:
+            self.branches_form.select_branch.setEnabled(False)
+            branches = get_branches_from_github()
+            for branch in branches:
+                self.branches_form.select_branch.addItem(branch.name)
+            if self.branches_form.select_branch.count() > 0:
+                self.branches_form.select_branch.setEnabled(True)
+        self.branches_form.show()
 
 
     def detect_devices(self):
