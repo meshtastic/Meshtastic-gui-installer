@@ -43,8 +43,7 @@ MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
 
 MESHTASTIC_REPO = 'meshtastic/Meshtastic-device'
-# TODO do not commit this
-MESHTASTIC_TOKEN = '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'
+MESHTASTIC_TOKEN = None
 
 
 # see https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file
