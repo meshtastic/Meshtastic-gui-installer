@@ -14,14 +14,28 @@ Cross Platform GUI for installing Meshtastic Firmware. It also checks and update
 <img width="766" alt="Screen Shot 2022-02-01 at 9 57 24 PM" src="https://user-images.githubusercontent.com/2219838/152100859-cb59d0cd-2ffa-49a1-9c8f-6ce75c625468.png">
 
 
+# Installation
 
 * For the single file executable see [Releases](https://github.com/meshtastic/Meshtastic-gui-installer/releases). There is a readme.txt that shows the steps to get started.
 
-* Steps to install from PyPi (if you do not want the sigle executable method described above):
+* Steps to install from PyPi (if you do not want the single executable method described above):
+
+Linux/Mac:
 
 ```
+python3 -m venv venv
+source venv/bin/activate
 pip install meshtastic-flasher
 ```
+
+Windows command prompt: (assuming Python3 was installed from https://www.python.org/downloads/ and `python --version` reports 3.6+):
+
+```
+python -m venv venv
+venv\Bin\Activate
+pip install meshtastic-flasher
+```
+
 
 To run, type in "meshtastic-flasher" from a command prompt.
 
@@ -40,7 +54,7 @@ The options are:
 
 ```
 python3 -m venv venv
-venv/bin/activate
+source venv/bin/activate
 pip install -r requirements.txt
 pip install .
 ```
@@ -79,8 +93,19 @@ https://github.com/meshtastic/Meshtastic-device
 
 The following are known limitations:
 
-* Raspberry Pi is not available, since it is arm-based and there are no pre-built libraries for PySide
-* Ubuntu 20.04 is the version used for testing, it may work with other versions
+* Raspberry Pi is not available, since it is arm-based and there are no pre-built libraries for PySide. There is an interesting link here: https://github.com/piwheels/packages/issues/4#issuecomment-772058821
+
+* Ubuntu 20.04 is the version used for testing, it may work with other versions (Known issue with Wayland https://github.com/meshtastic/Meshtastic-gui-installer/issues/8 )
+
+* If you just run the `pip install meshtastic-flasher` outside of a fresh python virtual environment (like say on a mac that has used `brew` to install things) you may get this error:
+
+```
+    from meshtastic_flasher.installer import main
+  File "/usr/local/lib/python3.9/site-packages/meshtastic_flasher/installer.py", line 20, in <module>
+    from meshtastic.util import detect_supported_devices, findPorts, detect_windows_needs_driver
+```
+
+If you get this error, then install in a python virtual environment as described in the Installation step above.
 
 # Note to Devs
 
