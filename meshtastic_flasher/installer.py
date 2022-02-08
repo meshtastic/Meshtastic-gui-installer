@@ -215,8 +215,6 @@ class Form(QDialog):
         """constructor"""
         super(Form, self).__init__(parent)
 
-        self.speed = '921600'
-
         self.port = None
         self.firmware_version = None
         self.nrf = False
@@ -868,7 +866,7 @@ class Form(QDialog):
         """Do step 1 of 2 for esp32 update_only"""
         print("Step 1/2 esp32 update_only")
         device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
-        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
+        command = ["--port", self.port, "write_flash", "0x10000", device_file]
         print(f"ESPTOOL Using command:{' '.join(command)}")
         esptool.main(command)
         self.progress.setValue(percent_complete)
@@ -878,7 +876,7 @@ class Form(QDialog):
     def flash_esp32_update_only_step2(self, percent_complete):
         """Do step 2 of 2 for esp32 update_only"""
         print("Step 2/2 esp32 update_only")
-        command = ["--baud", self.speed, "--port", self.port, "erase_region", "0xe000", "0x2000"]
+        command = ["--port", self.port, "erase_region", "0xe000", "0x2000"]
         print(f"ESPTOOL Using command:{' '.join(command)}")
         esptool.main(command)
         self.progress.setValue(percent_complete)
@@ -888,7 +886,7 @@ class Form(QDialog):
     def flash_esp32_full_step1(self, percent_complete):
         """Do step 1 of 4 for esp32 full flash"""
         print("Step 1/4 esp32 full")
-        command = ["--baud", self.speed, "--port", self.port, "erase_flash"]
+        command = ["--port", self.port, "erase_flash"]
         print(f"ESPTOOL Using command:{' '.join(command)}")
         esptool.main(command)
         self.progress.setValue(percent_complete)
@@ -899,7 +897,7 @@ class Form(QDialog):
         """Do step 2 of 4 for esp32 full flash"""
         print("Step 2/4 esp32 full")
         system_info_file = f"{self.firmware_version}/system-info.bin"
-        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x1000", system_info_file]
+        command = ["--port", self.port, "write_flash", "0x1000", system_info_file]
         print(f"ESPTOOL Using command:{' '.join(command)}")
         esptool.main(command)
         self.progress.setValue(percent_complete)
@@ -910,7 +908,7 @@ class Form(QDialog):
         """Do step 3 of 4 for esp32 full flash"""
         print("Step 3/4 esp32 full")
         bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
-        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x00390000", bin_file]
+        command = ["--port", self.port, "write_flash", "0x00390000", bin_file]
         print(f"ESPTOOL Using command:{' '.join(command)}")
         esptool.main(command)
         self.progress.setValue(percent_complete)
@@ -921,7 +919,7 @@ class Form(QDialog):
         """Do step 4 of 4 for esp32 full flash"""
         print("Step 4/4 esp32 full")
         device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
-        command = ["--baud", self.speed, "--port", self.port, "write_flash", "0x10000", device_file]
+        command = ["--port", self.port, "write_flash", "0x10000", device_file]
         print(f"ESPTOOL Using command:{' '.join(command)}")
         esptool.main(command)
         self.progress.setValue(percent_complete)
