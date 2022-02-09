@@ -91,9 +91,25 @@ https://meshtastic.org/
 
 https://github.com/meshtastic/Meshtastic-device
 
-# Known Systems
+# Tested on
 
 * Ubuntu 20.04 (x86_64)
+
+If you get this error:
+
+```
+qt.qpa.plugin: Could not load the Qt platform "xcb" in "" even though it was found.
+This application failed to start because not Qt platform plugin could be initialized. Reinstalling the application may fix this problem.
+Available platform plugins are: eglfs, linuxfb, minimal, minimalegl, offscreen, vkkrrdisplay, vnc, wayland-egl, wayland, xcb.
+Aborted.
+```
+
+Then this might solve the issue:
+
+```
+sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
+```
+
 * Fedora 33 (x86_64)
 * Manjaro 21.2.3 (x86_64)
 * Linux Mint 20.3 (x86_64)
