@@ -487,17 +487,25 @@ class Form(QDialog):
         system = platform.system()
         if system == 'Linux':
             username = os.getlogin()
-            groups = [g.gr_name for g in grp.getgrall() if username in g.gr_mem]
-            if "dialout" not in groups:
-                print("user is not in dialout group")
-                print(f"  sudo usermod -a -G dialout {username}")
+            groups = grp.getgrall() 
+            group_to_search = 'dialout'
+            if group_to_search not in groups:
+                group_to_search = 'uucp'
+            is_member = False
+            for group in groups:
+                if group.gr_name == group_to_search:
+                    if username in group.gr_mem:
+                        is_member = True
+            if not is_member:
+                print(f"user is not in {group_to_search} group")
+                print(f"  sudo usermod -a -G {group_to_search} {username}")
                 print("Then logout. And re-login.")
-                # Let the user know that they should be in the dialout group
+                # Let the user know that they should be in the appropriate group
                 QMessageBox.information(self, "Info",
-                                        (f'Warning: The user ({username}) is not in the (dialout) group. Either:\n'
+                                        (f'Warning: The user ({username}) is not in the ({group_to_search}) group. Either:\n'
                                         'a) run this command as "sudo", or\n'
                                         'b) add this user to the dialout group using this command:\n'
-                                        f"     sudo usermod -a -G dialout {username}\n"
+                                        f"     sudo usermod -a -G {group_to_search} {username}\n"
                                         "  After running that command, log out and re-login for it to take effect.\n"))
 
 
