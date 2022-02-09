@@ -36,6 +36,7 @@ from meshtastic_flasher.version import __version__
 # windows does not like this one
 if platform.system() == "Linux":
     import grp
+    import getpass
 
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
@@ -486,16 +487,23 @@ class Form(QDialog):
         """Need to warn Linux users if the logged in user is not in the dialout group?"""
         system = platform.system()
         if system == 'Linux':
-            username = os.getlogin()
+            username = getpass.getuser()
             groups = grp.getgrall()
             group_to_search = 'dialout'
-            if group_to_search not in groups:
+            found_dialout_group = False
+            for group in groups:
+                if group.gr_name == 'dialout':
+                    found_dialout_group = True
+                    break
+            if not found_dialout_group:
                 group_to_search = 'uucp'
+            print(f'group_to_search:{group_to_search}')
             is_member = False
             for group in groups:
                 if group.gr_name == group_to_search:
                     if username in group.gr_mem:
                         is_member = True
+                        break
             if not is_member:
                 print(f"user is not in {group_to_search} group")
                 print(f"  sudo usermod -a -G {group_to_search} {username}")
