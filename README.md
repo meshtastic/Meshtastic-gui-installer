@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer/branch/master/graph/badge.svg?token=CEnDhjIJFU)](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/meshtastic-flasher)
 
-Cross Platform GUI for installing Meshtastic Firmware. It also checks and updates the RAK 4631 bootloader.
+Cross Platform GUI for installing Meshtastic Firmware. It also checks and updates the RAK 4631 bootloader. The LilyGo T-Echo bootloader is also checked.
 
 
 # Example showing a Heltec (esp32) device:
