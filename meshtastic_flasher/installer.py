@@ -487,7 +487,7 @@ class Form(QDialog):
         system = platform.system()
         if system == 'Linux':
             username = os.getlogin()
-            groups = grp.getgrall() 
+            groups = grp.getgrall()
             group_to_search = 'dialout'
             if group_to_search not in groups:
                 group_to_search = 'uucp'
