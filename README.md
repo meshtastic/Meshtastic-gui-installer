@@ -33,7 +33,7 @@ Windows command prompt: (assuming Python3 was installed from https://www.python.
 
 ```
 python -m venv venv
-venv\Bin\Activate
+venv\Scripts\Activate
 pip install --upgrade pip
 pip install meshtastic-flasher
 ```
@@ -57,6 +57,7 @@ The options are:
 ```
 python3 -m venv venv
 source venv/bin/activate
+# or if on windows: venv\scripts\activate
 pip install --upgrade pip
 pip install -r requirements.txt
 pip install .
@@ -114,7 +115,7 @@ sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-
 * Manjaro 21.2.3 (x86_64)
 * Linux Mint 20.3 (x86_64)
 * MacOS (arm and x86)
-* Windows 7 and 10 (may work on other versions)
+* Windows 7, 10, and 11 (may work on other versions)
 * ArchlinuxArm with the following commands:
 
 ```
@@ -142,8 +143,8 @@ The following are known limitations:
 
 If you get this error, then install in a python virtual environment as described in the Installation step above.
 
+* Windows 11 works with CP210x Universal Windows Driver, and you must start the command prompt as Administrator
+
 # Note to Devs
 
 Please keep code as simple as possible. PyQT has a tendency to get complicated.
-
-
