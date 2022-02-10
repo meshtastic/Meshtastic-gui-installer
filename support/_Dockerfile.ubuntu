@@ -1,4 +1,4 @@
-FROM ubuntu
+TAG
 MAINTAINER Kevin Hester <kevinh@geeksville.com>
 
 RUN apt-get update

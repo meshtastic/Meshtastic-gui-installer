@@ -1,5 +1,7 @@
 Dockerfiles for testing
 
-docker build -t meshtastic/gnome-builder .
+Note: Used snippets from https://stackoverflow.com/questions/36221215/using-vncserver-gui-application-virtual-display-in-docker-container
 
-docker run -d --rm -v /tmp/.X11-unix:/tmp/.X11-unix -p 5900:5900 meshtastic/gnome-builder
+make create
+make build
+make run
