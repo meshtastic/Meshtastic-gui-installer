@@ -10,16 +10,37 @@ build:
 		docker build -t meshtastic/$$file -f $$file . ; \
 	done
 
-run_u2004:
-	docker run -d --rm -v /tmp/.X11-unix:/tmp/.X11-unix -p 5900:5900 meshtastic/ubuntu.20.04
+run:
+	docker run -d --rm -v /tmp/.X11-unix:/tmp/.X11-unix -p 5918:5900 --name ubuntu.18.04 meshtastic/ubuntu.18.04
+	docker run -d --rm -v /tmp/.X11-unix:/tmp/.X11-unix -p 5920:5900 --name ubuntu.20.04 meshtastic/ubuntu.20.04
+	docker run -d --rm -v /tmp/.X11-unix:/tmp/.X11-unix -p 5921:5900 --name ubuntu.21.04 meshtastic/ubuntu.21.04
+	docker run -d --rm -v /tmp/.X11-unix:/tmp/.X11-unix -p 5922:5900 --name ubuntu.22.04 meshtastic/ubuntu.22.04
 
-run_u2104:
-	docker run -d --rm -v /tmp/.X11-unix:/tmp/.X11-unix -p 5900:5900 meshtastic/ubuntu.21.04
+test:
+	# 18.04
+	docker exec -it ubuntu.18.04 /bin/bash -c "pip3 install --upgrade pip"
+	docker exec -it ubuntu.18.04 /bin/bash -c "pip3 install --upgrade setuptools"
+	docker exec -it ubuntu.18.04 /bin/bash -c "cd Meshtastic-gui-installer; pip install -r requirements.txt; pip install ."
 
-run_u2204:
-	docker run -d --rm -v /tmp/.X11-unix:/tmp/.X11-unix -p 5900:5900 meshtastic/ubuntu.22.04
+	# 20.04
+	docker exec -it ubuntu.20.04 /bin/bash -c "pip install --upgrade pip"
+	docker exec -it ubuntu.20.04 /bin/bash -c "pip install --upgrade setuptools"
+	docker exec -it ubuntu.20.04 /bin/bash -c "cd Meshtastic-gui-installer; pip install -r requirements.txt; pip install ."
+
+	# 21.04
+	docker exec -it ubuntu.21.04 /bin/bash -c "pip install --upgrade pip"
+	docker exec -it ubuntu.21.04 /bin/bash -c "pip install --upgrade setuptools"
+	docker exec -it ubuntu.21.04 /bin/bash -c "cd Meshtastic-gui-installer; pip install -r requirements.txt; pip install ."
+
+	# 22.04
+	docker exec -it ubuntu.22.04 /bin/bash -c "pip install --upgrade pip"
+	docker exec -it ubuntu.22.04 /bin/bash -c "pip install --upgrade setuptools"
+	docker exec -it ubuntu.22.04 /bin/bash -c "cd Meshtastic-gui-installer; pip install -r requirements.txt; pip install ."
+
 
 clean:
+	for file in $$(ls ubuntu*); do \
+		echo "docker kill $$file" ; \
+		docker kill $$file ; \
+	done
 	rm ubuntu*
-	# docker ps -a
-	# docker kill
