@@ -3,7 +3,9 @@ MAINTAINER Kevin Hester <kevinh@geeksville.com>
 
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install --no-install-recommends gnome-builder x11vnc fluxbox sudo vim xvfb xdotool x11-utils xterm python3 python3-pip
+RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
 COPY set_display.sh /root/set_display.sh
+RUN pip install --upgrade pip
 
 EXPOSE 5900
 CMD ["/bin/bash", "--login", "-c", "/root/set_display.sh"]
