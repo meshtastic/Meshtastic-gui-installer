@@ -94,7 +94,7 @@ https://github.com/meshtastic/Meshtastic-device
 
 # Tested on
 
-* Ubuntu 20.04 (x86_64)
+* Ubuntu 20.04, 21.04, and 22.04 (x86_64)
 
 If you get this error:
 
@@ -130,6 +130,8 @@ The following are known limitations:
 * Raspberry Pi is not available, since it is arm-based and there are no pre-built libraries for PySide. There is an interesting link here: https://github.com/piwheels/packages/issues/4#issuecomment-772058821 . 
 
 * Ubuntu 20.04 is the version used for testing, it may work with other versions (Known issue with Wayland https://github.com/meshtastic/Meshtastic-gui-installer/issues/8 )
+
+* Ubuntu 18.04 will not work as PySide6/Qt6 libraries are not available.
 
 * Many linux arm variations will work as Qt does not support arm. See https://doc.qt.io/qt-6/supported-platforms.html 
 
