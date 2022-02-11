@@ -5,6 +5,7 @@
 import os
 import sys
 import shutil
+import ctypes
 import glob
 import platform
 import urllib
@@ -14,8 +15,10 @@ import re
 import subprocess
 import webbrowser
 import psutil
+import requests
 
 import esptool
+import serial
 
 from meshtastic.util import detect_supported_devices, findPorts, detect_windows_needs_driver
 from meshtastic.supported_device import active_ports_on_supported_devices
@@ -131,6 +134,7 @@ def get_tags():
     tags = []
     tags_from_github = get_tags_from_github()
     for tag in tags_from_github:
+        #print(f'tag:{tag}')
         if populate_tag_in_firmware_dropdown(tag):
             tags.append(tag)
     if len(tags) == 0:
@@ -158,20 +162,40 @@ def download_if_zip_does_not_exist(zip_file_name, version):
         zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{version}/firmware-{version}.zip'
         print(f'zip_file_url:{zip_file_url}')
 
-        # TODO: what if error in download?
         print("downloading...")
-        ssl._create_default_https_context = ssl._create_unverified_context
-        urllib.request.urlretrieve(zip_file_url, zip_file_name)
+        try:
+            ssl._create_default_https_context = ssl._create_unverified_context
+            urllib.request.urlretrieve(zip_file_url, zip_file_name)
+        except:
+            print('could not download')
         print("done downloading")
 
 
 def unzip_if_necessary(directory, zip_file_name):
     """Unzip the zip_file_name into the directory"""
     if not os.path.exists(directory):
-        print("Unzipping files now...")
-        with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
-            zip_ref.extractall(directory)
-        print("done unzipping")
+        if os.path.exists(zip_file_name):
+            print("Unzipping files now...")
+            with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
+                zip_ref.extractall(directory)
+            print("done unzipping")
+
+
+def check_if_newer_version():
+    """Check pip to see if we are running the latest version."""
+    is_newer_version = False
+    pypi_version = None
+    try:
+        url = "https://pypi.org/pypi/meshtastic-flasher/json"
+        data = requests.get(url).json()
+        pypi_version = data["info"]["version"]
+        print(f"pypi_version:{pypi_version}")
+    except Exception as e:
+        print(f"could not get version from pypi e:{e}")
+    print(f'running: {__version__}')
+    if pypi_version and __version__ != pypi_version:
+        is_newer_version = True
+    return is_newer_version
 
 
 class AdvancedForm(QDialog):
@@ -225,7 +249,10 @@ class Form(QDialog):
 
         self.advanced_form = AdvancedForm()
 
-        self.setWindowTitle(f"Meshtastic Flasher v{__version__}")
+        update_available = ''
+        if check_if_newer_version():
+            update_available = ' *update available*'
+        self.setWindowTitle(f"Meshtastic Flasher v{__version__}{update_available}")
 
         # Create widgets
         self.get_versions_button = QPushButton("GET VERSIONS")
@@ -240,6 +267,9 @@ class Form(QDialog):
         self.select_detect.setToolTip("Click to detect supported device and port info.")
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
+
+        self.help_button = QPushButton("?")
+        self.help_button.setToolTip("Click for help.")
 
         self.select_port = QComboBox()
         self.select_port.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the port.")
@@ -295,6 +325,7 @@ class Form(QDialog):
         detect_layout.addStretch(1)
         detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
+        detect_layout.addWidget(self.help_button)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
 
@@ -338,6 +369,7 @@ class Form(QDialog):
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked
         self.get_versions_button.clicked.connect(self.get_versions)
+        self.help_button.clicked.connect(self.hotkeys)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
@@ -369,31 +401,46 @@ class Form(QDialog):
         """When the select_firmware drop down value is changed."""
         print(f'on_select_firmware_changed value:{value}')
 
-        QApplication.processEvents()
-        self.progress.setValue(0)
-        self.progress.show()
+        if value:
+            QApplication.processEvents()
+            self.progress.setValue(0)
+            self.progress.show()
 
-        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
-        zip_file_name = zip_file_name_from_version(self.firmware_version)
+            self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
+            zip_file_name = zip_file_name_from_version(self.firmware_version)
 
-        self.progress.setValue(20)
-        QApplication.processEvents()
+            self.progress.setValue(20)
+            QApplication.processEvents()
 
-        download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
+            download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
 
-        self.progress.setValue(80)
-        QApplication.processEvents()
+            self.progress.setValue(80)
+            QApplication.processEvents()
 
-        # Note: unzip into directory named the same name as the firmware_version
-        unzip_if_necessary(self.firmware_version, zip_file_name)
+            # Note: unzip into directory named the same name as the firmware_version
+            unzip_if_necessary(self.firmware_version, zip_file_name)
 
-        #self.all_devices()
+            #self.all_devices()
 
-        if self.select_port.count() > 0 and self.firmware_version:
-            self.select_flash.setEnabled(True)
+            if self.select_port.count() > 0 and self.firmware_version:
+                self.select_flash.setEnabled(True)
 
-        self.progress.setValue(100)
-        QApplication.processEvents()
+            self.progress.setValue(100)
+            QApplication.processEvents()
+
+
+    def sort_firmware_versions(self):
+        """Sort the firmware versions
+          Note: There is an InsertPolicy but could not get it to work.
+        """
+        items = []
+        for i in range(0, self.select_firmware_version.count()):
+            items.append(self.select_firmware_version.itemText(i))
+        items = sorted(set(items), reverse=True)
+        self.select_firmware_version.clear()
+        for item in items:
+            self.select_firmware_version.addItem(item)
+        self.select_firmware_version.setCurrentIndex(0)
 
 
     def get_versions_from_disk(self):
@@ -401,6 +448,7 @@ class Form(QDialog):
         directories = glob.glob('1.*.*.*')
         for directory in sorted(directories, reverse=True):
             self.select_firmware_version.addItem(directory)
+        self.sort_firmware_versions()
         if self.select_firmware_version.count() > 0:
             self.select_firmware_version.setEnabled(True)
 
@@ -409,16 +457,15 @@ class Form(QDialog):
         """Get versions: populate the drop down of available versions from Github tagged releases"""
         print("start of get_versions")
         tags = []
-        if self.firmware_version is None:
-            tags = get_tags()
-            for tag in tags:
-                self.select_firmware_version.addItem(tag)
-            self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
-        else:
-            self.select_device.setToolTip("Select your Meshtastic device.")
+        tags = get_tags()
+        for tag in tags:
+            #print(f'tag:{tag}')
+            self.select_firmware_version.addItem(tag_to_version(tag))
+        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
 
         self.select_firmware_version.setEnabled(True)
         self.select_firmware_version.setToolTip("Select desired firmware version to flash.")
+        self.sort_firmware_versions()
 
         # only enable Flash button if we have both values
         if self.select_port.count() > 0 and self.firmware_version:
@@ -483,6 +530,38 @@ class Form(QDialog):
         return supported_devices_detected
 
 
+    # Note: Disabled this check as users would get this and report it as a problem.
+    def warn_if_cannot_open_serial_exclusively(self):
+        """Warn if the we cannot open the serial port exclusively"""
+        exclusive = False
+        try:
+            ser = serial.Serial(self.select_port.currentText(), baudrate=921600, exclusive=True, timeout=0.5)
+            ser.close()
+            exclusive = True
+        except:
+            pass
+        if not exclusive:
+            print("Warning: Cannot open the serial port exclusively.")
+            QMessageBox.information(self, "Info",
+                                    ("Warning: Cannot open the serial port exclusively.\n"
+                                    "Please close any other programs that might be using that port and re-try."))
+        return exclusive
+
+
+    def warn_windows_users_if_not_administrator(self):
+        """Need to warn Windows users if the process running is not run as Administrator"""
+        system = platform.system()
+        is_admin = None
+        if system == 'Windows':
+            is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+            if not is_admin:
+                print("Warning: This process is not running as Administrator.")
+                QMessageBox.information(self, "Info",
+                                        ("Warning: This process is not running as Administrator.\n"
+                                        "Please close and re-run as Administrator."))
+        return is_admin
+
+
     def warn_linux_users_if_not_in_dialout_group(self):
         """Need to warn Linux users if the logged in user is not in the dialout group?"""
         system = platform.system()
@@ -537,14 +616,14 @@ class Form(QDialog):
 
 
     def detect_ports_using_find_ports(self, ports, supported_devices_detected):
-        """Detect ports using the Serial method"""
+        """Detect ports using the find ports method in Meshtastic python library"""
         ports = []
         if len(ports) == 0:
             print("Warning: Could not find any ports using the Meshtstic python autodetection method.")
 
             ports = wrapped_findPorts()
             if len(ports) == 0:
-                print("Warning: Could not find any ports using the Serial library method.")
+                print("Warning: Could not find any ports using the Meshtastic python autodetection method.")
                 for device in supported_devices_detected:
                     wrapped_detect_windows_needs_driver(device, True)
             else:
@@ -774,7 +853,7 @@ class Form(QDialog):
             device = 'rak4631_5005'
         elif hwModel == 'T_ECHO':
             device = 't-echo'
-        elif hwModel == 'TBEAM': # TODO: double check value might be TBEAM_V10
+        elif hwModel == 'TBEAM':
             device = 'tbeam'
         elif hwModel == 'TBEAM_V07':
             device = 'tbeam0.7'
@@ -786,6 +865,8 @@ class Form(QDialog):
             device = 'tlora-v2-1-1.6'
         elif hwModel == 'TLORA_V1_3':
             device = 'tlora_v1_3'
+        elif hwModel == 'RAK11200':
+            device = 'rak11200'
         return device
 
     def is_hwModel_nrf(self, hwModel):
@@ -831,6 +912,15 @@ class Form(QDialog):
             self.select_flash.setToolTip('Click the FLASH button to write to the device.')
 
 
+    def is_rak11200(self, supported_devices):
+        """See if the rak11200 was detected."""
+        is_it_a_rak11200 = False
+        for supported_device in supported_devices:
+            if supported_device.for_firmware == 'rak11200':
+                is_it_a_rak11200 = True
+        return is_it_a_rak11200
+
+
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
         print("start of detect")
@@ -842,6 +932,7 @@ class Form(QDialog):
         self.progress.show()
 
         self.warn_linux_users_if_not_in_dialout_group()
+        self.warn_windows_users_if_not_administrator()
 
         self.progress.setValue(10)
         QApplication.processEvents()
@@ -861,20 +952,35 @@ class Form(QDialog):
             # we must be in boot mode
             self.detect_nrf_stuff()
         else:
-            ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
+            use_meshtastic_check = self.confirm_check_using_meshtastic()
+            if use_meshtastic_check:
+                ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
+                print(f'from find_ports ports:{ports}')
 
-            # probably not in boot mode, see if this device is an nrf device
-            is_nrf = self.version_and_device_from_info(ports)
-            if not is_nrf:
+            is_rak11200 = self.is_rak11200(supported_devices_detected)
+            if is_rak11200:
+                print("Looks like a RAK 11200, ensure in boot mode (single red solid light, no green nor blue lights).")
+                print("See https://docs.rakwireless.com/assets/images/wisblock/rak11200/quickstart/rak11200-Boot0-for-flashing.png")
+                QMessageBox.information(self, "Info", ("Looks like a RAK 11200 was detected.\n\n"
+                                        "Verify it is in BOOT mode.\n\n"
+                                        "There should be a single, solid red light.\n"
+                                        "There should not be any other lights, solid nor flashing.\n\n"
+                                        "If not, disconnect the device and provide a jumper between GND and BOOT0 while you plug it in.\n\n"))
 
-                if self.select_port.count() > 0:
-                    self.all_devices()
-                else:
-                    print("No devices detected")
-                    QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
+            else:
+                if use_meshtastic_check:
+                    # probably not in boot mode, see if this device is an nrf device
+                    is_nrf = self.version_and_device_from_info(ports)
+                    if not is_nrf:
 
-                self.progress.setValue(80)
-                QApplication.processEvents()
+                        if self.select_port.count() > 0:
+                            self.all_devices()
+                        else:
+                            print("No devices detected")
+                            QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
+
+                        self.progress.setValue(80)
+                        QApplication.processEvents()
 
         self.enable_at_end_of_detect()
 
@@ -985,17 +1091,35 @@ class Form(QDialog):
         """
         want_to_proceed = False
         verb = 'flash'
+        all_settings_msg = 'NOTE: All Meshtastic settings will be erased.'
         if self.nrf:
             verb = 'copy'
             update_only_message = ''
+            all_settings_msg = ''
         confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
-        confirm_msg += f'{self.port}\n{self.device}?'
+        confirm_msg += f'{self.port}\n{self.device}?\n{all_settings_msg}'
         reply = QMessageBox.question(self, 'Flash', confirm_msg,
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             want_to_proceed = True
             print("User confirmed they want to flash")
         return want_to_proceed
+
+
+    def confirm_check_using_meshtastic(self):
+        """Prompt the user to confirm if they want to use the Meshtastic python method to detect device/port.
+           Returns True if user answered Yes, otherwise returns False
+        """
+        want_to_check = False
+        msg = 'Does the device currently have Meshtastic version 1.2 or greater?'
+        reply = QMessageBox.question(self, 'Question', msg,
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            want_to_check = True
+            print("User confirmed they want to check using the Meshtastic python method")
+        else:
+            print("User declined detection using the Meshtastic python method")
+        return want_to_check
 
 
     def flash_stuff(self):
@@ -1005,6 +1129,8 @@ class Form(QDialog):
         QApplication.processEvents()
         self.progress.setValue(0)
         self.progress.show()
+
+        #self.warn_if_cannot_open_serial_exclusively()
 
         self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
         self.port = self.select_port.currentText()
