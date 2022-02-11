@@ -6,6 +6,8 @@ Notes:
 
 # This will build Ubuntu docker images for testing
 
+docker system prune
+
 make create
 make build
 make run
