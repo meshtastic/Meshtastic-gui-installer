@@ -68,7 +68,7 @@ def test_download_if_zip_does_not_exist(patched_exists, patched_url, capsys):
 
 
 @patch('zipfile.ZipFile')
-@patch('os.path.exists', return_value=False)
+@patch('os.path.exists', side_effect=[False, True])
 def test_unzip_if_necessary(patched_exists, patched_zipfile, capsys):
     """Test unzip_if_necessary()"""
 
