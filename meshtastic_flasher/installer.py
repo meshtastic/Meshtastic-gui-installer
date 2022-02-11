@@ -15,6 +15,7 @@ import re
 import subprocess
 import webbrowser
 import psutil
+import requests
 
 import esptool
 import serial
@@ -180,6 +181,23 @@ def unzip_if_necessary(directory, zip_file_name):
             print("done unzipping")
 
 
+def check_if_newer_version():
+    """Check pip to see if we are running the latest version."""
+    is_newer_version = False
+    pypi_version = None
+    try:
+        url = "https://pypi.org/pypi/meshtastic-flasher/json"
+        data = requests.get(url).json()
+        pypi_version = data["info"]["version"]
+        print(f"pypi_version:{pypi_version}")
+    except Exception as e:
+        print(f"could not get version from pypi e:{e}")
+    print(f'running: {__version__}')
+    if pypi_version and __version__ != pypi_version:
+        is_newer_version = True
+    return is_newer_version
+
+
 class AdvancedForm(QDialog):
     """Advanced options form"""
 
@@ -231,7 +249,10 @@ class Form(QDialog):
 
         self.advanced_form = AdvancedForm()
 
-        self.setWindowTitle(f"Meshtastic Flasher v{__version__}")
+        update_available = ''
+        if check_if_newer_version():
+            update_available = ' *update available*'
+        self.setWindowTitle(f"Meshtastic Flasher v{__version__}{update_available}")
 
         # Create widgets
         self.get_versions_button = QPushButton("GET VERSIONS")
@@ -246,6 +267,9 @@ class Form(QDialog):
         self.select_detect.setToolTip("Click to detect supported device and port info.")
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
+
+        self.help_button = QPushButton("?")
+        self.help_button.setToolTip("Click for help.")
 
         self.select_port = QComboBox()
         self.select_port.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the port.")
@@ -301,6 +325,7 @@ class Form(QDialog):
         detect_layout.addStretch(1)
         detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
+        detect_layout.addWidget(self.help_button)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
 
@@ -344,6 +369,7 @@ class Form(QDialog):
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked
         self.get_versions_button.clicked.connect(self.get_versions)
+        self.help_button.clicked.connect(self.hotkeys)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
@@ -504,6 +530,7 @@ class Form(QDialog):
         return supported_devices_detected
 
 
+    # Note: Disabled this check as users would get this and report it as a problem.
     def warn_if_cannot_open_serial_exclusively(self):
         """Warn if the we cannot open the serial port exclusively"""
         exclusive = False
@@ -589,14 +616,14 @@ class Form(QDialog):
 
 
     def detect_ports_using_find_ports(self, ports, supported_devices_detected):
-        """Detect ports using the Serial method"""
+        """Detect ports using the find ports method in Meshtastic python library"""
         ports = []
         if len(ports) == 0:
             print("Warning: Could not find any ports using the Meshtstic python autodetection method.")
 
             ports = wrapped_findPorts()
             if len(ports) == 0:
-                print("Warning: Could not find any ports using the Serial library method.")
+                print("Warning: Could not find any ports using the Meshtastic python autodetection method.")
                 for device in supported_devices_detected:
                     wrapped_detect_windows_needs_driver(device, True)
             else:
@@ -794,7 +821,6 @@ class Form(QDialog):
                         self.update_device_dropdown(device)
             except Exception as e:
                 print(f'Exception:{e}')
-                # TODO
                 QMessageBox.warning(self, "Warning", "Had a problem talking with the device.\nMaybe disconnect and reconnect the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put in boot mode by pressing RST button twice.")
         return is_nrf
 
@@ -926,8 +952,10 @@ class Form(QDialog):
             # we must be in boot mode
             self.detect_nrf_stuff()
         else:
-            ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
-            print(f'from find_ports ports:{ports}')
+            use_meshtastic_check = self.confirm_check_using_meshtastic()
+            if use_meshtastic_check:
+                ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
+                print(f'from find_ports ports:{ports}')
 
             is_rak11200 = self.is_rak11200(supported_devices_detected)
             if is_rak11200:
@@ -940,18 +968,19 @@ class Form(QDialog):
                                         "If not, disconnect the device and provide a jumper between GND and BOOT0 while you plug it in.\n\n"))
 
             else:
-                # probably not in boot mode, see if this device is an nrf device
-                is_nrf = self.version_and_device_from_info(ports)
-                if not is_nrf:
+                if use_meshtastic_check:
+                    # probably not in boot mode, see if this device is an nrf device
+                    is_nrf = self.version_and_device_from_info(ports)
+                    if not is_nrf:
 
-                    if self.select_port.count() > 0:
-                        self.all_devices()
-                    else:
-                        print("No devices detected")
-                        QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
+                        if self.select_port.count() > 0:
+                            self.all_devices()
+                        else:
+                            print("No devices detected")
+                            QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
 
-                    self.progress.setValue(80)
-                    QApplication.processEvents()
+                        self.progress.setValue(80)
+                        QApplication.processEvents()
 
         self.enable_at_end_of_detect()
 
@@ -1062,17 +1091,35 @@ class Form(QDialog):
         """
         want_to_proceed = False
         verb = 'flash'
+        all_settings_msg = 'NOTE: All Meshtastic settings will be erased.'
         if self.nrf:
             verb = 'copy'
             update_only_message = ''
+            all_settings_msg = ''
         confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
-        confirm_msg += f'{self.port}\n{self.device}?'
+        confirm_msg += f'{self.port}\n{self.device}?\n{all_settings_msg}'
         reply = QMessageBox.question(self, 'Flash', confirm_msg,
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             want_to_proceed = True
             print("User confirmed they want to flash")
         return want_to_proceed
+
+
+    def confirm_check_using_meshtastic(self):
+        """Prompt the user to confirm if they want to use the Meshtastic python method to detect device/port.
+           Returns True if user answered Yes, otherwise returns False
+        """
+        want_to_check = False
+        msg = 'Does the device currently have Meshtastic version 1.2 or greater?'
+        reply = QMessageBox.question(self, 'Question', msg,
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            want_to_check = True
+            print("User confirmed they want to check using the Meshtastic python method")
+        else:
+            print("User declined detection using the Meshtastic python method")
+        return want_to_check
 
 
     def flash_stuff(self):
@@ -1083,7 +1130,7 @@ class Form(QDialog):
         self.progress.setValue(0)
         self.progress.show()
 
-        self.warn_if_cannot_open_serial_exclusively()
+        #self.warn_if_cannot_open_serial_exclusively()
 
         self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
         self.port = self.select_port.currentText()
