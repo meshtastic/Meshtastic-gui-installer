@@ -41,6 +41,26 @@ pip install meshtastic-flasher
 
 To run, type in "meshtastic-flasher" from a command prompt.
 
+
+# Updating
+
+To update a pip-installed installation, run the following commands:
+
+Linux/Mac:
+
+```
+source venv/bin/activate
+pip install --upgrade meshtastic-flasher
+```
+
+Windows command prompt:
+
+```
+venv\Scripts\Activate
+pip install --upgrade meshtastic-flasher
+```
+
+
 # Advanced options
 
 To go into the Advanced options page, press the "A" key. 
