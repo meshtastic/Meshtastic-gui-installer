@@ -504,6 +504,7 @@ class Form(QDialog):
         return supported_devices_detected
 
 
+    # Note: Disabled this check as users would get this and report it as a problem.
     def warn_if_cannot_open_serial_exclusively(self):
         """Warn if the we cannot open the serial port exclusively"""
         exclusive = False
@@ -1083,7 +1084,7 @@ class Form(QDialog):
         self.progress.setValue(0)
         self.progress.show()
 
-        self.warn_if_cannot_open_serial_exclusively()
+        #self.warn_if_cannot_open_serial_exclusively()
 
         self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
         self.port = self.select_port.currentText()
