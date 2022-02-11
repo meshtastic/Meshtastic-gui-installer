@@ -595,14 +595,14 @@ class Form(QDialog):
 
 
     def detect_ports_using_find_ports(self, ports, supported_devices_detected):
-        """Detect ports using the Serial method"""
+        """Detect ports using the find ports method in Meshtastic python library"""
         ports = []
         if len(ports) == 0:
             print("Warning: Could not find any ports using the Meshtstic python autodetection method.")
 
             ports = wrapped_findPorts()
             if len(ports) == 0:
-                print("Warning: Could not find any ports using the Serial library method.")
+                print("Warning: Could not find any ports using the Meshtastic python autodetection method.")
                 for device in supported_devices_detected:
                     wrapped_detect_windows_needs_driver(device, True)
             else:
@@ -800,7 +800,6 @@ class Form(QDialog):
                         self.update_device_dropdown(device)
             except Exception as e:
                 print(f'Exception:{e}')
-                # TODO
                 QMessageBox.warning(self, "Warning", "Had a problem talking with the device.\nMaybe disconnect and reconnect the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put in boot mode by pressing RST button twice.")
         return is_nrf
 
@@ -932,8 +931,10 @@ class Form(QDialog):
             # we must be in boot mode
             self.detect_nrf_stuff()
         else:
-            ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
-            print(f'from find_ports ports:{ports}')
+            use_meshtastic_check = self.confirm_check_using_meshtastic()
+            if use_meshtastic_check:
+                ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
+                print(f'from find_ports ports:{ports}')
 
             is_rak11200 = self.is_rak11200(supported_devices_detected)
             if is_rak11200:
@@ -946,18 +947,19 @@ class Form(QDialog):
                                         "If not, disconnect the device and provide a jumper between GND and BOOT0 while you plug it in.\n\n"))
 
             else:
-                # probably not in boot mode, see if this device is an nrf device
-                is_nrf = self.version_and_device_from_info(ports)
-                if not is_nrf:
+                if use_meshtastic_check:
+                    # probably not in boot mode, see if this device is an nrf device
+                    is_nrf = self.version_and_device_from_info(ports)
+                    if not is_nrf:
 
-                    if self.select_port.count() > 0:
-                        self.all_devices()
-                    else:
-                        print("No devices detected")
-                        QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
+                        if self.select_port.count() > 0:
+                            self.all_devices()
+                        else:
+                            print("No devices detected")
+                            QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
 
-                    self.progress.setValue(80)
-                    QApplication.processEvents()
+                        self.progress.setValue(80)
+                        QApplication.processEvents()
 
         self.enable_at_end_of_detect()
 
@@ -1081,6 +1083,22 @@ class Form(QDialog):
             want_to_proceed = True
             print("User confirmed they want to flash")
         return want_to_proceed
+
+
+    def confirm_check_using_meshtastic(self):
+        """Prompt the user to confirm if they want to use the Meshtastic python method to detect device/port.
+           Returns True if user answered Yes, otherwise returns False
+        """
+        want_to_check = False
+        msg = 'Does the device currently have Meshtastic version 1.2 or greater?'
+        reply = QMessageBox.question(self, 'Question', msg,
+                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            want_to_check = True
+            print("User confirmed they want to check using the Meshtastic python method")
+        else:
+            print("User declined detection using the Meshtastic python method")
+        return want_to_check
 
 
     def flash_stuff(self):

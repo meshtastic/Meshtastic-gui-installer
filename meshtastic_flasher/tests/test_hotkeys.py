@@ -24,6 +24,7 @@ def test_hotkey_a(fake_versions, qtbot, capsys):
     fake_versions.assert_called()
 
 
+@patch('meshtastic_flasher.installer.Form.confirm_check_using_meshtastic', return_value=True)
 @patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
 @patch('meshtastic_flasher.installer.Form.version_and_device_from_info')
 @patch('meshtastic_flasher.installer.Form.detect_ports_using_find_ports')
@@ -31,8 +32,8 @@ def test_hotkey_a(fake_versions, qtbot, capsys):
 @patch('meshtastic_flasher.installer.Form.detect_devices')
 @patch('meshtastic_flasher.installer.Form.warn_linux_users_if_not_in_dialout_group', return_value=False)
 def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported_devices,
-                  fake_detect_ports_using_find_ports,
-                  fake_version_and_device_from_info, fake_versions, qtbot, capsys):
+                  fake_detect_ports_using_find_ports, fake_version_and_device_from_info, fake_versions,
+                  fake_confirm_meshtastic_check, qtbot, capsys):
     """Test hot key 'd' """
     widget = Form()
     qtbot.addWidget(widget)
@@ -55,6 +56,7 @@ def test_hotkey_d(fake_warn, fake_detect_devices, fake_detect_ports_on_supported
     fake_detect_ports_using_find_ports.assert_called()
     fake_version_and_device_from_info.assert_called()
     fake_versions.assert_called()
+    fake_confirm_meshtastic_check.assert_called()
 
 
 @patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
