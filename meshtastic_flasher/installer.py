@@ -247,6 +247,9 @@ class Form(QDialog):
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
 
+        self.help_button = QPushButton("?")
+        self.help_button.setToolTip("Click for help.")
+
         self.select_port = QComboBox()
         self.select_port.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the port.")
         self.select_port.setMinimumContentsLength(25)
@@ -301,6 +304,7 @@ class Form(QDialog):
         detect_layout.addStretch(1)
         detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
+        detect_layout.addWidget(self.help_button)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
 
@@ -344,6 +348,7 @@ class Form(QDialog):
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked
         self.get_versions_button.clicked.connect(self.get_versions)
+        self.help_button.clicked.connect(self.hotkeys)
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
