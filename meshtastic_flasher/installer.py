@@ -775,6 +775,7 @@ class Form(QDialog):
                         self.update_device_dropdown(device)
             except Exception as e:
                 print(f'Exception:{e}')
+                # TODO
                 QMessageBox.warning(self, "Warning", "Had a problem talking with the device.\nMaybe disconnect and reconnect the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put in boot mode by pressing RST button twice.")
         return is_nrf
 
@@ -866,6 +867,15 @@ class Form(QDialog):
             self.select_flash.setToolTip('Click the FLASH button to write to the device.')
 
 
+    def is_rak11200(self, supported_devices):
+        """See if the rak11200 was detected."""
+        is_it_a_rak11200 = False
+        for supported_device in supported_devices:
+            if supported_device.for_firmware == 'rak11200':
+                is_it_a_rak11200 = True
+        return is_it_a_rak11200
+
+
     def detect(self):
         """Detect port, download zip file from github if we need to, and unzip it"""
         print("start of detect")
@@ -898,19 +908,31 @@ class Form(QDialog):
             self.detect_nrf_stuff()
         else:
             ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
+            print(f'from find_ports ports:{ports}')
 
-            # probably not in boot mode, see if this device is an nrf device
-            is_nrf = self.version_and_device_from_info(ports)
-            if not is_nrf:
+            is_rak11200 = self.is_rak11200(supported_devices_detected)
+            if is_rak11200:
+                print("Looks like a RAK 11200, ensure in boot mode (single red solid light, no green nor blue lights).")
+                print("See https://docs.rakwireless.com/assets/images/wisblock/rak11200/quickstart/rak11200-Boot0-for-flashing.png")
+                QMessageBox.information(self, "Info", ("Looks like a RAK 11200 was detected.\n\n"
+                                        "Verify it is in BOOT mode.\n\n"
+                                        "There should be a single, solid red light.\n"
+                                        "There should not be any other lights, solid nor flashing.\n\n"
+                                        "If not, disconnect the device and provide a jumper between GND and BOOT0 while you plug it in.\n\n"))
 
-                if self.select_port.count() > 0:
-                    self.all_devices()
-                else:
-                    print("No devices detected")
-                    QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
+            else:
+                # probably not in boot mode, see if this device is an nrf device
+                is_nrf = self.version_and_device_from_info(ports)
+                if not is_nrf:
 
-                self.progress.setValue(80)
-                QApplication.processEvents()
+                    if self.select_port.count() > 0:
+                        self.all_devices()
+                    else:
+                        print("No devices detected")
+                        QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
+
+                    self.progress.setValue(80)
+                    QApplication.processEvents()
 
         self.enable_at_end_of_detect()
 

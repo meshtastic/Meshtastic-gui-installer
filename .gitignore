@@ -145,3 +145,6 @@ dist/
 sd_bl.bin
 sd_bl.dat
 manifest.json
+
+# crap mac should not just auto-create
+.DS_Store
