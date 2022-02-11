@@ -495,8 +495,9 @@ class Form(QDialog):
         except:
             pass
         if not exclusive:
+            print("Warning: Cannot open the serial port exclusively.")
             QMessageBox.information(self, "Info",
-                                    ("Warning: This we cannot open the serial port exclusively.\n"
+                                    ("Warning: Cannot open the serial port exclusively.\n"
                                     "Please close any other programs that might be using that port and re-try."))
         return exclusive
 
@@ -508,6 +509,7 @@ class Form(QDialog):
         if system == 'Windows':
             is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
             if not is_admin:
+                print("Warning: This process is not running as Administrator.")
                 QMessageBox.information(self, "Info",
                                         ("Warning: This process is not running as Administrator.\n"
                                         "Please close and re-run as Administrator."))
@@ -817,7 +819,7 @@ class Form(QDialog):
             device = 'tlora-v2-1-1.6'
         elif hwModel == 'TLORA_V1_3':
             device = 'tlora_v1_3'
-        elif hwModel == 'RAK_11200':
+        elif hwModel == 'RAK11200':
             device = 'rak11200'
         return device
 
