@@ -133,6 +133,7 @@ def get_tags():
     tags = []
     tags_from_github = get_tags_from_github()
     for tag in tags_from_github:
+        #print(f'tag:{tag}')
         if populate_tag_in_firmware_dropdown(tag):
             tags.append(tag)
     if len(tags) == 0:
@@ -160,20 +161,23 @@ def download_if_zip_does_not_exist(zip_file_name, version):
         zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{version}/firmware-{version}.zip'
         print(f'zip_file_url:{zip_file_url}')
 
-        # TODO: what if error in download?
         print("downloading...")
-        ssl._create_default_https_context = ssl._create_unverified_context
-        urllib.request.urlretrieve(zip_file_url, zip_file_name)
+        try:
+            ssl._create_default_https_context = ssl._create_unverified_context
+            urllib.request.urlretrieve(zip_file_url, zip_file_name)
+        except:
+            print('could not download')
         print("done downloading")
 
 
 def unzip_if_necessary(directory, zip_file_name):
     """Unzip the zip_file_name into the directory"""
     if not os.path.exists(directory):
-        print("Unzipping files now...")
-        with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
-            zip_ref.extractall(directory)
-        print("done unzipping")
+        if os.path.exists(zip_file_name):
+            print("Unzipping files now...")
+            with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
+                zip_ref.extractall(directory)
+            print("done unzipping")
 
 
 class AdvancedForm(QDialog):
@@ -371,31 +375,46 @@ class Form(QDialog):
         """When the select_firmware drop down value is changed."""
         print(f'on_select_firmware_changed value:{value}')
 
-        QApplication.processEvents()
-        self.progress.setValue(0)
-        self.progress.show()
+        if value:
+            QApplication.processEvents()
+            self.progress.setValue(0)
+            self.progress.show()
 
-        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
-        zip_file_name = zip_file_name_from_version(self.firmware_version)
+            self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
+            zip_file_name = zip_file_name_from_version(self.firmware_version)
 
-        self.progress.setValue(20)
-        QApplication.processEvents()
+            self.progress.setValue(20)
+            QApplication.processEvents()
 
-        download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
+            download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
 
-        self.progress.setValue(80)
-        QApplication.processEvents()
+            self.progress.setValue(80)
+            QApplication.processEvents()
 
-        # Note: unzip into directory named the same name as the firmware_version
-        unzip_if_necessary(self.firmware_version, zip_file_name)
+            # Note: unzip into directory named the same name as the firmware_version
+            unzip_if_necessary(self.firmware_version, zip_file_name)
 
-        #self.all_devices()
+            #self.all_devices()
 
-        if self.select_port.count() > 0 and self.firmware_version:
-            self.select_flash.setEnabled(True)
+            if self.select_port.count() > 0 and self.firmware_version:
+                self.select_flash.setEnabled(True)
 
-        self.progress.setValue(100)
-        QApplication.processEvents()
+            self.progress.setValue(100)
+            QApplication.processEvents()
+
+
+    def sort_firmware_versions(self):
+        """Sort the firmware versions
+          Note: There is an InsertPolicy but could not get it to work.
+        """
+        items = []
+        for i in range(0, self.select_firmware_version.count()):
+            items.append(self.select_firmware_version.itemText(i))
+        items = sorted(set(items), reverse=True)
+        self.select_firmware_version.clear()
+        for item in items:
+            self.select_firmware_version.addItem(item)
+        self.select_firmware_version.setCurrentIndex(0)
 
 
     def get_versions_from_disk(self):
@@ -403,6 +422,7 @@ class Form(QDialog):
         directories = glob.glob('1.*.*.*')
         for directory in sorted(directories, reverse=True):
             self.select_firmware_version.addItem(directory)
+        self.sort_firmware_versions()
         if self.select_firmware_version.count() > 0:
             self.select_firmware_version.setEnabled(True)
 
@@ -411,16 +431,15 @@ class Form(QDialog):
         """Get versions: populate the drop down of available versions from Github tagged releases"""
         print("start of get_versions")
         tags = []
-        if self.firmware_version is None:
-            tags = get_tags()
-            for tag in tags:
-                self.select_firmware_version.addItem(tag)
-            self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
-        else:
-            self.select_device.setToolTip("Select your Meshtastic device.")
+        tags = get_tags()
+        for tag in tags:
+            #print(f'tag:{tag}')
+            self.select_firmware_version.addItem(tag_to_version(tag))
+        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
 
         self.select_firmware_version.setEnabled(True)
         self.select_firmware_version.setToolTip("Select desired firmware version to flash.")
+        self.sort_firmware_versions()
 
         # only enable Flash button if we have both values
         if self.select_port.count() > 0 and self.firmware_version:
