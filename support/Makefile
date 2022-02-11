@@ -23,7 +23,7 @@ run:
 clean:
 	for file in $$(ls ubuntu* fedora*); do \
 		echo "docker kill $$file" ; \
-		docker kill $$file ; \
+		docker kill $$file || true; \
 	done
-	rm ubuntu*
-	rm fedora*
+	rm ubuntu* || true
+	rm fedora* || true
