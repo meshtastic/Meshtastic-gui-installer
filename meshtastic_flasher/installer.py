@@ -15,6 +15,7 @@ import re
 import subprocess
 import webbrowser
 import psutil
+import requests
 
 import esptool
 import serial
@@ -180,6 +181,23 @@ def unzip_if_necessary(directory, zip_file_name):
             print("done unzipping")
 
 
+def check_if_newer_version():
+    """Check pip to see if we are running the latest version."""
+    is_newer_version = False
+    pypi_version = None
+    try:
+        url = "https://pypi.org/pypi/meshtastic-flasher/json"
+        data = requests.get(url).json()
+        pypi_version = data["info"]["version"]
+        print(f"pypi_version:{pypi_version}")
+    except Exception as e:
+        print(f"could not get version from pypi e:{e}")
+    print(f'running: {__version__}')
+    if pypi_version and __version__ != pypi_version:
+        is_newer_version = True
+    return is_newer_version
+
+
 class AdvancedForm(QDialog):
     """Advanced options form"""
 
@@ -231,7 +249,10 @@ class Form(QDialog):
 
         self.advanced_form = AdvancedForm()
 
-        self.setWindowTitle(f"Meshtastic Flasher v{__version__}")
+        update_available = ''
+        if check_if_newer_version():
+            update_available = ' *update available*'
+        self.setWindowTitle(f"Meshtastic Flasher v{__version__}{update_available}")
 
         # Create widgets
         self.get_versions_button = QPushButton("GET VERSIONS")
