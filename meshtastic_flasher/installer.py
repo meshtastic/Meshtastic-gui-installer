@@ -5,6 +5,7 @@
 import os
 import sys
 import shutil
+import ctypes
 import glob
 import platform
 import urllib
@@ -16,6 +17,7 @@ import webbrowser
 import psutil
 
 import esptool
+import serial
 
 from meshtastic.util import detect_supported_devices, findPorts, detect_windows_needs_driver
 from meshtastic.supported_device import active_ports_on_supported_devices
@@ -483,6 +485,35 @@ class Form(QDialog):
         return supported_devices_detected
 
 
+    def warn_if_cannot_open_serial_exclusively(self):
+        """Warn if the we cannot open the serial port exclusively"""
+        exclusive = False
+        try:
+            ser = serial.Serial(self.select_port.currentText(), baudrate=921600, exclusive=True, timeout=0.5)
+            ser.close()
+            exclusive = True
+        except:
+            pass
+        if not exclusive:
+            QMessageBox.information(self, "Info",
+                                    ("Warning: This we cannot open the serial port exclusively.\n"
+                                    "Please close any other programs that might be using that port and re-try."))
+        return exclusive
+
+
+    def warn_windows_users_if_not_administrator(self):
+        """Need to warn Windows users if the process running is not run as Administrator"""
+        system = platform.system()
+        is_admin = None
+        if system == 'Windows':
+            is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
+            if not is_admin:
+                QMessageBox.information(self, "Info",
+                                        ("Warning: This process is not running as Administrator.\n"
+                                        "Please close and re-run as Administrator."))
+        return is_admin
+
+
     def warn_linux_users_if_not_in_dialout_group(self):
         """Need to warn Linux users if the logged in user is not in the dialout group?"""
         system = platform.system()
@@ -774,7 +805,7 @@ class Form(QDialog):
             device = 'rak4631_5005'
         elif hwModel == 'T_ECHO':
             device = 't-echo'
-        elif hwModel == 'TBEAM': # TODO: double check value might be TBEAM_V10
+        elif hwModel == 'TBEAM':
             device = 'tbeam'
         elif hwModel == 'TBEAM_V07':
             device = 'tbeam0.7'
@@ -786,6 +817,8 @@ class Form(QDialog):
             device = 'tlora-v2-1-1.6'
         elif hwModel == 'TLORA_V1_3':
             device = 'tlora_v1_3'
+        elif hwModel == 'RAK_11200':
+            device = 'rak11200'
         return device
 
     def is_hwModel_nrf(self, hwModel):
@@ -842,6 +875,7 @@ class Form(QDialog):
         self.progress.show()
 
         self.warn_linux_users_if_not_in_dialout_group()
+        self.warn_windows_users_if_not_administrator()
 
         self.progress.setValue(10)
         QApplication.processEvents()
@@ -1005,6 +1039,8 @@ class Form(QDialog):
         QApplication.processEvents()
         self.progress.setValue(0)
         self.progress.show()
+
+        self.warn_if_cannot_open_serial_exclusively()
 
         self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
         self.port = self.select_port.currentText()
