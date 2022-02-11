@@ -375,31 +375,32 @@ class Form(QDialog):
         """When the select_firmware drop down value is changed."""
         print(f'on_select_firmware_changed value:{value}')
 
-        QApplication.processEvents()
-        self.progress.setValue(0)
-        self.progress.show()
+        if value:
+            QApplication.processEvents()
+            self.progress.setValue(0)
+            self.progress.show()
 
-        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
-        zip_file_name = zip_file_name_from_version(self.firmware_version)
+            self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
+            zip_file_name = zip_file_name_from_version(self.firmware_version)
 
-        self.progress.setValue(20)
-        QApplication.processEvents()
+            self.progress.setValue(20)
+            QApplication.processEvents()
 
-        download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
+            download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
 
-        self.progress.setValue(80)
-        QApplication.processEvents()
+            self.progress.setValue(80)
+            QApplication.processEvents()
 
-        # Note: unzip into directory named the same name as the firmware_version
-        unzip_if_necessary(self.firmware_version, zip_file_name)
+            # Note: unzip into directory named the same name as the firmware_version
+            unzip_if_necessary(self.firmware_version, zip_file_name)
 
-        #self.all_devices()
+            #self.all_devices()
 
-        if self.select_port.count() > 0 and self.firmware_version:
-            self.select_flash.setEnabled(True)
+            if self.select_port.count() > 0 and self.firmware_version:
+                self.select_flash.setEnabled(True)
 
-        self.progress.setValue(100)
-        QApplication.processEvents()
+            self.progress.setValue(100)
+            QApplication.processEvents()
 
 
     def sort_firmware_versions(self):
@@ -413,6 +414,7 @@ class Form(QDialog):
         self.select_firmware_version.clear()
         for item in items:
             self.select_firmware_version.addItem(item)
+        self.select_firmware_version.setCurrentIndex(0)
 
 
     def get_versions_from_disk(self):
