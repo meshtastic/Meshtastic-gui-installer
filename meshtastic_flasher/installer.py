@@ -1063,11 +1063,13 @@ class Form(QDialog):
         """
         want_to_proceed = False
         verb = 'flash'
+        all_settings_msg = 'NOTE: All Meshtastic settings will be erased.'
         if self.nrf:
             verb = 'copy'
             update_only_message = ''
+            all_settings_msg = ''
         confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
-        confirm_msg += f'{self.port}\n{self.device}?'
+        confirm_msg += f'{self.port}\n{self.device}?\n{all_settings_msg}'
         reply = QMessageBox.question(self, 'Flash', confirm_msg,
                                      QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
