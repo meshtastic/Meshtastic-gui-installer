@@ -395,6 +395,9 @@ class Form(QDialog):
         elif event.key() == QtCore.Qt.Key_Q:
             print("Q was pressed... so quitting")
             QApplication.quit()
+        elif event.key() == QtCore.Qt.Key_T:
+            print("T was pressed... so quitting")
+            self.tips()
 
 
     def on_select_firmware_changed(self, value):
@@ -495,14 +498,27 @@ class Form(QDialog):
 
 
 
+    def tips(self):
+        """Show tips"""
+        print("tips")
+        QMessageBox.information(self, "Info", ("Tips:\n\n"
+                                "If having issues flashing the device, be sure there is only one device connected\n"
+                                "and no other applications are using that communications port.\n\n"
+                                "If still having problems, unplug the device, then re-plugin the device.\n\n"
+                                "If still having problems, try rebooting the pc.\n\n"
+                                "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use\n"
+                                "v1.1 or v2.1.1.6 firmware.\n\n"))
+
+
     def hotkeys(self):
         """Show hotkeys"""
         print("hotkeys")
         QMessageBox.information(self, "Info", ("Hotkeys:\n"
                                 "A - Advanced options\n"
+                                "D - Detect\n"
                                 "G - Get versions\n"
                                 "H - Hotkeys\n"
-                                "D - Detect\n"
+                                "T - Tips\n"
                                 "Q - Quit\n"))
 
 
