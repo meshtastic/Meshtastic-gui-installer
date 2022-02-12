@@ -769,6 +769,7 @@ def test_hwModel_to_device(fake_versions, fake_check_newer, qtbot):
     assert widget.hwModel_to_device("TLORA_V2") == "tlora-v2"
     assert widget.hwModel_to_device("TLORA_V2_1_16") == "tlora-v2-1-1.6"
     assert widget.hwModel_to_device("TLORA_V1_3") == "tlora_v1_3"
+    assert widget.hwModel_to_device("RAK11200") == "rak11200"
     fake_versions.assert_called()
     fake_check_newer.assert_called()
 
@@ -836,3 +837,21 @@ def test_confirm_using_meshtastic_no(qtbot, capsys, monkeypatch):
     out, err = capsys.readouterr()
     assert re.search(r'User declined detection using the Meshtastic python method', out, re.MULTILINE)
     assert err == ''
+
+
+def test_is_rak11200_when_true(qtbot):
+    """Test is_rak11200()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    fake_device = SupportedDevice(name='a', for_firmware='rak11200')
+    fake_supported_devices = [fake_device]
+    assert widget.is_rak11200(fake_supported_devices) is True
+
+
+def test_is_rak11200_when_false(qtbot):
+    """Test is_rak11200()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    fake_device = SupportedDevice(name='a', for_firmware='foo')
+    fake_supported_devices = [fake_device]
+    assert widget.is_rak11200(fake_supported_devices) is False
