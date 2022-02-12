@@ -9,6 +9,9 @@ test:
 cov:
 	pytest --cov-report html --cov=meshtastic_flasher
 
+# show the slowest unit tests
+slow:
+	pytest --durations=5
 
 open:
 	# on mac, this will open the coverage report in a browser
