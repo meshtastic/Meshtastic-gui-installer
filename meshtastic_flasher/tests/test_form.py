@@ -704,22 +704,21 @@ def test_all_devices(fake_exists, fake_glob, fake_versions, fake_check_newer, qt
     fake_check_newer.assert_called()
 
 
-# TODO
 # Note: This function does not have the fake_versions because it is testing that method
-#@patch('meshtastic_flasher.util.Form.on_select_firmware_changed')
-#@patch('glob.glob')
-#def test_get_versions_from_disk(fake_glob, fake_changed, qtbot):
-#    """Test get_versions_from_disk()"""
-#    # setup
-#    widget = Form()
-#    qtbot.addWidget(widget)
-#    items = ['1.2.50.41fasdbe', '1.3.45.agasdf']
-#    fake_glob.return_value = iter(items)
-#    assert widget.select_firmware_version.count() == 0
-#    widget.get_versions_from_disk()
-#    assert widget.select_firmware_version.count() == 2
-#    fake_glob.assert_called()
-#    fake_changed.assert_called()
+@patch('meshtastic_flasher.form.Form.on_select_firmware_changed')
+@patch('glob.glob')
+def test_get_versions_from_disk(fake_glob, fake_changed, qtbot):
+    """Test get_versions_from_disk()"""
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+    items = ['1.2.50.41fasdbe', '1.3.45.agasdf']
+    fake_glob.return_value = iter(items)
+    assert widget.select_firmware_version.count() == 0
+    widget.get_versions_from_disk()
+    assert widget.select_firmware_version.count() == 2
+    fake_glob.assert_called()
+    fake_changed.assert_called()
 
 
 # TODO: not sure why this is not patching
@@ -809,3 +808,31 @@ def test_enable_at_end_of_detect(fake_versions, fake_check_newer, qtbot):
     assert widget.select_flash.isEnabled()
     fake_versions.assert_called()
     fake_check_newer.assert_called()
+
+
+def test_confirm_using_meshtastic_yes(qtbot, capsys, monkeypatch):
+    """Test confirm_using_meshtastic()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.Yes)
+
+    widget.confirm_check_using_meshtastic()
+
+    out, err = capsys.readouterr()
+    assert re.search(r'User confirmed they want to check using the Meshtastic python method', out, re.MULTILINE)
+    assert err == ''
+
+
+def test_confirm_using_meshtastic_no(qtbot, capsys, monkeypatch):
+    """Test confirm_using_meshtastic()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+
+    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.No)
+
+    widget.confirm_check_using_meshtastic()
+
+    out, err = capsys.readouterr()
+    assert re.search(r'User declined detection using the Meshtastic python method', out, re.MULTILINE)
+    assert err == ''
