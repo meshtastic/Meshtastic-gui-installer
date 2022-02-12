@@ -9,6 +9,9 @@ test:
 cov:
 	pytest --cov-report html --cov=meshtastic_flasher
 
+# show the slowest unit tests
+slow:
+	pytest --durations=5
 
 open:
 	# on mac, this will open the coverage report in a browser
@@ -26,4 +29,4 @@ mac:
 	# for locally testing binary on mac
 	pip install pyinstaller
 	pip install -r requirements.txt
-	pyinstaller -F -n meshtastic-flasher-mac --add-binary "meshtastic_flasher/logo.png:." --add-binary "meshtastic_flasher/meshtastic_theme.xml:." --collect-all meshtastic --collect-all esptool meshtastic_flasher/installer.py
+	pyinstaller -F -n meshtastic-flasher-mac --add-binary "meshtastic_flasher/logo.png:." --add-binary "meshtastic_flasher/meshtastic_theme.xml:." --collect-all meshtastic --collect-all esptool meshtastic_flasher/main.py

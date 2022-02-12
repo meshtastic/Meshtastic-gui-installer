@@ -1,40 +1,34 @@
-#!/usr/bin/env python3
-""" installer for Meshtastic firmware (aka "Meshtastic flasher")
-"""
+"""Form for meshtastic-flasher"""
 
 import os
-import sys
 import shutil
 import ctypes
 import glob
 import platform
 import urllib
 import ssl
-import zipfile
 import re
 import subprocess
 import webbrowser
 import psutil
-import requests
 
 import esptool
 import serial
 
-from meshtastic.util import detect_supported_devices, findPorts, detect_windows_needs_driver
-from meshtastic.supported_device import active_ports_on_supported_devices
-from github import Github
 from PySide6 import QtCore
-from PySide6.QtGui import (QPixmap, QIcon, QCursor)
+from PySide6.QtGui import (QPixmap, QCursor)
 from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
-                               QMessageBox, QComboBox, QProgressBar,
-                               QCheckBox, QFormLayout)
-from qt_material import apply_stylesheet
+                               QMessageBox, QComboBox, QProgressBar)
 
 import meshtastic
 import meshtastic.serial_interface
 
 from meshtastic_flasher.version import __version__
+from meshtastic_flasher.advanced_form import AdvancedForm
+import meshtastic_flasher.util
+
+MESHTASTIC_LOGO_FILENAME = "logo.png"
 
 # windows does not like this one
 if platform.system() == "Linux":
@@ -42,195 +36,8 @@ if platform.system() == "Linux":
     import getpass
 
 
-MESHTASTIC_LOGO_FILENAME = "logo.png"
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
-
-MESHTATIC_REPO = 'meshtastic/Meshtastic-device'
-
-
-# see https://stackoverflow.com/questions/31836104/pyinstaller-and-onefile-how-to-include-an-image-in-the-exe-file
-# but had to tweak for pypi
-def get_path(filename):
-    """return the path to the logo file"""
-    if hasattr(sys, "_MEIPASS"):
-        return os.path.join(sys._MEIPASS, filename)
-    # return path to where this file is located
-    path = os.path.dirname(os.path.abspath(__file__))
-    return os.path.join(path, filename)
-
-
-def wrapped_findPorts():
-    """Run findPorts()
-       These wrappers are because I could not figure out how to patch
-       meshtastic.util.findPorts(). But, if I wrap it, here,
-       I can patch this function.
-    """
-    return findPorts()
-
-
-def wrapped_detect_supported_devices():
-    """Run detect_supported_devices()"""
-    return detect_supported_devices()
-
-
-def wrapped_detect_windows_needs_driver(device, want_output):
-    """Run detect_windows_needs_driver()"""
-    return detect_windows_needs_driver(device, want_output)
-
-def wrapped_active_ports_on_supported_devices(supported_devices):
-    """Run active_ports_on_supported_devices()"""
-    return active_ports_on_supported_devices(supported_devices)
-
-def populate_tag_in_firmware_dropdown(tag):
-    """Populate this tag in the firmware dropdown?"""
-    retval = False
-    if re.search(r"v1.2.5[2-9]", tag):
-        retval = True
-    print(f'tag:{tag} populate in dropdown?:{retval}')
-    return retval
-
-
-def tag_to_version(tag):
-    """Return version from a tag by dropping the leading 'v'."""
-    version = ""
-    if len(tag) > 0:
-        if tag.startswith('v'):
-            version = tag[1:]
-        else:
-            version = tag
-    return version
-
-
-def tags_to_versions(tags):
-    """Return a collection of versions from a collection of tags."""
-    versions = []
-    for tag in tags:
-        versions.append(tag_to_version(tag))
-    return versions
-
-
-def get_tags_from_github():
-    """Get tags from GitHub"""
-    tags = []
-    try:
-        token = Github()
-        repo = token.get_repo(MESHTATIC_REPO)
-        releases = repo.get_releases()
-        count = 0
-        for release in releases:
-            r = repo.get_release(release.id)
-            tags.append(r.tag_name)
-            count = count + 1
-            if count > 5:
-                break
-    except Exception as e:
-        print(e)
-    return tags
-
-
-def get_tags():
-    """Ensure we have some tag to use."""
-    tags = []
-    tags_from_github = get_tags_from_github()
-    for tag in tags_from_github:
-        #print(f'tag:{tag}')
-        if populate_tag_in_firmware_dropdown(tag):
-            tags.append(tag)
-    if len(tags) == 0:
-        tags.append('v1.2.53.19c1f9f')
-    return tags
-
-
-def zip_file_name_from_version(version):
-    """Get the filename for a zip file for a version."""
-    # zip filename from version
-    zip_file_name = "firmware-"
-    zip_file_name += version
-    zip_file_name += ".zip"
-    return zip_file_name
-
-
-def download_if_zip_does_not_exist(zip_file_name, version):
-    """Download the zip_file_name"""
-    # if the file is not already downloaded, download it
-    if not os.path.exists(zip_file_name):
-        print("Need to download...")
-
-        # Note: Probably should use the browser_download_url. Sample url
-        #   https://github.com/meshtastic/Meshtastic-device/releases/download/v1.2.53.19c1f9f/firmware-1.2.53.19c1f9f.zip
-        zip_file_url = f'https://github.com/meshtastic/Meshtastic-device/releases/download/v{version}/firmware-{version}.zip'
-        print(f'zip_file_url:{zip_file_url}')
-
-        print("downloading...")
-        try:
-            ssl._create_default_https_context = ssl._create_unverified_context
-            urllib.request.urlretrieve(zip_file_url, zip_file_name)
-        except:
-            print('could not download')
-        print("done downloading")
-
-
-def unzip_if_necessary(directory, zip_file_name):
-    """Unzip the zip_file_name into the directory"""
-    if not os.path.exists(directory):
-        if os.path.exists(zip_file_name):
-            print("Unzipping files now...")
-            with zipfile.ZipFile(zip_file_name, 'r') as zip_ref:
-                zip_ref.extractall(directory)
-            print("done unzipping")
-
-
-def check_if_newer_version():
-    """Check pip to see if we are running the latest version."""
-    is_newer_version = False
-    pypi_version = None
-    try:
-        url = "https://pypi.org/pypi/meshtastic-flasher/json"
-        data = requests.get(url).json()
-        pypi_version = data["info"]["version"]
-        print(f"pypi_version:{pypi_version}")
-    except Exception as e:
-        print(f"could not get version from pypi e:{e}")
-    print(f'running: {__version__}')
-    if pypi_version and __version__ != pypi_version:
-        is_newer_version = True
-    return is_newer_version
-
-
-class AdvancedForm(QDialog):
-    """Advanced options form"""
-
-    def __init__(self, parent=None):
-        """constructor"""
-        super(AdvancedForm, self).__init__(parent)
-
-        width = 240
-        height = 120
-        self.setMinimumSize(width, height)
-        self.setWindowTitle("Advanced Options")
-
-        # Create widgets
-        self.update_only_cb = QCheckBox()
-        self.update_only_cb.setToolTip("If enabled, the device will be updated (not completely erased).")
-        self.rak_bootloader_cb = QCheckBox()
-        self.rak_bootloader_cb.setToolTip("If enabled, the NRF52 bootloader on RAK devices will be checked and updated in DETECT step.")
-
-        self.ok_button = QPushButton("OK")
-
-        # create form
-        form_layout = QFormLayout()
-        form_layout.addRow(self.tr("&Update only"), self.update_only_cb)
-        form_layout.addRow(self.tr("&RAK Bootloader Update"), self.rak_bootloader_cb)
-        form_layout.addRow(self.tr(""), self.ok_button)
-        self.setLayout(form_layout)
-
-        self.ok_button.clicked.connect(self.close_advanced_options)
-
-    def close_advanced_options(self):
-        """Test if works"""
-        print('OK button was clicked in advanced options')
-        self.close()
 
 
 class Form(QDialog):
@@ -250,7 +57,7 @@ class Form(QDialog):
         self.advanced_form = AdvancedForm()
 
         update_available = ''
-        if check_if_newer_version():
+        if meshtastic_flasher.util.check_if_newer_version():
             update_available = ' *update available*'
         self.setWindowTitle(f"Meshtastic Flasher v{__version__}{update_available}")
 
@@ -292,7 +99,7 @@ class Form(QDialog):
 
         self.logo = QLabel(self)
         self.logo.setToolTip("This is the Meshtastic logo. Click to visit Meshtastic.org.")
-        pixmap = QPixmap(get_path(MESHTASTIC_LOGO_FILENAME))
+        pixmap = QPixmap(meshtastic_flasher.util.get_path(MESHTASTIC_LOGO_FILENAME))
         self.logo.setPixmap(pixmap.scaled(256, 256, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
         style_for_logo = (f"background-color: {MESHTASTIC_COLOR_GREEN}; border-color: "
@@ -395,6 +202,9 @@ class Form(QDialog):
         elif event.key() == QtCore.Qt.Key_Q:
             print("Q was pressed... so quitting")
             QApplication.quit()
+        elif event.key() == QtCore.Qt.Key_T:
+            print("T was pressed... so quitting")
+            self.tips()
 
 
     def on_select_firmware_changed(self, value):
@@ -406,19 +216,19 @@ class Form(QDialog):
             self.progress.setValue(0)
             self.progress.show()
 
-            self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
-            zip_file_name = zip_file_name_from_version(self.firmware_version)
+            self.firmware_version = meshtastic_flasher.util.tag_to_version(self.select_firmware_version.currentText())
+            zip_file_name = meshtastic_flasher.util.zip_file_name_from_version(self.firmware_version)
 
             self.progress.setValue(20)
             QApplication.processEvents()
 
-            download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
+            meshtastic_flasher.util.download_if_zip_does_not_exist(zip_file_name, self.firmware_version)
 
             self.progress.setValue(80)
             QApplication.processEvents()
 
             # Note: unzip into directory named the same name as the firmware_version
-            unzip_if_necessary(self.firmware_version, zip_file_name)
+            meshtastic_flasher.util.unzip_if_necessary(self.firmware_version, zip_file_name)
 
             #self.all_devices()
 
@@ -457,11 +267,11 @@ class Form(QDialog):
         """Get versions: populate the drop down of available versions from Github tagged releases"""
         print("start of get_versions")
         tags = []
-        tags = get_tags()
+        tags = meshtastic_flasher.util.get_tags()
         for tag in tags:
             #print(f'tag:{tag}')
-            self.select_firmware_version.addItem(tag_to_version(tag))
-        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
+            self.select_firmware_version.addItem(meshtastic_flasher.util.tag_to_version(tag))
+        self.firmware_version = meshtastic_flasher.util.tag_to_version(self.select_firmware_version.currentText())
 
         self.select_firmware_version.setEnabled(True)
         self.select_firmware_version.setToolTip("Select desired firmware version to flash.")
@@ -495,14 +305,27 @@ class Form(QDialog):
 
 
 
+    def tips(self):
+        """Show tips"""
+        print("tips")
+        QMessageBox.information(self, "Info", ("Tips:\n\n"
+                                "If having issues flashing the device, be sure there is only one device connected\n"
+                                "and no other applications are using that communications port.\n\n"
+                                "If still having problems, unplug the device, then re-plugin the device.\n\n"
+                                "If still having problems, try rebooting the pc.\n\n"
+                                "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use\n"
+                                "v1.1 or v2.1.1.6 firmware.\n\n"))
+
+
     def hotkeys(self):
         """Show hotkeys"""
         print("hotkeys")
         QMessageBox.information(self, "Info", ("Hotkeys:\n"
                                 "A - Advanced options\n"
+                                "D - Detect\n"
                                 "G - Get versions\n"
                                 "H - Hotkeys\n"
-                                "D - Detect\n"
+                                "T - Tips\n"
                                 "Q - Quit\n"))
 
 
@@ -514,7 +337,7 @@ class Form(QDialog):
 
     def detect_devices(self):
         """Detect devices"""
-        supported_devices_detected = wrapped_detect_supported_devices()
+        supported_devices_detected = meshtastic_flasher.util.wrapped_detect_supported_devices()
         if len(supported_devices_detected) > 0:
             self.select_device.clear()
             self.select_device.addItem('Detected')
@@ -600,7 +423,7 @@ class Form(QDialog):
         """Deal with weird T-Lora device (single device connected, but shows up as 2 ports)"""
         ports = []
         # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
-        tmp_ports = wrapped_findPorts()
+        tmp_ports = meshtastic_flasher.util.wrapped_findPorts()
         if len(tmp_ports) == 2:
             if 'wchusbserial' in tmp_ports[1]:
                 first = tmp_ports[0].replace("usbmodem", "")
@@ -621,11 +444,11 @@ class Form(QDialog):
         if len(ports) == 0:
             print("Warning: Could not find any ports using the Meshtstic python autodetection method.")
 
-            ports = wrapped_findPorts()
+            ports = meshtastic_flasher.util.wrapped_findPorts()
             if len(ports) == 0:
                 print("Warning: Could not find any ports using the Meshtastic python autodetection method.")
                 for device in supported_devices_detected:
-                    wrapped_detect_windows_needs_driver(device, True)
+                    meshtastic_flasher.util.wrapped_detect_windows_needs_driver(device, True)
             else:
                 for port in ports:
                     if self.select_port.findText(port) == -1:
@@ -635,7 +458,7 @@ class Form(QDialog):
 
     def detect_ports_on_supported_devices(self, supported_devices_detected):
         """Detect ports on supported devices."""
-        ports = wrapped_active_ports_on_supported_devices(supported_devices_detected)
+        ports = meshtastic_flasher.util.wrapped_active_ports_on_supported_devices(supported_devices_detected)
         ports_sorted = list(ports)
         ports_sorted.sort()
         possible_weird = False
@@ -777,7 +600,7 @@ class Form(QDialog):
                             urllib.request.urlretrieve(bootloader_zip_url, bootloader_zip_filename)
                             print("done downloading")
 
-                        query_ports_again = wrapped_findPorts()
+                        query_ports_again = meshtastic_flasher.util.wrapped_findPorts()
                         if len(query_ports_again) == 1:
                             port_to_use = query_ports_again[0]
                             command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
@@ -1132,7 +955,7 @@ class Form(QDialog):
 
         #self.warn_if_cannot_open_serial_exclusively()
 
-        self.firmware_version = tag_to_version(self.select_firmware_version.currentText())
+        self.firmware_version = meshtastic_flasher.util.tag_to_version(self.select_firmware_version.currentText())
         self.port = self.select_port.currentText()
         self.device = self.select_device.currentText()
 
@@ -1164,24 +987,3 @@ class Form(QDialog):
                     print("esp32 full complete")
 
                 QMessageBox.information(self, "Info", "Flashed")
-
-
-def main():
-    """Main loop"""
-
-    # Create the Qt Application
-    app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(get_path(MESHTASTIC_LOGO_FILENAME)))
-    app.setApplicationName("Meshtastic Flasher")
-    apply_stylesheet(app, theme=get_path('meshtastic_theme.xml'))
-
-    # Create and show the form
-    form = Form()
-    form.show()
-
-    # Run the main Qt loop
-    sys.exit(app.exec())
-
-
-if __name__ == '__main__':
-    main()

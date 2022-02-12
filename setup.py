@@ -45,7 +45,7 @@ setup(
     python_requires='>=3.6',
     entry_points={
         "console_scripts": [
-            "meshtastic-flasher=meshtastic_flasher.installer:main",
+            "meshtastic-flasher=meshtastic_flasher.main:main",
         ]
     },
 )
