@@ -11,11 +11,11 @@ from PySide6.QtWidgets import QMessageBox
 from meshtastic.supported_device import SupportedDevice
 #from meshtastic.serial_interface import SerialInterface
 
-from meshtastic_flasher.installer import Form
+from meshtastic_flasher.form import Form
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 def test_Form_title(fake_versions, fake_check_newer, qtbot):
     """Test for title var in Form"""
     widget = Form()
@@ -25,8 +25,8 @@ def test_Form_title(fake_versions, fake_check_newer, qtbot):
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 def test_buttons_and_combo_boxes(faked_versions, fake_check_newer, qtbot):
     """Test initial state of buttons and combo boxes in Form"""
     widget = Form()
@@ -45,8 +45,8 @@ def test_buttons_and_combo_boxes(faked_versions, fake_check_newer, qtbot):
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('webbrowser.open')
 def test_logo_clicked(fake_open, fake_versions, fake_check_newer, qtbot, capsys):
     """Test logo clicked in Form"""
@@ -61,10 +61,10 @@ def test_logo_clicked(fake_open, fake_versions, fake_check_newer, qtbot, capsys)
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('esptool.main')
-@patch('meshtastic_flasher.installer.Form.confirm_flash_question', return_value=True)
+@patch('meshtastic_flasher.form.Form.confirm_flash_question', return_value=True)
 def test_flash_esp32_full_clicked_user_said_yes(fake_confirm, fake_esp, fake_versions,
                                                 fake_check_newer, monkeypatch, qtbot, capsys):
     """Test clicked Flash in Form"""
@@ -100,10 +100,10 @@ def test_flash_esp32_full_clicked_user_said_yes(fake_confirm, fake_esp, fake_ver
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('esptool.main')
-@patch('meshtastic_flasher.installer.Form.confirm_flash_question', return_value=True)
+@patch('meshtastic_flasher.form.Form.confirm_flash_question', return_value=True)
 def test_flash_esp32_update_only_clicked_user_said_yes(fake_confirm, fake_esp, fake_versions,
                                                        fake_check_newer, monkeypatch, qtbot, capsys):
     """Test clicked Flash in Form"""
@@ -138,10 +138,10 @@ def test_flash_esp32_update_only_clicked_user_said_yes(fake_confirm, fake_esp, f
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('shutil.copyfile')
-@patch('meshtastic_flasher.installer.Form.confirm_flash_question', return_value=True)
+@patch('meshtastic_flasher.form.Form.confirm_flash_question', return_value=True)
 def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake_copy, fake_versions,
                                          fake_check_newer, monkeypatch, qtbot, capsys):
     """Test clicked Flash in Form"""
@@ -174,9 +174,9 @@ def test_flash_nrf_clicked_user_said_yes(fake_confirm, fake_copy, fake_versions,
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.installer.wrapped_detect_supported_devices', return_value=[])
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.wrapped_detect_supported_devices', return_value=[])
 def test_detect_devices_none_found(faked, fake_versions, fake_check_newer, capsys, monkeypatch, qtbot):
     """Test detect_devices()"""
     widget = Form()
@@ -192,9 +192,9 @@ def test_detect_devices_none_found(faked, fake_versions, fake_check_newer, capsy
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.installer.wrapped_detect_supported_devices')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.wrapped_detect_supported_devices')
 def test_detect_devices_some_found(faked, fake_versions, fake_check_newer, capsys, monkeypatch, qtbot):
     """Test detect_devices()"""
     widget = Form()
@@ -214,10 +214,10 @@ def test_detect_devices_some_found(faked, fake_versions, fake_check_newer, capsy
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.installer.wrapped_detect_windows_needs_driver')
-@patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=[])
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.wrapped_detect_windows_needs_driver')
+@patch('meshtastic_flasher.util.wrapped_findPorts', return_value=[])
 def test_detect_ports_using_find_ports_none_found(faked, faked_windows, fake_versions,
                                                   fake_check_newer, monkeypatch, qtbot, capsys):
     """Test detect_ports_using_find_ports()"""
@@ -237,9 +237,9 @@ def test_detect_ports_using_find_ports_none_found(faked, faked_windows, fake_ver
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=['/dev/fake1','/dev/fake2'])
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.wrapped_findPorts', return_value=['/dev/fake1','/dev/fake2'])
 def test_detect_ports_using_find_ports_some_found(faked, fake_versions, fake_check_newer, monkeypatch, qtbot):
     """Test detect_ports_using_find_ports()"""
     widget = Form()
@@ -254,9 +254,9 @@ def test_detect_ports_using_find_ports_some_found(faked, fake_versions, fake_che
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=[])
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.wrapped_findPorts', return_value=[])
 def test_update_ports_for_weird_tlora_no_ports(faked, fake_versions, fake_check_newer, monkeypatch, qtbot):
     """Test update_ports_for_weird_tlora()"""
     widget = Form()
@@ -269,9 +269,9 @@ def test_update_ports_for_weird_tlora_no_ports(faked, fake_versions, fake_check_
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.installer.wrapped_findPorts')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.wrapped_findPorts')
 def test_update_ports_for_weird_tlora_two_ports(faked, fake_versions, fake_check_newer, monkeypatch, qtbot):
     """Test update_ports_for_weird_tlora()"""
     widget = Form()
@@ -305,9 +305,9 @@ def test_update_ports_for_weird_tlora_two_ports(faked, fake_versions, fake_check
 #    assert re.search(r'user is not in dialout group', out, re.MULTILINE)
 #    assert err == ''
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.installer.wrapped_active_ports_on_supported_devices')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.wrapped_active_ports_on_supported_devices')
 def test_detect_ports_on_supported_devices_none_found(faked, fake_versions, fake_check_newer, qtbot):
     """Test detect_ports_on_supported_devices()"""
     widget = Form()
@@ -322,10 +322,10 @@ def test_detect_ports_on_supported_devices_none_found(faked, fake_versions, fake
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.installer.Form.update_ports_for_weird_tlora')
-@patch('meshtastic_flasher.installer.wrapped_active_ports_on_supported_devices')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.form.Form.update_ports_for_weird_tlora')
+@patch('meshtastic_flasher.util.wrapped_active_ports_on_supported_devices')
 def test_detect_ports_on_supported_devices_some_found(faked_active_ports, faked_update_ports,
                                                       fake_versions, fake_check_newer, qtbot):
     """Test detect_ports_on_supported_devices()"""
@@ -346,8 +346,8 @@ def test_detect_ports_on_supported_devices_some_found(faked_active_ports, faked_
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitions, fake_system,
@@ -394,8 +394,8 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     assert err == ''
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_techo_and_current_bootloader_on_linux(fake_partitions, fake_system,
@@ -441,9 +441,9 @@ def test_detect_nrf_stuff_with_techo_and_current_bootloader_on_linux(fake_partit
     assert err == ''
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.installer.wrapped_findPorts', return_value=['/dev/fake'])
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.wrapped_findPorts', return_value=['/dev/fake'])
 @patch('urllib.request.urlretrieve')
 @patch('os.path.exists', return_value=False)
 @patch('platform.system', return_value='Linux')
@@ -501,8 +501,8 @@ def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, 
     assert err == ''
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('subprocess.getstatusoutput')
 @patch('platform.system', return_value='Windows')
 @patch('psutil.disk_partitions')
@@ -552,8 +552,8 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_windows(fake_partit
     assert err == ''
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_partition_not_found_on_linux(fake_partitions, fake_system,
@@ -594,8 +594,8 @@ def test_detect_nrf_stuff_partition_not_found_on_linux(fake_partitions, fake_sys
     assert err == ''
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('platform.system', return_value='Linux')
 @patch('psutil.disk_partitions')
 def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_partitions, fake_system,
@@ -642,8 +642,8 @@ def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_part
     assert err == ''
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 def test_confirm_flash_question_not_nrf(fake_versions, fake_check_newer, qtbot, capsys, monkeypatch):
     """Test confirm_flash_question()"""
     # setup
@@ -661,8 +661,8 @@ def test_confirm_flash_question_not_nrf(fake_versions, fake_check_newer, qtbot, 
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 def test_confirm_flash_question_nrf(fake_versions, fake_check_newer, qtbot, capsys, monkeypatch):
     """Test confirm_flash_question()"""
     # setup
@@ -682,8 +682,8 @@ def test_confirm_flash_question_nrf(fake_versions, fake_check_newer, qtbot, caps
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('glob.glob')
 @patch('os.path.exists', return_value=True)
 def test_all_devices(fake_exists, fake_glob, fake_versions, fake_check_newer, qtbot):
@@ -706,7 +706,7 @@ def test_all_devices(fake_exists, fake_glob, fake_versions, fake_check_newer, qt
 
 # TODO
 # Note: This function does not have the fake_versions because it is testing that method
-#@patch('meshtastic_flasher.installer.Form.on_select_firmware_changed')
+#@patch('meshtastic_flasher.util.Form.on_select_firmware_changed')
 #@patch('glob.glob')
 #def test_get_versions_from_disk(fake_glob, fake_changed, qtbot):
 #    """Test get_versions_from_disk()"""
@@ -737,8 +737,8 @@ def test_all_devices(fake_exists, fake_glob, fake_versions, fake_check_newer, qt
 #    faked.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 def test_update_device_dropdown(fake_versions, fake_check_newer, qtbot):
     """Test all_devices()"""
     widget = Form()
@@ -752,8 +752,8 @@ def test_update_device_dropdown(fake_versions, fake_check_newer, qtbot):
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 def test_hwModel_to_device(fake_versions, fake_check_newer, qtbot):
     """Test hwModel_to_device()"""
     widget = Form()
@@ -774,8 +774,8 @@ def test_hwModel_to_device(fake_versions, fake_check_newer, qtbot):
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 def test_is_hwModel_nrf(fake_versions, fake_check_newer, qtbot):
     """Test is_hwModel_nrf()"""
     widget = Form()
@@ -788,8 +788,8 @@ def test_is_hwModel_nrf(fake_versions, fake_check_newer, qtbot):
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.installer.check_if_newer_version')
-@patch('meshtastic_flasher.installer.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 def test_enable_at_end_of_detect(fake_versions, fake_check_newer, qtbot):
     """Test enable_at_end_of_detect()"""
     widget = Form()

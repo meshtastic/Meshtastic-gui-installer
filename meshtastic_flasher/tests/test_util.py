@@ -1,13 +1,13 @@
-""" Test functions in installer.py
+""" Test functions in util
 """
 
 import re
 
 from unittest.mock import patch
 
-from meshtastic_flasher.installer import (get_path, populate_tag_in_firmware_dropdown,
-                                          tag_to_version, tags_to_versions, get_tags,
-                                          download_if_zip_does_not_exist, unzip_if_necessary)
+from meshtastic_flasher.util import (get_path, populate_tag_in_firmware_dropdown,
+                                     tag_to_version, tags_to_versions, get_tags,
+                                     download_if_zip_does_not_exist, unzip_if_necessary)
 
 
 def test_get_path():
@@ -36,7 +36,7 @@ def test_tags_to_versions():
     assert tags_to_versions(['123','234']) == ['123', '234']
 
 
-@patch('meshtastic_flasher.installer.get_tags_from_github', return_value=[])
+@patch('meshtastic_flasher.util.get_tags_from_github', return_value=[])
 def test_get_tags_got_no_tags(fake_get_tags):
     """Test get_tags() when we got no tags"""
     tags = get_tags()
@@ -44,7 +44,7 @@ def test_get_tags_got_no_tags(fake_get_tags):
     fake_get_tags.assert_called()
 
 
-@patch('meshtastic_flasher.installer.get_tags_from_github', return_value=['v1.2.53aa', 'v1.2.53fff', 'v1.2.51f'])
+@patch('meshtastic_flasher.util.get_tags_from_github', return_value=['v1.2.53aa', 'v1.2.53fff', 'v1.2.51f'])
 def test_get_tags_got_some_tags(fake_get_tags):
     """Test get_tags() when we got some tags"""
     tags = get_tags()

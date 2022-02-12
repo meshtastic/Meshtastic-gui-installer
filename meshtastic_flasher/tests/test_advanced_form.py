@@ -5,7 +5,7 @@ from pytestqt.qt_compat import qt_api
 
 from PySide6.QtWidgets import QMessageBox
 
-from meshtastic_flasher.installer import AdvancedForm
+from meshtastic_flasher.advanced_form import AdvancedForm
 
 def test_advanced_form(qtbot, monkeypatch, capsys):
     """Test for AdvancedForm"""
