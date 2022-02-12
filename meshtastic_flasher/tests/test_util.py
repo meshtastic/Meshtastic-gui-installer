@@ -7,7 +7,8 @@ from unittest.mock import patch
 
 from meshtastic_flasher.util import (get_path, populate_tag_in_firmware_dropdown,
                                      tag_to_version, tags_to_versions, get_tags,
-                                     download_if_zip_does_not_exist, unzip_if_necessary)
+                                     download_if_zip_does_not_exist, unzip_if_necessary,
+                                     check_if_newer_version)
 
 
 def test_get_path():
@@ -67,6 +68,25 @@ def test_download_if_zip_does_not_exist(patched_exists, patched_url, capsys):
     patched_url.assert_called()
 
 
+@patch('urllib.request.urlretrieve')
+@patch('os.path.exists', return_value=False)
+def test_download_if_zip_does_not_exist_when_exception_with_urllib(patched_exists, patched_url, capsys):
+    """Test download_if_zip_does_not_exist()"""
+
+    def throw_an_exception(junk):
+        raise Exception("Fake exception.")
+
+    patched_url.side_effect = throw_an_exception
+
+    download_if_zip_does_not_exist('foo.zip', '1.2.3')
+
+    out, err = capsys.readouterr()
+    assert re.search(r'could not download', out, re.MULTILINE)
+    assert err == ''
+    patched_exists.assert_called()
+    patched_url.assert_called()
+
+
 @patch('zipfile.ZipFile')
 @patch('os.path.exists', side_effect=[False, True])
 def test_unzip_if_necessary(patched_exists, patched_zipfile, capsys):
@@ -79,3 +99,44 @@ def test_unzip_if_necessary(patched_exists, patched_zipfile, capsys):
     assert err == ''
     patched_exists.assert_called()
     patched_zipfile.assert_called()
+
+
+@patch('requests.get')
+def test_check_if_newer_version_when_current(patched_requests_get):
+    """Test check_if_newer_version()"""
+
+    patched_requests_get().json.return_value = {
+            "info": {
+                "version": "1.2.3"
+                }
+            }
+
+    with patch('meshtastic_flasher.version.__version__', '1.2.3'):
+        result = check_if_newer_version()
+        assert result is False
+
+
+@patch('requests.get')
+def test_check_if_newer_version_when_not_current(patched_requests_get):
+    """Test check_if_newer_version()"""
+
+    patched_requests_get().json.return_value = {
+            "info": {
+                "version": "1.2.4"
+                }
+            }
+
+    with patch('meshtastic_flasher.version.__version__', '1.2.3'):
+        result = check_if_newer_version()
+        assert result is True
+
+
+@patch('requests.get')
+def test_check_if_newer_version_when_problem_getting_pypi(patched_requests_get):
+    """Test check_if_newer_version()"""
+
+    patched_requests_get().json.return_value = {}
+
+    with patch('meshtastic_flasher.version.__version__', '1.2.3'):
+        result = check_if_newer_version()
+        assert result is False

@@ -26,10 +26,6 @@ import meshtastic.serial_interface
 
 from meshtastic_flasher.version import __version__
 from meshtastic_flasher.advanced_form import AdvancedForm
-#from meshtastic_flasher.util import (check_if_newer_version, get_path, tag_to_version, zip_file_name_from_version,
-#                                     download_if_zip_does_not_exist, unzip_if_necessary, get_tags,
-#                                     wrapped_detect_supported_devices, wrapped_detect_windows_needs_driver,
-#                                     wrapped_active_ports_on_supported_devices, wrapped_findPorts)
 import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"

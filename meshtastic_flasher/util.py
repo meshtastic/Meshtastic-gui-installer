@@ -12,7 +12,7 @@ from github import Github
 from meshtastic.supported_device import active_ports_on_supported_devices
 from meshtastic.util import findPorts, detect_supported_devices, detect_windows_needs_driver
 
-from meshtastic_flasher.version import __version__
+import meshtastic_flasher.version
 
 MESHTATIC_REPO = 'meshtastic/Meshtastic-device'
 
@@ -136,9 +136,9 @@ def download_if_zip_does_not_exist(zip_file_name, version):
         try:
             ssl._create_default_https_context = ssl._create_unverified_context
             urllib.request.urlretrieve(zip_file_url, zip_file_name)
+            print("done downloading")
         except:
             print('could not download')
-        print("done downloading")
 
 
 def unzip_if_necessary(directory, zip_file_name):
@@ -162,7 +162,7 @@ def check_if_newer_version():
         print(f"pypi_version:{pypi_version}")
     except Exception as e:
         print(f"could not get version from pypi e:{e}")
-    print(f'running: {__version__}')
-    if pypi_version and __version__ != pypi_version:
+    print(f'running: {meshtastic_flasher.version.__version__}')
+    if pypi_version and meshtastic_flasher.version.__version__ != pypi_version:
         is_newer_version = True
     return is_newer_version

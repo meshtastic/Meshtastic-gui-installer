@@ -8,7 +8,7 @@ from PySide6.QtGui import QIcon
 from PySide6.QtWidgets import QApplication
 from qt_material import apply_stylesheet
 
-from meshtastic_flasher.form import Form, MESHTASTIC_LOGO_FILENAME
+import meshtastic_flasher.form
 from meshtastic_flasher.util import get_path
 
 def main():
@@ -16,12 +16,12 @@ def main():
 
     # Create the Qt Application
     app = QApplication(sys.argv)
-    app.setWindowIcon(QIcon(get_path(MESHTASTIC_LOGO_FILENAME)))
+    app.setWindowIcon(QIcon(get_path(meshtastic_flasher.form.MESHTASTIC_LOGO_FILENAME)))
     app.setApplicationName("Meshtastic Flasher")
     apply_stylesheet(app, theme=get_path('meshtastic_theme.xml'))
 
     # Create and show the form
-    form = Form()
+    form = meshtastic_flasher.form.Form()
     form.show()
 
     # Run the main Qt loop
