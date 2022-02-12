@@ -16,7 +16,7 @@ import esptool
 import serial
 
 from PySide6 import QtCore
-from PySide6.QtGui import (QPixmap, QCursor)
+from PySide6.QtGui import QPixmap, QCursor
 from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
                                QMessageBox, QComboBox, QProgressBar)
@@ -110,12 +110,17 @@ class Form(QDialog):
         # labels for over the drop downs/combo boxes
         self.label_version = QLabel(self)
         self.label_version.setText("                         Version")
+        #self.label_version.setStyleSheet("background-color: white; color: #0000FF")
+        self.label_version.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+        self.label_version.setToolTip("Click to see more about firmare releases")
 
         self.label_port = QLabel(self)
         self.label_port.setText("                           Port")
 
         self.label_device = QLabel(self)
         self.label_device.setText("                        Device")
+        self.label_device.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+        self.label_device.setToolTip("Click to see more about Meshtastic supported devices")
 
         self.label_detected_meshtastic_version = QLabel(self)
         self.label_detected_meshtastic_version.setText("")
@@ -177,6 +182,8 @@ class Form(QDialog):
         self.logo.mousePressEvent = self.logo_clicked
         self.get_versions_button.clicked.connect(self.get_versions)
         self.help_button.clicked.connect(self.hotkeys)
+        self.label_version.mousePressEvent = self.label_version_clicked
+        self.label_device.mousePressEvent = self.label_device_clicked
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
@@ -315,6 +322,20 @@ class Form(QDialog):
                                 "If still having problems, try rebooting the pc.\n\n"
                                 "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use\n"
                                 "v1.1 or v2.1.1.6 firmware.\n\n"))
+
+
+    # pylint: disable=unused-argument
+    def label_version_clicked(self, event):
+        """label version clicked"""
+        print("label version clicked")
+        webbrowser.open('https://github.com/meshtastic/Meshtastic-device/releases')
+
+
+    # pylint: disable=unused-argument
+    def label_device_clicked(self, event):
+        """label device clicked"""
+        print("label device clicked")
+        webbrowser.open('https://meshtastic.org/docs/hardware')
 
 
     def hotkeys(self):

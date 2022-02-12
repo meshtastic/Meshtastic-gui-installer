@@ -855,3 +855,27 @@ def test_is_rak11200_when_false(qtbot):
     fake_device = SupportedDevice(name='a', for_firmware='foo')
     fake_supported_devices = [fake_device]
     assert widget.is_rak11200(fake_supported_devices) is False
+
+
+@patch('webbrowser.open')
+def test_label_version_clicked(fake_open, qtbot, capsys):
+    """Test label_version_clicked()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    qtbot.mouseClick(widget.label_version, qt_api.QtCore.Qt.MouseButton.LeftButton)
+    out, err = capsys.readouterr()
+    assert re.search(r'label version clicked', out, re.MULTILINE)
+    assert err == ''
+    fake_open.assert_called()
+
+
+@patch('webbrowser.open')
+def test_device_clicked(fake_open, qtbot, capsys):
+    """Test label_device_clicked()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    qtbot.mouseClick(widget.label_device, qt_api.QtCore.Qt.MouseButton.LeftButton)
+    out, err = capsys.readouterr()
+    assert re.search(r'label device clicked', out, re.MULTILINE)
+    assert err == ''
+    fake_open.assert_called()
