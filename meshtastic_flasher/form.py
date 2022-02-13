@@ -400,7 +400,7 @@ class Form(QDialog):
         release = platform.release()
         print(f'system:{system} release:{release}')
         is_admin = None
-        if system == 'Windows' and release > 10:
+        if system == 'Windows' and int(release) > 10:
             is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
             if not is_admin:
                 print("Warning: This process is not running as Administrator.")
