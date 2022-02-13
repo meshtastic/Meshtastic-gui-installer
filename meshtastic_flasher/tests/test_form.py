@@ -216,6 +216,48 @@ def test_detect_devices_some_found(faked, fake_versions, fake_check_newer, capsy
 
 @patch('meshtastic_flasher.util.check_if_newer_version')
 @patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('meshtastic_flasher.util.wrapped_detect_supported_devices')
+def test_detect_devices_some_found_with_dups(faked, fake_versions, fake_check_newer, capsys, monkeypatch, qtbot):
+    """Test detect_devices()"""
+    widget = Form()
+    qtbot.addWidget(widget)
+    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    fake_tlora2116 = SupportedDevice(name='a', for_firmware='tlora-v2-1-1.6')
+    fake_tbeam = SupportedDevice(name='b', for_firmware='tbeam')
+    fake_tbeam2 = SupportedDevice(name='c', for_firmware='tbeam')
+    fake_tbeam07 = SupportedDevice(name='d', for_firmware='tbeam0.7')
+    fake_tlora21 = SupportedDevice(name='e', for_firmware='tlora-v2-1')
+    fake_tlora21b = SupportedDevice(name='f', for_firmware='tlora-v2-1')
+    fake_tbeam3 = SupportedDevice(name='g', for_firmware='tbeam')
+    fake_supported_devices = [fake_tlora2116, fake_tbeam, fake_tbeam2,
+                              fake_tbeam07, fake_tlora21, fake_tlora21b,
+                              fake_tbeam3]
+    faked.return_value = fake_supported_devices
+
+    widget.detect_devices()
+    faked.assert_called()
+    out, err = capsys.readouterr()
+    assert re.search(r'Detected', out, re.MULTILINE)
+    assert err == ''
+    assert widget.select_device.currentText() == "tlora-v2-1-1.6"
+    expected = ['Detected',
+                'tlora-v2-1-1.6',
+                'tbeam',
+                'tbeam0.7',
+                'tlora-v2-1']
+    #for i in range(widget.select_device.count()):
+        #print(f'{i}:{widget.select_device.itemText(i)}')
+    assert widget.select_device.count() == len(expected)
+    count = 0
+    for item in expected:
+        assert widget.select_device.itemText(count) == item
+        count = count + 1
+    fake_versions.assert_called()
+    fake_check_newer.assert_called()
+
+
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 @patch('meshtastic_flasher.util.wrapped_detect_windows_needs_driver')
 @patch('meshtastic_flasher.util.wrapped_findPorts', return_value=[])
 def test_detect_ports_using_find_ports_none_found(faked, faked_windows, fake_versions,
@@ -698,6 +740,57 @@ def test_all_devices(fake_exists, fake_glob, fake_versions, fake_check_newer, qt
     widget.all_devices()
     # 'Detected', 'All', and 2 devices above
     assert widget.select_device.count() == 4
+    fake_exists.assert_called()
+    fake_glob.assert_called()
+    fake_versions.assert_called()
+    fake_check_newer.assert_called()
+
+
+@patch('meshtastic_flasher.util.check_if_newer_version')
+@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+@patch('glob.glob')
+@patch('os.path.exists', return_value=True)
+def test_all_devices2(fake_exists, fake_glob, fake_versions, fake_check_newer, qtbot):
+    """Test all_devices()"""
+    # setup
+    widget = Form()
+    qtbot.addWidget(widget)
+    widget.firmware_version = '1.2.55.9db7c62'
+    items = ['1.2.55.9db7c62/firmware-heltec-v1-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-heltec-v2.0-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-heltec-v2.1-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-meshtastic-diy-v1-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-rak11200-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-tbeam-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-tbeam0.7-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-tlora-v1-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-tlora-v2-1-1.6-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-tlora-v2-1.2.55.9db7c62.bin',
+             '1.2.55.9db7c62/firmware-tlora_v1_3-1.2.55.9db7c62.bin']
+    expected = ['', # separator
+                'All',
+                'heltec-v1',
+                'heltec-v2.0',
+                'heltec-v2.1',
+                'meshtastic-diy-v1',
+                'rak11200',
+                'tbeam',
+                'tbeam0.7',
+                'tlora-v1',
+                'tlora-v2-1-1.6',
+                'tlora-v2',
+                'tlora_v1_3']
+    fake_glob.return_value = iter(items)
+    assert widget.select_device.count() == 0
+    widget.all_devices()
+    #for i in range(widget.select_device.count()):
+        #print(f'{i}:{widget.select_device.itemText(i)}')
+    assert widget.select_device.count() == len(expected)
+    count = 0
+    for item in expected:
+        assert widget.select_device.itemText(count) == item
+        count = count + 1
+
     fake_exists.assert_called()
     fake_glob.assert_called()
     fake_versions.assert_called()

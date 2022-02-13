@@ -366,7 +366,9 @@ class Form(QDialog):
             self.select_device.model().item(0).setEnabled(False)
             for device in supported_devices_detected:
                 print(f'Detected {device.name}')
-                self.select_device.addItem(device.for_firmware)
+                # If not already in the list, add it
+                if self.select_device.findText(device.for_firmware) == -1:
+                    self.select_device.addItem(device.for_firmware)
             if self.select_device.count() > 1:
                 self.select_device.setCurrentIndex(1)
         else:
