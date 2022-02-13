@@ -216,8 +216,6 @@ class Form(QDialog):
 
     def on_select_firmware_changed(self, value):
         """When the select_firmware drop down value is changed."""
-        print(f'on_select_firmware_changed value:{value}')
-
         if value:
             QApplication.processEvents()
             self.progress.setValue(0)
@@ -366,7 +364,9 @@ class Form(QDialog):
             self.select_device.model().item(0).setEnabled(False)
             for device in supported_devices_detected:
                 print(f'Detected {device.name}')
-                self.select_device.addItem(device.for_firmware)
+                # If not already in the list, add it
+                if self.select_device.findText(device.for_firmware) == -1:
+                    self.select_device.addItem(device.for_firmware)
             if self.select_device.count() > 1:
                 self.select_device.setCurrentIndex(1)
         else:
@@ -826,6 +826,9 @@ class Form(QDialog):
 
                         self.progress.setValue(80)
                         QApplication.processEvents()
+                else:
+                    if self.select_port.count() > 0:
+                        self.all_devices()
 
         self.enable_at_end_of_detect()
 
