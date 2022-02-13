@@ -183,5 +183,5 @@ def is_windows11():
                     is_win11 = True
             except Exception as e:
                 print(f'problem detecting win11 e:{e}')
-    print('is_win11:{is_win11}')
+    print(f'is_win11:{is_win11}')
     return is_win11
