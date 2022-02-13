@@ -828,6 +828,9 @@ class Form(QDialog):
 
                         self.progress.setValue(80)
                         QApplication.processEvents()
+                else:
+                    if self.select_port.count() > 0:
+                        self.all_devices()
 
         self.enable_at_end_of_detect()
 
