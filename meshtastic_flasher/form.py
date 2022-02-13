@@ -396,11 +396,8 @@ class Form(QDialog):
         """Need to warn Windows users if the process running is not run as Administrator
            on Windows 11 and later
         """
-        system = platform.system()
-        release = platform.release()
-        print(f'system:{system} release:{release}')
         is_admin = None
-        if system == 'Windows' and int(release) > 10:
+        if meshtastic_flasher.util.is_windows11():
             is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
             if not is_admin:
                 print("Warning: This process is not running as Administrator.")
