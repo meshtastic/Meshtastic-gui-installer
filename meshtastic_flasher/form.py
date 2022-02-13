@@ -216,8 +216,6 @@ class Form(QDialog):
 
     def on_select_firmware_changed(self, value):
         """When the select_firmware drop down value is changed."""
-        print(f'on_select_firmware_changed value:{value}')
-
         if value:
             QApplication.processEvents()
             self.progress.setValue(0)
