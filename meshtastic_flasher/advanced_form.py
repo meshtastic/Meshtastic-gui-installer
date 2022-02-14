@@ -34,6 +34,6 @@ class AdvancedForm(QDialog):
         self.ok_button.clicked.connect(self.close_advanced_options)
 
     def close_advanced_options(self):
-        """Test if works"""
+        """Close the advanced options form"""
         print('OK button was clicked in advanced options')
         self.close()
