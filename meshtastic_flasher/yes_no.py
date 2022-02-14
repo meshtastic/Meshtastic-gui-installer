@@ -22,6 +22,6 @@ class YesNo(QMessageBox):
         if event.key() == QtCore.Qt.Key_Y:
             self.setResult(QDialog.Accepted)
             self.close()
-        if event.key() == QtCore.Qt.Key_N:
+        if event.key() in [QtCore.Qt.Key_N, QtCore.Qt.Key_Escape]:
             self.setResult(QDialog.Rejected)
             self.close()
