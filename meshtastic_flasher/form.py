@@ -2,6 +2,7 @@
 
 import os
 import shutil
+import time
 import ctypes
 import glob
 import platform
@@ -26,6 +27,7 @@ import meshtastic.serial_interface
 
 from meshtastic_flasher.version import __version__
 from meshtastic_flasher.advanced_form import AdvancedForm
+from meshtastic_flasher.esptool_form import EsptoolForm
 import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
@@ -55,6 +57,7 @@ class Form(QDialog):
         self.detected_meshtastic_version = None
 
         self.advanced_form = AdvancedForm()
+        self.esptool_form = EsptoolForm()
 
         update_available = ''
         if meshtastic_flasher.util.check_if_newer_version():
@@ -200,6 +203,9 @@ class Form(QDialog):
         elif event.key() == QtCore.Qt.Key_D:
             print("D was pressed...")
             self.detect()
+        elif event.key() == QtCore.Qt.Key_E:
+            print("E was pressed...")
+            self.do_esptool()
         elif event.key() == QtCore.Qt.Key_G:
             print("G was pressed...")
             self.get_versions()
@@ -334,6 +340,15 @@ class Form(QDialog):
         """label device clicked"""
         print("label device clicked")
         webbrowser.open('https://meshtastic.org/docs/hardware')
+
+
+    def do_esptool(self):
+        """do_esptool"""
+        print("do esptool")
+        # if they do another session, clear contents of prior session
+        self.esptool_form.text.clear()
+        self.esptool_form.show()
+        self.esptool_form.start()
 
 
     def hotkeys(self):
