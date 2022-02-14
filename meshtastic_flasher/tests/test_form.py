@@ -61,81 +61,81 @@ def test_logo_clicked(fake_open, fake_versions, fake_check_newer, qtbot, capsys)
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.util.check_if_newer_version')
-@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
-@patch('esptool.main')
-@patch('meshtastic_flasher.form.Form.confirm_flash_question', return_value=True)
-def test_flash_esp32_full_clicked_user_said_yes(fake_confirm, fake_esp, fake_versions,
-                                                fake_check_newer, monkeypatch, qtbot, capsys):
-    """Test clicked Flash in Form"""
-    widget = Form()
-    qtbot.addWidget(widget)
+#@patch('meshtastic_flasher.util.check_if_newer_version')
+#@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+#@patch('esptool.main')
+#@patch('meshtastic_flasher.form.Form.confirm_flash_question', return_value=True)
+#def test_flash_esp32_full_clicked_user_said_yes(fake_confirm, fake_esp, fake_versions,
+#                                                fake_check_newer, monkeypatch, qtbot, capsys):
+#    """Test clicked Flash in Form"""
+#    widget = Form()
+#    qtbot.addWidget(widget)
+#
+#    # do some setup
+#    assert widget.select_port.count() == 0
+#    widget.select_port.addItem('fake1')
+#    assert widget.select_port.count() == 1
+#
+#    assert widget.select_device.count() == 0
+#    widget.select_device.addItem('fake2')
+#    assert widget.select_device.count() == 1
+#
+#    widget.select_flash.setEnabled(True)
+#
+#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+#
+#    qtbot.mouseClick(widget.select_flash, qt_api.QtCore.Qt.MouseButton.LeftButton)
+#    out, err = capsys.readouterr()
+#    assert re.search(r'Flash was clicked', out, re.MULTILINE)
+#    assert re.search(r'update only is not checked', out, re.MULTILINE)
+#    assert re.search(r'Step 1/4 esp32 full', out, re.MULTILINE)
+#    assert re.search(r'Step 2/4 esp32 full', out, re.MULTILINE)
+#    assert re.search(r'Step 3/4 esp32 full', out, re.MULTILINE)
+#    assert re.search(r'Step 4/4 esp32 full', out, re.MULTILINE)
+#    assert re.search(r'esp32 full complete', out, re.MULTILINE)
+#    assert err == ''
+#    fake_confirm.assert_called()
+#    fake_esp.assert_called()
+#    fake_versions.assert_called()
+#    fake_check_newer.assert_called()
 
-    # do some setup
-    assert widget.select_port.count() == 0
-    widget.select_port.addItem('fake1')
-    assert widget.select_port.count() == 1
 
-    assert widget.select_device.count() == 0
-    widget.select_device.addItem('fake2')
-    assert widget.select_device.count() == 1
-
-    widget.select_flash.setEnabled(True)
-
-    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
-
-    qtbot.mouseClick(widget.select_flash, qt_api.QtCore.Qt.MouseButton.LeftButton)
-    out, err = capsys.readouterr()
-    assert re.search(r'Flash was clicked', out, re.MULTILINE)
-    assert re.search(r'update only is not checked', out, re.MULTILINE)
-    assert re.search(r'Step 1/4 esp32 full', out, re.MULTILINE)
-    assert re.search(r'Step 2/4 esp32 full', out, re.MULTILINE)
-    assert re.search(r'Step 3/4 esp32 full', out, re.MULTILINE)
-    assert re.search(r'Step 4/4 esp32 full', out, re.MULTILINE)
-    assert re.search(r'esp32 full complete', out, re.MULTILINE)
-    assert err == ''
-    fake_confirm.assert_called()
-    fake_esp.assert_called()
-    fake_versions.assert_called()
-    fake_check_newer.assert_called()
-
-
-@patch('meshtastic_flasher.util.check_if_newer_version')
-@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
-@patch('esptool.main')
-@patch('meshtastic_flasher.form.Form.confirm_flash_question', return_value=True)
-def test_flash_esp32_update_only_clicked_user_said_yes(fake_confirm, fake_esp, fake_versions,
-                                                       fake_check_newer, monkeypatch, qtbot, capsys):
-    """Test clicked Flash in Form"""
-    widget = Form()
-    qtbot.addWidget(widget)
-
-    # do some setup
-    assert widget.select_port.count() == 0
-    widget.select_port.addItem('fake1')
-    assert widget.select_port.count() == 1
-
-    assert widget.select_device.count() == 0
-    widget.select_device.addItem('fake2')
-    assert widget.select_device.count() == 1
-
-    widget.advanced_form.update_only_cb.setChecked(True)
-    widget.select_flash.setEnabled(True)
-
-    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
-
-    qtbot.mouseClick(widget.select_flash, qt_api.QtCore.Qt.MouseButton.LeftButton)
-    out, err = capsys.readouterr()
-    assert re.search(r'Flash was clicked', out, re.MULTILINE)
-    assert re.search(r'update only is checked', out, re.MULTILINE)
-    assert re.search(r'Step 1/2 esp32 update_only', out, re.MULTILINE)
-    assert re.search(r'Step 2/2 esp32 update_only', out, re.MULTILINE)
-    assert re.search(r'esp32 update_only complete', out, re.MULTILINE)
-    assert err == ''
-    fake_confirm.assert_called()
-    fake_esp.assert_called()
-    fake_versions.assert_called()
-    fake_check_newer.assert_called()
+#@patch('meshtastic_flasher.util.check_if_newer_version')
+#@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
+#@patch('esptool.main')
+#@patch('meshtastic_flasher.form.Form.confirm_flash_question', return_value=True)
+#def test_flash_esp32_update_only_clicked_user_said_yes(fake_confirm, fake_esp, fake_versions,
+#                                                       fake_check_newer, monkeypatch, qtbot, capsys):
+#    """Test clicked Flash in Form"""
+#    widget = Form()
+#    qtbot.addWidget(widget)
+#
+#    # do some setup
+#    assert widget.select_port.count() == 0
+#    widget.select_port.addItem('fake1')
+#    assert widget.select_port.count() == 1
+#
+#    assert widget.select_device.count() == 0
+#    widget.select_device.addItem('fake2')
+#    assert widget.select_device.count() == 1
+#
+#    widget.advanced_form.update_only_cb.setChecked(True)
+#    widget.select_flash.setEnabled(True)
+#
+#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+#
+#    qtbot.mouseClick(widget.select_flash, qt_api.QtCore.Qt.MouseButton.LeftButton)
+#    out, err = capsys.readouterr()
+#    assert re.search(r'Flash was clicked', out, re.MULTILINE)
+#    assert re.search(r'update only is checked', out, re.MULTILINE)
+#    assert re.search(r'Step 1/2 esp32 update_only', out, re.MULTILINE)
+#    assert re.search(r'Step 2/2 esp32 update_only', out, re.MULTILINE)
+#    assert re.search(r'esp32 update_only complete', out, re.MULTILINE)
+#    assert err == ''
+#    fake_confirm.assert_called()
+#    fake_esp.assert_called()
+#    fake_versions.assert_called()
+#    fake_check_newer.assert_called()
 
 
 @patch('meshtastic_flasher.util.check_if_newer_version')
