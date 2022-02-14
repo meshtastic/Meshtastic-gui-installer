@@ -1,67 +1,134 @@
 """ Run the esptool commands
 """
 
-import re
-import subprocess
+import random
 import sys
 import time
-import traceback
 import uuid
-from collections import namedtuple
 
-from PySide6.QtCore import (QObject, QRunnable, Qt, QThreadPool, QTimer,
-                          Signal, Slot)
-from PySide6.QtWidgets import (QApplication, QMainWindow, QPlainTextEdit,
-                             QProgressBar, QPushButton, QVBoxLayout, QWidget,
-                             QDialog, QFormLayout, QLabel)
+from PySide6.QtCore import QObject, QRunnable, QThreadPool, QTimer, Signal, Slot
+from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QVBoxLayout, QWidget, QDialog, QPlainTextEdit, QLabel
+
 
 class WorkerSignals(QObject):
-    """ Defines the signals available from a running worker thread. """
-    result = Signal(str)  # Send back the output from the process as a string.
+    """Defines the signals available from a running worker thread."""
+    data = Signal(str)
     finished = Signal()
 
 
-class WorkerKilledException(Exception):
-    pass
+def flush_then_wait():
+    sys.stdout.flush()
+    sys.stderr.flush()
+    time.sleep(0.5)
 
-class SubProcessWorker(QRunnable):
-    """ ProcessWorker worker thread
-    Inherits from QRunnable to handle worker thread setup, signals and wrap-up.
-    :param command: command to execute with `subprocess`.
+class Worker(QRunnable):
+    """ Worker thread
+    Inherits from QRunnable to handle worker thread setup, signals
+    and wrap-up.
     """
-    def __init__(self, command):
-        super().__init__()
 
-        # Store constructor arguments (re-used for processing).
+    def __init__(self):
+        super().__init__()
         self.signals = WorkerSignals()
 
-        # The command to be executed.
-        self.command = command
-
-    # tag::workerRun[]
     @Slot()
     def run(self):
-        """
-        Initialize the runner function with passed args, kwargs.
-        """
-        with subprocess.Popen(
-            self.command,
-            bufsize=1,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            universal_newlines=True,
-            shell=True
-        ) as proc:
-            while proc.poll() is None:
+        # do stuff
 
-                data = proc.stdout.readline()
-                self.signals.result.emit(data)
+        save_stdout = sys.stdout
+        save_stderr = sys.stderr
+
+        sys.stdout = self
+        sys.stderr = self
+
+        sys.stdout.write("Script stdout 1\n")
+        sys.stdout.write("Script stdout 2\n")
+        sys.stdout.write("Script stdout 3\n")
+        flush_then_wait()
+
+        sys.stdout.write("name=Martin\n")
+        sys.stderr.write("Total time: 00:05:00\n")
+        sys.stdout.write("Script stdout 4\n")
+        sys.stdout.write("Script stdout 5\n")
+        sys.stderr.write("Total complete: 0%\n")
+        flush_then_wait()
+
+        sys.stderr.write("Elapsed time: 00:00:10\n")
+        sys.stderr.write("Elapsed time: 00:00:50\n")
+        sys.stderr.write("Total complete: 5%\n")
+        sys.stdout.write("country=Nederland\n")
+        flush_then_wait()
+
+        sys.stderr.write("Elapsed time: 00:01:10\n")
+        sys.stderr.write("Total complete: 10%\n")
+        sys.stdout.write("Script stdout 6\n")
+        sys.stdout.write("Script stdout 7\n")
+        sys.stdout.write("website=www.pythonguis.com\n")
+        flush_then_wait()
+
+        sys.stderr.write("Elapsed time: 00:01:20\n")
+        sys.stderr.write("Elapsed time: 00:02:50\n")
+        sys.stderr.write("Total complete: 20%\n")
+        sys.stdout.write("Script stdout 8\n")
+        sys.stdout.write("Script stdout 9\n")
+        flush_then_wait()
+
+        sys.stderr.write("Elapsed time: 00:02:90\n")
+        sys.stderr.write("Total complete: 25%\n")
+        sys.stderr.write("Elapsed time: 00:03:10\n")
+        sys.stderr.write("Total complete: 30%\n")
+        sys.stdout.write("Script stdout 10\n")
+        sys.stdout.write("Script stdout 11\n")
+        flush_then_wait()
+
+        sys.stderr.write("Elapsed time: 00:03:70\n")
+        sys.stderr.write("Total complete: 35%\n")
+        sys.stderr.write("Elapsed time: 00:03:90\n")
+        sys.stderr.write("Total complete: 45%\n")
+        sys.stdout.write("Script stdout 12\n")
+        sys.stdout.write("Script stdout 13\n")
+        flush_then_wait()
+
+        sys.stderr.write("Elapsed time: 00:04:10\n")
+        sys.stderr.write("Total complete: 65%\n")
+        sys.stderr.write("Elapsed time: 00:04:50\n")
+        sys.stderr.write("Total complete: 75%\n")
+        sys.stdout.write("Script stdout 14\n")
+        sys.stdout.write("Script stdout 15\n")
+        flush_then_wait()
+
+        sys.stderr.write("Elapsed time: 00:04:70\n")
+        sys.stderr.write("Total complete: 80%\n")
+        sys.stderr.write("Elapsed time: 00:04:90\n")
+        sys.stderr.write("Total complete: 90%\n")
+        sys.stdout.write("Script stdout 16\n")
+        sys.stdout.write("Script stdout 17\n")
+        flush_then_wait()
+
+        sys.stderr.write("Elapsed time: 00:05:00\n")
+        sys.stderr.write("Total complete: 100%\n")
+        sys.stdout.write("Script stdout 18\n")
+        sys.stdout.write("Script stdout 19\n")
+        flush_then_wait()
+
+        sys.stdout = save_stdout
+        sys.stderr = save_stderr
         self.signals.finished.emit()
-    # end::workerRun[]
+
+
+    def write(self, data):
+        self.signals.data.emit(data)
+
+    def flush(self):
+        pass
+
 
 class EsptoolForm(QDialog):
     def __init__(self, parent=None):
         super(EsptoolForm, self).__init__(parent)
+
+        self.threadpool = QThreadPool()
+        self.finished = False
 
         width = 500
         height = 400
@@ -76,30 +143,22 @@ class EsptoolForm(QDialog):
 
         self.status_label = QLabel("running")
         layout.addWidget(self.status_label)
+
         self.setLayout(layout)
 
-        # Thread runner
-        self.threadpool = QThreadPool()
 
-        self.finished = False
-
-        #self.show()
-
-    # tag::start[]
     def start(self):
-        # Create a runner
-        self.runner = SubProcessWorker(
-            command="python3 dummy_script.py"
-        )
-        self.runner.signals.result.connect(self.result)
-        self.runner.signals.finished.connect(self.do_finished)
-        self.threadpool.start(self.runner)
-    # end::start[]
+        worker = Worker()
+        worker.signals.data.connect(self.receive_data)
+        worker.signals.finished.connect(self.do_finished)
+
+        # Execute
+        self.threadpool.start(worker)
 
     def do_finished(self):
         self.status_label.setText("done")
         self.finished = True
         print(f'self.finished:{self.finished}')
 
-    def result(self, s):
-        self.text.appendPlainText(s.strip())
+    def receive_data(self, data):
+        self.text.appendPlainText(data.strip())
