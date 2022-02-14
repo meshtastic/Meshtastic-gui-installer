@@ -6,7 +6,7 @@ import sys
 import esptool
 
 from PySide6.QtCore import QObject, QRunnable, QThreadPool, Signal, Slot
-from PySide6.QtWidgets import QVBoxLayout, QHBoxLayout, QDialog, QPlainTextEdit, QLabel, QMessageBox, QPushButton
+from PySide6.QtWidgets import QVBoxLayout, QHBoxLayout, QDialog, QPlainTextEdit, QLabel, QPushButton
 
 
 class WorkerSignals(QObject):
@@ -99,7 +99,7 @@ class Worker(QRunnable):
 
     def isatty(self):
         """needed for esptool"""
-        return True
+        return False
 
 
 class EsptoolForm(QDialog):
@@ -165,12 +165,12 @@ class EsptoolForm(QDialog):
 
     def do_finished(self):
         """When finished, update the label and let the user know it is done."""
-        self.status_label.setText("done")
+        self.status_label.setText("")
         self.finished = True
         print(f'finished:{self.finished}')
         self.ok_button.show()
-        QMessageBox.information(self, "Info", "Flashed")
 
     def receive_data(self, data):
         """Update the text box from the stdout."""
-        self.text.appendPlainText(data.strip())
+        if data != '\n':
+            self.text.appendPlainText(data.strip())
