@@ -22,7 +22,7 @@ class Worker(QRunnable):
     and wrap-up.
     """
 
-    def __init__(self, update_only=False, port=None, device_file=None, system_info_file=None, bin_file=None):
+    def __init__(self, update_only=False, port=None, device_file=None, system_info_file=None, bin_file=None, test=False):
         """constructor for the Worker class"""
         super().__init__()
         self.signals = WorkerSignals()
@@ -32,29 +32,32 @@ class Worker(QRunnable):
         self.device_file = device_file
         self.system_info_file = system_info_file
         self.bin_file = bin_file
+        self.test = test # for unit testing (could not figure out how to patch)
 
     @Slot()
     def run(self):
         """Run the commands."""
 
-        save_stdout = sys.stdout
-        save_stderr = sys.stderr
-
-        sys.stdout = self
-        sys.stderr = self
+        if not self.test:
+            save_stdout = sys.stdout
+            save_stderr = sys.stderr
+            sys.stdout = self
+            sys.stderr = self
 
         if self.update_only:
             print("Step 1/2 esp32 update only")
             self.signals.status.emit("Update step 1 of 2")
             command = ["--port", self.port, "write_flash", "0x10000", self.device_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
+            if not self.test:
+                esptool.main(command)
             self.signals.status.emit("Update step 1 of 2 is done")
 
             print("Step 2/2 esp32 update only")
             command = ["--port", self.port, "erase_region", "0xe000", "0x2000"]
             print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
+            if not self.test:
+                esptool.main(command)
             self.signals.status.emit("Update step 2 of 2 is done")
 
         else:
@@ -63,30 +66,35 @@ class Worker(QRunnable):
             self.signals.status.emit("Full flash step 1 of 4")
             command = ["--port", self.port, "erase_flash"]
             print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
+            if not self.test:
+                esptool.main(command)
             self.signals.status.emit("Full flash step 1 of 4 is done")
 
             print("Step 2/4 esp32 full")
             command = ["--port", self.port, "write_flash", "0x1000", self.system_info_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
+            if not self.test:
+                esptool.main(command)
             self.signals.status.emit("Full flash step 2 of 4 is done")
 
             print("Step 3/4 esp32 full")
             command = ["--port", self.port, "write_flash", "0x00390000", self.bin_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
+            if not self.test:
+                esptool.main(command)
             self.signals.status.emit("Full flash step 3 of 4 is done")
 
             print("Step 4/4 esp32 full")
             command = ["--port", self.port, "write_flash", "0x10000", self.device_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
-            esptool.main(command)
+            if not self.test:
+                esptool.main(command)
             self.signals.status.emit("Full flash step 4 of 4 is done")
 
-        sys.stdout = save_stdout
-        sys.stderr = save_stderr
-        self.signals.finished.emit()
+        if not self.test:
+            sys.stdout = save_stdout
+            sys.stderr = save_stderr
+            self.signals.finished.emit()
 
 
     def write(self, data):
@@ -146,12 +154,12 @@ class EsptoolForm(QDialog):
         print('OK button was clicked in esptool form')
         self.close()
 
-    def start(self, update_only=False, port=None, device_file=None, system_info_file=None, bin_file=None):
+    def start(self, update_only=False, port=None, device_file=None, system_info_file=None, bin_file=None, test=False):
         """Create a thread to do the work."""
         # hide the button in case they are calling the esptool a subsequent time
         self.ok_button.hide()
 
-        worker = Worker(update_only, port, device_file, system_info_file, bin_file)
+        worker = Worker(update_only, port, device_file, system_info_file, bin_file, test)
         worker.signals.data.connect(self.receive_data)
         worker.signals.finished.connect(self.do_finished)
         worker.signals.status.connect(self.update_status)

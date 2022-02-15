@@ -904,7 +904,7 @@ class Form(QDialog):
             all_settings_msg = ''
         confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
         confirm_msg += f'{self.port}\n{self.device}?\n\n{all_settings_msg}'
-        reply = meshtastic_flasher.yes_no.YesNo(message=confirm_msg)
+        reply = meshtastic_flasher.yes_no.YesNo(message=confirm_msg).exec()
         if reply == QMessageBox.Yes:
             want_to_proceed = True
             print("User confirmed they want to flash")
@@ -919,7 +919,7 @@ class Form(QDialog):
         """
         want_to_check = False
         msg = 'Does the device currently have Meshtastic version 1.2 or greater?'
-        reply = meshtastic_flasher.yes_no.YesNo(message=msg)
+        reply = meshtastic_flasher.yes_no.YesNo(message=msg).exec()
         if reply == QMessageBox.Yes:
             want_to_check = True
             print("User confirmed they want to check using the Meshtastic python method")

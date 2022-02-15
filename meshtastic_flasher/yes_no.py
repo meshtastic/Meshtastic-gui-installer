@@ -1,7 +1,7 @@
 """YesNo confirmation box"""
 
 from PySide6 import QtCore
-from PySide6.QtWidgets import QMessageBox, QDialog
+from PySide6.QtWidgets import QMessageBox
 
 class YesNo(QMessageBox):
     """Custom yes no dialog to allow for key press Y and N"""
@@ -14,14 +14,12 @@ class YesNo(QMessageBox):
         self.setText(message)
         self.setIcon(QMessageBox.Question)
         self.setStandardButtons(QMessageBox.Yes | QMessageBox.No)
-        self.exec()
+        self.show()
 
     def keyPressEvent(self, event):
         """Deal with a key press"""
         super(YesNo, self).keyPressEvent(event)
         if event.key() == QtCore.Qt.Key_Y:
-            self.setResult(QDialog.Accepted)
-            self.close()
+            self.accept()
         if event.key() in [QtCore.Qt.Key_N, QtCore.Qt.Key_Escape]:
-            self.setResult(QDialog.Rejected)
-            self.close()
+            self.reject()
