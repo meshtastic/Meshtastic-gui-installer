@@ -2,6 +2,7 @@
 """
 
 from PySide6 import QtCore
+from PySide6.QtWidgets import QDialog
 
 from meshtastic_flasher.yes_no import YesNo
 
@@ -42,7 +43,7 @@ def test_YesNo_y(qtbot):
         qtbot.keyPress(widget, "y")
     QtCore.QTimer.singleShot(1, interact)
     result = widget.exec()
-    assert result == 1
+    assert result == QDialog.Accepted
 
 
 def test_YesNo_n(qtbot):
@@ -53,4 +54,4 @@ def test_YesNo_n(qtbot):
         qtbot.keyPress(widget, "n")
     QtCore.QTimer.singleShot(1, interact)
     result = widget.exec()
-    assert result == 0
+    assert result == QDialog.Rejected
