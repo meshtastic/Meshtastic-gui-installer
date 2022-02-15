@@ -12,6 +12,7 @@ from meshtastic.supported_device import SupportedDevice
 #from meshtastic.serial_interface import SerialInterface
 
 from meshtastic_flasher.form import Form
+#import meshtastic_flasher.yes_no
 
 
 @patch('meshtastic_flasher.util.check_if_newer_version')
@@ -686,16 +687,12 @@ def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_part
 
 @patch('meshtastic_flasher.util.check_if_newer_version')
 @patch('meshtastic_flasher.form.Form.get_versions_from_disk')
-def test_confirm_flash_question_not_nrf(fake_versions, fake_check_newer, qtbot, capsys, monkeypatch):
+def test_confirm_flash_question_not_nrf(fake_versions, fake_check_newer, qtbot, capsys):
     """Test confirm_flash_question()"""
-    # setup
     widget = Form()
     qtbot.addWidget(widget)
-
-    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.Yes)
-
-    widget.confirm_flash_question("")
-
+    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QMessageBox.Yes):
+        widget.confirm_flash_question("")
     out, err = capsys.readouterr()
     assert re.search(r'User confirmed they want to flash', out, re.MULTILINE)
     assert err == ''
@@ -705,7 +702,7 @@ def test_confirm_flash_question_not_nrf(fake_versions, fake_check_newer, qtbot, 
 
 @patch('meshtastic_flasher.util.check_if_newer_version')
 @patch('meshtastic_flasher.form.Form.get_versions_from_disk')
-def test_confirm_flash_question_nrf(fake_versions, fake_check_newer, qtbot, capsys, monkeypatch):
+def test_confirm_flash_question_nrf(fake_versions, fake_check_newer, qtbot, capsys):
     """Test confirm_flash_question()"""
     # setup
     widget = Form()
@@ -713,9 +710,8 @@ def test_confirm_flash_question_nrf(fake_versions, fake_check_newer, qtbot, caps
 
     widget.nrf = True
 
-    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.Yes)
-
-    widget.confirm_flash_question("")
+    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QMessageBox.Yes):
+        widget.confirm_flash_question("")
 
     out, err = capsys.readouterr()
     assert re.search(r'User confirmed they want to flash', out, re.MULTILINE)
@@ -907,28 +903,24 @@ def test_enable_at_end_of_detect(fake_versions, fake_check_newer, qtbot):
     fake_check_newer.assert_called()
 
 
-def test_confirm_using_meshtastic_yes(qtbot, capsys, monkeypatch):
+def test_confirm_using_meshtastic_yes(qtbot, capsys):
     """Test confirm_using_meshtastic()"""
     widget = Form()
     qtbot.addWidget(widget)
-
-    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.Yes)
-
-    widget.confirm_check_using_meshtastic()
-
+    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QMessageBox.Yes):
+        widget.confirm_check_using_meshtastic()
     out, err = capsys.readouterr()
     assert re.search(r'User confirmed they want to check using the Meshtastic python method', out, re.MULTILINE)
     assert err == ''
 
 
-def test_confirm_using_meshtastic_no(qtbot, capsys, monkeypatch):
+def test_confirm_using_meshtastic_no(qtbot, capsys):
     """Test confirm_using_meshtastic()"""
     widget = Form()
     qtbot.addWidget(widget)
 
-    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.No)
-
-    widget.confirm_check_using_meshtastic()
+    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QMessageBox.No):
+        widget.confirm_check_using_meshtastic()
 
     out, err = capsys.readouterr()
     assert re.search(r'User declined detection using the Meshtastic python method', out, re.MULTILINE)

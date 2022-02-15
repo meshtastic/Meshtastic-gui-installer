@@ -27,6 +27,7 @@ from meshtastic_flasher.version import __version__
 from meshtastic_flasher.advanced_form import AdvancedForm
 from meshtastic_flasher.esptool_form import EsptoolForm
 import meshtastic_flasher.util
+import meshtastic_flasher.yes_no
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 
@@ -38,6 +39,7 @@ if platform.system() == "Linux":
 
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
+
 
 
 class Form(QDialog):
@@ -902,11 +904,12 @@ class Form(QDialog):
             all_settings_msg = ''
         confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
         confirm_msg += f'{self.port}\n{self.device}?\n\n{all_settings_msg}'
-        reply = QMessageBox.question(self, 'Flash', confirm_msg,
-                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        reply = meshtastic_flasher.yes_no.YesNo(message=confirm_msg).exec()
         if reply == QMessageBox.Yes:
             want_to_proceed = True
             print("User confirmed they want to flash")
+        else:
+            print("User does not want to flash")
         return want_to_proceed
 
 
@@ -916,8 +919,7 @@ class Form(QDialog):
         """
         want_to_check = False
         msg = 'Does the device currently have Meshtastic version 1.2 or greater?'
-        reply = QMessageBox.question(self, 'Question', msg,
-                                     QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        reply = meshtastic_flasher.yes_no.YesNo(message=msg).exec()
         if reply == QMessageBox.Yes:
             want_to_check = True
             print("User confirmed they want to check using the Meshtastic python method")
