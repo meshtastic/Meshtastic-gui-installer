@@ -173,7 +173,7 @@ def is_windows11():
     """Detect if Windows 11"""
     is_win11 = False
     if platform.system() == "Windows":
-        if int(platform.release()) >= 10:
+        if float(platform.release()) >= 10.0:
             patch = platform.version().split('.')[2]
             print(f'patch:{patch}')
             # in case they add some number suffix later, just get first 5 chars of patch
