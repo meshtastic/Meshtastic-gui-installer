@@ -6,13 +6,12 @@ import re
 from unittest.mock import patch, MagicMock, mock_open
 
 from pytestqt.qt_compat import qt_api
-from PySide6.QtWidgets import QMessageBox
+from PySide6.QtWidgets import QMessageBox, QDialog
 
 from meshtastic.supported_device import SupportedDevice
 #from meshtastic.serial_interface import SerialInterface
 
 from meshtastic_flasher.form import Form
-#import meshtastic_flasher.yes_no
 
 
 @patch('meshtastic_flasher.util.check_if_newer_version')
@@ -691,7 +690,7 @@ def test_confirm_flash_question_not_nrf(fake_versions, fake_check_newer, qtbot, 
     """Test confirm_flash_question()"""
     widget = Form()
     qtbot.addWidget(widget)
-    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QMessageBox.Yes):
+    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QDialog.Accepted):
         widget.confirm_flash_question("")
     out, err = capsys.readouterr()
     assert re.search(r'User confirmed they want to flash', out, re.MULTILINE)
@@ -710,7 +709,7 @@ def test_confirm_flash_question_nrf(fake_versions, fake_check_newer, qtbot, caps
 
     widget.nrf = True
 
-    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QMessageBox.Yes):
+    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QDialog.Accepted):
         widget.confirm_flash_question("")
 
     out, err = capsys.readouterr()
@@ -907,7 +906,7 @@ def test_confirm_using_meshtastic_yes(qtbot, capsys):
     """Test confirm_using_meshtastic()"""
     widget = Form()
     qtbot.addWidget(widget)
-    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QMessageBox.Yes):
+    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QDialog.Accepted):
         widget.confirm_check_using_meshtastic()
     out, err = capsys.readouterr()
     assert re.search(r'User confirmed they want to check using the Meshtastic python method', out, re.MULTILINE)
@@ -919,7 +918,7 @@ def test_confirm_using_meshtastic_no(qtbot, capsys):
     widget = Form()
     qtbot.addWidget(widget)
 
-    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QMessageBox.No):
+    with patch("meshtastic_flasher.yes_no.YesNo.exec", return_value=QDialog.Rejected):
         widget.confirm_check_using_meshtastic()
 
     out, err = capsys.readouterr()
