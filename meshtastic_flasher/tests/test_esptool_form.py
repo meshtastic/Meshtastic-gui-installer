@@ -43,3 +43,37 @@ def test_Worker_isatty():
     """Test Worker().isatty()"""
     a_worker = Worker(test=True)
     assert a_worker.isatty() is False
+
+
+def test_update_status(qtbot):
+    """Test update_status()"""
+    widget = EsptoolForm()
+    qtbot.addWidget(widget)
+    assert widget.status_label.text() != 'foo'
+    widget.update_status('foo')
+    assert widget.status_label.text() == 'foo'
+
+
+def test_do_finished(qtbot):
+    """Test do_finished()"""
+    widget = EsptoolForm()
+    qtbot.addWidget(widget)
+    assert widget.status_label.text() != ''
+    assert widget.ok_button.isHidden() is True
+    widget.do_finished()
+    assert widget.status_label.text() == ''
+    assert widget.ok_button.isHidden() is False
+
+
+def test_receive_data(qtbot):
+    """Test receive_data()"""
+    widget = EsptoolForm()
+    qtbot.addWidget(widget)
+    assert widget.text.toPlainText() == ''
+    widget.receive_data('foo')
+    assert widget.text.toPlainText() == 'foo'
+    # ensure no blank lines are added
+    widget.receive_data('\n')
+    assert widget.text.toPlainText() == 'foo'
+    widget.receive_data('bar\n')
+    assert widget.text.toPlainText() == 'foo\nbar'
