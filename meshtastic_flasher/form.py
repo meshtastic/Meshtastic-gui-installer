@@ -26,6 +26,7 @@ import meshtastic.serial_interface
 from meshtastic_flasher.version import __version__
 from meshtastic_flasher.advanced_form import AdvancedForm
 from meshtastic_flasher.esptool_form import EsptoolForm
+from meshtastic_flasher.wifi_and_mqtt_form import Wifi_and_MQTT_Form
 import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
@@ -60,6 +61,7 @@ class Form(QDialog):
 
         self.advanced_form = AdvancedForm()
         self.esptool_form = EsptoolForm()
+        self.wifi_and_mqtt_form = Wifi_and_MQTT_Form(self)
 
         update_available = ''
         if meshtastic_flasher.util.check_if_newer_version():
@@ -201,7 +203,7 @@ class Form(QDialog):
         """Deal with a key press"""
         if event.key() == QtCore.Qt.Key_A:
             print("A was pressed... showing advanced options form")
-            self.show_advanced_options()
+            self.advanced_form.show()
         elif event.key() == QtCore.Qt.Key_D:
             print("D was pressed...")
             self.detect()
@@ -217,6 +219,9 @@ class Form(QDialog):
         elif event.key() == QtCore.Qt.Key_T:
             print("T was pressed... so quitting")
             self.tips()
+        elif event.key() == QtCore.Qt.Key_W:
+            print("W was pressed... showing wifi and mqtt form")
+            self.wifi_and_mqtt_form.run()
 
 
     def on_select_firmware_changed(self, value):
@@ -362,12 +367,6 @@ class Form(QDialog):
                                 "H - Hotkeys\n"
                                 "T - Tips\n"
                                 "Q - Quit\n"))
-
-
-    def show_advanced_options(self):
-        """Advanced Options"""
-        print("advanced options")
-        self.advanced_form.show()
 
 
     def detect_devices(self):
