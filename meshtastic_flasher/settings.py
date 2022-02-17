@@ -37,6 +37,24 @@ class Settings(QMainWindow):
 
         self.tabs = QTabWidget()
 
+        self.setStyleSheet("""
+QTabWidget::pane { position: absolute; top: -0.5em; }
+QTabWidget::tab-bar { alignment: center; }
+QTabBar::tab:selected {
+    /* expand/overlap to the left and right by 4px */
+    margin-left: -4px;
+    margin-right: -4px;
+}
+QTabBar::tab:first:selected {
+    margin-left: 0; /* the first selected tab has nothing to overlap with on the left */
+}
+QTabBar::tab:last:selected {
+    margin-right: 0; /* the last selected tab has nothing to overlap with on the right */
+}
+QTabBar::tab:only-one {
+    margin: 0; /* if there is only one tab, we don't want overlapping margins */
+}
+""")
         self.tabs.blockSignals(True) # just for not showing initial message
         self.tabs.currentChanged.connect(self.on_change_tabs)
 
