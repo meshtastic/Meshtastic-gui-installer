@@ -21,7 +21,7 @@ class PositionForm(QDialog):
         width = 700
         height = 500
         self.setMinimumSize(width, height)
-        self.setWindowTitle("User Settings")
+        self.setWindowTitle("Position Settings")
 
         self.port = None
         self.interface = None
@@ -241,10 +241,10 @@ class PositionForm(QDialog):
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'broadcast_interval', self.broadcast_interval.text())
                 setPref(prefs, 'position_flags', self.position_flags.text())
-                setPref(prefs, 'use_fixed_position', self.use_fixed_position.text())
-                setPref(prefs, 'location_share', self.location_share.currentText())
-                setPref(prefs, 'gps_operation', self.gps_operation.currentText())
-                setPref(prefs, 'gps_format', self.gps_format.currentText())
+                setPref(prefs, 'use_fixed_position', f'{self.use_fixed_position.text()}')
+                setPref(prefs, 'location_share', self.location_share.currentData())
+                setPref(prefs, 'gps_operation', self.gps_operation.currentData())
+                setPref(prefs, 'gps_format', self.gps_format.currentData())
                 setPref(prefs, 'gps_accept_2d', f'{self.gps_accept_2d.isChecked()}')
                 setPref(prefs, 'gps_max_dop', self.gps_max_dop.text())
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
