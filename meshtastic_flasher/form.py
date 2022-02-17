@@ -28,6 +28,7 @@ from meshtastic_flasher.advanced_form import AdvancedForm
 from meshtastic_flasher.esptool_form import EsptoolForm
 from meshtastic_flasher.wifi_and_mqtt_form import Wifi_and_MQTT_Form
 from meshtastic_flasher.user_form import UserForm
+from meshtastic_flasher.position_form import PositionForm
 import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
@@ -64,6 +65,7 @@ class Form(QDialog):
         self.esptool_form = EsptoolForm()
         self.wifi_and_mqtt_form = Wifi_and_MQTT_Form(self)
         self.user_form = UserForm(self)
+        self.position_form = PositionForm(self)
 
         update_available = ''
         if meshtastic_flasher.util.check_if_newer_version():
@@ -215,6 +217,9 @@ class Form(QDialog):
         elif event.key() == QtCore.Qt.Key_H:
             print("H was pressed...")
             self.hotkeys()
+        elif event.key() == QtCore.Qt.Key_P:
+            print("P was pressed... showing position settings form")
+            self.position_form.run()
         elif event.key() == QtCore.Qt.Key_Q:
             print("Q was pressed... so quitting")
             QApplication.quit()

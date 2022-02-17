@@ -33,11 +33,6 @@ class UserForm(QDialog):
         self.licensed_operator = QCheckBox()
         self.team = QComboBox()
         self.team.setMinimumContentsLength(17)
-        # TODO: make these labels until we can change them in the api
-        # TODO: add number validation
-        self.ant_azimuth = QLabel()
-        self.ant_gain_dbi = QLabel()
-        self.tx_power_dbm = QLabel()
 
         self.ok_button = QPushButton("OK")
 
@@ -50,9 +45,6 @@ class UserForm(QDialog):
         form_layout.addRow(self.tr("Short Name"), self.short_name)
         form_layout.addRow(self.tr("Licensed Operator?"), self.licensed_operator)
         form_layout.addRow(self.tr("Team"), self.team)
-        form_layout.addRow(self.tr("Antenna Azimuth"), self.ant_azimuth)
-        form_layout.addRow(self.tr("Antenna Gain"), self.ant_gain_dbi)
-        form_layout.addRow(self.tr("Transmit Power"), self.tx_power_dbm)
         form_layout.addRow(self.tr(""), self.ok_button)
         self.setLayout(form_layout)
 
@@ -106,12 +98,6 @@ class UserForm(QDialog):
                             if k == tmp_team:
                                 self.team.setCurrentIndex(count)
                             count = count + 1
-                        if 'ant_azimuth' in n['user']:
-                            self.ant_azimuth.setText(n['user']['antAzimuth'])
-                        if 'ant_gain_dbi' in n['user']:
-                            self.ant_gain_dbi.setText(n['user']['antGainDbi'])
-                        if 'tx_power_dbm' in n['user']:
-                            self.tx_power_dbm.setText(n['user']['txPowerDbm'])
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -124,9 +110,6 @@ class UserForm(QDialog):
                 print("Writing values to device")
                 # TODO: Should we only write if we changed values?
                 self.interface.getNode(BROADCAST_ADDR).setOwner(long_name=self.long_name.text(), short_name=self.short_name.text(), is_licensed=self.licensed_operator.isChecked(), team=self.team.currentData())
-                # TODO: There does not seem to be a way in the -python library to set these values:
-                #       tx_power_dbm, ant_gain_dbi, ant_azimuth
-                #       see: https://github.com/meshtastic/Meshtastic-python/issues/271
         except Exception as e:
             print(f'Exception:{e}')
 
