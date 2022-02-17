@@ -1,7 +1,7 @@
 """class for the position settings"""
 
 
-from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QLineEdit, QLabel, QComboBox
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QLineEdit, QLabel, QComboBox, QDialogButtonBox
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -18,6 +18,8 @@ class PositionForm(QDialog):
         """constructor"""
         super(PositionForm, self).__init__(parent)
 
+        self.parent = parent
+
         width = 700
         height = 500
         self.setMinimumSize(width, height)
@@ -28,7 +30,7 @@ class PositionForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.broadcast_interval = QLineEdit()
+        self.position_broadcast_secs = QLineEdit()
         self.position_flag_altitude = QCheckBox("Include altitude", self)
         self.position_flag_alt_msl = QCheckBox("Altitude is MSL", self) # TODO: what is MSL?
         self.position_flag_geo_sep = QCheckBox("Include geoidal separation", self)
@@ -40,7 +42,7 @@ class PositionForm(QDialog):
         self.position_flag_timestamp = QCheckBox("Include positional timestamp (from GPS solution)")
         self.position_flags = QLabel() # field that shows the number for the prior bit fields
         self.position_flags.setToolTip("The 'position_flags' adds up the bits from the position flags above. Try changing one of the values above to see this value change. This is the value that gets written to the device.")
-        self.use_fixed_position = QCheckBox()
+        self.fixed_position = QCheckBox()
         self.location_share = QComboBox()
         self.location_share.setMinimumContentsLength(17)
         self.gps_operation = QComboBox()
@@ -51,11 +53,15 @@ class PositionForm(QDialog):
         self.gps_max_dop = QLineEdit()
         self.gps_attempt_time = QLabel()
 
-        self.ok_button = QPushButton("OK")
+        # Add a button box
+        self.button_box = QDialogButtonBox()
+        self.button_box.setStandardButtons(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        self.button_box.accepted.connect(self.accept)
+        self.button_box.rejected.connect(self.reject)
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.tr("Broadcast Interval"), self.broadcast_interval)
+        form_layout.addRow(self.tr("Broadcast Interval"), self.position_broadcast_secs)
         form_layout.addRow(self.tr("Position Flags"), self.position_flag_altitude)
         form_layout.addRow(self.tr("              "), self.position_flag_alt_msl)
         form_layout.addRow(self.tr("              "), self.position_flag_geo_sep)
@@ -66,17 +72,16 @@ class PositionForm(QDialog):
         form_layout.addRow(self.tr("              "), self.position_flag_seq_nos)
         form_layout.addRow(self.tr("              "), self.position_flag_timestamp)
         form_layout.addRow(self.tr("Position Flags Value (Calculated)"), self.position_flags)
-        form_layout.addRow(self.tr("Use Fixed Position"), self.use_fixed_position)
+        form_layout.addRow(self.tr("Use Fixed Position"), self.fixed_position)
         form_layout.addRow(self.tr("Location Sharing"), self.location_share)
         form_layout.addRow(self.tr("GPS Operation"), self.gps_operation)
         form_layout.addRow(self.tr("GPS Coordinate Format"), self.gps_format)
         form_layout.addRow(self.tr("GPS Accept 2D Fix"), self.gps_accept_2d)
         form_layout.addRow(self.tr("GPS Max DOP"), self.gps_max_dop)
         form_layout.addRow(self.tr("Last GPS Attempt"), self.gps_attempt_time)
-        form_layout.addRow(self.tr(""), self.ok_button)
+        form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
-        self.ok_button.clicked.connect(self.close_form)
         self.position_flag_altitude.stateChanged.connect(self.on_position_flag_change)
         self.position_flag_alt_msl.stateChanged.connect(self.on_position_flag_change)
         self.position_flag_geo_sep.stateChanged.connect(self.on_position_flag_change)
@@ -164,9 +169,10 @@ class PositionForm(QDialog):
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
                 if self.prefs.position_broadcast_secs:
-                    self.broadcast_interval.setText(f'{self.prefs.position_broadcast_secs}')
+                    self.position_broadcast_secs.setText(f'{self.prefs.position_broadcast_secs}')
                 else:
-                    self.broadcast_interval.setText("0")
+                    self.position_broadcast_secs.setText("0")
+
                 if self.prefs.position_flags:
                     self.position_flags.setText(f'{self.prefs.position_flags}')
                 else:
@@ -184,6 +190,7 @@ class PositionForm(QDialog):
                 self.location_share.clear()
                 desc = meshtastic.radioconfig_pb2.LocationSharing.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
+                    print(f'k:{k} v.number:{v.number}')
                     self.location_share.addItem(k, v.number)
                     if k == tmp_ls:
                         self.location_share.setCurrentIndex(count)
@@ -237,12 +244,12 @@ class PositionForm(QDialog):
                 # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'broadcast_interval', self.broadcast_interval.text())
+                setPref(prefs, 'position_broadcast_secs', self.position_broadcast_secs.text())
                 setPref(prefs, 'position_flags', self.position_flags.text())
-                setPref(prefs, 'use_fixed_position', f'{self.use_fixed_position.text()}')
-                setPref(prefs, 'location_share', self.location_share.currentData())
-                setPref(prefs, 'gps_operation', self.gps_operation.currentData())
-                setPref(prefs, 'gps_format', self.gps_format.currentData())
+                setPref(prefs, 'fixed_position', f'{self.fixed_position.isChecked()}')
+                setPref(prefs, 'location_share', f'{self.location_share.currentData()}')
+                setPref(prefs, 'gps_operation', f'{self.gps_operation.currentData()}')
+                setPref(prefs, 'gps_format', f'{self.gps_format.currentData()}')
                 setPref(prefs, 'gps_accept_2d', f'{self.gps_accept_2d.isChecked()}')
                 setPref(prefs, 'gps_max_dop', self.gps_max_dop.text())
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
@@ -251,7 +258,13 @@ class PositionForm(QDialog):
             print(f'Exception:{e}')
 
 
-    def close_form(self):
+    def reject(self):
+        """Cancel without saving"""
+        print('CANCEL button was clicked')
+        self.parent.my_close()
+
+
+    def accept(self):
         """Close the form"""
-        print('OK button was clicked')
+        print('SAVE button was clicked')
         self.write_values()

@@ -27,11 +27,11 @@ class Settings(QMainWindow):
         self.setMinimumSize(width, height)
         self.setWindowTitle("Settings")
 
-        self.wifi_and_mqtt_form = Wifi_and_MQTT_Form()
-        self.user_form = UserForm()
-        self.position_form = PositionForm()
-        self.power_form = PowerForm()
-        self.radio_form = RadioForm()
+        self.wifi_and_mqtt_form = Wifi_and_MQTT_Form(self)
+        self.user_form = UserForm(self)
+        self.position_form = PositionForm(self)
+        self.power_form = PowerForm(self)
+        self.radio_form = RadioForm(self)
 
         self.tabs = QTabWidget()
 
@@ -72,13 +72,19 @@ class Settings(QMainWindow):
             self.radio_form.run(port=self.port, interface=self.interface)
 
 
+    def my_close(self):
+        """Close this window"""
+        self.port = None
+        self.interface.close()
+        self.interface = None # so any saved values are re-read upon next form use
+        self.close()
+
+
     # pylint: disable=unused-argument
     def closeEvent(self, event):
         """On close of the Settings window"""
         print('closed Settings')
-        self.port = None
-        self.interface.close()
-        self.interface = None # so any saved values are re-read upon next form use
+        self.close()
 
 
     def run(self, port=None):

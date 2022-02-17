@@ -1,7 +1,7 @@
 """class for the power settings"""
 
 
-from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QComboBox
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -18,6 +18,8 @@ class PowerForm(QDialog):
         """constructor"""
         super(PowerForm, self).__init__(parent)
 
+        self.parent = parent
+
         width = 500
         height = 200
         self.setMinimumSize(width, height)
@@ -33,17 +35,19 @@ class PowerForm(QDialog):
         self.is_always_powered= QCheckBox()
         self.is_low_power = QCheckBox()
 
-        self.ok_button = QPushButton("OK")
+        # Add a button box
+        self.button_box = QDialogButtonBox()
+        self.button_box.setStandardButtons(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        self.button_box.accepted.connect(self.accept)
+        self.button_box.rejected.connect(self.reject)
 
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.tr("Charge Current"), self.charge_current)
         form_layout.addRow(self.tr("Always Powered"), self.is_always_powered)
         form_layout.addRow(self.tr("Powered by low powere source (solar)"), self.is_low_power)
-        form_layout.addRow(self.tr(""), self.ok_button)
+        form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
-
-        self.ok_button.clicked.connect(self.close_form)
 
 
     def run(self, port=None, interface=None):
@@ -95,16 +99,22 @@ class PowerForm(QDialog):
                 # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'charge_current', self.charge_current.currentData())
-                setPref(prefs, 'is_always_powered', self.is_always_powered.text())
-                setPref(prefs, 'is_low_power', self.is_low_power.text())
+                setPref(prefs, 'charge_current', f'{self.charge_current.currentData()}')
+                setPref(prefs, 'is_always_powered', f'{self.is_always_powered.isChecked()}')
+                setPref(prefs, 'is_low_power', f'{self.is_low_power.isChecked()}')
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:
             print(f'Exception:{e}')
 
 
-    def close_form(self):
+    def reject(self):
+        """Cancel without saving"""
+        print('CANCEL button was clicked')
+        self.parent.my_close()
+
+
+    def accept(self):
         """Close the form"""
-        print('OK button was clicked')
+        print('SAVE button was clicked')
         self.write_values()

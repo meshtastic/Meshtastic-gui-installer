@@ -1,7 +1,7 @@
 """class for the radio settings"""
 
 
-from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QComboBox
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -17,6 +17,8 @@ class RadioForm(QDialog):
     def __init__(self, parent=None):
         """constructor"""
         super(RadioForm, self).__init__(parent)
+
+        self.parent = parent
 
         width = 500
         height = 200
@@ -34,7 +36,12 @@ class RadioForm(QDialog):
         self.debug_log_enabled = QCheckBox()
         self.serial_disabled = QCheckBox()
 
-        self.ok_button = QPushButton("OK")
+        # Add a button box
+        self.button_box = QDialogButtonBox()
+        self.button_box.setStandardButtons(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        self.button_box.accepted.connect(self.accept)
+        self.button_box.rejected.connect(self.reject)
+
 
         # create form
         form_layout = QFormLayout()
@@ -42,10 +49,8 @@ class RadioForm(QDialog):
         form_layout.addRow(self.tr("Region"), self.region)
         form_layout.addRow(self.tr("Debug Log"), self.debug_log_enabled)
         form_layout.addRow(self.tr("Serial Disabled"), self.serial_disabled)
-        form_layout.addRow(self.tr(""), self.ok_button)
+        form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
-
-        self.ok_button.clicked.connect(self.close_form)
 
 
     def run(self, port=None, interface=None):
@@ -100,8 +105,8 @@ class RadioForm(QDialog):
                 # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'is_router', self.is_router.text())
-                setPref(prefs, 'region', self.region.currentData())
+                setPref(prefs, 'is_router', f'{self.is_router.isChecked()}')
+                setPref(prefs, 'region', f'{self.region.currentData()}')
                 setPref(prefs, 'debug_log_enabled', f'{self.debug_log_enabled.isChecked()}')
                 setPref(prefs, 'serial_disabled', f'{self.serial_disabled.isChecked()}')
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
@@ -110,7 +115,13 @@ class RadioForm(QDialog):
             print(f'Exception:{e}')
 
 
-    def close_form(self):
+    def reject(self):
+        """Cancel without saving"""
+        print('CANCEL button was clicked')
+        self.parent.my_close()
+
+
+    def accept(self):
         """Close the form"""
-        print('OK button was clicked')
+        print('SAVE button was clicked')
         self.write_values()

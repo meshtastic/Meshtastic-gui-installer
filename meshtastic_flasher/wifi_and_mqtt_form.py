@@ -1,7 +1,7 @@
 """class for the Wifi and MQTT settings"""
 
 
-from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QLineEdit
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QLineEdit, QDialogButtonBox
 
 import meshtastic.serial_interface
 from meshtastic.__init__ import BROADCAST_ADDR
@@ -14,6 +14,8 @@ class Wifi_and_MQTT_Form(QDialog):
     def __init__(self, parent=None):
         """constructor"""
         super(Wifi_and_MQTT_Form, self).__init__(parent)
+
+        self.parent = parent
 
         width = 500
         height = 200
@@ -37,7 +39,12 @@ class Wifi_and_MQTT_Form(QDialog):
         self.mqtt_username = QLineEdit()
         self.mqtt_password = QLineEdit()
 
-        self.ok_button = QPushButton("OK")
+        # Add a button box
+        self.button_box = QDialogButtonBox()
+        self.button_box.setStandardButtons(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        self.button_box.accepted.connect(self.accept)
+        self.button_box.rejected.connect(self.reject)
+
 
         # create form
         form_layout = QFormLayout()
@@ -48,10 +55,8 @@ class Wifi_and_MQTT_Form(QDialog):
         form_layout.addRow(self.tr("MQTT Server"), self.mqtt_server)
         form_layout.addRow(self.tr("MQTT Username"), self.mqtt_username)
         form_layout.addRow(self.tr("MQTT Password"), self.mqtt_password)
-        form_layout.addRow(self.tr(""), self.ok_button)
+        form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
-
-        self.ok_button.clicked.connect(self.close_form)
 
 
     def run(self, port=None, interface=None):
@@ -110,7 +115,13 @@ class Wifi_and_MQTT_Form(QDialog):
             print(f'Exception:{e}')
 
 
-    def close_form(self):
+    def reject(self):
+        """Cancel without saving"""
+        print('CANCEL button was clicked')
+        self.parent.my_close()
+
+
+    def accept(self):
         """Close the form"""
-        print('OK button was clicked')
+        print('SAVE button was clicked')
         self.write_prefs()
