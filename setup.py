@@ -36,7 +36,7 @@ setup(
     packages=["meshtastic_flasher"],
     include_package_data=True,
     package_data={
-        '': ['logo.png', 'cog.svg', 'meshtastic_theme.xml'],
+        '': ['logo.png', 'help.svg', 'cog.svg', 'meshtastic_theme.xml'],
     },
     install_requires=["pyside6", "PyGithub", "esptool", "meshtastic>=1.2.80", "qt-material",
                       "psutil", "adafruit-nrfutil", "pyserial"],

@@ -31,6 +31,8 @@ import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 COG_FILENAME = "cog.svg"
+HELP_FILENAME = "help.svg"
+BUTTON_ICON_SIZE = QtCore.QSize(24, 24)
 
 # windows does not like this one
 if platform.system() == "Linux":
@@ -40,7 +42,6 @@ if platform.system() == "Linux":
 
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
-
 
 
 class Form(QDialog):
@@ -83,7 +84,12 @@ class Form(QDialog):
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
 
-        self.help_button = QPushButton("?")
+        self.help_button = QPushButton()
+        help_icon = QIcon(meshtastic_flasher.util.get_path(HELP_FILENAME))
+        self.help_button.setIcon(help_icon)
+        self.help_button.setIconSize(BUTTON_ICON_SIZE)
+        self.help_button.setFixedWidth(42)
+        self.help_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.help_button.setToolTip("Click for help.")
 
         self.select_port = QComboBox()
@@ -134,9 +140,9 @@ class Form(QDialog):
         self.label_detected_meshtastic_version.setText("")
 
         self.settings_cog = QPushButton()
-        cog_icon = QIcon("cog.svg")
+        cog_icon = QIcon(meshtastic_flasher.util.get_path(COG_FILENAME))
         self.settings_cog.setIcon(cog_icon)
-        self.settings_cog.setIconSize(QtCore.QSize(32, 32))
+        self.settings_cog.setIconSize(BUTTON_ICON_SIZE)
         self.settings_cog.setFixedWidth(42)
         self.settings_cog.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         
