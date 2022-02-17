@@ -30,6 +30,7 @@ from meshtastic_flasher.settings import Settings
 import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
+COG_FILENAME = "cog.png"
 
 # windows does not like this one
 if platform.system() == "Linux":
@@ -132,6 +133,13 @@ class Form(QDialog):
         self.label_detected_meshtastic_version = QLabel(self)
         self.label_detected_meshtastic_version.setText("")
 
+        self.settings_cog = QLabel(self)
+        cog_pixmap = QPixmap(meshtastic_flasher.util.get_path(COG_FILENAME))
+        self.settings_cog.setPixmap(cog_pixmap.scaled(32, 32, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
+        self.settings_cog.setAlignment(QtCore.Qt.AlignCenter)
+        #self.settings_cog.setStyleSheet(style_for_logo)
+        self.settings_cog.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
@@ -145,6 +153,7 @@ class Form(QDialog):
         detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
         detect_layout.addWidget(self.help_button)
+        detect_layout.addWidget(self.settings_cog)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
 
@@ -185,6 +194,9 @@ class Form(QDialog):
         self.label_detected_meshtastic_version.move(45, 270)
         self.label_detected_meshtastic_version.show()
 
+        self.settings_cog.move(400, 270)
+        self.settings_cog.show()
+
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked
         self.get_versions_button.clicked.connect(self.get_versions)
@@ -194,6 +206,7 @@ class Form(QDialog):
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
+        self.settings_cog.mousePressEvent = self.run_settings
 
         # pre-populate the versions that have already been downloaded and unzipped
         self.get_versions_from_disk()
@@ -221,12 +234,18 @@ class Form(QDialog):
             self.tips()
         elif event.key() == QtCore.Qt.Key_S:
             print("S was pressed... showing settings form")
-            if self.select_port.currentText() == '':
-                print('We do not have a port.')
-                QMessageBox.information(self, "Info", "Need a port before running Settings. Click DETECT DEVICE.")
-            else:
-                self.port = self.select_port.currentText()
-                self.settings.run(port=self.port)
+            self.run_settings(None)
+
+
+    # pylint: disable=unused-argument
+    def run_settings(self, event):
+        """Run the settings form"""
+        if self.select_port.currentText() == '':
+            print('We do not have a port.')
+            QMessageBox.information(self, "Info", "Need a port before running Settings. Click DETECT DEVICE.")
+        else:
+            self.port = self.select_port.currentText()
+            self.settings.run(port=self.port)
 
 
     def on_select_firmware_changed(self, value):
