@@ -15,7 +15,7 @@ import psutil
 import serial
 
 from PySide6 import QtCore
-from PySide6.QtGui import QPixmap, QCursor
+from PySide6.QtGui import QPixmap, QCursor, QIcon
 from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
                                QMessageBox, QComboBox, QProgressBar)
@@ -30,7 +30,9 @@ from meshtastic_flasher.settings import Settings
 import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
-COG_FILENAME = "cog.png"
+COG_FILENAME = "cog.svg"
+HELP_FILENAME = "help.svg"
+BUTTON_ICON_SIZE = QtCore.QSize(24, 24)
 
 # windows does not like this one
 if platform.system() == "Linux":
@@ -40,7 +42,6 @@ if platform.system() == "Linux":
 
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
-
 
 
 class Form(QDialog):
@@ -83,7 +84,12 @@ class Form(QDialog):
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
 
-        self.help_button = QPushButton("?")
+        self.help_button = QPushButton()
+        help_icon = QIcon(meshtastic_flasher.util.get_path(HELP_FILENAME))
+        self.help_button.setIcon(help_icon)
+        self.help_button.setIconSize(BUTTON_ICON_SIZE)
+        self.help_button.setFixedWidth(42)
+        self.help_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.help_button.setToolTip("Click for help.")
 
         self.select_port = QComboBox()
@@ -133,13 +139,13 @@ class Form(QDialog):
         self.label_detected_meshtastic_version = QLabel(self)
         self.label_detected_meshtastic_version.setText("")
 
-        self.settings_cog = QLabel(self)
-        cog_pixmap = QPixmap(meshtastic_flasher.util.get_path(COG_FILENAME))
-        self.settings_cog.setPixmap(cog_pixmap.scaled(32, 32, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
-        self.settings_cog.setAlignment(QtCore.Qt.AlignCenter)
-        #self.settings_cog.setStyleSheet(style_for_logo)
+        self.settings_cog = QPushButton()
+        cog_icon = QIcon(meshtastic_flasher.util.get_path(COG_FILENAME))
+        self.settings_cog.setIcon(cog_icon)
+        self.settings_cog.setIconSize(BUTTON_ICON_SIZE)
+        self.settings_cog.setFixedWidth(42)
         self.settings_cog.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-
+        
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)

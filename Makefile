@@ -29,4 +29,4 @@ mac:
 	# for locally testing binary on mac
 	pip install pyinstaller
 	pip install -r requirements.txt
-	pyinstaller -F -n meshtastic-flasher-mac --add-binary "meshtastic_flasher/logo.png:." --add-binary "meshtastic_flasher/meshtastic_theme.xml:." --add-binary "meshtastic_flasher/cog.png:." --collect-all meshtastic --collect-all esptool meshtastic_flasher/main.py
+	pyinstaller -F -n meshtastic-flasher-mac --add-binary "meshtastic_flasher/logo.png:." --add-binary "meshtastic_flasher/meshtastic_theme.xml:." --add-binary "meshtastic_flasher/help.svg:." --add-binary "meshtastic_flasher/cog.svg:." --collect-all meshtastic --collect-all esptool meshtastic_flasher/main.py
