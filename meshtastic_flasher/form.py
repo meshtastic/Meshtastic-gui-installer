@@ -145,7 +145,7 @@ class Form(QDialog):
         self.settings_cog.setIconSize(BUTTON_ICON_SIZE)
         self.settings_cog.setFixedWidth(42)
         self.settings_cog.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        
+
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
