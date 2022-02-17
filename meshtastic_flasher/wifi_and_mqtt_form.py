@@ -1,7 +1,7 @@
 """class for the Wifi and MQTT settings"""
 
 
-from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QLineEdit, QMessageBox
+from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QLineEdit
 
 import meshtastic.serial_interface
 from meshtastic.__init__ import BROADCAST_ADDR
@@ -54,9 +54,11 @@ class Wifi_and_MQTT_Form(QDialog):
         self.ok_button.clicked.connect(self.close_form)
 
 
-    def run(self):
+    def run(self, port=None, interface=None):
         """load the form"""
-        self.port = self.parent().select_port.currentText()
+        self.port = port
+        self.interface = interface
+        print(f'port:{port}')
         if self.port:
             print(f'using port:{self.port}')
             self.get_prefs()
@@ -76,16 +78,13 @@ class Wifi_and_MQTT_Form(QDialog):
             if self.prefs.mqtt_password:
                 self.mqtt_password.setText(self.prefs.mqtt_password)
             self.show()
-        else:
-            print('We do not have a port.')
-            QMessageBox.information(self, "Info", "Need a port. Click DETECT DEVICE.")
-            self.close()
 
 
     def get_prefs(self):
         """Get preferences from device"""
         try:
             if self.interface is None:
+                print('interface was none?')
                 self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
@@ -115,6 +114,3 @@ class Wifi_and_MQTT_Form(QDialog):
         """Close the form"""
         print('OK button was clicked')
         self.write_prefs()
-        self.interface.close()
-        self.interface = None # so any saved values are re-read upon next form use
-        self.close()

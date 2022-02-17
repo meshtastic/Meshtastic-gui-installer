@@ -26,11 +26,7 @@ import meshtastic.serial_interface
 from meshtastic_flasher.version import __version__
 from meshtastic_flasher.advanced_form import AdvancedForm
 from meshtastic_flasher.esptool_form import EsptoolForm
-from meshtastic_flasher.wifi_and_mqtt_form import Wifi_and_MQTT_Form
-from meshtastic_flasher.user_form import UserForm
-from meshtastic_flasher.position_form import PositionForm
-from meshtastic_flasher.power_form import PowerForm
-from meshtastic_flasher.radio_form import RadioForm
+from meshtastic_flasher.settings import Settings
 import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
@@ -65,11 +61,7 @@ class Form(QDialog):
 
         self.advanced_form = AdvancedForm()
         self.esptool_form = EsptoolForm()
-        self.wifi_and_mqtt_form = Wifi_and_MQTT_Form(self)
-        self.user_form = UserForm(self)
-        self.position_form = PositionForm(self)
-        self.power_form = PowerForm(self)
-        self.radio_form = RadioForm(self)
+        self.settings = Settings()
 
         update_available = ''
         if meshtastic_flasher.util.check_if_newer_version():
@@ -221,27 +213,20 @@ class Form(QDialog):
         elif event.key() == QtCore.Qt.Key_H:
             print("H was pressed...")
             self.hotkeys()
-        elif event.key() == QtCore.Qt.Key_O:
-            print("O was pressed... showing power settings form")
-            self.power_form.run()
-        elif event.key() == QtCore.Qt.Key_P:
-            print("P was pressed... showing position settings form")
-            self.position_form.run()
         elif event.key() == QtCore.Qt.Key_Q:
             print("Q was pressed... so quitting")
             QApplication.quit()
-        elif event.key() == QtCore.Qt.Key_R:
-            print("R was pressed... showing radio settings form")
-            self.radio_form.run()
         elif event.key() == QtCore.Qt.Key_T:
-            print("T was pressed... so quitting")
+            print("T was pressed... so showing tips")
             self.tips()
-        elif event.key() == QtCore.Qt.Key_U:
-            print("U was pressed... showing user settings form")
-            self.user_form.run()
-        elif event.key() == QtCore.Qt.Key_W:
-            print("W was pressed... showing wifi and mqtt settings form")
-            self.wifi_and_mqtt_form.run()
+        elif event.key() == QtCore.Qt.Key_S:
+            print("S was pressed... showing settings form")
+            if self.select_port.currentText() == '':
+                print('We do not have a port.')
+                QMessageBox.information(self, "Info", "Need a port before running Settings. Click DETECT DEVICE.")
+            else:
+                self.port = self.select_port.currentText()
+                self.settings.run(port=self.port)
 
 
     def on_select_firmware_changed(self, value):

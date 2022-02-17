@@ -1,7 +1,7 @@
 """class for the position settings"""
 
 
-from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QLineEdit, QMessageBox, QLabel, QComboBox
+from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QLineEdit, QLabel, QComboBox
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -144,23 +144,21 @@ class PositionForm(QDialog):
             self.position_flag_altitude.setChecked(True)
 
 
-    def run(self):
+    def run(self, port=None, interface=None):
         """load the form"""
-        self.port = self.parent().select_port.currentText()
+        self.port = port
+        self.interface = interface
         if self.port:
             print(f'using port:{self.port}')
             self.get_values()
             self.show()
-        else:
-            print('We do not have a port.')
-            QMessageBox.information(self, "Info", "Need a port. Click DETECT DEVICE.")
-            self.close()
 
 
     def get_values(self):
         """Get values from device"""
         try:
             if self.interface is None:
+                print('interface was none?')
                 self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
@@ -257,6 +255,3 @@ class PositionForm(QDialog):
         """Close the form"""
         print('OK button was clicked')
         self.write_values()
-        self.interface.close()
-        self.interface = None # so any saved values are re-read upon next form use
-        self.close()
