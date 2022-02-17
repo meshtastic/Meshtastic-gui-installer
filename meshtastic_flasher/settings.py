@@ -10,6 +10,7 @@ from meshtastic_flasher.user_form import UserForm
 from meshtastic_flasher.position_form import PositionForm
 from meshtastic_flasher.power_form import PowerForm
 from meshtastic_flasher.radio_form import RadioForm
+from meshtastic_flasher.channels_form import ChannelsForm
 
 
 class Settings(QMainWindow):
@@ -32,6 +33,7 @@ class Settings(QMainWindow):
         self.position_form = PositionForm(self)
         self.power_form = PowerForm(self)
         self.radio_form = RadioForm(self)
+        self.channels_form = ChannelsForm(self)
 
         self.tabs = QTabWidget()
 
@@ -46,6 +48,7 @@ class Settings(QMainWindow):
         self.tabs.addTab(self.user_form, "User")
         self.tabs.addTab(self.power_form, "Power")
         self.tabs.addTab(self.radio_form, "Radio")
+        self.tabs.addTab(self.channels_form, "Channels")
 
         self.setCentralWidget(self.tabs)
 
@@ -70,6 +73,9 @@ class Settings(QMainWindow):
         elif i == 4:
             print('radio run()')
             self.radio_form.run(port=self.port, interface=self.interface)
+        elif i == 5:
+            print('channels run()')
+            self.channels_form.run(port=self.port, interface=self.interface)
 
 
     def my_close(self):
