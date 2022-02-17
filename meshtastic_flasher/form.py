@@ -353,13 +353,19 @@ class Form(QDialog):
     def tips(self):
         """Show tips"""
         print("tips")
-        QMessageBox.information(self, "Info", ("Tips:\n\n"
-                                "If having issues flashing the device, be sure there is only one device connected\n"
-                                "and no other applications are using that communications port.\n\n"
-                                "If still having problems, unplug the device, then re-plugin the device.\n\n"
-                                "If still having problems, try rebooting the pc.\n\n"
-                                "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use\n"
-                                "v1.1 or v2.1.1.6 firmware.\n\n"))
+        msg_box = QMessageBox()
+        msg_box.setTextFormat(QtCore.Qt.RichText)  # this is what makes the links clickable
+        msg_box.setText("Tips:<br><br>"
+                        "If having issues flashing the device, be sure there is only one device connected "
+                        "and no other applications are using that communications port.<br><br>"
+                        "If still having problems, unplug the device, then re-plugin the device.<br><br>"
+                        "If still having problems, may need to install driver. "
+                        "See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32'>Flashing</a> for more info.<br><br>"
+                        "If still having problems, try rebooting the pc.<br><br>"
+                        "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use "
+                        "v1.1 or v2.1.1.6 firmware.")
+        msg_box.setStandardButtons(QMessageBox.Ok)
+        msg_box.exec()
 
 
     # pylint: disable=unused-argument
@@ -395,6 +401,7 @@ class Form(QDialog):
                                 "D - Detect\n"
                                 "G - Get versions\n"
                                 "H - Hotkeys\n"
+                                "S - Settings\n"
                                 "T - Tips\n"
                                 "Q - Quit\n"))
 
