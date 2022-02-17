@@ -21,6 +21,7 @@ class Wifi_and_MQTT_Form(QDialog):
         self.setWindowTitle("Wifi & MQTT Settings")
 
         self.port = None
+        self.interface = None
         self.prefs = None
 
         # Create widgets
@@ -84,10 +85,10 @@ class Wifi_and_MQTT_Form(QDialog):
     def get_prefs(self):
         """Get preferences from device"""
         try:
-            interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
-            if interface:
-                self.prefs = interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                interface.close()
+            if self.interface is None:
+                self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
+            if self.interface:
+                self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
         except Exception as e:
             print(f'Exception:{e}')
 
@@ -95,10 +96,9 @@ class Wifi_and_MQTT_Form(QDialog):
     def write_prefs(self):
         """Write preferences to device"""
         try:
-            interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
-            if interface:
+            if self.interface:
                 print("Writing modified preferences to device")
-                prefs = interface.getNode(BROADCAST_ADDR).radioConfig.preferences
+                prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'wifi_ap_mode', f'{self.wifi_ap_mode.isChecked()}' )
                 setPref(prefs, 'wifi_ssid', self.wifi_ssid.text())
                 setPref(prefs, 'wifi_password', self.wifi_password.text())
@@ -106,8 +106,7 @@ class Wifi_and_MQTT_Form(QDialog):
                 setPref(prefs, 'mqtt_server', self.mqtt_server.text())
                 setPref(prefs, 'mqtt_username', self.mqtt_username.text())
                 setPref(prefs, 'mqtt_password', self.mqtt_password.text())
-                interface.getNode(BROADCAST_ADDR).writeConfig()
-                interface.close()
+                self.interface.getNode(BROADCAST_ADDR).writeConfig()
         except Exception as e:
             print(f'Exception:{e}')
 
@@ -116,4 +115,6 @@ class Wifi_and_MQTT_Form(QDialog):
         """Close the form"""
         print('OK button was clicked')
         self.write_prefs()
+        self.interface.close()
+        self.interface = None # so any saved values are re-read upon next form use
         self.close()
