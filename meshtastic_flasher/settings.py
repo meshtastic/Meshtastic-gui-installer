@@ -119,11 +119,16 @@ QTabBar::tab:only-one {
 
     def run(self, port=None):
         """load the form"""
-        self.port = port
+        print(f'in settings run() port:{port}:')
         self.show()
+        if port and port != '':
+            self.port = port
+        print(f'self.port:{self.port}:')
         if self.interface is None:
             try:
                 self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
+                self.port = self.interface.devPath
+                print(f'self.port:{self.port}:')
             except Exception as e:
                 print(f'Exception:{e}')
         self.wifi_and_mqtt_form.run(port=self.port, interface=self.interface)

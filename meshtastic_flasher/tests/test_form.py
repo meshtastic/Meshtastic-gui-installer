@@ -296,56 +296,6 @@ def test_detect_ports_using_find_ports_some_found(faked, fake_versions, fake_che
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.util.check_if_newer_version')
-@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.util.wrapped_findPorts', return_value=[])
-def test_update_ports_for_weird_tlora_no_ports(faked, fake_versions, fake_check_newer, monkeypatch, qtbot):
-    """Test update_ports_for_weird_tlora()"""
-    widget = Form()
-    qtbot.addWidget(widget)
-    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
-    ports = widget.update_ports_for_weird_tlora()
-    assert len(ports) == 0
-    faked.assert_called()
-    fake_versions.assert_called()
-    fake_check_newer.assert_called()
-
-
-@patch('meshtastic_flasher.util.check_if_newer_version')
-@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.util.wrapped_findPorts')
-def test_update_ports_for_weird_tlora_two_ports(faked, fake_versions, fake_check_newer, monkeypatch, qtbot):
-    """Test update_ports_for_weird_tlora()"""
-    widget = Form()
-    qtbot.addWidget(widget)
-    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
-    faked.return_value = ['/dev/cu.usbmodem533C0052151', '/dev/cu.wchusbserial533C0052151']
-    ports = widget.update_ports_for_weird_tlora()
-    assert len(ports) == 2
-    assert widget.select_port.currentText() == '/dev/cu.wchusbserial533C0052151'
-    faked.assert_called()
-    fake_versions.assert_called()
-    fake_check_newer.assert_called()
-
-
-# TODO: grp is not available on any system other than Linux... change?
-#@patch('grp.getgrall')
-#@patch('os.getlogin', return_value="bob")
-#@patch('platform.system', return_value="Linux")
-#def test_warn_linux_users_if_not_in_dialout_group(faked_system, faked_getlogin, faked_gr, capsys, monkeypatch, qtbot):
-#    """Test update_ports_for_weird_tlora()"""
-#    widget = Form()
-#    qtbot.addWidget(widget)
-#    monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
-#
-#    widget.warn_linux_users_if_not_in_dialout_group()
-#
-#    faked_system.assert_called()
-#    faked_getlogin.assert_called()
-#    faked_gr.assert_called()
-#    out, err = capsys.readouterr()
-#    assert re.search(r'user is not in dialout group', out, re.MULTILINE)
-#    assert err == ''
 
 @patch('meshtastic_flasher.util.check_if_newer_version')
 @patch('meshtastic_flasher.form.Form.get_versions_from_disk')
@@ -360,30 +310,6 @@ def test_detect_ports_on_supported_devices_none_found(faked, fake_versions, fake
     ports = widget.detect_ports_on_supported_devices(fake_supported_devices)
     faked.assert_called()
     assert len(ports) == 0
-    fake_versions.assert_called()
-    fake_check_newer.assert_called()
-
-
-@patch('meshtastic_flasher.util.check_if_newer_version')
-@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
-@patch('meshtastic_flasher.form.Form.update_ports_for_weird_tlora')
-@patch('meshtastic_flasher.util.wrapped_active_ports_on_supported_devices')
-def test_detect_ports_on_supported_devices_some_found(faked_active_ports, faked_update_ports,
-                                                      fake_versions, fake_check_newer, qtbot):
-    """Test detect_ports_on_supported_devices()"""
-    widget = Form()
-    qtbot.addWidget(widget)
-    faked_active_ports.return_value = ('/dev/fake_usbmodem', '/dev/fake2')
-    faked_update_ports.return_value = ['/dev/fake_usbmodem']
-    fake_device = SupportedDevice(name='a', for_firmware='rak4631_5005')
-    fake_supported_devices = [fake_device]
-
-    ports = widget.detect_ports_on_supported_devices(fake_supported_devices)
-    #print(ports)
-
-    faked_active_ports.assert_called()
-    faked_update_ports.assert_called()
-    assert len(ports) == 1
     fake_versions.assert_called()
     fake_check_newer.assert_called()
 

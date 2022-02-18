@@ -8,7 +8,7 @@ from unittest.mock import patch
 from meshtastic_flasher.util import (get_path, populate_tag_in_firmware_dropdown,
                                      tag_to_version, tags_to_versions, get_tags,
                                      download_if_zip_does_not_exist, unzip_if_necessary,
-                                     check_if_newer_version, is_windows11)
+                                     check_if_newer_version)
 
 
 def test_get_path():
@@ -140,45 +140,3 @@ def test_check_if_newer_version_when_problem_getting_pypi(patched_requests_get):
     with patch('meshtastic_flasher.version.__version__', '1.2.3'):
         result = check_if_newer_version()
         assert result is False
-
-
-@patch('platform.version', return_value='10.0.22000.194')
-@patch('platform.release', return_value='10')
-@patch('platform.system', return_value='Windows')
-def test_is_windows11_true(patched_platform, patched_release, patched_version):
-    """Test is_windows11()"""
-    assert is_windows11() is True
-    patched_platform.assert_called()
-    patched_release.assert_called()
-    patched_version.assert_called()
-
-
-@patch('platform.version', return_value='10.0.a2200.foo') # made up
-@patch('platform.release', return_value='10')
-@patch('platform.system', return_value='Windows')
-def test_is_windows11_true2(patched_platform, patched_release, patched_version):
-    """Test is_windows11()"""
-    assert is_windows11() is False
-    patched_platform.assert_called()
-    patched_release.assert_called()
-    patched_version.assert_called()
-
-
-@patch('platform.version', return_value='10.0.17763') # windows 10 home
-@patch('platform.release', return_value='10')
-@patch('platform.system', return_value='Windows')
-def test_is_windows11_false(patched_platform, patched_release, patched_version):
-    """Test is_windows11()"""
-    assert is_windows11() is False
-    patched_platform.assert_called()
-    patched_release.assert_called()
-    patched_version.assert_called()
-
-
-@patch('platform.release', return_value='8.1')
-@patch('platform.system', return_value='Windows')
-def test_is_windows11_false_win8_1(patched_platform, patched_release):
-    """Test is_windows11()"""
-    assert is_windows11() is False
-    patched_platform.assert_called()
-    patched_release.assert_called()

@@ -22,6 +22,7 @@ from PySide6.QtWidgets import (QPushButton, QApplication,
 
 import meshtastic
 import meshtastic.serial_interface
+import meshtastic.util
 
 from meshtastic_flasher.version import __version__
 from meshtastic_flasher.advanced_form import AdvancedForm
@@ -246,12 +247,7 @@ class Form(QDialog):
     # pylint: disable=unused-argument
     def run_settings(self, event):
         """Run the settings form"""
-        if self.select_port.currentText() == '':
-            print('We do not have a port.')
-            QMessageBox.information(self, "Info", "Need a port before running Settings. Click DETECT DEVICE.")
-        else:
-            self.port = self.select_port.currentText()
-            self.settings.run(port=self.port)
+        self.settings.run(port=self.select_port.currentText())
 
 
     def on_select_firmware_changed(self, value):
@@ -449,7 +445,7 @@ class Form(QDialog):
            on Windows 11 and later
         """
         is_admin = None
-        if meshtastic_flasher.util.is_windows11():
+        if meshtastic.util.is_windows11():
             is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
             if not is_admin:
                 print("Warning: This process is not running as Administrator.")
@@ -493,30 +489,11 @@ class Form(QDialog):
                                         "  After running that command, log out and re-login for it to take effect.\n"))
 
 
-    def update_ports_for_weird_tlora(self):
-        """Deal with weird T-Lora device (single device connected, but shows up as 2 ports)"""
-        ports = []
-        # ports:['/dev/cu.usbmodem11301', '/dev/cu.wchusbserial11301']
-        tmp_ports = meshtastic_flasher.util.wrapped_findPorts()
-        if len(tmp_ports) == 2:
-            if 'wchusbserial' in tmp_ports[1]:
-                first = tmp_ports[0].replace("usbmodem", "")
-                second = tmp_ports[1].replace("wchusbserial", "")
-                print(f'first:{first} second:{second}')
-                if first == second:
-                    print('We are dealing with a weird TLora port situation.')
-                    self.select_port.clear()
-                    self.select_port.addItem(tmp_ports[1])
-                    self.select_port.addItem(tmp_ports[0]) # delete this one?
-                    ports = tmp_ports
-        return ports
-
-
     def detect_ports_using_find_ports(self, ports, supported_devices_detected):
         """Detect ports using the find ports method in Meshtastic python library"""
         ports = []
         if len(ports) == 0:
-            print("Warning: Could not find any ports using the Meshtstic python autodetection method.")
+            print("Warning: Could not find any ports using the Meshtastic python autodetection method.")
 
             ports = meshtastic_flasher.util.wrapped_findPorts()
             if len(ports) == 0:
@@ -535,13 +512,8 @@ class Form(QDialog):
         ports = meshtastic_flasher.util.wrapped_active_ports_on_supported_devices(supported_devices_detected)
         ports_sorted = list(ports)
         ports_sorted.sort()
-        possible_weird = False
         for port in ports_sorted:
-            if 'usbmodem' in port:
-                possible_weird = True
             self.select_port.addItem(port)
-        if possible_weird:
-            ports = self.update_ports_for_weird_tlora()
         return ports
 
 
