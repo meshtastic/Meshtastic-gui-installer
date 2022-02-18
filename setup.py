@@ -38,7 +38,7 @@ setup(
     package_data={
         '': ['logo.png', 'help.svg', 'cog.svg', 'meshtastic_theme.xml'],
     },
-    install_requires=["pyside6", "PyGithub", "esptool", "meshtastic>=1.2.80", "qt-material",
+    install_requires=["pyside6", "PyGithub", "esptool", "meshtastic>=1.2.85", "qt-material",
                       "psutil", "adafruit-nrfutil", "pyserial"],
     extras_require={
     },
