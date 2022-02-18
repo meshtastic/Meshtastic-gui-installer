@@ -355,15 +355,22 @@ class Form(QDialog):
         print("tips")
         msg_box = QMessageBox()
         msg_box.setTextFormat(QtCore.Qt.RichText)  # this is what makes the links clickable
-        msg_box.setText("Tips:<br><br>"
-                        "If having issues flashing the device, be sure there is only one device connected "
+        msg_box.setText("<u>Tips:</u><br>"
+                        "If having issues flashing the device, be sure there is only one <a href='https://meshtastic.org/docs/hardware'>supported device</a> connected "
                         "and no other applications are using that communications port.<br><br>"
                         "If still having problems, unplug the device, then re-plugin the device.<br><br>"
-                        "If still having problems, may need to install driver. "
-                        "See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32'>Flashing</a> for more info.<br><br>"
+                        "If still having problems, consider using a different usb port, perhaps an external usb hub or even a different computer and/or different operating system.<br><br>"
+                        "If still having problems, may need to install driver.<br>"
+                        "See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32'>Flashing</a> for more info. "
+                        "Newer T-Lora and newer T-Beams tend to need the CH9102 driver, which is in the CH343SER.ZIP file. "
+                        "The RAK 11200 may need the CP210X driver.<br>"
+                        "<u>Windows</u>: Check by going into DeviceManager and looking for any 'yellow' warning indicators.<br>"
+                        "<u>Mac</u>: Check by clicking in top left corner, 'About This Mac', 'System Report', 'USB'. Depending on which device it may show a CP2102 USB to UART Bridge Controller.<br>"
+                        "<u>Linux</u>: Linux tends to not need drivers for Meshtastic devices. If you have a computer available for the initial flashing, consider using this OS.<br><br>"
                         "If still having problems, try rebooting the pc.<br><br>"
                         "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use "
-                        "v1.1 or v2.1.1.6 firmware.")
+                        "v1.1 or v2.1.1.6 firmware.<br><br>"
+                        "Join the <a href='https://discord.com/invite/UQJ5QuM7vq'>Meshtastic Discord group</a> and post questions in #help channel.")
         msg_box.setStandardButtons(QMessageBox.Ok)
         msg_box.exec()
 
