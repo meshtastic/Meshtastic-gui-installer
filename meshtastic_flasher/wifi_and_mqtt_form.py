@@ -72,16 +72,26 @@ class Wifi_and_MQTT_Form(QDialog):
                 self.wifi_ap_mode.setChecked(True)
             if self.prefs.wifi_ssid:
                 self.wifi_ssid.setText(self.prefs.wifi_ssid)
+            else:
+                self.wifi_ssid.setText("")
             if self.prefs.wifi_password:
                 self.wifi_password.setText(self.prefs.wifi_password)
+            else:
+                self.wifi_password.setText("")
             if self.prefs.mqtt_disabled and self.prefs.mqtt_disabled is True:
                 self.mqtt_disabled.setChecked(True)
             if self.prefs.mqtt_server:
                 self.mqtt_server.setText(self.prefs.mqtt_server)
+            else:
+                self.mqtt_server.setText("")
             if self.prefs.mqtt_username:
                 self.mqtt_username.setText(self.prefs.mqtt_username)
+            else:
+                self.mqtt_username.setText("")
             if self.prefs.mqtt_password:
                 self.mqtt_password.setText(self.prefs.mqtt_password)
+            else:
+                self.mqtt_password.setText("")
             self.show()
 
 

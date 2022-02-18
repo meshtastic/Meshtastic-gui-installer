@@ -5,12 +5,13 @@ from PySide6.QtWidgets import QTabWidget, QMainWindow
 
 import meshtastic.serial_interface
 
+from meshtastic_flasher.admin_form import AdminForm
 from meshtastic_flasher.wifi_and_mqtt_form import Wifi_and_MQTT_Form
 from meshtastic_flasher.user_form import UserForm
 from meshtastic_flasher.position_form import PositionForm
 from meshtastic_flasher.power_form import PowerForm
 from meshtastic_flasher.radio_form import RadioForm
-from meshtastic_flasher.channels_form import ChannelsForm
+#from meshtastic_flasher.channels_form import ChannelsForm
 
 
 class Settings(QMainWindow):
@@ -28,12 +29,13 @@ class Settings(QMainWindow):
         self.setMinimumSize(width, height)
         self.setWindowTitle("Settings")
 
+        self.admin_form = AdminForm(self)
         self.wifi_and_mqtt_form = Wifi_and_MQTT_Form(self)
         self.user_form = UserForm(self)
         self.position_form = PositionForm(self)
         self.power_form = PowerForm(self)
         self.radio_form = RadioForm(self)
-        self.channels_form = ChannelsForm(self)
+        #self.channels_form = ChannelsForm(self)
 
         self.tabs = QTabWidget()
 
@@ -66,7 +68,8 @@ QTabBar::tab:only-one {
         self.tabs.addTab(self.user_form, "User")
         self.tabs.addTab(self.power_form, "Power")
         self.tabs.addTab(self.radio_form, "Radio")
-        self.tabs.addTab(self.channels_form, "Channels")
+        self.tabs.addTab(self.admin_form, "ADMIN")
+        #self.tabs.addTab(self.channels_form, "Channels")
 
         self.setCentralWidget(self.tabs)
 
@@ -92,8 +95,11 @@ QTabBar::tab:only-one {
             print('radio run()')
             self.radio_form.run(port=self.port, interface=self.interface)
         elif i == 5:
-            print('channels run()')
-            self.channels_form.run(port=self.port, interface=self.interface)
+            print('admin form run()')
+            self.admin_form.run(port=self.port, interface=self.interface)
+#        elif i == 5:
+#            print('channels run()')
+#            self.channels_form.run(port=self.port, interface=self.interface)
 
 
     def my_close(self):

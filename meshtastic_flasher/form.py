@@ -197,11 +197,11 @@ class Form(QDialog):
         self.setLayout(main_layout)
 
         # move version
-        self.label_detected_meshtastic_version.move(45, 270)
+        self.label_detected_meshtastic_version.move(30, 270)
         self.label_detected_meshtastic_version.show()
 
-        self.settings_cog.move(400, 270)
-        self.settings_cog.show()
+        #self.settings_cog.move(400, 270)
+        #self.settings_cog.show()
 
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked

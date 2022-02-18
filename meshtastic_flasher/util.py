@@ -185,3 +185,16 @@ def is_windows11():
                 print(f'problem detecting win11 e:{e}')
     print(f'is_win11:{is_win11}')
     return is_win11
+
+
+def zero_if_blank(some_input):
+    """If some_input is blank, then return '0' else return a string after converting to an integer."""
+    retval = 0
+    if some_input is None or some_input == '':
+        retval = 0
+    else:
+        try:
+            retval = int(some_input)
+        except:
+            pass
+    return f'{retval}'

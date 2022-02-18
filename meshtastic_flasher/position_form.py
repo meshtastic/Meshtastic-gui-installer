@@ -9,6 +9,7 @@ import meshtastic.mesh_pb2
 import meshtastic.radioconfig_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
+from meshtastic_flasher.util import zero_if_blank
 
 
 class PositionForm(QDialog):
@@ -20,7 +21,7 @@ class PositionForm(QDialog):
 
         self.parent = parent
 
-        width = 700
+        width = 900
         height = 500
         self.setMinimumSize(width, height)
         self.setWindowTitle("Position Settings")
@@ -31,6 +32,7 @@ class PositionForm(QDialog):
 
         # Create widgets
         self.position_broadcast_secs = QLineEdit()
+        self.position_broadcast_secs.setToolTip("We should send our position this often (but only if it has changed significantly). Defaults to 900 seconds (15 minutes).")
         self.position_flag_altitude = QCheckBox("Include altitude", self)
         self.position_flag_alt_msl = QCheckBox("Altitude is MSL", self) # TODO: what is MSL?
         self.position_flag_geo_sep = QCheckBox("Include geoidal separation", self)
@@ -232,6 +234,8 @@ class PositionForm(QDialog):
 
                 if self.prefs.gps_attempt_time:
                     self.gps_attempt_time.setText(f'{self.prefs.gps_attempt_time}')
+                else:
+                    self.gps_attempt_time.setText('')
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -244,14 +248,14 @@ class PositionForm(QDialog):
                 # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'position_broadcast_secs', self.position_broadcast_secs.text())
+                setPref(prefs, 'position_broadcast_secs', zero_if_blank(self.position_broadcast_secs.text()))
                 setPref(prefs, 'position_flags', self.position_flags.text())
                 setPref(prefs, 'fixed_position', f'{self.fixed_position.isChecked()}')
                 setPref(prefs, 'location_share', f'{self.location_share.currentData()}')
                 setPref(prefs, 'gps_operation', f'{self.gps_operation.currentData()}')
                 setPref(prefs, 'gps_format', f'{self.gps_format.currentData()}')
                 setPref(prefs, 'gps_accept_2d', f'{self.gps_accept_2d.isChecked()}')
-                setPref(prefs, 'gps_max_dop', self.gps_max_dop.text())
+                setPref(prefs, 'gps_max_dop', zero_if_blank(self.gps_max_dop.text()))
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

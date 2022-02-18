@@ -78,14 +78,24 @@ class UserForm(QDialog):
                         print(f'n:{n}')
                         if 'id' in n['user']:
                             self.device_id.setText(n['user']['id'])
+                        else:
+                            self.device_id.setText('')
                         if 'hwModel' in n['user']:
                             self.hardware.setText(n['user']['hwModel'])
+                        else:
+                            self.hardware.setText('')
                         if 'macaddr' in n['user']:
                             self.mac_address.setText(meshtastic.util.convert_mac_addr(n['user']['macaddr']))
+                        else:
+                            self.mac_address.setText('')
                         if 'longName' in n['user']:
                             self.long_name.setText(n['user']['longName'])
+                        else:
+                            self.long_name.setText('')
                         if 'shortName' in n['user']:
                             self.short_name.setText(n['user']['shortName'])
+                        else:
+                            self.short_name.setText('')
                         if 'licensed_operator' in n['user']:
                             self.licensed_operator.setChecked(True)
                         tmp_team = 'CLEAR'
