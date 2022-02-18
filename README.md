@@ -8,7 +8,8 @@ Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmwar
 
 
 # Example showing a [Heltec](https://meshtastic.org/docs/hardware/supported/heltec) (esp32) device:
-<img width="766" alt="Screen Shot 2022-02-01 at 4 34 24 PM" src="https://user-images.githubusercontent.com/2219838/152100775-3e0f5305-4ffb-4e8a-8dca-4b02f3c0ff14.png">
+<img width="766" alt="Screen Shot 2022-02-17 at 5 13 17 PM" src="https://user-images.githubusercontent.com/2219838/154621453-60efe7b4-2ecf-4cfc-a6d3-bc212bad3f5a.png">
+
 
 # Example showing a RAK WisBlock Core RAK4631:
 <img width="766" alt="Screen Shot 2022-02-01 at 9 57 24 PM" src="https://user-images.githubusercontent.com/2219838/152100859-cb59d0cd-2ffa-49a1-9c8f-6ce75c625468.png">
@@ -69,6 +70,13 @@ The options are:
 
 * Update mode for esp32 devices
 * RAK Bootloader update (for RAK4631 nrf52)
+
+# Other options
+
+* The ability to change some settings (more to settings will be added). To access the Settings page, detect a device then either press the "S" for Settings (or click on the "cog" wheel)
+* The ability to do a "factory reset" is an options in the Settings page, Admin tab
+* The "H" will show the "Hotkeys" that are available
+* The "T" hotkey will show tips
 
 # Installation for Development
 
@@ -135,7 +143,7 @@ sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-
 * Manjaro 21.2.3 (x86_64)
 * Linux Mint 20.3 (x86_64)
 * MacOS (arm and x86)
-* Windows 7, 10, and 11 (may work on other versions)
+* Windows 7, 8.1, 10, and 11 (may work on other versions)
 * ArchlinuxArm with the following commands:
 
 ```
