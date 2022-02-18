@@ -15,7 +15,7 @@ import psutil
 import serial
 
 from PySide6 import QtCore
-from PySide6.QtGui import QPixmap, QCursor
+from PySide6.QtGui import QPixmap, QCursor, QIcon
 from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
                                QMessageBox, QComboBox, QProgressBar)
@@ -26,9 +26,13 @@ import meshtastic.serial_interface
 from meshtastic_flasher.version import __version__
 from meshtastic_flasher.advanced_form import AdvancedForm
 from meshtastic_flasher.esptool_form import EsptoolForm
+from meshtastic_flasher.settings import Settings
 import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
+COG_FILENAME = "cog.svg"
+HELP_FILENAME = "help.svg"
+BUTTON_ICON_SIZE = QtCore.QSize(24, 24)
 
 # windows does not like this one
 if platform.system() == "Linux":
@@ -38,7 +42,6 @@ if platform.system() == "Linux":
 
 MESHTASTIC_COLOR_DARK = "#2C2D3C"
 MESHTASTIC_COLOR_GREEN = "#67EA94"
-
 
 
 class Form(QDialog):
@@ -60,6 +63,7 @@ class Form(QDialog):
 
         self.advanced_form = AdvancedForm()
         self.esptool_form = EsptoolForm()
+        self.settings = Settings()
 
         update_available = ''
         if meshtastic_flasher.util.check_if_newer_version():
@@ -80,7 +84,12 @@ class Form(QDialog):
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
 
-        self.help_button = QPushButton("?")
+        self.help_button = QPushButton()
+        help_icon = QIcon(meshtastic_flasher.util.get_path(HELP_FILENAME))
+        self.help_button.setIcon(help_icon)
+        self.help_button.setIconSize(BUTTON_ICON_SIZE)
+        self.help_button.setFixedWidth(42)
+        self.help_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.help_button.setToolTip("Click for help.")
 
         self.select_port = QComboBox()
@@ -130,6 +139,13 @@ class Form(QDialog):
         self.label_detected_meshtastic_version = QLabel(self)
         self.label_detected_meshtastic_version.setText("")
 
+        self.settings_cog = QPushButton()
+        cog_icon = QIcon(meshtastic_flasher.util.get_path(COG_FILENAME))
+        self.settings_cog.setIcon(cog_icon)
+        self.settings_cog.setIconSize(BUTTON_ICON_SIZE)
+        self.settings_cog.setFixedWidth(42)
+        self.settings_cog.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
@@ -143,6 +159,7 @@ class Form(QDialog):
         detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
         detect_layout.addWidget(self.help_button)
+        detect_layout.addWidget(self.settings_cog)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
 
@@ -180,8 +197,11 @@ class Form(QDialog):
         self.setLayout(main_layout)
 
         # move version
-        self.label_detected_meshtastic_version.move(45, 270)
+        self.label_detected_meshtastic_version.move(30, 270)
         self.label_detected_meshtastic_version.show()
+
+        #self.settings_cog.move(400, 270)
+        #self.settings_cog.show()
 
         # Add button signals to slots
         self.logo.mousePressEvent = self.logo_clicked
@@ -192,6 +212,7 @@ class Form(QDialog):
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
+        self.settings_cog.mousePressEvent = self.run_settings
 
         # pre-populate the versions that have already been downloaded and unzipped
         self.get_versions_from_disk()
@@ -201,7 +222,7 @@ class Form(QDialog):
         """Deal with a key press"""
         if event.key() == QtCore.Qt.Key_A:
             print("A was pressed... showing advanced options form")
-            self.show_advanced_options()
+            self.advanced_form.show()
         elif event.key() == QtCore.Qt.Key_D:
             print("D was pressed...")
             self.detect()
@@ -215,8 +236,22 @@ class Form(QDialog):
             print("Q was pressed... so quitting")
             QApplication.quit()
         elif event.key() == QtCore.Qt.Key_T:
-            print("T was pressed... so quitting")
+            print("T was pressed... so showing tips")
             self.tips()
+        elif event.key() == QtCore.Qt.Key_S:
+            print("S was pressed... showing settings form")
+            self.run_settings(None)
+
+
+    # pylint: disable=unused-argument
+    def run_settings(self, event):
+        """Run the settings form"""
+        if self.select_port.currentText() == '':
+            print('We do not have a port.')
+            QMessageBox.information(self, "Info", "Need a port before running Settings. Click DETECT DEVICE.")
+        else:
+            self.port = self.select_port.currentText()
+            self.settings.run(port=self.port)
 
 
     def on_select_firmware_changed(self, value):
@@ -318,13 +353,19 @@ class Form(QDialog):
     def tips(self):
         """Show tips"""
         print("tips")
-        QMessageBox.information(self, "Info", ("Tips:\n\n"
-                                "If having issues flashing the device, be sure there is only one device connected\n"
-                                "and no other applications are using that communications port.\n\n"
-                                "If still having problems, unplug the device, then re-plugin the device.\n\n"
-                                "If still having problems, try rebooting the pc.\n\n"
-                                "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use\n"
-                                "v1.1 or v2.1.1.6 firmware.\n\n"))
+        msg_box = QMessageBox()
+        msg_box.setTextFormat(QtCore.Qt.RichText)  # this is what makes the links clickable
+        msg_box.setText("Tips:<br><br>"
+                        "If having issues flashing the device, be sure there is only one device connected "
+                        "and no other applications are using that communications port.<br><br>"
+                        "If still having problems, unplug the device, then re-plugin the device.<br><br>"
+                        "If still having problems, may need to install driver. "
+                        "See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32'>Flashing</a> for more info.<br><br>"
+                        "If still having problems, try rebooting the pc.<br><br>"
+                        "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use "
+                        "v1.1 or v2.1.1.6 firmware.")
+        msg_box.setStandardButtons(QMessageBox.Ok)
+        msg_box.exec()
 
 
     # pylint: disable=unused-argument
@@ -360,14 +401,9 @@ class Form(QDialog):
                                 "D - Detect\n"
                                 "G - Get versions\n"
                                 "H - Hotkeys\n"
+                                "S - Settings\n"
                                 "T - Tips\n"
                                 "Q - Quit\n"))
-
-
-    def show_advanced_options(self):
-        """Advanced Options"""
-        print("advanced options")
-        self.advanced_form.show()
 
 
     def detect_devices(self):
