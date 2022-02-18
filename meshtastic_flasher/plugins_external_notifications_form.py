@@ -1,7 +1,8 @@
 """class for the plugin external notifications settings"""
 
 
-from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QDialogButtonBox, QLineEdit
+from PySide6 import QtCore
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QDialogButtonBox, QLineEdit, QLabel
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -31,6 +32,10 @@ class ExternalNotificationsForm(QDialog):
         self.prefs = None
 
         # Create widgets
+        self.ext_notification_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/external-notification-plugin'>More info</a>")
+        self.ext_notification_about.setOpenExternalLinks(True)
+        self.ext_notification_about.setTextFormat(QtCore.Qt.RichText)
+        self.ext_notification_about.setToolTip("Link shows more info about the settings for this plugin.")
         self.ext_notification_plugin_active = QCheckBox()
         self.ext_notification_plugin_alert_bell = QCheckBox()
         self.ext_notification_plugin_alert_message = QCheckBox()
@@ -46,6 +51,7 @@ class ExternalNotificationsForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
+        form_layout.addRow(self.tr("External Notification Plugin"), self.ext_notification_about)
         form_layout.addRow(self.tr("Active?"), self.ext_notification_plugin_active)
         form_layout.addRow(self.tr("Alert bell?"), self.ext_notification_plugin_alert_bell)
         form_layout.addRow(self.tr("Alert message?"), self.ext_notification_plugin_alert_message)

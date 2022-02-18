@@ -1,7 +1,8 @@
 """class for the plugin environmental measurement settings"""
 
 
-from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox, QLineEdit
+from PySide6 import QtCore
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox, QLineEdit, QLabel
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -31,6 +32,10 @@ class EnvironmentalMeasurementForm(QDialog):
         self.prefs = None
 
         # Create widgets
+        self.environmental_measurement_plugin_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/environmental-measurement-plugin'>More info</a>")
+        self.environmental_measurement_plugin_about.setOpenExternalLinks(True)
+        self.environmental_measurement_plugin_about.setTextFormat(QtCore.Qt.RichText)
+        self.environmental_measurement_plugin_about.setToolTip("Link shows more info about the settings for this plugin.")
         self.environmental_measurement_plugin_display_farenheit = QCheckBox()
         self.environmental_measurement_plugin_measurement_enabled = QCheckBox()
         self.environmental_measurement_plugin_read_error_count_threshold = QLineEdit()
@@ -49,6 +54,7 @@ class EnvironmentalMeasurementForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
+        form_layout.addRow(self.tr("Environmental Measurement Plugin"), self.environmental_measurement_plugin_about)
         form_layout.addRow(self.tr("Display Farenheit?"), self.environmental_measurement_plugin_display_farenheit)
         form_layout.addRow(self.tr("Enabled?"), self.environmental_measurement_plugin_measurement_enabled)
         form_layout.addRow(self.tr("Error count threshold"), self.environmental_measurement_plugin_read_error_count_threshold)

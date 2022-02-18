@@ -42,8 +42,15 @@ class Settings(QMainWindow):
         self.tabs = QTabWidget()
 
         self.setStyleSheet("""
-QTabWidget::pane { position: absolute; top: 1em; }
-QTabWidget::tab-bar { alignment: center; }
+QTabWidget::pane {
+    position: absolute;
+    top: 1em;
+}
+QTabWidget::tab-bar {
+    alignment: center;
+}
+QTabWidget::tab {
+}
 QTabBar::tab:selected {
     margin-left: 2px;
     margin-right: 2px;

@@ -1,7 +1,8 @@
 """class for the plugin range test settings"""
 
 
-from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QDialogButtonBox, QLineEdit
+from PySide6 import QtCore
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QDialogButtonBox, QLineEdit, QLabel
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -31,6 +32,10 @@ class RangeTestForm(QDialog):
         self.prefs = None
 
         # Create widgets
+        self.range_test_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/range-test-plugin'>More info</a>")
+        self.range_test_about.setOpenExternalLinks(True)
+        self.range_test_about.setTextFormat(QtCore.Qt.RichText)
+        self.range_test_about.setToolTip("Link shows more info about the settings for this plugin.")
         self.range_test_plugin_enabled = QCheckBox()
         self.range_test_plugin_save = QCheckBox()
         self.range_test_plugin_sender = QLineEdit()
@@ -43,6 +48,7 @@ class RangeTestForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
+        form_layout.addRow(self.tr("Range Test Plugin"), self.range_test_about)
         form_layout.addRow(self.tr("Enabled?"), self.range_test_plugin_enabled)
         form_layout.addRow(self.tr("Save?"), self.range_test_plugin_save)
         form_layout.addRow(self.tr("Message Interval"), self.range_test_plugin_sender)
