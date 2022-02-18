@@ -5,7 +5,6 @@ import re
 import urllib
 import ssl
 import zipfile
-import platform
 import requests
 
 from github import Github
@@ -35,7 +34,7 @@ def wrapped_findPorts():
        meshtastic.util.findPorts(). But, if I wrap it, here,
        I can patch this function.
     """
-    return findPorts()
+    return findPorts(True)
 
 
 def wrapped_detect_supported_devices():
@@ -167,24 +166,6 @@ def check_if_newer_version():
     if pypi_version and meshtastic_flasher.version.__version__ != pypi_version:
         is_newer_version = True
     return is_newer_version
-
-
-def is_windows11():
-    """Detect if Windows 11"""
-    is_win11 = False
-    if platform.system() == "Windows":
-        if float(platform.release()) >= 10.0:
-            patch = platform.version().split('.')[2]
-            print(f'patch:{patch}')
-            # in case they add some number suffix later, just get first 5 chars of patch
-            patch = patch[:5]
-            try:
-                if int(patch) >= 22000:
-                    is_win11 = True
-            except Exception as e:
-                print(f'problem detecting win11 e:{e}')
-    print(f'is_win11:{is_win11}')
-    return is_win11
 
 
 def zero_if_blank(some_input):
