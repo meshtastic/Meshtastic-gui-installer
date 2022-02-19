@@ -238,7 +238,6 @@ class PositionForm(QDialog):
         """Write values to device"""
         try:
             if self.interface:
-                # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'position_broadcast_secs', zero_if_blank(self.position_broadcast_secs.text()))

@@ -115,7 +115,6 @@ class SerialForm(QDialog):
         """Write values to device"""
         try:
             if self.interface:
-                # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'serialplugin_enabled', f'{self.serialplugin_enabled.isChecked()}')

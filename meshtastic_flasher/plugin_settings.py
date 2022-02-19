@@ -9,6 +9,7 @@ from meshtastic_flasher.plugins_environmental_measurement_form import Environmen
 from meshtastic_flasher.plugins_store_and_forward_form import StoreAndForwardForm
 from meshtastic_flasher.plugins_serial_form import SerialForm
 from meshtastic_flasher.plugins_rotary_encoder_form import RotaryEncoderForm
+from meshtastic_flasher.plugins_canned_message_form import CannedMessageForm
 
 
 class PluginSettings(QMainWindow):
@@ -32,6 +33,7 @@ class PluginSettings(QMainWindow):
         self.store_and_forward_form = StoreAndForwardForm(self)
         self.serial_form = SerialForm(self)
         self.rotary_encoder_form = RotaryEncoderForm(self)
+        self.canned_message_form = CannedMessageForm(self)
 
         self.tabs = QTabWidget()
 
@@ -45,7 +47,8 @@ class PluginSettings(QMainWindow):
         self.tabs.addTab(self.envrionmental_measurement_form, "Environment")
         self.tabs.addTab(self.store_and_forward_form, "Store/Forward")
         self.tabs.addTab(self.serial_form, "Serial")
-        self.tabs.addTab(self.rotary_encoder_form, "Rotary Encoder")
+        self.tabs.addTab(self.rotary_encoder_form, "Rotary")
+        self.tabs.addTab(self.canned_message_form, "Canned")
 
         self.setCentralWidget(self.tabs)
 
@@ -73,6 +76,9 @@ class PluginSettings(QMainWindow):
         elif i == 5:
             print('rotary_encoder_form.run()')
             self.rotary_encoder_form.run(port=self.port, interface=self.interface)
+        elif i == 6:
+            print('canned_message_form.run()')
+            self.canned_message_form.run(port=self.port, interface=self.interface)
 
 
     def run(self, port=None, interface=None):

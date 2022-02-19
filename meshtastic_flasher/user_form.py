@@ -122,7 +122,6 @@ class UserForm(QDialog):
         try:
             if self.interface:
                 print("Writing values to device")
-                # TODO: Should we only write if we changed values?
                 self.interface.getNode(BROADCAST_ADDR).setOwner(long_name=self.long_name.text(), short_name=self.short_name.text(), is_licensed=self.licensed_operator.isChecked(), team=self.team.currentData())
         except Exception as e:
             print(f'Exception:{e}')
