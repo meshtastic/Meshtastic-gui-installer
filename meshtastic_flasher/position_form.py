@@ -32,6 +32,8 @@ class PositionForm(QDialog):
 
         # Create widgets
         self.position_broadcast_secs = QLineEdit()
+        self.position_broadcast_smart = QCheckBox()
+        self.position_broadcast_smart.setToolTip("Calculates an ideal position update interval based on the data rate of your selected channel configuration.")
         self.position_broadcast_secs.setToolTip("We should send our position this often (but only if it has changed significantly). Defaults to 900 seconds (15 minutes).")
         self.position_flag_altitude = QCheckBox("Include altitude", self)
         self.position_flag_alt_msl = QCheckBox("Altitude is MSL", self) # TODO: what is MSL?
@@ -64,6 +66,7 @@ class PositionForm(QDialog):
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.tr("Broadcast Interval"), self.position_broadcast_secs)
+        form_layout.addRow(self.tr("Broadcast smart"), self.position_broadcast_smart)
         form_layout.addRow(self.tr("Position Flags"), self.position_flag_altitude)
         form_layout.addRow(self.tr("              "), self.position_flag_alt_msl)
         form_layout.addRow(self.tr("              "), self.position_flag_geo_sep)
@@ -175,6 +178,9 @@ class PositionForm(QDialog):
                 else:
                     self.position_broadcast_secs.setText("0")
 
+                if self.prefs.position_broadcast_smart:
+                    self.position_broadcast_smart.setChecked(True)
+
                 if self.prefs.position_flags:
                     self.position_flags.setText(f'{self.prefs.position_flags}')
                 else:
@@ -249,6 +255,7 @@ class PositionForm(QDialog):
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'position_broadcast_secs', zero_if_blank(self.position_broadcast_secs.text()))
+                setPref(prefs, 'position_broadcast_smart', f'{self.position_broadcast_smart.isChecked()}')
                 setPref(prefs, 'position_flags', self.position_flags.text())
                 setPref(prefs, 'fixed_position', f'{self.fixed_position.isChecked()}')
                 setPref(prefs, 'location_share', f'{self.location_share.currentData()}')
