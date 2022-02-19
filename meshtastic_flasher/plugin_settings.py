@@ -8,6 +8,7 @@ from meshtastic_flasher.plugins_external_notifications_form import ExternalNotif
 from meshtastic_flasher.plugins_environmental_measurement_form import EnvironmentalMeasurementForm
 from meshtastic_flasher.plugins_store_and_forward_form import StoreAndForwardForm
 from meshtastic_flasher.plugins_serial_form import SerialForm
+from meshtastic_flasher.plugins_rotary_encoder_form import RotaryEncoderForm
 
 
 class PluginSettings(QMainWindow):
@@ -30,6 +31,7 @@ class PluginSettings(QMainWindow):
         self.envrionmental_measurement_form = EnvironmentalMeasurementForm(self)
         self.store_and_forward_form = StoreAndForwardForm(self)
         self.serial_form = SerialForm(self)
+        self.rotary_encoder_form = RotaryEncoderForm(self)
 
         self.tabs = QTabWidget()
 
@@ -43,6 +45,7 @@ class PluginSettings(QMainWindow):
         self.tabs.addTab(self.envrionmental_measurement_form, "Environment")
         self.tabs.addTab(self.store_and_forward_form, "Store/Forward")
         self.tabs.addTab(self.serial_form, "Serial")
+        self.tabs.addTab(self.rotary_encoder_form, "Rotary Encoder")
 
         self.setCentralWidget(self.tabs)
 
@@ -67,6 +70,9 @@ class PluginSettings(QMainWindow):
         elif i == 4:
             print('serial_form.run()')
             self.serial_form.run(port=self.port, interface=self.interface)
+        elif i == 5:
+            print('rotary_encoder_form.run()')
+            self.rotary_encoder_form.run(port=self.port, interface=self.interface)
 
 
     def run(self, port=None, interface=None):

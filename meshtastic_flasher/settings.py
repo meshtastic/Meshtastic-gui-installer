@@ -92,11 +92,11 @@ QTabBar::tab:only-one {
             print('user run()')
             self.user_form.run(port=self.port, interface=self.interface)
         elif i == 1:
-            print('position run()')
-            self.position_form.run(port=self.port, interface=self.interface)
-        elif i == 2:
             print('wifi_and_mqtt_form run()')
             self.wifi_and_mqtt_form.run(port=self.port, interface=self.interface)
+        elif i == 2:
+            print('position run()')
+            self.position_form.run(port=self.port, interface=self.interface)
         elif i == 3:
             print('power run()')
             self.power_form.run(port=self.port, interface=self.interface)

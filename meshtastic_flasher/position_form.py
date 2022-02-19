@@ -167,9 +167,6 @@ class PositionForm(QDialog):
     def get_values(self):
         """Get values from device"""
         try:
-            if self.interface is None:
-                print('interface was none?')
-                self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
@@ -190,45 +187,35 @@ class PositionForm(QDialog):
                 if self.prefs.fixed_position:
                     self.fixed_position.setChecked(True)
 
-                tmp_ls = 'LocUnset'
+                temp = 0
                 if self.prefs.location_share:
-                    tmp_ls = self.prefs.location_share
-                    print(f'tmp_ls:{tmp_ls}')
-                count = 0
+                    temp = int(self.prefs.location_share)
                 self.location_share.clear()
                 desc = meshtastic.radioconfig_pb2.LocationSharing.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
-                    print(f'k:{k} v.number:{v.number}')
                     self.location_share.addItem(k, v.number)
-                    if k == tmp_ls:
-                        self.location_share.setCurrentIndex(count)
-                    count = count + 1
+                    if v.number == temp:
+                        self.location_share.setCurrentIndex(v.number)
 
-                tmp_go = 'GpsOpUnset'
+                temp = 0
                 if self.prefs.gps_operation:
-                    tmp_go = self.prefs.gps_operation
-                    print(f'tmp_go:{tmp_go}')
-                count = 0
+                    temp = int(self.prefs.gps_operation)
                 self.gps_operation.clear()
                 desc = meshtastic.radioconfig_pb2.GpsOperation.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.gps_operation.addItem(k, v.number)
-                    if k == tmp_go:
-                        self.gps_operation.setCurrentIndex(count)
-                    count = count + 1
+                    if v.number == temp:
+                        self.gps_operation.setCurrentIndex(v.number)
 
-                tmp_gf = 'GpsFormatDec'
+                temp = 0
                 if self.prefs.gps_format:
-                    tmp_gf = self.prefs.gps_format
-                    print(f'tmp_gf:{tmp_gf}')
-                count = 0
+                    temp = int(self.prefs.gps_format)
                 self.gps_format.clear()
                 desc = meshtastic.radioconfig_pb2.GpsCoordinateFormat.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.gps_format.addItem(k, v.number)
-                    if k == tmp_gf:
-                        self.gps_format.setCurrentIndex(count)
-                    count = count + 1
+                    if v.number == temp:
+                        self.gps_format.setCurrentIndex(v.number)
 
                 if self.prefs.gps_accept_2d:
                     self.gps_accept_2d.setChecked(True)

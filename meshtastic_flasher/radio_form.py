@@ -84,7 +84,7 @@ class RadioForm(QDialog):
                 desc = meshtastic.radioconfig_pb2.RegionCode.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.region.addItem(k, v.number)
-                    if k == tmp_r:
+                    if v.number == tmp_r:
                         self.region.setCurrentIndex(count)
                     count = count + 1
 
