@@ -32,6 +32,8 @@ class PositionForm(QDialog):
 
         # Create widgets
         self.position_broadcast_secs = QLineEdit()
+        self.position_broadcast_smart = QCheckBox()
+        self.position_broadcast_smart.setToolTip("Calculates an ideal position update interval based on the data rate of your selected channel configuration.")
         self.position_broadcast_secs.setToolTip("We should send our position this often (but only if it has changed significantly). Defaults to 900 seconds (15 minutes).")
         self.position_flag_altitude = QCheckBox("Include altitude", self)
         self.position_flag_alt_msl = QCheckBox("Altitude is MSL", self) # TODO: what is MSL?
@@ -64,6 +66,7 @@ class PositionForm(QDialog):
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.tr("Broadcast Interval"), self.position_broadcast_secs)
+        form_layout.addRow(self.tr("Broadcast smart"), self.position_broadcast_smart)
         form_layout.addRow(self.tr("Position Flags"), self.position_flag_altitude)
         form_layout.addRow(self.tr("              "), self.position_flag_alt_msl)
         form_layout.addRow(self.tr("              "), self.position_flag_geo_sep)
@@ -164,9 +167,6 @@ class PositionForm(QDialog):
     def get_values(self):
         """Get values from device"""
         try:
-            if self.interface is None:
-                print('interface was none?')
-                self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
@@ -174,6 +174,9 @@ class PositionForm(QDialog):
                     self.position_broadcast_secs.setText(f'{self.prefs.position_broadcast_secs}')
                 else:
                     self.position_broadcast_secs.setText("0")
+
+                if self.prefs.position_broadcast_smart:
+                    self.position_broadcast_smart.setChecked(True)
 
                 if self.prefs.position_flags:
                     self.position_flags.setText(f'{self.prefs.position_flags}')
@@ -184,45 +187,35 @@ class PositionForm(QDialog):
                 if self.prefs.fixed_position:
                     self.fixed_position.setChecked(True)
 
-                tmp_ls = 'LocUnset'
+                temp = 0
                 if self.prefs.location_share:
-                    tmp_ls = self.prefs.location_share
-                    print(f'tmp_ls:{tmp_ls}')
-                count = 0
+                    temp = int(self.prefs.location_share)
                 self.location_share.clear()
                 desc = meshtastic.radioconfig_pb2.LocationSharing.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
-                    print(f'k:{k} v.number:{v.number}')
                     self.location_share.addItem(k, v.number)
-                    if k == tmp_ls:
-                        self.location_share.setCurrentIndex(count)
-                    count = count + 1
+                    if v.number == temp:
+                        self.location_share.setCurrentIndex(v.number)
 
-                tmp_go = 'GpsOpUnset'
+                temp = 0
                 if self.prefs.gps_operation:
-                    tmp_go = self.prefs.gps_operation
-                    print(f'tmp_go:{tmp_go}')
-                count = 0
+                    temp = int(self.prefs.gps_operation)
                 self.gps_operation.clear()
                 desc = meshtastic.radioconfig_pb2.GpsOperation.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.gps_operation.addItem(k, v.number)
-                    if k == tmp_go:
-                        self.gps_operation.setCurrentIndex(count)
-                    count = count + 1
+                    if v.number == temp:
+                        self.gps_operation.setCurrentIndex(v.number)
 
-                tmp_gf = 'GpsFormatDec'
+                temp = 0
                 if self.prefs.gps_format:
-                    tmp_gf = self.prefs.gps_format
-                    print(f'tmp_gf:{tmp_gf}')
-                count = 0
+                    temp = int(self.prefs.gps_format)
                 self.gps_format.clear()
                 desc = meshtastic.radioconfig_pb2.GpsCoordinateFormat.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.gps_format.addItem(k, v.number)
-                    if k == tmp_gf:
-                        self.gps_format.setCurrentIndex(count)
-                    count = count + 1
+                    if v.number == temp:
+                        self.gps_format.setCurrentIndex(v.number)
 
                 if self.prefs.gps_accept_2d:
                     self.gps_accept_2d.setChecked(True)
@@ -245,10 +238,10 @@ class PositionForm(QDialog):
         """Write values to device"""
         try:
             if self.interface:
-                # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'position_broadcast_secs', zero_if_blank(self.position_broadcast_secs.text()))
+                setPref(prefs, 'position_broadcast_smart', f'{self.position_broadcast_smart.isChecked()}')
                 setPref(prefs, 'position_flags', self.position_flags.text())
                 setPref(prefs, 'fixed_position', f'{self.fixed_position.isChecked()}')
                 setPref(prefs, 'location_share', f'{self.location_share.currentData()}')

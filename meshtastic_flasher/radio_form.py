@@ -84,7 +84,7 @@ class RadioForm(QDialog):
                 desc = meshtastic.radioconfig_pb2.RegionCode.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.region.addItem(k, v.number)
-                    if k == tmp_r:
+                    if v.number == tmp_r:
                         self.region.setCurrentIndex(count)
                     count = count + 1
 
@@ -102,7 +102,6 @@ class RadioForm(QDialog):
         """Write values to device"""
         try:
             if self.interface:
-                # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'is_router', f'{self.is_router.isChecked()}')

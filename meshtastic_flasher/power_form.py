@@ -69,18 +69,15 @@ class PowerForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                tmp_cc = 'MAUnset'
-                if self.prefs.location_share:
-                    tmp_cc = self.prefs.charge_current
-                    print(f'tmp_cc:{tmp_cc}')
-                count = 0
+                temp = 0
+                if self.prefs.charge_current:
+                    temp = self.prefs.charge_current
                 self.charge_current.clear()
                 desc = meshtastic.radioconfig_pb2.ChargeCurrent.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.charge_current.addItem(k, v.number)
-                    if k == tmp_cc:
-                        self.charge_current.setCurrentIndex(count)
-                    count = count + 1
+                    if v.number == temp:
+                        self.charge_current.setCurrentIndex(v.number)
 
                 if self.prefs.is_always_powered:
                     self.is_always_powered.setChecked(True)
@@ -96,7 +93,6 @@ class PowerForm(QDialog):
         """Write values to device"""
         try:
             if self.interface:
-                # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'charge_current', f'{self.charge_current.currentData()}')

@@ -94,7 +94,6 @@ class RangeTestForm(QDialog):
         """Write values to device"""
         try:
             if self.interface:
-                # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'range_test_plugin_enabled', f'{self.range_test_plugin_enabled.isChecked()}')

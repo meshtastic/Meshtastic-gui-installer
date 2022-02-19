@@ -68,36 +68,38 @@ class UserForm(QDialog):
     def get_values(self):
         """Get values from device"""
         try:
-            if self.interface is None:
-                print('interface was none?')
-                self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
-
                 for n in self.interface.nodes.values():
                     if n['num'] == self.interface.myInfo.my_node_num:
-                        print(f'n:{n}')
+
                         if 'id' in n['user']:
                             self.device_id.setText(n['user']['id'])
                         else:
                             self.device_id.setText('')
+
                         if 'hwModel' in n['user']:
                             self.hardware.setText(n['user']['hwModel'])
                         else:
                             self.hardware.setText('')
+
                         if 'macaddr' in n['user']:
                             self.mac_address.setText(meshtastic.util.convert_mac_addr(n['user']['macaddr']))
                         else:
                             self.mac_address.setText('')
+
                         if 'longName' in n['user']:
                             self.long_name.setText(n['user']['longName'])
                         else:
                             self.long_name.setText('')
+
                         if 'shortName' in n['user']:
                             self.short_name.setText(n['user']['shortName'])
                         else:
                             self.short_name.setText('')
+
                         if 'licensed_operator' in n['user']:
                             self.licensed_operator.setChecked(True)
+
                         tmp_team = 'CLEAR'
                         if 'team' in n['user']:
                             tmp_team = n['user']['team']
@@ -120,7 +122,6 @@ class UserForm(QDialog):
         try:
             if self.interface:
                 print("Writing values to device")
-                # TODO: Should we only write if we changed values?
                 self.interface.getNode(BROADCAST_ADDR).setOwner(long_name=self.long_name.text(), short_name=self.short_name.text(), is_licensed=self.licensed_operator.isChecked(), team=self.team.currentData())
         except Exception as e:
             print(f'Exception:{e}')

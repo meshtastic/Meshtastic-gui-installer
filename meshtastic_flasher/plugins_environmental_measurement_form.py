@@ -110,19 +110,16 @@ class EnvironmentalMeasurementForm(QDialog):
                 else:
                     self.environmental_measurement_plugin_sensor_pin.setText("0")
 
-                temp_st = 'DHT11'
+                temp = 0
                 if self.prefs.environmental_measurement_plugin_sensor_type:
-                    temp_st = self.prefs.environmental_measurement_plugin_sensor_type
-                    print(f'temp_st:{temp_st}')
-                count = 0
+                    temp = int(self.prefs.environmental_measurement_plugin_sensor_type)
                 self.environmental_measurement_plugin_sensor_type.clear()
                 # pylint: disable=no-member
                 desc = meshtastic.radioconfig_pb2.RadioConfig.UserPreferences.EnvironmentalMeasurementSensorType.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.environmental_measurement_plugin_sensor_type.addItem(k, v.number)
-                    if k == temp_st:
-                        self.environmental_measurement_plugin_sensor_type.setCurrentIndex(count)
-                    count = count + 1
+                    if v.number == temp:
+                        self.environmental_measurement_plugin_sensor_type.setCurrentIndex(v.number)
 
                 if self.prefs.environmental_measurement_plugin_update_interval:
                     self.environmental_measurement_plugin_update_interval.setText(f'{self.prefs.environmental_measurement_plugin_update_interval}')
@@ -137,7 +134,6 @@ class EnvironmentalMeasurementForm(QDialog):
         """Write values to device"""
         try:
             if self.interface:
-                # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'environmental_measurement_plugin_display_farenheit', f'{self.environmental_measurement_plugin_display_farenheit.isChecked()}')

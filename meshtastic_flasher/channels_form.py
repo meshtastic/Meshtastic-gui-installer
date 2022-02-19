@@ -108,7 +108,6 @@ class ChannelsForm(QDialog):
         """Write values to device"""
         try:
             if self.interface:
-                # TODO: Should we only write if we changed values?
                 print("Writing preferences to device")
                 # TODO:
                 #prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
