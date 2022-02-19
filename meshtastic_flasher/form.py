@@ -146,6 +146,7 @@ class Form(QDialog):
         self.settings_cog.setIconSize(BUTTON_ICON_SIZE)
         self.settings_cog.setFixedWidth(42)
         self.settings_cog.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+        self.settings_cog.setToolTip("Click for device Settings.")
 
         # Create layout and add widgets
         main_layout = QVBoxLayout()

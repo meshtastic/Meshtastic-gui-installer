@@ -12,6 +12,7 @@ from meshtastic_flasher.position_form import PositionForm
 from meshtastic_flasher.power_form import PowerForm
 from meshtastic_flasher.radio_form import RadioForm
 #from meshtastic_flasher.channels_form import ChannelsForm
+from meshtastic_flasher.plugin_settings import PluginSettings
 
 
 class Settings(QMainWindow):
@@ -35,17 +36,24 @@ class Settings(QMainWindow):
         self.position_form = PositionForm(self)
         self.power_form = PowerForm(self)
         self.radio_form = RadioForm(self)
+        self.plugin_settings = PluginSettings()
         #self.channels_form = ChannelsForm(self)
 
         self.tabs = QTabWidget()
 
         self.setStyleSheet("""
-QTabWidget::pane { position: absolute; top: -0.5em; }
-QTabWidget::tab-bar { alignment: center; }
+QTabWidget::pane {
+    position: absolute;
+    top: 1em;
+}
+QTabWidget::tab-bar {
+    alignment: center;
+}
+QTabWidget::tab {
+}
 QTabBar::tab:selected {
-    /* expand/overlap to the left and right by 4px */
-    margin-left: -4px;
-    margin-right: -4px;
+    margin-left: 2px;
+    margin-right: 2px;
 }
 QTabBar::tab:first:selected {
     margin-left: 0; /* the first selected tab has nothing to overlap with on the left */
@@ -68,6 +76,7 @@ QTabBar::tab:only-one {
         self.tabs.addTab(self.user_form, "User")
         self.tabs.addTab(self.power_form, "Power")
         self.tabs.addTab(self.radio_form, "Radio")
+        self.tabs.addTab(self.plugin_settings, "Plugins")
         self.tabs.addTab(self.admin_form, "ADMIN")
         #self.tabs.addTab(self.channels_form, "Channels")
 
@@ -95,6 +104,9 @@ QTabBar::tab:only-one {
             print('radio run()')
             self.radio_form.run(port=self.port, interface=self.interface)
         elif i == 5:
+            print('plugin settings run()')
+            self.plugin_settings.run(port=self.port, interface=self.interface)
+        elif i == 6:
             print('admin form run()')
             self.admin_form.run(port=self.port, interface=self.interface)
 #        elif i == 5:
