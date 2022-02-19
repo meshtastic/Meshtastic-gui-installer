@@ -175,6 +175,8 @@ If you get this error, then install in a python virtual environment as described
 
 * Windows 11 works with CP210x Universal Windows Driver, and you must start the command prompt as Administrator
 
+* Windows 10 will not work with python v3.8.0 due to issue https://stackoverflow.com/questions/56757044/pyside2-dll-load-failed-the-specified-procedure-could-not-be-found/70533728#70533728 . It has been tested on python 3.10 on Windows 10.
+
 # Note to Devs
 
 Please keep code as simple as possible. PyQT has a tendency to get complicated.
