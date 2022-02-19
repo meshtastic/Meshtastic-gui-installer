@@ -1,7 +1,7 @@
 """class for the settings"""
 
 
-from PySide6.QtWidgets import QTabWidget, QMainWindow
+from PySide6.QtWidgets import QTabWidget, QMainWindow, QMessageBox
 
 import meshtastic.serial_interface
 
@@ -71,9 +71,9 @@ QTabBar::tab:only-one {
         #tabs.setTabPosition(QTabWidget.West)
         self.tabs.setTabPosition(QTabWidget.North)
 
+        self.tabs.addTab(self.user_form, "User")
         self.tabs.addTab(self.wifi_and_mqtt_form, "Wifi/MQTT")
         self.tabs.addTab(self.position_form, "Position")
-        self.tabs.addTab(self.user_form, "User")
         self.tabs.addTab(self.power_form, "Power")
         self.tabs.addTab(self.radio_form, "Radio")
         self.tabs.addTab(self.plugin_settings, "Plugins")
@@ -89,14 +89,14 @@ QTabBar::tab:only-one {
         """On change of each tab """
         print(f'on_change_tabs:{i}')
         if i == 0:
-            print('wifi_and_mqtt_form run()')
-            self.wifi_and_mqtt_form.run(port=self.port, interface=self.interface)
+            print('user run()')
+            self.user_form.run(port=self.port, interface=self.interface)
         elif i == 1:
             print('position run()')
             self.position_form.run(port=self.port, interface=self.interface)
         elif i == 2:
-            print('user run()')
-            self.user_form.run(port=self.port, interface=self.interface)
+            print('wifi_and_mqtt_form run()')
+            self.wifi_and_mqtt_form.run(port=self.port, interface=self.interface)
         elif i == 3:
             print('power run()')
             self.power_form.run(port=self.port, interface=self.interface)
@@ -132,7 +132,6 @@ QTabBar::tab:only-one {
     def run(self, port=None):
         """load the form"""
         print(f'in settings run() port:{port}:')
-        self.show()
         if port and port != '':
             self.port = port
         print(f'self.port:{self.port}:')
@@ -143,4 +142,9 @@ QTabBar::tab:only-one {
                 print(f'self.port:{self.port}:')
             except Exception as e:
                 print(f'Exception:{e}')
-        self.wifi_and_mqtt_form.run(port=self.port, interface=self.interface)
+        if self.interface:
+            self.show()
+            self.user_form.run(port=self.port, interface=self.interface)
+        else:
+            QMessageBox.warning(self, "Warning", ("There was a problem connecting to the device.\n\n"
+                                "Perhaps unplug device and/or restart this program."))
