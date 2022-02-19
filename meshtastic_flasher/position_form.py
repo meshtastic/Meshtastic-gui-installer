@@ -175,6 +175,7 @@ class PositionForm(QDialog):
                 else:
                     self.position_broadcast_secs.setText("0")
 
+                print(f'self.prefs.position_broadcast_smart:{self.prefs.position_broadcast_smart}')
                 if self.prefs.position_broadcast_smart:
                     self.position_broadcast_smart.setChecked(True)
 

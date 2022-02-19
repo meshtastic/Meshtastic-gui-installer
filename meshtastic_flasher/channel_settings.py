@@ -24,7 +24,7 @@ class ChannelSettings(QMainWindow):
 
         self.channel_forms = []
         for i in range(num_channels):
-            self.channel_forms.append(ChannelForm(self))
+            self.channel_forms.append(ChannelForm(self, channel_index=i))
 
         self.tabs = QTabWidget()
 

@@ -3,21 +3,18 @@
 
 from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox, QLineEdit
 
-#import meshtastic.serial_interface
-#import meshtastic.util
-#import meshtastic.mesh_pb2
-#import meshtastic.radioconfig_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 
 
 class ChannelForm(QDialog):
     """channels settings form"""
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, channel_index=0):
         """constructor"""
         super(ChannelForm, self).__init__(parent)
 
         self.parent = parent
+        self.channel_index = channel_index
 
         width = 500
         height = 200
@@ -27,14 +24,15 @@ class ChannelForm(QDialog):
         self.port = None
         self.interface = None
         self.prefs = None
+        self.ch = None
 
         # Create widgets
-        self.name = QLineEdit() # for primary, it is always primary
-        self.name.setReadOnly(True) # primary channel name cannot be changed
-        self.name.setText("Primary") # name for primary channel (for display only)
-        #self.enabled = QCheckBox()
-        #self.enabled.setChecked(True) # primary is always enabled
-        #self.enabled.setReadOnly(True) # primary channel is always enabled
+        self.name = QLineEdit()
+        self.enabled = QCheckBox()
+        if self.channel_index == 0:
+            self.name.setReadOnly(True) # primary channel name cannot be changed
+            self.name.setText("Primary") # name for primary channel (for display only)
+            self.enabled.setChecked(True) # primary is always enabled
         self.key_size = QComboBox()
         self.key_size.setMinimumContentsLength(17)
         self.psk = QLineEdit()
@@ -50,7 +48,7 @@ class ChannelForm(QDialog):
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.tr("Name"), self.name)
-        #form_layout.addRow(self.tr("Enabled"), self.enabled)
+        form_layout.addRow(self.tr("Enabled"), self.enabled)
         form_layout.addRow(self.tr("Key size"), self.key_size)
         form_layout.addRow(self.tr("Pre-Shared Key"), self.psk)
         form_layout.addRow(self.tr("Uplink enabled"), self.uplink_enabled)
@@ -73,8 +71,8 @@ class ChannelForm(QDialog):
         """Get values from device"""
         try:
             if self.interface:
-                ch = self.interface.localNode.getChannelByChannelIndex(0)
-                print(f'ch:{ch}')
+                self.ch = self.interface.localNode.getChannelByChannelIndex(self.channel_index)
+                print(f'self.ch:{self.ch}')
 
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
@@ -86,15 +84,15 @@ class ChannelForm(QDialog):
                 self.key_size.addItem('128 Bit', 1)
                 self.key_size.addItem('256 Bit', 2)
 
-                if len(ch.settings.psk) == 1 and ch.settings.psk == b'\001':
+                if len(self.ch.settings.psk) == 1 and self.ch.settings.psk == b'\001':
                     self.key_size.setCurrentIndex(0)
 
-                self.psk = ch.settings.psk
+                self.psk = self.ch.settings.psk
 
-                if ch.settings.uplink_enabled:
+                if self.ch.settings.uplink_enabled:
                     self.uplink_enabled.setChecked(True)
 
-                if ch.settings.downlink_enabled:
+                if self.ch.settings.downlink_enabled:
                     self.downlink_enabled.setChecked(True)
 
 
@@ -106,13 +104,28 @@ class ChannelForm(QDialog):
         """Write values to device"""
         try:
             if self.interface:
+
+                # Primary channel stuff
+                if self.channel_index == 0:
+                    self.name = "Primary"
+                    self.enabled = True
+
+                before = self.interface.localNode.getChannelByChannelIndex(self.channel_index)
+                print(f'before:{before}')
+
+                self.interface.localNode.channels[self.channel_index] = self.ch
+                self.ch.name = self.name
+                self.ch.enabled = self.enabled
+                self.ch.key_size = self.key_size
+                self.ch.psk = self.psk
+                self.ch.uplink_enabled = self.uplink_enabled
+                self.ch.downlink_enabled = self.downlink_enabled
+
+                after = self.interface.localNode.getChannelByChannelIndex(self.channel_index)
+                print(f'after:{after}')
+
                 print("Writing preferences to device")
-                # TODO:
-                #prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                #setPref(prefs, 'charge_current', f'{self.charge_current.currentData()}')
-                #setPref(prefs, 'is_always_powered', f'{self.is_always_powered.isChecked()}')
-                #setPref(prefs, 'is_low_power', f'{self.is_low_power.isChecked()}')
-                #self.interface.getNode(BROADCAST_ADDR).writeConfig()
+                #self.interface.getNode(BROADCAST_ADDR).writeChannel(self.channel_index)
 
         except Exception as e:
             print(f'Exception:{e}')
