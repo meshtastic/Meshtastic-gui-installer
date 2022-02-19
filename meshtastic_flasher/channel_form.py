@@ -3,19 +3,19 @@
 
 from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox, QLineEdit
 
-import meshtastic.serial_interface
-import meshtastic.util
-import meshtastic.mesh_pb2
-import meshtastic.radioconfig_pb2
+#import meshtastic.serial_interface
+#import meshtastic.util
+#import meshtastic.mesh_pb2
+#import meshtastic.radioconfig_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 
 
-class ChannelsForm(QDialog):
+class ChannelForm(QDialog):
     """channels settings form"""
 
     def __init__(self, parent=None):
         """constructor"""
-        super(ChannelsForm, self).__init__(parent)
+        super(ChannelForm, self).__init__(parent)
 
         self.parent = parent
 
@@ -43,7 +43,7 @@ class ChannelsForm(QDialog):
 
         # Add a button box
         self.button_box = QDialogButtonBox()
-        self.button_box.setStandardButtons(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        self.button_box.setStandardButtons(QDialogButtonBox.Ok)
         self.button_box.accepted.connect(self.accept)
         self.button_box.rejected.connect(self.reject)
 
@@ -72,12 +72,10 @@ class ChannelsForm(QDialog):
     def get_values(self):
         """Get values from device"""
         try:
-            if self.interface is None:
-                print('interface was none?')
-                self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 ch = self.interface.localNode.getChannelByChannelIndex(0)
                 print(f'ch:{ch}')
+
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
                 # setup key size drop down

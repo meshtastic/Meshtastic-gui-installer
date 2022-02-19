@@ -11,7 +11,7 @@ from meshtastic_flasher.user_form import UserForm
 from meshtastic_flasher.position_form import PositionForm
 from meshtastic_flasher.power_form import PowerForm
 from meshtastic_flasher.radio_form import RadioForm
-#from meshtastic_flasher.channels_form import ChannelsForm
+from meshtastic_flasher.channel_settings import ChannelSettings
 from meshtastic_flasher.plugin_settings import PluginSettings
 
 
@@ -37,7 +37,7 @@ class Settings(QMainWindow):
         self.power_form = PowerForm(self)
         self.radio_form = RadioForm(self)
         self.plugin_settings = PluginSettings()
-        #self.channels_form = ChannelsForm(self)
+        self.channel_settings = ChannelSettings()
 
         self.tabs = QTabWidget()
 
@@ -68,7 +68,6 @@ QTabBar::tab:only-one {
         self.tabs.blockSignals(True) # just for not showing initial message
         self.tabs.currentChanged.connect(self.on_change_tabs)
 
-        #tabs.setTabPosition(QTabWidget.West)
         self.tabs.setTabPosition(QTabWidget.North)
 
         self.tabs.addTab(self.user_form, "User")
@@ -77,8 +76,8 @@ QTabBar::tab:only-one {
         self.tabs.addTab(self.power_form, "Power")
         self.tabs.addTab(self.radio_form, "Radio")
         self.tabs.addTab(self.plugin_settings, "Plugins")
+        self.tabs.addTab(self.channel_settings, "Channels")
         self.tabs.addTab(self.admin_form, "ADMIN")
-        #self.tabs.addTab(self.channels_form, "Channels")
 
         self.setCentralWidget(self.tabs)
 
@@ -107,11 +106,11 @@ QTabBar::tab:only-one {
             print('plugin settings run()')
             self.plugin_settings.run(port=self.port, interface=self.interface)
         elif i == 6:
+            print('channel settings run()')
+            self.channel_settings.run(port=self.port, interface=self.interface)
+        elif i == 7:
             print('admin form run()')
             self.admin_form.run(port=self.port, interface=self.interface)
-#        elif i == 5:
-#            print('channels run()')
-#            self.channels_form.run(port=self.port, interface=self.interface)
 
 
     def my_close(self):
