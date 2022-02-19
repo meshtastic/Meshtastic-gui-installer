@@ -1,8 +1,7 @@
 """class for the position settings"""
 
 
-from PySide6 import QtCore
-from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QLineEdit, QLabel, QComboBox, QDialogButtonBox, QGroupBox, QGridLayout
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QLineEdit, QLabel, QComboBox, QDialogButtonBox
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -38,14 +37,13 @@ class PositionForm(QDialog):
         self.position_flag_alt_msl = QCheckBox("Altitude is MSL", self) # TODO: what is MSL?
         self.position_flag_geo_sep = QCheckBox("Include geoidal separation", self)
         self.position_flag_dop = QCheckBox("Include the DOP value (PDOP is used by default)")
-        self.position_flag_hvdop = QCheckBox("If DOP, send separate HDOP/VDOP values instead of PDOP")
+        self.position_flag_hvdop = QCheckBox("If DOP is set, send separate HDOP / VDOP values instead of PDOP")
         self.position_flag_battery = QCheckBox("Include battery level")
         self.position_flag_satinview = QCheckBox("Include the number of satellites in view")
         self.position_flag_seq_nos = QCheckBox("Include a sequence number incremented per packet")
         self.position_flag_timestamp = QCheckBox("Include positional timestamp (from GPS solution)")
         self.position_flags = QLabel() # field that shows the number for the prior bit fields
         self.position_flags.setToolTip("The 'position_flags' adds up the bits from the position flags above. Try changing one of the values above to see this value change. This is the value that gets written to the device.")
-        self.position_flags.setAlignment(QtCore.Qt.AlignCenter)
         self.fixed_position = QCheckBox()
         self.location_share = QComboBox()
         self.location_share.setMinimumContentsLength(17)
@@ -63,25 +61,19 @@ class PositionForm(QDialog):
         self.button_box.accepted.connect(self.accept)
         self.button_box.rejected.connect(self.reject)
 
-        self.groupbox = QGroupBox("Position Flags")
-        # QFormLayout.SpanningRole
-        self.grid = QGridLayout()
-        self.groupbox.setLayout(self.grid)
-        self.grid.addWidget(self.position_flag_altitude, 1, 1)
-        self.grid.addWidget(self.position_flag_alt_msl, 2, 1)
-        self.grid.addWidget(self.position_flag_geo_sep, 3, 1)
-        self.grid.addWidget(self.position_flag_dop, 4, 1)
-        self.grid.addWidget(self.position_flag_hvdop, 5, 1)
-        self.grid.addWidget(self.position_flag_battery, 1, 2)
-        self.grid.addWidget(self.position_flag_satinview, 2, 2)
-        self.grid.addWidget(self.position_flag_seq_nos, 3, 2)
-        self.grid.addWidget(self.position_flag_timestamp, 4, 2)
-        self.grid.addWidget(self.position_flags, 5, 2)
-
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.tr("Broadcast Interval"), self.position_broadcast_secs)
-        form_layout.addRow(self.groupbox)
+        form_layout.addRow(self.tr("Position Flags"), self.position_flag_altitude)
+        form_layout.addRow(self.tr("              "), self.position_flag_alt_msl)
+        form_layout.addRow(self.tr("              "), self.position_flag_geo_sep)
+        form_layout.addRow(self.tr("              "), self.position_flag_dop)
+        form_layout.addRow(self.tr("              "), self.position_flag_hvdop)
+        form_layout.addRow(self.tr("              "), self.position_flag_battery)
+        form_layout.addRow(self.tr("              "), self.position_flag_satinview)
+        form_layout.addRow(self.tr("              "), self.position_flag_seq_nos)
+        form_layout.addRow(self.tr("              "), self.position_flag_timestamp)
+        form_layout.addRow(self.tr("Position Flags Value (Calculated)"), self.position_flags)
         form_layout.addRow(self.tr("Use Fixed Position"), self.fixed_position)
         form_layout.addRow(self.tr("Location Sharing"), self.location_share)
         form_layout.addRow(self.tr("GPS Operation"), self.gps_operation)

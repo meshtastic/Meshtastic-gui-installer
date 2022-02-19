@@ -26,7 +26,7 @@ class Settings(QMainWindow):
         self.interface = None
 
         width = 800
-        height = 700
+        height = 600
         self.setMinimumSize(width, height)
         self.setWindowTitle("Settings")
 
@@ -63,12 +63,6 @@ QTabBar::tab:last:selected {
 }
 QTabBar::tab:only-one {
     margin: 0; /* if there is only one tab, we don't want overlapping margins */
-}
-QGroupBox::title {
-    font-size: 9px;
-}
-QGroupBox {
-    /* font-size: 9px; */
 }
 """)
         self.tabs.blockSignals(True) # just for not showing initial message
