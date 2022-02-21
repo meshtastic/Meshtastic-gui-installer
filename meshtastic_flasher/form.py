@@ -73,6 +73,7 @@ class Form(QDialog):
 
         # Create widgets
         self.get_versions_button = QPushButton("GET VERSIONS")
+        self.get_versions_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.get_versions_button.setToolTip("Click to check for more recent firmware.")
 
         self.select_firmware_version = QComboBox()
@@ -81,6 +82,7 @@ class Form(QDialog):
         self.select_firmware_version.setDisabled(True)
 
         self.select_detect = QPushButton("DETECT DEVICE")
+        self.select_detect.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.select_detect.setToolTip("Click to detect supported device and port info.")
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
@@ -105,6 +107,7 @@ class Form(QDialog):
         self.select_device.setDisabled(True)
 
         self.select_flash = QPushButton("FLASH")
+        self.select_flash.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.select_flash.setToolTip("Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options.")
         self.select_flash.setEnabled(False)
 
