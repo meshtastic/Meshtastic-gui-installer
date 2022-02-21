@@ -50,6 +50,9 @@ class ChannelForm(QDialog):
         self.coding_rate = QLineEdit()
         self.psk_random_button = QPushButton("PSKRandom")
         self.psk_default_button = QPushButton("PSKDefault")
+        if self.channel_index > 0:
+            self.delete_this_channel_button = QPushButton("DeleteThisChannel")
+            self.delete_this_channel_button.clicked.connect(self.delete_this_channel)
         # TODO: self.id = QLineEdit()
 
         self.psk_random_button.clicked.connect(self.psk_random)
@@ -75,8 +78,32 @@ class ChannelForm(QDialog):
         form_layout.addRow(self.tr("Coding Rate"), self.coding_rate)
         form_layout.addRow(self.tr(""), self.psk_random_button)
         form_layout.addRow(self.tr(""), self.psk_default_button)
+        if self.channel_index > 0:
+            form_layout.addRow(self.tr(""), self.delete_this_channel_button)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
+
+
+    def reset_form(self):
+        """Reset form"""
+        print('reset form')
+        self.name.setText("")
+        self.name.setFocus()
+        self.role.setCurrentIndex(0)
+        self.uplink_enabled.setChecked(False)
+        self.downlink_enabled.setChecked(False)
+        self.tx_power.setText("0")
+        self.bandwidth.setText("0")
+        self.spread_factor.setText("0")
+        self.coding_rate.setText("0")
+
+
+    def delete_this_channel(self):
+        """Delete this channel"""
+        print('delete this channel')
+        self.interface.localNode.deleteChannel(self.channel_index)
+        self.reset_form()
+        self.get_values()
 
 
     def psk_random(self):
@@ -121,6 +148,17 @@ class ChannelForm(QDialog):
                 self.ch = self.interface.localNode.getChannelByChannelIndex(self.channel_index)
                 print(f'self.ch:{self.ch}')
 
+                if self.ch.settings.name:
+                    self.name.setText(f'{self.ch.settings.name}')
+                    if self.channel_index > 0:
+                        self.delete_this_channel_button.show()
+                else:
+                    self.name.setText("")
+                    if self.channel_index > 0:
+                        self.delete_this_channel_button.hide()
+                if self.channel_index == 0:
+                    self.name.setText("PRIMARY")
+
                 temp = 0
                 if self.ch.role:
                     temp = self.ch.role
@@ -155,13 +193,6 @@ class ChannelForm(QDialog):
                         if v.number == temp:
                             self.modem_config.setCurrentIndex(v.number)
 
-                if self.ch.settings.name:
-                    self.name.setText(f'{self.ch.settings.name}')
-                else:
-                    self.name.setText("")
-                if self.channel_index == 0:
-                    self.name.setText("PRIMARY")
-
                 if self.ch.settings.psk:
                     self.psk = self.ch.settings.psk
 
@@ -172,22 +203,22 @@ class ChannelForm(QDialog):
                     self.downlink_enabled.setChecked(True)
 
                 if self.ch.settings.tx_power:
-                    self.tx_power.setText(f'{self.tx_power}')
+                    self.tx_power.setText(f'{self.tx_power.text()}')
                 else:
                     self.tx_power.setText("0")
 
                 if self.ch.settings.bandwidth:
-                    self.bandwidth.setText(f'{self.bandwidth}')
+                    self.bandwidth.setText(f'{self.bandwidth.text()}')
                 else:
                     self.bandwidth.setText("0")
 
                 if self.ch.settings.spread_factor:
-                    self.spread_factor.setText(f'{self.spread_factor}')
+                    self.spread_factor.setText(f'{self.spread_factor.text()}')
                 else:
                     self.spread_factor.setText("0")
 
                 if self.ch.settings.coding_rate:
-                    self.coding_rate.setText(f'{self.coding_rate}')
+                    self.coding_rate.setText(f'{self.coding_rate.text()}')
                 else:
                     self.coding_rate.setText("0")
         except Exception as e:
@@ -203,7 +234,6 @@ class ChannelForm(QDialog):
 
                 if self.use_name == '':
                     QMessageBox.warning(self, "Warning", "Need to have a channel name")
-
                 else:
                     # Primary channel stuff
                     if self.channel_index == 0:
@@ -239,6 +269,9 @@ class ChannelForm(QDialog):
 
                     print("Writing modified channels to device")
                     n.writeChannel(self.channel_index)
+
+                    # re-get the values (so the "Delete this channel" button will show/hide when appropriate)
+                    self.get_values()
 
         except Exception as e:
             print(f'Exception:{e}')
