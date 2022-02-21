@@ -38,6 +38,7 @@ class Wifi_and_MQTT_Form(QDialog):
         self.mqtt_server = QLineEdit()
         self.mqtt_username = QLineEdit()
         self.mqtt_password = QLineEdit()
+        self.mqtt_encryption_enabled = QCheckBox()
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -55,6 +56,7 @@ class Wifi_and_MQTT_Form(QDialog):
         form_layout.addRow(self.tr("MQTT Server"), self.mqtt_server)
         form_layout.addRow(self.tr("MQTT Username"), self.mqtt_username)
         form_layout.addRow(self.tr("MQTT Password"), self.mqtt_password)
+        form_layout.addRow(self.tr("MQTT Encryption Enabled?"), self.mqtt_encryption_enabled)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
@@ -68,30 +70,41 @@ class Wifi_and_MQTT_Form(QDialog):
             print(f'using port:{self.port}')
             self.get_prefs()
             print(f'prefs:{self.prefs}')
+
             if self.prefs.wifi_ap_mode and self.prefs.wifi_ap_mode is True:
                 self.wifi_ap_mode.setChecked(True)
+
             if self.prefs.wifi_ssid:
                 self.wifi_ssid.setText(self.prefs.wifi_ssid)
             else:
                 self.wifi_ssid.setText("")
+
             if self.prefs.wifi_password:
                 self.wifi_password.setText(self.prefs.wifi_password)
             else:
                 self.wifi_password.setText("")
+
             if self.prefs.mqtt_disabled and self.prefs.mqtt_disabled is True:
                 self.mqtt_disabled.setChecked(True)
+
             if self.prefs.mqtt_server:
                 self.mqtt_server.setText(self.prefs.mqtt_server)
             else:
                 self.mqtt_server.setText("")
+
             if self.prefs.mqtt_username:
                 self.mqtt_username.setText(self.prefs.mqtt_username)
             else:
                 self.mqtt_username.setText("")
+
             if self.prefs.mqtt_password:
                 self.mqtt_password.setText(self.prefs.mqtt_password)
             else:
                 self.mqtt_password.setText("")
+
+            if self.prefs.mqtt_encryption_enabled and self.prefs.mqtt_encryption_enabled is True:
+                self.mqtt_encryption_enabled.setChecked(True)
+
             self.show()
 
 
@@ -120,6 +133,7 @@ class Wifi_and_MQTT_Form(QDialog):
                 setPref(prefs, 'mqtt_server', self.mqtt_server.text())
                 setPref(prefs, 'mqtt_username', self.mqtt_username.text())
                 setPref(prefs, 'mqtt_password', self.mqtt_password.text())
+                setPref(prefs, 'mqtt_encryption_enabled', f'{self.mqtt_encryption_enabled.isChecked()}' )
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
         except Exception as e:
             print(f'Exception:{e}')

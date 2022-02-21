@@ -81,10 +81,10 @@ class SerialForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.serialplugin_enabled:
+                if self.prefs.serialplugin_enabled and self.prefs.serialplugin_enabled is True:
                     self.serialplugin_enabled.setChecked(True)
 
-                if self.prefs.serialplugin_echo:
+                if self.prefs.serialplugin_echo and self.prefs.serialplugin_echo is True:
                     self.serialplugin_enabled.setChecked(True)
 
                 if self.prefs.serialplugin_mode:

@@ -81,16 +81,16 @@ class ExternalNotificationsForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.ext_notification_plugin_active:
+                if self.prefs.ext_notification_plugin_active and self.prefs.ext_notification_plugin_active is True:
                     self.ext_notification_plugin_active.setChecked(True)
 
-                if self.prefs.ext_notification_plugin_alert_bell:
+                if self.prefs.ext_notification_plugin_alert_bell and self.prefs.ext_notification_plugin_alert_bell is True:
                     self.ext_notification_plugin_alert_bell.setChecked(True)
 
-                if self.prefs.ext_notification_plugin_alert_message:
+                if self.prefs.ext_notification_plugin_alert_message and self.prefs.ext_notification_plugin_alert_message is True:
                     self.ext_notification_plugin_alert_message.setChecked(True)
 
-                if self.prefs.ext_notification_plugin_enabled:
+                if self.prefs.ext_notification_plugin_enabled and self.prefs.ext_notification_plugin_enabled is True:
                     self.ext_notification_plugin_enabled.setChecked(True)
 
                 if self.prefs.ext_notification_plugin_output:

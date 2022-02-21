@@ -75,10 +75,10 @@ class RangeTestForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.range_test_plugin_enabled:
+                if self.prefs.range_test_plugin_enabled and self.prefs.range_test_plugin_enabled is True:
                     self.range_test_plugin_enabled.setChecked(True)
 
-                if self.prefs.range_test_plugin_save:
+                if self.prefs.range_test_plugin_save and self.prefs.range_test_plugin_save is True:
                     self.range_test_plugin_save.setChecked(True)
 
                 if self.prefs.range_test_plugin_sender:

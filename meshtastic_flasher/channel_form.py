@@ -196,10 +196,10 @@ class ChannelForm(QDialog):
                 if self.ch.settings.psk:
                     self.psk = self.ch.settings.psk
 
-                if self.ch.settings.uplink_enabled:
+                if self.ch.settings.uplink_enabled and self.ch.settings.uplink_enabled is True:
                     self.uplink_enabled.setChecked(True)
 
-                if self.ch.settings.downlink_enabled:
+                if self.ch.settings.downlink_enabled and self.ch.settings.downlink_enabled is True:
                     self.downlink_enabled.setChecked(True)
 
                 if self.ch.settings.tx_power:

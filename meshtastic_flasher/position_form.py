@@ -55,7 +55,8 @@ class PositionForm(QDialog):
         self.gps_format.setMinimumContentsLength(17)
         self.gps_accept_2d = QCheckBox()
         self.gps_max_dop = QLineEdit()
-        self.gps_attempt_time = QLabel()
+        # TODO: not sure what this does
+        #self.gps_attempt_time = QLabel()
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -83,7 +84,7 @@ class PositionForm(QDialog):
         form_layout.addRow(self.tr("GPS Coordinate Format"), self.gps_format)
         form_layout.addRow(self.tr("GPS Accept 2D Fix"), self.gps_accept_2d)
         form_layout.addRow(self.tr("GPS Max DOP"), self.gps_max_dop)
-        form_layout.addRow(self.tr("Last GPS Attempt"), self.gps_attempt_time)
+        #form_layout.addRow(self.tr("Last GPS Attempt"), self.gps_attempt_time)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
@@ -218,7 +219,7 @@ class PositionForm(QDialog):
                     if v.number == temp:
                         self.gps_format.setCurrentIndex(v.number)
 
-                if self.prefs.gps_accept_2d:
+                if self.prefs.gps_accept_2d and self.prefs.gps_accept_2d is True:
                     self.gps_accept_2d.setChecked(True)
 
                 if self.prefs.gps_max_dop:
@@ -226,10 +227,10 @@ class PositionForm(QDialog):
                 else:
                     self.gps_max_dop.setText("0")
 
-                if self.prefs.gps_attempt_time:
-                    self.gps_attempt_time.setText(f'{self.prefs.gps_attempt_time}')
-                else:
-                    self.gps_attempt_time.setText('')
+#                if self.prefs.gps_attempt_time:
+#                    self.gps_attempt_time.setText(f'{self.prefs.gps_attempt_time}')
+#                else:
+#                    self.gps_attempt_time.setText('')
 
         except Exception as e:
             print(f'Exception:{e}')
