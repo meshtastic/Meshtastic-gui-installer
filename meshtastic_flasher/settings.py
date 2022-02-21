@@ -29,7 +29,6 @@ class Settings(QMainWindow):
         self.pixel_mult = 11
 
         self.fields = load_fields()
-        print(f'self.fields:{self.fields}')
 
         width = 800
         height = 700
