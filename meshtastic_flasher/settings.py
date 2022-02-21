@@ -26,7 +26,7 @@ class Settings(QMainWindow):
         self.interface = None
 
         width = 800
-        height = 600
+        height = 700
         self.setMinimumSize(width, height)
         self.setWindowTitle("Settings")
 
