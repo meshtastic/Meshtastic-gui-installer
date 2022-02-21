@@ -37,7 +37,6 @@ class ChannelForm(QDialog):
         self.modem_config = None
         if self.channel_index == 0:
             self.name.setReadOnly(True) # primary channel name cannot be changed
-            self.name.setText("PRIMARY") # name for primary channel (for display only)
             # modem config is only on primary channel
             self.modem_config = QComboBox()
             self.modem_config.setMinimumContentsLength(17)
@@ -49,12 +48,10 @@ class ChannelForm(QDialog):
         self.coding_rate = QLineEdit()
         self.psk_random_button = QPushButton("PSKRandom")
         self.psk_default_button = QPushButton("PSKDefault")
-        self.psk_none_button = QPushButton("PSKNone")
         # TODO: self.id = QLineEdit()
 
         self.psk_random_button.clicked.connect(self.psk_random)
         self.psk_default_button.clicked.connect(self.psk_default)
-        self.psk_none_button.clicked.connect(self.psk_none)
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -76,7 +73,6 @@ class ChannelForm(QDialog):
         form_layout.addRow(self.tr("Coding Rate"), self.coding_rate)
         form_layout.addRow(self.tr(""), self.psk_random_button)
         form_layout.addRow(self.tr(""), self.psk_default_button)
-        form_layout.addRow(self.tr(""), self.psk_none_button)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
@@ -92,13 +88,6 @@ class ChannelForm(QDialog):
         """Use default psk"""
         print('using default psk')
         self.psk = fromPSK("default")
-        print(f'psk is now:{self.psk}')
-
-
-    def psk_none(self):
-        """Using no psk"""
-        print('using no psk')
-        self.psk = fromPSK("none")
         print(f'psk is now:{self.psk}')
 
 
@@ -173,6 +162,13 @@ class ChannelForm(QDialog):
                         if v.number == temp:
                             self.modem_config.setCurrentIndex(v.number)
 
+                if self.ch.settings.name:
+                    self.name.setText(f'{self.ch.settings.name}')
+                else:
+                    self.name.setText("")
+                if self.channel_index == 0:
+                    self.name.setText("PRIMARY")
+
                 if self.ch.settings.psk:
                     self.psk = self.ch.settings.psk
 
@@ -231,9 +227,9 @@ class ChannelForm(QDialog):
                     ch.settings.name = self.use_name
                     if self.channel_index == 0:
                         # ex: chs.modem_config = chs.Bw250Cr46Sf2048
-                        ch.settings.modem_config = self.role.currentData()
-                    if self.psk is None:
-                        # if there was no PSK (i.e., adding a channel then generate a PSK)
+                        ch.settings.modem_config = self.modem_config.currentData()
+                    if self.psk is None and self.channel_index != 0:
+                        # if there was no PSK (i.e., adding a secondary channel then generate a PSK)
                         self.psk = genPSK256()
                     ch.settings.psk = self.psk
                     ch.settings.uplink_enabled = self.uplink_enabled.isChecked()
@@ -242,16 +238,17 @@ class ChannelForm(QDialog):
                     ch.settings.bandwidth = int(zero_if_blank(self.bandwidth.text()))
                     ch.settings.spread_factor = int(zero_if_blank(self.spread_factor.text()))
                     ch.settings.coding_rate = int(zero_if_blank(self.coding_rate.text()))
+                    ch.index = self.channel_index
                     print(f'ch:{ch}')
 
                     n = self.interface.getNode(BROADCAST_ADDR)
 
                     print(f'before n.channels:{n.channels}')
-                    n.channels[self.channel_index + 1] = ch
+                    n.channels[self.channel_index] = ch
                     print(f'after n.channels:{n.channels}')
 
                     print("Writing modified channels to device")
-                    n.writeChannel(self.channel_index + 1)
+                    n.writeChannel(self.channel_index)
 
         except Exception as e:
             print(f'Exception:{e}')
