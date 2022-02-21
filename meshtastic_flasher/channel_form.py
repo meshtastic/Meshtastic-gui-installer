@@ -32,6 +32,7 @@ class ChannelForm(QDialog):
 
         # Create widgets
         self.name = QLineEdit()
+        self.name.setToolTip("Name of the channel. The channel name field will only be editable if the prior channel has a name.")
         self.role = QComboBox()
         self.role.setMinimumContentsLength(17)
         self.modem_config = None
@@ -40,6 +41,7 @@ class ChannelForm(QDialog):
             # modem config is only on primary channel
             self.modem_config = QComboBox()
             self.modem_config.setMinimumContentsLength(17)
+
         self.uplink_enabled = QCheckBox()
         self.downlink_enabled = QCheckBox()
         self.tx_power = QLineEdit()
@@ -105,6 +107,16 @@ class ChannelForm(QDialog):
         """Get values from device"""
         try:
             if self.interface:
+
+                # The python lib does not allow "gaps" in the index's
+                # So, we "simulate" that here by only enabling the name only if the prior channel has a name
+                if self.channel_index > 1:
+                    prev_channel_form = self.parent.channel_forms[self.channel_index - 1]
+                    if prev_channel_form.name.text() == '':
+                        self.name.setReadOnly(True)
+                    else:
+                        self.name.setReadOnly(False)
+
 
                 self.ch = self.interface.localNode.getChannelByChannelIndex(self.channel_index)
                 print(f'self.ch:{self.ch}')
