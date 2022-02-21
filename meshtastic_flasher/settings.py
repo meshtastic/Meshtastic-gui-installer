@@ -115,9 +115,11 @@ QTabBar::tab:only-one {
 
     def my_close(self):
         """Close this window"""
-        self.port = None
-        self.interface.close()
-        self.interface = None # so any saved values are re-read upon next form use
+        if self.port:
+            self.port = None
+        if self.interface:
+            self.interface.close()
+            self.interface = None # so any saved values are re-read upon next form use
         self.close()
 
 
@@ -141,9 +143,13 @@ QTabBar::tab:only-one {
                 print(f'self.port:{self.port}:')
             except Exception as e:
                 print(f'Exception:{e}')
+            except SystemExit:
+                pass
         if self.interface:
             self.show()
             self.user_form.run(port=self.port, interface=self.interface)
         else:
             QMessageBox.warning(self, "Warning", ("There was a problem connecting to the device.\n\n"
                                 "Perhaps unplug device and/or restart this program."))
+            print("closing")
+            self.my_close()
