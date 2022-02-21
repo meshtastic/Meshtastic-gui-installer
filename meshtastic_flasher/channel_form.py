@@ -91,25 +91,6 @@ class ChannelForm(QDialog):
         print(f'psk is now:{self.psk}')
 
 
-    def button_state(self, b):
-        """Button state"""
-        if b.text() == "PSKRandom":
-            if b.isChecked():
-                print(f'{b.text()} is selected')
-            else:
-                print(f'{b.text()} is deselected')
-        if b.text() == "PSKDefault":
-            if b.isChecked():
-                print(f'{b.text()} is selected')
-            else:
-                print(f'{b.text()} is deselected')
-        if b.text() == "PSKNone":
-            if b.isChecked():
-                print(f'{b.text()} is selected')
-            else:
-                print(f'{b.text()} is deselected')
-
-
     def run(self, port=None, interface=None):
         """load the form"""
         self.port = port
@@ -197,8 +178,6 @@ class ChannelForm(QDialog):
                     self.coding_rate.setText(f'{self.coding_rate}')
                 else:
                     self.coding_rate.setText("0")
-
-
         except Exception as e:
             print(f'Exception:{e}')
 
@@ -223,7 +202,6 @@ class ChannelForm(QDialog):
 
                     ch = Channel()
                     ch.role = self.role.currentData()
-                    #ch.settings.channel_num = self.channel_index + 1
                     ch.settings.name = self.use_name
                     if self.channel_index == 0:
                         # ex: chs.modem_config = chs.Bw250Cr46Sf2048
