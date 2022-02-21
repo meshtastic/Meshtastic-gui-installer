@@ -76,7 +76,7 @@ class CannedMessageForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.canned_message_plugin_enabled:
+                if self.prefs.canned_message_plugin_enabled and self.prefs.canned_message_plugin_enabled is True:
                     self.canned_message_plugin_enabled.setChecked(True)
 
                 if self.prefs.canned_message_plugin_allow_input_source:
@@ -84,7 +84,7 @@ class CannedMessageForm(QDialog):
                 else:
                     self.canned_message_plugin_allow_input_source.setText("")
 
-                if self.prefs.canned_message_plugin_send_bell:
+                if self.prefs.canned_message_plugin_send_bell and self.prefs.canned_message_plugin_send_bell is True:
                     self.canned_message_plugin_send_bell.setChecked(True)
 
                 if self.prefs.canned_message_plugin_messages:

@@ -1,7 +1,7 @@
 """class for the radio settings"""
 
 
-from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox, QLineEdit
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -9,6 +9,7 @@ import meshtastic.mesh_pb2
 import meshtastic.radioconfig_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
+from meshtastic_flasher.util import zero_if_blank
 
 
 class RadioForm(QDialog):
@@ -35,6 +36,13 @@ class RadioForm(QDialog):
         self.region.setMinimumContentsLength(17)
         self.debug_log_enabled = QCheckBox()
         self.serial_disabled = QCheckBox()
+        self.auto_screen_carousel_secs = QLineEdit()
+        self.frequency_offset = QLineEdit()
+        self.hop_limit = QLineEdit()
+        # TODO: see https://github.com/meshtastic/Meshtastic-python/issues/280 (add when fixed)
+        #self.ignore_incoming = QLineEdit()
+        self.is_lora_tx_disabled = QCheckBox()
+        self.send_owner_interval = QLineEdit()
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -49,6 +57,12 @@ class RadioForm(QDialog):
         form_layout.addRow(self.tr("Region"), self.region)
         form_layout.addRow(self.tr("Debug Log"), self.debug_log_enabled)
         form_layout.addRow(self.tr("Serial Disabled"), self.serial_disabled)
+        form_layout.addRow(self.tr("Auto Screen Carousel Seconds"), self.auto_screen_carousel_secs)
+        form_layout.addRow(self.tr("Frequency Offset"), self.frequency_offset)
+        form_layout.addRow(self.tr("Hop Limit"), self.hop_limit)
+        #form_layout.addRow(self.tr("Ignore Incoming"), self.ignore_incoming)
+        form_layout.addRow(self.tr("Is LoRa TX Disabled?"), self.is_lora_tx_disabled)
+        form_layout.addRow(self.tr("Send Owner Interval"), self.send_owner_interval)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
@@ -72,7 +86,7 @@ class RadioForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.is_router:
+                if self.prefs.is_router and self.prefs.is_router is True:
                     self.is_router.setChecked(True)
 
                 tmp_r = 'Unset'
@@ -88,11 +102,39 @@ class RadioForm(QDialog):
                         self.region.setCurrentIndex(count)
                     count = count + 1
 
-                if self.prefs.debug_log_enabled:
+                if self.prefs.debug_log_enabled and self.prefs.debug_log_enabled is True:
                     self.debug_log_enabled.setChecked(True)
 
-                if self.prefs.serial_disabled:
+                if self.prefs.serial_disabled and self.prefs.serial_disabled is True:
                     self.serial_disabled.setChecked(True)
+
+                if self.prefs.auto_screen_carousel_secs:
+                    self.auto_screen_carousel_secs.setText(f'{self.prefs.auto_screen_carousel_secs}')
+                else:
+                    self.auto_screen_carousel_secs.setText("0")
+
+                if self.prefs.frequency_offset:
+                    self.frequency_offset.setText(f'{self.prefs.frequency_offset}')
+                else:
+                    self.frequency_offset.setText("0")
+
+                if self.prefs.hop_limit:
+                    self.hop_limit.setText(f'{self.prefs.hop_limit}')
+                else:
+                    self.hop_limit.setText("0")
+
+#                if self.prefs.ignore_incoming:
+#                    self.ignore_incoming.setText(f'{self.prefs.ignore_incoming}')
+#                else:
+#                    self.ignore_incoming.setText("0")
+
+                if self.prefs.is_lora_tx_disabled and self.prefs.is_lora_tx_disabled is True:
+                    self.is_lora_tx_disabled.setChecked(True)
+
+                if self.prefs.send_owner_interval:
+                    self.send_owner_interval.setText(f'{self.prefs.send_owner_interval}')
+                else:
+                    self.send_owner_interval.setText("0")
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -108,6 +150,12 @@ class RadioForm(QDialog):
                 setPref(prefs, 'region', f'{self.region.currentData()}')
                 setPref(prefs, 'debug_log_enabled', f'{self.debug_log_enabled.isChecked()}')
                 setPref(prefs, 'serial_disabled', f'{self.serial_disabled.isChecked()}')
+                setPref(prefs, 'auto_screen_carousel_secs', zero_if_blank(self.auto_screen_carousel_secs.text()))
+                setPref(prefs, 'frequency_offset', zero_if_blank(self.frequency_offset.text()))
+                setPref(prefs, 'hop_limit', zero_if_blank(self.hop_limit.text()))
+                #setPref(prefs, 'ignore_incoming', zero_if_blank(self.ignore_incoming.text()))
+                setPref(prefs, 'is_lora_tx_disabled', f'{self.is_lora_tx_disabled.isChecked()}')
+                setPref(prefs, 'send_owner_interval', zero_if_blank(self.send_owner_interval.text()))
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

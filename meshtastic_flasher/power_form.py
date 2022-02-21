@@ -1,7 +1,7 @@
 """class for the power settings"""
 
 
-from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialogButtonBox, QLineEdit
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -9,6 +9,7 @@ import meshtastic.mesh_pb2
 import meshtastic.radioconfig_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
+from meshtastic_flasher.util import zero_if_blank
 
 
 class PowerForm(QDialog):
@@ -34,6 +35,17 @@ class PowerForm(QDialog):
         self.charge_current.setMinimumContentsLength(17)
         self.is_always_powered= QCheckBox()
         self.is_low_power = QCheckBox()
+        self.adc_multiplier_override = QLineEdit()
+        self.is_power_saving = QCheckBox()
+        self.ls_secs = QLineEdit()
+        self.mesh_sds_timeout_secs = QLineEdit()
+        self.min_wake_secs = QLineEdit()
+        self.on_battery_shutdown_after_secs = QLineEdit()
+        self.phone_sds_timeout_sec = QLineEdit()
+        self.phone_timeout_secs = QLineEdit()
+        self.screen_on_secs = QLineEdit()
+        self.sds_secs = QLineEdit()
+        self.wait_bluetooth_secs = QLineEdit()
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -45,7 +57,18 @@ class PowerForm(QDialog):
         form_layout = QFormLayout()
         form_layout.addRow(self.tr("Charge Current"), self.charge_current)
         form_layout.addRow(self.tr("Always Powered"), self.is_always_powered)
-        form_layout.addRow(self.tr("Powered by low powere source (solar)"), self.is_low_power)
+        form_layout.addRow(self.tr("Powered by low power source (solar)"), self.is_low_power)
+        form_layout.addRow(self.tr("ADC Mulitiplier Override"), self.adc_multiplier_override)
+        form_layout.addRow(self.tr("Is Power Saving?"), self.is_power_saving)
+        form_layout.addRow(self.tr("LS Seconds"), self.ls_secs)
+        form_layout.addRow(self.tr("Mesh SDS Timeout (Seconds)"), self.mesh_sds_timeout_secs)
+        form_layout.addRow(self.tr("Minimum Wake (Seconds)"), self.min_wake_secs)
+        form_layout.addRow(self.tr("On Battery Shutdown After (Seconds)"), self.on_battery_shutdown_after_secs)
+        form_layout.addRow(self.tr("Phone SDS Timeout (Seconds)"), self.phone_sds_timeout_sec)
+        form_layout.addRow(self.tr("Phone Timeout (Seconds)"), self.phone_timeout_secs)
+        form_layout.addRow(self.tr("Screen On (Seconds)"), self.screen_on_secs)
+        form_layout.addRow(self.tr("SDS (Seconds)"), self.sds_secs)
+        form_layout.addRow(self.tr("Wait Bluetooth (Seconds)"), self.wait_bluetooth_secs)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
@@ -79,11 +102,64 @@ class PowerForm(QDialog):
                     if v.number == temp:
                         self.charge_current.setCurrentIndex(v.number)
 
-                if self.prefs.is_always_powered:
+                if self.prefs.is_always_powered and self.prefs.is_always_powered is True:
                     self.is_always_powered.setChecked(True)
 
-                if self.prefs.is_low_power:
+                if self.prefs.is_low_power and self.prefs.is_low_power is True:
                     self.is_low_power.setChecked(True)
+
+                if self.prefs.adc_multiplier_override:
+                    self.adc_multiplier_override.setText(f'{self.prefs.adc_multiplier_override}')
+                else:
+                    self.adc_multiplier_override.setText("0")
+
+                if self.prefs.is_power_saving and self.prefs.is_power_saving is True:
+                    self.is_power_saving.setChecked(True)
+
+                if self.prefs.ls_secs:
+                    self.ls_secs.setText(f'{self.prefs.ls_secs}')
+                else:
+                    self.ls_secs.setText("0")
+
+                if self.prefs.mesh_sds_timeout_secs:
+                    self.mesh_sds_timeout_secs.setText(f'{self.prefs.mesh_sds_timeout_secs}')
+                else:
+                    self.mesh_sds_timeout_secs.setText("0")
+
+                if self.prefs.min_wake_secs:
+                    self.min_wake_secs.setText(f'{self.prefs.min_wake_secs}')
+                else:
+                    self.min_wake_secs.setText("0")
+
+                if self.prefs.on_battery_shutdown_after_secs:
+                    self.on_battery_shutdown_after_secs.setText(f'{self.prefs.on_battery_shutdown_after_secs}')
+                else:
+                    self.on_battery_shutdown_after_secs.setText("0")
+
+                if self.prefs.phone_sds_timeout_sec:
+                    self.phone_sds_timeout_sec.setText(f'{self.prefs.phone_sds_timeout_sec}')
+                else:
+                    self.phone_sds_timeout_sec.setText("0")
+
+                if self.prefs.phone_timeout_secs:
+                    self.phone_timeout_secs.setText(f'{self.prefs.phone_timeout_secs}')
+                else:
+                    self.phone_timeout_secs.setText("0")
+
+                if self.prefs.screen_on_secs:
+                    self.screen_on_secs.setText(f'{self.prefs.screen_on_secs}')
+                else:
+                    self.screen_on_secs.setText("0")
+
+                if self.prefs.sds_secs:
+                    self.sds_secs.setText(f'{self.prefs.sds_secs}')
+                else:
+                    self.sds_secs.setText("0")
+
+                if self.prefs.wait_bluetooth_secs:
+                    self.wait_bluetooth_secs.setText(f'{self.prefs.wait_bluetooth_secs}')
+                else:
+                    self.wait_bluetooth_secs.setText("0")
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -98,6 +174,17 @@ class PowerForm(QDialog):
                 setPref(prefs, 'charge_current', f'{self.charge_current.currentData()}')
                 setPref(prefs, 'is_always_powered', f'{self.is_always_powered.isChecked()}')
                 setPref(prefs, 'is_low_power', f'{self.is_low_power.isChecked()}')
+                setPref(prefs, 'adc_multiplier_override', zero_if_blank(self.adc_multiplier_override.text()))
+                setPref(prefs, 'is_power_saving', f'{self.is_power_saving.isChecked()}')
+                setPref(prefs, 'ls_secs', zero_if_blank(self.ls_secs.text()))
+                setPref(prefs, 'mesh_sds_timeout_secs', zero_if_blank(self.mesh_sds_timeout_secs.text()))
+                setPref(prefs, 'min_wake_secs', zero_if_blank(self.min_wake_secs.text()))
+                setPref(prefs, 'on_battery_shutdown_after_secs', zero_if_blank(self.on_battery_shutdown_after_secs.text()))
+                setPref(prefs, 'phone_sds_timeout_sec', zero_if_blank(self.phone_sds_timeout_sec.text()))
+                setPref(prefs, 'phone_timeout_secs', zero_if_blank(self.phone_timeout_secs.text()))
+                setPref(prefs, 'screen_on_secs', zero_if_blank(self.screen_on_secs.text()))
+                setPref(prefs, 'sds_secs', zero_if_blank(self.sds_secs.text()))
+                setPref(prefs, 'wait_bluetooth_secs', zero_if_blank(self.wait_bluetooth_secs.text()))
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

@@ -86,7 +86,7 @@ class RotaryEncoderForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.rotary1_enabled:
+                if self.prefs.rotary1_enabled and self.prefs.rotary1_enabled is True:
                     self.rotary1_enabled.setChecked(True)
 
                 temp = 0

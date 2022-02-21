@@ -79,10 +79,10 @@ class StoreAndForwardForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.store_forward_plugin_enabled:
+                if self.prefs.store_forward_plugin_enabled and self.prefs.store_forward_plugin_enabled is True:
                     self.store_forward_plugin_enabled.setChecked(True)
 
-                if self.prefs.store_forward_plugin_heartbeat:
+                if self.prefs.store_forward_plugin_heartbeat and self.prefs.store_forward_plugin_heartbeat is True:
                     self.store_forward_plugin_heartbeat.setChecked(True)
 
                 if self.prefs.store_forward_plugin_history_return_max:

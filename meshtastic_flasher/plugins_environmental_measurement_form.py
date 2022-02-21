@@ -86,10 +86,10 @@ class EnvironmentalMeasurementForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.environmental_measurement_plugin_display_farenheit:
+                if self.prefs.environmental_measurement_plugin_display_farenheit and self.prefs.environmental_measurement_plugin_display_farenheit is True:
                     self.environmental_measurement_plugin_display_farenheit.setChecked(True)
 
-                if self.prefs.environmental_measurement_plugin_measurement_enabled:
+                if self.prefs.environmental_measurement_plugin_measurement_enabled and self.prefs.environmental_measurement_plugin_measurement_enabled is True:
                     self.environmental_measurement_plugin_measurement_enabled.setChecked(True)
 
                 if self.prefs.environmental_measurement_plugin_read_error_count_threshold:
@@ -102,7 +102,7 @@ class EnvironmentalMeasurementForm(QDialog):
                 else:
                     self.environmental_measurement_plugin_recovery_interval.setText("0")
 
-                if self.prefs.environmental_measurement_plugin_screen_enabled:
+                if self.prefs.environmental_measurement_plugin_screen_enabled and self.prefs.environmental_measurement_plugin_screen_enabled is True:
                     self.environmental_measurement_plugin_screen_enabled.setChecked(True)
 
                 if self.prefs.environmental_measurement_plugin_sensor_pin:
