@@ -1,0 +1,32 @@
+{
+    "device_id": {
+        "label": "Device ID",
+        "description": "A globally unique identifier for this device."
+    },
+    "hw_model": {
+        "label": "Hardware Model",
+        "description": "The hardware model as defined by Meshtastic."
+    },
+    "macaddr": {
+        "label": "MAC Address",
+        "description": "The address of the device."
+    },
+    "long_name": {
+        "label": "Long Name",
+        "description": "Full name for the device. If 'is_licensed' is enabled, this value should be the Ham license number.",
+        "max_size": 40
+    },
+    "short_name": {
+        "label": "Short Name",
+        "description": "Very short name for the device, ideally two characters.",
+        "max_size": 5
+    },
+    "is_licensed": {
+        "label": "Is Licensed?",
+        "description": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number."
+    },
+    "team": {
+        "label": "Team",
+        "description": "Participants in the same network can self-group into different teams."
+    }
+}

@@ -14,6 +14,8 @@ from meshtastic_flasher.radio_form import RadioForm
 from meshtastic_flasher.channel_settings import ChannelSettings
 from meshtastic_flasher.plugin_settings import PluginSettings
 
+from meshtastic_flasher.util import load_fields
+
 
 class Settings(QMainWindow):
     """settings"""
@@ -24,6 +26,10 @@ class Settings(QMainWindow):
 
         self.port = None
         self.interface = None
+        self.pixel_mult = 11
+
+        self.fields = load_fields()
+        print(f'self.fields:{self.fields}')
 
         width = 800
         height = 700
@@ -82,6 +88,37 @@ QTabBar::tab:only-one {
         self.setCentralWidget(self.tabs)
 
         self.tabs.blockSignals(False) # now listen the currentChanged signal
+
+
+
+    def label(self, field):
+        """Return the label for a field"""
+        retval = ""
+        if self.fields:
+            if field in self.fields:
+                if 'label' in self.fields[field]:
+                    retval = self.fields[field]['label']
+        return retval
+
+
+    def description(self, field):
+        """Return the description for a field"""
+        retval = ""
+        if self.fields:
+            if field in self.fields:
+                if 'description' in self.fields[field]:
+                    retval = self.fields[field]['description']
+        return retval
+
+
+    def max_size(self, field):
+        """Return the max_size for a field"""
+        retval = 0
+        if self.fields:
+            if field in self.fields:
+                if 'max_size' in self.fields[field]:
+                    retval = self.fields[field]['max_size']
+        return retval
 
 
     def on_change_tabs(self, i):
