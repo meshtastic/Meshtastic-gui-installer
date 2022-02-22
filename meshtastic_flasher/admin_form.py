@@ -1,6 +1,5 @@
 """class for the admin settings"""
 
-
 from PySide6.QtWidgets import QDialog, QFormLayout, QPushButton, QMessageBox
 
 from meshtastic.__init__ import BROADCAST_ADDR

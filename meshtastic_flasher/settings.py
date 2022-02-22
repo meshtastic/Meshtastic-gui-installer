@@ -127,7 +127,7 @@ QTabBar::tab:only-one {
     def closeEvent(self, event):
         """On close of the Settings window"""
         print('closed Settings')
-        self.close()
+        self.my_close()
 
 
     def run(self, port=None):
