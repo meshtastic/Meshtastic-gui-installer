@@ -1,4 +1,8 @@
 {
+    "auto_screen_carousel_secs": {
+        "label": "Auto Screen Carousel (seconds)",
+        "description": "Automatically toggles to the next page on the screen like a carousel, based the specified interval in seconds. Potentially useful for devices without user buttons."
+    },
     "adc_multiplier_override": {
         "label": "ADC Multiplier Override",
         "description": "Ratio of voltage divider for battery pin eg. 3.20 (R1=100k, R2=220k) Overrides the ADC_MULTIPLIER defined in variant for battery voltage calculation."
@@ -7,6 +11,10 @@
         "label": "Charge Current",
         "description": "Sets the current of the battery charger."
     },
+    "debug_log_enabled": {
+        "label": "Debug Log Enabled?",
+        "description": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active."
+    },
     "device_id": {
         "label": "Device ID",
         "description": "A globally unique identifier for this device."
@@ -14,6 +22,10 @@
     "fixed_position": {
         "label": "Use Fixed position?",
         "description": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used."
+    },
+    "frequency_offset": {
+        "label": "Frequency Offset",
+        "description": "This parameter is for advanced users with advanced test equipment, we do not recommend most users use it. A frequency offset that is added to to the calculated band center frequency. Used to correct for crystal calibration errors."
     },
     "gps_accept_2d": {
         "label": "GPS Accept 2D Fix?",
@@ -31,6 +43,10 @@
         "label": "GPS Operation",
         "description": "How the GPS hardware in this unit is operated."
     },
+    "hop_limit": {
+        "label": "Hop Limit",
+        "description": "Overrides HOPS_RELIABLE and sets the maximum number of hops. This cannot be greater than 7."
+    },
     "hw_model": {
         "label": "Hardware Model",
         "description": "The hardware model as defined by Meshtastic."
@@ -43,6 +59,10 @@
         "label": "Is Licensed?",
         "description": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number."
     },
+    "is_lora_tx_disabled": {
+        "label": "Is LoRa TX Disabled?",
+        "description": "Disable TX from the LoRa radio. Useful for hot-swapping antennas and other tests. Defaults to false."
+    },
     "is_low_power": {
         "label": "Powered by Low Power (solar)?",
         "description": "If set, device is powered from a low-current source (i.e. solar), so even if it looks like we have power flowing in we should try to minimize power consumption as much as possible. Do not set this if 'is_router' is enabled."
@@ -50,6 +70,10 @@
     "is_power_saving": {
         "label": "Is Power Saving?",
         "description": "If set, enable power saving features of the esp32 device."
+    },
+    "is_router": {
+        "label": "Is Router?",
+        "description": "Are we operating as a router? Changes behavior in the following ways: The device will only sleep for critically low battery level (i.e. always tries to stay alive for the mesh). In the future, routing decisions will preferentially route packets through nodes with this attribute (because assumed good line of sight)."
     },
     "location_share": {
         "label": "Location sharing",
@@ -159,6 +183,10 @@
         "label": "Position flags (calculated)",
         "description": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags."
     },
+    "region": {
+        "label": "Region",
+        "description": "The region code for my radio (US, CN, EU433, etc...)"
+    },
     "screen_on_secs": {
         "label": "Screen On (seconds)",
         "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute)."
@@ -166,6 +194,14 @@
     "sds_secs": {
         "label": "SDS (seconds)",
         "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of one year."
+    },
+    "send_owner_interval": {
+        "label": "Send Owner Interval",
+        "description": "Send our owner info at least this often (also we always send once at boot - to rejoin the mesh)."
+    },
+    "serial_disabled": {
+        "label": "Serial Disabled?",
+        "description": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI)."
     },
     "short_name": {
         "label": "Short Name",
