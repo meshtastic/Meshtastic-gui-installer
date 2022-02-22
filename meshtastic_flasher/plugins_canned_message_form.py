@@ -53,10 +53,10 @@ class CannedMessageForm(QDialog):
         # create form
         form_layout = QFormLayout()
         form_layout.addRow("Canned Message Plugin", self.canned_message_about)
-        form_layout.addRow(self.parent.parent.label("Enabled?"), self.canned_message_plugin_enabled)
-        form_layout.addRow(self.parent.parent.label("Send Bell?"), self.canned_message_plugin_send_bell)
-        form_layout.addRow(self.parent.parent.label("Allow input source"), self.canned_message_plugin_allow_input_source)
-        form_layout.addRow(self.parent.parent.label("Messages"), self.canned_message_plugin_messages)
+        form_layout.addRow(self.parent.parent.label("canned_message_plugin_enabled"), self.canned_message_plugin_enabled)
+        form_layout.addRow(self.parent.parent.label("canned_message_plugin_send_bell"), self.canned_message_plugin_send_bell)
+        form_layout.addRow(self.parent.parent.label("canned_message_plugin_allow_input_source"), self.canned_message_plugin_allow_input_source)
+        form_layout.addRow(self.parent.parent.label("canned_message_plugin_messages"), self.canned_message_plugin_messages)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
