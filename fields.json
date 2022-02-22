@@ -31,6 +31,30 @@
         "label": "Downlink Enabled?",
         "description": "If set, messages seen on the internet will be forwarded to the local mesh."
     },
+    "ext_notification_plugin_active": {
+        "label": "Active?",
+        "description": "TBD"
+    },
+    "ext_notification_plugin_alert_bell": {
+        "label": "Alert Bell?",
+        "description": "TBD"
+    },
+    "ext_notification_plugin_alert_message": {
+        "label": "Alert Message",
+        "description": "TBD"
+    },
+    "ext_notification_plugin_enabled": {
+        "label": "Enabled?",
+        "description": "TBD"
+    },
+    "ext_notification_plugin_output": {
+        "label": "Output",
+        "description": "TBD"
+    },
+    "ext_notification_plugin_output_ms": {
+        "label": "Output (ms)",
+        "description": "TBD"
+    },
     "fixed_position": {
         "label": "Use Fixed position?",
         "description": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used."
@@ -202,6 +226,18 @@
     "position_flags": {
         "label": "Position flags (calculated)",
         "description": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags."
+    },
+    "range_test_plugin_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Range Test Plugin is enabled."
+    },
+    "range_test_plugin_save": {
+        "label": "Save?",
+        "description": "TBD"
+    },
+    "range_test_plugin_sender": {
+        "label": "Sender",
+        "description": "TBD"
     },
     "region": {
         "label": "Region",
