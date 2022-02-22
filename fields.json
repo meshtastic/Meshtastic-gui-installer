@@ -11,6 +11,22 @@
         "label": "Bandwidth (MHz)",
         "description": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz."
     },
+    "canned_message_plugin_allow_input_source": {
+        "label": "Allow Input Source",
+        "description": "Input event origin accepted by the canned message plugin. Can be e.g. 'rotEnc1' or keyword '_any'."
+    },
+    "canned_message_plugin_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Canned Message Plugin will be enabled."
+    },
+    "canned_message_plugin_messages": {
+        "label": "Messages",
+        "description": "Pre-defined messages for the Canned Message Plugin separated by '|' character."
+    },
+    "canned_message_plugin_send_bell": {
+        "label": "Send Bell?",
+        "description": "The Canned Message Plugin also sends a bell character with the messages. The External Notification Plugin can benefit from this feature."
+    },
     "charge_current": {
         "label": "Charge Current",
         "description": "Sets the current of the battery charger."
@@ -279,6 +295,34 @@
         "label": "Role",
         "description": "How this channel is being used (or not not being used)."
     },
+    "rotary1_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Rotary Plugin will be enabled."
+    },
+    "rotary1_event_cw": {
+        "label": "CW",
+        "description": "Generate input event on CW of this kind."
+    },
+    "rotary1_event_ccw": {
+        "label": "CCW",
+        "description": "Generate input event on CCW of this kind."
+    },
+    "rotary1_event_press": {
+        "label": "Press",
+        "description": "Generate input event on Press of this kind."
+    },
+    "rotary1_pin_a": {
+        "label": "Pin A",
+        "description": "GPIO pin for rotary encoder A port."
+    },
+    "rotary1_pin_b": {
+        "label": "Pin B",
+        "description": "GPIO pin for rotary encoder B port."
+    },
+    "rotary1_pin_press": {
+        "label": "Press",
+        "description": "Generate input event on Press of this kind."
+    },
     "screen_on_secs": {
         "label": "Screen On (seconds)",
         "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute)."
@@ -294,6 +338,30 @@
     "serial_disabled": {
         "label": "Serial Disabled?",
         "description": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI)."
+    },
+    "serialplugin_echo": {
+        "label": "Echo?",
+        "description": "TBD"
+    },
+    "serialplugin_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Serial Plugin will be enabled."
+    },
+    "serialplugin_mode": {
+        "label": "Mode",
+        "description": "TBD"
+    },
+    "serialplugin_rxd": {
+        "label": "RXD",
+        "description": "TBD"
+    },
+    "serialplugin_timeout": {
+        "label": "Timeout",
+        "description": "TBD"
+    },
+    "serialplugin_txd": {
+        "label": "TXD",
+        "description": "TBD"
     },
     "short_name": {
         "label": "Short Name",

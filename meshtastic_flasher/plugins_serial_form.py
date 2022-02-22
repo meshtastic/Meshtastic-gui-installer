@@ -37,11 +37,17 @@ class SerialForm(QDialog):
         self.serialplugin_about.setTextFormat(QtCore.Qt.RichText)
         self.serialplugin_about.setToolTip("Link shows more info about the settings for this plugin.")
         self.serialplugin_enabled = QCheckBox()
+        self.serialplugin_enabled.setToolTip(self.parent.parent.description('serialplugin_enabled'))
         self.serialplugin_echo = QCheckBox()
+        self.serialplugin_echo.setToolTip(self.parent.parent.description('serialplugin_echo'))
         self.serialplugin_mode = QLineEdit()
+        self.serialplugin_mode.setToolTip(self.parent.parent.description('serialplugin_mode'))
         self.serialplugin_rxd = QLineEdit()
-        self.serialplugin_timeout = QLineEdit()
+        self.serialplugin_rxd.setToolTip(self.parent.parent.description('serialplugin_rxd'))
         self.serialplugin_txd = QLineEdit()
+        self.serialplugin_txd.setToolTip(self.parent.parent.description('serialplugin_txd'))
+        self.serialplugin_timeout = QLineEdit()
+        self.serialplugin_timeout.setToolTip(self.parent.parent.description('serialplugin_timeout'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -51,7 +57,7 @@ class SerialForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.tr("Serial Plugin"), self.serialplugin_about)
+        form_layout.addRow("Serial Plugin", self.serialplugin_about)
         form_layout.addRow(self.tr("Enabled?"), self.serialplugin_enabled)
         form_layout.addRow(self.tr("Echo?"), self.serialplugin_echo)
         form_layout.addRow(self.tr("Mode"), self.serialplugin_mode)

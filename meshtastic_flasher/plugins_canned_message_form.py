@@ -36,9 +36,13 @@ class CannedMessageForm(QDialog):
         self.canned_message_about.setTextFormat(QtCore.Qt.RichText)
         self.canned_message_about.setToolTip("Link shows more info about the settings for this plugin.")
         self.canned_message_plugin_enabled = QCheckBox()
+        self.canned_message_plugin_enabled.setToolTip(self.parent.parent.description('canned_message_plugin_enabled'))
         self.canned_message_plugin_allow_input_source = QLineEdit()
+        self.canned_message_plugin_allow_input_source.setToolTip(self.parent.parent.description('canned_message_plugin_allow_input_source'))
         self.canned_message_plugin_messages = QTextEdit()
+        self.canned_message_plugin_messages.setToolTip(self.parent.parent.description('canned_message_plugin_messages'))
         self.canned_message_plugin_send_bell = QCheckBox()
+        self.canned_message_plugin_send_bell.setToolTip(self.parent.parent.description('canned_message_plugin_send_bell'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -48,11 +52,11 @@ class CannedMessageForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.tr("Canned Message Plugin"), self.canned_message_about)
-        form_layout.addRow(self.tr("Enabled?"), self.canned_message_plugin_enabled)
-        form_layout.addRow(self.tr("Send Bell?"), self.canned_message_plugin_send_bell)
-        form_layout.addRow(self.tr("Allow input source"), self.canned_message_plugin_allow_input_source)
-        form_layout.addRow(self.tr("Messages"), self.canned_message_plugin_messages)
+        form_layout.addRow("Canned Message Plugin", self.canned_message_about)
+        form_layout.addRow(self.parent.parent.label("Enabled?"), self.canned_message_plugin_enabled)
+        form_layout.addRow(self.parent.parent.label("Send Bell?"), self.canned_message_plugin_send_bell)
+        form_layout.addRow(self.parent.parent.label("Allow input source"), self.canned_message_plugin_allow_input_source)
+        form_layout.addRow(self.parent.parent.label("Messages"), self.canned_message_plugin_messages)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
