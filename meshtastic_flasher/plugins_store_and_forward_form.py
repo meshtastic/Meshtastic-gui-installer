@@ -37,10 +37,15 @@ class StoreAndForwardForm(QDialog):
         self.store_forware_plugin_about.setTextFormat(QtCore.Qt.RichText)
         self.store_forware_plugin_about.setToolTip("Link shows more info about the settings for this plugin.")
         self.store_forward_plugin_enabled = QCheckBox()
+        self.store_forward_plugin_enabled.setToolTip(self.parent.parent.description('store_forward_plugin_enabled'))
         self.store_forward_plugin_heartbeat = QCheckBox()
+        self.store_forward_plugin_heartbeat.setToolTip(self.parent.parent.description('store_forward_plugin_heartbeat'))
         self.store_forward_plugin_history_return_max = QLineEdit()
+        self.store_forward_plugin_history_return_max.setToolTip(self.parent.parent.description('store_forward_plugin_history_return_max'))
         self.store_forward_plugin_history_return_window = QLineEdit()
+        self.store_forward_plugin_history_return_window.setToolTip(self.parent.parent.description('store_forward_plugin_history_return_window'))
         self.store_forward_plugin_records = QLineEdit()
+        self.store_forward_plugin_records.setToolTip(self.parent.parent.description('store_forward_plugin_records'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -50,12 +55,12 @@ class StoreAndForwardForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.tr("Store and Forward Plugin"), self.store_forware_plugin_about)
-        form_layout.addRow(self.tr("Enabled?"), self.store_forward_plugin_enabled)
-        form_layout.addRow(self.tr("Heartbeat"), self.store_forward_plugin_heartbeat)
-        form_layout.addRow(self.tr("History Return Max"), self.store_forward_plugin_history_return_max)
-        form_layout.addRow(self.tr("History Return Window"), self.store_forward_plugin_history_return_window)
-        form_layout.addRow(self.tr("Records"), self.store_forward_plugin_records)
+        form_layout.addRow("Store and Forward Plugin", self.store_forware_plugin_about)
+        form_layout.addRow(self.parent.parent.label("store_forward_plugin_enabled"), self.store_forward_plugin_enabled)
+        form_layout.addRow(self.parent.parent.label("store_forward_plugin_heartbeat"), self.store_forward_plugin_heartbeat)
+        form_layout.addRow(self.parent.parent.label("store_forward_plugin_history_return_max"), self.store_forward_plugin_history_return_max)
+        form_layout.addRow(self.parent.parent.label("store_forward_plugin_history_return_window"), self.store_forward_plugin_history_return_window)
+        form_layout.addRow(self.parent.parent.label("store_forward_plugin_records"), self.store_forward_plugin_records)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 

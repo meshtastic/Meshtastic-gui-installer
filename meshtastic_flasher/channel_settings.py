@@ -9,10 +9,11 @@ from meshtastic_flasher.channel_form import ChannelForm
 class ChannelSettings(QMainWindow):
     """channel settings"""
 
-    def __init__(self):
+    def __init__(self, parent=None):
         """constructor"""
         super(ChannelSettings, self).__init__()
 
+        self.parent = parent
         self.port = None
         self.interface = None
 

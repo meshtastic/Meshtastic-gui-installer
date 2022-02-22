@@ -4,6 +4,7 @@ import sys
 import re
 import urllib
 import ssl
+import json
 import zipfile
 import requests
 
@@ -179,3 +180,11 @@ def zero_if_blank(some_input):
         except:
             pass
     return f'{retval}'
+
+
+def load_fields():
+    """Get field info from json file"""
+    fields = None
+    with open('fields.json', encoding='utf-8') as json_file:
+        fields = json.load(json_file)
+    return fields

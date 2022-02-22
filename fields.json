@@ -1,0 +1,425 @@
+{
+    "auto_screen_carousel_secs": {
+        "label": "Auto Screen Carousel (seconds)",
+        "description": "Automatically toggles to the next page on the screen like a carousel, based the specified interval in seconds. Potentially useful for devices without user buttons."
+    },
+    "adc_multiplier_override": {
+        "label": "ADC Multiplier Override",
+        "description": "Ratio of voltage divider for battery pin eg. 3.20 (R1=100k, R2=220k) Overrides the ADC_MULTIPLIER defined in variant for battery voltage calculation."
+    },
+    "bandwidth": {
+        "label": "Bandwidth (MHz)",
+        "description": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz."
+    },
+    "canned_message_plugin_allow_input_source": {
+        "label": "Allow Input Source",
+        "description": "Input event origin accepted by the canned message plugin. Can be e.g. 'rotEnc1' or keyword '_any'."
+    },
+    "canned_message_plugin_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Canned Message Plugin will be enabled."
+    },
+    "canned_message_plugin_messages": {
+        "label": "Messages",
+        "description": "Pre-defined messages for the Canned Message Plugin separated by '|' character."
+    },
+    "canned_message_plugin_send_bell": {
+        "label": "Send Bell?",
+        "description": "The Canned Message Plugin also sends a bell character with the messages. The External Notification Plugin can benefit from this feature."
+    },
+    "charge_current": {
+        "label": "Charge Current",
+        "description": "Sets the current of the battery charger."
+    },
+    "coding_rate": {
+        "label": "Coding Rate",
+        "description": "The denominator of the coding rate. ie for 4/8, the value is 8. 5/8 the value is 5."
+    },
+    "debug_log_enabled": {
+        "label": "Debug Log Enabled?",
+        "description": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active."
+    },
+    "device_id": {
+        "label": "Device ID",
+        "description": "A globally unique identifier for this device."
+    },
+    "downlink_enabled": {
+        "label": "Downlink Enabled?",
+        "description": "If set, messages seen on the internet will be forwarded to the local mesh."
+    },
+    "environmental_measurement_plugin_display_farenheit": {
+        "label": "Display Temperature in Farenheit?",
+        "description": "If set, the temperature will be displayed in Farenheit."
+    },
+    "environmental_measurement_plugin_measurement_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the environmental measurement plugin will be enabled."
+    },
+    "environmental_measurement_plugin_read_error_count_threshold": {
+        "label": "Read Error Count Threshold",
+        "description": "Sometimes sensor reads can fail. If this happens, we will retry a configurable number of attempts, each attempt will be delayed by the minimum required refresh rate for that sensor."
+    },
+    "environmental_measurement_plugin_recovery_interval": {
+        "label": "Recovery Interval",
+        "description": "Sometimes we can end up with more than read_error_count_threshold failures. In this case, we will stop trying to read from the sensor for a while. Wait this long until trying to read from the sensor again."
+    },
+    "environmental_measurement_plugin_screen_enabled": {
+        "label": "Screen Enabled?",
+        "description": "Enable/Disable the environmental measurement plugin on-device display."
+    },
+    "environmental_measurement_plugin_sensor_pin": {
+        "label": "Sensor Pin",
+        "description": "Specify the peferred GPIO Pin for sensor readings. Not applicable to sensors that use I2C."
+    },
+    "environmental_measurement_plugin_sensor_type": {
+        "label": "Sensor Type",
+        "description": "Specify the sensor type."
+    },
+    "environmental_measurement_plugin_update_interval": {
+        "label": "Update Interval (seconds)",
+        "description": "Interval in seconds of how often we should try to send our measurements to the mesh."
+    },
+    "ext_notification_plugin_active": {
+        "label": "Active?",
+        "description": "If set, notifications will happen when the the GPIO is active-high. If not set, notifications will happen when GPIO is active-low."
+    },
+    "ext_notification_plugin_alert_bell": {
+        "label": "Alert Bell?",
+        "description": "Only trigger the notification if the ASCII bell character is in the message."
+    },
+    "ext_notification_plugin_alert_message": {
+        "label": "Alert Message",
+        "description": "Message to use when when a notification is to be made."
+    },
+    "ext_notification_plugin_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the external notifications plugin is enabled."
+    },
+    "ext_notification_plugin_output": {
+        "label": "Output",
+        "description": "GPIO of the output."
+    },
+    "ext_notification_plugin_output_ms": {
+        "label": "Output (ms)",
+        "description": "Amount of time in ms for the alert. Default is 1,000 ms (or 1 second)."
+    },
+    "fixed_position": {
+        "label": "Use Fixed position?",
+        "description": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used."
+    },
+    "frequency_offset": {
+        "label": "Frequency Offset",
+        "description": "This parameter is for advanced users with advanced test equipment, we do not recommend most users use it. A frequency offset that is added to to the calculated band center frequency. Used to correct for crystal calibration errors."
+    },
+    "gps_accept_2d": {
+        "label": "GPS Accept 2D Fix?",
+        "description": "If set, accept 2D GPS fixes. By default, only 3D fixes are accepted. During a 2D fix, altitude values are unreliable and will be excluded."
+    },
+    "gps_format": {
+        "label": "GPS Coordinate Format",
+        "description": "How the GPS coordinates are displayed on the OLED screen."
+    },
+    "gps_max_dop": {
+        "label": "GPS Max DOP",
+        "description": "GPS maximum dilution of precition (DOP) accepted. Set a rejection threshold for GPS readings based on their precision, relative to the GPS rated accuracy (which is typically ~3m). Solutions above this value will be treated as re-tryable errors. Useful range is between 1 - 64 (3m - <~200m). By default, (if zero), accept all GPS readings."
+    },
+    "gps_operation": {
+        "label": "GPS Operation",
+        "description": "How the GPS hardware in this unit is operated."
+    },
+    "hop_limit": {
+        "label": "Hop Limit",
+        "description": "Overrides HOPS_RELIABLE and sets the maximum number of hops. This cannot be greater than 7."
+    },
+    "hw_model": {
+        "label": "Hardware Model",
+        "description": "The hardware model as defined by Meshtastic."
+    },
+    "is_always_powered": {
+        "label": "Is Always Powered?",
+        "description": "Circumvents the logic block for determining whether the device is powered or not. Useful for devices with finicky ADC issues on the battery sense pins."
+    },
+    "is_licensed": {
+        "label": "Is Licensed?",
+        "description": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number."
+    },
+    "is_lora_tx_disabled": {
+        "label": "Is LoRa TX Disabled?",
+        "description": "Disable TX from the LoRa radio. Useful for hot-swapping antennas and other tests. Defaults to false."
+    },
+    "is_low_power": {
+        "label": "Powered by Low Power (solar)?",
+        "description": "If set, device is powered from a low-current source (i.e. solar), so even if it looks like we have power flowing in we should try to minimize power consumption as much as possible. Do not set this if 'is_router' is enabled."
+    },
+    "is_power_saving": {
+        "label": "Is Power Saving?",
+        "description": "If set, enable power saving features of the esp32 device."
+    },
+    "is_router": {
+        "label": "Is Router?",
+        "description": "Are we operating as a router? Changes behavior in the following ways: The device will only sleep for critically low battery level (i.e. always tries to stay alive for the mesh). In the future, routing decisions will preferentially route packets through nodes with this attribute (because assumed good line of sight)."
+    },
+    "location_share": {
+        "label": "Location sharing",
+        "description": "How location is shared with other nodes (or the local phone)."
+    },
+    "long_name": {
+        "label": "Long Name",
+        "description": "Full name for the device. If 'is_licensed' is enabled, this value should be the Ham license number.",
+        "max_size": 40
+    },
+    "ls_secs": {
+        "label": "LS (seconds)",
+        "description": "Light sleep (LS) is a power management state machine option. See power management for details. 0 for default of 3600 seconds (or 1 hour)."
+    },
+    "mesh_sds_timeout_secs": {
+        "label": "Mesh SDS Timeout (seconds)",
+        "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 seconds (or two hours), MAXUINT or 4294967295 for disabled."
+    },
+    "macaddr": {
+        "label": "MAC Address",
+        "description": "The address of the device."
+    },
+    "min_wake_secs": {
+        "label": "Minimum Wake (seconds)",
+        "description": "Power management state machine option. See power management for details. 0 for default of 10 seconds."
+    },
+    "modem_config": {
+        "label": "Modem Config",
+        "description": "The configuration of the modem. (speed/distance)"
+    },
+    "mqtt_encryption_enabled": {
+        "label": "MQTT Encryption Enabled?",
+        "description": "If set, encrypted packets are sent to server specified in 'mqtt_server. Otherwise, the packets are not encrypted."
+    },
+    "mqtt_password": {
+        "label": "MQTT Password",
+        "description": "MQTT password to use when 'mqtt_server' is used. If not set, the default password will be used.",
+        "max_size": 32
+    },
+    "mqtt_username": {
+        "label": "MQTT Username",
+        "description": "MQTT username to use when 'mqtt_server' is used. If not set, the default username will be used.",
+        "max_size": 32
+    },
+    "mqtt_server": {
+        "label": "MQTT Server",
+        "description": "The server to use for our MQTT global message gateway feature. If not set, the default server will be used.",
+        "max_size": 32
+    },
+    "mqtt_disabled": {
+        "label": "MQTT Disabled?",
+        "description": "If set, all MQTT features will be disabled."
+    },
+    "name": {
+        "label": "Channel Name",
+        "description": "A short name that will be packed into the URL. Less than 12 bytes. This field will only be editable if the prior channel has a name. There are special channel names like 'admin' (for remote management) and 'gpio' (for remote gpio query/manipulation)."
+    },
+    "on_battery_shutdown_after_secs": {
+        "label": "On Battery Shutdown After (seconds)",
+        "description": "If non-zero, the device will fully power off this many seconds after external power is removed."
+    },
+    "phone_sds_timeout_sec": {
+        "label": "Phone SDS Timeout (seconds)",
+        "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 (or two hours), MAXUINT or 4294967295 for disabled."
+    },
+    "phone_timeout_secs": {
+        "label": "Phone Timeout (seconds)",
+        "description": "Power management state machine option. See power management for details. 0 for default of 900 (or 15 minutes)."
+    },
+    "position_broadcast_secs": {
+        "label": "Broadcast interval (seconds)",
+        "description": "Send our position this often (but only if it has changed significantly). Defaults to 900 seconds. (15 minutes)"
+    },
+    "position_broadcast_smart": {
+        "label": "Use Broadcast smart?",
+        "description": "If set, calculates an ideal position update interval based on the data rate of your channel configuration."
+    },
+    "position_flag_alt_msl": {
+        "label": "Altitude is MSL?",
+        "description": "If set, Mean Sea Level (MSL) altitude will be included in the position message."
+    },
+    "position_flag_altitude": {
+        "label": "Include altitude?",
+        "description": "If set, altitude will be included in the position message."
+    },
+    "position_flag_battery": {
+        "label": "Include battery level?",
+        "description": "If set, battery level will included in the position message."
+    },
+    "position_flag_dop": {
+        "label": "Include DOP value?",
+        "description": "If set, dilution of precision (DOP) value will be included in the position message. (PDOP is used by default)"
+    },
+    "position_flag_geo_sep": {
+        "label": "Include geoidal separation?",
+        "description": "If set, geoidal separation will be included in the position message."
+    },
+    "position_flag_hvdop": {
+        "label": "Send separate HDOP/VDOP values instead of PDOP?",
+        "description": "If DOP is set, send separation HDOP / VDOP values instead of PDOP in the position message."
+    },
+    "position_flag_satinview": {
+        "label": "Include number of satellites in view?",
+        "description": "If set, send number of satellites in view in the position message."
+    },
+    "position_flag_seq_nos": {
+        "label": "Include sequence numbers?",
+        "description": "If set, include a sequence number incremented per packet in the position message."
+    },
+    "position_flag_timestamp": {
+        "label": "Include timestamp?",
+        "description": "If set, include positional timestamp (from GPS solution) in the position message."
+    },
+    "position_flags": {
+        "label": "Position flags (calculated)",
+        "description": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags."
+    },
+    "range_test_plugin_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Range Test Plugin is enabled."
+    },
+    "range_test_plugin_save": {
+        "label": "Save?",
+        "description": "If set, the device will save the range test .csv files on this device."
+    },
+    "range_test_plugin_sender": {
+        "label": "Sender (seconds)",
+        "description": "Sends a message how freqently (in seconds)."
+    },
+    "region": {
+        "label": "Region",
+        "description": "The region code for my radio (US, CN, EU433, etc...)"
+    },
+    "role": {
+        "label": "Role",
+        "description": "How this channel is being used (or not not being used)."
+    },
+    "rotary1_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Rotary Plugin will be enabled."
+    },
+    "rotary1_event_cw": {
+        "label": "CW",
+        "description": "Generate input event on CW of this kind."
+    },
+    "rotary1_event_ccw": {
+        "label": "CCW",
+        "description": "Generate input event on CCW of this kind."
+    },
+    "rotary1_event_press": {
+        "label": "Press",
+        "description": "Generate input event on Press of this kind."
+    },
+    "rotary1_pin_a": {
+        "label": "Pin A",
+        "description": "GPIO pin for rotary encoder A port."
+    },
+    "rotary1_pin_b": {
+        "label": "Pin B",
+        "description": "GPIO pin for rotary encoder B port."
+    },
+    "rotary1_pin_press": {
+        "label": "Press",
+        "description": "Generate input event on Press of this kind."
+    },
+    "screen_on_secs": {
+        "label": "Screen On (seconds)",
+        "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute)."
+    },
+    "sds_secs": {
+        "label": "SDS (seconds)",
+        "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of one year."
+    },
+    "send_owner_interval": {
+        "label": "Send Owner Interval",
+        "description": "Send our owner info at least this often (also we always send once at boot - to rejoin the mesh)."
+    },
+    "serial_disabled": {
+        "label": "Serial Disabled?",
+        "description": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI)."
+    },
+    "serialplugin_echo": {
+        "label": "Echo?",
+        "description": "TBD"
+    },
+    "serialplugin_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Serial Plugin will be enabled."
+    },
+    "serialplugin_mode": {
+        "label": "Mode",
+        "description": "TBD"
+    },
+    "serialplugin_rxd": {
+        "label": "RXD",
+        "description": "TBD"
+    },
+    "serialplugin_timeout": {
+        "label": "Timeout",
+        "description": "TBD"
+    },
+    "serialplugin_txd": {
+        "label": "TXD",
+        "description": "TBD"
+    },
+    "short_name": {
+        "label": "Short Name",
+        "description": "Very short name for the device, ideally two characters.",
+        "max_size": 3
+    },
+    "spread_factor": {
+        "label": "Spread Factor",
+        "description": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor."
+    },
+    "store_forward_plugin_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the store and forward plugin will be enabled."
+    },
+    "store_forward_plugin_heartbeat": {
+        "label": "Heartbeat",
+        "description": "TBD"
+    },
+    "store_forward_plugin_history_return_max": {
+        "label": "History Return Max",
+        "description": "TBD"
+    },
+    "store_forward_plugin_history_return_window": {
+        "label": "History Return Window",
+        "description": "TBD"
+    },
+    "store_forward_plugin_records": {
+        "label": "Records",
+        "description": "TBD"
+    },
+    "team": {
+        "label": "Team",
+        "description": "Participants in the same network can self-group into different teams."
+    },
+    "tx_power": {
+        "label": "TX Power (dBm)",
+        "description": "If zero then, use default max legal continuous power (i.e., something that will not burn out the radio hardware). In most cases, you should use 0. (Units are in dBm)."
+    },
+    "uplink_enabled": {
+        "label": "Uplink Enabled?",
+        "description": "If set, messages on the mesh will be sent to the public internet by any gateway node."
+    },
+    "wait_bluetooth_secs": {
+        "label": "Bluetooth Wait (seconds)",
+        "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or 1 minute)."
+    },
+    "wifi_ap_mode": {
+        "label": "WiFi AP Mode?",
+        "description": "If set, the node will operate as an access point and DHCP server. Otherwise, the node will be a station."
+    },
+    "wifi_password": {
+        "label": "WiFi Password",
+        "description": "If set, will be use to authenticate to the named WiFi.",
+        "max_size": 64
+    },
+    "wifi_ssid": {
+        "label": "WiFi SSID",
+        "description": "If set, this node will try to join the specified WiFi network and acquire an address via DHCP.",
+        "max_size": 33
+    }
+}

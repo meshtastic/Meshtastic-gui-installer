@@ -37,8 +37,11 @@ class RangeTestForm(QDialog):
         self.range_test_about.setTextFormat(QtCore.Qt.RichText)
         self.range_test_about.setToolTip("Link shows more info about the settings for this plugin.")
         self.range_test_plugin_enabled = QCheckBox()
+        self.range_test_plugin_enabled.setToolTip(self.parent.parent.description('range_test_plugin_enabled'))
         self.range_test_plugin_save = QCheckBox()
+        self.range_test_plugin_save.setToolTip(self.parent.parent.description('range_test_plugin_save'))
         self.range_test_plugin_sender = QLineEdit()
+        self.range_test_plugin_sender.setToolTip(self.parent.parent.description('range_test_plugin_sender'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -48,10 +51,10 @@ class RangeTestForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.tr("Range Test Plugin"), self.range_test_about)
-        form_layout.addRow(self.tr("Enabled?"), self.range_test_plugin_enabled)
-        form_layout.addRow(self.tr("Save?"), self.range_test_plugin_save)
-        form_layout.addRow(self.tr("Message Interval"), self.range_test_plugin_sender)
+        form_layout.addRow("Range Test Plugin", self.range_test_about)
+        form_layout.addRow(self.parent.parent.label("range_test_plugin_enabled"), self.range_test_plugin_enabled)
+        form_layout.addRow(self.parent.parent.label("range_test_plugin_save"), self.range_test_plugin_save)
+        form_layout.addRow(self.parent.parent.label("range_test_plugin_sender"), self.range_test_plugin_sender)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 

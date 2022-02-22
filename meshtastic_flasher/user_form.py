@@ -28,13 +28,24 @@ class UserForm(QDialog):
 
         # Create widgets
         self.device_id = QLabel()
-        self.hardware = QLabel()
-        self.mac_address = QLabel()
+        self.device_id.setToolTip(self.parent.description('device_id'))
+        self.hw_model = QLabel()
+        self.hw_model.setToolTip(self.parent.description('hw_model'))
+        self.macaddr = QLabel()
+        self.macaddr.setToolTip(self.parent.description('macaddr'))
         self.long_name = QLineEdit()
+        self.long_name.setToolTip(self.parent.description('long_name'))
+        self.long_name.setMaxLength(self.parent.max_size('long_name'))
+        self.long_name.setFixedWidth(self.parent.max_size('long_name') * self.parent.pixel_mult)
         self.short_name = QLineEdit()
-        self.licensed_operator = QCheckBox()
+        self.short_name.setToolTip(self.parent.description('short_name'))
+        self.short_name.setMaxLength(self.parent.max_size('short_name'))
+        self.short_name.setFixedWidth(self.parent.max_size('short_name') * self.parent.pixel_mult)
+        self.is_licensed = QCheckBox()
+        self.is_licensed.setToolTip(self.parent.description('is_licensed'))
         self.team = QComboBox()
         self.team.setMinimumContentsLength(17)
+        self.team.setToolTip(self.parent.description('team'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -44,13 +55,13 @@ class UserForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.tr("Device ID"), self.device_id)
-        form_layout.addRow(self.tr("Hardware"), self.hardware)
-        form_layout.addRow(self.tr("Mac Address"), self.mac_address)
-        form_layout.addRow(self.tr("Long Name"), self.long_name)
-        form_layout.addRow(self.tr("Short Name"), self.short_name)
-        form_layout.addRow(self.tr("Licensed Operator?"), self.licensed_operator)
-        form_layout.addRow(self.tr("Team"), self.team)
+        form_layout.addRow(self.parent.label('device_id'), self.device_id)
+        form_layout.addRow(self.parent.label('hw_model'), self.hw_model)
+        form_layout.addRow(self.parent.label('macaddr'), self.macaddr)
+        form_layout.addRow(self.parent.label('long_name'), self.long_name)
+        form_layout.addRow(self.parent.label('short_name'), self.short_name)
+        form_layout.addRow(self.parent.label('is_licensed'), self.is_licensed)
+        form_layout.addRow(self.parent.label('team'), self.team)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
@@ -78,14 +89,14 @@ class UserForm(QDialog):
                             self.device_id.setText('')
 
                         if 'hwModel' in n['user']:
-                            self.hardware.setText(n['user']['hwModel'])
+                            self.hw_model.setText(n['user']['hwModel'])
                         else:
-                            self.hardware.setText('')
+                            self.hw_model.setText('')
 
                         if 'macaddr' in n['user']:
-                            self.mac_address.setText(meshtastic.util.convert_mac_addr(n['user']['macaddr']))
+                            self.macaddr.setText(meshtastic.util.convert_mac_addr(n['user']['macaddr']))
                         else:
-                            self.mac_address.setText('')
+                            self.macaddr.setText('')
 
                         if 'longName' in n['user']:
                             self.long_name.setText(n['user']['longName'])
@@ -97,8 +108,8 @@ class UserForm(QDialog):
                         else:
                             self.short_name.setText('')
 
-                        if 'licensed_operator' in n['user']:
-                            self.licensed_operator.setChecked(True)
+                        if 'isLicensed' in n['user']:
+                            self.is_licensed.setChecked(True)
 
                         tmp_team = 'CLEAR'
                         if 'team' in n['user']:
@@ -122,7 +133,7 @@ class UserForm(QDialog):
         try:
             if self.interface:
                 print("Writing values to device")
-                self.interface.getNode(BROADCAST_ADDR).setOwner(long_name=self.long_name.text(), short_name=self.short_name.text(), is_licensed=self.licensed_operator.isChecked(), team=self.team.currentData())
+                self.interface.getNode(BROADCAST_ADDR).setOwner(long_name=self.long_name.text(), short_name=self.short_name.text(), is_licensed=self.is_licensed.isChecked(), team=self.team.currentData())
         except Exception as e:
             print(f'Exception:{e}')
 
