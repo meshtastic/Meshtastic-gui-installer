@@ -3,6 +3,26 @@
         "label": "Device ID",
         "description": "A globally unique identifier for this device."
     },
+    "fixed_position": {
+        "label": "Use Fixed position?",
+        "description": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used."
+    },
+    "gps_accept_2d": {
+        "label": "GPS Accept 2D Fix?",
+        "description": "If set, accept 2D GPS fixes. By default, only 3D fixes are accepted. During a 2D fix, altitude values are unreliable and will be excluded."
+    },
+    "gps_format": {
+        "label": "GPS Coordinate Format",
+        "description": "How the GPS coordinates are displayed on the OLED screen."
+    },
+    "gps_max_dop": {
+        "label": "GPS Max DOP",
+        "description": "GPS maximum dilution of precition (DOP) accepted. Set a rejection threshold for GPS readings based on their precision, relative to the GPS rated accuracy (which is typically ~3m). Solutions above this value will be treated as re-tryable errors. Useful range is between 1 - 64 (3m - <~200m). By default, (if zero), accept all GPS readings."
+    },
+    "gps_operation": {
+        "label": "GPS Operation",
+        "description": "How the GPS hardware in this unit is operated."
+    },
     "hw_model": {
         "label": "Hardware Model",
         "description": "The hardware model as defined by Meshtastic."
@@ -10,6 +30,10 @@
     "is_licensed": {
         "label": "Is Licensed?",
         "description": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number."
+    },
+    "location_share": {
+        "label": "Location sharing",
+        "description": "How location is shared with other nodes (or the local phone)."
     },
     "long_name": {
         "label": "Long Name",
@@ -42,6 +66,54 @@
     "mqtt_disabled": {
         "label": "MQTT Disabled?",
         "description": "If set, all MQTT features will be disabled."
+    },
+    "position_broadcast_secs": {
+        "label": "Broadcast interval (seconds)",
+        "description": "Send our position this often (but only if it has changed significantly). Defaults to 900 seconds. (15 minutes)"
+    },
+    "position_broadcast_smart": {
+        "label": "Use Broadcast smart?",
+        "description": "If set, calculates an ideal position update interval based on the data rate of your channel configuration."
+    },
+    "position_flag_alt_msl": {
+        "label": "Altitude is MSL?",
+        "description": "If set, Mean Sea Level (MSL) altitude will be included in the position message."
+    },
+    "position_flag_altitude": {
+        "label": "Include altitude?",
+        "description": "If set, altitude will be included in the position message."
+    },
+    "position_flag_battery": {
+        "label": "Include battery level?",
+        "description": "If set, battery level will included in the position message."
+    },
+    "position_flag_dop": {
+        "label": "Include DOP value?",
+        "description": "If set, dilution of precision (DOP) value will be included in the position message. (PDOP is used by default)"
+    },
+    "position_flag_geo_sep": {
+        "label": "Include geoidal separation?",
+        "description": "If set, geoidal separation will be included in the position message."
+    },
+    "position_flag_hvdop": {
+        "label": "Send separate HDOP/VDOP values instead of PDOP?",
+        "description": "If DOP is set, send separation HDOP / VDOP values instead of PDOP in the position message."
+    },
+    "position_flag_satinview": {
+        "label": "Include number of satellites in view?",
+        "description": "If set, send number of satellites in view in the position message."
+    },
+    "position_flag_seq_nos": {
+        "label": "Include sequence numbers?",
+        "description": "If set, include a sequence number incremented per packet in the position message."
+    },
+    "position_flag_timestamp": {
+        "label": "Include timestamp?",
+        "description": "If set, include positional timestamp (from GPS solution) in the position message."
+    },
+    "position_flags": {
+        "label": "Position flags (calculated)",
+        "description": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags."
     },
     "short_name": {
         "label": "Short Name",

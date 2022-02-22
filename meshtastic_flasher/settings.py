@@ -26,7 +26,7 @@ class Settings(QMainWindow):
 
         self.port = None
         self.interface = None
-        self.pixel_mult = 11
+        self.pixel_mult = 12
 
         self.fields = load_fields()
 
