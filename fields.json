@@ -304,6 +304,26 @@
         "label": "Spread Factor",
         "description": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor."
     },
+    "store_forward_plugin_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the store and forward plugin will be enabled."
+    },
+    "store_forward_plugin_heartbeat": {
+        "label": "Heartbeat",
+        "description": "TBD"
+    },
+    "store_forward_plugin_history_return_max": {
+        "label": "History Return Max",
+        "description": "TBD"
+    },
+    "store_forward_plugin_history_return_window": {
+        "label": "History Return Window",
+        "description": "TBD"
+    },
+    "store_forward_plugin_records": {
+        "label": "Records",
+        "description": "TBD"
+    },
     "team": {
         "label": "Team",
         "description": "Participants in the same network can self-group into different teams."
