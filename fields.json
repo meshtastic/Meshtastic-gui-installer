@@ -1,4 +1,12 @@
 {
+    "adc_multiplier_override": {
+        "label": "ADC Multiplier Override",
+        "description": "Ratio of voltage divider for battery pin eg. 3.20 (R1=100k, R2=220k) Overrides the ADC_MULTIPLIER defined in variant for battery voltage calculation."
+    },
+    "charge_current": {
+        "label": "Charge Current",
+        "description": "Sets the current of the battery charger."
+    },
     "device_id": {
         "label": "Device ID",
         "description": "A globally unique identifier for this device."
@@ -27,9 +35,21 @@
         "label": "Hardware Model",
         "description": "The hardware model as defined by Meshtastic."
     },
+    "is_always_powered": {
+        "label": "Is Always Powered?",
+        "description": "Circumvents the logic block for determining whether the device is powered or not. Useful for devices with finicky ADC issues on the battery sense pins."
+    },
     "is_licensed": {
         "label": "Is Licensed?",
         "description": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number."
+    },
+    "is_low_power": {
+        "label": "Powered by Low Power (solar)?",
+        "description": "If set, device is powered from a low-current source (i.e. solar), so even if it looks like we have power flowing in we should try to minimize power consumption as much as possible. Do not set this if 'is_router' is enabled."
+    },
+    "is_power_saving": {
+        "label": "Is Power Saving?",
+        "description": "If set, enable power saving features of the esp32 device."
     },
     "location_share": {
         "label": "Location sharing",
@@ -40,9 +60,21 @@
         "description": "Full name for the device. If 'is_licensed' is enabled, this value should be the Ham license number.",
         "max_size": 40
     },
+    "ls_secs": {
+        "label": "LS (seconds)",
+        "description": "Light sleep (LS) is a power management state machine option. See power management for details. 0 for default of 3600 seconds (or 1 hour)."
+    },
+    "mesh_sds_timeout_secs": {
+        "label": "Mesh SDS Timeout (seconds)",
+        "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 seconds (or two hours), MAXUINT or 4294967295 for disabled."
+    },
     "macaddr": {
         "label": "MAC Address",
         "description": "The address of the device."
+    },
+    "min_wake_secs": {
+        "label": "Minimum Wake (seconds)",
+        "description": "Power management state machine option. See power management for details. 0 for default of 10 seconds."
     },
     "mqtt_encryption_enabled": {
         "label": "MQTT Encryption Enabled?",
@@ -66,6 +98,18 @@
     "mqtt_disabled": {
         "label": "MQTT Disabled?",
         "description": "If set, all MQTT features will be disabled."
+    },
+    "on_battery_shutdown_after_secs": {
+        "label": "On Battery Shutdown After (seconds)",
+        "description": "If non-zero, the device will fully power off this many seconds after external power is removed."
+    },
+    "phone_sds_timeout_sec": {
+        "label": "Phone SDS Timeout (seconds)",
+        "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 (or two hours), MAXUINT or 4294967295 for disabled."
+    },
+    "phone_timeout_secs": {
+        "label": "Phone Timeout (seconds)",
+        "description": "Power management state machine option. See power management for details. 0 for default of 900 (or 15 minutes)."
     },
     "position_broadcast_secs": {
         "label": "Broadcast interval (seconds)",
@@ -115,6 +159,14 @@
         "label": "Position flags (calculated)",
         "description": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags."
     },
+    "screen_on_secs": {
+        "label": "Screen On (seconds)",
+        "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute)."
+    },
+    "sds_secs": {
+        "label": "SDS (seconds)",
+        "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of one year."
+    },
     "short_name": {
         "label": "Short Name",
         "description": "Very short name for the device, ideally two characters.",
@@ -123,6 +175,10 @@
     "team": {
         "label": "Team",
         "description": "Participants in the same network can self-group into different teams."
+    },
+    "wait_bluetooth_secs": {
+        "label": "Bluetooth Wait (seconds)",
+        "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or 1 minute)."
     },
     "wifi_ap_mode": {
         "label": "WiFi AP Mode?",
