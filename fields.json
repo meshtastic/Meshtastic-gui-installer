@@ -65,27 +65,27 @@
     },
     "ext_notification_plugin_active": {
         "label": "Active?",
-        "description": "TBD"
+        "description": "If set, notifications will happen when the the GPIO is active-high. If not set, notifications will happen when GPIO is active-low."
     },
     "ext_notification_plugin_alert_bell": {
         "label": "Alert Bell?",
-        "description": "TBD"
+        "description": "Only trigger the notification if the ASCII bell character is in the message."
     },
     "ext_notification_plugin_alert_message": {
         "label": "Alert Message",
-        "description": "TBD"
+        "description": "Message to use when when a notification is to be made."
     },
     "ext_notification_plugin_enabled": {
         "label": "Enabled?",
-        "description": "TBD"
+        "description": "If set, the external notifications plugin is enabled."
     },
     "ext_notification_plugin_output": {
         "label": "Output",
-        "description": "TBD"
+        "description": "GPIO of the output."
     },
     "ext_notification_plugin_output_ms": {
         "label": "Output (ms)",
-        "description": "TBD"
+        "description": "Amount of time in ms for the alert. Default is 1,000 ms (or 1 second)."
     },
     "fixed_position": {
         "label": "Use Fixed position?",
@@ -265,11 +265,11 @@
     },
     "range_test_plugin_save": {
         "label": "Save?",
-        "description": "TBD"
+        "description": "If set, the device will save the range test .csv files on this device."
     },
     "range_test_plugin_sender": {
-        "label": "Sender",
-        "description": "TBD"
+        "label": "Sender (seconds)",
+        "description": "Sends a message how freqently (in seconds)."
     },
     "region": {
         "label": "Region",
