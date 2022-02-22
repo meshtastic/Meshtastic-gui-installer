@@ -146,5 +146,8 @@ sd_bl.bin
 sd_bl.dat
 manifest.json
 
+# ignore backup files
+*.yaml
+
 # crap mac should not just auto-create
 .DS_Store
