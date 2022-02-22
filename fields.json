@@ -31,6 +31,38 @@
         "label": "Downlink Enabled?",
         "description": "If set, messages seen on the internet will be forwarded to the local mesh."
     },
+    "environmental_measurement_plugin_display_farenheit": {
+        "label": "Display Temperature in Farenheit?",
+        "description": "If set, the temperature will be displayed in Farenheit."
+    },
+    "environmental_measurement_plugin_measurement_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the environmental measurement plugin will be enabled."
+    },
+    "environmental_measurement_plugin_read_error_count_threshold": {
+        "label": "Read Error Count Threshold",
+        "description": "Sometimes sensor reads can fail. If this happens, we will retry a configurable number of attempts, each attempt will be delayed by the minimum required refresh rate for that sensor."
+    },
+    "environmental_measurement_plugin_recovery_interval": {
+        "label": "Recovery Interval",
+        "description": "Sometimes we can end up with more than read_error_count_threshold failures. In this case, we will stop trying to read from the sensor for a while. Wait this long until trying to read from the sensor again."
+    },
+    "environmental_measurement_plugin_screen_enabled": {
+        "label": "Screen Enabled?",
+        "description": "Enable/Disable the environmental measurement plugin on-device display."
+    },
+    "environmental_measurement_plugin_sensor_pin": {
+        "label": "Sensor Pin",
+        "description": "Specify the peferred GPIO Pin for sensor readings. Not applicable to sensors that use I2C."
+    },
+    "environmental_measurement_plugin_sensor_type": {
+        "label": "Sensor Type",
+        "description": "Specify the sensor type."
+    },
+    "environmental_measurement_plugin_update_interval": {
+        "label": "Update Interval (seconds)",
+        "description": "Interval in seconds of how often we should try to send our measurements to the mesh."
+    },
     "ext_notification_plugin_active": {
         "label": "Active?",
         "description": "TBD"
