@@ -49,7 +49,7 @@ class UserForm(QDialog):
 
         # Add a button box
         self.button_box = QDialogButtonBox()
-        self.button_box.setStandardButtons(QDialogButtonBox.Ok | QDialogButtonBox.Cancel)
+        self.button_box.setStandardButtons(QDialogButtonBox.Save)
         self.button_box.accepted.connect(self.accept)
         self.button_box.rejected.connect(self.reject)
 

@@ -56,7 +56,7 @@ class EnvironmentalMeasurementForm(QDialog):
 
         # Add a button box
         self.button_box = QDialogButtonBox()
-        self.button_box.setStandardButtons(QDialogButtonBox.Ok)
+        self.button_box.setStandardButtons(QDialogButtonBox.Save)
         self.button_box.accepted.connect(self.accept)
         self.button_box.rejected.connect(self.reject)
 
