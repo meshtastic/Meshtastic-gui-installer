@@ -41,8 +41,8 @@ class Settings(QMainWindow):
         self.position_form = PositionForm(self)
         self.power_form = PowerForm(self)
         self.radio_form = RadioForm(self)
-        self.plugin_settings = PluginSettings()
-        self.channel_settings = ChannelSettings()
+        self.plugin_settings = PluginSettings(self)
+        self.channel_settings = ChannelSettings(self)
 
         self.tabs = QTabWidget()
 

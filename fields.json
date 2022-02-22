@@ -7,9 +7,17 @@
         "label": "ADC Multiplier Override",
         "description": "Ratio of voltage divider for battery pin eg. 3.20 (R1=100k, R2=220k) Overrides the ADC_MULTIPLIER defined in variant for battery voltage calculation."
     },
+    "bandwidth": {
+        "label": "Bandwidth (MHz)",
+        "description": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz."
+    },
     "charge_current": {
         "label": "Charge Current",
         "description": "Sets the current of the battery charger."
+    },
+    "coding_rate": {
+        "label": "Coding Rate",
+        "description": "The denominator of the coding rate. ie for 4/8, the value is 8. 5/8 the value is 5."
     },
     "debug_log_enabled": {
         "label": "Debug Log Enabled?",
@@ -18,6 +26,10 @@
     "device_id": {
         "label": "Device ID",
         "description": "A globally unique identifier for this device."
+    },
+    "downlink_enabled": {
+        "label": "Downlink Enabled?",
+        "description": "If set, messages seen on the internet will be forwarded to the local mesh."
     },
     "fixed_position": {
         "label": "Use Fixed position?",
@@ -100,6 +112,10 @@
         "label": "Minimum Wake (seconds)",
         "description": "Power management state machine option. See power management for details. 0 for default of 10 seconds."
     },
+    "modem_config": {
+        "label": "Modem Config",
+        "description": "The configuration of the modem. (speed/distance)"
+    },
     "mqtt_encryption_enabled": {
         "label": "MQTT Encryption Enabled?",
         "description": "If set, encrypted packets are sent to server specified in 'mqtt_server. Otherwise, the packets are not encrypted."
@@ -122,6 +138,10 @@
     "mqtt_disabled": {
         "label": "MQTT Disabled?",
         "description": "If set, all MQTT features will be disabled."
+    },
+    "name": {
+        "label": "Channel Name",
+        "description": "A short name that will be packed into the URL. Less than 12 bytes. This field will only be editable if the prior channel has a name. There are special channel names like 'admin' (for remote management) and 'gpio' (for remote gpio query/manipulation)."
     },
     "on_battery_shutdown_after_secs": {
         "label": "On Battery Shutdown After (seconds)",
@@ -187,6 +207,10 @@
         "label": "Region",
         "description": "The region code for my radio (US, CN, EU433, etc...)"
     },
+    "role": {
+        "label": "Role",
+        "description": "How this channel is being used (or not not being used)."
+    },
     "screen_on_secs": {
         "label": "Screen On (seconds)",
         "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute)."
@@ -208,9 +232,21 @@
         "description": "Very short name for the device, ideally two characters.",
         "max_size": 3
     },
+    "spread_factor": {
+        "label": "Spread Factor",
+        "description": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor."
+    },
     "team": {
         "label": "Team",
         "description": "Participants in the same network can self-group into different teams."
+    },
+    "tx_power": {
+        "label": "TX Power (dBm)",
+        "description": "If zero then, use default max legal continuous power (i.e., something that will not burn out the radio hardware). In most cases, you should use 0. (Units are in dBm)."
+    },
+    "uplink_enabled": {
+        "label": "Uplink Enabled?",
+        "description": "If set, messages on the mesh will be sent to the public internet by any gateway node."
     },
     "wait_bluetooth_secs": {
         "label": "Bluetooth Wait (seconds)",

@@ -32,22 +32,29 @@ class ChannelForm(QDialog):
 
         # Create widgets
         self.name = QLineEdit()
-        self.name.setToolTip("Name of the channel. The channel name field will only be editable if the prior channel has a name.")
+        self.name.setToolTip(self.parent.parent.description('name'))
         self.role = QComboBox()
+        self.role.setToolTip(self.parent.parent.description('role'))
         self.role.setMinimumContentsLength(17)
         self.modem_config = None
         if self.channel_index == 0:
             self.name.setReadOnly(True) # primary channel name cannot be changed
             # modem config is only on primary channel
             self.modem_config = QComboBox()
+            self.modem_config.setToolTip(self.parent.parent.description('modem_config'))
             self.modem_config.setMinimumContentsLength(17)
-
         self.uplink_enabled = QCheckBox()
+        self.uplink_enabled.setToolTip(self.parent.parent.description('uplink_enabled'))
         self.downlink_enabled = QCheckBox()
+        self.downlink_enabled.setToolTip(self.parent.parent.description('downlink_enabled'))
         self.tx_power = QLineEdit()
+        self.tx_power.setToolTip(self.parent.parent.description('tx_power'))
         self.bandwidth = QLineEdit()
+        self.bandwidth.setToolTip(self.parent.parent.description('bandwidth'))
         self.spread_factor = QLineEdit()
+        self.spread_factor.setToolTip(self.parent.parent.description('spread_factor'))
         self.coding_rate = QLineEdit()
+        self.coding_rate.setToolTip(self.parent.parent.description('coding_rate'))
         self.psk_random_button = QPushButton("PSKRandom")
         self.psk_default_button = QPushButton("PSKDefault")
         if self.channel_index > 0:
@@ -66,17 +73,17 @@ class ChannelForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.tr("Name"), self.name)
-        form_layout.addRow(self.tr("Role"), self.role)
+        form_layout.addRow(self.parent.parent.label("name"), self.name)
+        form_layout.addRow(self.parent.parent.label("role"), self.role)
         if self.channel_index == 0:
-            form_layout.addRow(self.tr("Modem Config"), self.modem_config)
-        form_layout.addRow(self.tr("Uplink enabled"), self.uplink_enabled)
-        form_layout.addRow(self.tr("Downlink enabled"), self.downlink_enabled)
-        form_layout.addRow(self.tr("TX Power"), self.tx_power)
-        form_layout.addRow(self.tr("Bandwidth"), self.bandwidth)
-        form_layout.addRow(self.tr("Spread Factor"), self.spread_factor)
-        form_layout.addRow(self.tr("Coding Rate"), self.coding_rate)
-        form_layout.addRow(self.tr(""), self.psk_random_button)
+            form_layout.addRow(self.parent.parent.label("modem_config"), self.modem_config)
+        form_layout.addRow(self.parent.parent.label("uplink_enabled"), self.uplink_enabled)
+        form_layout.addRow(self.parent.parent.label("downlink_enabled"), self.downlink_enabled)
+        form_layout.addRow(self.parent.parent.label("tx_power"), self.tx_power)
+        form_layout.addRow(self.parent.parent.label("bandwidth"), self.bandwidth)
+        form_layout.addRow(self.parent.parent.label("spread_factor"), self.spread_factor)
+        form_layout.addRow(self.parent.parent.label("coding_rate"), self.coding_rate)
+        form_layout.addRow(self.parent.parent.label(""), self.psk_random_button)
         form_layout.addRow(self.tr(""), self.psk_default_button)
         if self.channel_index > 0:
             form_layout.addRow(self.tr(""), self.delete_this_channel_button)

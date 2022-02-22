@@ -15,10 +15,11 @@ from meshtastic_flasher.plugins_canned_message_form import CannedMessageForm
 class PluginSettings(QMainWindow):
     """plugin settings"""
 
-    def __init__(self):
+    def __init__(self, parent=None):
         """constructor"""
         super(PluginSettings, self).__init__()
 
+        self.parent = parent
         self.port = None
         self.interface = None
 
