@@ -9,3 +9,4 @@ pytest
 pytest-qt
 pytest-cov
 pylint
+geocoder

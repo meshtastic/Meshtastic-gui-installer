@@ -1,6 +1,9 @@
 """class for the Advanced options form"""
 
 import datetime
+import glob
+import os
+import shutil
 import sys
 
 from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QFileDialog, QMessageBox
@@ -18,6 +21,7 @@ class AdvancedForm(QDialog):
         super(AdvancedForm, self).__init__(parent)
 
         self.info_form = InfoForm()
+        self.parent = parent
 
         width = 240
         height = 120
@@ -35,6 +39,8 @@ class AdvancedForm(QDialog):
         self.configure_from_file_button.clicked.connect(self.configure_from_file)
         self.export_configuration_button = QPushButton("Export Configuration")
         self.export_configuration_button.clicked.connect(self.export_configuration)
+        self.clear_firmware_files_button = QPushButton("Clear Firmware Files")
+        self.clear_firmware_files_button.clicked.connect(self.clear_firmware_files)
 
         self.ok_button = QPushButton("OK")
 
@@ -45,6 +51,7 @@ class AdvancedForm(QDialog):
         form_layout.addRow(self.tr(""), self.info_button)
         form_layout.addRow(self.tr(""), self.export_configuration_button)
         form_layout.addRow(self.tr(""), self.configure_from_file_button)
+        form_layout.addRow(self.tr(""), self.clear_firmware_files_button)
         form_layout.addRow(self.tr(""), self.ok_button)
         self.setLayout(form_layout)
 
@@ -105,3 +112,27 @@ class AdvancedForm(QDialog):
         #self.info_form.text.appendPlainText("hello")
         sys.stdout = old_sys_stdout
         self.info_form.show()
+
+
+    def clear_firmware_files(self):
+        """clear firmware files"""
+        print('clear firmware files')
+        confirm_msg = 'Are you sure you want to remove the firmware files?'
+        reply = QMessageBox.question(self, 'Confirm', confirm_msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            print("User confirmed they want remove the firmware files")
+            directories = glob.glob('1.2.*.*')
+            for directory in directories:
+                print(f'removing directory:{directory}')
+                shutil.rmtree(directory)
+            files = glob.glob('firmware-*.zip')
+            for file in files:
+                print(f'removing file:{file}')
+                os.remove(file)
+            # clean up the firmware dropdown
+            if self.parent:
+                self.parent.firmware_version = None
+                self.parent.select_firmware_version.clear()
+                self.parent.select_firmware_version.setDisabled(True)
+        else:
+            print("User does not want remove the firmware files")
