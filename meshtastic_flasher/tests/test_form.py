@@ -45,22 +45,6 @@ def test_buttons_and_combo_boxes(faked_versions, fake_check_newer, qtbot):
     fake_check_newer.assert_called()
 
 
-@patch('meshtastic_flasher.util.check_if_newer_version')
-@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
-@patch('webbrowser.open')
-def test_logo_clicked(fake_open, fake_versions, fake_check_newer, qtbot, capsys):
-    """Test logo clicked in Form"""
-    widget = Form()
-    qtbot.addWidget(widget)
-    qtbot.mouseClick(widget.logo, qt_api.QtCore.Qt.MouseButton.LeftButton)
-    out, err = capsys.readouterr()
-    assert re.search(r'The logo was clicked', out, re.MULTILINE)
-    assert err == ''
-    fake_open.assert_called()
-    fake_versions.assert_called()
-    fake_check_newer.assert_called()
-
-
 #@patch('meshtastic_flasher.util.check_if_newer_version')
 #@patch('meshtastic_flasher.form.Form.get_versions_from_disk')
 #@patch('esptool.main')
