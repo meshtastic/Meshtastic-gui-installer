@@ -33,7 +33,9 @@ import meshtastic_flasher.util
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 COG_FILENAME = "cog.svg"
 HELP_FILENAME = "help.svg"
+INFO_FILENAME = "info.svg"
 BUTTON_ICON_SIZE = QtCore.QSize(24, 24)
+BUTTON_ICON_SIZE_SMALL = QtCore.QSize(20, 20)
 
 # windows does not like this one
 if platform.system() == "Linux":
@@ -90,10 +92,20 @@ class Form(QDialog):
         self.help_button = QPushButton()
         help_icon = QIcon(meshtastic_flasher.util.get_path(HELP_FILENAME))
         self.help_button.setIcon(help_icon)
-        self.help_button.setIconSize(BUTTON_ICON_SIZE)
-        self.help_button.setFixedWidth(42)
+        self.help_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
+        self.help_button.setFixedSize(BUTTON_ICON_SIZE_SMALL)
         self.help_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.help_button.setToolTip("Click for help.")
+        self.help_button.setStyleSheet("border:none")
+        self.help_button.setToolTip("Click for help | Press H for hotkeys.")
+
+        self.about_button = QPushButton()
+        help_icon = QIcon(meshtastic_flasher.util.get_path(INFO_FILENAME))
+        self.about_button.setIcon(help_icon)
+        self.about_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
+        self.about_button.setFixedSize(BUTTON_ICON_SIZE_SMALL)
+        self.about_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+        self.about_button.setStyleSheet("border:none")
+        self.about_button.setToolTip("Click for info about the project.")
 
         self.select_port = QComboBox()
         self.select_port.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the port.")
@@ -116,14 +128,12 @@ class Form(QDialog):
         self.progress.hide()
 
         self.logo = QLabel(self)
-        self.logo.setToolTip("This is the Meshtastic logo. Click to visit Meshtastic.org.")
         pixmap = QPixmap(meshtastic_flasher.util.get_path(MESHTASTIC_LOGO_FILENAME))
         self.logo.setPixmap(pixmap.scaled(256, 256, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
         self.logo.setAlignment(QtCore.Qt.AlignCenter)
         style_for_logo = (f"background-color: {MESHTASTIC_COLOR_GREEN}; border-color: "
                           f"{MESHTASTIC_COLOR_GREEN}; border-radius: 0px; color: {MESHTASTIC_COLOR_DARK};")
         self.logo.setStyleSheet(style_for_logo)
-        self.logo.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
 
         # labels for over the drop downs/combo boxes
         self.label_version = QLabel(self)
@@ -154,16 +164,22 @@ class Form(QDialog):
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
-        if self.logo:
-            main_layout.addWidget(self.logo)
 
-        main_layout.addStretch(1)
+        info_layout = QHBoxLayout()
+        info_layout.addWidget(self.about_button, alignment=QtCore.Qt.AlignRight)
+        info_layout.addWidget(self.help_button)
+        info_layout.setContentsMargins(0, 5, 10, 0)
+
+        logo_layout = QVBoxLayout()
+        if self.logo:
+            logo_layout.addWidget(self.logo)
+
+        logo_layout.addStretch(1)
 
         detect_layout = QHBoxLayout()
         detect_layout.addStretch(1)
         detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
-        detect_layout.addWidget(self.help_button)
         detect_layout.addWidget(self.settings_cog)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
@@ -193,6 +209,8 @@ class Form(QDialog):
         button_layout.addStretch(1)
 
         # Set layout
+        main_layout.addLayout(info_layout)
+        main_layout.addLayout(logo_layout)
         main_layout.addLayout(detect_layout)
         main_layout.addLayout(label_layout)
         main_layout.addLayout(button_layout)
@@ -209,9 +227,9 @@ class Form(QDialog):
         #self.settings_cog.show()
 
         # Add button signals to slots
-        self.logo.mousePressEvent = self.logo_clicked
         self.get_versions_button.clicked.connect(self.get_versions)
-        self.help_button.clicked.connect(self.hotkeys)
+        self.help_button.clicked.connect(self.help_message)
+        self.about_button.clicked.connect(self.about_message)
         self.label_version.mousePressEvent = self.label_version_clicked
         self.label_device.mousePressEvent = self.label_device_clicked
         self.select_detect.clicked.connect(self.detect)
@@ -241,8 +259,8 @@ class Form(QDialog):
             print("Q was pressed... so quitting")
             QApplication.quit()
         elif event.key() == QtCore.Qt.Key_T:
-            print("T was pressed... so showing tips")
-            self.tips()
+            print("T was pressed... so showing help message")
+            self.help_message()
         elif event.key() == QtCore.Qt.Key_S:
             print("S was pressed... showing settings form")
             self.run_settings(None)
@@ -349,14 +367,13 @@ class Form(QDialog):
                     self.select_device.addItem(device)
 
 
-
-    def tips(self):
-        """Show tips"""
-        print("tips")
+    def help_message(self):
+        """Show help message"""
+        print("help_message")
         msg_box = QMessageBox()
+        msg_box.setWindowTitle("Help")
         msg_box.setTextFormat(QtCore.Qt.RichText)  # this is what makes the links clickable
-        msg_box.setText("<u>Tips:</u><br>"
-                        "If having issues flashing the device, be sure there is only one <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>supported device</a> connected "
+        msg_box.setText("If having issues flashing the device, be sure there is only one <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>supported device</a> connected "
                         "and no other applications are using that communications port.<br><br>"
                         "If still having problems, unplug the device, then re-plugin the device.<br><br>"
                         "If still having problems, consider using a different usb port, perhaps an external usb hub or even a different computer and/or different operating system.<br><br>"
@@ -371,6 +388,17 @@ class Form(QDialog):
                         "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use "
                         "v1.1 or v2.1.1.6 firmware.<br><br>"
                         "Join the <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord group</a> and post questions in #help channel.")
+        msg_box.setStandardButtons(QMessageBox.Ok)
+        msg_box.exec()
+
+    def about_message(self):
+        """Show info about_message"""
+        print("about_message")
+        msg_box = QMessageBox()
+        msg_box.setWindowTitle("About Meshtastic Flasher")
+        msg_box.setTextFormat(QtCore.Qt.RichText)
+        msg_box.setText("Meshtastic Flasher is part of the <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> ecosystem. "
+                        "It is a cross platform, easy to use GUI for installing Meshtastic firmware.")
         msg_box.setStandardButtons(QMessageBox.Ok)
         msg_box.exec()
 
@@ -873,13 +901,6 @@ class Form(QDialog):
         self.progress.setValue(100)
         QApplication.processEvents()
         print("end of detect")
-
-
-    # pylint: disable=unused-argument
-    def logo_clicked(self, event):
-        """The logo was clicked."""
-        print("The logo was clicked")
-        webbrowser.open('https://meshtastic.org')
 
 
     def flash_nrf52(self):
