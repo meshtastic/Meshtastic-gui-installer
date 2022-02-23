@@ -1,7 +1,7 @@
 """class for the position settings"""
 
 
-from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QLineEdit, QLabel, QComboBox, QDialogButtonBox
+from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QLineEdit, QLabel, QComboBox, QDialogButtonBox, QPushButton
 
 import meshtastic.serial_interface
 import meshtastic.util
@@ -10,6 +10,7 @@ import meshtastic.radioconfig_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
 from meshtastic_flasher.util import zero_if_blank
+from meshtastic_flasher.fixed_position_form import FixedPositionForm
 
 
 class PositionForm(QDialog):
@@ -29,6 +30,8 @@ class PositionForm(QDialog):
         self.port = None
         self.interface = None
         self.prefs = None
+
+        self.fixed_position_form = FixedPositionForm(self)
 
         # Create widgets
         self.position_broadcast_secs = QLineEdit()
@@ -55,8 +58,13 @@ class PositionForm(QDialog):
         self.position_flag_timestamp.setToolTip(self.parent.description('position_flag_timestamp'))
         self.position_flags = QLabel(self.parent.label('position_flags')) # field that shows the number for the prior bit fields
         self.position_flags.setToolTip(self.parent.description('position_flags'))
-        self.fixed_position = QCheckBox()
-        self.fixed_position.setToolTip(self.parent.description('fixed_position'))
+
+        #self.fixed_position = QCheckBox()
+        #self.fixed_position.setToolTip(self.parent.description('fixed_position'))
+
+        self.fixed_position_button = QPushButton("Fixed Position")
+        self.fixed_position_button.clicked.connect(self.fixed_position)
+
         self.location_share = QComboBox()
         self.location_share.setToolTip(self.parent.description('location_share'))
         self.location_share.setMinimumContentsLength(17)
@@ -93,7 +101,8 @@ class PositionForm(QDialog):
         form_layout.addRow('', self.position_flag_seq_nos)
         form_layout.addRow('', self.position_flag_timestamp)
         form_layout.addRow(self.parent.label("position_flags"), self.position_flags)
-        form_layout.addRow(self.parent.label("fixed_position"), self.fixed_position)
+        #form_layout.addRow(self.parent.label("fixed_position"), self.fixed_position)
+        form_layout.addRow(self.tr(""), self.fixed_position_button)
         form_layout.addRow(self.parent.label("location_share"), self.location_share)
         form_layout.addRow(self.parent.label("gps_operation"), self.gps_operation)
         form_layout.addRow(self.parent.label("gps_format"), self.gps_format)
@@ -282,3 +291,9 @@ class PositionForm(QDialog):
         """Close the form"""
         print('SAVE button was clicked')
         self.write_values()
+
+
+    def fixed_position(self):
+        """Deal with Fixed Position"""
+        print('fixed position button clicked')
+        self.fixed_position_form.run(port=self.port, interface=self.interface)
