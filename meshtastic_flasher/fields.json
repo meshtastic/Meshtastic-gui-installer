@@ -1,4 +1,8 @@
 {
+    "alt": {
+        "label": "Altitude (meters)",
+        "description": "Altitude is the distance above sea level."
+    },
     "auto_screen_carousel_secs": {
         "label": "Auto Screen Carousel (seconds)",
         "description": "Automatically toggles to the next page on the screen like a carousel, based the specified interval in seconds. Potentially useful for devices without user buttons."
@@ -159,9 +163,17 @@
         "label": "Is Router?",
         "description": "Are we operating as a router? Changes behavior in the following ways: The device will only sleep for critically low battery level (i.e. always tries to stay alive for the mesh). In the future, routing decisions will preferentially route packets through nodes with this attribute (because assumed good line of sight)."
     },
+    "lat": {
+        "label": "Latitude",
+        "description": "Latitude is the measurement of distance north or south of the Equator. It is measured with 180 imaginary lines that form circles around the Earth east-west, parallel to the Equator."
+    },
     "location_share": {
         "label": "Location sharing",
         "description": "How location is shared with other nodes (or the local phone)."
+    },
+    "lon": {
+        "label": "Longitude",
+        "description": "Longitude is a geographic coordinate that specifies the east–west position of a point on the Earth's surface."
     },
     "long_name": {
         "label": "Long Name",

@@ -4,6 +4,7 @@ from PySide6.QtWidgets import QDialog, QFormLayout, QPushButton, QMessageBox
 
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
+from meshtastic_flasher.fixed_position_form import FixedPositionForm
 
 
 class AdminForm(QDialog):
@@ -14,6 +15,8 @@ class AdminForm(QDialog):
         super(AdminForm, self).__init__(parent)
 
         self.parent = parent
+
+        self.fixed_position_form = FixedPositionForm(self)
 
         width = 500
         height = 200
@@ -27,10 +30,13 @@ class AdminForm(QDialog):
         # Create widgets
         self.factory_reset_button = QPushButton("Factory Reset")
         self.factory_reset_button.clicked.connect(self.factory_reset)
+        self.fixed_position_button = QPushButton("Fixed Position")
+        self.fixed_position_button.clicked.connect(self.fixed_position)
 
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.tr(""), self.factory_reset_button)
+        form_layout.addRow(self.tr(""), self.fixed_position_button)
         self.setLayout(form_layout)
 
 
@@ -57,3 +63,9 @@ class AdminForm(QDialog):
             self.parent.my_close()
         else:
             print("User does not want to do a factory reset")
+
+
+    def fixed_position(self):
+        """Deal with Fixed Position"""
+        print('fixed position button clicked')
+        self.fixed_position_form.run(port=self.port, interface=self.interface)
