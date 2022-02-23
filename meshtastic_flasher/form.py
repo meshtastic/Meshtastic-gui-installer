@@ -62,7 +62,7 @@ class Form(QDialog):
         self.bin_file = None
         self.detected_meshtastic_version = None
 
-        self.advanced_form = AdvancedForm()
+        self.advanced_form = AdvancedForm(self)
         self.esptool_form = EsptoolForm()
         self.settings = Settings()
 
