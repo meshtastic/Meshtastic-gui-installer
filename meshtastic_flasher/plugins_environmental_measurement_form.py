@@ -64,7 +64,7 @@ class EnvironmentalMeasurementForm(QDialog):
         form_layout = QFormLayout()
         form_layout.addRow("Environmental Measurement Plugin", self.environmental_measurement_plugin_about)
         form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_measurement_enabled"), self.environmental_measurement_plugin_measurement_enabled)
-        form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_screen_enabled"), self.environmental_measurement_plugin_display_farenheit)
+        form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_display_farenheit"), self.environmental_measurement_plugin_display_farenheit)
         form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_read_error_count_threshold"), self.environmental_measurement_plugin_read_error_count_threshold)
         form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_recovery_interval"), self.environmental_measurement_plugin_recovery_interval)
         form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_screen_enabled"), self.environmental_measurement_plugin_screen_enabled)
