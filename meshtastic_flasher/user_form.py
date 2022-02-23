@@ -40,7 +40,8 @@ class UserForm(QDialog):
         self.short_name = QLineEdit()
         self.short_name.setToolTip(self.parent.description('short_name'))
         self.short_name.setMaxLength(self.parent.max_size('short_name'))
-        self.short_name.setFixedWidth(self.parent.max_size('short_name') * self.parent.pixel_mult)
+        # TODO: should improve this a bit
+        #self.short_name.setFixedWidth(self.parent.max_size('short_name') * self.parent.pixel_mult)
         self.is_licensed = QCheckBox()
         self.is_licensed.setToolTip(self.parent.description('is_licensed'))
         self.team = QComboBox()
