@@ -32,6 +32,7 @@ import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 COG_FILENAME = "cog.svg"
+OPTIONS_ICON_FILENAME = "options.svg"
 HELP_FILENAME = "help.svg"
 INFO_FILENAME = "info.svg"
 BUTTON_ICON_SIZE = QtCore.QSize(24, 24)
@@ -99,8 +100,8 @@ class Form(QDialog):
         self.help_button.setToolTip("Click for help | Press H for hotkeys.")
 
         self.about_button = QPushButton()
-        help_icon = QIcon(meshtastic_flasher.util.get_path(INFO_FILENAME))
-        self.about_button.setIcon(help_icon)
+        info_icon = QIcon(meshtastic_flasher.util.get_path(INFO_FILENAME))
+        self.about_button.setIcon(info_icon)
         self.about_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
         self.about_button.setFixedSize(BUTTON_ICON_SIZE_SMALL)
         self.about_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
@@ -161,6 +162,14 @@ class Form(QDialog):
         self.settings_cog.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.settings_cog.setToolTip("Click for device Settings.")
 
+        self.options_button = QPushButton()
+        options_icon = QIcon(meshtastic_flasher.util.get_path(OPTIONS_ICON_FILENAME))
+        self.options_button.setIcon(options_icon)
+        self.options_button.setIconSize(BUTTON_ICON_SIZE)
+        self.options_button.setFixedWidth(42)
+        self.options_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+        self.options_button.setToolTip("Click for advanced Flasher options.")
+
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
@@ -174,13 +183,12 @@ class Form(QDialog):
         if self.logo:
             logo_layout.addWidget(self.logo)
 
-        logo_layout.addStretch(1)
-
         detect_layout = QHBoxLayout()
         detect_layout.addStretch(1)
         detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
         detect_layout.addWidget(self.settings_cog)
+        detect_layout.addWidget(self.options_button)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
 
@@ -236,6 +244,7 @@ class Form(QDialog):
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
         self.settings_cog.mousePressEvent = self.run_settings
+        self.options_button.mousePressEvent = self.run_options
 
         # pre-populate the versions that have already been downloaded and unzipped
         self.get_versions_from_disk()
@@ -270,6 +279,12 @@ class Form(QDialog):
     def run_settings(self, event):
         """Run the settings form"""
         self.settings.run(port=self.select_port.currentText())
+
+
+    # pylint: disable=unused-argument
+    def run_options(self, event):
+        """Run the advanced options form"""
+        self.advanced_form.show()
 
 
     def on_select_firmware_changed(self, value):
