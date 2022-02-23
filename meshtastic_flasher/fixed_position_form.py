@@ -34,8 +34,11 @@ class FixedPositionForm(QDialog):
         self.fixed_position = QCheckBox()
         self.fixed_position.setToolTip(self.parent.parent.description('fixed_position'))
         self.lat = QLineEdit()
+        self.lat.setToolTip(self.parent.parent.description('lat'))
         self.lon = QLineEdit()
+        self.lon.setToolTip(self.parent.parent.description('lon'))
         self.alt = QLineEdit()
+        self.alt.setToolTip(self.parent.parent.description('alt'))
         self.get_location_using_ip_button = QPushButton("Get Lat/Lon using your IP")
         self.get_location_using_ip_button.clicked.connect(self.latlon)
 
