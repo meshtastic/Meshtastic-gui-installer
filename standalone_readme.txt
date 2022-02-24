@@ -7,7 +7,7 @@ ubuntu:
   sudo ./meshtastic-flasher-ubuntu
 
 mac:
-  chmod +x meshtastic-flasher
+  chmod +x meshtastic-flasher-mac
   ./meshtastic-flasher-mac
   # it will probably abort, go into System Preferences, Security & Privacy, General, Allow apps downloaded
   ./meshtastic-flasher-mac
