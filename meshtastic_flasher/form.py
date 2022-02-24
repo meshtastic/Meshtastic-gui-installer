@@ -154,19 +154,19 @@ class Form(QDialog):
         self.label_detected_meshtastic_version = QLabel(self)
         self.label_detected_meshtastic_version.setText("")
 
-        self.settings_cog = QPushButton()
+        self.settings_button = QPushButton("DEVICE SETTINGS")
         cog_icon = QIcon(meshtastic_flasher.util.get_path(COG_FILENAME))
-        self.settings_cog.setIcon(cog_icon)
-        self.settings_cog.setIconSize(BUTTON_ICON_SIZE)
-        self.settings_cog.setFixedWidth(42)
-        self.settings_cog.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.settings_cog.setToolTip("Click for device Settings.")
+        self.settings_button.setIcon(cog_icon)
+        self.settings_button.setIconSize(BUTTON_ICON_SIZE)
+        self.settings_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+        self.settings_button.setToolTip("Click for device Settings.")
 
-        self.options_button = QPushButton()
+        self.options_button = QPushButton("Advanced Options")
         options_icon = QIcon(meshtastic_flasher.util.get_path(OPTIONS_ICON_FILENAME))
         self.options_button.setIcon(options_icon)
-        self.options_button.setIconSize(BUTTON_ICON_SIZE)
-        self.options_button.setFixedWidth(42)
+        self.options_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
+        self.options_button.setFixedHeight(20)
+        self.options_button.setStyleSheet("border:none")
         self.options_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.options_button.setToolTip("Click for advanced Flasher options.")
 
@@ -175,7 +175,9 @@ class Form(QDialog):
         main_layout.setContentsMargins(0, 0, 0, 0)
 
         info_layout = QHBoxLayout()
-        info_layout.addWidget(self.about_button, alignment=QtCore.Qt.AlignRight)
+        info_layout.addWidget(self.options_button, alignment=QtCore.Qt.AlignRight)
+        info_layout.addStretch(1)
+        info_layout.addWidget(self.about_button)
         info_layout.addWidget(self.help_button)
         info_layout.setContentsMargins(0, 5, 10, 0)
 
@@ -187,8 +189,8 @@ class Form(QDialog):
         detect_layout.addStretch(1)
         detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
-        detect_layout.addWidget(self.settings_cog)
-        detect_layout.addWidget(self.options_button)
+        detect_layout.addWidget(self.settings_button)
+        #detect_layout.addWidget(self.options_button)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
 
@@ -231,8 +233,8 @@ class Form(QDialog):
         self.label_detected_meshtastic_version.move(30, 310)
         self.label_detected_meshtastic_version.show()
 
-        #self.settings_cog.move(400, 270)
-        #self.settings_cog.show()
+        #self.settings_button.move(400, 270)
+        #self.settings_button.show()
 
         # Add button signals to slots
         self.get_versions_button.clicked.connect(self.get_versions)
@@ -243,7 +245,7 @@ class Form(QDialog):
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
-        self.settings_cog.mousePressEvent = self.run_settings
+        self.settings_button.mousePressEvent = self.run_settings
         self.options_button.mousePressEvent = self.run_options
 
         # pre-populate the versions that have already been downloaded and unzipped
