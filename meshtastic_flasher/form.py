@@ -110,7 +110,7 @@ class Form(QDialog):
 
         self.select_port = QComboBox()
         self.select_port.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the port.")
-        self.select_port.setMinimumContentsLength(25)
+        self.select_port.setMinimumContentsLength(30)
         self.select_port.setDisabled(True)
         self.select_port.setDuplicatesEnabled(False)
 
@@ -230,7 +230,7 @@ class Form(QDialog):
         self.setLayout(main_layout)
 
         # move version
-        self.label_detected_meshtastic_version.move(30, 310)
+        self.label_detected_meshtastic_version.move(15, 310)
         self.label_detected_meshtastic_version.show()
 
         #self.settings_button.move(400, 270)
