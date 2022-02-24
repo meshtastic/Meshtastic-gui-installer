@@ -166,12 +166,9 @@ QTabBar::tab:only-one {
         self.my_close()
 
 
-    def run(self, port=None):
+    def run(self):
         """load the form"""
-        print(f'in settings run() port:{port}:')
-        if port and port != '':
-            self.port = port
-        print(f'self.port:{self.port}:')
+        print(f'in settings')
         if self.interface is None:
             try:
                 self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)

@@ -280,7 +280,7 @@ class Form(QDialog):
     # pylint: disable=unused-argument
     def run_settings(self, event):
         """Run the settings form"""
-        self.settings.run(port=self.select_port.currentText())
+        self.settings.run()
 
 
     # pylint: disable=unused-argument
