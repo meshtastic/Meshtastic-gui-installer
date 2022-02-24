@@ -11,6 +11,7 @@ from PySide6.QtWidgets import QPushButton, QDialog, QCheckBox, QFormLayout, QFil
 from meshtastic.__main__ import main
 
 from meshtastic_flasher.info_form import InfoForm
+from meshtastic_flasher.send_text_form import SendTextForm
 
 
 class AdvancedForm(QDialog):
@@ -21,6 +22,7 @@ class AdvancedForm(QDialog):
         super(AdvancedForm, self).__init__(parent)
 
         self.info_form = InfoForm()
+        self.send_text_form = SendTextForm(self)
         self.parent = parent
 
         width = 240
@@ -35,6 +37,8 @@ class AdvancedForm(QDialog):
         self.rak_bootloader_cb.setToolTip("If enabled, the NRF52 bootloader on RAK devices will be checked and updated in DETECT step.")
         self.info_button = QPushButton("INFO")
         self.info_button.clicked.connect(self.info)
+        self.send_text_button = QPushButton("SEND TEXT")
+        self.send_text_button.clicked.connect(self.send_text)
         self.configure_from_file_button = QPushButton("Configure From File")
         self.configure_from_file_button.clicked.connect(self.configure_from_file)
         self.export_configuration_button = QPushButton("Export Configuration")
@@ -49,6 +53,7 @@ class AdvancedForm(QDialog):
         form_layout.addRow(self.tr("&Update only"), self.update_only_cb)
         form_layout.addRow(self.tr("&RAK Bootloader Update"), self.rak_bootloader_cb)
         form_layout.addRow(self.tr(""), self.info_button)
+        form_layout.addRow(self.tr(""), self.send_text_button)
         form_layout.addRow(self.tr(""), self.export_configuration_button)
         form_layout.addRow(self.tr(""), self.configure_from_file_button)
         form_layout.addRow(self.tr(""), self.clear_firmware_files_button)
@@ -56,6 +61,7 @@ class AdvancedForm(QDialog):
         self.setLayout(form_layout)
 
         self.ok_button.clicked.connect(self.close_advanced_options)
+
 
     def close_advanced_options(self):
         """Close the advanced options form"""
@@ -97,6 +103,11 @@ class AdvancedForm(QDialog):
         QMessageBox.information(self, "Info", f"Device configuration backed up to:{filename}")
 
 
+    def send_text(self):
+        """send_text clicked"""
+        self.send_text_form.run()
+
+
     def info(self):
         """meshtastic --info"""
         print('info clicked')
@@ -109,7 +120,6 @@ class AdvancedForm(QDialog):
         except SystemExit:
             pass
         sys.argv = old_sys_argv
-        #self.info_form.text.appendPlainText("hello")
         sys.stdout = old_sys_stdout
         self.info_form.show()
 
