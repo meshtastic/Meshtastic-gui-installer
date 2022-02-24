@@ -7,12 +7,18 @@
 Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmware](https://github.com/meshtastic/Meshtastic-device). It also checks and updates the [RAK 4631](https://docs.rakwireless.com/Product-Categories/WisBlock/RAK4631/Overview/) bootloader. The [LilyGo T-Echo](https://github.com/Xinyuan-LilyGO/LilyGO-T-Echo) bootloader is also checked.
 
 
-# Example showing a [T-Beam](https://meshtastic.org/docs/hardware/supported/tbeam) (esp32) device:
-<img width="806" alt="Screen Shot 2022-02-24 at 9 49 50 AM" src="https://user-images.githubusercontent.com/2219838/155582829-c06ffe00-7158-4968-8f32-20403922eb5e.png">
+# Example showing esp32 device:
+<img width="806" alt="Screen Shot 2022-02-24 at 12 39 59 PM" src="https://user-images.githubusercontent.com/2219838/155604278-4d56bf40-11b3-45a7-86b7-bff93b514c8b.png">
 
 
 # Example showing a RAK WisBlock Core RAK4631:
-<img width="806" alt="Screen Shot 2022-02-24 at 10 14 20 AM" src="https://user-images.githubusercontent.com/2219838/155583186-f5a15558-e25b-4461-80b6-dd82db034325.png">
+<img width="806" alt="Screen Shot 2022-02-24 at 12 41 05 PM" src="https://user-images.githubusercontent.com/2219838/155604298-c45ff068-c63b-4e96-af1c-820f396f036c.png">
+
+# Advanced Options
+<img width="485" alt="Screen Shot 2022-02-24 at 12 41 12 PM" src="https://user-images.githubusercontent.com/2219838/155604337-3d0632e5-941e-4a3e-832c-71e1e80adff4.png">
+
+# Settings
+<img width="1072" alt="Screen Shot 2022-02-24 at 12 41 51 PM" src="https://user-images.githubusercontent.com/2219838/155604372-64c087e9-104e-4397-94f0-7992391bca49.png">
 
 
 # Installation
