@@ -75,7 +75,7 @@ class Form(QDialog):
         self.setWindowTitle(f"Meshtastic Flasher v{__version__}{update_available}")
 
         # Create widgets
-        self.get_versions_button = QPushButton("GET VERSIONS")
+        self.get_versions_button = QPushButton("1. GET VERSIONS")
         self.get_versions_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.get_versions_button.setToolTip("Click to check for more recent firmware.")
 
@@ -84,7 +84,7 @@ class Form(QDialog):
         self.select_firmware_version.setMinimumContentsLength(18)
         self.select_firmware_version.setDisabled(True)
 
-        self.select_detect = QPushButton("DETECT DEVICE")
+        self.select_detect = QPushButton("2. DETECT DEVICE")
         self.select_detect.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.select_detect.setToolTip("Click to detect supported device and port info.")
         # Note: The text of the buttons is done in the styles, need to override it
@@ -119,7 +119,7 @@ class Form(QDialog):
         self.select_device.setMinimumContentsLength(17)
         self.select_device.setDisabled(True)
 
-        self.select_flash = QPushButton("FLASH")
+        self.select_flash = QPushButton("3. FLASH")
         self.select_flash.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.select_flash.setToolTip("Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options.")
         self.select_flash.setEnabled(False)
@@ -137,17 +137,20 @@ class Form(QDialog):
         self.logo.setStyleSheet(style_for_logo)
 
         # labels for over the drop downs/combo boxes
+        #link_style = "color:#67EA94; font-weight: bold; text-decoration: underline"
+        # this link_style gets added to tool tip too, which we do not want
         self.label_version = QLabel(self)
-        self.label_version.setText("                         Version")
-        #self.label_version.setStyleSheet("background-color: white; color: #0000FF")
+        self.label_version.setText("Version")
+        #self.label_version.setStyleSheet(link_style)
         self.label_version.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.label_version.setToolTip("Click to see more about firmare releases")
 
         self.label_port = QLabel(self)
-        self.label_port.setText("                           Port")
+        self.label_port.setText("Port")
 
         self.label_device = QLabel(self)
-        self.label_device.setText("                        Device")
+        self.label_device.setText("Device")
+        #self.label_device.setStyleSheet(link_style)
         self.label_device.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.label_device.setToolTip("Click to see more about Meshtastic supported devices")
 
@@ -157,7 +160,9 @@ class Form(QDialog):
         self.settings_button = QPushButton("DEVICE SETTINGS")
         cog_icon = QIcon(meshtastic_flasher.util.get_path(COG_FILENAME))
         self.settings_button.setIcon(cog_icon)
-        self.settings_button.setIconSize(BUTTON_ICON_SIZE)
+        self.settings_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
+        self.settings_button.setFixedHeight(20)
+        self.settings_button.setStyleSheet("border:none")
         self.settings_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.settings_button.setToolTip("Click for device Settings.")
 
@@ -177,9 +182,11 @@ class Form(QDialog):
         info_layout = QHBoxLayout()
         info_layout.addWidget(self.options_button, alignment=QtCore.Qt.AlignRight)
         info_layout.addStretch(1)
+        info_layout.addWidget(self.settings_button, alignment=QtCore.Qt.AlignLeft)
+        info_layout.addStretch(1)
         info_layout.addWidget(self.about_button)
         info_layout.addWidget(self.help_button)
-        info_layout.setContentsMargins(0, 5, 10, 0)
+        info_layout.setContentsMargins(0, 10, 10, 0)
 
         logo_layout = QVBoxLayout()
         if self.logo:
@@ -189,16 +196,16 @@ class Form(QDialog):
         detect_layout.addStretch(1)
         detect_layout.addWidget(self.get_versions_button)
         detect_layout.addWidget(self.select_detect)
-        detect_layout.addWidget(self.settings_button)
-        #detect_layout.addWidget(self.options_button)
         detect_layout.setContentsMargins(0, 0, 0, 0)
         detect_layout.addStretch(1)
 
         label_layout = QHBoxLayout()
         label_layout.addWidget(self.label_version)
+        label_layout.addStretch(1)
         label_layout.addWidget(self.label_port)
+        label_layout.addStretch(1)
         label_layout.addWidget(self.label_device)
-        label_layout.setContentsMargins(0, 0, 0, 0)
+        label_layout.setContentsMargins(60, 0, 90, 0)
 
         button_layout = QHBoxLayout()
         button_layout.addStretch(1)
@@ -230,7 +237,7 @@ class Form(QDialog):
         self.setLayout(main_layout)
 
         # move version
-        self.label_detected_meshtastic_version.move(15, 310)
+        self.label_detected_meshtastic_version.move(30, 320)
         self.label_detected_meshtastic_version.show()
 
         #self.settings_button.move(400, 270)
@@ -960,7 +967,7 @@ class Form(QDialog):
             all_settings_msg = ''
         confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
         confirm_msg += f'{self.port}\n{self.device}?\n\n{all_settings_msg}'
-        reply = QMessageBox.question(self, 'Flash', confirm_msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        reply = QMessageBox.question(self, 'Flash', confirm_msg, QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
             want_to_proceed = True
             print("User confirmed they want to flash")
@@ -975,7 +982,7 @@ class Form(QDialog):
         """
         want_to_check = False
         msg = 'Does the device currently have Meshtastic version 1.2 or greater?'
-        reply = QMessageBox.question(self, 'Question', msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        reply = QMessageBox.question(self, 'Question', msg, QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
             want_to_check = True
             print("User confirmed the device has Meshtastic so we will check using the Meshtastic python method")
