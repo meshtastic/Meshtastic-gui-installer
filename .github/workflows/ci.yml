@@ -28,6 +28,10 @@ jobs:
         pip install -r requirements.txt
         pip install .
 
+    - name: Ensure all doc_url values are valid
+      run: |
+        python -m bin/url_check.py
+
     - name: Run tests
       run: |
         pytest --cov-report xml --cov meshtastic_flasher
