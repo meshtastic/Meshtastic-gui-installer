@@ -10,6 +10,7 @@ import ssl
 import re
 import subprocess
 import webbrowser
+import zipfile
 import psutil
 
 import serial
@@ -687,6 +688,30 @@ class Form(QDialog):
                 if is_techo:
                     if not techo_bootloader_current:
                         print("t-echo bootloader is not current")
+                        if self.confirm_update_techo_bootloader():
+                            bootloader_zip_url = "https://github.com/lyusupov/SoftRF/blob/master/software/firmware/binaries/nRF52840/Adafruit_nRF52_Bootloader/LilyGO_TEcho_bootloader-0.6.1.zip?raw=true"
+                            bootloader_zip_filename = "LilyGO_TEcho_bootloader-0.6.1.zip"
+                            utf_filename = "update-lilygo_techo_bootloader-0.6.1_nosd.uf2"
+                            if not os.path.exists(utf_filename):
+                                print(f'do not have the {utf_filename} locally')
+                                # we do not have the extracted filename, see if we have the zip file
+                                if not os.path.exists(bootloader_zip_filename):
+                                    print(f"Need to download the {bootloader_zip_filename} downloading...")
+                                    ssl._create_default_https_context = ssl._create_unverified_context
+                                    urllib.request.urlretrieve(bootloader_zip_url, bootloader_zip_filename)
+                                    print("done downloading")
+                                    with zipfile.ZipFile(bootloader_zip_filename, 'r') as zip_ref:
+                                        # extract one file
+                                        zip_ref.extract(utf_filename)
+                            if not os.path.exists(utf_filename):
+                                print(f'Warning: Still do not have the {utf_filename} locally.')
+                                QMessageBox.warning(self, "Warning", 'There was an issue downloading/extracting.')
+                            else:
+                                dest = f'{self.select_port.currentText()}/{utf_filename}'
+                                print(f'copying file:{utf_filename} to dest:{dest}')
+                                shutil.copyfile(utf_filename, dest)
+                                print('done copying')
+                                QMessageBox.information(self, "Info", 'T-Echo bootloader updated.\n\nWait for it to reboot.')
                 else:
                     if (not rak_bootloader_current) and (not self.advanced_form.rak_bootloader_cb.isChecked()):
                         print('rak bootloader is not current')
@@ -950,6 +975,21 @@ class Form(QDialog):
         else:
             print('update only is not checked')
         return update_only_message
+
+
+    def confirm_update_techo_bootloader(self):
+        """Prompt the user to confirm if they want to proceed with the updating the T-Echo bootloader.
+           Returns True if user answered Yes, otherwise returns False
+        """
+        want_to_proceed = False
+        confirm_msg = 'Do you want to update the T-Echo bootloader?'
+        reply = QMessageBox.question(self, 'Update', confirm_msg, QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            want_to_proceed = True
+            print("User confirmed they want to update the techo bootloader")
+        else:
+            print("User does not want to update the techo bootloader")
+        return want_to_proceed
 
 
     def confirm_flash_question(self, update_only_message):

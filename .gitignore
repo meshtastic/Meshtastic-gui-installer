@@ -146,6 +146,9 @@ sd_bl.bin
 sd_bl.dat
 manifest.json
 
+# T-Echo bootloader file
+*.uf2
+
 # ignore backup files
 *.yaml
 
