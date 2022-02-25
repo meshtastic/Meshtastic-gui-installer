@@ -17,7 +17,7 @@
     },
     "canned_message_plugin_about": {
         "label": "Canned Message Plugin",
-        "doc_url": "https://meshtastic.org/docs/settings/canned-message-plugin2"
+        "doc_url": "https://meshtastic.org/docs/settings/canned-message-plugin"
     },
     "canned_message_plugin_allow_input_source": {
         "label": "Allow Input Source",
