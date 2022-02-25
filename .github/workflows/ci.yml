@@ -30,7 +30,7 @@ jobs:
 
     - name: Ensure all doc_url values are valid
       run: |
-        python -m bin/url_check.py
+        bin/url_check.py
 
     - name: Run tests
       run: |
