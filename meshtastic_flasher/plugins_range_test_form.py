@@ -32,7 +32,7 @@ class RangeTestForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.range_test_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/range-test-plugin'>More info</a>")
+        self.range_test_about = QLabel(self.parent.parent.doc_url('range_test_plugin_about'))
         self.range_test_about.setOpenExternalLinks(True)
         self.range_test_about.setTextFormat(QtCore.Qt.RichText)
         self.range_test_about.setToolTip("Link shows more info about the settings for this plugin.")
@@ -51,7 +51,7 @@ class RangeTestForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow("Range Test Plugin", self.range_test_about)
+        form_layout.addRow(self.parent.parent.label("range_test_plugin_about"), self.range_test_about)
         form_layout.addRow(self.parent.parent.label("range_test_plugin_enabled"), self.range_test_plugin_enabled)
         form_layout.addRow(self.parent.parent.label("range_test_plugin_save"), self.range_test_plugin_save)
         form_layout.addRow(self.parent.parent.label("range_test_plugin_sender"), self.range_test_plugin_sender)

@@ -31,7 +31,7 @@ class CannedMessageForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.canned_message_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/canned-message-plugin'>More info</a>")
+        self.canned_message_about = QLabel(self.parent.parent.doc_url('canned_message_plugin_about'))
         self.canned_message_about.setOpenExternalLinks(True)
         self.canned_message_about.setTextFormat(QtCore.Qt.RichText)
         self.canned_message_about.setToolTip("Link shows more info about the settings for this plugin.")
@@ -52,7 +52,7 @@ class CannedMessageForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow("Canned Message Plugin", self.canned_message_about)
+        form_layout.addRow(self.parent.parent.label("canned_message_plugin_about"), self.canned_message_about)
         form_layout.addRow(self.parent.parent.label("canned_message_plugin_enabled"), self.canned_message_plugin_enabled)
         form_layout.addRow(self.parent.parent.label("canned_message_plugin_send_bell"), self.canned_message_plugin_send_bell)
         form_layout.addRow(self.parent.parent.label("canned_message_plugin_allow_input_source"), self.canned_message_plugin_allow_input_source)

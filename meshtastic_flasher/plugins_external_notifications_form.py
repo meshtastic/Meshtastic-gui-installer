@@ -32,7 +32,7 @@ class ExternalNotificationsForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.ext_notification_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/external-notification-plugin'>More info</a>")
+        self.ext_notification_about = QLabel(self.parent.parent.doc_url('ext_notification_plugin_about'))
         self.ext_notification_about.setOpenExternalLinks(True)
         self.ext_notification_about.setTextFormat(QtCore.Qt.RichText)
         self.ext_notification_about.setToolTip("Link shows more info about the settings for this plugin.")
@@ -57,7 +57,7 @@ class ExternalNotificationsForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow("External Notification Plugin", self.ext_notification_about)
+        form_layout.addRow(self.parent.parent.label("ext_notification_plugin_about"), self.ext_notification_about)
         form_layout.addRow(self.parent.parent.label("ext_notification_plugin_enabled"), self.ext_notification_plugin_enabled)
         form_layout.addRow(self.parent.parent.label("ext_notification_plugin_active"), self.ext_notification_plugin_active)
         form_layout.addRow(self.parent.parent.label("ext_notification_plugin_alert_bell"), self.ext_notification_plugin_alert_bell)

@@ -32,7 +32,7 @@ class RotaryEncoderForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.rotary1_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/rotary-encoder-plugin'>More info</a>")
+        self.rotary1_about = QLabel(self.parent.parent.doc_url('rotary1_about'))
         self.rotary1_about.setOpenExternalLinks(True)
         self.rotary1_about.setTextFormat(QtCore.Qt.RichText)
         self.rotary1_about.setToolTip("Link shows more info about the settings for this plugin.")
@@ -62,7 +62,7 @@ class RotaryEncoderForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow("Rotary Encoder Plugin", self.rotary1_about)
+        form_layout.addRow(self.parent.parent.label("rotary1_about"), self.rotary1_about)
         form_layout.addRow(self.parent.parent.label("rotary1_enabled"), self.rotary1_enabled)
         form_layout.addRow(self.parent.parent.label("rotary1_event_cw"), self.rotary1_event_cw)
         form_layout.addRow(self.parent.parent.label("rotary1_event_ccw"), self.rotary1_event_ccw)
