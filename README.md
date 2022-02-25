@@ -4,7 +4,7 @@
 [![codecov](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer/branch/master/graph/badge.svg?token=CEnDhjIJFU)](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/meshtastic-flasher)
 
-Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmware](https://github.com/meshtastic/Meshtastic-device). It also checks and updates the [RAK 4631](https://docs.rakwireless.com/Product-Categories/WisBlock/RAK4631/Overview/) bootloader. The [LilyGo T-Echo](https://github.com/Xinyuan-LilyGO/LilyGO-T-Echo) bootloader is also checked.
+Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmware](https://github.com/meshtastic/Meshtastic-device). It also checks and updates the [RAK 4631](https://docs.rakwireless.com/Product-Categories/WisBlock/RAK4631/Overview/) and [LilyGo T-Echo](https://github.com/Xinyuan-LilyGO/LilyGO-T-Echo) bootloaders.
 
 
 # Example showing esp32 device:
@@ -231,10 +231,10 @@ The options are:
 
 # Other options
 
-* The ability to change some settings (more to settings will be added). To access the Settings page, detect a device then either press the "S" for Settings (or click on the "cog" wheel)
-* The ability to do a "factory reset" is an options in the Settings page, Admin tab
-* The "H" will show the "Hotkeys" that are available
-* The "T" hotkey will show tips
+* The ability to change Device Settings has been added.
+* The ability to do a "factory reset" is an options in the Settings page (Admin tab).
+* "Hotkeys" and "Tips" are also options
+* Advanced options has several capabilities: view the equivalent of `meshtastic --info`, backup Device configuration to yaml file, restore Device configuration from yaml file, and send a simple text message
 
 # Installation for Development
 
