@@ -6,6 +6,7 @@ import requests
 from meshtastic_flasher.util import load_fields
 
 def url_checker(url):
+    """Check if the url is a valid url aka "200"""
     retval = False
     if url != '':
         try:
