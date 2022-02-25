@@ -110,6 +110,17 @@ QTabBar::tab:only-one {
         return retval
 
 
+    def doc_url(self, field):
+        """Return the doc_url enriched with html for a field"""
+        retval = ""
+        if self.fields:
+            if field in self.fields:
+                if 'doc_url' in self.fields[field]:
+                    doc_url = self.fields[field]['doc_url']
+                    retval = f"<a href='{doc_url}' style='color:#67EA94'>More info</a>"
+        return retval
+
+
     def max_size(self, field):
         """Return the max_size for a field"""
         retval = 0

@@ -32,7 +32,7 @@ class EnvironmentalMeasurementForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.environmental_measurement_plugin_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/environmental-measurement-plugin'>More info</a>")
+        self.environmental_measurement_plugin_about = QLabel(self.parent.parent.doc_url('environmental_measurement_plugin_about'))
         self.environmental_measurement_plugin_about.setOpenExternalLinks(True)
         self.environmental_measurement_plugin_about.setTextFormat(QtCore.Qt.RichText)
         self.environmental_measurement_plugin_about.setToolTip("Link shows more info about the settings for this plugin.")
@@ -62,7 +62,7 @@ class EnvironmentalMeasurementForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow("Environmental Measurement Plugin", self.environmental_measurement_plugin_about)
+        form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_about"), self.environmental_measurement_plugin_about)
         form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_measurement_enabled"), self.environmental_measurement_plugin_measurement_enabled)
         form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_display_farenheit"), self.environmental_measurement_plugin_display_farenheit)
         form_layout.addRow(self.parent.parent.label("environmental_measurement_plugin_read_error_count_threshold"), self.environmental_measurement_plugin_read_error_count_threshold)

@@ -32,7 +32,7 @@ class SerialForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.serialplugin_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/serial-plugin'>More info</a>")
+        self.serialplugin_about = QLabel(self.parent.parent.doc_url('serialplugin_about'))
         self.serialplugin_about.setOpenExternalLinks(True)
         self.serialplugin_about.setTextFormat(QtCore.Qt.RichText)
         self.serialplugin_about.setToolTip("Link shows more info about the settings for this plugin.")
@@ -57,13 +57,13 @@ class SerialForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow("Serial Plugin", self.serialplugin_about)
-        form_layout.addRow(self.tr("Enabled?"), self.serialplugin_enabled)
-        form_layout.addRow(self.tr("Echo?"), self.serialplugin_echo)
-        form_layout.addRow(self.tr("Mode"), self.serialplugin_mode)
-        form_layout.addRow(self.tr("TXD"), self.serialplugin_txd)
-        form_layout.addRow(self.tr("RXD"), self.serialplugin_rxd)
-        form_layout.addRow(self.tr("Timeout"), self.serialplugin_timeout)
+        form_layout.addRow(self.parent.parent.label("serialplugin_about"), self.serialplugin_about)
+        form_layout.addRow(self.parent.parent.label("serialplugin_enabled"), self.serialplugin_enabled)
+        form_layout.addRow(self.parent.parent.label("serialplugin_echo"), self.serialplugin_echo)
+        form_layout.addRow(self.parent.parent.label("serialplugin_mode"), self.serialplugin_mode)
+        form_layout.addRow(self.parent.parent.label("serialplugin_txd"), self.serialplugin_txd)
+        form_layout.addRow(self.parent.parent.label("serialplugin_rxd"), self.serialplugin_rxd)
+        form_layout.addRow(self.parent.parent.label("serialplugin_timeout"), self.serialplugin_timeout)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 

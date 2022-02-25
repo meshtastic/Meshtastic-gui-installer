@@ -15,6 +15,10 @@
         "label": "Bandwidth (MHz)",
         "description": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz."
     },
+    "canned_message_plugin_about": {
+        "label": "Canned Message Plugin",
+        "doc_url": "https://meshtastic.org/docs/settings/canned-message-plugin"
+    },
     "canned_message_plugin_allow_input_source": {
         "label": "Allow Input Source",
         "description": "Input event origin accepted by the canned message plugin. Can be e.g. 'rotEnc1' or keyword '_any'."
@@ -51,6 +55,10 @@
         "label": "Downlink Enabled?",
         "description": "If set, messages seen on the internet will be forwarded to the local mesh."
     },
+    "environmental_measurement_plugin_about": {
+        "label": "Environmental Measurement Plugin",
+        "doc_url": "https://meshtastic.org/docs/settings/environmental-measurement-plugin"
+    },
     "environmental_measurement_plugin_display_farenheit": {
         "label": "Display Temperature in Farenheit?",
         "description": "If set, the temperature will be displayed in Farenheit."
@@ -82,6 +90,10 @@
     "environmental_measurement_plugin_update_interval": {
         "label": "Update Interval (seconds)",
         "description": "Interval in seconds of how often we should try to send our measurements to the mesh."
+    },
+    "ext_notification_plugin_about": {
+        "label": "External Notification Plugin",
+        "doc_url": "https://meshtastic.org/docs/settings/external-notification-plugin"
     },
     "ext_notification_plugin_active": {
         "label": "Active?",
@@ -287,6 +299,10 @@
         "label": "Position flags (calculated)",
         "description": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags."
     },
+    "range_test_plugin_about": {
+        "label": "Range Test Plugin",
+        "doc_url": "https://meshtastic.org/docs/settings/range-test-plugin"
+    },
     "range_test_plugin_enabled": {
         "label": "Enabled?",
         "description": "If set, the Range Test Plugin is enabled."
@@ -306,6 +322,10 @@
     "role": {
         "label": "Role",
         "description": "How this channel is being used (or not not being used)."
+    },
+    "rotary1_about": {
+        "label": "Rotary Encoder Plugin",
+        "doc_url": "https://meshtastic.org/docs/settings/rotary-encoder-plugin"
     },
     "rotary1_enabled": {
         "label": "Enabled?",
@@ -351,6 +371,10 @@
         "label": "Serial Disabled?",
         "description": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI)."
     },
+    "serialplugin_about": {
+        "label": "Serial Plugin",
+        "doc_url": "https://meshtastic.org/docs/settings/serial-plugin"
+    },
     "serialplugin_echo": {
         "label": "Echo?",
         "description": "TBD"
@@ -383,6 +407,10 @@
     "spread_factor": {
         "label": "Spread Factor",
         "description": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor."
+    },
+    "store_forward_plugin_about": {
+        "label": "Store and Forward Plugin",
+        "doc_url": "https://meshtastic.org/docs/software/plugins/store-forward-plugin"
     },
     "store_forward_plugin_enabled": {
         "label": "Enabled?",

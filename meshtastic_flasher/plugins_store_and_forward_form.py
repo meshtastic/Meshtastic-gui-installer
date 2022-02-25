@@ -32,7 +32,7 @@ class StoreAndForwardForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.store_forware_plugin_about = QLabel("<a href='https://meshtastic.org/docs/software/settings/store-and-forward-plugin'>More info</a>")
+        self.store_forware_plugin_about = QLabel(self.parent.parent.doc_url('store_forware_plugin_about'))
         self.store_forware_plugin_about.setOpenExternalLinks(True)
         self.store_forware_plugin_about.setTextFormat(QtCore.Qt.RichText)
         self.store_forware_plugin_about.setToolTip("Link shows more info about the settings for this plugin.")
@@ -55,7 +55,7 @@ class StoreAndForwardForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow("Store and Forward Plugin", self.store_forware_plugin_about)
+        form_layout.addRow(self.parent.parent.label("store_forware_plugin_about"), self.store_forware_plugin_about)
         form_layout.addRow(self.parent.parent.label("store_forward_plugin_enabled"), self.store_forward_plugin_enabled)
         form_layout.addRow(self.parent.parent.label("store_forward_plugin_heartbeat"), self.store_forward_plugin_heartbeat)
         form_layout.addRow(self.parent.parent.label("store_forward_plugin_history_return_max"), self.store_forward_plugin_history_return_max)
