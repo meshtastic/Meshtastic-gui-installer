@@ -146,7 +146,11 @@ class Wifi_and_MQTT_Form(QDialog):
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'wifi_ap_mode', f'{self.wifi_ap_mode.isChecked()}' )
                 setPref(prefs, 'wifi_ssid', self.wifi_ssid.text())
-                setPref(prefs, 'wifi_password', self.wifi_password.text())
+                # only write the password if is not the "obscured" password
+                if self.wifi_password.text() != 'sekrit':
+                    setPref(prefs, 'wifi_password', self.wifi_password.text())
+                else:
+                    print('Not saving the password.')
                 setPref(prefs, 'mqtt_disabled', f'{self.mqtt_disabled.isChecked()}' )
                 setPref(prefs, 'mqtt_server', self.mqtt_server.text())
                 setPref(prefs, 'mqtt_username', self.mqtt_username.text())
