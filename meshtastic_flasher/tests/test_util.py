@@ -20,7 +20,7 @@ def test_get_path():
 def test_populate_tag_in_firmware_dropdown():
     """Test populate_tag_in_firmware_dropdown()"""
     assert populate_tag_in_firmware_dropdown("v1.2.52.foo")
-    assert not populate_tag_in_firmware_dropdown("v1.2.51.foo")
+    assert populate_tag_in_firmware_dropdown("v1.2.51.foo")
 
 
 def test_tag_to_version():
@@ -49,7 +49,7 @@ def test_get_tags_got_no_tags(fake_get_tags):
 def test_get_tags_got_some_tags(fake_get_tags):
     """Test get_tags() when we got some tags"""
     tags = get_tags()
-    assert len(tags) == 2
+    assert len(tags) == 3
     fake_get_tags.assert_called()
 
 
