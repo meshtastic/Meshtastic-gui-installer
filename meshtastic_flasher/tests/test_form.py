@@ -20,7 +20,7 @@ def test_Form_title(fake_versions, fake_check_newer, qtbot):
     """Test for title var in Form"""
     widget = Form()
     qtbot.addWidget(widget)
-    assert re.search(r'Meshtastic Flasher v1.0.', widget.windowTitle(), re.MULTILINE)
+    assert re.search(r'Meshtastic Flasher v1.', widget.windowTitle(), re.MULTILINE)
     fake_versions.assert_called()
     fake_check_newer.assert_called()
 
