@@ -83,45 +83,44 @@ class Wifi_and_MQTT_Form(QDialog):
         """load the form"""
         self.port = port
         self.interface = interface
-        print(f'port:{port}')
         if self.port:
-            print(f'using port:{self.port}')
             self.get_prefs()
-            print(f'prefs:{self.prefs}')
 
-            if self.prefs.wifi_ap_mode and self.prefs.wifi_ap_mode is True:
-                self.wifi_ap_mode.setChecked(True)
+            if self.prefs:
 
-            if self.prefs.wifi_ssid:
-                self.wifi_ssid.setText(self.prefs.wifi_ssid)
-            else:
-                self.wifi_ssid.setText("")
+                if self.prefs.wifi_ap_mode and self.prefs.wifi_ap_mode is True:
+                    self.wifi_ap_mode.setChecked(True)
 
-            if self.prefs.wifi_password:
-                self.wifi_password.setText(self.prefs.wifi_password)
-            else:
-                self.wifi_password.setText("")
+                if self.prefs.wifi_ssid:
+                    self.wifi_ssid.setText(self.prefs.wifi_ssid)
+                else:
+                    self.wifi_ssid.setText("")
 
-            if self.prefs.mqtt_disabled and self.prefs.mqtt_disabled is True:
-                self.mqtt_disabled.setChecked(True)
+                if self.prefs.wifi_password:
+                    self.wifi_password.setText(self.prefs.wifi_password)
+                else:
+                    self.wifi_password.setText("")
 
-            if self.prefs.mqtt_server:
-                self.mqtt_server.setText(self.prefs.mqtt_server)
-            else:
-                self.mqtt_server.setText("")
+                if self.prefs.mqtt_disabled and self.prefs.mqtt_disabled is True:
+                    self.mqtt_disabled.setChecked(True)
 
-            if self.prefs.mqtt_username:
-                self.mqtt_username.setText(self.prefs.mqtt_username)
-            else:
-                self.mqtt_username.setText("")
+                if self.prefs.mqtt_server:
+                    self.mqtt_server.setText(self.prefs.mqtt_server)
+                else:
+                    self.mqtt_server.setText("")
 
-            if self.prefs.mqtt_password:
-                self.mqtt_password.setText(self.prefs.mqtt_password)
-            else:
-                self.mqtt_password.setText("")
+                if self.prefs.mqtt_username:
+                    self.mqtt_username.setText(self.prefs.mqtt_username)
+                else:
+                    self.mqtt_username.setText("")
 
-            if self.prefs.mqtt_encryption_enabled and self.prefs.mqtt_encryption_enabled is True:
-                self.mqtt_encryption_enabled.setChecked(True)
+                if self.prefs.mqtt_password:
+                    self.mqtt_password.setText(self.prefs.mqtt_password)
+                else:
+                    self.mqtt_password.setText("")
+
+                if self.prefs.mqtt_encryption_enabled and self.prefs.mqtt_encryption_enabled is True:
+                    self.mqtt_encryption_enabled.setChecked(True)
 
             self.show()
 
