@@ -140,3 +140,18 @@ def test_check_if_newer_version_when_problem_getting_pypi(patched_requests_get):
     with patch('meshtastic_flasher.version.__version__', '1.2.3'):
         result = check_if_newer_version()
         assert result is False
+
+
+@patch('requests.get')
+def test_check_if_newer_version_when_on_alpha(patched_requests_get):
+    """Test check_if_newer_version()"""
+
+    patched_requests_get().json.return_value = {
+            "info": {
+                "version": "1.0.89"
+                }
+            }
+
+    with patch('meshtastic_flasher.version.__version__', '1.3alpha.1'):
+        result = check_if_newer_version()
+        assert result is False
