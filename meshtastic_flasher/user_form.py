@@ -55,16 +55,16 @@ class UserForm(QDialog):
         self.button_box.rejected.connect(self.reject)
 
         # create form
-        form_layout = QFormLayout()
-        form_layout.addRow(self.parent.label('device_id'), self.device_id)
-        form_layout.addRow(self.parent.label('hw_model'), self.hw_model)
-        form_layout.addRow(self.parent.label('macaddr'), self.macaddr)
-        form_layout.addRow(self.parent.label('long_name'), self.long_name)
-        form_layout.addRow(self.parent.label('short_name'), self.short_name)
-        form_layout.addRow(self.parent.label('is_licensed'), self.is_licensed)
-        form_layout.addRow(self.parent.label('team'), self.team)
-        form_layout.addRow(self.tr(""), self.button_box)
-        self.setLayout(form_layout)
+        self.form_layout = QFormLayout()
+        self.form_layout.addRow(self.parent.label('device_id'), self.device_id)
+        self.form_layout.addRow(self.parent.label('hw_model'), self.hw_model)
+        self.form_layout.addRow(self.parent.label('macaddr'), self.macaddr)
+        self.form_layout.addRow(self.parent.label('long_name'), self.long_name)
+        self.form_layout.addRow(self.parent.label('short_name'), self.short_name)
+        self.form_layout.addRow(self.parent.label('is_licensed'), self.is_licensed)
+        self.form_layout.addRow(self.parent.label('team'), self.team)
+        self.form_layout.addRow(self.tr(""), self.button_box)
+        self.setLayout(self.form_layout)
 
 
     def run(self, port=None, interface=None):
@@ -141,7 +141,7 @@ class UserForm(QDialog):
 
     def reject(self):
         """Cancel without saving"""
-        print('CANCEL button was clicked')
+        print('user CANCELLED form')
         self.parent.my_close()
 
 
