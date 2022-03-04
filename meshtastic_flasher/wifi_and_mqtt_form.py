@@ -66,17 +66,17 @@ class Wifi_and_MQTT_Form(QDialog):
 
 
         # create form
-        form_layout = QFormLayout()
-        form_layout.addRow(self.parent.label("wifi_ap_mode"), self.wifi_ap_mode)
-        form_layout.addRow(self.parent.label("wifi_ssid"), self.wifi_ssid)
-        form_layout.addRow(self.parent.label("wifi_password"), self.wifi_password)
-        form_layout.addRow(self.parent.label("mqtt_disabled"), self.mqtt_disabled)
-        form_layout.addRow(self.parent.label("mqtt_server"), self.mqtt_server)
-        form_layout.addRow(self.parent.label("mqtt_username"), self.mqtt_username)
-        form_layout.addRow(self.parent.label("mqtt_password"), self.mqtt_password)
-        form_layout.addRow(self.parent.label("mqtt_encryption_enabled"), self.mqtt_encryption_enabled)
-        form_layout.addRow(self.tr(""), self.button_box)
-        self.setLayout(form_layout)
+        self.form_layout = QFormLayout()
+        self.form_layout.addRow(self.parent.label("wifi_ap_mode"), self.wifi_ap_mode)
+        self.form_layout.addRow(self.parent.label("wifi_ssid"), self.wifi_ssid)
+        self.form_layout.addRow(self.parent.label("wifi_password"), self.wifi_password)
+        self.form_layout.addRow(self.parent.label("mqtt_disabled"), self.mqtt_disabled)
+        self.form_layout.addRow(self.parent.label("mqtt_server"), self.mqtt_server)
+        self.form_layout.addRow(self.parent.label("mqtt_username"), self.mqtt_username)
+        self.form_layout.addRow(self.parent.label("mqtt_password"), self.mqtt_password)
+        self.form_layout.addRow(self.parent.label("mqtt_encryption_enabled"), self.mqtt_encryption_enabled)
+        self.form_layout.addRow(self.tr(""), self.button_box)
+        self.setLayout(self.form_layout)
 
 
     def run(self, port=None, interface=None):
@@ -130,7 +130,7 @@ class Wifi_and_MQTT_Form(QDialog):
         """Get preferences from device"""
         try:
             if self.interface is None:
-                print('interface was none?')
+                print('interface was none')
                 self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
@@ -163,7 +163,7 @@ class Wifi_and_MQTT_Form(QDialog):
 
     def reject(self):
         """Cancel without saving"""
-        print('CANCEL button was clicked')
+        print('user CANCELLED form')
         self.parent.my_close()
 
 
