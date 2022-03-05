@@ -62,19 +62,19 @@ class RadioForm(QDialog):
 
 
         # create form
-        form_layout = QFormLayout()
-        form_layout.addRow(self.parent.label("is_router"), self.is_router)
-        form_layout.addRow(self.parent.label("region"), self.region)
-        form_layout.addRow(self.parent.label("debug_log_enabled"), self.debug_log_enabled)
-        form_layout.addRow(self.parent.label("serial_disabled"), self.serial_disabled)
-        form_layout.addRow(self.parent.label("auto_screen_carousel_secs"), self.auto_screen_carousel_secs)
-        form_layout.addRow(self.parent.label("frequency_offset"), self.frequency_offset)
-        form_layout.addRow(self.parent.label("hop_limit"), self.hop_limit)
-        #form_layout.addRow(self.parent.label("Ignore Incoming"), self.ignore_incoming)
-        form_layout.addRow(self.parent.label("is_lora_tx_disabled"), self.is_lora_tx_disabled)
-        form_layout.addRow(self.parent.label("send_owner_interval"), self.send_owner_interval)
-        form_layout.addRow(self.tr(""), self.button_box)
-        self.setLayout(form_layout)
+        self.form_layout = QFormLayout()
+        self.form_layout.addRow(self.parent.label("is_router"), self.is_router)
+        self.form_layout.addRow(self.parent.label("region"), self.region)
+        self.form_layout.addRow(self.parent.label("debug_log_enabled"), self.debug_log_enabled)
+        self.form_layout.addRow(self.parent.label("serial_disabled"), self.serial_disabled)
+        self.form_layout.addRow(self.parent.label("auto_screen_carousel_secs"), self.auto_screen_carousel_secs)
+        self.form_layout.addRow(self.parent.label("frequency_offset"), self.frequency_offset)
+        self.form_layout.addRow(self.parent.label("hop_limit"), self.hop_limit)
+        #self.form_layout.addRow(self.parent.label("Ignore Incoming"), self.ignore_incoming)
+        self.form_layout.addRow(self.parent.label("is_lora_tx_disabled"), self.is_lora_tx_disabled)
+        self.form_layout.addRow(self.parent.label("send_owner_interval"), self.send_owner_interval)
+        self.form_layout.addRow(self.tr(""), self.button_box)
+        self.setLayout(self.form_layout)
 
 
     def run(self, port=None, interface=None):
@@ -91,60 +91,62 @@ class RadioForm(QDialog):
         """Get values from device"""
         try:
             if self.interface is None:
-                print('interface was none?')
+                print('interface was none')
                 self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.is_router and self.prefs.is_router is True:
-                    self.is_router.setChecked(True)
+                if self.prefs:
 
-                tmp_r = 'Unset'
-                if self.prefs.region:
-                    tmp_r = self.prefs.region
-                    print(f'tmp_r:{tmp_r}')
-                count = 0
-                self.region.clear()
-                desc = meshtastic.radioconfig_pb2.RegionCode.DESCRIPTOR
-                for k,v in desc.values_by_name.items():
-                    self.region.addItem(k, v.number)
-                    if v.number == tmp_r:
-                        self.region.setCurrentIndex(count)
-                    count = count + 1
+                    if self.prefs.is_router and self.prefs.is_router is True:
+                        self.is_router.setChecked(True)
 
-                if self.prefs.debug_log_enabled and self.prefs.debug_log_enabled is True:
-                    self.debug_log_enabled.setChecked(True)
+                    tmp_r = 'Unset'
+                    if self.prefs.region:
+                        tmp_r = self.prefs.region
+                        print(f'tmp_r:{tmp_r}')
+                    count = 0
+                    self.region.clear()
+                    desc = meshtastic.radioconfig_pb2.RegionCode.DESCRIPTOR
+                    for k,v in desc.values_by_name.items():
+                        self.region.addItem(k, v.number)
+                        if v.number == tmp_r:
+                            self.region.setCurrentIndex(count)
+                        count = count + 1
 
-                if self.prefs.serial_disabled and self.prefs.serial_disabled is True:
-                    self.serial_disabled.setChecked(True)
+                    if self.prefs.debug_log_enabled and self.prefs.debug_log_enabled is True:
+                        self.debug_log_enabled.setChecked(True)
 
-                if self.prefs.auto_screen_carousel_secs:
-                    self.auto_screen_carousel_secs.setText(f'{self.prefs.auto_screen_carousel_secs}')
-                else:
-                    self.auto_screen_carousel_secs.setText("0")
+                    if self.prefs.serial_disabled and self.prefs.serial_disabled is True:
+                        self.serial_disabled.setChecked(True)
 
-                if self.prefs.frequency_offset:
-                    self.frequency_offset.setText(f'{self.prefs.frequency_offset}')
-                else:
-                    self.frequency_offset.setText("0")
+                    if self.prefs.auto_screen_carousel_secs:
+                        self.auto_screen_carousel_secs.setText(f'{self.prefs.auto_screen_carousel_secs}')
+                    else:
+                        self.auto_screen_carousel_secs.setText("0")
 
-                if self.prefs.hop_limit:
-                    self.hop_limit.setText(f'{self.prefs.hop_limit}')
-                else:
-                    self.hop_limit.setText("0")
+                    if self.prefs.frequency_offset:
+                        self.frequency_offset.setText(f'{self.prefs.frequency_offset}')
+                    else:
+                        self.frequency_offset.setText("0")
 
-#                if self.prefs.ignore_incoming:
-#                    self.ignore_incoming.setText(f'{self.prefs.ignore_incoming}')
-#                else:
-#                    self.ignore_incoming.setText("0")
+                    if self.prefs.hop_limit:
+                        self.hop_limit.setText(f'{self.prefs.hop_limit}')
+                    else:
+                        self.hop_limit.setText("0")
 
-                if self.prefs.is_lora_tx_disabled and self.prefs.is_lora_tx_disabled is True:
-                    self.is_lora_tx_disabled.setChecked(True)
+    #                if self.prefs.ignore_incoming:
+    #                    self.ignore_incoming.setText(f'{self.prefs.ignore_incoming}')
+    #                else:
+    #                    self.ignore_incoming.setText("0")
 
-                if self.prefs.send_owner_interval:
-                    self.send_owner_interval.setText(f'{self.prefs.send_owner_interval}')
-                else:
-                    self.send_owner_interval.setText("0")
+                    if self.prefs.is_lora_tx_disabled and self.prefs.is_lora_tx_disabled is True:
+                        self.is_lora_tx_disabled.setChecked(True)
+
+                    if self.prefs.send_owner_interval:
+                        self.send_owner_interval.setText(f'{self.prefs.send_owner_interval}')
+                    else:
+                        self.send_owner_interval.setText("0")
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -174,7 +176,7 @@ class RadioForm(QDialog):
 
     def reject(self):
         """Cancel without saving"""
-        print('CANCEL button was clicked')
+        print('user CANCELLED form')
         self.parent.my_close()
 
 
