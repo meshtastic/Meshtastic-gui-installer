@@ -238,7 +238,7 @@ class Form(QDialog):
         self.setLayout(main_layout)
 
         # move version
-        self.label_detected_meshtastic_version.move(30, 320)
+        self.label_detected_meshtastic_version.move(30, 300)
         self.label_detected_meshtastic_version.show()
 
         #self.settings_button.move(400, 270)
