@@ -20,10 +20,19 @@ Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmwar
 # Settings
 <img width="1072" alt="Screen Shot 2022-02-24 at 12 41 51 PM" src="https://user-images.githubusercontent.com/2219838/155604372-64c087e9-104e-4397-94f0-7992391bca49.png">
 
+# Installation via MacApp
 
-# Installation
+* If using MacOS, you can download the https://github.com/meshtastic/Meshtastic-gui-installer/releases/tag/macapp1.0.0
+
+# Installation via WinApp
+
+* If using Windows, you can download the https://github.com/meshtastic/Meshtastic-gui-installer/releases/tag/winapp1.0.0
+
+# Installation via Single Executable
 
 * For the single file executable see [Releases](https://github.com/meshtastic/Meshtastic-gui-installer/releases). There is a readme.txt that shows the steps to get started.
+
+# Installation via Pip
 
 * Steps to install from [PyPi](https://pypi.org/project/meshtastic-flasher/) (if you do not want the single executable method described above):
 
