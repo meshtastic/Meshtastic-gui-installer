@@ -49,14 +49,14 @@ class FixedPositionForm(QDialog):
         self.button_box.rejected.connect(self.reject)
 
         # create form
-        form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("fixed_position"), self.fixed_position)
-        form_layout.addRow("", self.get_location_using_ip_button)
-        form_layout.addRow(self.parent.parent.label("lat"), self.lat)
-        form_layout.addRow(self.parent.parent.label("lon"), self.lon)
-        form_layout.addRow(self.parent.parent.label("alt"), self.alt)
-        form_layout.addRow(self.tr(""), self.button_box)
-        self.setLayout(form_layout)
+        self.form_layout = QFormLayout()
+        self.form_layout.addRow(self.parent.parent.label("fixed_position"), self.fixed_position)
+        self.form_layout.addRow("", self.get_location_using_ip_button)
+        self.form_layout.addRow(self.parent.parent.label("lat"), self.lat)
+        self.form_layout.addRow(self.parent.parent.label("lon"), self.lon)
+        self.form_layout.addRow(self.parent.parent.label("alt"), self.alt)
+        self.form_layout.addRow(self.tr(""), self.button_box)
+        self.setLayout(self.form_layout)
 
 
     def run(self, port=None, interface=None):
@@ -73,13 +73,36 @@ class FixedPositionForm(QDialog):
         """Get values from device"""
         try:
             if self.interface is None:
-                print('interface was none?')
+                print('interface was none')
                 self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
-            if self.interface:
-                self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.fixed_position and self.prefs.fixed_position is True:
-                    self.fixed_position.setChecked(True)
+            if self.interface:
+                node = self.interface.getNode(BROADCAST_ADDR)
+                self.prefs = node.radioConfig.preferences
+
+                if self.prefs:
+                    # fixed_position is in prefs
+                    if self.prefs.fixed_position and self.prefs.fixed_position is True:
+                        self.fixed_position.setChecked(True)
+
+                for n in self.interface.nodes.values():
+                    if n['num'] == self.interface.myInfo.my_node_num:
+                        # 'latitude', 'longitude', and 'altitude' are in node info
+
+                        if 'latitude' in n['user']:
+                            self.lat.setText(n['user']['latitude'])
+                        else:
+                            self.lat.setText('0')
+
+                        if 'longitude' in n['user']:
+                            self.lon.setText(n['user']['longitude'])
+                        else:
+                            self.lon.setText('0')
+
+                        if 'altitude' in n['user']:
+                            self.alt.setText(n['user']['altitude'])
+                        else:
+                            self.alt.setText('0')
 
         except Exception as e:
             print(f'Exception:{e}')
