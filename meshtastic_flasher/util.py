@@ -93,7 +93,7 @@ def get_tags_from_github():
             r = repo.get_release(release.id)
             tags.append(r.tag_name)
             count = count + 1
-            if count > 5:
+            if count > 20:
                 break
     except Exception as e:
         print(e)
