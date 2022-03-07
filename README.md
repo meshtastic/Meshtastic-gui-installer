@@ -344,6 +344,8 @@ If you get this error, then install in a python virtual environment as described
 
 * Windows 10 will not work with python v3.8.0 due to issue https://stackoverflow.com/questions/56757044/pyside2-dll-load-failed-the-specified-procedure-could-not-be-found/70533728#70533728 . It has been tested on python 3.10 on Windows 10.
 
+* User reported it does not run on MacOS High Sierra.
+
 # Note to Devs
 
 Please keep code as simple as possible. PyQT has a tendency to get complicated.
