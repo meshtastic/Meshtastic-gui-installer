@@ -10,8 +10,7 @@ import requests
 
 from github import Github
 
-from meshtastic.supported_device import active_ports_on_supported_devices
-from meshtastic.util import findPorts, detect_supported_devices, detect_windows_needs_driver
+from meshtastic.util import findPorts, detect_supported_devices, detect_windows_needs_driver, active_ports_on_supported_devices
 
 import meshtastic_flasher.version
 
