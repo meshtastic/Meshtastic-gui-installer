@@ -914,6 +914,7 @@ class Form(QDialog):
         else:
             use_meshtastic_check = self.confirm_check_using_meshtastic()
             if use_meshtastic_check:
+                self.select_port.clear()
                 ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
                 print(f'from find_ports ports:{ports}')
 
