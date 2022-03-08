@@ -111,6 +111,7 @@ class AdvancedForm(QDialog):
     def info(self):
         """meshtastic --info"""
         print('info clicked')
+        self.info_form.text.clear()
         old_sys_argv = sys.argv
         old_sys_stdout = sys.stdout
         sys.stdout = self.info_form
