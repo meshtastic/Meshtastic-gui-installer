@@ -7,6 +7,7 @@ jobs:
     outputs:
       version: ${{ steps.get_version.outputs.version }}
       upload_url: ${{ steps.create_release.outputs.upload_url }}
+      new_sha: ${{ steps.commit_updated.outputs.sha }}
 
     steps:
 
@@ -18,12 +19,14 @@ jobs:
         bin/bump_version.py
 
     - name: Commit updated version.py
+      id: commit_updated
       run: |
         git config --global user.name 'github-actions'
         git config --global user.email 'bot@noreply.github.com'
         git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
         git add meshtastic_flasher/version.py
         git commit -m "bump version" && git push || echo "No changes to commit"
+        git log -n 1 --pretty=format:"%H" | tail -n 1 | awk '{print "::set-output name=sha::"$0}'
 
     - name: Get version
       id: get_version
@@ -77,7 +80,9 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ needs.release_create.outputs.new_sha }}
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
@@ -121,7 +126,9 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ needs.release_create.outputs.new_sha }}
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
@@ -160,7 +167,9 @@ jobs:
     steps:
 
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ needs.release_create.outputs.new_sha }}
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
