@@ -8,7 +8,7 @@ from unittest.mock import patch
 from meshtastic_flasher.util import (get_path, populate_tag_in_firmware_dropdown,
                                      tag_to_version, tags_to_versions, get_tags,
                                      download_if_zip_does_not_exist, unzip_if_necessary,
-                                     check_if_newer_version)
+                                     check_if_newer_version, zero_if_blank)
 
 
 def test_get_path():
@@ -28,6 +28,15 @@ def test_tag_to_version():
     assert tag_to_version('') == ''
     assert tag_to_version('v123') == '123'
     assert tag_to_version('123') == '123'
+
+
+def test_zero_if_blank():
+    """Test zero_if_blank()"""
+    assert zero_if_blank(None) == '0'
+    assert zero_if_blank('') == '0'
+    assert zero_if_blank('0') == '0'
+    assert zero_if_blank('1') == '1'
+    assert zero_if_blank('a') == '0'
 
 
 def test_tags_to_versions():
