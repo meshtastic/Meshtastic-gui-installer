@@ -1,6 +1,7 @@
 """Form for meshtastic-flasher"""
 
 import os
+import sys
 import shutil
 import ctypes
 import glob
@@ -20,6 +21,9 @@ from PySide6.QtGui import QPixmap, QCursor, QIcon
 from PySide6.QtWidgets import (QPushButton, QApplication,
                                QVBoxLayout, QHBoxLayout, QDialog, QLabel,
                                QMessageBox, QComboBox, QProgressBar)
+
+# for adafruit-nrfutil
+from nordicsemi.__main__ import cli
 
 import meshtastic
 import meshtastic.serial_interface
@@ -737,9 +741,17 @@ class Form(QDialog):
                         query_ports_again = meshtastic_flasher.util.wrapped_findPorts()
                         if len(query_ports_again) == 1:
                             port_to_use = query_ports_again[0]
-                            command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
-                            _, nrfutil_output = subprocess.getstatusoutput(command)
-                            print(nrfutil_output)
+                            # This will not work with single .exe, so we need to call it directly from python
+                            #command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
+                            #_, nrfutil_output = subprocess.getstatusoutput(command)
+                            #print(nrfutil_output)
+                            old_sys_argv = sys.argv
+                            sys.argv = ['', '--verbose', 'dfu', 'serial', '--package', f'{bootloader_zip_filename}', '-p', f'{port_to_use}', '-b', '115200', '--singlebank', '--touch', '1200']
+                            try:
+                                cli.main()
+                            except SystemExit:
+                                pass
+                            sys.argv = old_sys_argv
 
                             QMessageBox.information(self, "Info", "Done updating bootloader.")
 
