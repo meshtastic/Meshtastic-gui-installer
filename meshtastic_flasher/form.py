@@ -1075,5 +1075,5 @@ class Form(QDialog):
                     self.do_esptool()
                 else:
                     self.system_info_file = f"{self.firmware_version}/system-info.bin"
-                    self.bin_file = f"{self.firmware_version}/spiffs-{self.firmware_version}.bin"
+                    self.bin_file = f"{self.firmware_version}/littlefs-{self.firmware_version}.bin"
                     self.do_esptool()
