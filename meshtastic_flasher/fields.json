@@ -17,7 +17,7 @@
     },
     "canned_message_plugin_about": {
         "label": "Canned Message Plugin",
-        "doc_url": "https://meshtastic.org/docs/settings/canned-message-plugin"
+        "doc_url": "https://meshtastic.org/docs/settings/canned-message-module"
     },
     "canned_message_plugin_allow_input_source": {
         "label": "Allow Input Source",
@@ -57,7 +57,7 @@
     },
     "environmental_measurement_plugin_about": {
         "label": "Environmental Measurement Plugin",
-        "doc_url": "https://meshtastic.org/docs/settings/environmental-measurement-plugin"
+        "doc_url": "https://meshtastic.org/docs/settings/environmental-measurement-module"
     },
     "environmental_measurement_plugin_display_farenheit": {
         "label": "Display Temperature in Farenheit?",
@@ -93,10 +93,10 @@
     },
     "ext_notification_plugin_about": {
         "label": "External Notification Plugin",
-        "doc_url": "https://meshtastic.org/docs/settings/external-notification-plugin"
+        "doc_url": "https://meshtastic.org/docs/settings/external-notification-module"
     },
     "ext_notification_plugin_active": {
-        "label": "Active?",
+        "label": "Active High?",
         "description": "If set, notifications will happen when the the GPIO is active-high. If not set, notifications will happen when GPIO is active-low."
     },
     "ext_notification_plugin_alert_bell": {
@@ -105,7 +105,7 @@
     },
     "ext_notification_plugin_alert_message": {
         "label": "Alert Message",
-        "description": "Message to use when when a notification is to be made."
+        "description": "Trigger notification on any message received."
     },
     "ext_notification_plugin_enabled": {
         "label": "Enabled?",
@@ -301,7 +301,7 @@
     },
     "range_test_plugin_about": {
         "label": "Range Test Plugin",
-        "doc_url": "https://meshtastic.org/docs/settings/range-test-plugin"
+        "doc_url": "https://meshtastic.org/docs/settings/range-test-module"
     },
     "range_test_plugin_enabled": {
         "label": "Enabled?",
@@ -325,7 +325,7 @@
     },
     "rotary1_about": {
         "label": "Rotary Encoder Plugin",
-        "doc_url": "https://meshtastic.org/docs/settings/rotary-encoder-plugin"
+        "doc_url": "https://meshtastic.org/docs/settings/rotary-encoder-module"
     },
     "rotary1_enabled": {
         "label": "Enabled?",
@@ -373,7 +373,7 @@
     },
     "serialplugin_about": {
         "label": "Serial Plugin",
-        "doc_url": "https://meshtastic.org/docs/settings/serial-plugin"
+        "doc_url": "https://meshtastic.org/docs/settings/serial-module"
     },
     "serialplugin_echo": {
         "label": "Echo?",
@@ -410,7 +410,7 @@
     },
     "store_forward_plugin_about": {
         "label": "Store and Forward Plugin",
-        "doc_url": "https://meshtastic.org/docs/software/plugins/store-forward-plugin"
+        "doc_url": "https://meshtastic.org/docs/settings/store-and-forward-module"
     },
     "store_forward_plugin_enabled": {
         "label": "Enabled?",
