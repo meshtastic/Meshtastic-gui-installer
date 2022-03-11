@@ -713,15 +713,9 @@ class Form(QDialog):
                                 print('done copying')
                                 QMessageBox.information(self, "Info", 'T-Echo bootloader updated.\n\nWait for it to reboot.')
                 else:
-                    if (not rak_bootloader_current) and (not self.advanced_form.rak_bootloader_cb.isChecked()):
+                    if (not rak_bootloader_current) and self.select_device.currentText().startswith('rak'):
                         print('rak bootloader is not current')
-                        QMessageBox.information(self, "Info", ('The RAK bootloader is not current.\n'
-                                                'If you want to udpate the bootlader,\n'
-                                                'go into advanced options by pressing the letter "A" at the main screen,\n'
-                                                'and check the update RAK bootloader then press DETECT again.'))
-
-                    if (not rak_bootloader_current) and self.advanced_form.rak_bootloader_cb.isChecked() and self.select_device.currentText().startswith('rak'):
-                        QMessageBox.information(self, "Info", ("Update RAK bootloader was requested.\n"
+                        QMessageBox.information(self, "Info", ("RAK bootloader is not current.\n"
                                                 "Press the RST button ONCE to get out of bootloader mode, then continue."))
 
                         print('Checking boot loader version')
