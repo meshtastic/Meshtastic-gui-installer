@@ -33,8 +33,6 @@ class AdvancedForm(QDialog):
         # Create widgets
         self.update_only_cb = QCheckBox()
         self.update_only_cb.setToolTip("If enabled, the device will be updated (not completely erased).")
-        self.rak_bootloader_cb = QCheckBox()
-        self.rak_bootloader_cb.setToolTip("If enabled, the NRF52 bootloader on RAK devices will be checked and updated in DETECT step.")
         self.info_button = QPushButton("INFO")
         self.info_button.clicked.connect(self.info)
         self.send_text_button = QPushButton("SEND TEXT")
@@ -51,7 +49,6 @@ class AdvancedForm(QDialog):
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.tr("&Update only"), self.update_only_cb)
-        form_layout.addRow(self.tr("&RAK Bootloader Update"), self.rak_bootloader_cb)
         form_layout.addRow(self.tr(""), self.info_button)
         form_layout.addRow(self.tr(""), self.send_text_button)
         form_layout.addRow(self.tr(""), self.export_configuration_button)

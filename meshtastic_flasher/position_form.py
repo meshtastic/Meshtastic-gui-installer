@@ -59,9 +59,6 @@ class PositionForm(QDialog):
         self.position_flags = QLabel(self.parent.label('position_flags')) # field that shows the number for the prior bit fields
         self.position_flags.setToolTip(self.parent.description('position_flags'))
 
-        #self.fixed_position = QCheckBox()
-        #self.fixed_position.setToolTip(self.parent.description('fixed_position'))
-
         self.fixed_position_button = QPushButton("Fixed Position")
         self.fixed_position_button.clicked.connect(self.fixed_position)
 
@@ -101,7 +98,6 @@ class PositionForm(QDialog):
         form_layout.addRow('', self.position_flag_seq_nos)
         form_layout.addRow('', self.position_flag_timestamp)
         form_layout.addRow(self.parent.label("position_flags"), self.position_flags)
-        #form_layout.addRow(self.parent.label("fixed_position"), self.fixed_position)
         form_layout.addRow(self.tr(""), self.fixed_position_button)
         form_layout.addRow(self.parent.label("location_share"), self.location_share)
         form_layout.addRow(self.parent.label("gps_operation"), self.gps_operation)
@@ -210,9 +206,6 @@ class PositionForm(QDialog):
                     self.position_flags.setText("0")
                 self.set_position_flags(self.position_flags.text())
 
-                if self.prefs.fixed_position:
-                    self.fixed_position.setChecked(True)
-
                 temp = 0
                 if self.prefs.location_share:
                     temp = int(self.prefs.location_share)
@@ -269,7 +262,6 @@ class PositionForm(QDialog):
                 setPref(prefs, 'position_broadcast_secs', zero_if_blank(self.position_broadcast_secs.text()))
                 setPref(prefs, 'position_broadcast_smart', f'{self.position_broadcast_smart.isChecked()}')
                 setPref(prefs, 'position_flags', self.position_flags.text())
-                setPref(prefs, 'fixed_position', f'{self.fixed_position.isChecked()}')
                 setPref(prefs, 'location_share', f'{self.location_share.currentData()}')
                 setPref(prefs, 'gps_operation', f'{self.gps_operation.currentData()}')
                 setPref(prefs, 'gps_format', f'{self.gps_format.currentData()}')

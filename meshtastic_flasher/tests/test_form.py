@@ -410,8 +410,6 @@ def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, 
     widget = Form()
     qtbot.addWidget(widget)
 
-    widget.advanced_form.rak_bootloader_cb.setChecked(True)
-
     mock_partition1 = MagicMock()
     mock_partition1.mountpoint = '/dev/fakevolume'
     mock_partition2 = MagicMock()
