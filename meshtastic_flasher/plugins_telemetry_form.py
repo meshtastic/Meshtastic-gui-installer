@@ -123,7 +123,7 @@ class TelemetryForm(QDialog):
                     temp = int(self.prefs.telemetry_module_sensor_type)
                 self.telemetry_module_sensor_type.clear()
                 # pylint: disable=no-member
-                desc = meshtastic.radioconfig_pb2.RadioConfig.UserPreferences.EnvironmentalMeasurementSensorType.DESCRIPTOR
+                desc = meshtastic.radioconfig_pb2.RadioConfig.UserPreferences.TelemetrySensorType.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.telemetry_module_sensor_type.addItem(k, v.number)
                     if v.number == temp:
