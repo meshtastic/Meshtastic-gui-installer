@@ -716,7 +716,7 @@ class Form(QDialog):
                     if (not rak_bootloader_current) and self.select_device.currentText().startswith('rak'):
                         print('rak bootloader is not current')
                         QMessageBox.information(self, "Info", ("RAK bootloader is not current.\n"
-                                                "Press the RST button ONCE to get out of bootloader mode, then continue."))
+                                                "About to update RAK bootloader..."))
 
                         print('Checking boot loader version')
                         # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
@@ -735,7 +735,7 @@ class Form(QDialog):
                             _, nrfutil_output = subprocess.getstatusoutput(command)
                             print(nrfutil_output)
 
-                            QMessageBox.information(self, "Info", "Done updating bootloader.")
+                            QMessageBox.information(self, "Info", "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware.")
 
             else:
                 print("Could not find the partition")
