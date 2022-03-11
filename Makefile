@@ -28,9 +28,3 @@ upload:
 	pip install build
 	python -m build --sdist --wheel --outdir dist/ .
 	twine upload dist/*
-
-mac:
-	# for locally testing binary on mac
-	pip install pyinstaller
-	pip install -r requirements.txt
-	pyinstaller -F -n meshtastic-flasher-mac --add-binary "meshtastic_flasher/fields.json:." --add-binary "meshtastic_flasher/logo.png:." --add-binary "meshtastic_flasher/meshtastic_theme.xml:." --add-binary "meshtastic_flasher/help.svg:." --add-binary "meshtastic_flasher/info.svg:." --add-binary "meshtastic_flasher/options.svg:." --add-binary "meshtastic_flasher/cog.svg:." --collect-all meshtastic --collect-all esptool meshtastic_flasher/main.py
