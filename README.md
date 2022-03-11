@@ -19,9 +19,7 @@ Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmwar
 
 # To install:
 
-* For Windows, see https://github.com/meshtastic/Meshtastic-gui-installer/releases/tag/winapp1.0.0
-* For Mac, see https://github.com/meshtastic/Meshtastic-gui-installer/releases/tag/macapp1.0.0
-* For Ubuntu, use the "Installation for Development" option.
+See https://meshtastic.org/docs/getting-started/meshtastic-flasher
 
 Note: The "single executable" installation option has been deprecated as of March 10, 2022.
 
