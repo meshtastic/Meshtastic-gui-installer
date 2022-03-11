@@ -19,8 +19,8 @@ def test_get_path():
 
 def test_populate_tag_in_firmware_dropdown():
     """Test populate_tag_in_firmware_dropdown()"""
-    assert populate_tag_in_firmware_dropdown("v1.2.52.foo")
-    assert populate_tag_in_firmware_dropdown("v1.2.51.foo")
+    assert populate_tag_in_firmware_dropdown("v1.3.52.foo")
+    assert not populate_tag_in_firmware_dropdown("v1.2.51.foo")
 
 
 def test_tag_to_version():
@@ -45,7 +45,7 @@ def test_get_tags_got_no_tags(fake_get_tags):
     fake_get_tags.assert_called()
 
 
-@patch('meshtastic_flasher.util.get_tags_from_github', return_value=['v1.2.53aa', 'v1.2.53fff', 'v1.2.51f'])
+@patch('meshtastic_flasher.util.get_tags_from_github', return_value=['v1.3.01aa', 'v1.3.02bz', 'v1.3.33fg'])
 def test_get_tags_got_some_tags(fake_get_tags):
     """Test get_tags() when we got some tags"""
     tags = get_tags()

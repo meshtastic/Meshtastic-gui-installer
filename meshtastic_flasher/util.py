@@ -55,7 +55,7 @@ def wrapped_active_ports_on_supported_devices(supported_devices):
 def populate_tag_in_firmware_dropdown(tag):
     """Populate this tag in the firmware dropdown?"""
     retval = False
-    if re.search(r"v1.[23a-z]+", tag):
+    if re.search(r"v1.[3\.a-z]+", tag):
         retval = True
     print(f'tag:{tag} populate in dropdown?:{retval}')
     return retval
@@ -108,7 +108,7 @@ def get_tags():
         if populate_tag_in_firmware_dropdown(tag):
             tags.append(tag)
     if len(tags) == 0:
-        tags.append('v1.2.55.9db7c62')
+        tags.append('1.3.4.2b20bf3')
     return tags
 
 
