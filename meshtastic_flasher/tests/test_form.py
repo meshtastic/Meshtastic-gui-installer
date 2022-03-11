@@ -431,8 +431,7 @@ def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, 
 
     # make the call under test
     with patch("builtins.open", mock_open(read_data=fake_data)):
-        with patch("nordicsemi.__main__.cli.main"):
-            widget.detect_nrf_stuff()
+        widget.detect_nrf_stuff()
 
     assert widget.nrf
     fake_partitions.assert_called()
