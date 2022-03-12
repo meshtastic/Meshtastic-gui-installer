@@ -118,6 +118,8 @@ class EsptoolForm(QDialog):
 
         super(EsptoolForm, self).__init__(parent)
 
+        self.parent = parent
+        self.main = parent.main
         self.threadpool = QThreadPool()
         self.finished = False
         self.status = ""

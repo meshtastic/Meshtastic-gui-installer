@@ -1,4 +1,4 @@
-"""class for the plugin store and forward settings"""
+"""class for the store and forward module settings"""
 
 
 from PySide6 import QtCore
@@ -14,38 +14,39 @@ from meshtastic_flasher.util import zero_if_blank
 
 
 class StoreAndForwardForm(QDialog):
-    """plugin store and forward settings form"""
+    """store and forward module settings form"""
 
     def __init__(self, parent=None):
         """constructor"""
         super(StoreAndForwardForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Store and Forward Settings")
+        self.setWindowTitle("Store and Forward Module Settings")
 
         self.port = None
         self.interface = None
         self.prefs = None
 
         # Create widgets
-        self.store_forware_plugin_about = QLabel(self.parent.parent.doc_url('store_forware_plugin_about'))
-        self.store_forware_plugin_about.setOpenExternalLinks(True)
-        self.store_forware_plugin_about.setTextFormat(QtCore.Qt.RichText)
-        self.store_forware_plugin_about.setToolTip("Link shows more info about the settings for this plugin.")
-        self.store_forward_plugin_enabled = QCheckBox()
-        self.store_forward_plugin_enabled.setToolTip(self.parent.parent.description('store_forward_plugin_enabled'))
-        self.store_forward_plugin_heartbeat = QCheckBox()
-        self.store_forward_plugin_heartbeat.setToolTip(self.parent.parent.description('store_forward_plugin_heartbeat'))
-        self.store_forward_plugin_history_return_max = QLineEdit()
-        self.store_forward_plugin_history_return_max.setToolTip(self.parent.parent.description('store_forward_plugin_history_return_max'))
-        self.store_forward_plugin_history_return_window = QLineEdit()
-        self.store_forward_plugin_history_return_window.setToolTip(self.parent.parent.description('store_forward_plugin_history_return_window'))
-        self.store_forward_plugin_records = QLineEdit()
-        self.store_forward_plugin_records.setToolTip(self.parent.parent.description('store_forward_plugin_records'))
+        self.store_forware_module_about = QLabel(self.main.doc_url('store_forware_module_about'))
+        self.store_forware_module_about.setOpenExternalLinks(True)
+        self.store_forware_module_about.setTextFormat(QtCore.Qt.RichText)
+        self.store_forware_module_about.setToolTip("Link shows more info about the settings for this module.")
+        self.store_forward_module_enabled = QCheckBox()
+        self.store_forward_module_enabled.setToolTip(self.main.description('store_forward_module_enabled'))
+        self.store_forward_module_heartbeat = QCheckBox()
+        self.store_forward_module_heartbeat.setToolTip(self.main.description('store_forward_module_heartbeat'))
+        self.store_forward_module_history_return_max = QLineEdit()
+        self.store_forward_module_history_return_max.setToolTip(self.main.description('store_forward_module_history_return_max'))
+        self.store_forward_module_history_return_window = QLineEdit()
+        self.store_forward_module_history_return_window.setToolTip(self.main.description('store_forward_module_history_return_window'))
+        self.store_forward_module_records = QLineEdit()
+        self.store_forward_module_records.setToolTip(self.main.description('store_forward_module_records'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -55,12 +56,12 @@ class StoreAndForwardForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("store_forware_plugin_about"), self.store_forware_plugin_about)
-        form_layout.addRow(self.parent.parent.label("store_forward_plugin_enabled"), self.store_forward_plugin_enabled)
-        form_layout.addRow(self.parent.parent.label("store_forward_plugin_heartbeat"), self.store_forward_plugin_heartbeat)
-        form_layout.addRow(self.parent.parent.label("store_forward_plugin_history_return_max"), self.store_forward_plugin_history_return_max)
-        form_layout.addRow(self.parent.parent.label("store_forward_plugin_history_return_window"), self.store_forward_plugin_history_return_window)
-        form_layout.addRow(self.parent.parent.label("store_forward_plugin_records"), self.store_forward_plugin_records)
+        form_layout.addRow(self.main.label("store_forware_module_about"), self.store_forware_module_about)
+        form_layout.addRow(self.main.label("store_forward_module_enabled"), self.store_forward_module_enabled)
+        form_layout.addRow(self.main.label("store_forward_module_heartbeat"), self.store_forward_module_heartbeat)
+        form_layout.addRow(self.main.label("store_forward_module_history_return_max"), self.store_forward_module_history_return_max)
+        form_layout.addRow(self.main.label("store_forward_module_history_return_window"), self.store_forward_module_history_return_window)
+        form_layout.addRow(self.main.label("store_forward_module_records"), self.store_forward_module_records)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
@@ -84,26 +85,26 @@ class StoreAndForwardForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.store_forward_plugin_enabled and self.prefs.store_forward_plugin_enabled is True:
-                    self.store_forward_plugin_enabled.setChecked(True)
+                if self.prefs.store_forward_module_enabled and self.prefs.store_forward_module_enabled is True:
+                    self.store_forward_module_enabled.setChecked(True)
 
-                if self.prefs.store_forward_plugin_heartbeat and self.prefs.store_forward_plugin_heartbeat is True:
-                    self.store_forward_plugin_heartbeat.setChecked(True)
+                if self.prefs.store_forward_module_heartbeat and self.prefs.store_forward_module_heartbeat is True:
+                    self.store_forward_module_heartbeat.setChecked(True)
 
-                if self.prefs.store_forward_plugin_history_return_max:
-                    self.store_forward_plugin_history_return_max.setText(f'{self.prefs.store_forward_plugin_history_return_max}')
+                if self.prefs.store_forward_module_history_return_max:
+                    self.store_forward_module_history_return_max.setText(f'{self.prefs.store_forward_module_history_return_max}')
                 else:
-                    self.store_forward_plugin_history_return_max.setText("0")
+                    self.store_forward_module_history_return_max.setText("0")
 
-                if self.prefs.store_forward_plugin_history_return_window:
-                    self.store_forward_plugin_history_return_window.setText(f'{self.prefs.store_forward_plugin_history_return_window}')
+                if self.prefs.store_forward_module_history_return_window:
+                    self.store_forward_module_history_return_window.setText(f'{self.prefs.store_forward_module_history_return_window}')
                 else:
-                    self.store_forward_plugin_history_return_window.setText("0")
+                    self.store_forward_module_history_return_window.setText("0")
 
-                if self.prefs.store_forward_plugin_records:
-                    self.store_forward_plugin_records.setText(f'{self.prefs.store_forward_plugin_records}')
+                if self.prefs.store_forward_module_records:
+                    self.store_forward_module_records.setText(f'{self.prefs.store_forward_module_records}')
                 else:
-                    self.store_forward_plugin_records.setText("0")
+                    self.store_forward_module_records.setText("0")
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -115,11 +116,11 @@ class StoreAndForwardForm(QDialog):
             if self.interface:
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'store_forward_plugin_enabled', f'{self.store_forward_plugin_enabled.isChecked()}')
-                setPref(prefs, 'store_forward_plugin_heartbeat', f'{self.store_forward_plugin_heartbeat.isChecked()}')
-                setPref(prefs, 'store_forward_plugin_history_return_max', zero_if_blank(self.store_forward_plugin_history_return_max.text()))
-                setPref(prefs, 'store_forward_plugin_history_return_window', zero_if_blank(self.store_forward_plugin_history_return_window.text()))
-                setPref(prefs, 'store_forward_plugin_records', zero_if_blank(self.store_forward_plugin_records.text()))
+                setPref(prefs, 'store_forward_module_enabled', f'{self.store_forward_module_enabled.isChecked()}')
+                setPref(prefs, 'store_forward_module_heartbeat', f'{self.store_forward_module_heartbeat.isChecked()}')
+                setPref(prefs, 'store_forward_module_history_return_max', zero_if_blank(self.store_forward_module_history_return_max.text()))
+                setPref(prefs, 'store_forward_module_history_return_window', zero_if_blank(self.store_forward_module_history_return_window.text()))
+                setPref(prefs, 'store_forward_module_records', zero_if_blank(self.store_forward_module_records.text()))
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

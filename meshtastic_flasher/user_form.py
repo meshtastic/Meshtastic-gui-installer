@@ -17,6 +17,7 @@ class UserForm(QDialog):
         super(UserForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
@@ -28,25 +29,25 @@ class UserForm(QDialog):
 
         # Create widgets
         self.device_id = QLabel()
-        self.device_id.setToolTip(self.parent.description('device_id'))
+        self.device_id.setToolTip(self.main.description('device_id'))
         self.hw_model = QLabel()
-        self.hw_model.setToolTip(self.parent.description('hw_model'))
+        self.hw_model.setToolTip(self.main.description('hw_model'))
         self.macaddr = QLabel()
-        self.macaddr.setToolTip(self.parent.description('macaddr'))
+        self.macaddr.setToolTip(self.main.description('macaddr'))
         self.long_name = QLineEdit()
-        self.long_name.setToolTip(self.parent.description('long_name'))
-        self.long_name.setMaxLength(self.parent.max_size('long_name'))
-        self.long_name.setFixedWidth(self.parent.max_size('long_name') * self.parent.pixel_mult)
+        self.long_name.setToolTip(self.main.description('long_name'))
+        self.long_name.setMaxLength(self.main.max_size('long_name'))
+        self.long_name.setFixedWidth(self.main.max_size('long_name') * self.main.pixel_mult)
         self.short_name = QLineEdit()
-        self.short_name.setToolTip(self.parent.description('short_name'))
-        self.short_name.setMaxLength(self.parent.max_size('short_name'))
+        self.short_name.setToolTip(self.main.description('short_name'))
+        self.short_name.setMaxLength(self.main.max_size('short_name'))
         # TODO: should improve this a bit
-        #self.short_name.setFixedWidth(self.parent.max_size('short_name') * self.parent.pixel_mult)
+        #self.short_name.setFixedWidth(self.main.max_size('short_name') * self.main.pixel_mult)
         self.is_licensed = QCheckBox()
-        self.is_licensed.setToolTip(self.parent.description('is_licensed'))
+        self.is_licensed.setToolTip(self.main.description('is_licensed'))
         self.team = QComboBox()
         self.team.setMinimumContentsLength(17)
-        self.team.setToolTip(self.parent.description('team'))
+        self.team.setToolTip(self.main.description('team'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -56,13 +57,13 @@ class UserForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.label('device_id'), self.device_id)
-        form_layout.addRow(self.parent.label('hw_model'), self.hw_model)
-        form_layout.addRow(self.parent.label('macaddr'), self.macaddr)
-        form_layout.addRow(self.parent.label('long_name'), self.long_name)
-        form_layout.addRow(self.parent.label('short_name'), self.short_name)
-        form_layout.addRow(self.parent.label('is_licensed'), self.is_licensed)
-        form_layout.addRow(self.parent.label('team'), self.team)
+        form_layout.addRow(self.main.label('device_id'), self.device_id)
+        form_layout.addRow(self.main.label('hw_model'), self.hw_model)
+        form_layout.addRow(self.main.label('macaddr'), self.macaddr)
+        form_layout.addRow(self.main.label('long_name'), self.long_name)
+        form_layout.addRow(self.main.label('short_name'), self.short_name)
+        form_layout.addRow(self.main.label('is_licensed'), self.is_licensed)
+        form_layout.addRow(self.main.label('team'), self.team)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 

@@ -30,6 +30,7 @@ from meshtastic_flasher.advanced_form import AdvancedForm
 from meshtastic_flasher.esptool_form import EsptoolForm
 from meshtastic_flasher.settings import Settings
 import meshtastic_flasher.util
+from meshtastic_flasher.util import load_fields
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
 COG_FILENAME = "cog.svg"
@@ -56,6 +57,9 @@ class Form(QDialog):
         """constructor"""
         super(Form, self).__init__(parent)
 
+        self.parent = None
+        self.main = self
+
         self.port = None
         self.firmware_version = None
         self.nrf = False
@@ -66,9 +70,12 @@ class Form(QDialog):
         self.bin_file = None
         self.detected_meshtastic_version = None
 
+        self.fields = load_fields()
+        self.pixel_mult = 12
+
         self.advanced_form = AdvancedForm(self)
-        self.esptool_form = EsptoolForm()
-        self.settings = Settings()
+        self.esptool_form = EsptoolForm(self)
+        self.settings = Settings(self)
 
         update_available = ''
         if meshtastic_flasher.util.check_if_newer_version():
@@ -258,6 +265,47 @@ class Form(QDialog):
 
         # pre-populate the versions that have already been downloaded and unzipped
         self.get_versions_from_disk()
+
+
+    def label(self, field):
+        """Return the label for a field"""
+        retval = ""
+        if self.fields:
+            if field in self.fields:
+                if 'label' in self.fields[field]:
+                    retval = self.fields[field]['label']
+        return retval
+
+
+    def description(self, field):
+        """Return the description for a field"""
+        retval = ""
+        if self.fields:
+            if field in self.fields:
+                if 'description' in self.fields[field]:
+                    retval = self.fields[field]['description']
+        return retval
+
+
+    def doc_url(self, field):
+        """Return the doc_url enriched with html for a field"""
+        retval = ""
+        if self.fields:
+            if field in self.fields:
+                if 'doc_url' in self.fields[field]:
+                    doc_url = self.fields[field]['doc_url']
+                    retval = f"<a href='{doc_url}' style='color:#67EA94'>More info</a>"
+        return retval
+
+
+    def max_size(self, field):
+        """Return the max_size for a field"""
+        retval = 0
+        if self.fields:
+            if field in self.fields:
+                if 'max_size' in self.fields[field]:
+                    retval = self.fields[field]['max_size']
+        return retval
 
 
     def keyPressEvent(self, event):

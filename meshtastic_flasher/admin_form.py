@@ -14,6 +14,7 @@ class AdminForm(QDialog):
         super(AdminForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200

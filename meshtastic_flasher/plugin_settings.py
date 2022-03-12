@@ -17,9 +17,10 @@ class PluginSettings(QMainWindow):
 
     def __init__(self, parent=None):
         """constructor"""
-        super(PluginSettings, self).__init__()
+        super(PluginSettings, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
         self.port = None
         self.interface = None
 

@@ -16,6 +16,7 @@ class Wifi_and_MQTT_Form(QDialog):
         super(Wifi_and_MQTT_Form, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
@@ -30,33 +31,33 @@ class Wifi_and_MQTT_Form(QDialog):
 
         # WiFi
         self.wifi_ap_mode = QCheckBox()
-        self.wifi_ap_mode.setToolTip(self.parent.description('wifi_ap_mode'))
+        self.wifi_ap_mode.setToolTip(self.main.description('wifi_ap_mode'))
         self.wifi_ssid = QLineEdit()
-        self.wifi_ssid.setToolTip(self.parent.description('wifi_ssid'))
-        self.wifi_ssid.setMaxLength(self.parent.max_size('wifi_ssid'))
-        self.wifi_ssid.setFixedWidth(self.parent.max_size('wifi_ssid') * self.parent.pixel_mult)
+        self.wifi_ssid.setToolTip(self.main.description('wifi_ssid'))
+        self.wifi_ssid.setMaxLength(self.main.max_size('wifi_ssid'))
+        self.wifi_ssid.setFixedWidth(self.main.max_size('wifi_ssid') * self.main.pixel_mult)
         self.wifi_password = QLineEdit()
-        self.wifi_password.setToolTip(self.parent.description('wifi_password'))
-        self.wifi_password.setMaxLength(self.parent.max_size('wifi_password'))
-        self.wifi_password.setFixedWidth(self.parent.max_size('wifi_password') * self.parent.pixel_mult)
+        self.wifi_password.setToolTip(self.main.description('wifi_password'))
+        self.wifi_password.setMaxLength(self.main.max_size('wifi_password'))
+        self.wifi_password.setFixedWidth(self.main.max_size('wifi_password') * self.main.pixel_mult)
 
         # MQTT
         self.mqtt_disabled = QCheckBox()
-        self.mqtt_disabled.setToolTip(self.parent.description('mqtt_disabled'))
+        self.mqtt_disabled.setToolTip(self.main.description('mqtt_disabled'))
         self.mqtt_server = QLineEdit()
-        self.mqtt_server.setToolTip(self.parent.description('mqtt_server'))
-        self.mqtt_server.setMaxLength(self.parent.max_size('mqtt_server'))
-        self.mqtt_server.setFixedWidth(self.parent.max_size('mqtt_server') * self.parent.pixel_mult)
+        self.mqtt_server.setToolTip(self.main.description('mqtt_server'))
+        self.mqtt_server.setMaxLength(self.main.max_size('mqtt_server'))
+        self.mqtt_server.setFixedWidth(self.main.max_size('mqtt_server') * self.main.pixel_mult)
         self.mqtt_username = QLineEdit()
-        self.mqtt_username.setToolTip(self.parent.description('mqtt_username'))
-        self.mqtt_username.setMaxLength(self.parent.max_size('mqtt_username'))
-        self.mqtt_username.setFixedWidth(self.parent.max_size('mqtt_username') * self.parent.pixel_mult)
+        self.mqtt_username.setToolTip(self.main.description('mqtt_username'))
+        self.mqtt_username.setMaxLength(self.main.max_size('mqtt_username'))
+        self.mqtt_username.setFixedWidth(self.main.max_size('mqtt_username') * self.main.pixel_mult)
         self.mqtt_password = QLineEdit()
-        self.mqtt_password.setToolTip(self.parent.description('mqtt_password'))
-        self.mqtt_password.setMaxLength(self.parent.max_size('mqtt_password'))
-        self.mqtt_password.setFixedWidth(self.parent.max_size('mqtt_password') * self.parent.pixel_mult)
+        self.mqtt_password.setToolTip(self.main.description('mqtt_password'))
+        self.mqtt_password.setMaxLength(self.main.max_size('mqtt_password'))
+        self.mqtt_password.setFixedWidth(self.main.max_size('mqtt_password') * self.main.pixel_mult)
         self.mqtt_encryption_enabled = QCheckBox()
-        self.mqtt_encryption_enabled.setToolTip(self.parent.description('mqtt_encryption_enabled'))
+        self.mqtt_encryption_enabled.setToolTip(self.main.description('mqtt_encryption_enabled'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -67,14 +68,14 @@ class Wifi_and_MQTT_Form(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.label("wifi_ap_mode"), self.wifi_ap_mode)
-        form_layout.addRow(self.parent.label("wifi_ssid"), self.wifi_ssid)
-        form_layout.addRow(self.parent.label("wifi_password"), self.wifi_password)
-        form_layout.addRow(self.parent.label("mqtt_disabled"), self.mqtt_disabled)
-        form_layout.addRow(self.parent.label("mqtt_server"), self.mqtt_server)
-        form_layout.addRow(self.parent.label("mqtt_username"), self.mqtt_username)
-        form_layout.addRow(self.parent.label("mqtt_password"), self.mqtt_password)
-        form_layout.addRow(self.parent.label("mqtt_encryption_enabled"), self.mqtt_encryption_enabled)
+        form_layout.addRow(self.main.label("wifi_ap_mode"), self.wifi_ap_mode)
+        form_layout.addRow(self.main.label("wifi_ssid"), self.wifi_ssid)
+        form_layout.addRow(self.main.label("wifi_password"), self.wifi_password)
+        form_layout.addRow(self.main.label("mqtt_disabled"), self.mqtt_disabled)
+        form_layout.addRow(self.main.label("mqtt_server"), self.mqtt_server)
+        form_layout.addRow(self.main.label("mqtt_username"), self.mqtt_username)
+        form_layout.addRow(self.main.label("mqtt_password"), self.mqtt_password)
+        form_layout.addRow(self.main.label("mqtt_encryption_enabled"), self.mqtt_encryption_enabled)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 

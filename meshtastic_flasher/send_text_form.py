@@ -15,6 +15,7 @@ class SendTextForm(QDialog):
         super(SendTextForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200

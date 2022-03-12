@@ -21,6 +21,7 @@ class TelemetryForm(QDialog):
         super(TelemetryForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
@@ -32,27 +33,27 @@ class TelemetryForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.telemetry_module_about = QLabel(self.parent.parent.doc_url('telemetry_module_about'))
+        self.telemetry_module_about = QLabel(self.main.doc_url('telemetry_module_about'))
         self.telemetry_module_about.setOpenExternalLinks(True)
         self.telemetry_module_about.setTextFormat(QtCore.Qt.RichText)
         self.telemetry_module_about.setToolTip("Link shows more info about the settings for this plugin.")
         self.telemetry_module_measurement_enabled = QCheckBox()
-        self.telemetry_module_measurement_enabled.setToolTip(self.parent.parent.description('telemetry_module_measurement_enabled'))
+        self.telemetry_module_measurement_enabled.setToolTip(self.main.description('telemetry_module_measurement_enabled'))
         self.telemetry_module_display_farenheit = QCheckBox()
-        self.telemetry_module_display_farenheit.setToolTip(self.parent.parent.description('telemetry_module_display_farenheit'))
+        self.telemetry_module_display_farenheit.setToolTip(self.main.description('telemetry_module_display_farenheit'))
         self.telemetry_module_read_error_count_threshold = QLineEdit()
-        self.telemetry_module_read_error_count_threshold.setToolTip(self.parent.parent.description('telemetry_module_read_error_count_threshold'))
+        self.telemetry_module_read_error_count_threshold.setToolTip(self.main.description('telemetry_module_read_error_count_threshold'))
         self.telemetry_module_recovery_interval = QLineEdit()
-        self.telemetry_module_recovery_interval.setToolTip(self.parent.parent.description('telemetry_module_recovery_interval'))
+        self.telemetry_module_recovery_interval.setToolTip(self.main.description('telemetry_module_recovery_interval'))
         self.telemetry_module_screen_enabled = QCheckBox()
-        self.telemetry_module_screen_enabled.setToolTip(self.parent.parent.description('telemetry_module_screen_enabled'))
+        self.telemetry_module_screen_enabled.setToolTip(self.main.description('telemetry_module_screen_enabled'))
         self.telemetry_module_sensor_pin = QLineEdit()
-        self.telemetry_module_sensor_pin.setToolTip(self.parent.parent.description('telemetry_module_sensor_pin'))
+        self.telemetry_module_sensor_pin.setToolTip(self.main.description('telemetry_module_sensor_pin'))
         self.telemetry_module_sensor_type = QComboBox()
-        self.telemetry_module_sensor_type.setToolTip(self.parent.parent.description('telemetry_module_sensor_type'))
+        self.telemetry_module_sensor_type.setToolTip(self.main.description('telemetry_module_sensor_type'))
         self.telemetry_module_sensor_type.setMinimumContentsLength(17)
         self.telemetry_module_update_interval = QLineEdit()
-        self.telemetry_module_update_interval.setToolTip(self.parent.parent.description('telemetry_module_update_interval'))
+        self.telemetry_module_update_interval.setToolTip(self.main.description('telemetry_module_update_interval'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -62,15 +63,15 @@ class TelemetryForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("telemetry_module_about"), self.telemetry_module_about)
-        form_layout.addRow(self.parent.parent.label("telemetry_module_measurement_enabled"), self.telemetry_module_measurement_enabled)
-        form_layout.addRow(self.parent.parent.label("telemetry_module_display_farenheit"), self.telemetry_module_display_farenheit)
-        form_layout.addRow(self.parent.parent.label("telemetry_module_read_error_count_threshold"), self.telemetry_module_read_error_count_threshold)
-        form_layout.addRow(self.parent.parent.label("telemetry_module_recovery_interval"), self.telemetry_module_recovery_interval)
-        form_layout.addRow(self.parent.parent.label("telemetry_module_screen_enabled"), self.telemetry_module_screen_enabled)
-        form_layout.addRow(self.parent.parent.label("telemetry_module_sensor_pin"), self.telemetry_module_sensor_pin)
-        form_layout.addRow(self.parent.parent.label("telemetry_module_sensor_type"), self.telemetry_module_sensor_type)
-        form_layout.addRow(self.parent.parent.label("telemetry_module_update_interval"), self.telemetry_module_update_interval)
+        form_layout.addRow(self.main.label("telemetry_module_about"), self.telemetry_module_about)
+        form_layout.addRow(self.main.label("telemetry_module_measurement_enabled"), self.telemetry_module_measurement_enabled)
+        form_layout.addRow(self.main.label("telemetry_module_display_farenheit"), self.telemetry_module_display_farenheit)
+        form_layout.addRow(self.main.label("telemetry_module_read_error_count_threshold"), self.telemetry_module_read_error_count_threshold)
+        form_layout.addRow(self.main.label("telemetry_module_recovery_interval"), self.telemetry_module_recovery_interval)
+        form_layout.addRow(self.main.label("telemetry_module_screen_enabled"), self.telemetry_module_screen_enabled)
+        form_layout.addRow(self.main.label("telemetry_module_sensor_pin"), self.telemetry_module_sensor_pin)
+        form_layout.addRow(self.main.label("telemetry_module_sensor_type"), self.telemetry_module_sensor_type)
+        form_layout.addRow(self.main.label("telemetry_module_update_interval"), self.telemetry_module_update_interval)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 

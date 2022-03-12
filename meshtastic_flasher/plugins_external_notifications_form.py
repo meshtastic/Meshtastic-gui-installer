@@ -1,4 +1,4 @@
-"""class for the plugin external notifications settings"""
+"""class for the external notification module settings"""
 
 
 from PySide6 import QtCore
@@ -14,40 +14,41 @@ from meshtastic_flasher.util import zero_if_blank
 
 
 class ExternalNotificationsForm(QDialog):
-    """plugin external notifications form"""
+    """external notification module form"""
 
     def __init__(self, parent=None):
         """constructor"""
         super(ExternalNotificationsForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Plugins External Notifications Settings")
+        self.setWindowTitle("External Notification Module Settings")
 
         self.port = None
         self.interface = None
         self.prefs = None
 
         # Create widgets
-        self.ext_notification_about = QLabel(self.parent.parent.doc_url('ext_notification_plugin_about'))
+        self.ext_notification_about = QLabel(self.main.doc_url('ext_notification_module_about'))
         self.ext_notification_about.setOpenExternalLinks(True)
         self.ext_notification_about.setTextFormat(QtCore.Qt.RichText)
-        self.ext_notification_about.setToolTip("Link shows more info about the settings for this plugin.")
-        self.ext_notification_plugin_enabled = QCheckBox()
-        self.ext_notification_plugin_enabled.setToolTip(self.parent.parent.description('ext_notification_plugin_enabled'))
-        self.ext_notification_plugin_active = QCheckBox()
-        self.ext_notification_plugin_active.setToolTip(self.parent.parent.description('ext_notification_plugin_active'))
-        self.ext_notification_plugin_alert_bell = QCheckBox()
-        self.ext_notification_plugin_alert_bell.setToolTip(self.parent.parent.description('ext_notification_plugin_alert_bell'))
-        self.ext_notification_plugin_alert_message = QCheckBox()
-        self.ext_notification_plugin_alert_message.setToolTip(self.parent.parent.description('ext_notification_plugin_alert_message'))
-        self.ext_notification_plugin_output = QLineEdit()
-        self.ext_notification_plugin_output.setToolTip(self.parent.parent.description('ext_notification_plugin_output'))
-        self.ext_notification_plugin_output_ms = QLineEdit()
-        self.ext_notification_plugin_output_ms.setToolTip(self.parent.parent.description('ext_notification_plugin_output_ms'))
+        self.ext_notification_about.setToolTip("Link shows more info about the settings for this module.")
+        self.ext_notification_module_enabled = QCheckBox()
+        self.ext_notification_module_enabled.setToolTip(self.main.description('ext_notification_module_enabled'))
+        self.ext_notification_module_active = QCheckBox()
+        self.ext_notification_module_active.setToolTip(self.main.description('ext_notification_module_active'))
+        self.ext_notification_module_alert_bell = QCheckBox()
+        self.ext_notification_module_alert_bell.setToolTip(self.main.description('ext_notification_module_alert_bell'))
+        self.ext_notification_module_alert_message = QCheckBox()
+        self.ext_notification_module_alert_message.setToolTip(self.main.description('ext_notification_module_alert_message'))
+        self.ext_notification_module_output = QLineEdit()
+        self.ext_notification_module_output.setToolTip(self.main.description('ext_notification_module_output'))
+        self.ext_notification_module_output_ms = QLineEdit()
+        self.ext_notification_module_output_ms.setToolTip(self.main.description('ext_notification_module_output_ms'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -57,13 +58,13 @@ class ExternalNotificationsForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("ext_notification_plugin_about"), self.ext_notification_about)
-        form_layout.addRow(self.parent.parent.label("ext_notification_plugin_enabled"), self.ext_notification_plugin_enabled)
-        form_layout.addRow(self.parent.parent.label("ext_notification_plugin_active"), self.ext_notification_plugin_active)
-        form_layout.addRow(self.parent.parent.label("ext_notification_plugin_alert_bell"), self.ext_notification_plugin_alert_bell)
-        form_layout.addRow(self.parent.parent.label("ext_notification_plugin_alert_message"), self.ext_notification_plugin_alert_message)
-        form_layout.addRow(self.parent.parent.label("ext_notification_plugin_output"), self.ext_notification_plugin_output)
-        form_layout.addRow(self.parent.parent.label("ext_notification_plugin_output_ms"), self.ext_notification_plugin_output_ms)
+        form_layout.addRow(self.main.label("ext_notification_module_about"), self.ext_notification_about)
+        form_layout.addRow(self.main.label("ext_notification_module_enabled"), self.ext_notification_module_enabled)
+        form_layout.addRow(self.main.label("ext_notification_module_active"), self.ext_notification_module_active)
+        form_layout.addRow(self.main.label("ext_notification_module_alert_bell"), self.ext_notification_module_alert_bell)
+        form_layout.addRow(self.main.label("ext_notification_module_alert_message"), self.ext_notification_module_alert_message)
+        form_layout.addRow(self.main.label("ext_notification_module_output"), self.ext_notification_module_output)
+        form_layout.addRow(self.main.label("ext_notification_module_output_ms"), self.ext_notification_module_output_ms)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
@@ -87,27 +88,27 @@ class ExternalNotificationsForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.ext_notification_plugin_active and self.prefs.ext_notification_plugin_active is True:
-                    self.ext_notification_plugin_active.setChecked(True)
+                if self.prefs.ext_notification_module_active and self.prefs.ext_notification_module_active is True:
+                    self.ext_notification_module_active.setChecked(True)
 
-                if self.prefs.ext_notification_plugin_alert_bell and self.prefs.ext_notification_plugin_alert_bell is True:
-                    self.ext_notification_plugin_alert_bell.setChecked(True)
+                if self.prefs.ext_notification_module_alert_bell and self.prefs.ext_notification_module_alert_bell is True:
+                    self.ext_notification_module_alert_bell.setChecked(True)
 
-                if self.prefs.ext_notification_plugin_alert_message and self.prefs.ext_notification_plugin_alert_message is True:
-                    self.ext_notification_plugin_alert_message.setChecked(True)
+                if self.prefs.ext_notification_module_alert_message and self.prefs.ext_notification_module_alert_message is True:
+                    self.ext_notification_module_alert_message.setChecked(True)
 
-                if self.prefs.ext_notification_plugin_enabled and self.prefs.ext_notification_plugin_enabled is True:
-                    self.ext_notification_plugin_enabled.setChecked(True)
+                if self.prefs.ext_notification_module_enabled and self.prefs.ext_notification_module_enabled is True:
+                    self.ext_notification_module_enabled.setChecked(True)
 
-                if self.prefs.ext_notification_plugin_output:
-                    self.ext_notification_plugin_output.setText(f'{self.prefs.ext_notification_plugin_output}')
+                if self.prefs.ext_notification_module_output:
+                    self.ext_notification_module_output.setText(f'{self.prefs.ext_notification_module_output}')
                 else:
-                    self.ext_notification_plugin_output.setText("0")
+                    self.ext_notification_module_output.setText("0")
 
-                if self.prefs.ext_notification_plugin_output_ms:
-                    self.ext_notification_plugin_output_ms.setText(f'{self.prefs.ext_notification_plugin_output_ms}')
+                if self.prefs.ext_notification_module_output_ms:
+                    self.ext_notification_module_output_ms.setText(f'{self.prefs.ext_notification_module_output_ms}')
                 else:
-                    self.ext_notification_plugin_output_ms.setText("0")
+                    self.ext_notification_module_output_ms.setText("0")
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -119,12 +120,12 @@ class ExternalNotificationsForm(QDialog):
             if self.interface:
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'ext_notification_plugin_active', f'{self.ext_notification_plugin_active.isChecked()}')
-                setPref(prefs, 'ext_notification_plugin_alert_bell', f'{self.ext_notification_plugin_alert_bell.isChecked()}')
-                setPref(prefs, 'ext_notification_plugin_alert_message', f'{self.ext_notification_plugin_alert_message.isChecked()}')
-                setPref(prefs, 'ext_notification_plugin_enabled', f'{self.ext_notification_plugin_enabled.isChecked()}')
-                setPref(prefs, 'ext_notification_plugin_output', zero_if_blank(self.ext_notification_plugin_output.text()))
-                setPref(prefs, 'ext_notification_plugin_output_ms', zero_if_blank(self.ext_notification_plugin_output_ms.text()))
+                setPref(prefs, 'ext_notification_module_active', f'{self.ext_notification_module_active.isChecked()}')
+                setPref(prefs, 'ext_notification_module_alert_bell', f'{self.ext_notification_module_alert_bell.isChecked()}')
+                setPref(prefs, 'ext_notification_module_alert_message', f'{self.ext_notification_module_alert_message.isChecked()}')
+                setPref(prefs, 'ext_notification_module_enabled', f'{self.ext_notification_module_enabled.isChecked()}')
+                setPref(prefs, 'ext_notification_module_output', zero_if_blank(self.ext_notification_module_output.text()))
+                setPref(prefs, 'ext_notification_module_output_ms', zero_if_blank(self.ext_notification_module_output_ms.text()))
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

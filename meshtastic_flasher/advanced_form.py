@@ -21,9 +21,10 @@ class AdvancedForm(QDialog):
         """constructor"""
         super(AdvancedForm, self).__init__(parent)
 
-        self.info_form = InfoForm()
-        self.send_text_form = SendTextForm(self)
         self.parent = parent
+        self.main = parent.main
+        self.info_form = InfoForm(self)
+        self.send_text_form = SendTextForm(self)
 
         width = 240
         height = 120

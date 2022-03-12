@@ -11,9 +11,11 @@ class ChannelSettings(QMainWindow):
 
     def __init__(self, parent=None):
         """constructor"""
-        super(ChannelSettings, self).__init__()
+        super(ChannelSettings, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
+
         self.port = None
         self.interface = None
 

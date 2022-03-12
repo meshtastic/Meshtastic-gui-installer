@@ -11,6 +11,8 @@ import meshtastic.radioconfig_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
 
+from meshtastic_flasher.util import zero_if_blank
+
 
 class FixedPositionForm(QDialog):
     """fixed position form"""
@@ -20,6 +22,7 @@ class FixedPositionForm(QDialog):
         super(FixedPositionForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
@@ -32,13 +35,13 @@ class FixedPositionForm(QDialog):
 
         # Create widgets
         self.fixed_position = QCheckBox()
-        self.fixed_position.setToolTip(self.parent.parent.description('fixed_position'))
+        self.fixed_position.setToolTip(self.main.description('fixed_position'))
         self.lat = QLineEdit()
-        self.lat.setToolTip(self.parent.parent.description('lat'))
+        self.lat.setToolTip(self.main.description('lat'))
         self.lon = QLineEdit()
-        self.lon.setToolTip(self.parent.parent.description('lon'))
+        self.lon.setToolTip(self.main.description('lon'))
         self.alt = QLineEdit()
-        self.alt.setToolTip(self.parent.parent.description('alt'))
+        self.alt.setToolTip(self.main.description('alt'))
         self.get_location_using_ip_button = QPushButton("Get Lat/Lon using your IP")
         self.get_location_using_ip_button.clicked.connect(self.latlon)
 
@@ -50,11 +53,11 @@ class FixedPositionForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("fixed_position"), self.fixed_position)
+        form_layout.addRow(self.main.label("fixed_position"), self.fixed_position)
         form_layout.addRow("", self.get_location_using_ip_button)
-        form_layout.addRow(self.parent.parent.label("lat"), self.lat)
-        form_layout.addRow(self.parent.parent.label("lon"), self.lon)
-        form_layout.addRow(self.parent.parent.label("alt"), self.alt)
+        form_layout.addRow(self.main.label("lat"), self.lat)
+        form_layout.addRow(self.main.label("lon"), self.lon)
+        form_layout.addRow(self.main.label("alt"), self.alt)
         form_layout.addRow(self.tr(""), self.button_box)
         self.setLayout(form_layout)
 
@@ -93,9 +96,9 @@ class FixedPositionForm(QDialog):
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'fixed_position', f'{self.fixed_position.isChecked()}')
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
-                lat = float(self.lat.text())
-                lon = float(self.lon.text())
-                alt = float(self.alt.text())
+                lat = float(zero_if_blank(self.lat.text()))
+                lon = float(zero_if_blank(self.lon.text()))
+                alt = float(zero_if_blank(self.alt.text()))
                 print(f'lat:{lat} lon:{lon} alt:{alt}')
                 self.interface.sendPosition(lat, lon, alt)
 
