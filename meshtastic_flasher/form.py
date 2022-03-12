@@ -79,22 +79,22 @@ class Form(QDialog):
 
         update_available = ''
         if meshtastic_flasher.util.check_if_newer_version():
-            update_available = ' *update available*'
+            update_available = f' *{self.main.text("update_available")}*'
         self.setWindowTitle(f"Meshtastic Flasher v{__version__}{update_available}")
 
         # Create widgets
-        self.get_versions_button = QPushButton("1. GET VERSIONS")
+        self.get_versions_button = QPushButton(f"1. {self.main.text('get_versions')}")
         self.get_versions_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.get_versions_button.setToolTip("Click to check for more recent firmware.")
+        self.get_versions_button.setToolTip(self.main.tooltip('get_versions'))
 
         self.select_firmware_version = QComboBox()
-        self.select_firmware_version.setToolTip("Click GET VERSIONS for the list of firmware versions.")
+        self.select_firmware_version.setToolTip(self.main.tooltip('select_firmware_version'))
         self.select_firmware_version.setMinimumContentsLength(18)
         self.select_firmware_version.setDisabled(True)
 
-        self.select_detect = QPushButton("2. DETECT DEVICE")
+        self.select_detect = QPushButton(f"2. {self.main.text('select_detect')}")
         self.select_detect.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.select_detect.setToolTip("Click to detect supported device and port info.")
+        self.select_detect.setToolTip(self.main.tooltip('select_detect'))
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
 
@@ -105,7 +105,7 @@ class Form(QDialog):
         self.help_button.setFixedSize(BUTTON_ICON_SIZE_SMALL)
         self.help_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.help_button.setStyleSheet("border:none")
-        self.help_button.setToolTip("Click for help | Press H for hotkeys.")
+        self.help_button.setToolTip(self.main.tooltip('help_button'))
 
         self.about_button = QPushButton()
         info_icon = QIcon(meshtastic_flasher.util.get_path(INFO_FILENAME))
@@ -114,26 +114,26 @@ class Form(QDialog):
         self.about_button.setFixedSize(BUTTON_ICON_SIZE_SMALL)
         self.about_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.about_button.setStyleSheet("border:none")
-        self.about_button.setToolTip("Click for info about the project.")
+        self.about_button.setToolTip(self.main.tooltip('about_button'))
 
         self.select_port = QComboBox()
-        self.select_port.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the port.")
+        self.select_port.setToolTip(self.main.tooltip('select_port'))
         self.select_port.setMinimumContentsLength(30)
         self.select_port.setDisabled(True)
         self.select_port.setDuplicatesEnabled(False)
 
         self.select_device = QComboBox()
-        self.select_device.setToolTip("Click GET VERSIONS and DETECT DEVICE before you can select the device.")
+        self.select_device.setToolTip(self.main.tooltip('select_device'))
         self.select_device.setMinimumContentsLength(17)
         self.select_device.setDisabled(True)
 
         self.select_flash = QPushButton("3. FLASH")
         self.select_flash.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.select_flash.setToolTip("Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options.")
+        self.select_flash.setToolTip(self.main.tooltip('select_flash'))
         self.select_flash.setEnabled(False)
 
         self.progress = QProgressBar()
-        self.progress.setToolTip("Progress will be shown during the FLASH step.")
+        self.progress.setToolTip(self.main.tooltip('progress'))
         self.progress.hide()
 
         self.logo = QLabel(self)
@@ -151,7 +151,7 @@ class Form(QDialog):
         self.label_version.setText("Version")
         #self.label_version.setStyleSheet(link_style)
         self.label_version.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.label_version.setToolTip("Click to see more about firmare releases")
+        self.label_version.setToolTip(self.main.tooltip('label_version'))
 
         self.label_port = QLabel(self)
         self.label_port.setText("Port")
@@ -160,28 +160,28 @@ class Form(QDialog):
         self.label_device.setText("Device")
         #self.label_device.setStyleSheet(link_style)
         self.label_device.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.label_device.setToolTip("Click to see more about Meshtastic supported devices")
+        self.label_device.setToolTip(self.main.tooltip('label_device'))
 
         self.label_detected_meshtastic_version = QLabel(self)
         self.label_detected_meshtastic_version.setText("")
 
-        self.settings_button = QPushButton("DEVICE SETTINGS")
+        self.settings_button = QPushButton(self.main.text('device_settings'))
         cog_icon = QIcon(meshtastic_flasher.util.get_path(COG_FILENAME))
         self.settings_button.setIcon(cog_icon)
         self.settings_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
         self.settings_button.setFixedHeight(20)
         self.settings_button.setStyleSheet("border:none")
         self.settings_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.settings_button.setToolTip("Click for device Settings.")
+        self.settings_button.setToolTip(self.main.tooltip('settings_button'))
 
-        self.options_button = QPushButton("Advanced Options")
+        self.options_button = QPushButton(self.main.text('advanced_options'))
         options_icon = QIcon(meshtastic_flasher.util.get_path(OPTIONS_ICON_FILENAME))
         self.options_button.setIcon(options_icon)
         self.options_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
         self.options_button.setFixedHeight(20)
         self.options_button.setStyleSheet("border:none")
         self.options_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.options_button.setToolTip("Click for advanced Flasher options.")
+        self.options_button.setToolTip(self.main.tooltip('advanced_options'))
 
         # Create layout and add widgets
         main_layout = QVBoxLayout()
@@ -265,6 +265,26 @@ class Form(QDialog):
 
         # pre-populate the versions that have already been downloaded and unzipped
         self.get_versions_from_disk()
+
+
+    def text(self, field):
+        """Return the text for a field"""
+        retval = ""
+        if self.fields:
+            if field in self.fields:
+                if 'text' in self.fields[field]:
+                    retval = self.fields[field]['text']
+        return retval
+
+
+    def tooltip(self, field):
+        """Return the tooltip for a field"""
+        retval = ""
+        if self.fields:
+            if field in self.fields:
+                if 'tooltip' in self.fields[field]:
+                    retval = self.fields[field]['tooltip']
+        return retval
 
 
     def label(self, field):
@@ -410,7 +430,7 @@ class Form(QDialog):
         self.firmware_version = meshtastic_flasher.util.tag_to_version(self.select_firmware_version.currentText())
 
         self.select_firmware_version.setEnabled(True)
-        self.select_firmware_version.setToolTip("Select desired firmware version to flash.")
+        self.select_firmware_version.setToolTip(self.main.tooltip('select_firmware_version_populated'))
         self.sort_firmware_versions()
 
         # only enable Flash button if we have both values
@@ -424,7 +444,7 @@ class Form(QDialog):
         if self.firmware_version:
             if os.path.exists(self.firmware_version):
                 self.select_device.insertSeparator(self.select_device.count())
-                self.select_device.addItem('All')
+                self.select_device.addItem(self.main.text('all'))
                 count = self.select_device.count() - 1
                 # make the label 'All' un-selectable
                 self.select_device.model().item(count).setEnabled(False)
@@ -444,23 +464,9 @@ class Form(QDialog):
         """Show help message"""
         print("help_message")
         msg_box = QMessageBox()
-        msg_box.setWindowTitle("Help")
+        msg_box.setWindowTitle(self.main.text('help'))
         msg_box.setTextFormat(QtCore.Qt.RichText)  # this is what makes the links clickable
-        msg_box.setText("If having issues flashing the device, be sure there is only one <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>supported device</a> connected "
-                        "and no other applications are using that communications port.<br><br>"
-                        "If still having problems, unplug the device, then re-plugin the device.<br><br>"
-                        "If still having problems, consider using a different usb port, perhaps an external usb hub or even a different computer and/or different operating system.<br><br>"
-                        "If still having problems, may need to install driver.<br>"
-                        "See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a> for more info. "
-                        "Newer T-Lora and newer T-Beams tend to need the CH9102 driver, which is in the CH343SER.ZIP file. "
-                        "The RAK 11200 may need the CP210X driver.<br>"
-                        "<u>Windows</u>: Check by going into DeviceManager and looking for any 'yellow' warning indicators.<br>"
-                        "<u>Mac</u>: Check by clicking in top left corner, 'About This Mac', 'System Report', 'USB'. Depending on which device it may show a CP2102 USB to UART Bridge Controller.<br>"
-                        "<u>Linux</u>: Linux tends to not need drivers for Meshtastic devices. If you have a computer available for the initial flashing, consider using this OS.<br><br>"
-                        "If still having problems, try rebooting the pc.<br><br>"
-                        "If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use "
-                        "v1.1 or v2.1.1.6 firmware.<br><br>"
-                        "Join the <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord group</a> and post questions in #help channel.")
+        msg_box.setText(self.main.text('help_text'))
         msg_box.setStandardButtons(QMessageBox.Ok)
         msg_box.exec()
 
@@ -468,10 +474,9 @@ class Form(QDialog):
         """Show info about_message"""
         print("about_message")
         msg_box = QMessageBox()
-        msg_box.setWindowTitle("About Meshtastic Flasher")
+        msg_box.setWindowTitle(self.main.text('about'))
         msg_box.setTextFormat(QtCore.Qt.RichText)
-        msg_box.setText("Meshtastic Flasher is part of the <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> ecosystem. "
-                        "It is a cross platform, easy to use GUI for installing Meshtastic firmware.")
+        msg_box.setText(self.main.text('about_text'))
         msg_box.setStandardButtons(QMessageBox.Ok)
         msg_box.exec()
 
@@ -504,14 +509,7 @@ class Form(QDialog):
     def hotkeys(self):
         """Show hotkeys"""
         print("hotkeys")
-        QMessageBox.information(self, "Info", ("Hotkeys:\n"
-                                "A - Advanced options\n"
-                                "D - Detect\n"
-                                "G - Get versions\n"
-                                "H - Hotkeys\n"
-                                "S - Settings\n"
-                                "T - Tips\n"
-                                "Q - Quit\n"))
+        QMessageBox.information(self, self.main.text('hotkeys'), self.main.text('hotkeys_text'))
 
 
     def detect_devices(self):
@@ -546,9 +544,8 @@ class Form(QDialog):
             pass
         if not exclusive:
             print("Warning: Cannot open the serial port exclusively.")
-            QMessageBox.information(self, "Info",
-                                    ("Warning: Cannot open the serial port exclusively.\n"
-                                    "Please close any other programs that might be using that port and re-try."))
+            # TODO: should this be warning and not information?
+            QMessageBox.information(self, self.main.text('info'), self.main.text('warning_cannot_open_port_exclusively'))
         return exclusive
 
 
@@ -561,9 +558,8 @@ class Form(QDialog):
             is_admin = ctypes.windll.shell32.IsUserAnAdmin() != 0
             if not is_admin:
                 print("Warning: This process is not running as Administrator.")
-                QMessageBox.information(self, "Info",
-                                        ("Warning: This process is not running as Administrator.\n"
-                                        "Please close and re-run as Administrator."))
+                # TODO: Should this be warning instead of information?
+                QMessageBox.information(self, self.main.text('info'), self.main.text('warning_not_admin'))
         return is_admin
 
 
