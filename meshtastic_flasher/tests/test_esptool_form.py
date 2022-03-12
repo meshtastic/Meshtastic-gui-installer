@@ -2,14 +2,17 @@
 
 import re
 
+from meshtastic_flasher.form import Form
 from meshtastic_flasher.esptool_form import EsptoolForm, Worker
 
 
 def test_EsptoolForm(qtbot):
     """Test EsptoolForm()"""
-    widget = EsptoolForm()
-    qtbot.addWidget(widget)
-    widget.start(port='foo', device_file='bar',
+    f = Form()
+    espf = EsptoolForm(f)
+    qtbot.addWidget(f)
+    qtbot.addWidget(espf)
+    espf.start(port='foo', device_file='bar',
                  system_info_file='baz', bin_file='bam',
                  test=True)
 
@@ -47,33 +50,39 @@ def test_Worker_isatty():
 
 def test_update_status(qtbot):
     """Test update_status()"""
-    widget = EsptoolForm()
-    qtbot.addWidget(widget)
-    assert widget.status_label.text() != 'foo'
-    widget.update_status('foo')
-    assert widget.status_label.text() == 'foo'
+    f = Form()
+    espf = EsptoolForm(f)
+    qtbot.addWidget(f)
+    qtbot.addWidget(espf)
+    assert espf.status_label.text() != 'foo'
+    espf.update_status('foo')
+    assert espf.status_label.text() == 'foo'
 
 
 def test_do_finished(qtbot):
     """Test do_finished()"""
-    widget = EsptoolForm()
-    qtbot.addWidget(widget)
-    assert widget.status_label.text() != ''
-    assert widget.ok_button.isHidden() is True
-    widget.do_finished()
-    assert widget.status_label.text() == ''
-    assert widget.ok_button.isHidden() is False
+    f = Form()
+    espf = EsptoolForm(f)
+    qtbot.addWidget(f)
+    qtbot.addWidget(espf)
+    assert espf.status_label.text() != ''
+    assert espf.ok_button.isHidden() is True
+    espf.do_finished()
+    assert espf.status_label.text() == ''
+    assert espf.ok_button.isHidden() is False
 
 
 def test_receive_data(qtbot):
     """Test receive_data()"""
-    widget = EsptoolForm()
-    qtbot.addWidget(widget)
-    assert widget.text.toPlainText() == ''
-    widget.receive_data('foo')
-    assert widget.text.toPlainText() == 'foo'
+    f = Form()
+    espf = EsptoolForm(f)
+    qtbot.addWidget(f)
+    qtbot.addWidget(espf)
+    assert espf.text.toPlainText() == ''
+    espf.receive_data('foo')
+    assert espf.text.toPlainText() == 'foo'
     # ensure no blank lines are added
-    widget.receive_data('\n')
-    assert widget.text.toPlainText() == 'foo'
-    widget.receive_data('bar\n')
-    assert widget.text.toPlainText() == 'foo\nbar'
+    espf.receive_data('\n')
+    assert espf.text.toPlainText() == 'foo'
+    espf.receive_data('bar\n')
+    assert espf.text.toPlainText() == 'foo\nbar'
