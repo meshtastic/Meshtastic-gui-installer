@@ -59,9 +59,27 @@
         "label": "Coding Rate",
         "description": "The denominator of the coding rate. ie for 4/8, the value is 8. 5/8 the value is 5."
     },
+    "confirm_update_techo_bootloader": {
+        "text": "Do you want to update the T-Echo bootloader?"
+    },
+    "confirm_flash_first_part": {
+        "text": "Are you sure you want to"
+    },
+    "copy": {
+        "text": "copy"
+    },
+    "could_not_find_partition": {
+        "text": "Could not find the partition.\nPress the RST button TWICE\nthen re-try pressing the DETECT button again."
+    },
     "debug_log_enabled": {
         "label": "Debug Log Enabled?",
         "description": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active."
+    },
+    "detected": {
+        "text": "Detected"
+    },
+    "device_has_meshtastic": {
+        "text": "Does the device currently have Meshtastic version 1.2 or newer?"
     },
     "device_id": {
         "label": "Device ID",
@@ -69,6 +87,9 @@
     },
     "device_settings": {
         "text": "DEVICE SETTINGS"
+    },
+    "done_updating_bootloader": {
+        "text": "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware."
     },
     "downlink_enabled": {
         "label": "Downlink Enabled?",
@@ -109,6 +130,12 @@
     "fixed_position": {
         "label": "Use Fixed position?",
         "description": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used."
+    },
+    "file_was_copied": {
+        "text": "File was copied.\nWait for the device to reboot."
+    },
+    "flash": {
+        "text": "flash"
     },
     "frequency_offset": {
         "label": "Frequency Offset",
@@ -250,9 +277,21 @@
         "label": "Channel Name",
         "description": "A short name that will be packed into the URL. Less than 12 bytes. This field will only be editable if the prior channel has a name. There are special channel names like 'admin' (for remote management) and 'gpio' (for remote gpio query/manipulation)."
     },
+    "no_devices_detected": {
+        "text": "No devices were detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?"
+    },
+    "nrf_detected": {
+        "text": "NRF device detected.\n\nPress RST button twice then click DETECT button again."
+    },
+    "note_all_settings_will_be_erased": {
+        "text": "NOTE: All Meshtastic settings will be erased."
+    },
     "on_battery_shutdown_after_secs": {
         "label": "On Battery Shutdown After (seconds)",
         "description": "If non-zero, the device will fully power off this many seconds after external power is removed."
+    },
+    "other": {
+        "text": "Other"
     },
     "phone_sds_timeout_sec": {
         "label": "Phone SDS Timeout (seconds)",
@@ -312,6 +351,15 @@
     },
     "progress": {
         "tooltip": "Progress will be shown during the FLASH step."
+    },
+    "question": {
+        "text": "Question"
+    },
+    "rak_bootloader_not_current": {
+        "text": "The RAK bootloader is not current.\nAbout to update the RAK bootloader..."
+    },
+    "rak_11200_detected": {
+        "text": "Looks like a RAK 11200 was detected.\n\nVerify it is in BOOT mode.\n\nThere should be a single, solid red light.\nThere should not be any other lights, solid nor flashing.\n\nIf not, disconnect the device and provide a jumper between GND and BOOT0 pins while device is plugged in.\n\n"
     },
     "range_test_module_about": {
         "label": "Range Test Module",
@@ -384,6 +432,9 @@
     "select_device": {
         "tooltip": "Need to click GET VERSIONS and DETECT DEVICE before you can select the device."
     },
+    "select_device_populated": {
+        "tooltip": "Select which type of device is connected."
+    },
     "select_firmware_version": {
         "tooltip": "Click GET VERSIONS for the list of firmware versions."
     },
@@ -393,8 +444,14 @@
     "select_flash": {
         "tooltip": "Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options."
     },
+    "select_flash_populated": {
+        "tooltip": "Click the FLASH button to write the Meshtastic firmware to the device."
+    },
     "select_port": {
         "tooltip": "Need to click GET VERSIONS and DETECT DEVICE before you can select the port."
+    },
+    "select_port_populated": {
+        "tooltip": "Select the communication port/destination."
     },
     "send_owner_interval": {
         "label": "Send Owner Interval",
@@ -468,6 +525,9 @@
         "label": "Records",
         "description": "TBD"
     },
+    "techo_bootloader_updated": {
+        "text": "T-Echo bootloader was updated.\n\nWait for the device to reboot."
+    },
     "team": {
         "label": "Team",
         "description": "Participants in the same network can self-group into different teams."
@@ -512,8 +572,14 @@
         "label": "TX Power (dBm)",
         "description": "If zero then, use default max legal continuous power (i.e., something that will not burn out the radio hardware). In most cases, you should use 0. (Units are in dBm)."
     },
+    "update": {
+        "text": "Update"
+    },
     "update_available": {
         "text": "update available"
+    },
+    "update_only": {
+        "text": "update only"
     },
     "uplink_enabled": {
         "label": "Uplink Enabled?",
@@ -525,8 +591,14 @@
     "warning_cannot_open_port_exclusively": {
         "text": "Warning: Cannot open the serial port exclusively.\nClose any other programs that might be using that port and try again."
     },
+    "warning_issue_downloading": {
+        "text": "Warning: There was an issue downloading/extracting."
+    },
     "warning_not_admin": {
         "text": "Warning: This process is not running as Administrator.\nClose and re-run as Administrator."
+    },
+    "warning_talking_to_device": {
+        "text": "Had a problem talking with the device.\nPerhaps unplug and re-plugin the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put the device into boot mode by pressing RST button twice."
     },
     "wait_bluetooth_secs": {
         "label": "Bluetooth Wait (seconds)",

@@ -589,7 +589,8 @@ class Form(QDialog):
                 print(f"  sudo usermod -a -G {group_to_search} {username}")
                 print("Then logout. And re-login.")
                 # Let the user know that they should be in the appropriate group
-                QMessageBox.information(self, "Info",
+                # TODO: migrate to fields.json
+                QMessageBox.information(self, self.main.text('info'),
                                         (f'Warning: The user ({username}) is not in the ({group_to_search}) group. Either:\n'
                                         'a) run this command as "sudo", or\n'
                                         'b) add this user to the dialout group using this command:\n'
@@ -703,13 +704,13 @@ class Form(QDialog):
                 # for now add both 5005 and 19003 to devices
                 # if we found the t-echo line, then swap
                 self.select_device.clear()
-                self.select_device.addItem('Detected')
+                self.select_device.addItem(self.main.text('detected'))
                 if is_techo:
                     # do not make the label 'Detected' selectable
                     self.select_device.model().item(0).setEnabled(False)
                     self.select_device.addItem('t-echo')
                     self.select_device.insertSeparator(self.select_device.count())
-                    self.select_device.addItem('Other')
+                    self.select_device.addItem(self.main.text('other'))
                     count = self.select_device.count() - 1
                     self.select_device.model().item(count).setEnabled(False)
                     self.select_device.addItem('rak4631_5005')
@@ -722,7 +723,7 @@ class Form(QDialog):
                     self.select_device.addItem('rak4631_5005')
                     self.select_device.addItem('rak4631_19003')
                     self.select_device.insertSeparator(self.select_device.count())
-                    self.select_device.addItem('Other')
+                    self.select_device.addItem(self.main.text('other'))
                     count = self.select_device.count() - 1
                     self.select_device.model().item(count).setEnabled(False)
                     self.select_device.addItem('t-echo')
@@ -749,18 +750,17 @@ class Form(QDialog):
                                         zip_ref.extract(utf_filename)
                             if not os.path.exists(utf_filename):
                                 print(f'Warning: Still do not have the {utf_filename} locally.')
-                                QMessageBox.warning(self, "Warning", 'There was an issue downloading/extracting.')
+                                QMessageBox.warning(self, self.main.text('warning'), self.main.text('warning_issue_downloading'))
                             else:
                                 dest = f'{self.select_port.currentText()}/{utf_filename}'
                                 print(f'copying file:{utf_filename} to dest:{dest}')
                                 shutil.copyfile(utf_filename, dest)
                                 print('done copying')
-                                QMessageBox.information(self, "Info", 'T-Echo bootloader updated.\n\nWait for it to reboot.')
+                                QMessageBox.information(self, self.main.text('info'), self.main.text('techo_bootloader_updated'))
                 else:
                     if (not rak_bootloader_current) and self.select_device.currentText().startswith('rak'):
                         print('rak bootloader is not current')
-                        QMessageBox.information(self, "Info", ("RAK bootloader is not current.\n"
-                                                "About to update RAK bootloader..."))
+                        QMessageBox.information(self, self.main.text('info'), self.main.text('rak_bootloader_not_current'))
 
                         print('Checking boot loader version')
                         # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
@@ -779,11 +779,11 @@ class Form(QDialog):
                             _, nrfutil_output = subprocess.getstatusoutput(command)
                             print(nrfutil_output)
 
-                            QMessageBox.information(self, "Info", "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware.")
+                            QMessageBox.information(self, self.main.text('info'), self.main.text('done_updating_bootloader'))
 
             else:
                 print("Could not find the partition")
-                QMessageBox.information(self, "Info", "Could not find the partition.\nPress the RST button TWICE\nthen re-try the pressing the DETECT button again.")
+                QMessageBox.information(self, self.main.text('info'), self.main.text('could_not_find_partition'))
 
 
     def version_and_device_from_info(self, ports):
@@ -799,7 +799,7 @@ class Form(QDialog):
                 if iface:
                     if iface.myInfo:
                         self.detected_meshtastic_version = iface.myInfo.firmware_version
-                        self.label_detected_meshtastic_version.setText(f'Detected:\n{self.detected_meshtastic_version}')
+                        self.label_detected_meshtastic_version.setText(f'{self.main.text("detected")}:\n{self.detected_meshtastic_version}')
                     hwModel = None
                     if iface.nodes:
                         for n in iface.nodes.values():
@@ -810,13 +810,13 @@ class Form(QDialog):
                     if self.is_hwModel_nrf(hwModel):
                         # this is an NRF device but not in boot mode
                         is_nrf = True
-                        QMessageBox.information(self, "Info", "NRF device detected.\n\nPress RST button twice then click the DETECT button again.")
+                        QMessageBox.information(self, self.main.text('info'), self.main.text('nrf_detected'))
                     else:
                         device = self.hwModel_to_device(hwModel)
                         self.update_device_dropdown(device)
             except Exception as e:
                 print(f'Exception:{e}')
-                QMessageBox.warning(self, "Warning", "Had a problem talking with the device.\nMaybe disconnect and reconnect the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put in boot mode by pressing RST button twice.")
+                QMessageBox.warning(self, self.main.text('warning'), self.main.text('warning_talking_to_device'))
         return is_nrf
 
 
@@ -824,7 +824,7 @@ class Form(QDialog):
         """Update the device drop down with the device detected"""
         if device:
             self.select_device.clear()
-            self.select_device.addItem('Detected')
+            self.select_device.addItem(self.main.text('detected'))
             # not make the label 'Detected' selectable
             self.select_device.model().item(0).setEnabled(False)
             self.select_device.addItem(device)
@@ -893,13 +893,13 @@ class Form(QDialog):
     def enable_at_end_of_detect(self):
         """Set combo boxes and flash button if appropriate."""
         if self.select_port.count() > 0:
-            self.select_port.setToolTip("Select the communication port/destination")
+            self.select_port.setToolTip(self.main.text('select_port_populated'))
             self.select_port.setEnabled(True)
         else:
             self.select_port.setEnabled(False)
 
         if self.select_device.count() > 0:
-            self.select_device.setToolTip("Select the device variant")
+            self.select_device.setToolTip(self.main.text('select_device_populated'))
             self.select_device.setEnabled(True)
         else:
             self.select_device.setEnabled(False)
@@ -907,7 +907,7 @@ class Form(QDialog):
         # only enable Flash button and Device dropdown if we have firmware and ports
         if self.select_port.count() > 0 and self.firmware_version:
             self.select_flash.setEnabled(True)
-            self.select_flash.setToolTip('Click the FLASH button to write to the device.')
+            self.select_flash.setToolTip(self.main.tooltip('select_flash_populated'))
 
 
     def is_rak11200(self, supported_devices):
@@ -960,11 +960,7 @@ class Form(QDialog):
             if is_rak11200:
                 print("Looks like a RAK 11200, ensure in boot mode (single red solid light, no green nor blue lights).")
                 print("See https://docs.rakwireless.com/assets/images/wisblock/rak11200/quickstart/rak11200-Boot0-for-flashing.png")
-                QMessageBox.information(self, "Info", ("Looks like a RAK 11200 was detected.\n\n"
-                                        "Verify it is in BOOT mode.\n\n"
-                                        "There should be a single, solid red light.\n"
-                                        "There should not be any other lights, solid nor flashing.\n\n"
-                                        "If not, disconnect the device and provide a jumper between GND and BOOT0 while you plug it in.\n\n"))
+                QMessageBox.information(self, self.main.text('info'), self.main.text('rak_11200_detected'))
 
             else:
                 if use_meshtastic_check:
@@ -976,7 +972,7 @@ class Form(QDialog):
                             self.all_devices()
                         else:
                             print("No devices detected")
-                            QMessageBox.information(self, "Info", "No devices detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?")
+                            QMessageBox.information(self, self.main.text('info'), self.main.text('no_devices_detected'))
 
                         self.progress.setValue(80)
                         QApplication.processEvents()
@@ -1010,7 +1006,7 @@ class Form(QDialog):
         update_only_message = ""
         if self.update_only:
             print('update only is checked')
-            update_only_message = "**update only** "
+            update_only_message = f"**{self.main.text('update_only')}** "
         else:
             print('update only is not checked')
         return update_only_message
@@ -1021,8 +1017,8 @@ class Form(QDialog):
            Returns True if user answered Yes, otherwise returns False
         """
         want_to_proceed = False
-        confirm_msg = 'Do you want to update the T-Echo bootloader?'
-        reply = QMessageBox.question(self, 'Update', confirm_msg, QMessageBox.Yes | QMessageBox.No)
+        confirm_msg = self.main.text('confirm_update_techo_bootloader')
+        reply = QMessageBox.question(self, self.main.text('update'), confirm_msg, QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
             want_to_proceed = True
             print("User confirmed they want to update the techo bootloader")
@@ -1036,15 +1032,15 @@ class Form(QDialog):
            Returns True if user answered Yes, otherwise returns False
         """
         want_to_proceed = False
-        verb = 'flash'
+        verb = self.main.text('flash')
         all_settings_msg = ''
         if update_only_message == '':
-            all_settings_msg = 'NOTE: All Meshtastic settings will be erased.'
+            all_settings_msg = self.main.text('note_all_settings_will_be_erased')
         if self.nrf:
-            verb = 'copy'
+            verb = self.main.text('copy')
             update_only_message = ''
             all_settings_msg = ''
-        confirm_msg = f'Are you sure you want to {update_only_message}{verb}\n{self.firmware_version}\n'
+        confirm_msg = f'{self.main.text("confirm_flash_first_part")} {update_only_message}{verb}\n{self.firmware_version}\n'
         confirm_msg += f'{self.port}\n{self.device}?\n\n{all_settings_msg}'
         reply = QMessageBox.question(self, 'Flash', confirm_msg, QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
@@ -1060,8 +1056,8 @@ class Form(QDialog):
            Returns True if user answered Yes, otherwise returns False
         """
         want_to_check = False
-        msg = 'Does the device currently have Meshtastic version 1.2 or greater?'
-        reply = QMessageBox.question(self, 'Question', msg, QMessageBox.Yes | QMessageBox.No)
+        msg = self.main.text('device_has_meshtastic')
+        reply = QMessageBox.question(self, self.main.text('question'), msg, QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
             want_to_check = True
             print("User confirmed the device has Meshtastic so we will check using the Meshtastic python method")
@@ -1093,7 +1089,7 @@ class Form(QDialog):
                 # nrf52 devices
                 self.flash_nrf52()
                 print("nrf52 file was copied")
-                QMessageBox.information(self, "Info", "File was copied.\nWait for the device to reboot.")
+                QMessageBox.information(self, self.main.text('info'), self.main.text('file_was_copied'))
             else:
                 # esp32 devices
                 self.device_file = f"{self.firmware_version}/firmware-{self.device}-{self.firmware_version}.bin"
