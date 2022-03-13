@@ -131,7 +131,13 @@
         "description": "A globally unique identifier for this device."
     },
     "device_settings": {
-        "text": "DEVICE SETTINGS"
+        "text": {
+            "en": "Device Settings",
+            "de": "Geräteeinstellungen"
+        }
+    },
+    "device_settings_button": {
+        "tooltip": "Click to view or update settings on the device."
     },
     "done_updating_bootloader": {
         "text": "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware."
@@ -633,9 +639,6 @@
     },
     "settings": {
         "text": "Settings"
-    },
-    "settings_button": {
-        "tooltip": "Click to view or update settings on the device."
     },
     "short_name": {
         "label": "Short Name",

@@ -59,6 +59,7 @@ class Form(QDialog):
 
         self.parent = None
         self.main = self
+        self.lang = "en"
 
         self.port = None
         self.firmware_version = None
@@ -165,32 +166,32 @@ class Form(QDialog):
         self.label_detected_meshtastic_version = QLabel(self)
         self.label_detected_meshtastic_version.setText("")
 
-        self.settings_button = QPushButton(self.main.text('device_settings'))
+        self.device_settings_button = QPushButton(self.main.text('device_settings'))
         cog_icon = QIcon(meshtastic_flasher.util.get_path(COG_FILENAME))
-        self.settings_button.setIcon(cog_icon)
-        self.settings_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
-        self.settings_button.setFixedHeight(20)
-        self.settings_button.setStyleSheet("border:none")
-        self.settings_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.settings_button.setToolTip(self.main.tooltip('settings_button'))
+        self.device_settings_button.setIcon(cog_icon)
+        self.device_settings_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
+        self.device_settings_button.setFixedHeight(20)
+        self.device_settings_button.setStyleSheet("border:none")
+        self.device_settings_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+        self.device_settings_button.setToolTip(self.main.tooltip('device_settings_button'))
 
-        self.options_button = QPushButton(self.main.text('advanced_options'))
+        self.advanced_options_button = QPushButton(self.main.text('advanced_options'))
         options_icon = QIcon(meshtastic_flasher.util.get_path(OPTIONS_ICON_FILENAME))
-        self.options_button.setIcon(options_icon)
-        self.options_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
-        self.options_button.setFixedHeight(20)
-        self.options_button.setStyleSheet("border:none")
-        self.options_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
-        self.options_button.setToolTip(self.main.tooltip('advanced_options'))
+        self.advanced_options_button.setIcon(options_icon)
+        self.advanced_options_button.setIconSize(BUTTON_ICON_SIZE_SMALL)
+        self.advanced_options_button.setFixedHeight(20)
+        self.advanced_options_button.setStyleSheet("border:none")
+        self.advanced_options_button.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
+        self.advanced_options_button.setToolTip(self.main.tooltip('advanced_options'))
 
         # Create layout and add widgets
         main_layout = QVBoxLayout()
         main_layout.setContentsMargins(0, 0, 0, 0)
 
         info_layout = QHBoxLayout()
-        info_layout.addWidget(self.options_button, alignment=QtCore.Qt.AlignRight)
+        info_layout.addWidget(self.advanced_options_button, alignment=QtCore.Qt.AlignRight)
         info_layout.addStretch(1)
-        info_layout.addWidget(self.settings_button, alignment=QtCore.Qt.AlignLeft)
+        info_layout.addWidget(self.device_settings_button, alignment=QtCore.Qt.AlignLeft)
         info_layout.addStretch(1)
         info_layout.addWidget(self.about_button)
         info_layout.addWidget(self.help_button)
@@ -248,9 +249,6 @@ class Form(QDialog):
         self.label_detected_meshtastic_version.move(30, 300)
         self.label_detected_meshtastic_version.show()
 
-        #self.settings_button.move(400, 270)
-        #self.settings_button.show()
-
         # Add button signals to slots
         self.get_versions_button.clicked.connect(self.get_versions)
         self.help_button.clicked.connect(self.help_message)
@@ -260,51 +258,51 @@ class Form(QDialog):
         self.select_detect.clicked.connect(self.detect)
         self.select_flash.clicked.connect(self.flash_stuff)
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
-        self.settings_button.mousePressEvent = self.run_settings
-        self.options_button.mousePressEvent = self.run_options
+        self.device_settings_button.mousePressEvent = self.run_device_settings
+        self.advanced_options_button.mousePressEvent = self.run_advanced_options
 
         # pre-populate the versions that have already been downloaded and unzipped
         self.get_versions_from_disk()
 
 
-    def text(self, field):
-        """Return the text for a field"""
+    def get_field(self, field, key):
+        """Return the value for a field"""
         retval = ""
         if self.fields:
             if field in self.fields:
                 if 'text' in self.fields[field]:
-                    retval = self.fields[field]['text']
+                    tmp = self.fields[field][key]
+                    if isinstance(tmp, str):
+                        # there are no translations
+                        retval = self.fields[field][key]
+                    else:
+                        if self.lang in self.fields[field][key]:
+                            # use their lang
+                            retval = self.fields[field][key][self.lang]
+                        else:
+                            # fall back to english
+                            retval = self.fields[field][key]['en']
         return retval
+
+
+    def text(self, field):
+        """Return the text for a field"""
+        return self.get_field(field, 'text')
 
 
     def tooltip(self, field):
         """Return the tooltip for a field"""
-        retval = ""
-        if self.fields:
-            if field in self.fields:
-                if 'tooltip' in self.fields[field]:
-                    retval = self.fields[field]['tooltip']
-        return retval
+        return self.get_field(field, 'tooltip')
 
 
     def label(self, field):
         """Return the label for a field"""
-        retval = ""
-        if self.fields:
-            if field in self.fields:
-                if 'label' in self.fields[field]:
-                    retval = self.fields[field]['label']
-        return retval
+        return self.get_field(field, 'label')
 
 
     def description(self, field):
         """Return the description for a field"""
-        retval = ""
-        if self.fields:
-            if field in self.fields:
-                if 'description' in self.fields[field]:
-                    retval = self.fields[field]['description']
-        return retval
+        return self.get_field(field, 'description')
 
 
     def doc_url(self, field):
@@ -349,18 +347,18 @@ class Form(QDialog):
             print("T was pressed... so showing help message")
             self.help_message()
         elif event.key() == QtCore.Qt.Key_S:
-            print("S was pressed... showing settings form")
-            self.run_settings(None)
+            print("S was pressed... showing device settings form")
+            self.run_device_settings(None)
 
 
     # pylint: disable=unused-argument
-    def run_settings(self, event):
-        """Run the settings form"""
+    def run_device_settings(self, event):
+        """Run the device_settings form"""
         self.settings.run()
 
 
     # pylint: disable=unused-argument
-    def run_options(self, event):
+    def run_advanced_options(self, event):
         """Run the advanced options form"""
         self.advanced_form.show()
 
