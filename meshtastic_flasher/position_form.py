@@ -26,7 +26,7 @@ class PositionForm(QDialog):
         width = 900
         height = 500
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Position Settings")
+        self.setWindowTitle(self.main.text('position_settings'))
 
         self.port = None
         self.interface = None
@@ -99,14 +99,14 @@ class PositionForm(QDialog):
         form_layout.addRow('', self.position_flag_seq_nos)
         form_layout.addRow('', self.position_flag_timestamp)
         form_layout.addRow(self.main.label("position_flags"), self.position_flags)
-        form_layout.addRow(self.tr(""), self.fixed_position_button)
+        form_layout.addRow("", self.fixed_position_button)
         form_layout.addRow(self.main.label("location_share"), self.location_share)
         form_layout.addRow(self.main.label("gps_operation"), self.gps_operation)
         form_layout.addRow(self.main.label("gps_format"), self.gps_format)
         form_layout.addRow(self.main.label("gps_accept_2d"), self.gps_accept_2d)
         form_layout.addRow(self.main.label("gps_max_dop"), self.gps_max_dop)
         #form_layout.addRow(self.tr("Last GPS Attempt"), self.gps_attempt_time)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
         self.position_flag_altitude.stateChanged.connect(self.on_position_flag_change)

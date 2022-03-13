@@ -37,6 +37,12 @@
         "label": "Bandwidth (MHz)",
         "description": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz."
     },
+    "canned": {
+        "text": "Canned"
+    },
+    "canned_message_module_settings": {
+        "text": "Canned Message Module Settings"
+    },
     "canned_message_module_about": {
         "label": "Canned Message Module",
         "doc_url": "https://meshtastic.org/docs/settings/canned-message-module"
@@ -141,6 +147,9 @@
     "export_configuration": {
         "text": "Export Configuration"
     },
+    "ext_notification_module_settings": {
+        "text": "External Notification Module Settings"
+    },
     "ext_notification_module_about": {
         "label": "External Notification Module",
         "doc_url": "https://meshtastic.org/docs/settings/external-notification-module"
@@ -176,6 +185,9 @@
         "label": "Use Fixed position?",
         "description": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used."
     },
+    "fixed_position_settings": {
+        "text": "Fixed Position Settings"
+    },
     "file_was_copied": {
         "text": "File was copied.\nWait for the device to reboot."
     },
@@ -203,6 +215,9 @@
     },
     "full_step4_done": {
         "text": "Full flash step 4 of 4 is done"
+    },
+    "get_lat_lon_using_ip": {
+        "text": "Get Lat/Lon using your IP"
     },
     "gps_accept_2d": {
         "label": "GPS Accept 2D Fix?",
@@ -280,6 +295,9 @@
         "label": "Latitude",
         "description": "Latitude is the measurement of distance north or south of the Equator. It is measured with 180 imaginary lines that form circles around the Earth east-west, parallel to the Equator."
     },
+    "module_link": {
+        "tooltip": "Link shows more information about the settings for this module."
+    },
     "location_share": {
         "label": "Location sharing",
         "description": "How location is shared with other nodes (or the local phone)."
@@ -301,6 +319,16 @@
         "label": "Mesh SDS Timeout (seconds)",
         "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 seconds (or two hours), MAXUINT or 4294967295 for disabled."
     },
+    "message": {
+        "label": "Message",
+        "description": "The message to be sent."
+    },
+    "message_to_send": {
+        "text": "Provide a message to send."
+    },
+    "message_sent": {
+        "text": "The message was sent."
+    },
     "macaddr": {
         "label": "MAC Address",
         "description": "The address of the device."
@@ -312,6 +340,9 @@
     "modem_config": {
         "label": "Modem Config",
         "description": "The configuration of the modem. (speed/distance)"
+    },
+    "module_settings": {
+        "text": "Module Settings"
     },
     "modules": {
         "text": "Modules"
@@ -352,6 +383,9 @@
     "note_all_settings_will_be_erased": {
         "text": "NOTE: All Meshtastic settings will be erased."
     },
+    "notifications": {
+        "text": "Notifications"
+    },
     "on_battery_shutdown_after_secs": {
         "label": "On Battery Shutdown After (seconds)",
         "description": "If non-zero, the device will fully power off this many seconds after external power is removed."
@@ -369,6 +403,9 @@
     },
     "position": {
         "text": "Position"
+    },
+    "position_settings": {
+        "text": "Position Settings"
     },
     "position_broadcast_secs": {
         "label": "Broadcast interval (seconds)",
@@ -421,6 +458,9 @@
     "power": {
         "text": "Power"
     },
+    "power_settings": {
+        "text": "Power Settings"
+    },
     "progress": {
         "tooltip": "Progress will be shown during the FLASH step."
     },
@@ -430,11 +470,20 @@
     "radio": {
         "text": "Radio"
     },
+    "radio_settings": {
+        "text": "Radio Settings"
+    },
     "rak_bootloader_not_current": {
         "text": "The RAK bootloader is not current.\nAbout to update the RAK bootloader..."
     },
     "rak_11200_detected": {
         "text": "Looks like a RAK 11200 was detected.\n\nVerify it is in BOOT mode.\n\nThere should be a single, solid red light.\nThere should not be any other lights, solid nor flashing.\n\nIf not, disconnect the device and provide a jumper between GND and BOOT0 pins while device is plugged in.\n\n"
+    },
+    "range": {
+        "text": "Range"
+    },
+    "range_test_module_settings": {
+        "text": "Range Test Module Settings"
     },
     "range_test_module_about": {
         "label": "Range Test Module",
@@ -459,6 +508,12 @@
     "role": {
         "label": "Role",
         "description": "How this channel is being used (or not not being used)."
+    },
+    "rotary": {
+        "text": "Rotary"
+    },
+    "rotary_encoder_plugin_settings": {
+        "text": "Rotary Encoder Module Settings"
     },
     "rotary1_about": {
         "label": "Rotary Encoder Module",
@@ -536,7 +591,10 @@
         "description": "Send our owner info at least this often (also we always send once at boot - to rejoin the mesh)."
     },
     "send_text": {
-        "text": "SEND TEXT"
+        "text": "Send Text"
+    },
+    "serial": {
+        "text": "Serial"
     },
     "serial_disabled": {
         "label": "Serial Disabled?",
@@ -545,6 +603,9 @@
     "serial_module_about": {
         "label": "Serial Module",
         "doc_url": "https://meshtastic.org/docs/settings/serial-module"
+    },
+    "serial_module_settings": {
+        "text": "Serial Module Settings"
     },
     "serial_module_echo": {
         "label": "Echo?",
@@ -589,6 +650,9 @@
         "label": "Store and Forward Module",
         "doc_url": "https://meshtastic.org/docs/settings/store-and-forward-module"
     },
+    "store_forward_module_settings": {
+        "text": "Store and Forward Module Settings"
+    },
     "store_forward_module_enabled": {
         "label": "Enabled?",
         "description": "If set, the Store and Forward module will be enabled."
@@ -616,9 +680,15 @@
         "label": "Team",
         "description": "Participants in the same network can self-group into different teams."
     },
+    "telemetry": {
+        "text": "Telemetry"
+    },
     "telemetry_module_about": {
         "label": "Telemetry Module",
         "doc_url": "https://meshtastic.org/docs/settings/telemetry-module"
+    },
+    "telemetry_module_settings": {
+        "text": "Telemetry Module Settings"
     },
     "telemetry_module_display_farenheit": {
         "label": "Display Temperature in Farenheit?",

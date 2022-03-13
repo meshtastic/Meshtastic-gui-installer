@@ -27,7 +27,7 @@ class FixedPositionForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Fixed Position Settings")
+        self.setWindowTitle(self.main.text('fixed_position_settings'))
 
         self.port = None
         self.interface = None
@@ -42,7 +42,7 @@ class FixedPositionForm(QDialog):
         self.lon.setToolTip(self.main.description('lon'))
         self.alt = QLineEdit()
         self.alt.setToolTip(self.main.description('alt'))
-        self.get_location_using_ip_button = QPushButton("Get Lat/Lon using your IP")
+        self.get_location_using_ip_button = QPushButton(self.main.text('get_lat_lon_using_ip'))
         self.get_location_using_ip_button.clicked.connect(self.latlon)
 
         # Add a button box
@@ -58,7 +58,7 @@ class FixedPositionForm(QDialog):
         form_layout.addRow(self.main.label("lat"), self.lat)
         form_layout.addRow(self.main.label("lon"), self.lon)
         form_layout.addRow(self.main.label("alt"), self.alt)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

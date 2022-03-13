@@ -16,7 +16,7 @@ class InfoForm(QDialog):
         width = 800
         height = 900
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Info")
+        self.setWindowTitle(self.main.text('info'))
 
         # Create widgets
         self.text = QPlainTextEdit()

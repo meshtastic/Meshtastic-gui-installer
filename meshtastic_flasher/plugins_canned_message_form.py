@@ -25,7 +25,7 @@ class CannedMessageForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Canned Message Module Settings")
+        self.setWindowTitle(self.main.text("canned_message_module_settings"))
 
         self.port = None
         self.interface = None
@@ -35,7 +35,7 @@ class CannedMessageForm(QDialog):
         self.canned_message_about = QLabel(self.main.doc_url('canned_message_module_about'))
         self.canned_message_about.setOpenExternalLinks(True)
         self.canned_message_about.setTextFormat(QtCore.Qt.RichText)
-        self.canned_message_about.setToolTip("Link shows more info about the settings for this module.")
+        self.canned_message_about.setToolTip(self.main.tooltip('module_link'))
         self.canned_message_module_enabled = QCheckBox()
         self.canned_message_module_enabled.setToolTip(self.main.description('canned_message_module_enabled'))
         self.canned_message_module_allow_input_source = QLineEdit()
@@ -59,7 +59,7 @@ class CannedMessageForm(QDialog):
         form_layout.addRow(self.main.label("canned_message_module_send_bell"), self.canned_message_module_send_bell)
         form_layout.addRow(self.main.label("canned_message_module_allow_input_source"), self.canned_message_module_allow_input_source)
         form_layout.addRow(self.main.label("canned_message_module_messages"), self.canned_message_module_messages)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

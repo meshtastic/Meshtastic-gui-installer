@@ -25,7 +25,7 @@ class PowerForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Power Settings")
+        self.setWindowTitle(self.main.text('power_settings'))
 
         self.port = None
         self.interface = None
@@ -84,7 +84,7 @@ class PowerForm(QDialog):
         form_layout.addRow(self.main.label("screen_on_secs"), self.screen_on_secs)
         form_layout.addRow(self.main.label("sds_secs"), self.sds_secs)
         form_layout.addRow(self.main.label("wait_bluetooth_secs"), self.wait_bluetooth_secs)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

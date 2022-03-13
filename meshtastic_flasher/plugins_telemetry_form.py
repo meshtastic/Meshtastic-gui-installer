@@ -26,7 +26,7 @@ class TelemetryForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Telemetry Module Settings")
+        self.setWindowTitle(self.main.text('telemetry_module_settings'))
 
         self.port = None
         self.interface = None
@@ -36,7 +36,7 @@ class TelemetryForm(QDialog):
         self.telemetry_module_about = QLabel(self.main.doc_url('telemetry_module_about'))
         self.telemetry_module_about.setOpenExternalLinks(True)
         self.telemetry_module_about.setTextFormat(QtCore.Qt.RichText)
-        self.telemetry_module_about.setToolTip("Link shows more info about the settings for this plugin.")
+        self.telemetry_module_about.setToolTip(self.main.tooltip('module_link'))
         self.telemetry_module_measurement_enabled = QCheckBox()
         self.telemetry_module_measurement_enabled.setToolTip(self.main.description('telemetry_module_measurement_enabled'))
         self.telemetry_module_display_farenheit = QCheckBox()
@@ -72,7 +72,7 @@ class TelemetryForm(QDialog):
         form_layout.addRow(self.main.label("telemetry_module_sensor_pin"), self.telemetry_module_sensor_pin)
         form_layout.addRow(self.main.label("telemetry_module_sensor_type"), self.telemetry_module_sensor_type)
         form_layout.addRow(self.main.label("telemetry_module_update_interval"), self.telemetry_module_update_interval)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

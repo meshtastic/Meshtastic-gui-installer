@@ -26,7 +26,7 @@ class RangeTestForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Range Test Module Settings")
+        self.setWindowTitle(self.main.text('range_test_module_settings'))
 
         self.port = None
         self.interface = None
@@ -36,7 +36,7 @@ class RangeTestForm(QDialog):
         self.range_test_about = QLabel(self.main.doc_url('range_test_module_about'))
         self.range_test_about.setOpenExternalLinks(True)
         self.range_test_about.setTextFormat(QtCore.Qt.RichText)
-        self.range_test_about.setToolTip("Link shows more info about the settings for this module.")
+        self.range_test_about.setToolTip(self.main.tooltip('module_link'))
         self.range_test_module_enabled = QCheckBox()
         self.range_test_module_enabled.setToolTip(self.main.description('range_test_module_enabled'))
         self.range_test_module_save = QCheckBox()
@@ -56,7 +56,7 @@ class RangeTestForm(QDialog):
         form_layout.addRow(self.main.label("range_test_module_enabled"), self.range_test_module_enabled)
         form_layout.addRow(self.main.label("range_test_module_save"), self.range_test_module_save)
         form_layout.addRow(self.main.label("range_test_module_sender"), self.range_test_module_sender)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

@@ -26,7 +26,7 @@ class ExternalNotificationsForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("External Notification Module Settings")
+        self.setWindowTitle(self.main.text('ext_notification_module_settings'))
 
         self.port = None
         self.interface = None
@@ -36,7 +36,7 @@ class ExternalNotificationsForm(QDialog):
         self.ext_notification_about = QLabel(self.main.doc_url('ext_notification_module_about'))
         self.ext_notification_about.setOpenExternalLinks(True)
         self.ext_notification_about.setTextFormat(QtCore.Qt.RichText)
-        self.ext_notification_about.setToolTip("Link shows more info about the settings for this module.")
+        self.ext_notification_about.setToolTip(self.main.tooltip('module_link'))
         self.ext_notification_module_enabled = QCheckBox()
         self.ext_notification_module_enabled.setToolTip(self.main.description('ext_notification_module_enabled'))
         self.ext_notification_module_active = QCheckBox()
@@ -65,7 +65,7 @@ class ExternalNotificationsForm(QDialog):
         form_layout.addRow(self.main.label("ext_notification_module_alert_message"), self.ext_notification_module_alert_message)
         form_layout.addRow(self.main.label("ext_notification_module_output"), self.ext_notification_module_output)
         form_layout.addRow(self.main.label("ext_notification_module_output_ms"), self.ext_notification_module_output_ms)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

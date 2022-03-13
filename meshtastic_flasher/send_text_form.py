@@ -20,13 +20,13 @@ class SendTextForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Send Text")
+        self.setWindowTitle(self.main.text('send_text'))
 
         self.prefs = None
 
         # Create widgets
         self.message = QLineEdit()
-        self.message.setToolTip('The message to be sent.')
+        self.message.setToolTip(self.main.description('message'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -36,8 +36,8 @@ class SendTextForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow("Message", self.message)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow(self.main.label('message'), self.message)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 
@@ -51,16 +51,16 @@ class SendTextForm(QDialog):
         print(f'Send {self.message.text()}')
 
         if self.message.text() == '':
-            QMessageBox.information(self, "Info", "Please supply a message to send.")
+            QMessageBox.information(self, self.main.text('info'), self.main.text('message_to_send'))
         else:
             old_sys_argv = sys.argv
-            sys.argv = ['', '--sendtext', f'{self.message.text()}']
+            sys.argv = ['', '--sendtext', f"'{self.message.text()}'"]
             try:
                 main()
             except SystemExit:
                 pass
             sys.argv = old_sys_argv
-            QMessageBox.information(self, "Info", "Message sent")
+            QMessageBox.information(self, self.main.text('info'), self.main.text('message_sent'))
             self.close()
 
 

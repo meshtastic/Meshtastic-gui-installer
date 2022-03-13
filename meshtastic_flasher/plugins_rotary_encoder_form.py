@@ -1,4 +1,4 @@
-"""class for the rotary encoder plugin settings"""
+"""class for the rotary encoder module settings"""
 
 
 from PySide6 import QtCore
@@ -14,7 +14,7 @@ from meshtastic_flasher.util import zero_if_blank
 
 
 class RotaryEncoderForm(QDialog):
-    """serial plugin settings form"""
+    """rotary encoder module settings form"""
 
     def __init__(self, parent=None):
         """constructor"""
@@ -26,7 +26,7 @@ class RotaryEncoderForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Rotary Encoder Plugin Settings")
+        self.setWindowTitle(self.main.text('rotary_encoder_plugin_settings'))
 
         self.port = None
         self.interface = None
@@ -36,7 +36,7 @@ class RotaryEncoderForm(QDialog):
         self.rotary1_about = QLabel(self.main.doc_url('rotary1_about'))
         self.rotary1_about.setOpenExternalLinks(True)
         self.rotary1_about.setTextFormat(QtCore.Qt.RichText)
-        self.rotary1_about.setToolTip("Link shows more info about the settings for this plugin.")
+        self.rotary1_about.setToolTip(self.main.tooltip('module_link'))
         self.rotary1_enabled = QCheckBox()
         self.rotary1_enabled.setToolTip(self.main.description('rotary1_enabled'))
         self.rotary1_event_cw = QComboBox()
@@ -71,7 +71,7 @@ class RotaryEncoderForm(QDialog):
         form_layout.addRow(self.main.label("rotary1_pin_a"), self.rotary1_pin_a)
         form_layout.addRow(self.main.label("rotary1_pin_b"), self.rotary1_pin_b)
         form_layout.addRow(self.main.label("rotary1_pin_press"), self.rotary1_pin_press)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

@@ -26,7 +26,7 @@ class SerialForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Serial Plugin Settings")
+        self.setWindowTitle(self.main.text('serial_plugin_settings'))
 
         self.port = None
         self.interface = None
@@ -36,7 +36,7 @@ class SerialForm(QDialog):
         self.serial_module_about = QLabel(self.main.doc_url('serial_module_about'))
         self.serial_module_about.setOpenExternalLinks(True)
         self.serial_module_about.setTextFormat(QtCore.Qt.RichText)
-        self.serial_module_about.setToolTip("Link shows more info about the settings for this plugin.")
+        self.serial_module_about.setToolTip(self.main.tooltip('module_link'))
         self.serial_module_enabled = QCheckBox()
         self.serial_module_enabled.setToolTip(self.main.description('serial_module_enabled'))
         self.serial_module_echo = QCheckBox()
@@ -65,7 +65,7 @@ class SerialForm(QDialog):
         form_layout.addRow(self.main.label("serial_module_txd"), self.serial_module_txd)
         form_layout.addRow(self.main.label("serial_module_rxd"), self.serial_module_rxd)
         form_layout.addRow(self.main.label("serial_module_timeout"), self.serial_module_timeout)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

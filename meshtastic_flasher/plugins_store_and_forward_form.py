@@ -26,7 +26,7 @@ class StoreAndForwardForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Store and Forward Module Settings")
+        self.setWindowTitle(self.main.text('store_forward_module_settings'))
 
         self.port = None
         self.interface = None
@@ -36,7 +36,7 @@ class StoreAndForwardForm(QDialog):
         self.store_forware_module_about = QLabel(self.main.doc_url('store_forware_module_about'))
         self.store_forware_module_about.setOpenExternalLinks(True)
         self.store_forware_module_about.setTextFormat(QtCore.Qt.RichText)
-        self.store_forware_module_about.setToolTip("Link shows more info about the settings for this module.")
+        self.store_forware_module_about.setToolTip(self.main.tooltip('module_link'))
         self.store_forward_module_enabled = QCheckBox()
         self.store_forward_module_enabled.setToolTip(self.main.description('store_forward_module_enabled'))
         self.store_forward_module_heartbeat = QCheckBox()
@@ -62,7 +62,7 @@ class StoreAndForwardForm(QDialog):
         form_layout.addRow(self.main.label("store_forward_module_history_return_max"), self.store_forward_module_history_return_max)
         form_layout.addRow(self.main.label("store_forward_module_history_return_window"), self.store_forward_module_history_return_window)
         form_layout.addRow(self.main.label("store_forward_module_records"), self.store_forward_module_records)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

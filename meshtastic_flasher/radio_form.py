@@ -25,7 +25,7 @@ class RadioForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Radio Settings")
+        self.setWindowTitle(self.main.text('radio_settings'))
 
         self.port = None
         self.interface = None
@@ -74,7 +74,7 @@ class RadioForm(QDialog):
         #form_layout.addRow(self.main.label("Ignore Incoming"), self.ignore_incoming)
         form_layout.addRow(self.main.label("is_lora_tx_disabled"), self.is_lora_tx_disabled)
         form_layout.addRow(self.main.label("send_owner_interval"), self.send_owner_interval)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 
