@@ -1,4 +1,4 @@
-"""class for the plugin range test settings"""
+"""class for the range test module settings"""
 
 
 from PySide6 import QtCore
@@ -14,34 +14,35 @@ from meshtastic_flasher.util import zero_if_blank
 
 
 class RangeTestForm(QDialog):
-    """plugin range test settings form"""
+    """range test module settings form"""
 
     def __init__(self, parent=None):
         """constructor"""
         super(RangeTestForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Plugins Range Test Settings")
+        self.setWindowTitle(self.main.text('range_test_module_settings'))
 
         self.port = None
         self.interface = None
         self.prefs = None
 
         # Create widgets
-        self.range_test_about = QLabel(self.parent.parent.doc_url('range_test_plugin_about'))
+        self.range_test_about = QLabel(self.main.doc_url('range_test_module_about'))
         self.range_test_about.setOpenExternalLinks(True)
         self.range_test_about.setTextFormat(QtCore.Qt.RichText)
-        self.range_test_about.setToolTip("Link shows more info about the settings for this plugin.")
-        self.range_test_plugin_enabled = QCheckBox()
-        self.range_test_plugin_enabled.setToolTip(self.parent.parent.description('range_test_plugin_enabled'))
-        self.range_test_plugin_save = QCheckBox()
-        self.range_test_plugin_save.setToolTip(self.parent.parent.description('range_test_plugin_save'))
-        self.range_test_plugin_sender = QLineEdit()
-        self.range_test_plugin_sender.setToolTip(self.parent.parent.description('range_test_plugin_sender'))
+        self.range_test_about.setToolTip(self.main.tooltip('module_link'))
+        self.range_test_module_enabled = QCheckBox()
+        self.range_test_module_enabled.setToolTip(self.main.description('range_test_module_enabled'))
+        self.range_test_module_save = QCheckBox()
+        self.range_test_module_save.setToolTip(self.main.description('range_test_module_save'))
+        self.range_test_module_sender = QLineEdit()
+        self.range_test_module_sender.setToolTip(self.main.description('range_test_module_sender'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -51,11 +52,11 @@ class RangeTestForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("range_test_plugin_about"), self.range_test_about)
-        form_layout.addRow(self.parent.parent.label("range_test_plugin_enabled"), self.range_test_plugin_enabled)
-        form_layout.addRow(self.parent.parent.label("range_test_plugin_save"), self.range_test_plugin_save)
-        form_layout.addRow(self.parent.parent.label("range_test_plugin_sender"), self.range_test_plugin_sender)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow(self.main.label("range_test_module_about"), self.range_test_about)
+        form_layout.addRow(self.main.label("range_test_module_enabled"), self.range_test_module_enabled)
+        form_layout.addRow(self.main.label("range_test_module_save"), self.range_test_module_save)
+        form_layout.addRow(self.main.label("range_test_module_sender"), self.range_test_module_sender)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 
@@ -78,16 +79,16 @@ class RangeTestForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.range_test_plugin_enabled and self.prefs.range_test_plugin_enabled is True:
-                    self.range_test_plugin_enabled.setChecked(True)
+                if self.prefs.range_test_module_enabled and self.prefs.range_test_module_enabled is True:
+                    self.range_test_module_enabled.setChecked(True)
 
-                if self.prefs.range_test_plugin_save and self.prefs.range_test_plugin_save is True:
-                    self.range_test_plugin_save.setChecked(True)
+                if self.prefs.range_test_module_save and self.prefs.range_test_module_save is True:
+                    self.range_test_module_save.setChecked(True)
 
-                if self.prefs.range_test_plugin_sender:
-                    self.range_test_plugin_sender.setText(f'{self.prefs.range_test_plugin_sender}')
+                if self.prefs.range_test_module_sender:
+                    self.range_test_module_sender.setText(f'{self.prefs.range_test_module_sender}')
                 else:
-                    self.range_test_plugin_sender.setText("0")
+                    self.range_test_module_sender.setText("0")
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -99,9 +100,9 @@ class RangeTestForm(QDialog):
             if self.interface:
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'range_test_plugin_enabled', f'{self.range_test_plugin_enabled.isChecked()}')
-                setPref(prefs, 'range_test_plugin_save', f'{self.range_test_plugin_save.isChecked()}')
-                setPref(prefs, 'range_test_plugin_sender', zero_if_blank(self.range_test_plugin_sender.text()))
+                setPref(prefs, 'range_test_module_enabled', f'{self.range_test_module_enabled.isChecked()}')
+                setPref(prefs, 'range_test_module_save', f'{self.range_test_module_save.isChecked()}')
+                setPref(prefs, 'range_test_module_sender', zero_if_blank(self.range_test_module_sender.text()))
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

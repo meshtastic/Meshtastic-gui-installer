@@ -1,4 +1,4 @@
-"""class for the rotary encoder plugin settings"""
+"""class for the rotary encoder module settings"""
 
 
 from PySide6 import QtCore
@@ -14,45 +14,46 @@ from meshtastic_flasher.util import zero_if_blank
 
 
 class RotaryEncoderForm(QDialog):
-    """serial plugin settings form"""
+    """rotary encoder module settings form"""
 
     def __init__(self, parent=None):
         """constructor"""
         super(RotaryEncoderForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Rotary Encoder Plugin Settings")
+        self.setWindowTitle(self.main.text('rotary_encoder_plugin_settings'))
 
         self.port = None
         self.interface = None
         self.prefs = None
 
         # Create widgets
-        self.rotary1_about = QLabel(self.parent.parent.doc_url('rotary1_about'))
+        self.rotary1_about = QLabel(self.main.doc_url('rotary1_about'))
         self.rotary1_about.setOpenExternalLinks(True)
         self.rotary1_about.setTextFormat(QtCore.Qt.RichText)
-        self.rotary1_about.setToolTip("Link shows more info about the settings for this plugin.")
+        self.rotary1_about.setToolTip(self.main.tooltip('module_link'))
         self.rotary1_enabled = QCheckBox()
-        self.rotary1_enabled.setToolTip(self.parent.parent.description('rotary1_enabled'))
+        self.rotary1_enabled.setToolTip(self.main.description('rotary1_enabled'))
         self.rotary1_event_cw = QComboBox()
-        self.rotary1_event_cw.setToolTip(self.parent.parent.description('rotary1_event_cw'))
+        self.rotary1_event_cw.setToolTip(self.main.description('rotary1_event_cw'))
         self.rotary1_event_cw.setMinimumContentsLength(17)
         self.rotary1_event_ccw = QComboBox()
-        self.rotary1_event_ccw.setToolTip(self.parent.parent.description('rotary1_event_ccw'))
+        self.rotary1_event_ccw.setToolTip(self.main.description('rotary1_event_ccw'))
         self.rotary1_event_ccw.setMinimumContentsLength(17)
         self.rotary1_event_press = QComboBox()
-        self.rotary1_event_press.setToolTip(self.parent.parent.description('rotary1_event_press'))
+        self.rotary1_event_press.setToolTip(self.main.description('rotary1_event_press'))
         self.rotary1_event_press.setMinimumContentsLength(17)
         self.rotary1_pin_a = QLineEdit()
-        self.rotary1_pin_a.setToolTip(self.parent.parent.description('rotary1_pin_a'))
+        self.rotary1_pin_a.setToolTip(self.main.description('rotary1_pin_a'))
         self.rotary1_pin_b = QLineEdit()
-        self.rotary1_pin_b.setToolTip(self.parent.parent.description('rotary1_pin_b'))
+        self.rotary1_pin_b.setToolTip(self.main.description('rotary1_pin_b'))
         self.rotary1_pin_press = QLineEdit()
-        self.rotary1_pin_press.setToolTip(self.parent.parent.description('rotary1_pin_press'))
+        self.rotary1_pin_press.setToolTip(self.main.description('rotary1_pin_press'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -62,15 +63,15 @@ class RotaryEncoderForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("rotary1_about"), self.rotary1_about)
-        form_layout.addRow(self.parent.parent.label("rotary1_enabled"), self.rotary1_enabled)
-        form_layout.addRow(self.parent.parent.label("rotary1_event_cw"), self.rotary1_event_cw)
-        form_layout.addRow(self.parent.parent.label("rotary1_event_ccw"), self.rotary1_event_ccw)
-        form_layout.addRow(self.parent.parent.label("rotary1_event_press"), self.rotary1_event_press)
-        form_layout.addRow(self.parent.parent.label("rotary1_pin_a"), self.rotary1_pin_a)
-        form_layout.addRow(self.parent.parent.label("rotary1_pin_b"), self.rotary1_pin_b)
-        form_layout.addRow(self.parent.parent.label("rotary1_pin_press"), self.rotary1_pin_press)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow(self.main.label("rotary1_about"), self.rotary1_about)
+        form_layout.addRow(self.main.label("rotary1_enabled"), self.rotary1_enabled)
+        form_layout.addRow(self.main.label("rotary1_event_cw"), self.rotary1_event_cw)
+        form_layout.addRow(self.main.label("rotary1_event_ccw"), self.rotary1_event_ccw)
+        form_layout.addRow(self.main.label("rotary1_event_press"), self.rotary1_event_press)
+        form_layout.addRow(self.main.label("rotary1_pin_a"), self.rotary1_pin_a)
+        form_layout.addRow(self.main.label("rotary1_pin_b"), self.rotary1_pin_b)
+        form_layout.addRow(self.main.label("rotary1_pin_press"), self.rotary1_pin_press)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

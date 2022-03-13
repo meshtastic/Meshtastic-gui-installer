@@ -1,4 +1,4 @@
-"""class for the serial plugin settings"""
+"""class for the serial module settings"""
 
 
 from PySide6 import QtCore
@@ -14,40 +14,41 @@ from meshtastic_flasher.util import zero_if_blank
 
 
 class SerialForm(QDialog):
-    """serial plugin settings form"""
+    """serial module settings form"""
 
     def __init__(self, parent=None):
         """constructor"""
         super(SerialForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Serial Plugin Settings")
+        self.setWindowTitle(self.main.text('serial_plugin_settings'))
 
         self.port = None
         self.interface = None
         self.prefs = None
 
         # Create widgets
-        self.serialplugin_about = QLabel(self.parent.parent.doc_url('serialplugin_about'))
-        self.serialplugin_about.setOpenExternalLinks(True)
-        self.serialplugin_about.setTextFormat(QtCore.Qt.RichText)
-        self.serialplugin_about.setToolTip("Link shows more info about the settings for this plugin.")
-        self.serialplugin_enabled = QCheckBox()
-        self.serialplugin_enabled.setToolTip(self.parent.parent.description('serialplugin_enabled'))
-        self.serialplugin_echo = QCheckBox()
-        self.serialplugin_echo.setToolTip(self.parent.parent.description('serialplugin_echo'))
-        self.serialplugin_mode = QLineEdit()
-        self.serialplugin_mode.setToolTip(self.parent.parent.description('serialplugin_mode'))
-        self.serialplugin_rxd = QLineEdit()
-        self.serialplugin_rxd.setToolTip(self.parent.parent.description('serialplugin_rxd'))
-        self.serialplugin_txd = QLineEdit()
-        self.serialplugin_txd.setToolTip(self.parent.parent.description('serialplugin_txd'))
-        self.serialplugin_timeout = QLineEdit()
-        self.serialplugin_timeout.setToolTip(self.parent.parent.description('serialplugin_timeout'))
+        self.serial_module_about = QLabel(self.main.doc_url('serial_module_about'))
+        self.serial_module_about.setOpenExternalLinks(True)
+        self.serial_module_about.setTextFormat(QtCore.Qt.RichText)
+        self.serial_module_about.setToolTip(self.main.tooltip('module_link'))
+        self.serial_module_enabled = QCheckBox()
+        self.serial_module_enabled.setToolTip(self.main.description('serial_module_enabled'))
+        self.serial_module_echo = QCheckBox()
+        self.serial_module_echo.setToolTip(self.main.description('serial_module_echo'))
+        self.serial_module_mode = QLineEdit()
+        self.serial_module_mode.setToolTip(self.main.description('serial_module_mode'))
+        self.serial_module_rxd = QLineEdit()
+        self.serial_module_rxd.setToolTip(self.main.description('serial_module_rxd'))
+        self.serial_module_txd = QLineEdit()
+        self.serial_module_txd.setToolTip(self.main.description('serial_module_txd'))
+        self.serial_module_timeout = QLineEdit()
+        self.serial_module_timeout.setToolTip(self.main.description('serial_module_timeout'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -57,14 +58,14 @@ class SerialForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("serialplugin_about"), self.serialplugin_about)
-        form_layout.addRow(self.parent.parent.label("serialplugin_enabled"), self.serialplugin_enabled)
-        form_layout.addRow(self.parent.parent.label("serialplugin_echo"), self.serialplugin_echo)
-        form_layout.addRow(self.parent.parent.label("serialplugin_mode"), self.serialplugin_mode)
-        form_layout.addRow(self.parent.parent.label("serialplugin_txd"), self.serialplugin_txd)
-        form_layout.addRow(self.parent.parent.label("serialplugin_rxd"), self.serialplugin_rxd)
-        form_layout.addRow(self.parent.parent.label("serialplugin_timeout"), self.serialplugin_timeout)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow(self.main.label("serial_module_about"), self.serial_module_about)
+        form_layout.addRow(self.main.label("serial_module_enabled"), self.serial_module_enabled)
+        form_layout.addRow(self.main.label("serial_module_echo"), self.serial_module_echo)
+        form_layout.addRow(self.main.label("serial_module_mode"), self.serial_module_mode)
+        form_layout.addRow(self.main.label("serial_module_txd"), self.serial_module_txd)
+        form_layout.addRow(self.main.label("serial_module_rxd"), self.serial_module_rxd)
+        form_layout.addRow(self.main.label("serial_module_timeout"), self.serial_module_timeout)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 
@@ -87,31 +88,31 @@ class SerialForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.serialplugin_enabled and self.prefs.serialplugin_enabled is True:
-                    self.serialplugin_enabled.setChecked(True)
+                if self.prefs.serial_module_enabled and self.prefs.serial_module_enabled is True:
+                    self.serial_module_enabled.setChecked(True)
 
-                if self.prefs.serialplugin_echo and self.prefs.serialplugin_echo is True:
-                    self.serialplugin_enabled.setChecked(True)
+                if self.prefs.serial_module_echo and self.prefs.serial_module_echo is True:
+                    self.serial_module_enabled.setChecked(True)
 
-                if self.prefs.serialplugin_mode:
-                    self.serialplugin_mode.setText(f'{self.prefs.serialplugin_mode}')
+                if self.prefs.serial_module_mode:
+                    self.serial_module_mode.setText(f'{self.prefs.serial_module_mode}')
                 else:
-                    self.serialplugin_mode.setText("0")
+                    self.serial_module_mode.setText("0")
 
-                if self.prefs.serialplugin_rxd:
-                    self.serialplugin_rxd.setText(f'{self.prefs.serialplugin_rxd}')
+                if self.prefs.serial_module_rxd:
+                    self.serial_module_rxd.setText(f'{self.prefs.serial_module_rxd}')
                 else:
-                    self.serialplugin_rxd.setText("0")
+                    self.serial_module_rxd.setText("0")
 
-                if self.prefs.serialplugin_timeout:
-                    self.serialplugin_timeout.setText(f'{self.prefs.serialplugin_timeout}')
+                if self.prefs.serial_module_timeout:
+                    self.serial_module_timeout.setText(f'{self.prefs.serial_module_timeout}')
                 else:
-                    self.serialplugin_timeout.setText("0")
+                    self.serial_module_timeout.setText("0")
 
-                if self.prefs.serialplugin_txd:
-                    self.serialplugin_txd.setText(f'{self.prefs.serialplugin_txd}')
+                if self.prefs.serial_module_txd:
+                    self.serial_module_txd.setText(f'{self.prefs.serial_module_txd}')
                 else:
-                    self.serialplugin_txd.setText("0")
+                    self.serial_module_txd.setText("0")
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -123,12 +124,12 @@ class SerialForm(QDialog):
             if self.interface:
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'serialplugin_enabled', f'{self.serialplugin_enabled.isChecked()}')
-                setPref(prefs, 'serialplugin_echo', f'{self.serialplugin_echo.isChecked()}')
-                setPref(prefs, 'serialplugin_mode', zero_if_blank(self.serialplugin_mode.text()))
-                setPref(prefs, 'serialplugin_rxd', zero_if_blank(self.serialplugin_rxd.text()))
-                setPref(prefs, 'serialplugin_txd', zero_if_blank(self.serialplugin_txd.text()))
-                setPref(prefs, 'serialplugin_timeout', zero_if_blank(self.serialplugin_timeout.text()))
+                setPref(prefs, 'serial_module_enabled', f'{self.serial_module_enabled.isChecked()}')
+                setPref(prefs, 'serial_module_echo', f'{self.serial_module_echo.isChecked()}')
+                setPref(prefs, 'serial_module_mode', zero_if_blank(self.serial_module_mode.text()))
+                setPref(prefs, 'serial_module_rxd', zero_if_blank(self.serial_module_rxd.text()))
+                setPref(prefs, 'serial_module_txd', zero_if_blank(self.serial_module_txd.text()))
+                setPref(prefs, 'serial_module_timeout', zero_if_blank(self.serial_module_timeout.text()))
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

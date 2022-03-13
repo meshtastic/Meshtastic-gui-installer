@@ -1,4 +1,26 @@
 {
+    "about": {
+        "text": "About Meshtastic Flasher"
+    },
+    "about_button": {
+        "tooltip": "Click for information about the project."
+    },
+    "about_text": {
+        "text": "Meshtastic Flasher is part of the <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> ecosystem. It is a cross platform, easy to use graphical user interface for updating and installing Meshtastic firmware."
+    },
+    "admin": {
+        "text": "Admin"
+    },
+    "admin_settings": {
+        "text": "Admin Settings"
+    },
+    "all": {
+        "text": "All"
+    },
+    "advanced_options": {
+        "text": "Advanced Options",
+        "tooltip": "Click for advanced Meshtastic Flasher options."
+    },
     "alt": {
         "label": "Altitude (meters)",
         "description": "Altitude is the distance above sea level."
@@ -15,117 +37,187 @@
         "label": "Bandwidth (MHz)",
         "description": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz."
     },
-    "canned_message_plugin_about": {
-        "label": "Canned Message Plugin",
+    "canned": {
+        "text": "Canned"
+    },
+    "canned_message_module_settings": {
+        "text": "Canned Message Module Settings"
+    },
+    "canned_message_module_about": {
+        "label": "Canned Message Module",
         "doc_url": "https://meshtastic.org/docs/settings/canned-message-module"
     },
-    "canned_message_plugin_allow_input_source": {
+    "canned_message_module_allow_input_source": {
         "label": "Allow Input Source",
-        "description": "Input event origin accepted by the canned message plugin. Can be e.g. 'rotEnc1' or keyword '_any'."
+        "description": "Input event origin accepted by the Canned Message module. Can be e.g. 'rotEnc1' or keyword '_any'."
     },
-    "canned_message_plugin_enabled": {
+    "canned_message_module_enabled": {
         "label": "Enabled?",
-        "description": "If set, the Canned Message Plugin will be enabled."
+        "description": "If set, the Canned Message module will be enabled."
     },
-    "canned_message_plugin_messages": {
+    "canned_message_module_messages": {
         "label": "Messages",
-        "description": "Pre-defined messages for the Canned Message Plugin separated by '|' character."
+        "description": "Pre-defined messages for the Canned Message module separated by '|' character."
     },
-    "canned_message_plugin_send_bell": {
+    "canned_message_module_send_bell": {
         "label": "Send Bell?",
-        "description": "The Canned Message Plugin also sends a bell character with the messages. The External Notification Plugin can benefit from this feature."
+        "description": "The Canned Message module also sends a bell character with the messages. The External Notification module can benefit from this feature."
+    },
+    "channels": {
+        "text": "Channels"
+    },
+    "channel_settings": {
+        "text": "Channel Settings"
     },
     "charge_current": {
         "label": "Charge Current",
         "description": "Sets the current of the battery charger."
     },
+    "clear_firmware_files": {
+        "text": "Clear Firmware Files"
+    },
     "coding_rate": {
         "label": "Coding Rate",
         "description": "The denominator of the coding rate. ie for 4/8, the value is 8. 5/8 the value is 5."
+    },
+    "configure_from_file": {
+        "text": "Configure From File"
+    },
+    "confirm": {
+        "text": "Confirm"
+    },
+    "confirm_update_techo_bootloader": {
+        "text": "Do you want to update the T-Echo bootloader?"
+    },
+    "confirm_flash_first_part": {
+        "text": "Are you sure you want to"
+    },
+    "confirm_remove_firmware_files": {
+        "text": "Are you sure you want to remove the firmware files?"
+    },
+    "confirm_reset_device": {
+        "text": "Are you sure you want to reset the device?"
+    },
+    "copy": {
+        "text": "copy"
+    },
+    "could_not_find_partition": {
+        "text": "Could not find the partition.\nPress the RST button TWICE\nthen re-try pressing the DETECT button again."
     },
     "debug_log_enabled": {
         "label": "Debug Log Enabled?",
         "description": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active."
     },
+    "delete_this_channel": {
+        "text": "Delete This Channel"
+    },
+    "detected": {
+        "text": "Detected"
+    },
+    "device_configured_from_file": {
+        "text": "Device configured from file."
+    },
+    "device_backed_up_to_file": {
+        "text": "Device configuration backed up to file."
+    },
+    "device_has_meshtastic": {
+        "text": "Does the device currently have Meshtastic version 1.2 or newer?"
+    },
+    "device_was_reset": {
+        "text": "The device was reset. May want to unplug and re-plugin the device or\n\npress the RESET button.\n\nThe Settings form will now close."
+    },
     "device_id": {
         "label": "Device ID",
         "description": "A globally unique identifier for this device."
+    },
+    "device_settings": {
+        "text": "DEVICE SETTINGS"
+    },
+    "done_updating_bootloader": {
+        "text": "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware."
     },
     "downlink_enabled": {
         "label": "Downlink Enabled?",
         "description": "If set, messages seen on the internet will be forwarded to the local mesh."
     },
-    "telemetry_module_about": {
-        "label": "Telemetry Module",
-        "doc_url": "https://meshtastic.org/docs/settings/telemetry-module"
+    "get_versions": {
+        "text": "GET VERSIONS",
+        "tooltip": "Click to check for more recent firmware."
     },
-    "telemetry_module_display_farenheit": {
-        "label": "Display Temperature in Farenheit?",
-        "description": "If set, the temperature will be displayed in Farenheit."
+    "export_configuration": {
+        "text": "Export Configuration"
     },
-    "telemetry_module_measurement_enabled": {
-        "label": "Enabled?",
-        "description": "If set, the telemetry module will be enabled."
+    "ext_notification_module_settings": {
+        "text": "External Notification Module Settings"
     },
-    "telemetry_module_read_error_count_threshold": {
-        "label": "Read Error Count Threshold",
-        "description": "Sometimes sensor reads can fail. If this happens, we will retry a configurable number of attempts, each attempt will be delayed by the minimum required refresh rate for that sensor."
-    },
-    "telemetry_module_recovery_interval": {
-        "label": "Recovery Interval",
-        "description": "Sometimes we can end up with more than read_error_count_threshold failures. In this case, we will stop trying to read from the sensor for a while. Wait this long until trying to read from the sensor again."
-    },
-    "telemetry_module_screen_enabled": {
-        "label": "Screen Enabled?",
-        "description": "Enable/Disable the telemetry module on-device display."
-    },
-    "telemetry_module_sensor_pin": {
-        "label": "Sensor Pin",
-        "description": "Specify the peferred GPIO Pin for sensor readings. Not applicable to sensors that use I2C."
-    },
-    "telemetry_module_sensor_type": {
-        "label": "Sensor Type",
-        "description": "Specify the sensor type."
-    },
-    "telemetry_module_update_interval": {
-        "label": "Update Interval (seconds)",
-        "description": "Interval in seconds of how often we should try to send our measurements to the mesh."
-    },
-    "ext_notification_plugin_about": {
-        "label": "External Notification Plugin",
+    "ext_notification_module_about": {
+        "label": "External Notification Module",
         "doc_url": "https://meshtastic.org/docs/settings/external-notification-module"
     },
-    "ext_notification_plugin_active": {
+    "ext_notification_module_active": {
         "label": "Active High?",
         "description": "If set, notifications will happen when the the GPIO is active-high. If not set, notifications will happen when GPIO is active-low."
     },
-    "ext_notification_plugin_alert_bell": {
+    "ext_notification_module_alert_bell": {
         "label": "Alert Bell?",
         "description": "Only trigger the notification if the ASCII bell character is in the message."
     },
-    "ext_notification_plugin_alert_message": {
+    "ext_notification_module_alert_message": {
         "label": "Alert Message",
         "description": "Trigger notification on any message received."
     },
-    "ext_notification_plugin_enabled": {
+    "ext_notification_module_enabled": {
         "label": "Enabled?",
-        "description": "If set, the external notifications plugin is enabled."
+        "description": "If set, the External Notifications module is enabled."
     },
-    "ext_notification_plugin_output": {
+    "ext_notification_module_output": {
         "label": "Output",
         "description": "GPIO of the output."
     },
-    "ext_notification_plugin_output_ms": {
+    "ext_notification_module_output_ms": {
         "label": "Output (ms)",
         "description": "Amount of time in ms for the alert. Default is 1,000 ms (or 1 second)."
+    },
+    "factory_reset": {
+        "text": "Factory Reset"
     },
     "fixed_position": {
         "label": "Use Fixed position?",
         "description": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used."
     },
+    "fixed_position_settings": {
+        "text": "Fixed Position Settings"
+    },
+    "file_was_copied": {
+        "text": "File was copied.\nWait for the device to reboot."
+    },
+    "flash": {
+        "text": "Flash"
+    },
+    "flashing": {
+        "text": "Flashing"
+    },
     "frequency_offset": {
         "label": "Frequency Offset",
         "description": "This parameter is for advanced users with advanced test equipment, we do not recommend most users use it. A frequency offset that is added to to the calculated band center frequency. Used to correct for crystal calibration errors."
+    },
+    "full_step1": {
+        "text": "Full flash step 1 of 4"
+    },
+    "full_step1_done": {
+        "text": "Full flash step 1 of 4 is done"
+    },
+    "full_step2_done": {
+        "text": "Full flash step 2 of 4 is done"
+    },
+    "full_step3_done": {
+        "text": "Full flash step 3 of 4 is done"
+    },
+    "full_step4_done": {
+        "text": "Full flash step 4 of 4 is done"
+    },
+    "get_lat_lon_using_ip": {
+        "text": "Get Lat/Lon using your IP"
     },
     "gps_accept_2d": {
         "label": "GPS Accept 2D Fix?",
@@ -143,13 +235,31 @@
         "label": "GPS Operation",
         "description": "How the GPS hardware in this unit is operated."
     },
+    "help": {
+        "text": "Help"
+    },
+    "help_button": {
+        "tooltip": "Click for help | Press H for hotkeys."
+    },
+    "help_text": {
+        "text": "If having issues flashing the device, be sure there is only one <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>supported device</a> connected and no other applications are using that communications port.<br><br>If still having problems, unplug the device, then re-plugin the device.<br><br>If still having problems, consider using a different usb port, perhaps an external usb hub or even a different computer and/or different operating system.<br><br>If still having problems, may need to install driver.<br>See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a> for more info. Newer T-Lora and newer T-Beams tend to need the CH9102 driver, which is in the CH343SER.ZIP file. The RAK 11200 may need the CP210X driver.<br><u>Windows</u>: Check by going into DeviceManager and looking for any 'yellow' warning indicators.<br><u>Mac</u>: Check by clicking in top left corner, 'About This Mac', 'System Report', 'USB'. Depending on which device it may show a CP2102 USB to UART Bridge Controller.<br><u>Linux</u>: Linux tends to not need drivers for Meshtastic devices. If you have a computer available for the initial flashing, consider using this OS.<br><br>If still having problems, try rebooting the pc.<br><br>If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use v1.1 or v2.1.1.6 firmware.<br><br>Join the <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord group</a> and post questions in #help channel."
+    },
     "hop_limit": {
         "label": "Hop Limit",
         "description": "Overrides HOPS_RELIABLE and sets the maximum number of hops. This cannot be greater than 7."
     },
+    "hotkeys": {
+        "text": "Hotkeys"
+    },
+    "hotkeys_text": {
+        "text": "A - Advanced options\nD - Detect\nG - Get versions\nH - Hotkeys\nS - Settings\nT - Tips\n Q - Quit"
+    },
     "hw_model": {
         "label": "Hardware Model",
         "description": "The hardware model as defined by Meshtastic."
+    },
+    "information": {
+        "text": "Information"
     },
     "is_always_powered": {
         "label": "Is Always Powered?",
@@ -175,9 +285,18 @@
         "label": "Is Router?",
         "description": "Are we operating as a router? Changes behavior in the following ways: The device will only sleep for critically low battery level (i.e. always tries to stay alive for the mesh). In the future, routing decisions will preferentially route packets through nodes with this attribute (because assumed good line of sight)."
     },
+    "label_device": {
+        "tooltip": "Click to see more about Meshtastic supported devices."
+    },
+    "label_version": {
+        "tooltip": "Click to see more about firmware releases."
+    },
     "lat": {
         "label": "Latitude",
         "description": "Latitude is the measurement of distance north or south of the Equator. It is measured with 180 imaginary lines that form circles around the Earth east-west, parallel to the Equator."
+    },
+    "module_link": {
+        "tooltip": "Link shows more information about the settings for this module."
     },
     "location_share": {
         "label": "Location sharing",
@@ -200,6 +319,16 @@
         "label": "Mesh SDS Timeout (seconds)",
         "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 seconds (or two hours), MAXUINT or 4294967295 for disabled."
     },
+    "message": {
+        "label": "Message",
+        "description": "The message to be sent."
+    },
+    "message_to_send": {
+        "text": "Provide a message to send."
+    },
+    "message_sent": {
+        "text": "The message was sent."
+    },
     "macaddr": {
         "label": "MAC Address",
         "description": "The address of the device."
@@ -211,6 +340,12 @@
     "modem_config": {
         "label": "Modem Config",
         "description": "The configuration of the modem. (speed/distance)"
+    },
+    "module_settings": {
+        "text": "Module Settings"
+    },
+    "modules": {
+        "text": "Modules"
     },
     "mqtt_encryption_enabled": {
         "label": "MQTT Encryption Enabled?",
@@ -239,9 +374,24 @@
         "label": "Channel Name",
         "description": "A short name that will be packed into the URL. Less than 12 bytes. This field will only be editable if the prior channel has a name. There are special channel names like 'admin' (for remote management) and 'gpio' (for remote gpio query/manipulation)."
     },
+    "no_devices_detected": {
+        "text": "No devices were detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?"
+    },
+    "nrf_detected": {
+        "text": "NRF device detected.\n\nPress RST button twice then click DETECT button again."
+    },
+    "note_all_settings_will_be_erased": {
+        "text": "NOTE: All Meshtastic settings will be erased."
+    },
+    "notifications": {
+        "text": "Notifications"
+    },
     "on_battery_shutdown_after_secs": {
         "label": "On Battery Shutdown After (seconds)",
         "description": "If non-zero, the device will fully power off this many seconds after external power is removed."
+    },
+    "other": {
+        "text": "Other"
     },
     "phone_sds_timeout_sec": {
         "label": "Phone SDS Timeout (seconds)",
@@ -250,6 +400,12 @@
     "phone_timeout_secs": {
         "label": "Phone Timeout (seconds)",
         "description": "Power management state machine option. See power management for details. 0 for default of 900 (or 15 minutes)."
+    },
+    "position": {
+        "text": "Position"
+    },
+    "position_settings": {
+        "text": "Position Settings"
     },
     "position_broadcast_secs": {
         "label": "Broadcast interval (seconds)",
@@ -299,19 +455,49 @@
         "label": "Position flags (calculated)",
         "description": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags."
     },
-    "range_test_plugin_about": {
-        "label": "Range Test Plugin",
+    "power": {
+        "text": "Power"
+    },
+    "power_settings": {
+        "text": "Power Settings"
+    },
+    "progress": {
+        "tooltip": "Progress will be shown during the FLASH step."
+    },
+    "question": {
+        "text": "Question"
+    },
+    "radio": {
+        "text": "Radio"
+    },
+    "radio_settings": {
+        "text": "Radio Settings"
+    },
+    "rak_bootloader_not_current": {
+        "text": "The RAK bootloader is not current.\nAbout to update the RAK bootloader..."
+    },
+    "rak_11200_detected": {
+        "text": "Looks like a RAK 11200 was detected.\n\nVerify it is in BOOT mode.\n\nThere should be a single, solid red light.\nThere should not be any other lights, solid nor flashing.\n\nIf not, disconnect the device and provide a jumper between GND and BOOT0 pins while device is plugged in.\n\n"
+    },
+    "range": {
+        "text": "Range"
+    },
+    "range_test_module_settings": {
+        "text": "Range Test Module Settings"
+    },
+    "range_test_module_about": {
+        "label": "Range Test Module",
         "doc_url": "https://meshtastic.org/docs/settings/range-test-module"
     },
-    "range_test_plugin_enabled": {
+    "range_test_module_enabled": {
         "label": "Enabled?",
-        "description": "If set, the Range Test Plugin is enabled."
+        "description": "If set, the Range Test module is enabled."
     },
-    "range_test_plugin_save": {
+    "range_test_module_save": {
         "label": "Save?",
         "description": "If set, the device will save the range test .csv files on this device."
     },
-    "range_test_plugin_sender": {
+    "range_test_module_sender": {
         "label": "Sender (seconds)",
         "description": "Sends a message how freqently (in seconds)."
     },
@@ -323,13 +509,19 @@
         "label": "Role",
         "description": "How this channel is being used (or not not being used)."
     },
+    "rotary": {
+        "text": "Rotary"
+    },
+    "rotary_encoder_plugin_settings": {
+        "text": "Rotary Encoder Module Settings"
+    },
     "rotary1_about": {
-        "label": "Rotary Encoder Plugin",
+        "label": "Rotary Encoder Module",
         "doc_url": "https://meshtastic.org/docs/settings/rotary-encoder-module"
     },
     "rotary1_enabled": {
         "label": "Enabled?",
-        "description": "If set, the Rotary Plugin will be enabled."
+        "description": "If set, the Rotary module will be enabled."
     },
     "rotary1_event_cw": {
         "label": "CW",
@@ -355,6 +547,9 @@
         "label": "Press",
         "description": "Generate input event on Press of this kind."
     },
+    "running": {
+        "text": "Running"
+    },
     "screen_on_secs": {
         "label": "Screen On (seconds)",
         "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute)."
@@ -363,41 +558,84 @@
         "label": "SDS (seconds)",
         "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of one year."
     },
+    "select_detect": {
+        "text": "DETECT DEVICE",
+        "tooltip": "Click to detect supported device and port information."
+    },
+    "select_device": {
+        "tooltip": "Need to click GET VERSIONS and DETECT DEVICE before you can select the device."
+    },
+    "select_device_populated": {
+        "tooltip": "Select which type of device is connected."
+    },
+    "select_firmware_version": {
+        "tooltip": "Click GET VERSIONS for the list of firmware versions."
+    },
+    "select_firmware_version_populated": {
+        "tooltip": "Selected desired firmware version to flash."
+    },
+    "select_flash": {
+        "tooltip": "Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options."
+    },
+    "select_flash_populated": {
+        "tooltip": "Click the FLASH button to write the Meshtastic firmware to the device."
+    },
+    "select_port": {
+        "tooltip": "Need to click GET VERSIONS and DETECT DEVICE before you can select the port."
+    },
+    "select_port_populated": {
+        "tooltip": "Select the communication port/destination."
+    },
     "send_owner_interval": {
         "label": "Send Owner Interval",
         "description": "Send our owner info at least this often (also we always send once at boot - to rejoin the mesh)."
+    },
+    "send_text": {
+        "text": "Send Text"
+    },
+    "serial": {
+        "text": "Serial"
     },
     "serial_disabled": {
         "label": "Serial Disabled?",
         "description": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI)."
     },
-    "serialplugin_about": {
-        "label": "Serial Plugin",
+    "serial_module_about": {
+        "label": "Serial Module",
         "doc_url": "https://meshtastic.org/docs/settings/serial-module"
     },
-    "serialplugin_echo": {
+    "serial_module_settings": {
+        "text": "Serial Module Settings"
+    },
+    "serial_module_echo": {
         "label": "Echo?",
         "description": "TBD"
     },
-    "serialplugin_enabled": {
+    "serial_module_enabled": {
         "label": "Enabled?",
-        "description": "If set, the Serial Plugin will be enabled."
+        "description": "If set, the Serial module will be enabled."
     },
-    "serialplugin_mode": {
+    "serial_module_mode": {
         "label": "Mode",
         "description": "TBD"
     },
-    "serialplugin_rxd": {
+    "serial_module_rxd": {
         "label": "RXD",
         "description": "TBD"
     },
-    "serialplugin_timeout": {
+    "serial_module_timeout": {
         "label": "Timeout",
         "description": "TBD"
     },
-    "serialplugin_txd": {
+    "serial_module_txd": {
         "label": "TXD",
         "description": "TBD"
+    },
+    "settings": {
+        "text": "Settings"
+    },
+    "settings_button": {
+        "tooltip": "Click to view or update settings on the device."
     },
     "short_name": {
         "label": "Short Name",
@@ -408,41 +646,135 @@
         "label": "Spread Factor",
         "description": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor."
     },
-    "store_forward_plugin_about": {
-        "label": "Store and Forward Plugin",
+    "store_forward_module_about": {
+        "label": "Store and Forward Module",
         "doc_url": "https://meshtastic.org/docs/settings/store-and-forward-module"
     },
-    "store_forward_plugin_enabled": {
-        "label": "Enabled?",
-        "description": "If set, the store and forward plugin will be enabled."
+    "store_forward_module_settings": {
+        "text": "Store and Forward Module Settings"
     },
-    "store_forward_plugin_heartbeat": {
+    "store_forward_module_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Store and Forward module will be enabled."
+    },
+    "store_forward_module_heartbeat": {
         "label": "Heartbeat",
         "description": "TBD"
     },
-    "store_forward_plugin_history_return_max": {
+    "store_forward_module_history_return_max": {
         "label": "History Return Max",
         "description": "TBD"
     },
-    "store_forward_plugin_history_return_window": {
+    "store_forward_module_history_return_window": {
         "label": "History Return Window",
         "description": "TBD"
     },
-    "store_forward_plugin_records": {
+    "store_forward_module_records": {
         "label": "Records",
         "description": "TBD"
+    },
+    "techo_bootloader_updated": {
+        "text": "T-Echo bootloader was updated.\n\nWait for the device to reboot."
     },
     "team": {
         "label": "Team",
         "description": "Participants in the same network can self-group into different teams."
     },
+    "telemetry": {
+        "text": "Telemetry"
+    },
+    "telemetry_module_about": {
+        "label": "Telemetry Module",
+        "doc_url": "https://meshtastic.org/docs/settings/telemetry-module"
+    },
+    "telemetry_module_settings": {
+        "text": "Telemetry Module Settings"
+    },
+    "telemetry_module_display_farenheit": {
+        "label": "Display Temperature in Farenheit?",
+        "description": "If set, the temperature will be displayed in Farenheit."
+    },
+    "telemetry_module_measurement_enabled": {
+        "label": "Enabled?",
+        "description": "If set, the Telemetry module will be enabled."
+    },
+    "telemetry_module_read_error_count_threshold": {
+        "label": "Read Error Count Threshold",
+        "description": "Sometimes sensor reads can fail. If this happens, we will retry a configurable number of attempts, each attempt will be delayed by the minimum required refresh rate for that sensor."
+    },
+    "telemetry_module_recovery_interval": {
+        "label": "Recovery Interval",
+        "description": "Sometimes we can end up with more than read_error_count_threshold failures. In this case, we will stop trying to read from the sensor for a while. Wait this long until trying to read from the sensor again."
+    },
+    "telemetry_module_screen_enabled": {
+        "label": "Screen Enabled?",
+        "description": "Enable/Disable the Telemetry module on-device display."
+    },
+    "telemetry_module_sensor_pin": {
+        "label": "Sensor Pin",
+        "description": "Specify the peferred GPIO Pin for sensor readings. Not applicable to sensors that use I2C."
+    },
+    "telemetry_module_sensor_type": {
+        "label": "Sensor Type",
+        "description": "Specify the sensor type."
+    },
+    "telemetry_module_update_interval": {
+        "label": "Update Interval (seconds)",
+        "description": "Interval in seconds of how often we should try to send our measurements to the mesh."
+    },
     "tx_power": {
         "label": "TX Power (dBm)",
         "description": "If zero then, use default max legal continuous power (i.e., something that will not burn out the radio hardware). In most cases, you should use 0. (Units are in dBm)."
     },
+    "update": {
+        "text": "Update"
+    },
+    "update_step1": {
+        "text": "Update step 1 of 2"
+    },
+    "update_step1_done": {
+        "text": "Update step 1 of 2 is done"
+    },
+    "update_step2_done": {
+        "text": "Update step 2 of 2 is done"
+    },
+    "update_available": {
+        "text": "update available"
+    },
+    "update_only": {
+        "text": "Update only",
+        "tooltip": "If enabled, the device will be updated only - not completely erased."
+    },
     "uplink_enabled": {
         "label": "Uplink Enabled?",
         "description": "If set, messages on the mesh will be sent to the public internet by any gateway node."
+    },
+    "user": {
+        "text": "User"
+    },
+    "user_settings": {
+        "text": "User Settings"
+    },
+    "warning": {
+        "text": "Warning"
+    },
+    "warning_cannot_open_port_exclusively": {
+        "text": "Warning: Cannot open the serial port exclusively.\nClose any other programs that might be using that port and try again."
+    },
+    "warning_need_channel_name": {
+        "text": "Need to have a channel name."
+    },
+    "warning_problem_connecting": {
+        "text": "There was a problem connecting to the device.\n\nPerhaps unplug device or restart this program."
+    },
+    "warning_issue_downloading": {
+        "text": "Warning: There was an issue downloading/extracting."
+    },
+    "warning_not_admin": {
+        "text": "Warning: This process is not running as Administrator.\nClose and re-run as Administrator."
+    },
+    "warning_talking_to_device": {
+        "text": "Had a problem talking with the device.\nPerhaps unplug and re-plugin the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put the device into boot mode by pressing RST button twice."
     },
     "wait_bluetooth_secs": {
         "label": "Bluetooth Wait (seconds)",

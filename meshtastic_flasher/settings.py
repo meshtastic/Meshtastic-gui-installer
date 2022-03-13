@@ -14,26 +14,24 @@ from meshtastic_flasher.radio_form import RadioForm
 from meshtastic_flasher.channel_settings import ChannelSettings
 from meshtastic_flasher.plugin_settings import PluginSettings
 
-from meshtastic_flasher.util import load_fields
-
 
 class Settings(QMainWindow):
     """settings"""
 
-    def __init__(self):
+    def __init__(self, parent=None):
         """constructor"""
-        super(Settings, self).__init__()
+        super(Settings, self).__init__(parent)
 
         self.port = None
         self.interface = None
-        self.pixel_mult = 12
 
-        self.fields = load_fields()
+        self.parent = parent
+        self.main = parent
 
         width = 800
         height = 700
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Settings")
+        self.setWindowTitle(self.main.text('settings'))
 
         self.admin_form = AdminForm(self)
         self.wifi_and_mqtt_form = Wifi_and_MQTT_Form(self)
@@ -75,60 +73,18 @@ QTabBar::tab:only-one {
 
         self.tabs.setTabPosition(QTabWidget.North)
 
-        self.tabs.addTab(self.user_form, "User")
+        self.tabs.addTab(self.user_form, self.main.text('user'))
         self.tabs.addTab(self.wifi_and_mqtt_form, "Wifi/MQTT")
-        self.tabs.addTab(self.position_form, "Position")
-        self.tabs.addTab(self.power_form, "Power")
-        self.tabs.addTab(self.radio_form, "Radio")
-        self.tabs.addTab(self.plugin_settings, "Plugins")
-        self.tabs.addTab(self.channel_settings, "Channels")
-        self.tabs.addTab(self.admin_form, "ADMIN")
+        self.tabs.addTab(self.position_form, self.main.text('position'))
+        self.tabs.addTab(self.power_form, self.main.text('power'))
+        self.tabs.addTab(self.radio_form, self.main.text('radio'))
+        self.tabs.addTab(self.plugin_settings, self.main.text('modules'))
+        self.tabs.addTab(self.channel_settings, self.main.text('channels'))
+        self.tabs.addTab(self.admin_form, self.main.text('admin'))
 
         self.setCentralWidget(self.tabs)
 
         self.tabs.blockSignals(False) # now listen the currentChanged signal
-
-
-
-    def label(self, field):
-        """Return the label for a field"""
-        retval = ""
-        if self.fields:
-            if field in self.fields:
-                if 'label' in self.fields[field]:
-                    retval = self.fields[field]['label']
-        return retval
-
-
-    def description(self, field):
-        """Return the description for a field"""
-        retval = ""
-        if self.fields:
-            if field in self.fields:
-                if 'description' in self.fields[field]:
-                    retval = self.fields[field]['description']
-        return retval
-
-
-    def doc_url(self, field):
-        """Return the doc_url enriched with html for a field"""
-        retval = ""
-        if self.fields:
-            if field in self.fields:
-                if 'doc_url' in self.fields[field]:
-                    doc_url = self.fields[field]['doc_url']
-                    retval = f"<a href='{doc_url}' style='color:#67EA94'>More info</a>"
-        return retval
-
-
-    def max_size(self, field):
-        """Return the max_size for a field"""
-        retval = 0
-        if self.fields:
-            if field in self.fields:
-                if 'max_size' in self.fields[field]:
-                    retval = self.fields[field]['max_size']
-        return retval
 
 
     def on_change_tabs(self, i):
@@ -193,7 +149,6 @@ QTabBar::tab:only-one {
             self.show()
             self.user_form.run(port=self.port, interface=self.interface)
         else:
-            QMessageBox.warning(self, "Warning", ("There was a problem connecting to the device.\n\n"
-                                "Perhaps unplug device and/or restart this program."))
+            QMessageBox.warning(self, self.main.text('warning'), self.main.text('warning_problem_connecting'))
             print("closing")
             self.my_close()

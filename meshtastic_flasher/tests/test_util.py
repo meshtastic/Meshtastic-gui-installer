@@ -148,10 +148,40 @@ def test_check_if_newer_version_when_on_alpha(patched_requests_get):
 
     patched_requests_get().json.return_value = {
             "info": {
-                "version": "1.0.89"
+                "version": "1.0.98"
                 }
             }
 
-    with patch('meshtastic_flasher.version.__version__', '1.3alpha.1'):
+    with patch('meshtastic_flasher.version.__version__', '1.3alpha.5'):
+        result = check_if_newer_version()
+        assert result is False
+
+
+@patch('requests.get')
+def test_check_if_newer_version_when_on_alpha_and_pre(patched_requests_get):
+    """Test check_if_newer_version()"""
+
+    patched_requests_get().json.return_value = {
+            "info": {
+                "version": "1.3alpha.5"
+                }
+            }
+
+    with patch('meshtastic_flasher.version.__version__', '1.3alpha.4'):
+        result = check_if_newer_version()
+        assert result is True
+
+
+@patch('requests.get')
+def test_check_if_newer_version_when_on_alpha_and_pre_and_match(patched_requests_get):
+    """Test check_if_newer_version()"""
+
+    patched_requests_get().json.return_value = {
+            "info": {
+                "version": "1.3alpha.5"
+                }
+            }
+
+    with patch('meshtastic_flasher.version.__version__', '1.3alpha.5'):
         result = check_if_newer_version()
         assert result is False

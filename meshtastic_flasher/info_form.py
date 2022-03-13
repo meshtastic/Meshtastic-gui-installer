@@ -10,10 +10,13 @@ class InfoForm(QDialog):
         """constructor"""
         super(InfoForm, self).__init__(parent)
 
+        self.parent = parent
+        self.main = parent.main
+
         width = 800
         height = 900
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Info")
+        self.setWindowTitle(self.main.text('info'))
 
         # Create widgets
         self.text = QPlainTextEdit()

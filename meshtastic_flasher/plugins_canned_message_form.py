@@ -1,4 +1,4 @@
-"""class for the canned message plugin settings"""
+"""class for the canned message module settings"""
 
 
 from PySide6 import QtCore
@@ -13,36 +13,38 @@ from meshtastic.__main__ import setPref
 
 
 class CannedMessageForm(QDialog):
-    """canned message settings form"""
+    """canned message module settings form"""
 
     def __init__(self, parent=None):
         """constructor"""
         super(CannedMessageForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Canned Message Plugin Settings")
+        self.setWindowTitle(self.main.text("canned_message_module_settings"))
 
         self.port = None
         self.interface = None
         self.prefs = None
 
         # Create widgets
-        self.canned_message_about = QLabel(self.parent.parent.doc_url('canned_message_plugin_about'))
+        self.canned_message_about = QLabel(self.main.doc_url('canned_message_module_about'))
         self.canned_message_about.setOpenExternalLinks(True)
         self.canned_message_about.setTextFormat(QtCore.Qt.RichText)
-        self.canned_message_about.setToolTip("Link shows more info about the settings for this plugin.")
-        self.canned_message_plugin_enabled = QCheckBox()
-        self.canned_message_plugin_enabled.setToolTip(self.parent.parent.description('canned_message_plugin_enabled'))
-        self.canned_message_plugin_allow_input_source = QLineEdit()
-        self.canned_message_plugin_allow_input_source.setToolTip(self.parent.parent.description('canned_message_plugin_allow_input_source'))
-        self.canned_message_plugin_messages = QTextEdit()
-        self.canned_message_plugin_messages.setToolTip(self.parent.parent.description('canned_message_plugin_messages'))
-        self.canned_message_plugin_send_bell = QCheckBox()
-        self.canned_message_plugin_send_bell.setToolTip(self.parent.parent.description('canned_message_plugin_send_bell'))
+        self.canned_message_about.setToolTip(self.main.tooltip('module_link'))
+        self.canned_message_module_enabled = QCheckBox()
+        self.canned_message_module_enabled.setToolTip(self.main.description('canned_message_module_enabled'))
+        self.canned_message_module_allow_input_source = QLineEdit()
+        self.canned_message_module_allow_input_source.setToolTip(self.main.description('canned_message_module_allow_input_source'))
+        self.canned_message_module_messages = QTextEdit()
+        # TODO: where is the canned_message_module_messages in protobufs?
+        self.canned_message_module_messages.setToolTip(self.main.description('canned_message_module_messages'))
+        self.canned_message_module_send_bell = QCheckBox()
+        self.canned_message_module_send_bell.setToolTip(self.main.description('canned_message_module_send_bell'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -52,12 +54,12 @@ class CannedMessageForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("canned_message_plugin_about"), self.canned_message_about)
-        form_layout.addRow(self.parent.parent.label("canned_message_plugin_enabled"), self.canned_message_plugin_enabled)
-        form_layout.addRow(self.parent.parent.label("canned_message_plugin_send_bell"), self.canned_message_plugin_send_bell)
-        form_layout.addRow(self.parent.parent.label("canned_message_plugin_allow_input_source"), self.canned_message_plugin_allow_input_source)
-        form_layout.addRow(self.parent.parent.label("canned_message_plugin_messages"), self.canned_message_plugin_messages)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow(self.main.label("canned_message_module_about"), self.canned_message_about)
+        form_layout.addRow(self.main.label("canned_message_module_enabled"), self.canned_message_module_enabled)
+        form_layout.addRow(self.main.label("canned_message_module_send_bell"), self.canned_message_module_send_bell)
+        form_layout.addRow(self.main.label("canned_message_module_allow_input_source"), self.canned_message_module_allow_input_source)
+        form_layout.addRow(self.main.label("canned_message_module_messages"), self.canned_message_module_messages)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 
@@ -80,21 +82,21 @@ class CannedMessageForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.canned_message_plugin_enabled and self.prefs.canned_message_plugin_enabled is True:
-                    self.canned_message_plugin_enabled.setChecked(True)
+                if self.prefs.canned_message_module_enabled and self.prefs.canned_message_module_enabled is True:
+                    self.canned_message_module_enabled.setChecked(True)
 
-                if self.prefs.canned_message_plugin_allow_input_source:
-                    self.canned_message_plugin_allow_input_source.setText(f'{self.prefs.canned_message_plugin_allow_input_source}')
+                if self.prefs.canned_message_module_allow_input_source:
+                    self.canned_message_module_allow_input_source.setText(f'{self.prefs.canned_message_module_allow_input_source}')
                 else:
-                    self.canned_message_plugin_allow_input_source.setText("")
+                    self.canned_message_module_allow_input_source.setText("")
 
-                if self.prefs.canned_message_plugin_send_bell and self.prefs.canned_message_plugin_send_bell is True:
-                    self.canned_message_plugin_send_bell.setChecked(True)
+                if self.prefs.canned_message_module_send_bell and self.prefs.canned_message_module_send_bell is True:
+                    self.canned_message_module_send_bell.setChecked(True)
 
-                if self.prefs.canned_message_plugin_messages:
-                    self.canned_message_plugin_messages.setText(f'{self.prefs.canned_message_plugin_messages}')
+                if self.prefs.canned_message_module_messages:
+                    self.canned_message_module_messages.setText(f'{self.prefs.canned_message_module_messages}')
                 else:
-                    self.canned_message_plugin_messages.setText("")
+                    self.canned_message_module_messages.setText("")
 
 
         except Exception as e:
@@ -107,10 +109,10 @@ class CannedMessageForm(QDialog):
             if self.interface:
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'canned_message_plugin_enabled', f'{self.canned_message_plugin_enabled.isChecked()}')
-                setPref(prefs, 'canned_message_plugin_allow_input_source', f'{self.canned_message_plugin_allow_input_source.text()}')
-                setPref(prefs, 'canned_message_plugin_send_bell', f'{self.canned_message_plugin_send_bell.isChecked()}')
-                setPref(prefs, 'canned_message_plugin_messages', self.canned_message_plugin_messages.toPlainText())
+                setPref(prefs, 'canned_message_module_enabled', f'{self.canned_message_module_enabled.isChecked()}')
+                setPref(prefs, 'canned_message_module_allow_input_source', f'{self.canned_message_module_allow_input_source.text()}')
+                setPref(prefs, 'canned_message_module_send_bell', f'{self.canned_message_module_send_bell.isChecked()}')
+                setPref(prefs, 'canned_message_module_messages', self.canned_message_module_messages.toPlainText())
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

@@ -21,40 +21,41 @@ class AdvancedForm(QDialog):
         """constructor"""
         super(AdvancedForm, self).__init__(parent)
 
-        self.info_form = InfoForm()
-        self.send_text_form = SendTextForm(self)
         self.parent = parent
+        self.main = parent.main
+        self.info_form = InfoForm(self)
+        self.send_text_form = SendTextForm(self)
 
         width = 240
         height = 120
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Advanced Options")
+        self.setWindowTitle(self.main.text('advanced_options'))
 
         # Create widgets
         self.update_only_cb = QCheckBox()
-        self.update_only_cb.setToolTip("If enabled, the device will be updated (not completely erased).")
-        self.info_button = QPushButton("INFO")
+        self.update_only_cb.setToolTip(self.main.tooltip('update_only'))
+        self.info_button = QPushButton(self.main.text('information'))
         self.info_button.clicked.connect(self.info)
-        self.send_text_button = QPushButton("SEND TEXT")
+        self.send_text_button = QPushButton(self.main.text("send_text"))
         self.send_text_button.clicked.connect(self.send_text)
-        self.configure_from_file_button = QPushButton("Configure From File")
+        self.configure_from_file_button = QPushButton(self.main.text('configure_from_file'))
         self.configure_from_file_button.clicked.connect(self.configure_from_file)
-        self.export_configuration_button = QPushButton("Export Configuration")
+        self.export_configuration_button = QPushButton(self.main.text('export_configuration'))
         self.export_configuration_button.clicked.connect(self.export_configuration)
-        self.clear_firmware_files_button = QPushButton("Clear Firmware Files")
+        self.clear_firmware_files_button = QPushButton(self.main.text('clear_firmware_files'))
         self.clear_firmware_files_button.clicked.connect(self.clear_firmware_files)
 
         self.ok_button = QPushButton("OK")
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.tr("&Update only"), self.update_only_cb)
-        form_layout.addRow(self.tr(""), self.info_button)
-        form_layout.addRow(self.tr(""), self.send_text_button)
-        form_layout.addRow(self.tr(""), self.export_configuration_button)
-        form_layout.addRow(self.tr(""), self.configure_from_file_button)
-        form_layout.addRow(self.tr(""), self.clear_firmware_files_button)
-        form_layout.addRow(self.tr(""), self.ok_button)
+        form_layout.addRow(self.main.text('update_only'), self.update_only_cb)
+        form_layout.addRow("", self.info_button)
+        form_layout.addRow("", self.send_text_button)
+        form_layout.addRow("", self.export_configuration_button)
+        form_layout.addRow("", self.configure_from_file_button)
+        form_layout.addRow("", self.clear_firmware_files_button)
+        form_layout.addRow("", self.ok_button)
         self.setLayout(form_layout)
 
         self.ok_button.clicked.connect(self.close_advanced_options)
@@ -75,7 +76,7 @@ class AdvancedForm(QDialog):
             sys.argv = ['', '--configure', filename]
             main()
             sys.argv = old_sys_argv
-            QMessageBox.information(self, "Info", f"Device configured from:{filename}")
+            QMessageBox.information(self, self.main.text('info'), self.main.text('device_configured_from_file'))
 
 
     def export_configuration(self):
@@ -97,7 +98,7 @@ class AdvancedForm(QDialog):
         sys.stdout.close()
         sys.argv = old_sys_argv
         sys.stdout = old_sys_stdout
-        QMessageBox.information(self, "Info", f"Device configuration backed up to:{filename}")
+        QMessageBox.information(self, self.main.text('info'), self.main.text('device_backed_up_to_file'))
 
 
     def send_text(self):
@@ -125,8 +126,8 @@ class AdvancedForm(QDialog):
     def clear_firmware_files(self):
         """clear firmware files"""
         print('clear firmware files')
-        confirm_msg = 'Are you sure you want to remove the firmware files?'
-        reply = QMessageBox.question(self, 'Confirm', confirm_msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
+        confirm_msg = self.main.text('confirm_remove_firmware_files')
+        reply = QMessageBox.question(self, self.main.text('confirm'), confirm_msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             print("User confirmed they want remove the firmware files")
             directories = glob.glob('1.*.*.*')

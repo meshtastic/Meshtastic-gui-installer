@@ -20,11 +20,12 @@ class RadioForm(QDialog):
         super(RadioForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Radio Settings")
+        self.setWindowTitle(self.main.text('radio_settings'))
 
         self.port = None
         self.interface = None
@@ -32,27 +33,27 @@ class RadioForm(QDialog):
 
         # Create widgets
         self.is_router = QCheckBox()
-        self.is_router.setToolTip(self.parent.description('is_router'))
+        self.is_router.setToolTip(self.main.description('is_router'))
         self.region = QComboBox()
-        self.region.setToolTip(self.parent.description('region'))
+        self.region.setToolTip(self.main.description('region'))
         self.region.setMinimumContentsLength(17)
         self.debug_log_enabled = QCheckBox()
-        self.debug_log_enabled.setToolTip(self.parent.description('debug_log_enabled'))
+        self.debug_log_enabled.setToolTip(self.main.description('debug_log_enabled'))
         self.serial_disabled = QCheckBox()
-        self.serial_disabled.setToolTip(self.parent.description('serial_disabled'))
+        self.serial_disabled.setToolTip(self.main.description('serial_disabled'))
         self.auto_screen_carousel_secs = QLineEdit()
-        self.auto_screen_carousel_secs.setToolTip(self.parent.description('auto_screen_carousel_secs'))
+        self.auto_screen_carousel_secs.setToolTip(self.main.description('auto_screen_carousel_secs'))
         self.frequency_offset = QLineEdit()
-        self.frequency_offset.setToolTip(self.parent.description('frequency_offset'))
+        self.frequency_offset.setToolTip(self.main.description('frequency_offset'))
         self.hop_limit = QLineEdit()
         # TODO: hops_reliable?
-        self.hop_limit.setToolTip(self.parent.description('hop_limit'))
+        self.hop_limit.setToolTip(self.main.description('hop_limit'))
         # TODO: see https://github.com/meshtastic/Meshtastic-python/issues/280 (add when fixed)
         #self.ignore_incoming = QLineEdit()
         self.is_lora_tx_disabled = QCheckBox()
-        self.is_lora_tx_disabled.setToolTip(self.parent.description('is_lora_tx_disabled'))
+        self.is_lora_tx_disabled.setToolTip(self.main.description('is_lora_tx_disabled'))
         self.send_owner_interval = QLineEdit()
-        self.send_owner_interval.setToolTip(self.parent.description('send_owner_interval'))
+        self.send_owner_interval.setToolTip(self.main.description('send_owner_interval'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -63,17 +64,17 @@ class RadioForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.label("is_router"), self.is_router)
-        form_layout.addRow(self.parent.label("region"), self.region)
-        form_layout.addRow(self.parent.label("debug_log_enabled"), self.debug_log_enabled)
-        form_layout.addRow(self.parent.label("serial_disabled"), self.serial_disabled)
-        form_layout.addRow(self.parent.label("auto_screen_carousel_secs"), self.auto_screen_carousel_secs)
-        form_layout.addRow(self.parent.label("frequency_offset"), self.frequency_offset)
-        form_layout.addRow(self.parent.label("hop_limit"), self.hop_limit)
-        #form_layout.addRow(self.parent.label("Ignore Incoming"), self.ignore_incoming)
-        form_layout.addRow(self.parent.label("is_lora_tx_disabled"), self.is_lora_tx_disabled)
-        form_layout.addRow(self.parent.label("send_owner_interval"), self.send_owner_interval)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow(self.main.label("is_router"), self.is_router)
+        form_layout.addRow(self.main.label("region"), self.region)
+        form_layout.addRow(self.main.label("debug_log_enabled"), self.debug_log_enabled)
+        form_layout.addRow(self.main.label("serial_disabled"), self.serial_disabled)
+        form_layout.addRow(self.main.label("auto_screen_carousel_secs"), self.auto_screen_carousel_secs)
+        form_layout.addRow(self.main.label("frequency_offset"), self.frequency_offset)
+        form_layout.addRow(self.main.label("hop_limit"), self.hop_limit)
+        #form_layout.addRow(self.main.label("Ignore Incoming"), self.ignore_incoming)
+        form_layout.addRow(self.main.label("is_lora_tx_disabled"), self.is_lora_tx_disabled)
+        form_layout.addRow(self.main.label("send_owner_interval"), self.send_owner_interval)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

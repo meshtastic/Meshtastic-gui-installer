@@ -1,4 +1,4 @@
-"""class for the plugin settings"""
+"""class for the module settings"""
 
 
 from PySide6.QtWidgets import QTabWidget, QMainWindow
@@ -12,21 +12,23 @@ from meshtastic_flasher.plugins_canned_message_form import CannedMessageForm
 #from meshtastic_flasher.plugins_store_and_forward_form import StoreAndForwardForm
 
 
+# TODO: rename to ModuleSettings
 class PluginSettings(QMainWindow):
-    """plugin settings"""
+    """module settings"""
 
     def __init__(self, parent=None):
         """constructor"""
-        super(PluginSettings, self).__init__()
+        super(PluginSettings, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
         self.port = None
         self.interface = None
 
         width = 800
         height = 600
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Plugin Settings")
+        self.setWindowTitle(self.main.text('module_settings'))
 
         self.range_test_form = RangeTestForm(self)
         self.external_notifications_form = ExternalNotificationsForm(self)
@@ -43,12 +45,12 @@ class PluginSettings(QMainWindow):
 
         self.tabs.setTabPosition(QTabWidget.North)
 
-        self.tabs.addTab(self.range_test_form, "Range")
-        self.tabs.addTab(self.external_notifications_form, "Notifications")
-        self.tabs.addTab(self.telemetry_form, "Telemetry")
-        self.tabs.addTab(self.serial_form, "Serial")
-        self.tabs.addTab(self.rotary_encoder_form, "Rotary")
-        self.tabs.addTab(self.canned_message_form, "Canned")
+        self.tabs.addTab(self.range_test_form, self.main.text('range'))
+        self.tabs.addTab(self.external_notifications_form, self.main.text("notifications"))
+        self.tabs.addTab(self.telemetry_form, self.main.text("telemetry"))
+        self.tabs.addTab(self.serial_form, self.main.text("serial"))
+        self.tabs.addTab(self.rotary_encoder_form, self.main.text("rotary"))
+        self.tabs.addTab(self.canned_message_form, self.main.text("canned"))
         #self.tabs.addTab(self.store_and_forward_form, "Store/Forward")
 
         self.setCentralWidget(self.tabs)

@@ -164,7 +164,9 @@ def check_if_newer_version():
         print(f"could not get version from pypi e:{e}")
     print(f'running: {meshtastic_flasher.version.__version__}')
     if pypi_version and meshtastic_flasher.version.__version__ != pypi_version:
-        if 'alpha' not in meshtastic_flasher.version.__version__:
+        if 'alpha' not in pypi_version and 'alpha' in meshtastic_flasher.version.__version__:
+            is_newer_version = False
+        else:
             is_newer_version = True
     return is_newer_version
 

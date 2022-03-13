@@ -21,11 +21,12 @@ class PositionForm(QDialog):
         super(PositionForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
 
         width = 900
         height = 500
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Position Settings")
+        self.setWindowTitle(self.main.text('position_settings'))
 
         self.port = None
         self.interface = None
@@ -35,46 +36,46 @@ class PositionForm(QDialog):
 
         # Create widgets
         self.position_broadcast_secs = QLineEdit()
-        self.position_broadcast_secs.setToolTip(self.parent.description('position_broadcast_secs'))
+        self.position_broadcast_secs.setToolTip(self.main.description('position_broadcast_secs'))
         self.position_broadcast_smart = QCheckBox()
-        self.position_broadcast_smart.setToolTip(self.parent.description('position_broadcast_smart'))
-        self.position_flag_altitude = QCheckBox(self.parent.label('position_flag_altitude'), self)
-        self.position_flag_altitude.setToolTip(self.parent.description('position_flag_altitude'))
-        self.position_flag_alt_msl = QCheckBox(self.parent.label('position_flag_alt_msl'), self)
-        self.position_flag_alt_msl.setToolTip(self.parent.description('position_flag_alt_msl'))
-        self.position_flag_geo_sep = QCheckBox(self.parent.label('position_flag_geo_sep'), self)
-        self.position_flag_geo_sep.setToolTip(self.parent.description('position_flag_geo_sep'))
-        self.position_flag_dop = QCheckBox(self.parent.label('position_flag_dop'), self)
-        self.position_flag_dop.setToolTip(self.parent.description('position_flag_dop'))
-        self.position_flag_hvdop = QCheckBox(self.parent.label('position_flag_hvdop'), self)
-        self.position_flag_hvdop.setToolTip(self.parent.description('position_flag_hvdop'))
-        self.position_flag_battery = QCheckBox(self.parent.label('position_flag_battery'), self)
-        self.position_flag_battery.setToolTip(self.parent.description('position_flag_battery'))
-        self.position_flag_satinview = QCheckBox(self.parent.label('position_flag_satinview'), self)
-        self.position_flag_satinview.setToolTip(self.parent.description('position_flag_satinview'))
-        self.position_flag_seq_nos = QCheckBox(self.parent.label('position_flag_seq_nos'), self)
-        self.position_flag_seq_nos.setToolTip(self.parent.description('position_flag_seq_nos'))
-        self.position_flag_timestamp = QCheckBox(self.parent.label('position_flag_timestamp'), self)
-        self.position_flag_timestamp.setToolTip(self.parent.description('position_flag_timestamp'))
-        self.position_flags = QLabel(self.parent.label('position_flags')) # field that shows the number for the prior bit fields
-        self.position_flags.setToolTip(self.parent.description('position_flags'))
+        self.position_broadcast_smart.setToolTip(self.main.description('position_broadcast_smart'))
+        self.position_flag_altitude = QCheckBox(self.main.label('position_flag_altitude'), self)
+        self.position_flag_altitude.setToolTip(self.main.description('position_flag_altitude'))
+        self.position_flag_alt_msl = QCheckBox(self.main.label('position_flag_alt_msl'), self)
+        self.position_flag_alt_msl.setToolTip(self.main.description('position_flag_alt_msl'))
+        self.position_flag_geo_sep = QCheckBox(self.main.label('position_flag_geo_sep'), self)
+        self.position_flag_geo_sep.setToolTip(self.main.description('position_flag_geo_sep'))
+        self.position_flag_dop = QCheckBox(self.main.label('position_flag_dop'), self)
+        self.position_flag_dop.setToolTip(self.main.description('position_flag_dop'))
+        self.position_flag_hvdop = QCheckBox(self.main.label('position_flag_hvdop'), self)
+        self.position_flag_hvdop.setToolTip(self.main.description('position_flag_hvdop'))
+        self.position_flag_battery = QCheckBox(self.main.label('position_flag_battery'), self)
+        self.position_flag_battery.setToolTip(self.main.description('position_flag_battery'))
+        self.position_flag_satinview = QCheckBox(self.main.label('position_flag_satinview'), self)
+        self.position_flag_satinview.setToolTip(self.main.description('position_flag_satinview'))
+        self.position_flag_seq_nos = QCheckBox(self.main.label('position_flag_seq_nos'), self)
+        self.position_flag_seq_nos.setToolTip(self.main.description('position_flag_seq_nos'))
+        self.position_flag_timestamp = QCheckBox(self.main.label('position_flag_timestamp'), self)
+        self.position_flag_timestamp.setToolTip(self.main.description('position_flag_timestamp'))
+        self.position_flags = QLabel(self.main.label('position_flags')) # field that shows the number for the prior bit fields
+        self.position_flags.setToolTip(self.main.description('position_flags'))
 
         self.fixed_position_button = QPushButton("Fixed Position")
         self.fixed_position_button.clicked.connect(self.fixed_position)
 
         self.location_share = QComboBox()
-        self.location_share.setToolTip(self.parent.description('location_share'))
+        self.location_share.setToolTip(self.main.description('location_share'))
         self.location_share.setMinimumContentsLength(17)
         self.gps_operation = QComboBox()
-        self.gps_operation.setToolTip(self.parent.description('gps_operation'))
+        self.gps_operation.setToolTip(self.main.description('gps_operation'))
         self.gps_operation.setMinimumContentsLength(17)
         self.gps_format = QComboBox()
-        self.gps_format.setToolTip(self.parent.description('gps_format'))
+        self.gps_format.setToolTip(self.main.description('gps_format'))
         self.gps_format.setMinimumContentsLength(17)
         self.gps_accept_2d = QCheckBox()
-        self.gps_accept_2d.setToolTip(self.parent.description('gps_accept_2d'))
+        self.gps_accept_2d.setToolTip(self.main.description('gps_accept_2d'))
         self.gps_max_dop = QLineEdit()
-        self.gps_max_dop.setToolTip(self.parent.description('gps_max_dop'))
+        self.gps_max_dop.setToolTip(self.main.description('gps_max_dop'))
         # TODO: not sure what this does
         #self.gps_attempt_time = QLabel()
 
@@ -86,8 +87,8 @@ class PositionForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.label("position_broadcast_secs"), self.position_broadcast_secs)
-        form_layout.addRow(self.parent.label("position_broadcast_smart"), self.position_broadcast_smart)
+        form_layout.addRow(self.main.label("position_broadcast_secs"), self.position_broadcast_secs)
+        form_layout.addRow(self.main.label("position_broadcast_smart"), self.position_broadcast_smart)
         form_layout.addRow('Position flags', self.position_flag_altitude)
         form_layout.addRow('', self.position_flag_alt_msl)
         form_layout.addRow('', self.position_flag_geo_sep)
@@ -97,15 +98,15 @@ class PositionForm(QDialog):
         form_layout.addRow('', self.position_flag_satinview)
         form_layout.addRow('', self.position_flag_seq_nos)
         form_layout.addRow('', self.position_flag_timestamp)
-        form_layout.addRow(self.parent.label("position_flags"), self.position_flags)
-        form_layout.addRow(self.tr(""), self.fixed_position_button)
-        form_layout.addRow(self.parent.label("location_share"), self.location_share)
-        form_layout.addRow(self.parent.label("gps_operation"), self.gps_operation)
-        form_layout.addRow(self.parent.label("gps_format"), self.gps_format)
-        form_layout.addRow(self.parent.label("gps_accept_2d"), self.gps_accept_2d)
-        form_layout.addRow(self.parent.label("gps_max_dop"), self.gps_max_dop)
+        form_layout.addRow(self.main.label("position_flags"), self.position_flags)
+        form_layout.addRow("", self.fixed_position_button)
+        form_layout.addRow(self.main.label("location_share"), self.location_share)
+        form_layout.addRow(self.main.label("gps_operation"), self.gps_operation)
+        form_layout.addRow(self.main.label("gps_format"), self.gps_format)
+        form_layout.addRow(self.main.label("gps_accept_2d"), self.gps_accept_2d)
+        form_layout.addRow(self.main.label("gps_max_dop"), self.gps_max_dop)
         #form_layout.addRow(self.tr("Last GPS Attempt"), self.gps_attempt_time)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
         self.position_flag_altitude.stateChanged.connect(self.on_position_flag_change)

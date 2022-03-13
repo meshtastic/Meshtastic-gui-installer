@@ -17,13 +17,14 @@ class ChannelForm(QDialog):
         super(ChannelForm, self).__init__(parent)
 
         self.parent = parent
+        self.main = parent.main
         self.channel_index = channel_index
         self.use_name = None
 
         width = 500
         height = 800
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Channel Settings")
+        self.setWindowTitle(self.main.text('channel_settings'))
 
         self.port = None
         self.interface = None
@@ -32,33 +33,33 @@ class ChannelForm(QDialog):
 
         # Create widgets
         self.name = QLineEdit()
-        self.name.setToolTip(self.parent.parent.description('name'))
+        self.name.setToolTip(self.main.description('name'))
         self.role = QComboBox()
-        self.role.setToolTip(self.parent.parent.description('role'))
+        self.role.setToolTip(self.main.description('role'))
         self.role.setMinimumContentsLength(17)
         self.modem_config = None
         if self.channel_index == 0:
             self.name.setReadOnly(True) # primary channel name cannot be changed
             # modem config is only on primary channel
             self.modem_config = QComboBox()
-            self.modem_config.setToolTip(self.parent.parent.description('modem_config'))
+            self.modem_config.setToolTip(self.main.description('modem_config'))
             self.modem_config.setMinimumContentsLength(17)
         self.uplink_enabled = QCheckBox()
-        self.uplink_enabled.setToolTip(self.parent.parent.description('uplink_enabled'))
+        self.uplink_enabled.setToolTip(self.main.description('uplink_enabled'))
         self.downlink_enabled = QCheckBox()
-        self.downlink_enabled.setToolTip(self.parent.parent.description('downlink_enabled'))
+        self.downlink_enabled.setToolTip(self.main.description('downlink_enabled'))
         self.tx_power = QLineEdit()
-        self.tx_power.setToolTip(self.parent.parent.description('tx_power'))
+        self.tx_power.setToolTip(self.main.description('tx_power'))
         self.bandwidth = QLineEdit()
-        self.bandwidth.setToolTip(self.parent.parent.description('bandwidth'))
+        self.bandwidth.setToolTip(self.main.description('bandwidth'))
         self.spread_factor = QLineEdit()
-        self.spread_factor.setToolTip(self.parent.parent.description('spread_factor'))
+        self.spread_factor.setToolTip(self.main.description('spread_factor'))
         self.coding_rate = QLineEdit()
-        self.coding_rate.setToolTip(self.parent.parent.description('coding_rate'))
+        self.coding_rate.setToolTip(self.main.description('coding_rate'))
         self.psk_random_button = QPushButton("PSKRandom")
         self.psk_default_button = QPushButton("PSKDefault")
         if self.channel_index > 0:
-            self.delete_this_channel_button = QPushButton("DeleteThisChannel")
+            self.delete_this_channel_button = QPushButton(self.main.text('delete_this_channel'))
             self.delete_this_channel_button.clicked.connect(self.delete_this_channel)
         # TODO: self.id = QLineEdit()
 
@@ -73,18 +74,18 @@ class ChannelForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.parent.parent.label("name"), self.name)
-        form_layout.addRow(self.parent.parent.label("role"), self.role)
+        form_layout.addRow(self.main.label("name"), self.name)
+        form_layout.addRow(self.main.label("role"), self.role)
         if self.channel_index == 0:
-            form_layout.addRow(self.parent.parent.label("modem_config"), self.modem_config)
-        form_layout.addRow(self.parent.parent.label("uplink_enabled"), self.uplink_enabled)
-        form_layout.addRow(self.parent.parent.label("downlink_enabled"), self.downlink_enabled)
-        form_layout.addRow(self.parent.parent.label("tx_power"), self.tx_power)
-        form_layout.addRow(self.parent.parent.label("bandwidth"), self.bandwidth)
-        form_layout.addRow(self.parent.parent.label("spread_factor"), self.spread_factor)
-        form_layout.addRow(self.parent.parent.label("coding_rate"), self.coding_rate)
-        form_layout.addRow(self.parent.parent.label(""), self.psk_random_button)
-        form_layout.addRow(self.tr(""), self.psk_default_button)
+            form_layout.addRow(self.main.label("modem_config"), self.modem_config)
+        form_layout.addRow(self.main.label("uplink_enabled"), self.uplink_enabled)
+        form_layout.addRow(self.main.label("downlink_enabled"), self.downlink_enabled)
+        form_layout.addRow(self.main.label("tx_power"), self.tx_power)
+        form_layout.addRow(self.main.label("bandwidth"), self.bandwidth)
+        form_layout.addRow(self.main.label("spread_factor"), self.spread_factor)
+        form_layout.addRow(self.main.label("coding_rate"), self.coding_rate)
+        form_layout.addRow(self.main.label(""), self.psk_random_button)
+        form_layout.addRow("", self.psk_default_button)
         if self.channel_index > 0:
             form_layout.addRow(self.tr(""), self.delete_this_channel_button)
         form_layout.addRow(self.tr(""), self.button_box)
@@ -240,7 +241,7 @@ class ChannelForm(QDialog):
                 self.use_name = self.name.text()
 
                 if self.use_name == '':
-                    QMessageBox.warning(self, "Warning", "Need to have a channel name")
+                    QMessageBox.warning(self, self.main.text('warning'), self.main.text('warning_need_channel_name'))
                 else:
                     # Primary channel stuff
                     if self.channel_index == 0:
