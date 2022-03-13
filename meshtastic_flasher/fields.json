@@ -8,6 +8,12 @@
     "about_text": {
         "text": "Meshtastic Flasher is part of the <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> ecosystem. It is a cross platform, easy to use graphical user interface for updating and installing Meshtastic firmware."
     },
+    "admin": {
+        "text": "Admin"
+    },
+    "admin_settings": {
+        "text": "Admin Settings"
+    },
     "all": {
         "text": "All"
     },
@@ -51,19 +57,40 @@
         "label": "Send Bell?",
         "description": "The Canned Message module also sends a bell character with the messages. The External Notification module can benefit from this feature."
     },
+    "channels": {
+        "text": "Channels"
+    },
+    "channel_settings": {
+        "text": "Channel Settings"
+    },
     "charge_current": {
         "label": "Charge Current",
         "description": "Sets the current of the battery charger."
     },
+    "clear_firmware_files": {
+        "text": "Clear Firmware Files"
+    },
     "coding_rate": {
         "label": "Coding Rate",
         "description": "The denominator of the coding rate. ie for 4/8, the value is 8. 5/8 the value is 5."
+    },
+    "configure_from_file": {
+        "text": "Configure From File"
+    },
+    "confirm": {
+        "text": "Confirm"
     },
     "confirm_update_techo_bootloader": {
         "text": "Do you want to update the T-Echo bootloader?"
     },
     "confirm_flash_first_part": {
         "text": "Are you sure you want to"
+    },
+    "confirm_remove_firmware_files": {
+        "text": "Are you sure you want to remove the firmware files?"
+    },
+    "confirm_reset_device": {
+        "text": "Are you sure you want to reset the device?"
     },
     "copy": {
         "text": "copy"
@@ -75,11 +102,23 @@
         "label": "Debug Log Enabled?",
         "description": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active."
     },
+    "delete_this_channel": {
+        "text": "Delete This Channel"
+    },
     "detected": {
         "text": "Detected"
     },
+    "device_configured_from_file": {
+        "text": "Device configured from file."
+    },
+    "device_backed_up_to_file": {
+        "text": "Device configuration backed up to file."
+    },
     "device_has_meshtastic": {
         "text": "Does the device currently have Meshtastic version 1.2 or newer?"
+    },
+    "device_was_reset": {
+        "text": "The device was reset. May want to unplug and re-plugin the device or\n\npress the RESET button.\n\nThe Settings form will now close."
     },
     "device_id": {
         "label": "Device ID",
@@ -98,6 +137,9 @@
     "get_versions": {
         "text": "GET VERSIONS",
         "tooltip": "Click to check for more recent firmware."
+    },
+    "export_configuration": {
+        "text": "Export Configuration"
     },
     "ext_notification_module_about": {
         "label": "External Notification Module",
@@ -127,6 +169,9 @@
         "label": "Output (ms)",
         "description": "Amount of time in ms for the alert. Default is 1,000 ms (or 1 second)."
     },
+    "factory_reset": {
+        "text": "Factory Reset"
+    },
     "fixed_position": {
         "label": "Use Fixed position?",
         "description": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used."
@@ -135,11 +180,29 @@
         "text": "File was copied.\nWait for the device to reboot."
     },
     "flash": {
-        "text": "flash"
+        "text": "Flash"
+    },
+    "flashing": {
+        "text": "Flashing"
     },
     "frequency_offset": {
         "label": "Frequency Offset",
         "description": "This parameter is for advanced users with advanced test equipment, we do not recommend most users use it. A frequency offset that is added to to the calculated band center frequency. Used to correct for crystal calibration errors."
+    },
+    "full_step1": {
+        "text": "Full flash step 1 of 4"
+    },
+    "full_step1_done": {
+        "text": "Full flash step 1 of 4 is done"
+    },
+    "full_step2_done": {
+        "text": "Full flash step 2 of 4 is done"
+    },
+    "full_step3_done": {
+        "text": "Full flash step 3 of 4 is done"
+    },
+    "full_step4_done": {
+        "text": "Full flash step 4 of 4 is done"
     },
     "gps_accept_2d": {
         "label": "GPS Accept 2D Fix?",
@@ -250,6 +313,9 @@
         "label": "Modem Config",
         "description": "The configuration of the modem. (speed/distance)"
     },
+    "modules": {
+        "text": "Modules"
+    },
     "mqtt_encryption_enabled": {
         "label": "MQTT Encryption Enabled?",
         "description": "If set, encrypted packets are sent to server specified in 'mqtt_server. Otherwise, the packets are not encrypted."
@@ -301,6 +367,9 @@
         "label": "Phone Timeout (seconds)",
         "description": "Power management state machine option. See power management for details. 0 for default of 900 (or 15 minutes)."
     },
+    "position": {
+        "text": "Position"
+    },
     "position_broadcast_secs": {
         "label": "Broadcast interval (seconds)",
         "description": "Send our position this often (but only if it has changed significantly). Defaults to 900 seconds. (15 minutes)"
@@ -349,11 +418,17 @@
         "label": "Position flags (calculated)",
         "description": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags."
     },
+    "power": {
+        "text": "Power"
+    },
     "progress": {
         "tooltip": "Progress will be shown during the FLASH step."
     },
     "question": {
         "text": "Question"
+    },
+    "radio": {
+        "text": "Radio"
     },
     "rak_bootloader_not_current": {
         "text": "The RAK bootloader is not current.\nAbout to update the RAK bootloader..."
@@ -417,6 +492,9 @@
         "label": "Press",
         "description": "Generate input event on Press of this kind."
     },
+    "running": {
+        "text": "Running"
+    },
     "screen_on_secs": {
         "label": "Screen On (seconds)",
         "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute)."
@@ -457,6 +535,9 @@
         "label": "Send Owner Interval",
         "description": "Send our owner info at least this often (also we always send once at boot - to rejoin the mesh)."
     },
+    "send_text": {
+        "text": "SEND TEXT"
+    },
     "serial_disabled": {
         "label": "Serial Disabled?",
         "description": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI)."
@@ -488,6 +569,9 @@
     "serial_module_txd": {
         "label": "TXD",
         "description": "TBD"
+    },
+    "settings": {
+        "text": "Settings"
     },
     "settings_button": {
         "tooltip": "Click to view or update settings on the device."
@@ -575,21 +659,43 @@
     "update": {
         "text": "Update"
     },
+    "update_step1": {
+        "text": "Update step 1 of 2"
+    },
+    "update_step1_done": {
+        "text": "Update step 1 of 2 is done"
+    },
+    "update_step2_done": {
+        "text": "Update step 2 of 2 is done"
+    },
     "update_available": {
         "text": "update available"
     },
     "update_only": {
-        "text": "update only"
+        "text": "Update only",
+        "tooltip": "If enabled, the device will be updated only - not completely erased."
     },
     "uplink_enabled": {
         "label": "Uplink Enabled?",
         "description": "If set, messages on the mesh will be sent to the public internet by any gateway node."
+    },
+    "user": {
+        "text": "User"
+    },
+    "user_settings": {
+        "text": "User Settings"
     },
     "warning": {
         "text": "Warning"
     },
     "warning_cannot_open_port_exclusively": {
         "text": "Warning: Cannot open the serial port exclusively.\nClose any other programs that might be using that port and try again."
+    },
+    "warning_need_channel_name": {
+        "text": "Need to have a channel name."
+    },
+    "warning_problem_connecting": {
+        "text": "There was a problem connecting to the device.\n\nPerhaps unplug device or restart this program."
     },
     "warning_issue_downloading": {
         "text": "Warning: There was an issue downloading/extracting."

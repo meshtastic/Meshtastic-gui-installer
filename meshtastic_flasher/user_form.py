@@ -22,7 +22,7 @@ class UserForm(QDialog):
         width = 500
         height = 200
         self.setMinimumSize(width, height)
-        self.setWindowTitle("User Settings")
+        self.setWindowTitle(self.main.text('user_settings'))
 
         self.port = None
         self.interface = None
@@ -64,7 +64,7 @@ class UserForm(QDialog):
         form_layout.addRow(self.main.label('short_name'), self.short_name)
         form_layout.addRow(self.main.label('is_licensed'), self.is_licensed)
         form_layout.addRow(self.main.label('team'), self.team)
-        form_layout.addRow(self.tr(""), self.button_box)
+        form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
 

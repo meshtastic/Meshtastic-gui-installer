@@ -14,13 +14,15 @@ def test_EsptoolForm(qtbot):
     qtbot.addWidget(espf)
     espf.start(port='foo', device_file='bar',
                  system_info_file='baz', bin_file='bam',
-                 test=True)
+                 main=f.main, test=True)
 
-def test_Worker_run_full(capsys):
+def test_Worker_run_full(capsys, qtbot):
     """Test Worker().run()"""
+    f = Form()
+    qtbot.addWidget(f)
     a_worker = Worker(update_only=False, port='foo', device_file='bar',
                       system_info_file='baz', bin_file='bam',
-                      test=True)
+                      main=f.main, test=True)
     a_worker.run()
     out, err = capsys.readouterr()
     assert re.search(r'Step 1/4 esp32 full', out, re.MULTILINE)
@@ -30,11 +32,13 @@ def test_Worker_run_full(capsys):
     assert err == ''
 
 
-def test_Worker_run_update(capsys):
+def test_Worker_run_update(capsys, qtbot):
     """Test Worker().run()"""
+    f = Form()
+    qtbot.addWidget(f)
     a_worker = Worker(update_only=True, port='foo', device_file='bar',
                       system_info_file='baz', bin_file='bam',
-                      test=True)
+                      main=f.main, test=True)
     a_worker.run()
     out, err = capsys.readouterr()
     assert re.search(r'Step 1/2 esp32 update', out, re.MULTILINE)

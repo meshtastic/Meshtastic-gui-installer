@@ -24,7 +24,7 @@ class ChannelForm(QDialog):
         width = 500
         height = 800
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Channel Settings")
+        self.setWindowTitle(self.main.text('channel_settings'))
 
         self.port = None
         self.interface = None
@@ -59,7 +59,7 @@ class ChannelForm(QDialog):
         self.psk_random_button = QPushButton("PSKRandom")
         self.psk_default_button = QPushButton("PSKDefault")
         if self.channel_index > 0:
-            self.delete_this_channel_button = QPushButton("DeleteThisChannel")
+            self.delete_this_channel_button = QPushButton(self.main.text('delete_this_channel'))
             self.delete_this_channel_button.clicked.connect(self.delete_this_channel)
         # TODO: self.id = QLineEdit()
 
@@ -85,7 +85,7 @@ class ChannelForm(QDialog):
         form_layout.addRow(self.main.label("spread_factor"), self.spread_factor)
         form_layout.addRow(self.main.label("coding_rate"), self.coding_rate)
         form_layout.addRow(self.main.label(""), self.psk_random_button)
-        form_layout.addRow(self.tr(""), self.psk_default_button)
+        form_layout.addRow("", self.psk_default_button)
         if self.channel_index > 0:
             form_layout.addRow(self.tr(""), self.delete_this_channel_button)
         form_layout.addRow(self.tr(""), self.button_box)
@@ -241,7 +241,7 @@ class ChannelForm(QDialog):
                 self.use_name = self.name.text()
 
                 if self.use_name == '':
-                    QMessageBox.warning(self, "Warning", "Need to have a channel name")
+                    QMessageBox.warning(self, self.main.text('warning'), self.main.text('warning_need_channel_name'))
                 else:
                     # Primary channel stuff
                     if self.channel_index == 0:

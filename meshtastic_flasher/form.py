@@ -503,7 +503,7 @@ class Form(QDialog):
         self.esptool_form.show()
 
         if self.update_only is not None:
-            self.esptool_form.start(update_only=self.update_only, port=self.port, device_file=self.device_file, system_info_file=self.system_info_file, bin_file=self.bin_file)
+            self.esptool_form.start(update_only=self.update_only, port=self.port, device_file=self.device_file, system_info_file=self.system_info_file, main=self.main, bin_file=self.bin_file)
 
 
     def hotkeys(self):

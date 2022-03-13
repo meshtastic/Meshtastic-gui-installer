@@ -31,7 +31,7 @@ class Settings(QMainWindow):
         width = 800
         height = 700
         self.setMinimumSize(width, height)
-        self.setWindowTitle("Settings")
+        self.setWindowTitle(self.main.text('settings'))
 
         self.admin_form = AdminForm(self)
         self.wifi_and_mqtt_form = Wifi_and_MQTT_Form(self)
@@ -73,14 +73,14 @@ QTabBar::tab:only-one {
 
         self.tabs.setTabPosition(QTabWidget.North)
 
-        self.tabs.addTab(self.user_form, "User")
+        self.tabs.addTab(self.user_form, self.main.text('user'))
         self.tabs.addTab(self.wifi_and_mqtt_form, "Wifi/MQTT")
-        self.tabs.addTab(self.position_form, "Position")
-        self.tabs.addTab(self.power_form, "Power")
-        self.tabs.addTab(self.radio_form, "Radio")
-        self.tabs.addTab(self.plugin_settings, "Plugins")
-        self.tabs.addTab(self.channel_settings, "Channels")
-        self.tabs.addTab(self.admin_form, "ADMIN")
+        self.tabs.addTab(self.position_form, self.main.text('position'))
+        self.tabs.addTab(self.power_form, self.main.text('power'))
+        self.tabs.addTab(self.radio_form, self.main.text('radio'))
+        self.tabs.addTab(self.plugin_settings, self.main.text('modules'))
+        self.tabs.addTab(self.channel_settings, self.main.text('channels'))
+        self.tabs.addTab(self.admin_form, self.main.text('admin'))
 
         self.setCentralWidget(self.tabs)
 
@@ -149,7 +149,6 @@ QTabBar::tab:only-one {
             self.show()
             self.user_form.run(port=self.port, interface=self.interface)
         else:
-            QMessageBox.warning(self, "Warning", ("There was a problem connecting to the device.\n\n"
-                                "Perhaps unplug device and/or restart this program."))
+            QMessageBox.warning(self, self.main.text('warning'), self.main.text('warning_problem_connecting'))
             print("closing")
             self.my_close()
