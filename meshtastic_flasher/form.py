@@ -59,7 +59,7 @@ class Form(QDialog):
 
         self.parent = None
         self.main = self
-        self.lang = "en"
+        self.lang = "de"
 
         self.port = None
         self.firmware_version = None
@@ -270,7 +270,7 @@ class Form(QDialog):
         retval = ""
         if self.fields:
             if field in self.fields:
-                if 'text' in self.fields[field]:
+                if key in self.fields[field]:
                     tmp = self.fields[field][key]
                     if isinstance(tmp, str):
                         # there are no translations

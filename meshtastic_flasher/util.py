@@ -190,3 +190,9 @@ def load_fields():
     with open(get_path('fields.json'), encoding='utf-8') as json_file:
         fields = json.load(json_file)
     return fields
+
+
+def write_fields(data):
+    """Write updated json file to fields.json"""
+    with open('./meshtastic_flasher/fields.json', 'w', encoding='utf-8') as json_file:
+        json.dump(data, json_file, indent=4, sort_keys=True)
