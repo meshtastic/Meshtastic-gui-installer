@@ -25,23 +25,20 @@ print(f'There are {len(fields)} fields.')
 
 new_fields = fields
 
-i = 0
 for field in fields:
-    if 'text' in field:
-        print(f'field:{field}')
-        tmp = fields[field]['text']
-        print(f'tmp:{tmp}')
-        # translate text into a target language
-        result = translator.translate_text(tmp, target_lang=sys.argv[1])
-        if isinstance(tmp, str):
-            # there were no tranlsations, so add english, and new lang
-            new_entry = { "en": tmp, lang: f'{result}'}
-            print(f'new_entry:{new_entry}')
-            del new_fields[field]['text']
-            new_fields[field]['text'] = new_entry
-        break
-    if i > 1:
-        break
+    for key in ['text', 'tooltip', 'description', 'label']:
+        if key in fields[field]:
+            print(f'field:{field}')
+            tmp = fields[field][key]
+            print(f'tmp:{tmp}')
+            # translate text into a target language
+            result = translator.translate_text(tmp, target_lang=sys.argv[1])
+            if isinstance(tmp, str):
+                # there were no tranlsations, so add english, and new lang
+                new_entry = { "en": tmp, lang: f'{result}'}
+                print(f'new_entry:{new_entry}')
+                del new_fields[field][key]
+                new_fields[field][key] = new_entry
 
 print('before write_fields')
 write_fields(new_fields)

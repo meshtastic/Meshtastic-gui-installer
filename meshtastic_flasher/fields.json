@@ -1,9 +1,15 @@
 {
     "about": {
-        "text": "About Meshtastic Flasher"
+        "text": {
+            "de": "\u00dcber Meshtastic Flasher",
+            "en": "About Meshtastic Flasher"
+        }
     },
     "about_button": {
-        "tooltip": "Click for information about the project."
+        "tooltip": {
+            "de": "Klicken Sie hier, um Informationen \u00fcber das Projekt zu erhalten.",
+            "en": "Click for information about the project."
+        }
     },
     "about_text": {
         "text": {
@@ -12,123 +18,267 @@
         }
     },
     "adc_multiplier_override": {
-        "description": "Ratio of voltage divider for battery pin eg. 3.20 (R1=100k, R2=220k) Overrides the ADC_MULTIPLIER defined in variant for battery voltage calculation.",
-        "label": "ADC Multiplier Override"
+        "description": {
+            "de": "Verh\u00e4ltnis des Spannungsteilers f\u00fcr den Batterie-Pin z.B. 3.20 (R1=100k, R2=220k) \u00dcbersteuert den in der Variante definierten ADC_MULTIPLIER f\u00fcr die Batteriespannungsberechnung.",
+            "en": "Ratio of voltage divider for battery pin eg. 3.20 (R1=100k, R2=220k) Overrides the ADC_MULTIPLIER defined in variant for battery voltage calculation."
+        },
+        "label": {
+            "de": "ADC-Multiplikator \u00dcbersteuerung",
+            "en": "ADC Multiplier Override"
+        }
     },
     "admin": {
-        "text": "Admin"
+        "text": {
+            "de": "Verwaltung",
+            "en": "Admin"
+        }
     },
     "admin_settings": {
-        "text": "Admin Settings"
+        "text": {
+            "de": "Admin-Einstellungen",
+            "en": "Admin Settings"
+        }
     },
     "advanced_options": {
-        "text": "Advanced Options",
-        "tooltip": "Click for advanced Meshtastic Flasher options."
+        "text": {
+            "de": "Erweiterte Optionen",
+            "en": "Advanced Options"
+        },
+        "tooltip": {
+            "de": "Klicken Sie hier f\u00fcr erweiterte Meshtastic Flasher-Optionen.",
+            "en": "Click for advanced Meshtastic Flasher options."
+        }
     },
     "all": {
-        "text": "All"
+        "text": {
+            "de": "Alle",
+            "en": "All"
+        }
     },
     "alt": {
-        "description": "Altitude is the distance above sea level.",
-        "label": "Altitude (meters)"
+        "description": {
+            "de": "Die H\u00f6henlage ist die Entfernung \u00fcber dem Meeresspiegel.",
+            "en": "Altitude is the distance above sea level."
+        },
+        "label": {
+            "de": "H\u00f6henlage (Meter)",
+            "en": "Altitude (meters)"
+        }
     },
     "auto_screen_carousel_secs": {
-        "description": "Automatically toggles to the next page on the screen like a carousel, based the specified interval in seconds. Potentially useful for devices without user buttons.",
-        "label": "Auto Screen Carousel (seconds)"
+        "description": {
+            "de": "Wechselt automatisch zur n\u00e4chsten Seite auf dem Bildschirm wie ein Karussell, basierend auf dem angegebenen Intervall in Sekunden. Potenziell n\u00fctzlich f\u00fcr Ger\u00e4te ohne Benutzertasten.",
+            "en": "Automatically toggles to the next page on the screen like a carousel, based the specified interval in seconds. Potentially useful for devices without user buttons."
+        },
+        "label": {
+            "de": "Automatisches Bildschirmkarussell (Sekunden)",
+            "en": "Auto Screen Carousel (seconds)"
+        }
     },
     "bandwidth": {
-        "description": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz.",
-        "label": "Bandwidth (MHz)"
+        "description": {
+            "de": "Bestimmte Bandbreitenzahlen sind \"speziell\" und werden in den entsprechenden Flie\u00dfkommawert umgewandelt: 31 -> 31,25MHz.",
+            "en": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz."
+        },
+        "label": {
+            "de": "Bandbreite (MHz)",
+            "en": "Bandwidth (MHz)"
+        }
     },
     "canned": {
-        "text": "Canned"
+        "text": {
+            "de": "Dose",
+            "en": "Canned"
+        }
     },
     "canned_message_module_about": {
         "doc_url": "https://meshtastic.org/docs/settings/canned-message-module",
-        "label": "Canned Message Module"
+        "label": {
+            "de": "Modul f\u00fcr gespeicherte Nachrichten",
+            "en": "Canned Message Module"
+        }
     },
     "canned_message_module_allow_input_source": {
-        "description": "Input event origin accepted by the Canned Message module. Can be e.g. 'rotEnc1' or keyword '_any'.",
-        "label": "Allow Input Source"
+        "description": {
+            "de": "Herkunft des Eingangsereignisses, das vom Canned Message-Modul akzeptiert wird. Kann z. B. \"rotEnc1\" oder das Schl\u00fcsselwort \"_any\" sein.",
+            "en": "Input event origin accepted by the Canned Message module. Can be e.g. 'rotEnc1' or keyword '_any'."
+        },
+        "label": {
+            "de": "Eingabequelle zulassen",
+            "en": "Allow Input Source"
+        }
     },
     "canned_message_module_enabled": {
-        "description": "If set, the Canned Message module will be enabled.",
-        "label": "Enabled?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, wird das Modul \"Canned Message\" aktiviert.",
+            "en": "If set, the Canned Message module will be enabled."
+        },
+        "label": {
+            "de": "Aktiviert?",
+            "en": "Enabled?"
+        }
     },
     "canned_message_module_messages": {
-        "description": "Pre-defined messages for the Canned Message module separated by '|' character.",
-        "label": "Messages"
+        "description": {
+            "de": "Vordefinierte Nachrichten f\u00fcr das Modul Canned Message, getrennt durch das Zeichen \"|\".",
+            "en": "Pre-defined messages for the Canned Message module separated by '|' character."
+        },
+        "label": {
+            "de": "Nachrichten",
+            "en": "Messages"
+        }
     },
     "canned_message_module_send_bell": {
-        "description": "The Canned Message module also sends a bell character with the messages. The External Notification module can benefit from this feature.",
-        "label": "Send Bell?"
+        "description": {
+            "de": "Das Modul \"Canned Message\" sendet auch ein Klingelzeichen mit den Nachrichten. Das Modul Externe Benachrichtigung kann von dieser Funktion profitieren.",
+            "en": "The Canned Message module also sends a bell character with the messages. The External Notification module can benefit from this feature."
+        },
+        "label": {
+            "de": "Send Bell?",
+            "en": "Send Bell?"
+        }
     },
     "canned_message_module_settings": {
-        "text": "Canned Message Module Settings"
+        "text": {
+            "de": "Einstellungen f\u00fcr das Modul f\u00fcr gespeicherte Nachrichten",
+            "en": "Canned Message Module Settings"
+        }
     },
     "channel_settings": {
-        "text": "Channel Settings"
+        "text": {
+            "de": "Kanal-Einstellungen",
+            "en": "Channel Settings"
+        }
     },
     "channels": {
-        "text": "Channels"
+        "text": {
+            "de": "Kan\u00e4le",
+            "en": "Channels"
+        }
     },
     "charge_current": {
-        "description": "Sets the current of the battery charger.",
-        "label": "Charge Current"
+        "description": {
+            "de": "Stellt den Strom des Batterieladeger\u00e4ts ein.",
+            "en": "Sets the current of the battery charger."
+        },
+        "label": {
+            "de": "Ladung Strom",
+            "en": "Charge Current"
+        }
     },
     "clear_firmware_files": {
-        "text": "Clear Firmware Files"
+        "text": {
+            "de": "Firmware-Dateien l\u00f6schen",
+            "en": "Clear Firmware Files"
+        }
     },
     "coding_rate": {
-        "description": "The denominator of the coding rate. ie for 4/8, the value is 8. 5/8 the value is 5.",
-        "label": "Coding Rate"
+        "description": {
+            "de": "Der Nenner der Kodierungsrate, d.h. f\u00fcr 4/8 ist der Wert 8. F\u00fcr 5/8 ist der Wert 5.",
+            "en": "The denominator of the coding rate. ie for 4/8, the value is 8. 5/8 the value is 5."
+        },
+        "label": {
+            "de": "Kodierungsrate",
+            "en": "Coding Rate"
+        }
     },
     "configure_from_file": {
-        "text": "Configure From File"
+        "text": {
+            "de": "Aus Datei konfigurieren",
+            "en": "Configure From File"
+        }
     },
     "confirm": {
-        "text": "Confirm"
+        "text": {
+            "de": "Best\u00e4tigen Sie",
+            "en": "Confirm"
+        }
     },
     "confirm_flash_first_part": {
-        "text": "Are you sure you want to"
+        "text": {
+            "de": "Sind Sie sicher, dass Sie das wollen?",
+            "en": "Are you sure you want to"
+        }
     },
     "confirm_remove_firmware_files": {
-        "text": "Are you sure you want to remove the firmware files?"
+        "text": {
+            "de": "Sind Sie sicher, dass Sie die Firmware-Dateien entfernen m\u00f6chten?",
+            "en": "Are you sure you want to remove the firmware files?"
+        }
     },
     "confirm_reset_device": {
-        "text": "Are you sure you want to reset the device?"
+        "text": {
+            "de": "Sind Sie sicher, dass Sie das Ger\u00e4t zur\u00fccksetzen wollen?",
+            "en": "Are you sure you want to reset the device?"
+        }
     },
     "confirm_update_techo_bootloader": {
-        "text": "Do you want to update the T-Echo bootloader?"
+        "text": {
+            "de": "M\u00f6chten Sie den T-Echo-Bootloader aktualisieren?",
+            "en": "Do you want to update the T-Echo bootloader?"
+        }
     },
     "copy": {
-        "text": "copy"
+        "text": {
+            "de": "kopieren.",
+            "en": "copy"
+        }
     },
     "could_not_find_partition": {
-        "text": "Could not find the partition.\nPress the RST button TWICE\nthen re-try pressing the DETECT button again."
+        "text": {
+            "de": "Die Partition konnte nicht gefunden werden.\nDr\u00fccken Sie die RST-Taste ZWEIMAL\nund versuchen Sie dann erneut, die Taste DETECT zu dr\u00fccken.",
+            "en": "Could not find the partition.\nPress the RST button TWICE\nthen re-try pressing the DETECT button again."
+        }
     },
     "debug_log_enabled": {
-        "description": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active.",
-        "label": "Debug Log Enabled?"
+        "description": {
+            "de": "Standardm\u00e4\u00dfig wird die Protokollierung ausgeschaltet, sobald ein API-Client eine Verbindung herstellt (um die gemeinsame serielle Verbindung ruhig zu halten). Setzen Sie diesen Wert auf true, damit das Debug-Protokoll auch dann ausgegeben wird, wenn die API aktiv ist.",
+            "en": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active."
+        },
+        "label": {
+            "de": "Debug-Protokoll aktiviert?",
+            "en": "Debug Log Enabled?"
+        }
     },
     "delete_this_channel": {
-        "text": "Delete This Channel"
+        "text": {
+            "de": "Diesen Kanal l\u00f6schen",
+            "en": "Delete This Channel"
+        }
     },
     "detected": {
-        "text": "Detected"
+        "text": {
+            "de": "Entdeckt",
+            "en": "Detected"
+        }
     },
     "device_backed_up_to_file": {
-        "text": "Device configuration backed up to file."
+        "text": {
+            "de": "Die Ger\u00e4tekonfiguration wird in einer Datei gesichert.",
+            "en": "Device configuration backed up to file."
+        }
     },
     "device_configured_from_file": {
-        "text": "Device configured from file."
+        "text": {
+            "de": "Ger\u00e4t aus Datei konfiguriert.",
+            "en": "Device configured from file."
+        }
     },
     "device_has_meshtastic": {
-        "text": "Does the device currently have Meshtastic version 1.2 or newer?"
+        "text": {
+            "de": "Verf\u00fcgt das Ger\u00e4t derzeit \u00fcber Meshtastic Version 1.2 oder neuer?",
+            "en": "Does the device currently have Meshtastic version 1.2 or newer?"
+        }
     },
     "device_id": {
-        "description": "A globally unique identifier for this device.",
-        "label": "Device ID"
+        "description": {
+            "de": "Ein weltweit eindeutiger Bezeichner f\u00fcr dieses Ger\u00e4t.",
+            "en": "A globally unique identifier for this device."
+        },
+        "label": {
+            "de": "Ger\u00e4te-ID",
+            "en": "Device ID"
+        }
     },
     "device_settings": {
         "text": {
@@ -137,667 +287,1516 @@
         }
     },
     "device_settings_button": {
-        "tooltip": "Click to view or update settings on the device."
+        "tooltip": {
+            "de": "Klicken Sie auf , um die Einstellungen des Ger\u00e4ts anzuzeigen oder zu aktualisieren.",
+            "en": "Click to view or update settings on the device."
+        }
     },
     "device_was_reset": {
-        "text": "The device was reset. May want to unplug and re-plugin the device or\n\npress the RESET button.\n\nThe Settings form will now close."
+        "text": {
+            "de": "Das Ger\u00e4t wurde zur\u00fcckgesetzt. Trennen Sie das Ger\u00e4t vom Stromnetz und schlie\u00dfen Sie es erneut an oder\n\ndr\u00fccken Sie die RESET-Taste.\n\nDas Formular Einstellungen wird nun geschlossen.",
+            "en": "The device was reset. May want to unplug and re-plugin the device or\n\npress the RESET button.\n\nThe Settings form will now close."
+        }
     },
     "done_updating_bootloader": {
-        "text": "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware."
+        "text": {
+            "de": "Die Aktualisierung des Bootloaders ist abgeschlossen.\nJetzt sind Sie bereit, mit der Meshtastic-Firmware zu flashen.",
+            "en": "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware."
+        }
     },
     "downlink_enabled": {
-        "description": "If set, messages seen on the internet will be forwarded to the local mesh.",
-        "label": "Downlink Enabled?"
+        "description": {
+            "de": "Wenn diese Option aktiviert ist, werden im Internet gesehene Nachrichten an das lokale Netz weitergeleitet.",
+            "en": "If set, messages seen on the internet will be forwarded to the local mesh."
+        },
+        "label": {
+            "de": "Downlink Aktiviert?",
+            "en": "Downlink Enabled?"
+        }
     },
     "export_configuration": {
-        "text": "Export Configuration"
+        "text": {
+            "de": "Konfiguration exportieren",
+            "en": "Export Configuration"
+        }
     },
     "ext_notification_module_about": {
         "doc_url": "https://meshtastic.org/docs/settings/external-notification-module",
-        "label": "External Notification Module"
+        "label": {
+            "de": "Externes Benachrichtigungsmodul",
+            "en": "External Notification Module"
+        }
     },
     "ext_notification_module_active": {
-        "description": "If set, notifications will happen when the the GPIO is active-high. If not set, notifications will happen when GPIO is active-low.",
-        "label": "Active High?"
+        "description": {
+            "de": "Wenn gesetzt, erfolgen Benachrichtigungen, wenn der GPIO aktiv-high ist. Wenn nicht gesetzt, erfolgen die Benachrichtigungen, wenn der GPIO aktiv-low ist.",
+            "en": "If set, notifications will happen when the the GPIO is active-high. If not set, notifications will happen when GPIO is active-low."
+        },
+        "label": {
+            "de": "Aktiv hoch?",
+            "en": "Active High?"
+        }
     },
     "ext_notification_module_alert_bell": {
-        "description": "Only trigger the notification if the ASCII bell character is in the message.",
-        "label": "Alert Bell?"
+        "description": {
+            "de": "L\u00f6sen Sie die Benachrichtigung nur aus, wenn das ASCII-Glockenzeichen in der Nachricht enthalten ist.",
+            "en": "Only trigger the notification if the ASCII bell character is in the message."
+        },
+        "label": {
+            "de": "Alert Bell?",
+            "en": "Alert Bell?"
+        }
     },
     "ext_notification_module_alert_message": {
-        "description": "Trigger notification on any message received.",
-        "label": "Alert Message"
+        "description": {
+            "de": "Benachrichtigung bei jeder empfangenen Nachricht ausl\u00f6sen.",
+            "en": "Trigger notification on any message received."
+        },
+        "label": {
+            "de": "Alert Message",
+            "en": "Alert Message"
+        }
     },
     "ext_notification_module_enabled": {
-        "description": "If set, the External Notifications module is enabled.",
-        "label": "Enabled?"
+        "description": {
+            "de": "Falls gesetzt, ist das Modul Externe Benachrichtigungen aktiviert.",
+            "en": "If set, the External Notifications module is enabled."
+        },
+        "label": {
+            "de": "Aktiviert?",
+            "en": "Enabled?"
+        }
     },
     "ext_notification_module_output": {
-        "description": "GPIO of the output.",
-        "label": "Output"
+        "description": {
+            "de": "GPIO des Ausgangs.",
+            "en": "GPIO of the output."
+        },
+        "label": {
+            "de": "Ausgabe",
+            "en": "Output"
+        }
     },
     "ext_notification_module_output_ms": {
-        "description": "Amount of time in ms for the alert. Default is 1,000 ms (or 1 second).",
-        "label": "Output (ms)"
+        "description": {
+            "de": "Zeitspanne in ms f\u00fcr den Alarm. Standardwert ist 1.000 ms (oder 1 Sekunde).",
+            "en": "Amount of time in ms for the alert. Default is 1,000 ms (or 1 second)."
+        },
+        "label": {
+            "de": "Ausgang (ms)",
+            "en": "Output (ms)"
+        }
     },
     "ext_notification_module_settings": {
-        "text": "External Notification Module Settings"
+        "text": {
+            "de": "Einstellungen des externen Benachrichtigungsmoduls",
+            "en": "External Notification Module Settings"
+        }
     },
     "factory_reset": {
-        "text": "Factory Reset"
+        "text": {
+            "de": "Werksreset",
+            "en": "Factory Reset"
+        }
     },
     "file_was_copied": {
-        "text": "File was copied.\nWait for the device to reboot."
+        "text": {
+            "de": "Die Datei wurde kopiert.\nWarten Sie auf den Neustart des Ger\u00e4ts.",
+            "en": "File was copied.\nWait for the device to reboot."
+        }
     },
     "fixed_position": {
-        "description": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used.",
-        "label": "Use Fixed position?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, befindet sich dieser Knoten an einer festen Position. GPS-Positionsaktualisierungen werden in regelm\u00e4\u00dfigen Abst\u00e4nden gesendet, aber es wird der letzte Breiten-/L\u00e4ngen-/H\u00f6henwert verwendet.",
+            "en": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used."
+        },
+        "label": {
+            "de": "Feste Position verwenden?",
+            "en": "Use Fixed position?"
+        }
     },
     "fixed_position_settings": {
-        "text": "Fixed Position Settings"
+        "text": {
+            "de": "Feste Positionseinstellungen",
+            "en": "Fixed Position Settings"
+        }
     },
     "flash": {
-        "text": "Flash"
+        "text": {
+            "de": "Blitzlicht",
+            "en": "Flash"
+        }
     },
     "flashing": {
-        "text": "Flashing"
+        "text": {
+            "de": "Blinkend",
+            "en": "Flashing"
+        }
     },
     "frequency_offset": {
-        "description": "This parameter is for advanced users with advanced test equipment, we do not recommend most users use it. A frequency offset that is added to to the calculated band center frequency. Used to correct for crystal calibration errors.",
-        "label": "Frequency Offset"
+        "description": {
+            "de": "Dieser Parameter ist f\u00fcr fortgeschrittene Benutzer mit fortgeschrittener Testausr\u00fcstung gedacht, wir empfehlen den meisten Benutzern nicht, ihn zu verwenden. Ein Frequenzoffset, der zur berechneten Bandmittenfrequenz addiert wird. Wird zur Korrektur von Quarzkalibrierungsfehlern verwendet.",
+            "en": "This parameter is for advanced users with advanced test equipment, we do not recommend most users use it. A frequency offset that is added to to the calculated band center frequency. Used to correct for crystal calibration errors."
+        },
+        "label": {
+            "de": "Frequenz-Offset",
+            "en": "Frequency Offset"
+        }
     },
     "full_step1": {
-        "text": "Full flash step 1 of 4"
+        "text": {
+            "de": "Voller Blitz Schritt 1 von 4",
+            "en": "Full flash step 1 of 4"
+        }
     },
     "full_step1_done": {
-        "text": "Full flash step 1 of 4 is done"
+        "text": {
+            "de": "Volles Blitzen Schritt 1 von 4 ist erledigt",
+            "en": "Full flash step 1 of 4 is done"
+        }
     },
     "full_step2_done": {
-        "text": "Full flash step 2 of 4 is done"
+        "text": {
+            "de": "Volles Blitzen Schritt 2 von 4 ist erledigt",
+            "en": "Full flash step 2 of 4 is done"
+        }
     },
     "full_step3_done": {
-        "text": "Full flash step 3 of 4 is done"
+        "text": {
+            "de": "Volles Blitzen Schritt 3 von 4 ist erledigt",
+            "en": "Full flash step 3 of 4 is done"
+        }
     },
     "full_step4_done": {
-        "text": "Full flash step 4 of 4 is done"
+        "text": {
+            "de": "Volles Blitzen Schritt 4 von 4 ist erledigt",
+            "en": "Full flash step 4 of 4 is done"
+        }
     },
     "get_lat_lon_using_ip": {
-        "text": "Get Lat/Lon using your IP"
+        "text": {
+            "de": "Lat/Lon \u00fcber Ihre IP abrufen",
+            "en": "Get Lat/Lon using your IP"
+        }
     },
     "get_versions": {
-        "text": "GET VERSIONS",
-        "tooltip": "Click to check for more recent firmware."
+        "text": {
+            "de": "VERSIONEN ERHALTEN",
+            "en": "GET VERSIONS"
+        },
+        "tooltip": {
+            "de": "Klicken Sie hier, um nach neuerer Firmware zu suchen.",
+            "en": "Click to check for more recent firmware."
+        }
     },
     "gps_accept_2d": {
-        "description": "If set, accept 2D GPS fixes. By default, only 3D fixes are accepted. During a 2D fix, altitude values are unreliable and will be excluded.",
-        "label": "GPS Accept 2D Fix?"
+        "description": {
+            "de": "Wenn gesetzt, werden 2D-GPS-Fixes akzeptiert. Standardm\u00e4\u00dfig werden nur 3D-Fixes akzeptiert. Bei einer 2D-Fixierung sind die H\u00f6henwerte unzuverl\u00e4ssig und werden ausgeschlossen.",
+            "en": "If set, accept 2D GPS fixes. By default, only 3D fixes are accepted. During a 2D fix, altitude values are unreliable and will be excluded."
+        },
+        "label": {
+            "de": "GPS Accept 2D Fix?",
+            "en": "GPS Accept 2D Fix?"
+        }
     },
     "gps_format": {
-        "description": "How the GPS coordinates are displayed on the OLED screen.",
-        "label": "GPS Coordinate Format"
+        "description": {
+            "de": "Wie die GPS-Koordinaten auf dem OLED-Bildschirm angezeigt werden.",
+            "en": "How the GPS coordinates are displayed on the OLED screen."
+        },
+        "label": {
+            "de": "GPS-Koordinatenformat",
+            "en": "GPS Coordinate Format"
+        }
     },
     "gps_max_dop": {
-        "description": "GPS maximum dilution of precition (DOP) accepted. Set a rejection threshold for GPS readings based on their precision, relative to the GPS rated accuracy (which is typically ~3m). Solutions above this value will be treated as re-tryable errors. Useful range is between 1 - 64 (3m - <~200m). By default, (if zero), accept all GPS readings.",
-        "label": "GPS Max DOP"
+        "description": {
+            "de": "Akzeptierte maximale GPS-Pr\u00e4zisionsverd\u00fcnnung (DOP). Legen Sie einen Schwellenwert f\u00fcr die Zur\u00fcckweisung von GPS-Messwerten fest, der auf ihrer Genauigkeit im Verh\u00e4ltnis zur GPS-Nenngenauigkeit (die normalerweise ~3 m betr\u00e4gt) basiert. L\u00f6sungen, die \u00fcber diesem Wert liegen, werden als wiederholbare Fehler behandelt. Der sinnvolle Bereich liegt zwischen 1 - 64 (3m - <~200m). Standardm\u00e4\u00dfig (wenn Null) werden alle GPS-Messwerte akzeptiert.",
+            "en": "GPS maximum dilution of precition (DOP) accepted. Set a rejection threshold for GPS readings based on their precision, relative to the GPS rated accuracy (which is typically ~3m). Solutions above this value will be treated as re-tryable errors. Useful range is between 1 - 64 (3m - <~200m). By default, (if zero), accept all GPS readings."
+        },
+        "label": {
+            "de": "GPS Max DOP",
+            "en": "GPS Max DOP"
+        }
     },
     "gps_operation": {
-        "description": "How the GPS hardware in this unit is operated.",
-        "label": "GPS Operation"
+        "description": {
+            "de": "Wie die GPS-Hardware in diesem Ger\u00e4t betrieben wird.",
+            "en": "How the GPS hardware in this unit is operated."
+        },
+        "label": {
+            "de": "GPS-Betrieb",
+            "en": "GPS Operation"
+        }
     },
     "help": {
-        "text": "Help"
+        "text": {
+            "de": "Hilfe",
+            "en": "Help"
+        }
     },
     "help_button": {
-        "tooltip": "Click for help | Press H for hotkeys."
+        "tooltip": {
+            "de": "Klicken Sie f\u00fcr Hilfe | Dr\u00fccken Sie H f\u00fcr Hotkeys.",
+            "en": "Click for help | Press H for hotkeys."
+        }
     },
     "help_text": {
-        "text": "If having issues flashing the device, be sure there is only one <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>supported device</a> connected and no other applications are using that communications port.<br><br>If still having problems, unplug the device, then re-plugin the device.<br><br>If still having problems, consider using a different usb port, perhaps an external usb hub or even a different computer and/or different operating system.<br><br>If still having problems, may need to install driver.<br>See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a> for more info. Newer T-Lora and newer T-Beams tend to need the CH9102 driver, which is in the CH343SER.ZIP file. The RAK 11200 may need the CP210X driver.<br><u>Windows</u>: Check by going into DeviceManager and looking for any 'yellow' warning indicators.<br><u>Mac</u>: Check by clicking in top left corner, 'About This Mac', 'System Report', 'USB'. Depending on which device it may show a CP2102 USB to UART Bridge Controller.<br><u>Linux</u>: Linux tends to not need drivers for Meshtastic devices. If you have a computer available for the initial flashing, consider using this OS.<br><br>If still having problems, try rebooting the pc.<br><br>If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use v1.1 or v2.1.1.6 firmware.<br><br>Join the <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord group</a> and post questions in #help channel."
+        "text": {
+            "de": "Wenn Sie Probleme beim Flashen des Ger\u00e4ts haben, vergewissern Sie sich, dass nur ein <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>unterst\u00fctztes Ger\u00e4t</a> angeschlossen ist und dass keine anderen Anwendungen diesen Kommunikationsanschluss verwenden.<br><br>Wenn Sie immer noch Probleme haben, ziehen Sie den Stecker des Ger\u00e4ts ab und schlie\u00dfen Sie es dann wieder an.<br><br>Wenn die Probleme weiterhin bestehen, erw\u00e4gen Sie die Verwendung eines anderen USB-Anschlusses, vielleicht eines externen USB-Hubs oder sogar eines anderen Computers und/oder eines anderen Betriebssystems.<br><br>Wenn die Probleme weiterhin bestehen, m\u00fcssen Sie m\u00f6glicherweise einen Treiber installieren.<br>Weitere Informationen finden Sie unter <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a>. Neuere T-Lora und neuere T-Beams ben\u00f6tigen in der Regel den Treiber CH9102, der sich in der Datei CH343SER.ZIP befindet. Der RAK 11200 ben\u00f6tigt m\u00f6glicherweise den CP210X-Treiber.<br><u>Windows</u>: Pr\u00fcfen Sie dies, indem Sie den Ger\u00e4temanager aufrufen und nach \"gelben\" Warnanzeigen Ausschau halten.<br><u>Mac</u>: Pr\u00fcfen Sie, indem Sie oben links auf '\u00dcber diesen Mac', 'Systembericht', 'USB' klicken. Je nach Ger\u00e4t wird dort ein CP2102 USB to UART Bridge Controller angezeigt.<br><u>Linux</u>: Linux ben\u00f6tigt in der Regel keine Treiber f\u00fcr Meshtastic-Ger\u00e4te. Wenn Sie einen Computer f\u00fcr das anf\u00e4ngliche Flashen zur Verf\u00fcgung haben, sollten Sie dieses Betriebssystem verwenden.<br><br>Wenn Sie immer noch Probleme haben, versuchen Sie, den PC neu zu starten.<br><br>Wenn Sie einen 'Critical Fault #6' auf einem T-Beam erhalten, bedeutet das wahrscheinlich, dass Sie die Firmware v1.1 oder v2.1.1.6 verwenden m\u00fcssen.<br><br>Treten Sie der <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord Gruppe</a> bei und stellen Sie Fragen im #help channel.",
+            "en": "If having issues flashing the device, be sure there is only one <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>supported device</a> connected and no other applications are using that communications port.<br><br>If still having problems, unplug the device, then re-plugin the device.<br><br>If still having problems, consider using a different usb port, perhaps an external usb hub or even a different computer and/or different operating system.<br><br>If still having problems, may need to install driver.<br>See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a> for more info. Newer T-Lora and newer T-Beams tend to need the CH9102 driver, which is in the CH343SER.ZIP file. The RAK 11200 may need the CP210X driver.<br><u>Windows</u>: Check by going into DeviceManager and looking for any 'yellow' warning indicators.<br><u>Mac</u>: Check by clicking in top left corner, 'About This Mac', 'System Report', 'USB'. Depending on which device it may show a CP2102 USB to UART Bridge Controller.<br><u>Linux</u>: Linux tends to not need drivers for Meshtastic devices. If you have a computer available for the initial flashing, consider using this OS.<br><br>If still having problems, try rebooting the pc.<br><br>If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use v1.1 or v2.1.1.6 firmware.<br><br>Join the <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord group</a> and post questions in #help channel."
+        }
     },
     "hop_limit": {
-        "description": "Overrides HOPS_RELIABLE and sets the maximum number of hops. This cannot be greater than 7.",
-        "label": "Hop Limit"
+        "description": {
+            "de": "Hat Vorrang vor HOPS_RELIABLE und legt die maximale Anzahl von Hops fest. Diese kann nicht gr\u00f6\u00dfer als 7 sein.",
+            "en": "Overrides HOPS_RELIABLE and sets the maximum number of hops. This cannot be greater than 7."
+        },
+        "label": {
+            "de": "Hopfengrenze",
+            "en": "Hop Limit"
+        }
     },
     "hotkeys": {
-        "text": "Hotkeys"
+        "text": {
+            "de": "Tastenkombinationen",
+            "en": "Hotkeys"
+        }
     },
     "hotkeys_text": {
-        "text": "A - Advanced options\nD - Detect\nG - Get versions\nH - Hotkeys\nS - Settings\nT - Tips\n Q - Quit"
+        "text": {
+            "de": "A - Erweiterte Optionen\nD - Erkennen\nG - Versionen erhalten\nH - Hotkeys\nS - Einstellungen\nT - Tipps\n Q - Beenden",
+            "en": "A - Advanced options\nD - Detect\nG - Get versions\nH - Hotkeys\nS - Settings\nT - Tips\n Q - Quit"
+        }
     },
     "hw_model": {
-        "description": "The hardware model as defined by Meshtastic.",
-        "label": "Hardware Model"
+        "description": {
+            "de": "Das Hardwaremodell, wie es von Meshtastic definiert wurde.",
+            "en": "The hardware model as defined by Meshtastic."
+        },
+        "label": {
+            "de": "Hardware-Modell",
+            "en": "Hardware Model"
+        }
     },
     "information": {
-        "text": "Information"
+        "text": {
+            "de": "Informationen",
+            "en": "Information"
+        }
     },
     "is_always_powered": {
-        "description": "Circumvents the logic block for determining whether the device is powered or not. Useful for devices with finicky ADC issues on the battery sense pins.",
-        "label": "Is Always Powered?"
+        "description": {
+            "de": "Umgeht den Logikblock zur Feststellung, ob das Ger\u00e4t mit Strom versorgt wird oder nicht. N\u00fctzlich f\u00fcr Ger\u00e4te mit heiklen ADC-Problemen an den Batterie-Sense-Pins.",
+            "en": "Circumvents the logic block for determining whether the device is powered or not. Useful for devices with finicky ADC issues on the battery sense pins."
+        },
+        "label": {
+            "de": "Ist immer eingeschaltet?",
+            "en": "Is Always Powered?"
+        }
     },
     "is_licensed": {
-        "description": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number.",
-        "label": "Is Licensed?"
+        "description": {
+            "de": "Wenn dieser Benutzer ein lizenzierter Betreiber ist, setzen Sie dieses Flag. Au\u00dferdem sollte \"long_name\" die Lizenznummer sein.",
+            "en": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number."
+        },
+        "label": {
+            "de": "Ist er lizenziert?",
+            "en": "Is Licensed?"
+        }
     },
     "is_lora_tx_disabled": {
-        "description": "Disable TX from the LoRa radio. Useful for hot-swapping antennas and other tests. Defaults to false.",
-        "label": "Is LoRa TX Disabled?"
+        "description": {
+            "de": "Deaktiviert das Senden vom LoRa-Funkger\u00e4t. N\u00fctzlich f\u00fcr Hot-Swapping-Antennen und andere Tests. Standardm\u00e4\u00dfig auf false eingestellt.",
+            "en": "Disable TX from the LoRa radio. Useful for hot-swapping antennas and other tests. Defaults to false."
+        },
+        "label": {
+            "de": "Ist LoRa TX deaktiviert?",
+            "en": "Is LoRa TX Disabled?"
+        }
     },
     "is_low_power": {
-        "description": "If set, device is powered from a low-current source (i.e. solar), so even if it looks like we have power flowing in we should try to minimize power consumption as much as possible. Do not set this if 'is_router' is enabled.",
-        "label": "Powered by Low Power (solar)?"
+        "description": {
+            "de": "Wenn dieser Wert gesetzt ist, wird das Ger\u00e4t von einer Schwachstromquelle (z.B. Solar) gespeist. Auch wenn es so aussieht, als ob Strom flie\u00dft, sollten wir versuchen, den Stromverbrauch so gering wie m\u00f6glich zu halten. Setzen Sie dies nicht, wenn 'is_router' aktiviert ist.",
+            "en": "If set, device is powered from a low-current source (i.e. solar), so even if it looks like we have power flowing in we should try to minimize power consumption as much as possible. Do not set this if 'is_router' is enabled."
+        },
+        "label": {
+            "de": "Stromversorgung durch Low Power (Solar)?",
+            "en": "Powered by Low Power (solar)?"
+        }
     },
     "is_power_saving": {
-        "description": "If set, enable power saving features of the esp32 device.",
-        "label": "Is Power Saving?"
+        "description": {
+            "de": "Falls gesetzt, werden die Energiesparfunktionen des esp32-Ger\u00e4ts aktiviert.",
+            "en": "If set, enable power saving features of the esp32 device."
+        },
+        "label": {
+            "de": "Wird Strom gespart?",
+            "en": "Is Power Saving?"
+        }
     },
     "is_router": {
-        "description": "Are we operating as a router? Changes behavior in the following ways: The device will only sleep for critically low battery level (i.e. always tries to stay alive for the mesh). In the future, routing decisions will preferentially route packets through nodes with this attribute (because assumed good line of sight).",
-        "label": "Is Router?"
+        "description": {
+            "de": "Funktionieren wir als Router? \u00c4ndert das Verhalten auf folgende Weise: Das Ger\u00e4t geht nur bei kritisch niedrigem Batteriestand in den Ruhezustand (d. h. es versucht immer, f\u00fcr das Netz am Leben zu bleiben). In Zukunft werden Routing-Entscheidungen Pakete bevorzugt \u00fcber Knoten mit diesem Attribut leiten (da eine gute Sichtverbindung vorausgesetzt wird).",
+            "en": "Are we operating as a router? Changes behavior in the following ways: The device will only sleep for critically low battery level (i.e. always tries to stay alive for the mesh). In the future, routing decisions will preferentially route packets through nodes with this attribute (because assumed good line of sight)."
+        },
+        "label": {
+            "de": "Ist Router?",
+            "en": "Is Router?"
+        }
     },
     "label_device": {
-        "tooltip": "Click to see more about Meshtastic supported devices."
+        "tooltip": {
+            "de": "Klicken Sie hier, um mehr \u00fcber die von Meshtastic unterst\u00fctzten Ger\u00e4te zu erfahren.",
+            "en": "Click to see more about Meshtastic supported devices."
+        }
     },
     "label_version": {
-        "tooltip": "Click to see more about firmware releases."
+        "tooltip": {
+            "de": "Klicken Sie hier, um mehr \u00fcber Firmware-Versionen zu erfahren.",
+            "en": "Click to see more about firmware releases."
+        }
     },
     "lat": {
-        "description": "Latitude is the measurement of distance north or south of the Equator. It is measured with 180 imaginary lines that form circles around the Earth east-west, parallel to the Equator.",
-        "label": "Latitude"
+        "description": {
+            "de": "Der Breitengrad ist die Messung der Entfernung n\u00f6rdlich oder s\u00fcdlich des \u00c4quators. Er wird mit 180 imagin\u00e4ren Linien gemessen, die in Ost-West-Richtung parallel zum \u00c4quator um die Erde kreisen.",
+            "en": "Latitude is the measurement of distance north or south of the Equator. It is measured with 180 imaginary lines that form circles around the Earth east-west, parallel to the Equator."
+        },
+        "label": {
+            "de": "Breitengrad",
+            "en": "Latitude"
+        }
     },
     "location_share": {
-        "description": "How location is shared with other nodes (or the local phone).",
-        "label": "Location sharing"
+        "description": {
+            "de": "Wie der Standort mit anderen Knoten (oder dem lokalen Telefon) geteilt wird.",
+            "en": "How location is shared with other nodes (or the local phone)."
+        },
+        "label": {
+            "de": "Standort-Sharing",
+            "en": "Location sharing"
+        }
     },
     "lon": {
-        "description": "Longitude is a geographic coordinate that specifies the east\u2013west position of a point on the Earth's surface.",
-        "label": "Longitude"
+        "description": {
+            "de": "Der L\u00e4ngengrad ist eine geografische Koordinate, die die Ost-West-Position eines Punktes auf der Erdoberfl\u00e4che angibt.",
+            "en": "Longitude is a geographic coordinate that specifies the east\u2013west position of a point on the Earth's surface."
+        },
+        "label": {
+            "de": "L\u00e4ngengrad",
+            "en": "Longitude"
+        }
     },
     "long_name": {
-        "description": "Full name for the device. If 'is_licensed' is enabled, this value should be the Ham license number.",
-        "label": "Long Name",
+        "description": {
+            "de": "Vollst\u00e4ndiger Name des Ger\u00e4ts. Wenn \"is_licensed\" aktiviert ist, sollte dieser Wert die Ham-Lizenznummer sein.",
+            "en": "Full name for the device. If 'is_licensed' is enabled, this value should be the Ham license number."
+        },
+        "label": {
+            "de": "Langer Name",
+            "en": "Long Name"
+        },
         "max_size": 40
     },
     "ls_secs": {
-        "description": "Light sleep (LS) is a power management state machine option. See power management for details. 0 for default of 3600 seconds (or 1 hour).",
-        "label": "LS (seconds)"
+        "description": {
+            "de": "Der leichte Ruhezustand (LS) ist eine Option des Energieverwaltungssystems. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 3600 Sekunden (oder 1 Stunde).",
+            "en": "Light sleep (LS) is a power management state machine option. See power management for details. 0 for default of 3600 seconds (or 1 hour)."
+        },
+        "label": {
+            "de": "LS (Sekunden)",
+            "en": "LS (seconds)"
+        }
     },
     "macaddr": {
-        "description": "The address of the device.",
-        "label": "MAC Address"
+        "description": {
+            "de": "Die Adresse des Ger\u00e4ts.",
+            "en": "The address of the device."
+        },
+        "label": {
+            "de": "MAC-Adresse",
+            "en": "MAC Address"
+        }
     },
     "mesh_sds_timeout_secs": {
-        "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 seconds (or two hours), MAXUINT or 4294967295 for disabled.",
-        "label": "Mesh SDS Timeout (seconds)"
+        "description": {
+            "de": "Super Deep Sleep (SDS) ist eine Option der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr die Standardeinstellung von 7200 Sekunden (oder zwei Stunden), MAXUINT oder 4294967295 f\u00fcr deaktiviert.",
+            "en": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 seconds (or two hours), MAXUINT or 4294967295 for disabled."
+        },
+        "label": {
+            "de": "Mesh SDS Timeout (Sekunden)",
+            "en": "Mesh SDS Timeout (seconds)"
+        }
     },
     "message": {
-        "description": "The message to be sent.",
-        "label": "Message"
+        "description": {
+            "de": "Die zu sendende Nachricht.",
+            "en": "The message to be sent."
+        },
+        "label": {
+            "de": "Nachricht",
+            "en": "Message"
+        }
     },
     "message_sent": {
-        "text": "The message was sent."
+        "text": {
+            "de": "Die Nachricht wurde gesendet.",
+            "en": "The message was sent."
+        }
     },
     "message_to_send": {
-        "text": "Provide a message to send."
+        "text": {
+            "de": "Geben Sie eine Nachricht an, die Sie senden m\u00f6chten.",
+            "en": "Provide a message to send."
+        }
     },
     "min_wake_secs": {
-        "description": "Power management state machine option. See power management for details. 0 for default of 10 seconds.",
-        "label": "Minimum Wake (seconds)"
+        "description": {
+            "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr den Standardwert von 10 Sekunden.",
+            "en": "Power management state machine option. See power management for details. 0 for default of 10 seconds."
+        },
+        "label": {
+            "de": "Minimale Weckzeit (Sekunden)",
+            "en": "Minimum Wake (seconds)"
+        }
     },
     "modem_config": {
-        "description": "The configuration of the modem. (speed/distance)",
-        "label": "Modem Config"
+        "description": {
+            "de": "Die Konfiguration des Modems. (Geschwindigkeit/Entfernung)",
+            "en": "The configuration of the modem. (speed/distance)"
+        },
+        "label": {
+            "de": "Modem-Konfiguration",
+            "en": "Modem Config"
+        }
     },
     "module_link": {
-        "tooltip": "Link shows more information about the settings for this module."
+        "tooltip": {
+            "de": "Link zeigt weitere Informationen zu den Einstellungen f\u00fcr dieses Modul.",
+            "en": "Link shows more information about the settings for this module."
+        }
     },
     "module_settings": {
-        "text": "Module Settings"
+        "text": {
+            "de": "Modul-Einstellungen",
+            "en": "Module Settings"
+        }
     },
     "modules": {
-        "text": "Modules"
+        "text": {
+            "de": "Module",
+            "en": "Modules"
+        }
     },
     "mqtt_disabled": {
-        "description": "If set, all MQTT features will be disabled.",
-        "label": "MQTT Disabled?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, werden alle MQTT-Funktionen deaktiviert.",
+            "en": "If set, all MQTT features will be disabled."
+        },
+        "label": {
+            "de": "MQTT Deaktiviert?",
+            "en": "MQTT Disabled?"
+        }
     },
     "mqtt_encryption_enabled": {
-        "description": "If set, encrypted packets are sent to server specified in 'mqtt_server. Otherwise, the packets are not encrypted.",
-        "label": "MQTT Encryption Enabled?"
+        "description": {
+            "de": "Wenn gesetzt, werden verschl\u00fcsselte Pakete an den in 'mqtt_server' angegebenen Server gesendet. Andernfalls werden die Pakete nicht verschl\u00fcsselt.",
+            "en": "If set, encrypted packets are sent to server specified in 'mqtt_server. Otherwise, the packets are not encrypted."
+        },
+        "label": {
+            "de": "Ist die MQTT-Verschl\u00fcsselung aktiviert?",
+            "en": "MQTT Encryption Enabled?"
+        }
     },
     "mqtt_password": {
-        "description": "MQTT password to use when 'mqtt_server' is used. If not set, the default password will be used.",
-        "label": "MQTT Password",
+        "description": {
+            "de": "MQTT-Passwort, das bei Verwendung von \"mqtt_server\" verwendet werden soll. Wenn es nicht gesetzt ist, wird das Standardpasswort verwendet.",
+            "en": "MQTT password to use when 'mqtt_server' is used. If not set, the default password will be used."
+        },
+        "label": {
+            "de": "MQTT-Kennwort",
+            "en": "MQTT Password"
+        },
         "max_size": 32
     },
     "mqtt_server": {
-        "description": "The server to use for our MQTT global message gateway feature. If not set, the default server will be used.",
-        "label": "MQTT Server",
+        "description": {
+            "de": "Der Server, der f\u00fcr die Funktion des globalen MQTT-Nachrichtengateways verwendet werden soll. Wenn er nicht gesetzt ist, wird der Standardserver verwendet.",
+            "en": "The server to use for our MQTT global message gateway feature. If not set, the default server will be used."
+        },
+        "label": {
+            "de": "MQTT-Server",
+            "en": "MQTT Server"
+        },
         "max_size": 32
     },
     "mqtt_username": {
-        "description": "MQTT username to use when 'mqtt_server' is used. If not set, the default username will be used.",
-        "label": "MQTT Username",
+        "description": {
+            "de": "MQTT-Benutzername, der verwendet werden soll, wenn \"mqtt_server\" verwendet wird. Wenn nicht gesetzt, wird der Standard-Benutzername verwendet.",
+            "en": "MQTT username to use when 'mqtt_server' is used. If not set, the default username will be used."
+        },
+        "label": {
+            "de": "MQTT Username",
+            "en": "MQTT Username"
+        },
         "max_size": 32
     },
     "name": {
-        "description": "A short name that will be packed into the URL. Less than 12 bytes. This field will only be editable if the prior channel has a name. There are special channel names like 'admin' (for remote management) and 'gpio' (for remote gpio query/manipulation).",
-        "label": "Channel Name"
+        "description": {
+            "de": "Ein kurzer Name, der in die URL eingef\u00fcgt wird. Weniger als 12 Bytes. Dieses Feld ist nur editierbar, wenn der vorherige Kanal einen Namen hat. Es gibt spezielle Kanalnamen wie \"admin\" (f\u00fcr die Fernverwaltung) und \"gpio\" (f\u00fcr die Fernabfrage/-manipulation von gpio).",
+            "en": "A short name that will be packed into the URL. Less than 12 bytes. This field will only be editable if the prior channel has a name. There are special channel names like 'admin' (for remote management) and 'gpio' (for remote gpio query/manipulation)."
+        },
+        "label": {
+            "de": "Name des Kanals",
+            "en": "Channel Name"
+        }
     },
     "no_devices_detected": {
-        "text": "No devices were detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?"
+        "text": {
+            "de": "Es wurden keine Ger\u00e4te gefunden.\n\nVerwenden Sie ein Datenkabel?\n\nM\u00fcssen Sie einen Ger\u00e4tetreiber installieren?\n\nSchlie\u00dfen Sie ein Ger\u00e4t an?",
+            "en": "No devices were detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?"
+        }
     },
     "note_all_settings_will_be_erased": {
-        "text": "NOTE: All Meshtastic settings will be erased."
+        "text": {
+            "de": "HINWEIS: Alle Meshtastic-Einstellungen werden gel\u00f6scht.",
+            "en": "NOTE: All Meshtastic settings will be erased."
+        }
     },
     "notifications": {
-        "text": "Notifications"
+        "text": {
+            "de": "Benachrichtigungen",
+            "en": "Notifications"
+        }
     },
     "nrf_detected": {
-        "text": "NRF device detected.\n\nPress RST button twice then click DETECT button again."
+        "text": {
+            "de": "NRF-Ger\u00e4t erkannt.\n\nDr\u00fccken Sie zweimal die Taste RST und klicken Sie dann erneut auf die Taste DETECT.",
+            "en": "NRF device detected.\n\nPress RST button twice then click DETECT button again."
+        }
     },
     "on_battery_shutdown_after_secs": {
-        "description": "If non-zero, the device will fully power off this many seconds after external power is removed.",
-        "label": "On Battery Shutdown After (seconds)"
+        "description": {
+            "de": "Wenn dieser Wert nicht Null ist, schaltet sich das Ger\u00e4t so viele Sekunden nach dem Abschalten der externen Stromversorgung vollst\u00e4ndig ab.",
+            "en": "If non-zero, the device will fully power off this many seconds after external power is removed."
+        },
+        "label": {
+            "de": "Ein Batterieabschaltung nach (Sekunden)",
+            "en": "On Battery Shutdown After (seconds)"
+        }
     },
     "other": {
-        "text": "Other"
+        "text": {
+            "de": "Andere",
+            "en": "Other"
+        }
     },
     "phone_sds_timeout_sec": {
-        "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 (or two hours), MAXUINT or 4294967295 for disabled.",
-        "label": "Phone SDS Timeout (seconds)"
+        "description": {
+            "de": "Super Deep Sleep (SDS) ist eine Option der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 7200 (oder zwei Stunden), MAXUINT oder 4294967295 f\u00fcr deaktiviert.",
+            "en": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 (or two hours), MAXUINT or 4294967295 for disabled."
+        },
+        "label": {
+            "de": "Telefon-SDS-Zeit\u00fcberschreitung (Sekunden)",
+            "en": "Phone SDS Timeout (seconds)"
+        }
     },
     "phone_timeout_secs": {
-        "description": "Power management state machine option. See power management for details. 0 for default of 900 (or 15 minutes).",
-        "label": "Phone Timeout (seconds)"
+        "description": {
+            "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr Standardwert von 900 (oder 15 Minuten).",
+            "en": "Power management state machine option. See power management for details. 0 for default of 900 (or 15 minutes)."
+        },
+        "label": {
+            "de": "Telefon-Timeout (Sekunden)",
+            "en": "Phone Timeout (seconds)"
+        }
     },
     "position": {
-        "text": "Position"
+        "text": {
+            "de": "Position",
+            "en": "Position"
+        }
     },
     "position_broadcast_secs": {
-        "description": "Send our position this often (but only if it has changed significantly). Defaults to 900 seconds. (15 minutes)",
-        "label": "Broadcast interval (seconds)"
+        "description": {
+            "de": "Senden Sie unsere Position so oft (aber nur, wenn sie sich stark ver\u00e4ndert hat). Die Standardeinstellung ist 900 Sekunden. (15 Minuten)",
+            "en": "Send our position this often (but only if it has changed significantly). Defaults to 900 seconds. (15 minutes)"
+        },
+        "label": {
+            "de": "Sendeintervall (Sekunden)",
+            "en": "Broadcast interval (seconds)"
+        }
     },
     "position_broadcast_smart": {
-        "description": "If set, calculates an ideal position update interval based on the data rate of your channel configuration.",
-        "label": "Use Broadcast smart?"
+        "description": {
+            "de": "Wenn diese Option aktiviert ist, wird ein ideales Intervall f\u00fcr die Positionsaktualisierung auf der Grundlage der Datenrate Ihrer Kanalkonfiguration berechnet.",
+            "en": "If set, calculates an ideal position update interval based on the data rate of your channel configuration."
+        },
+        "label": {
+            "de": "Verwenden Sie Broadcast smart?",
+            "en": "Use Broadcast smart?"
+        }
     },
     "position_flag_alt_msl": {
-        "description": "If set, Mean Sea Level (MSL) altitude will be included in the position message.",
-        "label": "Altitude is MSL?"
+        "description": {
+            "de": "Wenn diese Option aktiviert ist, wird die H\u00f6he \u00fcber dem Meeresspiegel (Mean Sea Level, MSL) in die Positionsmeldung aufgenommen.",
+            "en": "If set, Mean Sea Level (MSL) altitude will be included in the position message."
+        },
+        "label": {
+            "de": "Die H\u00f6he ist MSL?",
+            "en": "Altitude is MSL?"
+        }
     },
     "position_flag_altitude": {
-        "description": "If set, altitude will be included in the position message.",
-        "label": "Include altitude?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, wird die H\u00f6he in die Positionsmeldung aufgenommen.",
+            "en": "If set, altitude will be included in the position message."
+        },
+        "label": {
+            "de": "H\u00f6he einbeziehen?",
+            "en": "Include altitude?"
+        }
     },
     "position_flag_battery": {
-        "description": "If set, battery level will included in the position message.",
-        "label": "Include battery level?"
+        "description": {
+            "de": "Wenn diese Option aktiviert ist, wird der Batteriestand in der Positionsmeldung angezeigt.",
+            "en": "If set, battery level will included in the position message."
+        },
+        "label": {
+            "de": "Batteriestand einbeziehen?",
+            "en": "Include battery level?"
+        }
     },
     "position_flag_dop": {
-        "description": "If set, dilution of precision (DOP) value will be included in the position message. (PDOP is used by default)",
-        "label": "Include DOP value?"
+        "description": {
+            "de": "Wenn diese Option aktiviert ist, wird der DOP-Wert (Dilution of Precision) in die Positionsmeldung aufgenommen. (Standardm\u00e4\u00dfig wird PDOP verwendet)",
+            "en": "If set, dilution of precision (DOP) value will be included in the position message. (PDOP is used by default)"
+        },
+        "label": {
+            "de": "DOP-Wert einbeziehen?",
+            "en": "Include DOP value?"
+        }
     },
     "position_flag_geo_sep": {
-        "description": "If set, geoidal separation will be included in the position message.",
-        "label": "Include geoidal separation?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, wird die geoidale Trennung in die Positionsmeldung aufgenommen.",
+            "en": "If set, geoidal separation will be included in the position message."
+        },
+        "label": {
+            "de": "Geod\u00e4tische Trennung einbeziehen?",
+            "en": "Include geoidal separation?"
+        }
     },
     "position_flag_hvdop": {
-        "description": "If DOP is set, send separation HDOP / VDOP values instead of PDOP in the position message.",
-        "label": "Send separate HDOP/VDOP values instead of PDOP?"
+        "description": {
+            "de": "Wenn DOP eingestellt ist, senden Sie die Trennungswerte HDOP / VDOP anstelle von PDOP in der Positionsmeldung.",
+            "en": "If DOP is set, send separation HDOP / VDOP values instead of PDOP in the position message."
+        },
+        "label": {
+            "de": "Separate HDOP/VDOP-Werte anstelle von PDOP senden?",
+            "en": "Send separate HDOP/VDOP values instead of PDOP?"
+        }
     },
     "position_flag_satinview": {
-        "description": "If set, send number of satellites in view in the position message.",
-        "label": "Include number of satellites in view?"
+        "description": {
+            "de": "Wenn gesetzt, wird die Anzahl der sichtbaren Satelliten in der Positionsmeldung gesendet.",
+            "en": "If set, send number of satellites in view in the position message."
+        },
+        "label": {
+            "de": "Anzahl der sichtbaren Satelliten einbeziehen?",
+            "en": "Include number of satellites in view?"
+        }
     },
     "position_flag_seq_nos": {
-        "description": "If set, include a sequence number incremented per packet in the position message.",
-        "label": "Include sequence numbers?"
+        "description": {
+            "de": "Wenn gesetzt, wird eine Sequenznummer, die pro Paket erh\u00f6ht wird, in die Positionsmeldung aufgenommen.",
+            "en": "If set, include a sequence number incremented per packet in the position message."
+        },
+        "label": {
+            "de": "Sequenznummern einbeziehen?",
+            "en": "Include sequence numbers?"
+        }
     },
     "position_flag_timestamp": {
-        "description": "If set, include positional timestamp (from GPS solution) in the position message.",
-        "label": "Include timestamp?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, wird der Zeitstempel der Position (von der GPS-L\u00f6sung) in die Positionsmeldung aufgenommen.",
+            "en": "If set, include positional timestamp (from GPS solution) in the position message."
+        },
+        "label": {
+            "de": "Zeitstempel einschlie\u00dfen?",
+            "en": "Include timestamp?"
+        }
     },
     "position_flags": {
-        "description": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags.",
-        "label": "Position flags (calculated)"
+        "description": {
+            "de": "Die \"position_flags\" werden aus den Positionsflaggen-\"Bits\" aller verschiedenen Positionsflags berechnet.",
+            "en": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags."
+        },
+        "label": {
+            "de": "Positionsflaggen (berechnet)",
+            "en": "Position flags (calculated)"
+        }
     },
     "position_settings": {
-        "text": "Position Settings"
+        "text": {
+            "de": "Position Einstellungen",
+            "en": "Position Settings"
+        }
     },
     "power": {
-        "text": "Power"
+        "text": {
+            "de": "Strom",
+            "en": "Power"
+        }
     },
     "power_settings": {
-        "text": "Power Settings"
+        "text": {
+            "de": "Leistungseinstellungen",
+            "en": "Power Settings"
+        }
     },
     "progress": {
-        "tooltip": "Progress will be shown during the FLASH step."
+        "tooltip": {
+            "de": "Der Fortschritt wird w\u00e4hrend des FLASH-Schrittes angezeigt.",
+            "en": "Progress will be shown during the FLASH step."
+        }
     },
     "question": {
-        "text": "Question"
+        "text": {
+            "de": "Frage",
+            "en": "Question"
+        }
     },
     "radio": {
-        "text": "Radio"
+        "text": {
+            "de": "Radio",
+            "en": "Radio"
+        }
     },
     "radio_settings": {
-        "text": "Radio Settings"
+        "text": {
+            "de": "Radio-Einstellungen",
+            "en": "Radio Settings"
+        }
     },
     "rak_11200_detected": {
-        "text": "Looks like a RAK 11200 was detected.\n\nVerify it is in BOOT mode.\n\nThere should be a single, solid red light.\nThere should not be any other lights, solid nor flashing.\n\nIf not, disconnect the device and provide a jumper between GND and BOOT0 pins while device is plugged in.\n\n"
+        "text": {
+            "de": "Es sieht so aus, als ob ein RAK 11200 entdeckt wurde.\n\nPr\u00fcfen Sie, ob es sich im BOOT-Modus befindet.\n\nEs sollte ein einzelnes, rotes Dauerlicht leuchten.\nEs sollte keine anderen Lichter geben, weder durchgehend noch blinkend.\n\nIst dies nicht der Fall, trennen Sie das Ger\u00e4t und setzen Sie eine Br\u00fccke zwischen den Pins GND und BOOT0, w\u00e4hrend das Ger\u00e4t eingesteckt ist.\n\n",
+            "en": "Looks like a RAK 11200 was detected.\n\nVerify it is in BOOT mode.\n\nThere should be a single, solid red light.\nThere should not be any other lights, solid nor flashing.\n\nIf not, disconnect the device and provide a jumper between GND and BOOT0 pins while device is plugged in.\n\n"
+        }
     },
     "rak_bootloader_not_current": {
-        "text": "The RAK bootloader is not current.\nAbout to update the RAK bootloader..."
+        "text": {
+            "de": "Der RAK-Bootloader ist nicht aktuell.\n\u00dcber die Aktualisierung des RAK-Bootloaders...",
+            "en": "The RAK bootloader is not current.\nAbout to update the RAK bootloader..."
+        }
     },
     "range": {
-        "text": "Range"
+        "text": {
+            "de": "Range",
+            "en": "Range"
+        }
     },
     "range_test_module_about": {
         "doc_url": "https://meshtastic.org/docs/settings/range-test-module",
-        "label": "Range Test Module"
+        "label": {
+            "de": "Bereichstestmodul",
+            "en": "Range Test Module"
+        }
     },
     "range_test_module_enabled": {
-        "description": "If set, the Range Test module is enabled.",
-        "label": "Enabled?"
+        "description": {
+            "de": "Falls gesetzt, ist das Reichweitentestmodul aktiviert.",
+            "en": "If set, the Range Test module is enabled."
+        },
+        "label": {
+            "de": "Aktiviert?",
+            "en": "Enabled?"
+        }
     },
     "range_test_module_save": {
-        "description": "If set, the device will save the range test .csv files on this device.",
-        "label": "Save?"
+        "description": {
+            "de": "Wenn diese Option aktiviert ist, speichert das Ger\u00e4t die .csv-Dateien der Bereichstests auf diesem Ger\u00e4t.",
+            "en": "If set, the device will save the range test .csv files on this device."
+        },
+        "label": {
+            "de": "Sparen?",
+            "en": "Save?"
+        }
     },
     "range_test_module_sender": {
-        "description": "Sends a message how freqently (in seconds).",
-        "label": "Sender (seconds)"
+        "description": {
+            "de": "Sendet eine Nachricht in welcher H\u00e4ufigkeit (in Sekunden).",
+            "en": "Sends a message how freqently (in seconds)."
+        },
+        "label": {
+            "de": "Absender (Sekunden)",
+            "en": "Sender (seconds)"
+        }
     },
     "range_test_module_settings": {
-        "text": "Range Test Module Settings"
+        "text": {
+            "de": "Bereichstestmodul-Einstellungen",
+            "en": "Range Test Module Settings"
+        }
     },
     "region": {
-        "description": "The region code for my radio (US, CN, EU433, etc...)",
-        "label": "Region"
+        "description": {
+            "de": "Der Regionalcode f\u00fcr mein Radio (US, CN, EU433, etc...)",
+            "en": "The region code for my radio (US, CN, EU433, etc...)"
+        },
+        "label": {
+            "de": "Region",
+            "en": "Region"
+        }
     },
     "role": {
-        "description": "How this channel is being used (or not not being used).",
-        "label": "Role"
+        "description": {
+            "de": "Wie dieser Kanal genutzt wird (oder nicht genutzt wird).",
+            "en": "How this channel is being used (or not not being used)."
+        },
+        "label": {
+            "de": "Rolle",
+            "en": "Role"
+        }
     },
     "rotary": {
-        "text": "Rotary"
+        "text": {
+            "de": "Rotierend",
+            "en": "Rotary"
+        }
     },
     "rotary1_about": {
         "doc_url": "https://meshtastic.org/docs/settings/rotary-encoder-module",
-        "label": "Rotary Encoder Module"
+        "label": {
+            "de": "Drehgeber-Modul",
+            "en": "Rotary Encoder Module"
+        }
     },
     "rotary1_enabled": {
-        "description": "If set, the Rotary module will be enabled.",
-        "label": "Enabled?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, wird das Rotary-Modul aktiviert.",
+            "en": "If set, the Rotary module will be enabled."
+        },
+        "label": {
+            "de": "Aktiviert?",
+            "en": "Enabled?"
+        }
     },
     "rotary1_event_ccw": {
-        "description": "Generate input event on CCW of this kind.",
-        "label": "CCW"
+        "description": {
+            "de": "Erzeugen eines Eingangsereignisses bei CCW dieser Art.",
+            "en": "Generate input event on CCW of this kind."
+        },
+        "label": {
+            "de": "CCW",
+            "en": "CCW"
+        }
     },
     "rotary1_event_cw": {
-        "description": "Generate input event on CW of this kind.",
-        "label": "CW"
+        "description": {
+            "de": "Eingabeereignis bei CW dieser Art generieren.",
+            "en": "Generate input event on CW of this kind."
+        },
+        "label": {
+            "de": "CW",
+            "en": "CW"
+        }
     },
     "rotary1_event_press": {
-        "description": "Generate input event on Press of this kind.",
-        "label": "Press"
+        "description": {
+            "de": "Erzeugen Sie ein Eingabeereignis bei dieser Art von Presse.",
+            "en": "Generate input event on Press of this kind."
+        },
+        "label": {
+            "de": "Presse",
+            "en": "Press"
+        }
     },
     "rotary1_pin_a": {
-        "description": "GPIO pin for rotary encoder A port.",
-        "label": "Pin A"
+        "description": {
+            "de": "GPIO-Pin f\u00fcr Drehgeber A-Anschluss.",
+            "en": "GPIO pin for rotary encoder A port."
+        },
+        "label": {
+            "de": "Stift A",
+            "en": "Pin A"
+        }
     },
     "rotary1_pin_b": {
-        "description": "GPIO pin for rotary encoder B port.",
-        "label": "Pin B"
+        "description": {
+            "de": "GPIO-Pin f\u00fcr Drehgeber B-Anschluss.",
+            "en": "GPIO pin for rotary encoder B port."
+        },
+        "label": {
+            "de": "Stift B",
+            "en": "Pin B"
+        }
     },
     "rotary1_pin_press": {
-        "description": "Generate input event on Press of this kind.",
-        "label": "Press"
+        "description": {
+            "de": "Erzeugen Sie ein Eingabeereignis bei dieser Art von Presse.",
+            "en": "Generate input event on Press of this kind."
+        },
+        "label": {
+            "de": "Presse",
+            "en": "Press"
+        }
     },
     "rotary_encoder_plugin_settings": {
-        "text": "Rotary Encoder Module Settings"
+        "text": {
+            "de": "Einstellungen des Drehgebermoduls",
+            "en": "Rotary Encoder Module Settings"
+        }
     },
     "running": {
-        "text": "Running"
+        "text": {
+            "de": "Laufen",
+            "en": "Running"
+        }
     },
     "screen_on_secs": {
-        "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute).",
-        "label": "Screen On (seconds)"
+        "description": {
+            "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 60 Sekunden (oder einer Minute).",
+            "en": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute)."
+        },
+        "label": {
+            "de": "Bildschirm ein (Sekunden)",
+            "en": "Screen On (seconds)"
+        }
     },
     "sds_secs": {
-        "description": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of one year.",
-        "label": "SDS (seconds)"
+        "description": {
+            "de": "Super Deep Sleep (SDS) ist eine Option der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr die Voreinstellung von einem Jahr.",
+            "en": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of one year."
+        },
+        "label": {
+            "de": "SDS (Sekunden)",
+            "en": "SDS (seconds)"
+        }
     },
     "select_detect": {
-        "text": "DETECT DEVICE",
-        "tooltip": "Click to detect supported device and port information."
+        "text": {
+            "de": "ERKENNUNGSVORRICHTUNG",
+            "en": "DETECT DEVICE"
+        },
+        "tooltip": {
+            "de": "Klicken Sie auf , um unterst\u00fctzte Ger\u00e4te- und Anschlussinformationen zu erkennen.",
+            "en": "Click to detect supported device and port information."
+        }
     },
     "select_device": {
-        "tooltip": "Need to click GET VERSIONS and DETECT DEVICE before you can select the device."
+        "tooltip": {
+            "de": "Sie m\u00fcssen auf GET VERSIONS und DETECT DEVICE klicken, bevor Sie das Ger\u00e4t ausw\u00e4hlen k\u00f6nnen.",
+            "en": "Need to click GET VERSIONS and DETECT DEVICE before you can select the device."
+        }
     },
     "select_device_populated": {
-        "tooltip": "Select which type of device is connected."
+        "tooltip": {
+            "de": "W\u00e4hlen Sie aus, welche Art von Ger\u00e4t angeschlossen ist.",
+            "en": "Select which type of device is connected."
+        }
     },
     "select_firmware_version": {
-        "tooltip": "Click GET VERSIONS for the list of firmware versions."
+        "tooltip": {
+            "de": "Klicken Sie auf GET VERSIONS, um eine Liste der Firmware-Versionen zu erhalten.",
+            "en": "Click GET VERSIONS for the list of firmware versions."
+        }
     },
     "select_firmware_version_populated": {
-        "tooltip": "Selected desired firmware version to flash."
+        "tooltip": {
+            "de": "W\u00e4hlen Sie die gew\u00fcnschte Firmware-Version zum Flashen.",
+            "en": "Selected desired firmware version to flash."
+        }
     },
     "select_flash": {
-        "tooltip": "Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options."
+        "tooltip": {
+            "de": "Klicken Sie auf , um die Firmware zu flashen.\nWenn diese Schaltfl\u00e4che nicht aktiviert ist, m\u00fcssen Sie auf die Schaltfl\u00e4chen GET VERSIONS und DETECT DEVICE\nklicken, um die verf\u00fcgbaren Optionen aufzuf\u00fcllen.",
+            "en": "Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options."
+        }
     },
     "select_flash_populated": {
-        "tooltip": "Click the FLASH button to write the Meshtastic firmware to the device."
+        "tooltip": {
+            "de": "Klicken Sie auf die Schaltfl\u00e4che FLASH, um die Meshtastic-Firmware auf das Ger\u00e4t zu schreiben.",
+            "en": "Click the FLASH button to write the Meshtastic firmware to the device."
+        }
     },
     "select_port": {
-        "tooltip": "Need to click GET VERSIONS and DETECT DEVICE before you can select the port."
+        "tooltip": {
+            "de": "Sie m\u00fcssen auf GET VERSIONS und DETECT DEVICE klicken, bevor Sie den Anschluss ausw\u00e4hlen k\u00f6nnen.",
+            "en": "Need to click GET VERSIONS and DETECT DEVICE before you can select the port."
+        }
     },
     "select_port_populated": {
-        "tooltip": "Select the communication port/destination."
+        "tooltip": {
+            "de": "W\u00e4hlen Sie den Kommunikationsanschluss/das Ziel.",
+            "en": "Select the communication port/destination."
+        }
     },
     "send_owner_interval": {
-        "description": "Send our owner info at least this often (also we always send once at boot - to rejoin the mesh).",
-        "label": "Send Owner Interval"
+        "description": {
+            "de": "Senden Sie unsere Eigent\u00fcmerinformationen mindestens so oft (auch wir senden immer einmal beim Hochfahren - um das Netz wieder zu verbinden).",
+            "en": "Send our owner info at least this often (also we always send once at boot - to rejoin the mesh)."
+        },
+        "label": {
+            "de": "Send Owner Interval",
+            "en": "Send Owner Interval"
+        }
     },
     "send_text": {
-        "text": "Send Text"
+        "text": {
+            "de": "Send Text",
+            "en": "Send Text"
+        }
     },
     "serial": {
-        "text": "Serial"
+        "text": {
+            "de": "Serienm\u00e4\u00dfig",
+            "en": "Serial"
+        }
     },
     "serial_disabled": {
-        "description": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI).",
-        "label": "Serial Disabled?"
+        "description": {
+            "de": "Wenn gesetzt, wird die SerialConsole deaktiviert. (indem die StreamAPI nicht initialisiert wird).",
+            "en": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI)."
+        },
+        "label": {
+            "de": "Serielle Deaktivierung?",
+            "en": "Serial Disabled?"
+        }
     },
     "serial_module_about": {
         "doc_url": "https://meshtastic.org/docs/settings/serial-module",
-        "label": "Serial Module"
+        "label": {
+            "de": "Serielles Modul",
+            "en": "Serial Module"
+        }
     },
     "serial_module_echo": {
-        "description": "TBD",
-        "label": "Echo?"
+        "description": {
+            "de": "TBD",
+            "en": "TBD"
+        },
+        "label": {
+            "de": "Echo?",
+            "en": "Echo?"
+        }
     },
     "serial_module_enabled": {
-        "description": "If set, the Serial module will be enabled.",
-        "label": "Enabled?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, wird das serielle Modul aktiviert.",
+            "en": "If set, the Serial module will be enabled."
+        },
+        "label": {
+            "de": "Aktiviert?",
+            "en": "Enabled?"
+        }
     },
     "serial_module_mode": {
-        "description": "TBD",
-        "label": "Mode"
+        "description": {
+            "de": "TBD",
+            "en": "TBD"
+        },
+        "label": {
+            "de": "Modus",
+            "en": "Mode"
+        }
     },
     "serial_module_rxd": {
-        "description": "TBD",
-        "label": "RXD"
+        "description": {
+            "de": "TBD",
+            "en": "TBD"
+        },
+        "label": {
+            "de": "RXD",
+            "en": "RXD"
+        }
     },
     "serial_module_settings": {
-        "text": "Serial Module Settings"
+        "text": {
+            "de": "Einstellungen des seriellen Moduls",
+            "en": "Serial Module Settings"
+        }
     },
     "serial_module_timeout": {
-        "description": "TBD",
-        "label": "Timeout"
+        "description": {
+            "de": "TBD",
+            "en": "TBD"
+        },
+        "label": {
+            "de": "Zeit\u00fcberschreitung",
+            "en": "Timeout"
+        }
     },
     "serial_module_txd": {
-        "description": "TBD",
-        "label": "TXD"
+        "description": {
+            "de": "TBD",
+            "en": "TBD"
+        },
+        "label": {
+            "de": "TXD",
+            "en": "TXD"
+        }
     },
     "settings": {
-        "text": "Settings"
+        "text": {
+            "de": "Einstellungen",
+            "en": "Settings"
+        }
     },
     "short_name": {
-        "description": "Very short name for the device, ideally two characters.",
-        "label": "Short Name",
+        "description": {
+            "de": "Sehr kurzer Name f\u00fcr das Ger\u00e4t, idealerweise zwei Zeichen.",
+            "en": "Very short name for the device, ideally two characters."
+        },
+        "label": {
+            "de": "Short Name",
+            "en": "Short Name"
+        },
         "max_size": 3
     },
     "spread_factor": {
-        "description": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor.",
-        "label": "Spread Factor"
+        "description": {
+            "de": "Eine Zahl von 7 bis 12. Gibt die Anzahl der Chirps pro Symbol als 1<<spread_factor an.",
+            "en": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor."
+        },
+        "label": {
+            "de": "Spread-Faktor",
+            "en": "Spread Factor"
+        }
     },
     "store_forward_module_about": {
         "doc_url": "https://meshtastic.org/docs/settings/store-and-forward-module",
-        "label": "Store and Forward Module"
+        "label": {
+            "de": "Modul Speichern und Weiterleiten",
+            "en": "Store and Forward Module"
+        }
     },
     "store_forward_module_enabled": {
-        "description": "If set, the Store and Forward module will be enabled.",
-        "label": "Enabled?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, wird das Modul Speichern und Weiterleiten aktiviert.",
+            "en": "If set, the Store and Forward module will be enabled."
+        },
+        "label": {
+            "de": "Aktiviert?",
+            "en": "Enabled?"
+        }
     },
     "store_forward_module_heartbeat": {
-        "description": "TBD",
-        "label": "Heartbeat"
+        "description": {
+            "de": "TBD",
+            "en": "TBD"
+        },
+        "label": {
+            "de": "Herzschlag",
+            "en": "Heartbeat"
+        }
     },
     "store_forward_module_history_return_max": {
-        "description": "TBD",
-        "label": "History Return Max"
+        "description": {
+            "de": "TBD",
+            "en": "TBD"
+        },
+        "label": {
+            "de": "Geschichte R\u00fcckkehr Max",
+            "en": "History Return Max"
+        }
     },
     "store_forward_module_history_return_window": {
-        "description": "TBD",
-        "label": "History Return Window"
+        "description": {
+            "de": "TBD",
+            "en": "TBD"
+        },
+        "label": {
+            "de": "Historie R\u00fcckgabefenster",
+            "en": "History Return Window"
+        }
     },
     "store_forward_module_records": {
-        "description": "TBD",
-        "label": "Records"
+        "description": {
+            "de": "TBD",
+            "en": "TBD"
+        },
+        "label": {
+            "de": "Aufzeichnungen",
+            "en": "Records"
+        }
     },
     "store_forward_module_settings": {
-        "text": "Store and Forward Module Settings"
+        "text": {
+            "de": "Speichern und Weiterleiten von Moduleinstellungen",
+            "en": "Store and Forward Module Settings"
+        }
     },
     "team": {
-        "description": "Participants in the same network can self-group into different teams.",
-        "label": "Team"
+        "description": {
+            "de": "Teilnehmer desselben Netzes k\u00f6nnen sich selbst zu verschiedenen Teams zusammenschlie\u00dfen.",
+            "en": "Participants in the same network can self-group into different teams."
+        },
+        "label": {
+            "de": "Team",
+            "en": "Team"
+        }
     },
     "techo_bootloader_updated": {
-        "text": "T-Echo bootloader was updated.\n\nWait for the device to reboot."
+        "text": {
+            "de": "Der T-Echo-Bootloader wurde aktualisiert.\n\nWarten Sie auf den Neustart des Ger\u00e4ts.",
+            "en": "T-Echo bootloader was updated.\n\nWait for the device to reboot."
+        }
     },
     "telemetry": {
-        "text": "Telemetry"
+        "text": {
+            "de": "Telemetrie",
+            "en": "Telemetry"
+        }
     },
     "telemetry_module_about": {
         "doc_url": "https://meshtastic.org/docs/settings/telemetry-module",
-        "label": "Telemetry Module"
+        "label": {
+            "de": "Telemetrie-Modul",
+            "en": "Telemetry Module"
+        }
     },
     "telemetry_module_display_farenheit": {
-        "description": "If set, the temperature will be displayed in Farenheit.",
-        "label": "Display Temperature in Farenheit?"
+        "description": {
+            "de": "Falls eingestellt, wird die Temperatur in Farenheit angezeigt.",
+            "en": "If set, the temperature will be displayed in Farenheit."
+        },
+        "label": {
+            "de": "Temperatur in Farenheit anzeigen?",
+            "en": "Display Temperature in Farenheit?"
+        }
     },
     "telemetry_module_measurement_enabled": {
-        "description": "If set, the Telemetry module will be enabled.",
-        "label": "Enabled?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, wird das Telemetriemodul aktiviert.",
+            "en": "If set, the Telemetry module will be enabled."
+        },
+        "label": {
+            "de": "Aktiviert?",
+            "en": "Enabled?"
+        }
     },
     "telemetry_module_read_error_count_threshold": {
-        "description": "Sometimes sensor reads can fail. If this happens, we will retry a configurable number of attempts, each attempt will be delayed by the minimum required refresh rate for that sensor.",
-        "label": "Read Error Count Threshold"
+        "description": {
+            "de": "Manchmal kann das Lesen von Sensoren fehlschlagen. In diesem Fall wird eine konfigurierbare Anzahl von Versuchen wiederholt, wobei jeder Versuch um die f\u00fcr diesen Sensor erforderliche Mindestaktualisierungsrate verz\u00f6gert wird.",
+            "en": "Sometimes sensor reads can fail. If this happens, we will retry a configurable number of attempts, each attempt will be delayed by the minimum required refresh rate for that sensor."
+        },
+        "label": {
+            "de": "Schwellenwert f\u00fcr Lesefehlerz\u00e4hlung",
+            "en": "Read Error Count Threshold"
+        }
     },
     "telemetry_module_recovery_interval": {
-        "description": "Sometimes we can end up with more than read_error_count_threshold failures. In this case, we will stop trying to read from the sensor for a while. Wait this long until trying to read from the sensor again.",
-        "label": "Recovery Interval"
+        "description": {
+            "de": "Manchmal kann es vorkommen, dass mehr als read_error_count_threshold-Fehler auftreten. In diesem Fall wird der Versuch, vom Sensor zu lesen, f\u00fcr eine Weile unterbrochen. Warten Sie so lange, bis Sie erneut versuchen, aus dem Sensor zu lesen.",
+            "en": "Sometimes we can end up with more than read_error_count_threshold failures. In this case, we will stop trying to read from the sensor for a while. Wait this long until trying to read from the sensor again."
+        },
+        "label": {
+            "de": "Erholungsintervall",
+            "en": "Recovery Interval"
+        }
     },
     "telemetry_module_screen_enabled": {
-        "description": "Enable/Disable the Telemetry module on-device display.",
-        "label": "Screen Enabled?"
+        "description": {
+            "de": "Aktivieren/Deaktivieren der Anzeige des Telemetriemoduls auf dem Ger\u00e4t.",
+            "en": "Enable/Disable the Telemetry module on-device display."
+        },
+        "label": {
+            "de": "Bildschirm Aktiviert?",
+            "en": "Screen Enabled?"
+        }
     },
     "telemetry_module_sensor_pin": {
-        "description": "Specify the peferred GPIO Pin for sensor readings. Not applicable to sensors that use I2C.",
-        "label": "Sensor Pin"
+        "description": {
+            "de": "Geben Sie den bevorzugten GPIO-Pin f\u00fcr Sensormessungen an. Gilt nicht f\u00fcr Sensoren, die I2C verwenden.",
+            "en": "Specify the peferred GPIO Pin for sensor readings. Not applicable to sensors that use I2C."
+        },
+        "label": {
+            "de": "Sensor-Pin",
+            "en": "Sensor Pin"
+        }
     },
     "telemetry_module_sensor_type": {
-        "description": "Specify the sensor type.",
-        "label": "Sensor Type"
+        "description": {
+            "de": "Geben Sie den Sensortyp an.",
+            "en": "Specify the sensor type."
+        },
+        "label": {
+            "de": "Sensor Type",
+            "en": "Sensor Type"
+        }
     },
     "telemetry_module_settings": {
-        "text": "Telemetry Module Settings"
+        "text": {
+            "de": "Einstellungen des Telemetriemoduls",
+            "en": "Telemetry Module Settings"
+        }
     },
     "telemetry_module_update_interval": {
-        "description": "Interval in seconds of how often we should try to send our measurements to the mesh.",
-        "label": "Update Interval (seconds)"
+        "description": {
+            "de": "Intervall in Sekunden, in dem wir versuchen sollen, unsere Messungen an das Netz zu senden.",
+            "en": "Interval in seconds of how often we should try to send our measurements to the mesh."
+        },
+        "label": {
+            "de": "Aktualisierungsintervall (Sekunden)",
+            "en": "Update Interval (seconds)"
+        }
     },
     "tx_power": {
-        "description": "If zero then, use default max legal continuous power (i.e., something that will not burn out the radio hardware). In most cases, you should use 0. (Units are in dBm).",
-        "label": "TX Power (dBm)"
+        "description": {
+            "de": "Wenn Null, dann verwenden Sie die standardm\u00e4\u00dfige maximale zul\u00e4ssige Dauerleistung (d.h. etwas, das die Funkhardware nicht durchbrennen l\u00e4sst). In den meisten F\u00e4llen sollten Sie 0 verwenden (Einheiten sind in dBm).",
+            "en": "If zero then, use default max legal continuous power (i.e., something that will not burn out the radio hardware). In most cases, you should use 0. (Units are in dBm)."
+        },
+        "label": {
+            "de": "Sendeleistung (dBm)",
+            "en": "TX Power (dBm)"
+        }
     },
     "update": {
-        "text": "Update"
+        "text": {
+            "de": "Update",
+            "en": "Update"
+        }
     },
     "update_available": {
-        "text": "update available"
+        "text": {
+            "de": "Update verf\u00fcgbar",
+            "en": "update available"
+        }
     },
     "update_only": {
-        "text": "Update only",
-        "tooltip": "If enabled, the device will be updated only - not completely erased."
+        "text": {
+            "de": "Nur aktualisieren",
+            "en": "Update only"
+        },
+        "tooltip": {
+            "de": "Wenn diese Option aktiviert ist, wird das Ger\u00e4t nur aktualisiert und nicht vollst\u00e4ndig gel\u00f6scht.",
+            "en": "If enabled, the device will be updated only - not completely erased."
+        }
     },
     "update_step1": {
-        "text": "Update step 1 of 2"
+        "text": {
+            "de": "Schritt 1 von 2 aktualisieren",
+            "en": "Update step 1 of 2"
+        }
     },
     "update_step1_done": {
-        "text": "Update step 1 of 2 is done"
+        "text": {
+            "de": "Update Schritt 1 von 2 ist erledigt",
+            "en": "Update step 1 of 2 is done"
+        }
     },
     "update_step2_done": {
-        "text": "Update step 2 of 2 is done"
+        "text": {
+            "de": "Update Schritt 2 von 2 ist erledigt",
+            "en": "Update step 2 of 2 is done"
+        }
     },
     "uplink_enabled": {
-        "description": "If set, messages on the mesh will be sent to the public internet by any gateway node.",
-        "label": "Uplink Enabled?"
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, werden Nachrichten im Mesh von jedem Gateway-Knoten an das \u00f6ffentliche Internet gesendet.",
+            "en": "If set, messages on the mesh will be sent to the public internet by any gateway node."
+        },
+        "label": {
+            "de": "Uplink Aktiviert?",
+            "en": "Uplink Enabled?"
+        }
     },
     "user": {
-        "text": "User"
+        "text": {
+            "de": "Benutzer",
+            "en": "User"
+        }
     },
     "user_settings": {
-        "text": "User Settings"
+        "text": {
+            "de": "Benutzereinstellungen",
+            "en": "User Settings"
+        }
     },
     "wait_bluetooth_secs": {
-        "description": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or 1 minute).",
-        "label": "Bluetooth Wait (seconds)"
+        "description": {
+            "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 60 Sekunden (oder 1 Minute).",
+            "en": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or 1 minute)."
+        },
+        "label": {
+            "de": "Bluetooth-Wartezeit (Sekunden)",
+            "en": "Bluetooth Wait (seconds)"
+        }
     },
     "warning": {
-        "text": "Warning"
+        "text": {
+            "de": "Warnung",
+            "en": "Warning"
+        }
     },
     "warning_cannot_open_port_exclusively": {
-        "text": "Warning: Cannot open the serial port exclusively.\nClose any other programs that might be using that port and try again."
+        "text": {
+            "de": "Warnung: Der serielle Anschluss kann nicht exklusiv ge\u00f6ffnet werden.\nSchlie\u00dfen Sie alle anderen Programme, die diesen Anschluss m\u00f6glicherweise verwenden, und versuchen Sie es erneut.",
+            "en": "Warning: Cannot open the serial port exclusively.\nClose any other programs that might be using that port and try again."
+        }
     },
     "warning_issue_downloading": {
-        "text": "Warning: There was an issue downloading/extracting."
+        "text": {
+            "de": "Warnung: Es gab ein Problem beim Herunterladen/Extrahieren.",
+            "en": "Warning: There was an issue downloading/extracting."
+        }
     },
     "warning_need_channel_name": {
-        "text": "Need to have a channel name."
+        "text": {
+            "de": "Sie m\u00fcssen einen Kanalnamen haben.",
+            "en": "Need to have a channel name."
+        }
     },
     "warning_not_admin": {
-        "text": "Warning: This process is not running as Administrator.\nClose and re-run as Administrator."
+        "text": {
+            "de": "Warnung: Dieser Prozess wird nicht als Administrator ausgef\u00fchrt.\nSchlie\u00dfen Sie ihn und f\u00fchren Sie ihn erneut als Administrator aus.",
+            "en": "Warning: This process is not running as Administrator.\nClose and re-run as Administrator."
+        }
     },
     "warning_problem_connecting": {
-        "text": "There was a problem connecting to the device.\n\nPerhaps unplug device or restart this program."
+        "text": {
+            "de": "Es gab ein Problem bei der Verbindung mit dem Ger\u00e4t.\n\nTrennen Sie das Ger\u00e4t vom Stromnetz oder starten Sie das Programm neu.",
+            "en": "There was a problem connecting to the device.\n\nPerhaps unplug device or restart this program."
+        }
     },
     "warning_talking_to_device": {
-        "text": "Had a problem talking with the device.\nPerhaps unplug and re-plugin the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put the device into boot mode by pressing RST button twice."
+        "text": {
+            "de": "Ich hatte ein Problem bei der Kommunikation mit dem Ger\u00e4t.\nVielleicht sollten Sie das Ger\u00e4t aus- und wieder einstecken?\nWenn das Ger\u00e4t ein nrf52 (T-Echo oder RAK) ist,\ndann versetzen Sie das Ger\u00e4t in den Boot-Modus, indem Sie zweimal die RST-Taste dr\u00fccken.",
+            "en": "Had a problem talking with the device.\nPerhaps unplug and re-plugin the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put the device into boot mode by pressing RST button twice."
+        }
     },
     "wifi_ap_mode": {
-        "description": "If set, the node will operate as an access point and DHCP server. Otherwise, the node will be a station.",
-        "label": "WiFi AP Mode?"
+        "description": {
+            "de": "Wenn diese Option eingestellt ist, arbeitet der Knoten als Zugangspunkt und DHCP-Server. Andernfalls ist der Knoten eine Station.",
+            "en": "If set, the node will operate as an access point and DHCP server. Otherwise, the node will be a station."
+        },
+        "label": {
+            "de": "WiFi AP Mode?",
+            "en": "WiFi AP Mode?"
+        }
     },
     "wifi_password": {
-        "description": "If set, will be use to authenticate to the named WiFi.",
-        "label": "WiFi Password",
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, wird sie f\u00fcr die Authentifizierung am benannten WiFi verwendet.",
+            "en": "If set, will be use to authenticate to the named WiFi."
+        },
+        "label": {
+            "de": "WiFi-Passwort",
+            "en": "WiFi Password"
+        },
         "max_size": 64
     },
     "wifi_ssid": {
-        "description": "If set, this node will try to join the specified WiFi network and acquire an address via DHCP.",
-        "label": "WiFi SSID",
+        "description": {
+            "de": "Wenn diese Option gesetzt ist, versucht dieser Knoten, dem angegebenen WiFi-Netzwerk beizutreten und eine Adresse \u00fcber DHCP zu erhalten.",
+            "en": "If set, this node will try to join the specified WiFi network and acquire an address via DHCP."
+        },
+        "label": {
+            "de": "WiFi SSID",
+            "en": "WiFi SSID"
+        },
         "max_size": 33
     }
 }
