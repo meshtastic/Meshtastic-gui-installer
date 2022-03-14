@@ -59,7 +59,7 @@ class Form(QDialog):
 
         self.parent = None
         self.main = self
-        self.lang = "de"
+        self.lang = "en"
 
         self.port = None
         self.firmware_version = None
