@@ -30,15 +30,20 @@ for field in fields:
         if key in fields[field]:
             print(f'field:{field}')
             tmp = fields[field][key]
-            print(f'tmp:{tmp}')
             # translate text into a target language
-            result = translator.translate_text(tmp, target_lang=sys.argv[1])
             if isinstance(tmp, str):
                 # there were no tranlsations, so add english, and new lang
+                result = translator.translate_text(tmp, target_lang=sys.argv[1])
                 new_entry = { "en": tmp, lang: f'{result}'}
                 print(f'new_entry:{new_entry}')
                 del new_fields[field][key]
                 new_fields[field][key] = new_entry
+            else:
+                # there were tranlsations, so use english
+                tmp2 = fields[field][key]['en']
+                result = translator.translate_text(tmp2, target_lang=sys.argv[1])
+                print(f'result:{result}')
+                new_fields[field][key][lang] = f'{result}'
 
 print('before write_fields')
 write_fields(new_fields)
