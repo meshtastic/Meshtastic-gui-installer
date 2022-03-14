@@ -1103,7 +1103,7 @@
     },
     "get_versions": {
         "text": {
-            "de": "VERSIONEN ERHALTEN",
+            "de": "VERSIONEN AKTUALISIEREN",
             "en": "GET VERSIONS",
             "es": "OBTENER VERSIONES",
             "fr": "GET VERSIONS",
@@ -2109,7 +2109,7 @@
     },
     "port": {
         "text": {
-            "de": "Hafen",
+            "de": "Anschlu\u00df",
             "en": "Port",
             "es": "Puerto",
             "fr": "Port",
@@ -2969,7 +2969,7 @@
     },
     "select_detect": {
         "text": {
-            "de": "ERKENNUNGSVORRICHTUNG",
+            "de": "GER\u00c4T FINDEN",
             "en": "DETECT DEVICE",
             "es": "DISPOSITIVO DE DETECCI\u00d3N",
             "fr": "DISPOSITIF DE D\u00c9TECTION",
@@ -2980,7 +2980,7 @@
             "zh": "\u63a2\u6d4b\u88c5\u7f6e"
         },
         "tooltip": {
-            "de": "Klicken Sie auf , um unterst\u00fctzte Ger\u00e4te- und Anschlussinformationen zu erkennen.",
+            "de": "Klicken Sie, um unterst\u00fctzte Ger\u00e4te und Anschl\u00fcsse zu finden.",
             "en": "Click to detect supported device and port information.",
             "es": "Haga clic para detectar la informaci\u00f3n sobre el dispositivo y el puerto compatibles.",
             "fr": "Cliquez pour d\u00e9tecter les informations sur le p\u00e9riph\u00e9rique et le port pris en charge.",
@@ -2993,7 +2993,7 @@
     },
     "select_device": {
         "tooltip": {
-            "de": "Sie m\u00fcssen auf GET VERSIONS und DETECT DEVICE klicken, bevor Sie das Ger\u00e4t ausw\u00e4hlen k\u00f6nnen.",
+            "de": "Sie m\u00fcssen auf AKTUALISIEREN und GER\u00c4T FINDEN klicken, bevor Sie das Ger\u00e4t ausw\u00e4hlen k\u00f6nnen.",
             "en": "Need to click GET VERSIONS and DETECT DEVICE before you can select the device.",
             "es": "Es necesario hacer clic en OBTENER VERSIONES y DETECTAR DISPOSITIVO antes de poder seleccionar el dispositivo.",
             "fr": "Il faut cliquer sur GET VERSIONS et DETECT DEVICE avant de pouvoir s\u00e9lectionner le p\u00e9riph\u00e9rique.",
