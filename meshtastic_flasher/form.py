@@ -1,6 +1,7 @@
 """Form for meshtastic-flasher"""
 
 import os
+import sys
 import shutil
 import ctypes
 import glob
@@ -53,14 +54,12 @@ MESHTASTIC_COLOR_GREEN = "#67EA94"
 class Form(QDialog):
     """Main application"""
 
-    def __init__(self, parent=None):
+    def __init__(self, parent=None, lang='en'):
         """constructor"""
         super(Form, self).__init__(parent)
-
         self.parent = None
         self.main = self
-        self.lang = "en"
-
+        self.lang = lang
         self.port = None
         self.firmware_version = None
         self.nrf = False
@@ -98,6 +97,13 @@ class Form(QDialog):
         self.select_detect.setToolTip(self.main.tooltip('select_detect'))
         # Note: The text of the buttons is done in the styles, need to override it
         self.select_detect.setStyleSheet("text-transform: none")
+
+        self.select_language = QComboBox()
+        self.select_language.setToolTip(self.main.tooltip('select_language'))
+        self.select_language.setMinimumContentsLength(18)
+
+        self.select_language.addItem("English", "en")
+        self.populate_languages()
 
         self.help_button = QPushButton()
         help_icon = QIcon(meshtastic_flasher.util.get_path(HELP_FILENAME))
@@ -149,15 +155,18 @@ class Form(QDialog):
         #link_style = "color:#67EA94; font-weight: bold; text-decoration: underline"
         # this link_style gets added to tool tip too, which we do not want
         self.label_version = QLabel(self)
+        # TODO: translate
         self.label_version.setText("Version")
         #self.label_version.setStyleSheet(link_style)
         self.label_version.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.label_version.setToolTip(self.main.tooltip('label_version'))
 
         self.label_port = QLabel(self)
+        # TODO: translate
         self.label_port.setText("Port")
 
         self.label_device = QLabel(self)
+        # TODO: translate
         self.label_device.setText("Device")
         #self.label_device.setStyleSheet(link_style)
         self.label_device.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
@@ -192,6 +201,7 @@ class Form(QDialog):
         info_layout.addWidget(self.advanced_options_button, alignment=QtCore.Qt.AlignRight)
         info_layout.addStretch(1)
         info_layout.addWidget(self.device_settings_button, alignment=QtCore.Qt.AlignLeft)
+        info_layout.addWidget(self.select_language, alignment=QtCore.Qt.AlignLeft)
         info_layout.addStretch(1)
         info_layout.addWidget(self.about_button)
         info_layout.addWidget(self.help_button)
@@ -260,6 +270,7 @@ class Form(QDialog):
         self.select_firmware_version.currentTextChanged.connect(self.on_select_firmware_changed)
         self.device_settings_button.mousePressEvent = self.run_device_settings
         self.advanced_options_button.mousePressEvent = self.run_advanced_options
+        self.select_language.currentTextChanged.connect(self.on_select_language_changed)
 
         # pre-populate the versions that have already been downloaded and unzipped
         self.get_versions_from_disk()
@@ -283,6 +294,22 @@ class Form(QDialog):
                             # fall back to english
                             retval = self.fields[field][key]['en']
         return retval
+
+    def populate_languages(self):
+        """Populate the languages dropdown.
+           When adding a new language:
+             1) ./bin/translate_entries.py IT
+             2)  "pip install ."
+             3) add language to this list
+        """
+        self.select_language.addItem("Deutsch", "de")
+        self.select_language.addItem("Español", "es")
+        self.select_language.addItem("Français", "fr")
+        self.select_language.addItem("Italiano", "it")
+        self.select_language.addItem("Polski", "pl")
+        self.select_language.addItem("Chinese", "zh")
+        index = self.select_language.findData(self.lang)
+        self.select_language.setCurrentIndex(index)
 
 
     def text(self, field):
@@ -342,7 +369,7 @@ class Form(QDialog):
             self.hotkeys()
         elif event.key() == QtCore.Qt.Key_Q:
             print("Q was pressed... so quitting")
-            QApplication.quit()
+            self.accept()
         elif event.key() == QtCore.Qt.Key_T:
             print("T was pressed... so showing help message")
             self.help_message()
@@ -361,6 +388,18 @@ class Form(QDialog):
     def run_advanced_options(self, event):
         """Run the advanced options form"""
         self.advanced_form.show()
+
+
+    def on_select_language_changed(self, value):
+        """When the select_language drop down value is changed."""
+        lang = self.select_language.currentData()
+        print(f'lang:{lang}')
+        print(f'sys.argv:{sys.argv}')
+        if len(sys.argv) == 1:
+            sys.argv.append(lang)
+        else:
+            sys.argv[1] = lang
+        self.reject()
 
 
     def on_select_firmware_changed(self, value):
