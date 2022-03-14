@@ -3,109 +3,109 @@
         "text": {
             "de": "\u00dcber Meshtastic Flasher",
             "en": "About Meshtastic Flasher",
-            "es": "Acerca de Meshtastic Flasher"
+            "pl": "O programie Meshtastic Flasher"
         }
     },
     "about_button": {
         "tooltip": {
             "de": "Klicken Sie hier, um Informationen \u00fcber das Projekt zu erhalten.",
             "en": "Click for information about the project.",
-            "es": "Haga clic para obtener informaci\u00f3n sobre el proyecto."
+            "pl": "Kliknij, aby uzyska\u0107 informacje o projekcie."
         }
     },
     "about_text": {
         "text": {
             "de": "Meshtastic Flasher ist Teil des <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> \u00d6kosystems. Es ist eine plattform\u00fcbergreifende, einfach zu bedienende grafische Benutzeroberfl\u00e4che zum Aktualisieren und Installieren von Meshtastic-Firmware.",
             "en": "Meshtastic Flasher is part of the <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> ecosystem. It is a cross platform, easy to use graphical user interface for updating and installing Meshtastic firmware.",
-            "es": "Meshtastic Flasher es parte del ecosistema <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. Es una plataforma cruzada, f\u00e1cil de usar interfaz gr\u00e1fica de usuario para actualizar e instalar el firmware Meshtastic."
+            "pl": "Meshtastic Flasher jest cz\u0119\u015bci\u0105 ekosystemu <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. Jest to wieloplatformowy, \u0142atwy w u\u017cyciu graficzny interfejs u\u017cytkownika do aktualizacji i instalacji firmware Meshtastic."
         }
     },
     "adc_multiplier_override": {
         "description": {
             "de": "Verh\u00e4ltnis des Spannungsteilers f\u00fcr den Batterie-Pin z.B. 3.20 (R1=100k, R2=220k) \u00dcbersteuert den in der Variante definierten ADC_MULTIPLIER f\u00fcr die Batteriespannungsberechnung.",
             "en": "Ratio of voltage divider for battery pin eg. 3.20 (R1=100k, R2=220k) Overrides the ADC_MULTIPLIER defined in variant for battery voltage calculation.",
-            "es": "Relaci\u00f3n del divisor de tensi\u00f3n para el pin de la bater\u00eda, por ejemplo, 3,20 (R1=100k, R2=220k) Anula el ADC_MULTIPLIER definido en la variante para el c\u00e1lculo de la tensi\u00f3n de la bater\u00eda."
+            "pl": "Wsp\u00f3\u0142czynnik dzielnika napi\u0119cia dla styku akumulatora, np. 3,20 (R1=100k, R2=220k) Zast\u0119puje ADC_MULTIPLIER zdefiniowany w wariancie do obliczania napi\u0119cia akumulatora."
         },
         "label": {
             "de": "ADC-Multiplikator \u00dcbersteuerung",
             "en": "ADC Multiplier Override",
-            "es": "Anulaci\u00f3n del multiplicador ADC"
+            "pl": "Odst\u0105pienie mno\u017cnika przetwornika ADC"
         }
     },
     "admin": {
         "text": {
             "de": "Verwaltung",
             "en": "Admin",
-            "es": "Administraci\u00f3n"
+            "pl": "Administrator"
         }
     },
     "admin_settings": {
         "text": {
             "de": "Admin-Einstellungen",
             "en": "Admin Settings",
-            "es": "Configuraci\u00f3n de la administraci\u00f3n"
+            "pl": "Ustawienia administratora"
         }
     },
     "advanced_options": {
         "text": {
             "de": "Erweiterte Optionen",
             "en": "Advanced Options",
-            "es": "Opciones avanzadas"
+            "pl": "Opcje zaawansowane"
         },
         "tooltip": {
             "de": "Klicken Sie hier f\u00fcr erweiterte Meshtastic Flasher-Optionen.",
             "en": "Click for advanced Meshtastic Flasher options.",
-            "es": "Haga clic para ver las opciones avanzadas de Meshtastic Flasher."
+            "pl": "Kliknij, aby wy\u015bwietli\u0107 zaawansowane opcje Meshtastic Flasher."
         }
     },
     "all": {
         "text": {
             "de": "Alle",
             "en": "All",
-            "es": "Todo"
+            "pl": "Wszystkie"
         }
     },
     "alt": {
         "description": {
             "de": "Die H\u00f6henlage ist die Entfernung \u00fcber dem Meeresspiegel.",
             "en": "Altitude is the distance above sea level.",
-            "es": "La altitud es la distancia sobre el nivel del mar."
+            "pl": "Wysoko\u015b\u0107 to odleg\u0142o\u015b\u0107 nad poziomem morza."
         },
         "label": {
             "de": "H\u00f6henlage (Meter)",
             "en": "Altitude (meters)",
-            "es": "Altitud (metros)"
+            "pl": "Wysoko\u015b\u0107 nad poziomem morza (w metrach)"
         }
     },
     "auto_screen_carousel_secs": {
         "description": {
             "de": "Wechselt automatisch zur n\u00e4chsten Seite auf dem Bildschirm wie ein Karussell, basierend auf dem angegebenen Intervall in Sekunden. Potenziell n\u00fctzlich f\u00fcr Ger\u00e4te ohne Benutzertasten.",
             "en": "Automatically toggles to the next page on the screen like a carousel, based the specified interval in seconds. Potentially useful for devices without user buttons.",
-            "es": "Pasa autom\u00e1ticamente a la siguiente p\u00e1gina en la pantalla como un carrusel, bas\u00e1ndose en el intervalo especificado en segundos. Potencialmente \u00fatil para dispositivos sin botones de usuario."
+            "pl": "Automatycznie prze\u0142\u0105cza do nast\u0119pnej strony na ekranie, jak karuzela, na podstawie okre\u015blonego interwa\u0142u w sekundach. Potencjalnie przydatne w urz\u0105dzeniach bez przycisk\u00f3w u\u017cytkownika."
         },
         "label": {
             "de": "Automatisches Bildschirmkarussell (Sekunden)",
             "en": "Auto Screen Carousel (seconds)",
-            "es": "Carrusel de pantallas autom\u00e1tico (segundos)"
+            "pl": "Automatyczna karuzela ekranowa (sekundy)"
         }
     },
     "bandwidth": {
         "description": {
             "de": "Bestimmte Bandbreitenzahlen sind \"speziell\" und werden in den entsprechenden Flie\u00dfkommawert umgewandelt: 31 -> 31,25MHz.",
             "en": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz.",
-            "es": "Algunos n\u00fameros de ancho de banda son \"especiales\" y se convertir\u00e1n al valor de punto flotante apropiado: 31 -> 31.25MHz."
+            "pl": "Niekt\u00f3re liczby szeroko\u015bci pasma s\u0105 \"specjalne\" i zostan\u0105 przekonwertowane na odpowiedni\u0105 warto\u015b\u0107 zmiennoprzecinkow\u0105: 31 -> 31,25MHz."
         },
         "label": {
             "de": "Bandbreite (MHz)",
             "en": "Bandwidth (MHz)",
-            "es": "Ancho de banda (MHz)"
+            "pl": "Szeroko\u015b\u0107 pasma (MHz)"
         }
     },
     "canned": {
         "text": {
             "de": "Dose",
             "en": "Canned",
-            "es": "Conservas"
+            "pl": "Puszka"
         }
     },
     "canned_message_module_about": {
@@ -113,269 +113,269 @@
         "label": {
             "de": "Modul f\u00fcr gespeicherte Nachrichten",
             "en": "Canned Message Module",
-            "es": "M\u00f3dulo de mensajes enlatados"
+            "pl": "Modu\u0142 wiadomo\u015bci w puszce"
         }
     },
     "canned_message_module_allow_input_source": {
         "description": {
             "de": "Herkunft des Eingangsereignisses, das vom Canned Message-Modul akzeptiert wird. Kann z. B. \"rotEnc1\" oder das Schl\u00fcsselwort \"_any\" sein.",
             "en": "Input event origin accepted by the Canned Message module. Can be e.g. 'rotEnc1' or keyword '_any'.",
-            "es": "Origen del evento de entrada aceptado por el m\u00f3dulo de mensajes enlatados. Puede ser, por ejemplo, 'rotEnc1' o la palabra clave '_any'."
+            "pl": "Pochodzenie zdarzenia wej\u015bciowego akceptowanego przez modu\u0142 Canned Message. Mo\u017ce to by\u0107 np. \"rotEnc1\" lub s\u0142owo kluczowe \"_any\"."
         },
         "label": {
             "de": "Eingabequelle zulassen",
             "en": "Allow Input Source",
-            "es": "Permitir la fuente de entrada"
+            "pl": "Zezw\u00f3l na \u017ar\u00f3d\u0142o wej\u015bcia"
         }
     },
     "canned_message_module_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das Modul \"Canned Message\" aktiviert.",
             "en": "If set, the Canned Message module will be enabled.",
-            "es": "Si se establece, se activar\u00e1 el m\u00f3dulo de mensajes enlatados."
+            "pl": "Je\u015bli zostanie ustawiona, modu\u0142 Canned Message b\u0119dzie w\u0142\u0105czony."
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?"
+            "pl": "W\u0142\u0105czone?"
         }
     },
     "canned_message_module_messages": {
         "description": {
             "de": "Vordefinierte Nachrichten f\u00fcr das Modul Canned Message, getrennt durch das Zeichen \"|\".",
             "en": "Pre-defined messages for the Canned Message module separated by '|' character.",
-            "es": "Mensajes predefinidos para el m\u00f3dulo de mensajes enlatados separados por el car\u00e1cter '|'."
+            "pl": "Wst\u0119pnie zdefiniowane komunikaty dla modu\u0142u Canned Message oddzielone znakiem \"|\"."
         },
         "label": {
             "de": "Nachrichten",
             "en": "Messages",
-            "es": "Mensajes"
+            "pl": "Wiadomo\u015bci"
         }
     },
     "canned_message_module_send_bell": {
         "description": {
             "de": "Das Modul \"Canned Message\" sendet auch ein Klingelzeichen mit den Nachrichten. Das Modul Externe Benachrichtigung kann von dieser Funktion profitieren.",
             "en": "The Canned Message module also sends a bell character with the messages. The External Notification module can benefit from this feature.",
-            "es": "El m\u00f3dulo de mensajes enlatados tambi\u00e9n env\u00eda un car\u00e1cter de campana con los mensajes. El m\u00f3dulo de Notificaci\u00f3n Externa puede beneficiarse de esta funci\u00f3n."
+            "pl": "Modu\u0142 Canned Message wysy\u0142a r\u00f3wnie\u017c znak dzwonka wraz z wiadomo\u015bciami. Z funkcji tej mo\u017ce korzysta\u0107 modu\u0142 Powiadomienia zewn\u0119trzne."
         },
         "label": {
             "de": "Send Bell?",
             "en": "Send Bell?",
-            "es": "\u00bfEnviar a Bell?"
+            "pl": "Wys\u0142a\u0107 dzwonek?"
         }
     },
     "canned_message_module_settings": {
         "text": {
             "de": "Einstellungen f\u00fcr das Modul f\u00fcr gespeicherte Nachrichten",
             "en": "Canned Message Module Settings",
-            "es": "Configuraci\u00f3n del m\u00f3dulo de mensajes enlatados"
+            "pl": "Ustawienia modu\u0142u wiadomo\u015bci w puszkach"
         }
     },
     "channel_settings": {
         "text": {
             "de": "Kanal-Einstellungen",
             "en": "Channel Settings",
-            "es": "Configuraci\u00f3n del canal"
+            "pl": "Ustawienia kana\u0142\u00f3w"
         }
     },
     "channels": {
         "text": {
             "de": "Kan\u00e4le",
             "en": "Channels",
-            "es": "Canales"
+            "pl": "Kana\u0142y"
         }
     },
     "charge_current": {
         "description": {
             "de": "Stellt den Strom des Batterieladeger\u00e4ts ein.",
             "en": "Sets the current of the battery charger.",
-            "es": "Establece la corriente del cargador de bater\u00edas."
+            "pl": "Umo\u017cliwia ustawienie nat\u0119\u017cenia pr\u0105du \u0142adowarki akumulator\u00f3w."
         },
         "label": {
             "de": "Ladung Strom",
             "en": "Charge Current",
-            "es": "Corriente de carga"
+            "pl": "Na\u0142aduj pr\u0105d"
         }
     },
     "clear_firmware_files": {
         "text": {
             "de": "Firmware-Dateien l\u00f6schen",
             "en": "Clear Firmware Files",
-            "es": "Borrar archivos de firmware"
+            "pl": "Wyczy\u015b\u0107 pliki oprogramowania uk\u0142adowego"
         }
     },
     "coding_rate": {
         "description": {
             "de": "Der Nenner der Kodierungsrate, d.h. f\u00fcr 4/8 ist der Wert 8. F\u00fcr 5/8 ist der Wert 5.",
             "en": "The denominator of the coding rate. ie for 4/8, the value is 8. 5/8 the value is 5.",
-            "es": "El denominador de la tasa de codificaci\u00f3n. Es decir, para 4/8, el valor es 8. 5/8 el valor es 5."
+            "pl": "Mianownik wsp\u00f3\u0142czynnika kodowania, np. dla 4/8 warto\u015b\u0107 wynosi 8, a dla 5/8 warto\u015b\u0107 wynosi 5."
         },
         "label": {
             "de": "Kodierungsrate",
             "en": "Coding Rate",
-            "es": "Tasa de codificaci\u00f3n"
+            "pl": "Szybko\u015b\u0107 kodowania"
         }
     },
     "configure_from_file": {
         "text": {
             "de": "Aus Datei konfigurieren",
             "en": "Configure From File",
-            "es": "Configurar desde el archivo"
+            "pl": "Konfiguruj z pliku"
         }
     },
     "confirm": {
         "text": {
             "de": "Best\u00e4tigen Sie",
             "en": "Confirm",
-            "es": "Confirmar"
+            "pl": "Potwierd\u017a"
         }
     },
     "confirm_flash_first_part": {
         "text": {
             "de": "Sind Sie sicher, dass Sie das wollen?",
             "en": "Are you sure you want to",
-            "es": "\u00bfEst\u00e1s seguro de que quieres"
+            "pl": "Czy jeste\u015b pewien, \u017ce chcesz"
         }
     },
     "confirm_remove_firmware_files": {
         "text": {
             "de": "Sind Sie sicher, dass Sie die Firmware-Dateien entfernen m\u00f6chten?",
             "en": "Are you sure you want to remove the firmware files?",
-            "es": "\u00bfEst\u00e1s seguro de que quieres eliminar los archivos del firmware?"
+            "pl": "Czy na pewno chcesz usun\u0105\u0107 pliki oprogramowania uk\u0142adowego?"
         }
     },
     "confirm_reset_device": {
         "text": {
             "de": "Sind Sie sicher, dass Sie das Ger\u00e4t zur\u00fccksetzen wollen?",
             "en": "Are you sure you want to reset the device?",
-            "es": "\u00bfEst\u00e1s seguro de que quieres reiniciar el dispositivo?"
+            "pl": "Czy na pewno chcesz zresetowa\u0107 urz\u0105dzenie?"
         }
     },
     "confirm_update_techo_bootloader": {
         "text": {
             "de": "M\u00f6chten Sie den T-Echo-Bootloader aktualisieren?",
             "en": "Do you want to update the T-Echo bootloader?",
-            "es": "\u00bfQuieres actualizar el bootloader de T-Echo?"
+            "pl": "Czy chcesz zaktualizowa\u0107 bootloader T-Echo?"
         }
     },
     "copy": {
         "text": {
             "de": "kopieren.",
             "en": "copy",
-            "es": "copia"
+            "pl": "kopia"
         }
     },
     "could_not_find_partition": {
         "text": {
             "de": "Die Partition konnte nicht gefunden werden.\nDr\u00fccken Sie die RST-Taste ZWEIMAL\nund versuchen Sie dann erneut, die Taste DETECT zu dr\u00fccken.",
             "en": "Could not find the partition.\nPress the RST button TWICE\nthen re-try pressing the DETECT button again.",
-            "es": "No se ha podido encontrar la partici\u00f3n.\nPulse DOS veces el bot\u00f3n RST\ny vuelva a intentar pulsar el bot\u00f3n DETECT de nuevo."
+            "pl": "Nie mo\u017cna znale\u017a\u0107 partycji.\nNaci\u015bnij dwukrotnie przycisk RST\na nast\u0119pnie ponownie spr\u00f3buj nacisn\u0105\u0107 przycisk DETECT."
         }
     },
     "debug_log_enabled": {
         "description": {
             "de": "Standardm\u00e4\u00dfig wird die Protokollierung ausgeschaltet, sobald ein API-Client eine Verbindung herstellt (um die gemeinsame serielle Verbindung ruhig zu halten). Setzen Sie diesen Wert auf true, damit das Debug-Protokoll auch dann ausgegeben wird, wenn die API aktiv ist.",
             "en": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active.",
-            "es": "Por defecto, el registro se desactiva en cuanto se conecta un cliente de la API (para mantener el enlace serie compartido en silencio). Establezca este valor en true para dejar la salida del registro de depuraci\u00f3n incluso cuando la API est\u00e9 activa."
+            "pl": "Domy\u015blnie logowanie jest wy\u0142\u0105czane zaraz po nawi\u0105zaniu po\u0142\u0105czenia przez klienta API (aby zachowa\u0107 cisz\u0119 na wsp\u00f3\u0142dzielonym \u0142\u0105czu szeregowym). Ustaw warto\u015b\u0107 true, aby dziennik debugowania by\u0142 wy\u015bwietlany nawet wtedy, gdy interfejs API jest aktywny."
         },
         "label": {
             "de": "Debug-Protokoll aktiviert?",
             "en": "Debug Log Enabled?",
-            "es": "\u00bfRegistro de depuraci\u00f3n activado?"
+            "pl": "Czy dziennik debugowania jest w\u0142\u0105czony?"
         }
     },
     "delete_this_channel": {
         "text": {
             "de": "Diesen Kanal l\u00f6schen",
             "en": "Delete This Channel",
-            "es": "Borrar este canal"
+            "pl": "Usu\u0144 ten kana\u0142"
         }
     },
     "detected": {
         "text": {
             "de": "Entdeckt",
             "en": "Detected",
-            "es": "Detectado"
+            "pl": "Wykryto"
         }
     },
     "device_backed_up_to_file": {
         "text": {
             "de": "Die Ger\u00e4tekonfiguration wird in einer Datei gesichert.",
             "en": "Device configuration backed up to file.",
-            "es": "La configuraci\u00f3n del dispositivo se ha guardado en un archivo."
+            "pl": "Kopia zapasowa konfiguracji urz\u0105dzenia zapisana w pliku."
         }
     },
     "device_configured_from_file": {
         "text": {
             "de": "Ger\u00e4t aus Datei konfiguriert.",
             "en": "Device configured from file.",
-            "es": "Dispositivo configurado desde el archivo."
+            "pl": "Urz\u0105dzenie skonfigurowane z pliku."
         }
     },
     "device_has_meshtastic": {
         "text": {
             "de": "Verf\u00fcgt das Ger\u00e4t derzeit \u00fcber Meshtastic Version 1.2 oder neuer?",
             "en": "Does the device currently have Meshtastic version 1.2 or newer?",
-            "es": "\u00bfEl dispositivo tiene actualmente la versi\u00f3n 1.2 o m\u00e1s reciente de Meshtastic?"
+            "pl": "Czy urz\u0105dzenie posiada Meshtastic w wersji 1.2 lub nowszej?"
         }
     },
     "device_id": {
         "description": {
             "de": "Ein weltweit eindeutiger Bezeichner f\u00fcr dieses Ger\u00e4t.",
             "en": "A globally unique identifier for this device.",
-            "es": "Un identificador \u00fanico global para este dispositivo."
+            "pl": "Globalnie unikalny identyfikator tego urz\u0105dzenia."
         },
         "label": {
             "de": "Ger\u00e4te-ID",
             "en": "Device ID",
-            "es": "ID del dispositivo"
+            "pl": "Identyfikator urz\u0105dzenia"
         }
     },
     "device_settings": {
         "text": {
             "de": "Ger\u00e4teeinstellungen",
             "en": "Device Settings",
-            "es": "Ajustes del dispositivo"
+            "pl": "Ustawienia urz\u0105dzenia"
         }
     },
     "device_settings_button": {
         "tooltip": {
             "de": "Klicken Sie auf , um die Einstellungen des Ger\u00e4ts anzuzeigen oder zu aktualisieren.",
             "en": "Click to view or update settings on the device.",
-            "es": "Haga clic para ver o actualizar la configuraci\u00f3n del dispositivo."
+            "pl": "Kliknij, aby wy\u015bwietli\u0107 lub zaktualizowa\u0107 ustawienia urz\u0105dzenia."
         }
     },
     "device_was_reset": {
         "text": {
             "de": "Das Ger\u00e4t wurde zur\u00fcckgesetzt. Trennen Sie das Ger\u00e4t vom Stromnetz und schlie\u00dfen Sie es erneut an oder\n\ndr\u00fccken Sie die RESET-Taste.\n\nDas Formular Einstellungen wird nun geschlossen.",
             "en": "The device was reset. May want to unplug and re-plugin the device or\n\npress the RESET button.\n\nThe Settings form will now close.",
-            "es": "El dispositivo se ha reiniciado. Puede querer desconectar y volver a conectar el dispositivo o\n\npulsar el bot\u00f3n RESET.\n\nAhora se cerrar\u00e1 el formulario de configuraci\u00f3n."
+            "pl": "Urz\u0105dzenie zosta\u0142o zresetowane. Mo\u017ce by\u0107 konieczne od\u0142\u0105czenie i ponowne pod\u0142\u0105czenie urz\u0105dzenia lub\n\nnacisn\u0105\u0107 przycisk RESET.\n\nFormularz Ustawienia zostanie teraz zamkni\u0119ty."
         }
     },
     "done_updating_bootloader": {
         "text": {
             "de": "Die Aktualisierung des Bootloaders ist abgeschlossen.\nJetzt sind Sie bereit, mit der Meshtastic-Firmware zu flashen.",
             "en": "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware.",
-            "es": "Terminada la actualizaci\u00f3n del bootloader.\nAhora est\u00e1 listo para flashear con el firmware Meshtastic."
+            "pl": "Zako\u0144czono aktualizacj\u0119 bootloadera.\nTeraz jeste\u015b gotowy do Flashowania z Meshtastic firmware."
         }
     },
     "downlink_enabled": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, werden im Internet gesehene Nachrichten an das lokale Netz weitergeleitet.",
             "en": "If set, messages seen on the internet will be forwarded to the local mesh.",
-            "es": "Si se configura, los mensajes vistos en Internet se reenviar\u00e1n a la malla local."
+            "pl": "Je\u015bli jest ustawione, wiadomo\u015bci widziane w Internecie b\u0119d\u0105 przekazywane do sieci lokalnej."
         },
         "label": {
             "de": "Downlink Aktiviert?",
             "en": "Downlink Enabled?",
-            "es": "\u00bfEnlace descendente habilitado?"
+            "pl": "Downlink Enabled?"
         }
     },
     "export_configuration": {
         "text": {
             "de": "Konfiguration exportieren",
             "en": "Export Configuration",
-            "es": "Configuraci\u00f3n de la exportaci\u00f3n"
+            "pl": "Konfiguracja eksportu"
         }
     },
     "ext_notification_module_about": {
@@ -383,447 +383,447 @@
         "label": {
             "de": "Externes Benachrichtigungsmodul",
             "en": "External Notification Module",
-            "es": "M\u00f3dulo de notificaci\u00f3n externa"
+            "pl": "Zewn\u0119trzny modu\u0142 powiadamiania"
         }
     },
     "ext_notification_module_active": {
         "description": {
             "de": "Wenn gesetzt, erfolgen Benachrichtigungen, wenn der GPIO aktiv-high ist. Wenn nicht gesetzt, erfolgen die Benachrichtigungen, wenn der GPIO aktiv-low ist.",
             "en": "If set, notifications will happen when the the GPIO is active-high. If not set, notifications will happen when GPIO is active-low.",
-            "es": "Si se establece, las notificaciones ocurrir\u00e1n cuando el GPIO est\u00e9 activo-alto. Si no se establece, las notificaciones se producir\u00e1n cuando el GPIO est\u00e9 activo-bajo."
+            "pl": "Je\u015bli jest ustawione, powiadomienia b\u0119d\u0105 wysy\u0142ane, gdy GPIO b\u0119dzie mia\u0142o stan aktywny-wysoki. Je\u015bli nie jest ustawione, powiadomienia b\u0119d\u0105 wysy\u0142ane, gdy GPIO b\u0119dzie mia\u0142o stan aktywny niski."
         },
         "label": {
             "de": "Aktiv hoch?",
             "en": "Active High?",
-            "es": "\u00bfActivo alto?"
+            "pl": "Active High?"
         }
     },
     "ext_notification_module_alert_bell": {
         "description": {
             "de": "L\u00f6sen Sie die Benachrichtigung nur aus, wenn das ASCII-Glockenzeichen in der Nachricht enthalten ist.",
             "en": "Only trigger the notification if the ASCII bell character is in the message.",
-            "es": "S\u00f3lo se activa la notificaci\u00f3n si el car\u00e1cter de campana ASCII est\u00e1 en el mensaje."
+            "pl": "Powiadomienie jest uruchamiane tylko wtedy, gdy w wiadomo\u015bci znajduje si\u0119 znak dzwonka ASCII."
         },
         "label": {
             "de": "Alert Bell?",
             "en": "Alert Bell?",
-            "es": "\u00bfAlerta de campana?"
+            "pl": "Dzwonek alarmowy?"
         }
     },
     "ext_notification_module_alert_message": {
         "description": {
             "de": "Benachrichtigung bei jeder empfangenen Nachricht ausl\u00f6sen.",
             "en": "Trigger notification on any message received.",
-            "es": "Activar la notificaci\u00f3n de cualquier mensaje recibido."
+            "pl": "Wyzwalaj powiadomienia o ka\u017cdej otrzymanej wiadomo\u015bci."
         },
         "label": {
             "de": "Alert Message",
             "en": "Alert Message",
-            "es": "Mensaje de alerta"
+            "pl": "Komunikat alarmowy"
         }
     },
     "ext_notification_module_enabled": {
         "description": {
             "de": "Falls gesetzt, ist das Modul Externe Benachrichtigungen aktiviert.",
             "en": "If set, the External Notifications module is enabled.",
-            "es": "Si se establece, el m\u00f3dulo de notificaciones externas est\u00e1 activado."
+            "pl": "Je\u015bli jest ustawiona, modu\u0142 Powiadomienia zewn\u0119trzne jest w\u0142\u0105czony."
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?"
+            "pl": "W\u0142\u0105czone?"
         }
     },
     "ext_notification_module_output": {
         "description": {
             "de": "GPIO des Ausgangs.",
             "en": "GPIO of the output.",
-            "es": "GPIO de la salida."
+            "pl": "GPIO wyj\u015bcia."
         },
         "label": {
             "de": "Ausgabe",
             "en": "Output",
-            "es": "Salida"
+            "pl": "Wyj\u015bcie"
         }
     },
     "ext_notification_module_output_ms": {
         "description": {
             "de": "Zeitspanne in ms f\u00fcr den Alarm. Standardwert ist 1.000 ms (oder 1 Sekunde).",
             "en": "Amount of time in ms for the alert. Default is 1,000 ms (or 1 second).",
-            "es": "Cantidad de tiempo en ms para la alerta. El valor predeterminado es 1.000 ms (o 1 segundo)."
+            "pl": "Czas trwania alertu w milisekundach. Warto\u015b\u0107 domy\u015blna to 1000 ms (lub 1 sekunda)."
         },
         "label": {
             "de": "Ausgang (ms)",
             "en": "Output (ms)",
-            "es": "Salida (ms)"
+            "pl": "Wyj\u015bcie (ms)"
         }
     },
     "ext_notification_module_settings": {
         "text": {
             "de": "Einstellungen des externen Benachrichtigungsmoduls",
             "en": "External Notification Module Settings",
-            "es": "Configuraci\u00f3n del m\u00f3dulo de notificaci\u00f3n externa"
+            "pl": "Ustawienia zewn\u0119trznego modu\u0142u powiadamiania"
         }
     },
     "factory_reset": {
         "text": {
             "de": "Werksreset",
             "en": "Factory Reset",
-            "es": "Restablecimiento de f\u00e1brica"
+            "pl": "Reset fabryczny"
         }
     },
     "file_was_copied": {
         "text": {
             "de": "Die Datei wurde kopiert.\nWarten Sie auf den Neustart des Ger\u00e4ts.",
             "en": "File was copied.\nWait for the device to reboot.",
-            "es": "El archivo se ha copiado.\nEspere a que el dispositivo se reinicie."
+            "pl": "Plik zosta\u0142 skopiowany.\nZaczekaj na ponowne uruchomienie urz\u0105dzenia."
         }
     },
     "fixed_position": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, befindet sich dieser Knoten an einer festen Position. GPS-Positionsaktualisierungen werden in regelm\u00e4\u00dfigen Abst\u00e4nden gesendet, aber es wird der letzte Breiten-/L\u00e4ngen-/H\u00f6henwert verwendet.",
             "en": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used.",
-            "es": "Si se establece, este nodo est\u00e1 en una posici\u00f3n fija. Las actualizaciones de la posici\u00f3n GPS se enviar\u00e1n a intervalos regulares, pero se utilizar\u00e1 la \u00faltima lat/lon/alt."
+            "pl": "Je\u015bli jest ustawione, w\u0119ze\u0142 ten znajduje si\u0119 na sta\u0142ej pozycji. Aktualizacje pozycji GPS b\u0119d\u0105 wysy\u0142ane w regularnych odst\u0119pach czasu, ale zostanie u\u017cyta ostatnia szeroko\u015b\u0107/lon/alt."
         },
         "label": {
             "de": "Feste Position verwenden?",
             "en": "Use Fixed position?",
-            "es": "\u00bfUtilizar la posici\u00f3n fija?"
+            "pl": "U\u017cyj opcji Sta\u0142a pozycja?"
         }
     },
     "fixed_position_settings": {
         "text": {
             "de": "Feste Positionseinstellungen",
             "en": "Fixed Position Settings",
-            "es": "Ajustes de posici\u00f3n fija"
+            "pl": "Ustawienia sta\u0142ego po\u0142o\u017cenia"
         }
     },
     "flash": {
         "text": {
             "de": "Blitzlicht",
             "en": "Flash",
-            "es": "Flash"
+            "pl": "Flash"
         }
     },
     "flashing": {
         "text": {
             "de": "Blinkend",
             "en": "Flashing",
-            "es": "Intermitente"
+            "pl": "Migaj\u0105ca strona"
         }
     },
     "frequency_offset": {
         "description": {
             "de": "Dieser Parameter ist f\u00fcr fortgeschrittene Benutzer mit fortgeschrittener Testausr\u00fcstung gedacht, wir empfehlen den meisten Benutzern nicht, ihn zu verwenden. Ein Frequenzoffset, der zur berechneten Bandmittenfrequenz addiert wird. Wird zur Korrektur von Quarzkalibrierungsfehlern verwendet.",
             "en": "This parameter is for advanced users with advanced test equipment, we do not recommend most users use it. A frequency offset that is added to to the calculated band center frequency. Used to correct for crystal calibration errors.",
-            "es": "Este par\u00e1metro es para usuarios avanzados con equipos de prueba avanzados, no recomendamos que la mayor\u00eda de los usuarios lo utilicen. Una compensaci\u00f3n de frecuencia que se a\u00f1ade a la frecuencia central de banda calculada. Se utiliza para corregir los errores de calibraci\u00f3n del cristal."
+            "pl": "Ten parametr jest przeznaczony dla zaawansowanych u\u017cytkownik\u00f3w dysponuj\u0105cych zaawansowanym sprz\u0119tem testowym, nie zaleca si\u0119 jego stosowania przez wi\u0119kszo\u015b\u0107 u\u017cytkownik\u00f3w. Przesuni\u0119cie cz\u0119stotliwo\u015bci, kt\u00f3re jest dodawane do obliczonej cz\u0119stotliwo\u015bci \u015brodkowej pasma. S\u0142u\u017cy do korygowania b\u0142\u0119d\u00f3w kalibracji kryszta\u0142\u00f3w."
         },
         "label": {
             "de": "Frequenz-Offset",
             "en": "Frequency Offset",
-            "es": "Desplazamiento de la frecuencia"
+            "pl": "Przesuni\u0119cie cz\u0119stotliwo\u015bci"
         }
     },
     "full_step1": {
         "text": {
             "de": "Voller Blitz Schritt 1 von 4",
             "en": "Full flash step 1 of 4",
-            "es": "Flash completo paso 1 de 4"
+            "pl": "Pe\u0142ny b\u0142ysk krok 1 z 4"
         }
     },
     "full_step1_done": {
         "text": {
             "de": "Volles Blitzen Schritt 1 von 4 ist erledigt",
             "en": "Full flash step 1 of 4 is done",
-            "es": "El paso 1 de 4 de Full Flash est\u00e1 hecho"
+            "pl": "Wykonano pe\u0142ny flash krok 1 z 4"
         }
     },
     "full_step2_done": {
         "text": {
             "de": "Volles Blitzen Schritt 2 von 4 ist erledigt",
             "en": "Full flash step 2 of 4 is done",
-            "es": "El paso 2 de 4 de Full Flash est\u00e1 hecho"
+            "pl": "Wykonano pe\u0142ny flash krok 2 z 4"
         }
     },
     "full_step3_done": {
         "text": {
             "de": "Volles Blitzen Schritt 3 von 4 ist erledigt",
             "en": "Full flash step 3 of 4 is done",
-            "es": "El paso 3 de 4 de Full Flash est\u00e1 hecho"
+            "pl": "Wykonano pe\u0142ny flash krok 3 z 4"
         }
     },
     "full_step4_done": {
         "text": {
             "de": "Volles Blitzen Schritt 4 von 4 ist erledigt",
             "en": "Full flash step 4 of 4 is done",
-            "es": "El paso 4 de 4 de Full Flash est\u00e1 hecho"
+            "pl": "Wykonano krok 4 z 4 pe\u0142nej lampy b\u0142yskowej"
         }
     },
     "get_lat_lon_using_ip": {
         "text": {
             "de": "Lat/Lon \u00fcber Ihre IP abrufen",
             "en": "Get Lat/Lon using your IP",
-            "es": "Obtenga el Lat/Lon usando su IP"
+            "pl": "Uzyskaj szeroko\u015b\u0107 i d\u0142ugo\u015b\u0107 geograficzn\u0105 przy u\u017cyciu adresu IP"
         }
     },
     "get_versions": {
         "text": {
             "de": "VERSIONEN ERHALTEN",
             "en": "GET VERSIONS",
-            "es": "OBTENER VERSIONES"
+            "pl": "ZNAJD\u0179 WERSJE"
         },
         "tooltip": {
             "de": "Klicken Sie hier, um nach neuerer Firmware zu suchen.",
             "en": "Click to check for more recent firmware.",
-            "es": "Haga clic para comprobar si hay un firmware m\u00e1s reciente."
+            "pl": "Kliknij, aby sprawdzi\u0107 dost\u0119pno\u015b\u0107 nowszego oprogramowania sprz\u0119towego."
         }
     },
     "gps_accept_2d": {
         "description": {
             "de": "Wenn gesetzt, werden 2D-GPS-Fixes akzeptiert. Standardm\u00e4\u00dfig werden nur 3D-Fixes akzeptiert. Bei einer 2D-Fixierung sind die H\u00f6henwerte unzuverl\u00e4ssig und werden ausgeschlossen.",
             "en": "If set, accept 2D GPS fixes. By default, only 3D fixes are accepted. During a 2D fix, altitude values are unreliable and will be excluded.",
-            "es": "Si se establece, acepta los puntos de GPS en 2D. Por defecto, s\u00f3lo se aceptan fijaciones en 3D. Durante un fix 2D, los valores de altitud no son fiables y ser\u00e1n excluidos."
+            "pl": "Je\u015bli jest ustawione, akceptuj ustalenia GPS 2D. Domy\u015blnie akceptowane s\u0105 tylko poprawki 3D. Podczas ustalania 2D warto\u015bci wysoko\u015bci s\u0105 niewiarygodne i nie b\u0119d\u0105 uwzgl\u0119dniane."
         },
         "label": {
             "de": "GPS Accept 2D Fix?",
             "en": "GPS Accept 2D Fix?",
-            "es": "\u00bfEl GPS acepta la fijaci\u00f3n 2D?"
+            "pl": "GPS akceptuje ustalenie pozycji 2D?"
         }
     },
     "gps_format": {
         "description": {
             "de": "Wie die GPS-Koordinaten auf dem OLED-Bildschirm angezeigt werden.",
             "en": "How the GPS coordinates are displayed on the OLED screen.",
-            "es": "C\u00f3mo se muestran las coordenadas GPS en la pantalla OLED."
+            "pl": "Spos\u00f3b wy\u015bwietlania wsp\u00f3\u0142rz\u0119dnych GPS na ekranie OLED."
         },
         "label": {
             "de": "GPS-Koordinatenformat",
             "en": "GPS Coordinate Format",
-            "es": "Formato de coordenadas GPS"
+            "pl": "Format wsp\u00f3\u0142rz\u0119dnych GPS"
         }
     },
     "gps_max_dop": {
         "description": {
             "de": "Akzeptierte maximale GPS-Pr\u00e4zisionsverd\u00fcnnung (DOP). Legen Sie einen Schwellenwert f\u00fcr die Zur\u00fcckweisung von GPS-Messwerten fest, der auf ihrer Genauigkeit im Verh\u00e4ltnis zur GPS-Nenngenauigkeit (die normalerweise ~3 m betr\u00e4gt) basiert. L\u00f6sungen, die \u00fcber diesem Wert liegen, werden als wiederholbare Fehler behandelt. Der sinnvolle Bereich liegt zwischen 1 - 64 (3m - <~200m). Standardm\u00e4\u00dfig (wenn Null) werden alle GPS-Messwerte akzeptiert.",
             "en": "GPS maximum dilution of precition (DOP) accepted. Set a rejection threshold for GPS readings based on their precision, relative to the GPS rated accuracy (which is typically ~3m). Solutions above this value will be treated as re-tryable errors. Useful range is between 1 - 64 (3m - <~200m). By default, (if zero), accept all GPS readings.",
-            "es": "M\u00e1xima diluci\u00f3n de precisi\u00f3n (DOP) aceptada por el GPS. Establezca un umbral de rechazo para las lecturas del GPS basado en su precisi\u00f3n, en relaci\u00f3n con la precisi\u00f3n nominal del GPS (que suele ser de ~3m). Las soluciones por encima de este valor ser\u00e1n tratadas como errores reintentables. El rango \u00fatil est\u00e1 entre 1 - 64 (3m - <~200m). Por defecto, (si es cero), acepta todas las lecturas del GPS."
+            "pl": "Maksymalna akceptacja rozcie\u0144czenia predykcji GPS (DOP). Ustaw pr\u00f3g odrzucania dla odczyt\u00f3w GPS na podstawie ich dok\u0142adno\u015bci w stosunku do dok\u0142adno\u015bci znamionowej GPS (kt\u00f3ra zwykle wynosi ~3 m). Rozwi\u0105zania powy\u017cej tej warto\u015bci b\u0119d\u0105 traktowane jako b\u0142\u0119dy mo\u017cliwe do ponownego sprawdzenia. Przydatny zakres to 1 - 64 (3m - <~200m). Domy\u015blnie (je\u015bli wynosi zero) akceptuje wszystkie odczyty GPS."
         },
         "label": {
             "de": "GPS Max DOP",
             "en": "GPS Max DOP",
-            "es": "GPS Max DOP"
+            "pl": "GPS Maks. DOP"
         }
     },
     "gps_operation": {
         "description": {
             "de": "Wie die GPS-Hardware in diesem Ger\u00e4t betrieben wird.",
             "en": "How the GPS hardware in this unit is operated.",
-            "es": "C\u00f3mo funciona el hardware del GPS en esta unidad."
+            "pl": "Jak dzia\u0142a sprz\u0119t GPS w tym urz\u0105dzeniu."
         },
         "label": {
             "de": "GPS-Betrieb",
             "en": "GPS Operation",
-            "es": "Funcionamiento del GPS"
+            "pl": "Dzia\u0142anie GPS"
         }
     },
     "help": {
         "text": {
             "de": "Hilfe",
             "en": "Help",
-            "es": "Ayuda"
+            "pl": "Pomoc"
         }
     },
     "help_button": {
         "tooltip": {
             "de": "Klicken Sie f\u00fcr Hilfe | Dr\u00fccken Sie H f\u00fcr Hotkeys.",
             "en": "Click for help | Press H for hotkeys.",
-            "es": "Haga clic para obtener ayuda | Pulse H para las teclas de acceso r\u00e1pido."
+            "pl": "Kliknij, aby uzyska\u0107 pomoc | Naci\u015bnij klawisz H, aby uzyska\u0107 klawisze skr\u00f3t\u00f3w."
         }
     },
     "help_text": {
         "text": {
             "de": "Wenn Sie Probleme beim Flashen des Ger\u00e4ts haben, vergewissern Sie sich, dass nur ein <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>unterst\u00fctztes Ger\u00e4t</a> angeschlossen ist und dass keine anderen Anwendungen diesen Kommunikationsanschluss verwenden.<br><br>Wenn Sie immer noch Probleme haben, ziehen Sie den Stecker des Ger\u00e4ts ab und schlie\u00dfen Sie es dann wieder an.<br><br>Wenn die Probleme weiterhin bestehen, erw\u00e4gen Sie die Verwendung eines anderen USB-Anschlusses, vielleicht eines externen USB-Hubs oder sogar eines anderen Computers und/oder eines anderen Betriebssystems.<br><br>Wenn die Probleme weiterhin bestehen, m\u00fcssen Sie m\u00f6glicherweise einen Treiber installieren.<br>Weitere Informationen finden Sie unter <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a>. Neuere T-Lora und neuere T-Beams ben\u00f6tigen in der Regel den Treiber CH9102, der sich in der Datei CH343SER.ZIP befindet. Der RAK 11200 ben\u00f6tigt m\u00f6glicherweise den CP210X-Treiber.<br><u>Windows</u>: Pr\u00fcfen Sie dies, indem Sie den Ger\u00e4temanager aufrufen und nach \"gelben\" Warnanzeigen Ausschau halten.<br><u>Mac</u>: Pr\u00fcfen Sie, indem Sie oben links auf '\u00dcber diesen Mac', 'Systembericht', 'USB' klicken. Je nach Ger\u00e4t wird dort ein CP2102 USB to UART Bridge Controller angezeigt.<br><u>Linux</u>: Linux ben\u00f6tigt in der Regel keine Treiber f\u00fcr Meshtastic-Ger\u00e4te. Wenn Sie einen Computer f\u00fcr das anf\u00e4ngliche Flashen zur Verf\u00fcgung haben, sollten Sie dieses Betriebssystem verwenden.<br><br>Wenn Sie immer noch Probleme haben, versuchen Sie, den PC neu zu starten.<br><br>Wenn Sie einen 'Critical Fault #6' auf einem T-Beam erhalten, bedeutet das wahrscheinlich, dass Sie die Firmware v1.1 oder v2.1.1.6 verwenden m\u00fcssen.<br><br>Treten Sie der <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord Gruppe</a> bei und stellen Sie Fragen im #help channel.",
             "en": "If having issues flashing the device, be sure there is only one <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>supported device</a> connected and no other applications are using that communications port.<br><br>If still having problems, unplug the device, then re-plugin the device.<br><br>If still having problems, consider using a different usb port, perhaps an external usb hub or even a different computer and/or different operating system.<br><br>If still having problems, may need to install driver.<br>See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a> for more info. Newer T-Lora and newer T-Beams tend to need the CH9102 driver, which is in the CH343SER.ZIP file. The RAK 11200 may need the CP210X driver.<br><u>Windows</u>: Check by going into DeviceManager and looking for any 'yellow' warning indicators.<br><u>Mac</u>: Check by clicking in top left corner, 'About This Mac', 'System Report', 'USB'. Depending on which device it may show a CP2102 USB to UART Bridge Controller.<br><u>Linux</u>: Linux tends to not need drivers for Meshtastic devices. If you have a computer available for the initial flashing, consider using this OS.<br><br>If still having problems, try rebooting the pc.<br><br>If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use v1.1 or v2.1.1.6 firmware.<br><br>Join the <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord group</a> and post questions in #help channel.",
-            "es": "Si tiene problemas para flashear el dispositivo, aseg\u00farese de que s\u00f3lo hay un <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>dispositivo compatible</a> conectado y de que ninguna otra aplicaci\u00f3n est\u00e1 utilizando ese puerto de comunicaciones.<br><br>Si sigue teniendo problemas, desconecte el dispositivo y vuelva a conectarlo.<br><br>Si sigue teniendo problemas, considere la posibilidad de utilizar un puerto USB diferente, tal vez un concentrador USB externo o incluso un ordenador diferente y/o un sistema operativo diferente.<br><br>Si sigue teniendo problemas, es posible que tenga que instalar un controlador.<br>Vea <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a> para obtener m\u00e1s informaci\u00f3n. Los nuevos T-Lora y los nuevos T-Beam suelen necesitar el controlador CH9102, que se encuentra en el archivo CH343SER.ZIP. El RAK 11200 puede necesitar el controlador CP210X.<br><u>Windows</u>: Compruebe entrando en DeviceManager y buscando cualquier indicador de advertencia \"amarillo\".<br><u>Mac</u>: Compruebe haciendo clic en la esquina superior izquierda, 'Acerca de este Mac', 'Informe del sistema', 'USB'. Dependiendo del dispositivo puede mostrar un controlador de puente USB a UART CP2102.<br><u>Linux</u>: Linux tiende a no necesitar controladores para los dispositivos Meshtastic. Si tienes un ordenador disponible para el flasheo inicial, considera usar este sistema operativo.<br><br>Si sigues teniendo problemas, intenta reiniciar el pc.<br><br>Si obtienes un 'Critical Fault #6' en un T-Beam, probablemente significa que necesitas usar el firmware v1.1 o v2.1.1.6.<br><br>\u00danete al grupo de discordia <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic</a> y publica tus preguntas en el canal #help."
+            "pl": "Je\u015bli nadal wyst\u0119puj\u0105 problemy z flashowaniem urz\u0105dzenia, upewnij si\u0119, \u017ce pod\u0142\u0105czone jest tylko jedno <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>obs\u0142ugiwane urz\u0105dzenie</a> i \u017cadne inne aplikacje nie korzystaj\u0105 z tego portu komunikacyjnego.<br><br>Je\u015bli nadal wyst\u0119puj\u0105 problemy, od\u0142\u0105cz urz\u0105dzenie, a nast\u0119pnie pod\u0142\u0105cz je ponownie.<br><br>Je\u015bli nadal wyst\u0119puj\u0105 problemy, rozwa\u017c u\u017cycie innego portu usb, by\u0107 mo\u017ce zewn\u0119trznego koncentratora usb lub nawet innego komputera i/lub innego systemu operacyjnego.<br><br>Je\u015bli nadal wyst\u0119puj\u0105 problemy, by\u0107 mo\u017ce trzeba b\u0119dzie zainstalowa\u0107 sterownik.<br>Wi\u0119cej informacji mo\u017cna znale\u017a\u0107 w <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a>. Nowsze modele T-Lora i nowsze modele T-Beams wymagaj\u0105 sterownika CH9102, kt\u00f3ry znajduje si\u0119 w pliku CH343SER.ZIP. Model RAK 11200 mo\u017ce potrzebowa\u0107 sterownika CP210X.<br><u>Windows</u>: Sprawd\u017a, wchodz\u0105c do DeviceManager i szukaj\u0105c wszelkich \"\u017c\u00f3\u0142tych\" wska\u017anik\u00f3w ostrzegawczych.<br><u>Mac</u>: Sprawd\u017a, klikaj\u0105c w lewym g\u00f3rnym rogu, \"About This Mac\", \"System Report\", \"USB\". W zale\u017cno\u015bci od urz\u0105dzenia mo\u017ce tam by\u0107 widoczny kontroler mostka CP2102 USB to UART Bridge Controller.<br><u>Linux</u>: Linux zazwyczaj nie potrzebuje sterownik\u00f3w do urz\u0105dze\u0144 Meshtastic. Je\u015bli masz komputer dost\u0119pny do pierwszego flashowania, rozwa\u017c u\u017cycie tego systemu operacyjnego.<br><br>Je\u015bli nadal masz problemy, spr\u00f3buj zrestartowa\u0107 komputer.<br><br>Je\u015bli otrzymujesz 'B\u0142\u0105d krytyczny #6' na wi\u0105zce T, prawdopodobnie oznacza to, \u017ce musisz u\u017cy\u0107 firmware v1.1 lub v2.1.1.6.<br><br>Do\u0142\u0105cz do <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>grupy Discord Meshtastic</a> i zadawaj pytania na kanale #help."
         }
     },
     "hop_limit": {
         "description": {
             "de": "Hat Vorrang vor HOPS_RELIABLE und legt die maximale Anzahl von Hops fest. Diese kann nicht gr\u00f6\u00dfer als 7 sein.",
             "en": "Overrides HOPS_RELIABLE and sets the maximum number of hops. This cannot be greater than 7.",
-            "es": "Anula HOPS_RELIABLE y establece el n\u00famero m\u00e1ximo de saltos. No puede ser superior a 7."
+            "pl": "Zast\u0119puje HOPS_RELIABLE i ustawia maksymaln\u0105 liczb\u0119 w\u0119z\u0142\u00f3w. Liczba ta nie mo\u017ce by\u0107 wi\u0119ksza ni\u017c 7."
         },
         "label": {
             "de": "Hopfengrenze",
             "en": "Hop Limit",
-            "es": "L\u00edmite de salto"
+            "pl": "Limit skoku"
         }
     },
     "hotkeys": {
         "text": {
             "de": "Tastenkombinationen",
             "en": "Hotkeys",
-            "es": "Teclas de acceso r\u00e1pido"
+            "pl": "Klawisze skr\u00f3t\u00f3w"
         }
     },
     "hotkeys_text": {
         "text": {
             "de": "A - Erweiterte Optionen\nD - Erkennen\nG - Versionen erhalten\nH - Hotkeys\nS - Einstellungen\nT - Tipps\n Q - Beenden",
             "en": "A - Advanced options\nD - Detect\nG - Get versions\nH - Hotkeys\nS - Settings\nT - Tips\n Q - Quit",
-            "es": "A - Opciones avanzadas\nD - Detectar\nG - Obtener versiones\nH - Teclas de acceso r\u00e1pido\nS - Ajustes\nT - Consejos\n Q - Abandonar"
+            "pl": "A - Opcje zaawansowane\nD - Wykryj\nG - Uzyskaj wersje\nH - Klawisze skr\u00f3t\u00f3w\nS - Ustawienia\nT - Porady\n Q - Zako\u0144cz"
         }
     },
     "hw_model": {
         "description": {
             "de": "Das Hardwaremodell, wie es von Meshtastic definiert wurde.",
             "en": "The hardware model as defined by Meshtastic.",
-            "es": "El modelo de hardware definido por Meshtastic."
+            "pl": "Model sprz\u0119tu zdefiniowany przez Meshtastic."
         },
         "label": {
             "de": "Hardware-Modell",
             "en": "Hardware Model",
-            "es": "Modelo de hardware"
+            "pl": "Model sprz\u0119tu"
         }
     },
     "information": {
         "text": {
             "de": "Informationen",
             "en": "Information",
-            "es": "Informaci\u00f3n"
+            "pl": "Informacje"
         }
     },
     "is_always_powered": {
         "description": {
             "de": "Umgeht den Logikblock zur Feststellung, ob das Ger\u00e4t mit Strom versorgt wird oder nicht. N\u00fctzlich f\u00fcr Ger\u00e4te mit heiklen ADC-Problemen an den Batterie-Sense-Pins.",
             "en": "Circumvents the logic block for determining whether the device is powered or not. Useful for devices with finicky ADC issues on the battery sense pins.",
-            "es": "Evita el bloque l\u00f3gico para determinar si el dispositivo est\u00e1 alimentado o no. \u00datil para dispositivos con problemas de ADC en los pines de detecci\u00f3n de la bater\u00eda."
+            "pl": "Omija blok logiczny s\u0142u\u017c\u0105cy do okre\u015blania, czy urz\u0105dzenie jest zasilane, czy nie. Przydatne w przypadku urz\u0105dze\u0144 z problemami z przetwornikiem ADC na stykach wyczuwaj\u0105cych bateri\u0119."
         },
         "label": {
             "de": "Ist immer eingeschaltet?",
             "en": "Is Always Powered?",
-            "es": "\u00bfSiempre tiene energ\u00eda?"
+            "pl": "Czy zawsze jest zasilany?"
         }
     },
     "is_licensed": {
         "description": {
             "de": "Wenn dieser Benutzer ein lizenzierter Betreiber ist, setzen Sie dieses Flag. Au\u00dferdem sollte \"long_name\" die Lizenznummer sein.",
             "en": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number.",
-            "es": "Si este usuario es un operador con licencia, establezca esta bandera. Adem\u00e1s, 'nombre_largo' debe ser su n\u00famero de licencia."
+            "pl": "Je\u015bli ten u\u017cytkownik jest licencjonowanym operatorem, ustaw t\u0119 flag\u0119. Ponadto \"long_name\" powinien by\u0107 numerem licencji."
         },
         "label": {
             "de": "Ist er lizenziert?",
             "en": "Is Licensed?",
-            "es": "\u00bfTiene licencia?"
+            "pl": "Czy jest licencjonowany?"
         }
     },
     "is_lora_tx_disabled": {
         "description": {
             "de": "Deaktiviert das Senden vom LoRa-Funkger\u00e4t. N\u00fctzlich f\u00fcr Hot-Swapping-Antennen und andere Tests. Standardm\u00e4\u00dfig auf false eingestellt.",
             "en": "Disable TX from the LoRa radio. Useful for hot-swapping antennas and other tests. Defaults to false.",
-            "es": "Desactiva la transmisi\u00f3n de la radio LoRa. \u00datil para intercambiar antenas en caliente y otras pruebas. Por defecto es falso."
+            "pl": "Wy\u0142\u0105czenie nadawania przez radio LoRa. Przydatne przy wymianie anten i innych testach. Domy\u015blnie ustawiona na false."
         },
         "label": {
             "de": "Ist LoRa TX deaktiviert?",
             "en": "Is LoRa TX Disabled?",
-            "es": "\u00bfEst\u00e1 LoRa TX deshabilitado?"
+            "pl": "Czy LoRa TX jest wy\u0142\u0105czona?"
         }
     },
     "is_low_power": {
         "description": {
             "de": "Wenn dieser Wert gesetzt ist, wird das Ger\u00e4t von einer Schwachstromquelle (z.B. Solar) gespeist. Auch wenn es so aussieht, als ob Strom flie\u00dft, sollten wir versuchen, den Stromverbrauch so gering wie m\u00f6glich zu halten. Setzen Sie dies nicht, wenn 'is_router' aktiviert ist.",
             "en": "If set, device is powered from a low-current source (i.e. solar), so even if it looks like we have power flowing in we should try to minimize power consumption as much as possible. Do not set this if 'is_router' is enabled.",
-            "es": "Si se establece, el dispositivo se alimenta de una fuente de baja corriente (por ejemplo, solar), por lo que incluso si parece que tenemos energ\u00eda fluyendo debemos tratar de minimizar el consumo de energ\u00eda tanto como sea posible. No lo establezcas si 'is_router' est\u00e1 activado."
+            "pl": "Je\u015bli ustawione, urz\u0105dzenie jest zasilane ze \u017ar\u00f3d\u0142a niskopr\u0105dowego (np. z energii s\u0142onecznej), wi\u0119c nawet je\u015bli wygl\u0105da na to, \u017ce zasilanie jest doprowadzane, powinni\u015bmy stara\u0107 si\u0119 jak najbardziej zminimalizowa\u0107 zu\u017cycie energii. Nie nale\u017cy ustawia\u0107 tej opcji, je\u015bli w\u0142\u0105czona jest opcja \"is_router\"."
         },
         "label": {
             "de": "Stromversorgung durch Low Power (Solar)?",
             "en": "Powered by Low Power (solar)?",
-            "es": "\u00bfAccionamiento por baja potencia (solar)?"
+            "pl": "Czy zasilane energi\u0105 o niskim poborze mocy (s\u0142oneczn\u0105)?"
         }
     },
     "is_power_saving": {
         "description": {
             "de": "Falls gesetzt, werden die Energiesparfunktionen des esp32-Ger\u00e4ts aktiviert.",
             "en": "If set, enable power saving features of the esp32 device.",
-            "es": "Si se establece, activa las funciones de ahorro de energ\u00eda del dispositivo esp32."
+            "pl": "Je\u015bli jest ustawione, w\u0142\u0105cza funkcje oszcz\u0119dzania energii w urz\u0105dzeniu esp32."
         },
         "label": {
             "de": "Wird Strom gespart?",
             "en": "Is Power Saving?",
-            "es": "\u00bfEs el ahorro de energ\u00eda?"
+            "pl": "Czy oszcz\u0119dzanie energii jest mo\u017cliwe?"
         }
     },
     "is_router": {
         "description": {
             "de": "Funktionieren wir als Router? \u00c4ndert das Verhalten auf folgende Weise: Das Ger\u00e4t geht nur bei kritisch niedrigem Batteriestand in den Ruhezustand (d. h. es versucht immer, f\u00fcr das Netz am Leben zu bleiben). In Zukunft werden Routing-Entscheidungen Pakete bevorzugt \u00fcber Knoten mit diesem Attribut leiten (da eine gute Sichtverbindung vorausgesetzt wird).",
             "en": "Are we operating as a router? Changes behavior in the following ways: The device will only sleep for critically low battery level (i.e. always tries to stay alive for the mesh). In the future, routing decisions will preferentially route packets through nodes with this attribute (because assumed good line of sight).",
-            "es": "\u00bfEstamos operando como un router? Cambia el comportamiento de las siguientes maneras: El dispositivo s\u00f3lo dormir\u00e1 cuando el nivel de bater\u00eda sea cr\u00edticamente bajo (es decir, siempre intentar\u00e1 mantenerse vivo para la malla). En el futuro, las decisiones de enrutamiento dirigir\u00e1n preferentemente los paquetes a trav\u00e9s de nodos con este atributo (porque se supone que hay una buena l\u00ednea de visi\u00f3n)."
+            "pl": "Czy dzia\u0142amy jako router? Zmienia zachowanie w nast\u0119puj\u0105cy spos\u00f3b: Urz\u0105dzenie b\u0119dzie usypia\u0107 tylko w przypadku krytycznie niskiego poziomu baterii (tzn. zawsze b\u0119dzie pr\u00f3bowa\u0142o pozosta\u0107 przy \u017cyciu dla sieci mesh). W przysz\u0142o\u015bci decyzje dotycz\u0105ce routingu b\u0119d\u0105 preferencyjnie kierowa\u0107 pakiety przez w\u0119z\u0142y z tym atrybutem (ze wzgl\u0119du na zak\u0142adan\u0105 dobr\u0105 lini\u0119 widzenia)."
         },
         "label": {
             "de": "Ist Router?",
             "en": "Is Router?",
-            "es": "\u00bfEs el router?"
+            "pl": "Czy Router?"
         }
     },
     "label_device": {
         "tooltip": {
             "de": "Klicken Sie hier, um mehr \u00fcber die von Meshtastic unterst\u00fctzten Ger\u00e4te zu erfahren.",
             "en": "Click to see more about Meshtastic supported devices.",
-            "es": "Haga clic para ver m\u00e1s sobre los dispositivos compatibles con Meshtastic."
+            "pl": "Kliknij, aby dowiedzie\u0107 si\u0119 wi\u0119cej o obs\u0142ugiwanych urz\u0105dzeniach Meshtastic."
         }
     },
     "label_version": {
         "tooltip": {
             "de": "Klicken Sie hier, um mehr \u00fcber Firmware-Versionen zu erfahren.",
             "en": "Click to see more about firmware releases.",
-            "es": "Haga clic para ver m\u00e1s sobre las versiones de firmware."
+            "pl": "Kliknij, aby dowiedzie\u0107 si\u0119 wi\u0119cej o wersjach oprogramowania sprz\u0119towego."
         }
     },
     "lat": {
         "description": {
             "de": "Der Breitengrad ist die Messung der Entfernung n\u00f6rdlich oder s\u00fcdlich des \u00c4quators. Er wird mit 180 imagin\u00e4ren Linien gemessen, die in Ost-West-Richtung parallel zum \u00c4quator um die Erde kreisen.",
             "en": "Latitude is the measurement of distance north or south of the Equator. It is measured with 180 imaginary lines that form circles around the Earth east-west, parallel to the Equator.",
-            "es": "La latitud es la medida de la distancia al norte o al sur del Ecuador. Se mide con 180 l\u00edneas imaginarias que forman c\u00edrculos alrededor de la Tierra de este a oeste, paralelos al Ecuador."
+            "pl": "Szeroko\u015b\u0107 geograficzna jest miar\u0105 odleg\u0142o\u015bci na p\u00f3\u0142noc lub po\u0142udnie od r\u00f3wnika. Mierzy si\u0119 j\u0105 za pomoc\u0105 180 wyimaginowanych linii, kt\u00f3re tworz\u0105 okr\u0119gi wok\u00f3\u0142 Ziemi w kierunku wsch\u00f3d-zach\u00f3d, r\u00f3wnolegle do r\u00f3wnika."
         },
         "label": {
             "de": "Breitengrad",
             "en": "Latitude",
-            "es": "Latitud"
+            "pl": "Szeroko\u015b\u0107 geograficzna"
         }
     },
     "location_share": {
         "description": {
             "de": "Wie der Standort mit anderen Knoten (oder dem lokalen Telefon) geteilt wird.",
             "en": "How location is shared with other nodes (or the local phone).",
-            "es": "C\u00f3mo se comparte la ubicaci\u00f3n con otros nodos (o el tel\u00e9fono local)."
+            "pl": "W jaki spos\u00f3b lokalizacja jest udost\u0119pniana innym w\u0119z\u0142om (lub telefonowi lokalnemu)."
         },
         "label": {
             "de": "Standort-Sharing",
             "en": "Location sharing",
-            "es": "Compartir la ubicaci\u00f3n"
+            "pl": "Udost\u0119pnianie lokalizacji"
         }
     },
     "lon": {
         "description": {
             "de": "Der L\u00e4ngengrad ist eine geografische Koordinate, die die Ost-West-Position eines Punktes auf der Erdoberfl\u00e4che angibt.",
             "en": "Longitude is a geographic coordinate that specifies the east\u2013west position of a point on the Earth's surface.",
-            "es": "La longitud es una coordenada geogr\u00e1fica que especifica la posici\u00f3n este-oeste de un punto en la superficie de la Tierra."
+            "pl": "D\u0142ugo\u015b\u0107 geograficzna to wsp\u00f3\u0142rz\u0119dna geograficzna okre\u015blaj\u0105ca po\u0142o\u017cenie punktu na powierzchni Ziemi w kierunku wsch\u00f3d-zach\u00f3d."
         },
         "label": {
             "de": "L\u00e4ngengrad",
             "en": "Longitude",
-            "es": "Longitude"
+            "pl": "D\u0142ugo\u015b\u0107 geograficzna"
         }
     },
     "long_name": {
         "description": {
             "de": "Vollst\u00e4ndiger Name des Ger\u00e4ts. Wenn \"is_licensed\" aktiviert ist, sollte dieser Wert die Ham-Lizenznummer sein.",
             "en": "Full name for the device. If 'is_licensed' is enabled, this value should be the Ham license number.",
-            "es": "Nombre completo del dispositivo. Si 'is_licensed' est\u00e1 activado, este valor debe ser el n\u00famero de licencia de Ham."
+            "pl": "Pe\u0142na nazwa urz\u0105dzenia. Je\u015bli w\u0142\u0105czona jest opcja \"is_licensed\", warto\u015b\u0107 ta powinna by\u0107 numerem licencji Ham."
         },
         "label": {
             "de": "Langer Name",
             "en": "Long Name",
-            "es": "Nombre largo"
+            "pl": "Nazwa d\u0142uga"
         },
         "max_size": 40
     },
@@ -831,143 +831,143 @@
         "description": {
             "de": "Der leichte Ruhezustand (LS) ist eine Option des Energieverwaltungssystems. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 3600 Sekunden (oder 1 Stunde).",
             "en": "Light sleep (LS) is a power management state machine option. See power management for details. 0 for default of 3600 seconds (or 1 hour).",
-            "es": "La suspensi\u00f3n ligera (LS) es una opci\u00f3n de la m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Consulte la gesti\u00f3n de la energ\u00eda para obtener m\u00e1s detalles. 0 para el valor por defecto de 3600 segundos (o 1 hora)."
+            "pl": "Lekki sen (LS) to opcja maszyny stanowej zarz\u0105dzania energi\u0105. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 oznacza warto\u015b\u0107 domy\u015bln\u0105 3600 sekund (lub 1 godzin\u0119)."
         },
         "label": {
             "de": "LS (Sekunden)",
             "en": "LS (seconds)",
-            "es": "LS (segundos)"
+            "pl": "LS (sekundy)"
         }
     },
     "macaddr": {
         "description": {
             "de": "Die Adresse des Ger\u00e4ts.",
             "en": "The address of the device.",
-            "es": "La direcci\u00f3n del dispositivo."
+            "pl": "Adres urz\u0105dzenia."
         },
         "label": {
             "de": "MAC-Adresse",
             "en": "MAC Address",
-            "es": "Direcci\u00f3n MAC"
+            "pl": "Adres MAC"
         }
     },
     "mesh_sds_timeout_secs": {
         "description": {
             "de": "Super Deep Sleep (SDS) ist eine Option der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr die Standardeinstellung von 7200 Sekunden (oder zwei Stunden), MAXUINT oder 4294967295 f\u00fcr deaktiviert.",
             "en": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 seconds (or two hours), MAXUINT or 4294967295 for disabled.",
-            "es": "El sue\u00f1o s\u00faper profundo (SDS) es una opci\u00f3n de la m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Ver gesti\u00f3n de energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 7200 segundos (o dos horas), MAXUINT o 4294967295 para desactivado."
+            "pl": "Super g\u0142\u0119boki sen (SDS) to opcja maszyny stanowej zarz\u0105dzania energi\u0105. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 dla warto\u015bci domy\u015blnej 7200 sekund (lub dwie godziny), MAXUINT lub 4294967295 dla warto\u015bci wy\u0142\u0105czonej."
         },
         "label": {
             "de": "Mesh SDS Timeout (Sekunden)",
             "en": "Mesh SDS Timeout (seconds)",
-            "es": "Tiempo de espera de la malla SDS (segundos)"
+            "pl": "Siatka SDS Timeout (sekundy)"
         }
     },
     "message": {
         "description": {
             "de": "Die zu sendende Nachricht.",
             "en": "The message to be sent.",
-            "es": "El mensaje a enviar."
+            "pl": "Komunikat, kt\u00f3ry ma zosta\u0107 wys\u0142any."
         },
         "label": {
             "de": "Nachricht",
             "en": "Message",
-            "es": "Mensaje"
+            "pl": "Komunikat"
         }
     },
     "message_sent": {
         "text": {
             "de": "Die Nachricht wurde gesendet.",
             "en": "The message was sent.",
-            "es": "El mensaje fue enviado."
+            "pl": "Wiadomo\u015b\u0107 zosta\u0142a wys\u0142ana."
         }
     },
     "message_to_send": {
         "text": {
             "de": "Geben Sie eine Nachricht an, die Sie senden m\u00f6chten.",
             "en": "Provide a message to send.",
-            "es": "Proporcione un mensaje para enviar."
+            "pl": "Podaj wiadomo\u015b\u0107 do wys\u0142ania."
         }
     },
     "min_wake_secs": {
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr den Standardwert von 10 Sekunden.",
             "en": "Power management state machine option. See power management for details. 0 for default of 10 seconds.",
-            "es": "Opci\u00f3n de m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Ver gesti\u00f3n de energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 10 segundos."
+            "pl": "Opcja maszyny stanowej zarz\u0105dzania zasilaniem. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 - warto\u015b\u0107 domy\u015blna to 10 sekund."
         },
         "label": {
             "de": "Minimale Weckzeit (Sekunden)",
             "en": "Minimum Wake (seconds)",
-            "es": "Estela m\u00ednima (segundos)"
+            "pl": "Minimalny czas czuwania (sekundy)"
         }
     },
     "modem_config": {
         "description": {
             "de": "Die Konfiguration des Modems. (Geschwindigkeit/Entfernung)",
             "en": "The configuration of the modem. (speed/distance)",
-            "es": "La configuraci\u00f3n del m\u00f3dem. (velocidad/distancia)"
+            "pl": "Konfiguracja modemu. (pr\u0119dko\u015b\u0107/odleg\u0142o\u015b\u0107)"
         },
         "label": {
             "de": "Modem-Konfiguration",
             "en": "Modem Config",
-            "es": "Configuraci\u00f3n del m\u00f3dem"
+            "pl": "Konfiguracja modemu"
         }
     },
     "module_link": {
         "tooltip": {
             "de": "Link zeigt weitere Informationen zu den Einstellungen f\u00fcr dieses Modul.",
             "en": "Link shows more information about the settings for this module.",
-            "es": "El enlace muestra m\u00e1s informaci\u00f3n sobre la configuraci\u00f3n de este m\u00f3dulo."
+            "pl": "\u0141\u0105cze pokazuje wi\u0119cej informacji o ustawieniach tego modu\u0142u."
         }
     },
     "module_settings": {
         "text": {
             "de": "Modul-Einstellungen",
             "en": "Module Settings",
-            "es": "Ajustes del m\u00f3dulo"
+            "pl": "Ustawienia modu\u0142u"
         }
     },
     "modules": {
         "text": {
             "de": "Module",
             "en": "Modules",
-            "es": "M\u00f3dulos"
+            "pl": "Modu\u0142y"
         }
     },
     "mqtt_disabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, werden alle MQTT-Funktionen deaktiviert.",
             "en": "If set, all MQTT features will be disabled.",
-            "es": "Si se establece, todas las funciones de MQTT se desactivar\u00e1n."
+            "pl": "Je\u015bli jest ustawione, wszystkie funkcje MQTT b\u0119d\u0105 wy\u0142\u0105czone."
         },
         "label": {
             "de": "MQTT Deaktiviert?",
             "en": "MQTT Disabled?",
-            "es": "\u00bfMQTT deshabilitado?"
+            "pl": "MQTT Wy\u0142\u0105czone?"
         }
     },
     "mqtt_encryption_enabled": {
         "description": {
             "de": "Wenn gesetzt, werden verschl\u00fcsselte Pakete an den in 'mqtt_server' angegebenen Server gesendet. Andernfalls werden die Pakete nicht verschl\u00fcsselt.",
             "en": "If set, encrypted packets are sent to server specified in 'mqtt_server. Otherwise, the packets are not encrypted.",
-            "es": "Si se establece, los paquetes cifrados se env\u00edan al servidor especificado en 'mqtt_server'. En caso contrario, los paquetes no se cifran."
+            "pl": "Je\u015bli jest ustawione, zaszyfrowane pakiety s\u0105 wysy\u0142ane do serwera okre\u015blonego w 'mqtt_server. W przeciwnym razie pakiety nie s\u0105 szyfrowane."
         },
         "label": {
             "de": "Ist die MQTT-Verschl\u00fcsselung aktiviert?",
             "en": "MQTT Encryption Enabled?",
-            "es": "\u00bfEncriptaci\u00f3n MQTT habilitada?"
+            "pl": "Szyfrowanie MQTT w\u0142\u0105czone?"
         }
     },
     "mqtt_password": {
         "description": {
             "de": "MQTT-Passwort, das bei Verwendung von \"mqtt_server\" verwendet werden soll. Wenn es nicht gesetzt ist, wird das Standardpasswort verwendet.",
             "en": "MQTT password to use when 'mqtt_server' is used. If not set, the default password will be used.",
-            "es": "Contrase\u00f1a MQTT a utilizar cuando se usa 'mqtt_server'. Si no se establece, se utilizar\u00e1 la contrase\u00f1a por defecto."
+            "pl": "Has\u0142o MQTT, kt\u00f3re ma by\u0107 u\u017cywane, gdy u\u017cywane jest has\u0142o 'mqtt_server'. Je\u015bli nie zostanie ustawione, zostanie u\u017cyte has\u0142o domy\u015blne."
         },
         "label": {
             "de": "MQTT-Kennwort",
             "en": "MQTT Password",
-            "es": "Contrase\u00f1a MQTT"
+            "pl": "Has\u0142o MQTT"
         },
         "max_size": 32
     },
@@ -975,12 +975,12 @@
         "description": {
             "de": "Der Server, der f\u00fcr die Funktion des globalen MQTT-Nachrichtengateways verwendet werden soll. Wenn er nicht gesetzt ist, wird der Standardserver verwendet.",
             "en": "The server to use for our MQTT global message gateway feature. If not set, the default server will be used.",
-            "es": "El servidor a utilizar para nuestra funci\u00f3n de pasarela de mensajes global MQTT. Si no se establece, se utilizar\u00e1 el servidor por defecto."
+            "pl": "Serwer, kt\u00f3ry ma by\u0107 u\u017cywany przez nasz\u0105 funkcj\u0119 globalnej bramy komunikat\u00f3w MQTT. Je\u015bli nie zostanie ustawiony, zostanie u\u017cyty serwer domy\u015blny."
         },
         "label": {
             "de": "MQTT-Server",
             "en": "MQTT Server",
-            "es": "Servidor MQTT"
+            "pl": "Serwer MQTT"
         },
         "max_size": 32
     },
@@ -988,12 +988,12 @@
         "description": {
             "de": "MQTT-Benutzername, der verwendet werden soll, wenn \"mqtt_server\" verwendet wird. Wenn nicht gesetzt, wird der Standard-Benutzername verwendet.",
             "en": "MQTT username to use when 'mqtt_server' is used. If not set, the default username will be used.",
-            "es": "Nombre de usuario MQTT a utilizar cuando se usa 'mqtt_server'. Si no se establece, se utilizar\u00e1 el nombre de usuario por defecto."
+            "pl": "Nazwa u\u017cytkownika MQTT, kt\u00f3ra ma by\u0107 u\u017cywana, gdy u\u017cywane jest 'mqtt_server'. Je\u015bli nie zostanie ustawiona, zostanie u\u017cyta domy\u015blna nazwa u\u017cytkownika."
         },
         "label": {
             "de": "MQTT Username",
             "en": "MQTT Username",
-            "es": "Nombre de usuario MQTT"
+            "pl": "Nazwa u\u017cytkownika MQTT"
         },
         "max_size": 32
     },
@@ -1001,304 +1001,304 @@
         "description": {
             "de": "Ein kurzer Name, der in die URL eingef\u00fcgt wird. Weniger als 12 Bytes. Dieses Feld ist nur editierbar, wenn der vorherige Kanal einen Namen hat. Es gibt spezielle Kanalnamen wie \"admin\" (f\u00fcr die Fernverwaltung) und \"gpio\" (f\u00fcr die Fernabfrage/-manipulation von gpio).",
             "en": "A short name that will be packed into the URL. Less than 12 bytes. This field will only be editable if the prior channel has a name. There are special channel names like 'admin' (for remote management) and 'gpio' (for remote gpio query/manipulation).",
-            "es": "Un nombre corto que se incluir\u00e1 en la URL. Menos de 12 bytes. Este campo s\u00f3lo ser\u00e1 editable si el canal anterior tiene un nombre. Hay nombres de canales especiales como 'admin' (para la gesti\u00f3n remota) y 'gpio' (para la consulta/manipulaci\u00f3n remota de gpio)."
+            "pl": "Kr\u00f3tka nazwa, kt\u00f3ra zostanie umieszczona w adresie URL. Mniej ni\u017c 12 bajt\u00f3w. To pole b\u0119dzie mo\u017cna edytowa\u0107 tylko wtedy, gdy wcze\u015bniejszy kana\u0142 ma nazw\u0119. Istniej\u0105 specjalne nazwy kana\u0142\u00f3w, takie jak \"admin\" (do zdalnego zarz\u0105dzania) i \"gpio\" (do zdalnego odpytywania/manipulowania gpio)."
         },
         "label": {
             "de": "Name des Kanals",
             "en": "Channel Name",
-            "es": "Nombre del canal"
+            "pl": "Nazwa kana\u0142u"
         }
     },
     "no_devices_detected": {
         "text": {
             "de": "Es wurden keine Ger\u00e4te gefunden.\n\nVerwenden Sie ein Datenkabel?\n\nM\u00fcssen Sie einen Ger\u00e4tetreiber installieren?\n\nSchlie\u00dfen Sie ein Ger\u00e4t an?",
             "en": "No devices were detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?",
-            "es": "No se ha detectado ning\u00fan dispositivo.\n\n\u00bfEst\u00e1 utilizando un cable de datos?\n\n\u00bfNecesita tener instalado un controlador de dispositivo?\n\n\u00bfConectar un dispositivo?"
+            "pl": "Nie wykryto \u017cadnych urz\u0105dze\u0144.\n\nCzy u\u017cywasz kabla do transmisji danych?\n\nCzy trzeba zainstalowa\u0107 sterownik urz\u0105dzenia?\n\nPod\u0142\u0105czy\u0107 urz\u0105dzenie?"
         }
     },
     "note_all_settings_will_be_erased": {
         "text": {
             "de": "HINWEIS: Alle Meshtastic-Einstellungen werden gel\u00f6scht.",
             "en": "NOTE: All Meshtastic settings will be erased.",
-            "es": "NOTA: Todos los ajustes de Meshtastic ser\u00e1n borrados."
+            "pl": "UWAGA: Wszystkie ustawienia programu Meshtastic zostan\u0105 usuni\u0119te."
         }
     },
     "notifications": {
         "text": {
             "de": "Benachrichtigungen",
             "en": "Notifications",
-            "es": "Notificaciones"
+            "pl": "Powiadomienia"
         }
     },
     "nrf_detected": {
         "text": {
             "de": "NRF-Ger\u00e4t erkannt.\n\nDr\u00fccken Sie zweimal die Taste RST und klicken Sie dann erneut auf die Taste DETECT.",
             "en": "NRF device detected.\n\nPress RST button twice then click DETECT button again.",
-            "es": "Dispositivo NRF detectado.\n\nPulse dos veces el bot\u00f3n RST y luego vuelva a pulsar el bot\u00f3n DETECT."
+            "pl": "Wykryto urz\u0105dzenie NRF.\n\nNaci\u015bnij dwukrotnie przycisk RST, a nast\u0119pnie ponownie kliknij przycisk DETECT."
         }
     },
     "on_battery_shutdown_after_secs": {
         "description": {
             "de": "Wenn dieser Wert nicht Null ist, schaltet sich das Ger\u00e4t so viele Sekunden nach dem Abschalten der externen Stromversorgung vollst\u00e4ndig ab.",
             "en": "If non-zero, the device will fully power off this many seconds after external power is removed.",
-            "es": "Si es distinto de cero, el dispositivo se apagar\u00e1 por completo esta cantidad de segundos despu\u00e9s de quitar la alimentaci\u00f3n externa."
+            "pl": "Je\u015bli warto\u015b\u0107 jest r\u00f3\u017cna od zera, urz\u0105dzenie wy\u0142\u0105czy si\u0119 ca\u0142kowicie po up\u0142ywie tylu sekund od od\u0142\u0105czenia zasilania zewn\u0119trznego."
         },
         "label": {
             "de": "Ein Batterieabschaltung nach (Sekunden)",
             "en": "On Battery Shutdown After (seconds)",
-            "es": "Encendido Apagado de la bater\u00eda Despu\u00e9s (segundos)"
+            "pl": "W\u0142\u0105czony Wy\u0142\u0105czenie akumulatora po (sekundy)"
         }
     },
     "other": {
         "text": {
             "de": "Andere",
             "en": "Other",
-            "es": "Otros"
+            "pl": "Inne"
         }
     },
     "phone_sds_timeout_sec": {
         "description": {
             "de": "Super Deep Sleep (SDS) ist eine Option der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 7200 (oder zwei Stunden), MAXUINT oder 4294967295 f\u00fcr deaktiviert.",
             "en": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 (or two hours), MAXUINT or 4294967295 for disabled.",
-            "es": "El sue\u00f1o s\u00faper profundo (SDS) es una opci\u00f3n de la m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Ver gesti\u00f3n de energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 7200 (o dos horas), MAXUINT o 4294967295 para deshabilitado."
+            "pl": "Super g\u0142\u0119boki sen (SDS) to opcja maszyny stanowej zarz\u0105dzania energi\u0105. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 dla warto\u015bci domy\u015blnej 7200 (lub dwie godziny), MAXUINT lub 4294967295 dla warto\u015bci wy\u0142\u0105czonej."
         },
         "label": {
             "de": "Telefon-SDS-Zeit\u00fcberschreitung (Sekunden)",
             "en": "Phone SDS Timeout (seconds)",
-            "es": "Tiempo de espera del SDS del tel\u00e9fono (segundos)"
+            "pl": "Telefon SDS Timeout (sekundy)"
         }
     },
     "phone_timeout_secs": {
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr Standardwert von 900 (oder 15 Minuten).",
             "en": "Power management state machine option. See power management for details. 0 for default of 900 (or 15 minutes).",
-            "es": "Opci\u00f3n de m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Ver gesti\u00f3n de energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 900 (o 15 minutos)."
+            "pl": "Opcja maszyny stanowej zarz\u0105dzania zasilaniem. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci zarz\u0105dzanie zasilaniem. 0 dla warto\u015bci domy\u015blnej 900 (lub 15 minut)."
         },
         "label": {
             "de": "Telefon-Timeout (Sekunden)",
             "en": "Phone Timeout (seconds)",
-            "es": "Tiempo de espera del tel\u00e9fono (segundos)"
+            "pl": "Limit czasu telefonu (sekundy)"
         }
     },
     "position": {
         "text": {
             "de": "Position",
             "en": "Position",
-            "es": "Posici\u00f3n"
+            "pl": "Pozycja"
         }
     },
     "position_broadcast_secs": {
         "description": {
             "de": "Senden Sie unsere Position so oft (aber nur, wenn sie sich stark ver\u00e4ndert hat). Die Standardeinstellung ist 900 Sekunden. (15 Minuten)",
             "en": "Send our position this often (but only if it has changed significantly). Defaults to 900 seconds. (15 minutes)",
-            "es": "Env\u00eda nuestra posici\u00f3n con esta frecuencia (pero s\u00f3lo si ha cambiado significativamente). Por defecto, 900 segundos. (15 minutos)"
+            "pl": "Wysy\u0142aj nasze po\u0142o\u017cenie tak cz\u0119sto (ale tylko wtedy, gdy uleg\u0142o ono znacznej zmianie). Warto\u015b\u0107 domy\u015blna to 900 sekund. (15 minut)"
         },
         "label": {
             "de": "Sendeintervall (Sekunden)",
             "en": "Broadcast interval (seconds)",
-            "es": "Intervalo de emisi\u00f3n (segundos)"
+            "pl": "Interwa\u0142 rozsy\u0142ania (sekundy)"
         }
     },
     "position_broadcast_smart": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, wird ein ideales Intervall f\u00fcr die Positionsaktualisierung auf der Grundlage der Datenrate Ihrer Kanalkonfiguration berechnet.",
             "en": "If set, calculates an ideal position update interval based on the data rate of your channel configuration.",
-            "es": "Si se establece, calcula un intervalo de actualizaci\u00f3n de posici\u00f3n ideal basado en la velocidad de datos de su configuraci\u00f3n de canal."
+            "pl": "Je\u015bli jest ustawione, oblicza idealny interwa\u0142 aktualizacji pozycji na podstawie szybko\u015bci transmisji danych konfiguracji kana\u0142u."
         },
         "label": {
             "de": "Verwenden Sie Broadcast smart?",
             "en": "Use Broadcast smart?",
-            "es": "Utilizar Broadcast smart?"
+            "pl": "Korzystanie z funkcji Nadawanie inteligentne?"
         }
     },
     "position_flag_alt_msl": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, wird die H\u00f6he \u00fcber dem Meeresspiegel (Mean Sea Level, MSL) in die Positionsmeldung aufgenommen.",
             "en": "If set, Mean Sea Level (MSL) altitude will be included in the position message.",
-            "es": "Si se establece, la altitud del nivel medio del mar (MSL) se incluir\u00e1 en el mensaje de posici\u00f3n."
+            "pl": "Je\u015bli jest ustawiona, w komunikacie o pozycji b\u0119dzie uwzgl\u0119dniana wysoko\u015b\u0107 nad poziomem morza (MSL)."
         },
         "label": {
             "de": "Die H\u00f6he ist MSL?",
             "en": "Altitude is MSL?",
-            "es": "\u00bfLa altitud es MSL?"
+            "pl": "Wysoko\u015b\u0107 nad poziomem morza to MSL?"
         }
     },
     "position_flag_altitude": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird die H\u00f6he in die Positionsmeldung aufgenommen.",
             "en": "If set, altitude will be included in the position message.",
-            "es": "Si se establece, la altitud se incluir\u00e1 en el mensaje de posici\u00f3n."
+            "pl": "Je\u015bli jest ustawiona, do komunikatu o pozycji b\u0119dzie do\u0142\u0105czana wysoko\u015b\u0107."
         },
         "label": {
             "de": "H\u00f6he einbeziehen?",
             "en": "Include altitude?",
-            "es": "\u00bfIncluir la altitud?"
+            "pl": "Uwzgl\u0119dni\u0107 wysoko\u015b\u0107 nad poziomem morza?"
         }
     },
     "position_flag_battery": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, wird der Batteriestand in der Positionsmeldung angezeigt.",
             "en": "If set, battery level will included in the position message.",
-            "es": "Si se ajusta, el nivel de bater\u00eda se incluir\u00e1 en el mensaje de posici\u00f3n."
+            "pl": "Je\u015bli jest ustawiony, poziom na\u0142adowania baterii b\u0119dzie uwzgl\u0119dniany w komunikacie o po\u0142o\u017ceniu."
         },
         "label": {
             "de": "Batteriestand einbeziehen?",
             "en": "Include battery level?",
-            "es": "\u00bfIncluye el nivel de la bater\u00eda?"
+            "pl": "Uwzgl\u0119dnia\u0107 poziom na\u0142adowania baterii?"
         }
     },
     "position_flag_dop": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, wird der DOP-Wert (Dilution of Precision) in die Positionsmeldung aufgenommen. (Standardm\u00e4\u00dfig wird PDOP verwendet)",
             "en": "If set, dilution of precision (DOP) value will be included in the position message. (PDOP is used by default)",
-            "es": "Si se establece, el valor de la diluci\u00f3n de precisi\u00f3n (DOP) se incluir\u00e1 en el mensaje de posici\u00f3n. (El PDOP se utiliza por defecto)"
+            "pl": "Je\u015bli jest ustawiona, do komunikatu o po\u0142o\u017ceniu b\u0119dzie do\u0142\u0105czana warto\u015b\u0107 rozcie\u0144czenia precyzji (DOP). (Domy\u015blnie u\u017cywana jest warto\u015b\u0107 PDOP)"
         },
         "label": {
             "de": "DOP-Wert einbeziehen?",
             "en": "Include DOP value?",
-            "es": "\u00bfIncluir el valor DOP?"
+            "pl": "Uwzgl\u0119dni\u0107 warto\u015b\u0107 DOP?"
         }
     },
     "position_flag_geo_sep": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird die geoidale Trennung in die Positionsmeldung aufgenommen.",
             "en": "If set, geoidal separation will be included in the position message.",
-            "es": "Si se establece, la separaci\u00f3n geoidal se incluir\u00e1 en el mensaje de posici\u00f3n."
+            "pl": "Je\u015bli jest ustawiona, w komunikacie o pozycji b\u0119dzie uwzgl\u0119dniana separacja geoidalna."
         },
         "label": {
             "de": "Geod\u00e4tische Trennung einbeziehen?",
             "en": "Include geoidal separation?",
-            "es": "\u00bfIncluye la separaci\u00f3n geoidal?"
+            "pl": "Uwzgl\u0119dni\u0107 separacj\u0119 geoidaln\u0105?"
         }
     },
     "position_flag_hvdop": {
         "description": {
             "de": "Wenn DOP eingestellt ist, senden Sie die Trennungswerte HDOP / VDOP anstelle von PDOP in der Positionsmeldung.",
             "en": "If DOP is set, send separation HDOP / VDOP values instead of PDOP in the position message.",
-            "es": "Si el DOP est\u00e1 configurado, env\u00ede los valores de separaci\u00f3n HDOP / VDOP en lugar de PDOP en el mensaje de posici\u00f3n."
+            "pl": "Je\u015bli ustawiona jest funkcja DOP, w komunikacie o po\u0142o\u017ceniu nale\u017cy wys\u0142a\u0107 warto\u015bci HDOP / VDOP zamiast PDOP."
         },
         "label": {
             "de": "Separate HDOP/VDOP-Werte anstelle von PDOP senden?",
             "en": "Send separate HDOP/VDOP values instead of PDOP?",
-            "es": "\u00bfEnviar valores HDOP/VDOP por separado en lugar de PDOP?"
+            "pl": "Wys\u0142a\u0107 oddzielne warto\u015bci HDOP/VDOP zamiast PDOP?"
         }
     },
     "position_flag_satinview": {
         "description": {
             "de": "Wenn gesetzt, wird die Anzahl der sichtbaren Satelliten in der Positionsmeldung gesendet.",
             "en": "If set, send number of satellites in view in the position message.",
-            "es": "Si se establece, env\u00eda el n\u00famero de sat\u00e9lites a la vista en el mensaje de posici\u00f3n."
+            "pl": "Je\u015bli jest ustawiona, w komunikacie o pozycji wysy\u0142ana jest liczba satelit\u00f3w w polu widzenia."
         },
         "label": {
             "de": "Anzahl der sichtbaren Satelliten einbeziehen?",
             "en": "Include number of satellites in view?",
-            "es": "\u00bfIncluye el n\u00famero de sat\u00e9lites a la vista?"
+            "pl": "Uwzgl\u0119dni\u0107 liczb\u0119 satelit\u00f3w w polu widzenia?"
         }
     },
     "position_flag_seq_nos": {
         "description": {
             "de": "Wenn gesetzt, wird eine Sequenznummer, die pro Paket erh\u00f6ht wird, in die Positionsmeldung aufgenommen.",
             "en": "If set, include a sequence number incremented per packet in the position message.",
-            "es": "Si se establece, incluye un n\u00famero de secuencia que se incrementa por paquete en el mensaje de posici\u00f3n."
+            "pl": "Je\u015bli jest ustawiona, do komunikatu o pozycji do\u0142\u0105czany jest numer sekwencyjny inkrementowany dla ka\u017cdego pakietu."
         },
         "label": {
             "de": "Sequenznummern einbeziehen?",
             "en": "Include sequence numbers?",
-            "es": "\u00bfIncluir n\u00fameros de secuencia?"
+            "pl": "Uwzgl\u0119dni\u0107 numery sekwencji?"
         }
     },
     "position_flag_timestamp": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird der Zeitstempel der Position (von der GPS-L\u00f6sung) in die Positionsmeldung aufgenommen.",
             "en": "If set, include positional timestamp (from GPS solution) in the position message.",
-            "es": "Si se establece, incluye la marca de tiempo de posici\u00f3n (de la soluci\u00f3n GPS) en el mensaje de posici\u00f3n."
+            "pl": "Je\u015bli jest ustawiona, do komunikatu o pozycji do\u0142\u0105czany jest znacznik czasu pozycji (z rozwi\u0105zania GPS)."
         },
         "label": {
             "de": "Zeitstempel einschlie\u00dfen?",
             "en": "Include timestamp?",
-            "es": "\u00bfIncluir marca de tiempo?"
+            "pl": "Do\u0142\u0105czy\u0107 znacznik czasu?"
         }
     },
     "position_flags": {
         "description": {
             "de": "Die \"position_flags\" werden aus den Positionsflaggen-\"Bits\" aller verschiedenen Positionsflags berechnet.",
             "en": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags.",
-            "es": "La 'position_flags' se calcula a partir de los 'bits' de la bandera de posici\u00f3n de todas las diferentes banderas de posici\u00f3n."
+            "pl": "Warto\u015b\u0107 \"position_flags\" oblicza si\u0119 na podstawie \"bit\u00f3w\" znacznik\u00f3w pozycji ze wszystkich r\u00f3\u017cnych znacznik\u00f3w pozycji."
         },
         "label": {
             "de": "Positionsflaggen (berechnet)",
             "en": "Position flags (calculated)",
-            "es": "Banderas de posici\u00f3n (calculadas)"
+            "pl": "Znaczniki pozycji (obliczone)"
         }
     },
     "position_settings": {
         "text": {
             "de": "Position Einstellungen",
             "en": "Position Settings",
-            "es": "Ajustes de posici\u00f3n"
+            "pl": "Ustawienia pozycji"
         }
     },
     "power": {
         "text": {
             "de": "Strom",
             "en": "Power",
-            "es": "Potencia"
+            "pl": "Moc"
         }
     },
     "power_settings": {
         "text": {
             "de": "Leistungseinstellungen",
             "en": "Power Settings",
-            "es": "Ajustes de potencia"
+            "pl": "Ustawienia zasilania"
         }
     },
     "progress": {
         "tooltip": {
             "de": "Der Fortschritt wird w\u00e4hrend des FLASH-Schrittes angezeigt.",
             "en": "Progress will be shown during the FLASH step.",
-            "es": "El progreso se mostrar\u00e1 durante el paso FLASH."
+            "pl": "Post\u0119p b\u0119dzie widoczny podczas kroku FLASH."
         }
     },
     "question": {
         "text": {
             "de": "Frage",
             "en": "Question",
-            "es": "Pregunta"
+            "pl": "Pytanie"
         }
     },
     "radio": {
         "text": {
             "de": "Radio",
             "en": "Radio",
-            "es": "Radio"
+            "pl": "Radio"
         }
     },
     "radio_settings": {
         "text": {
             "de": "Radio-Einstellungen",
             "en": "Radio Settings",
-            "es": "Ajustes de la radio"
+            "pl": "Ustawienia radia"
         }
     },
     "rak_11200_detected": {
         "text": {
             "de": "Es sieht so aus, als ob ein RAK 11200 entdeckt wurde.\n\nPr\u00fcfen Sie, ob es sich im BOOT-Modus befindet.\n\nEs sollte ein einzelnes, rotes Dauerlicht leuchten.\nEs sollte keine anderen Lichter geben, weder durchgehend noch blinkend.\n\nIst dies nicht der Fall, trennen Sie das Ger\u00e4t und setzen Sie eine Br\u00fccke zwischen den Pins GND und BOOT0, w\u00e4hrend das Ger\u00e4t eingesteckt ist.\n\n",
             "en": "Looks like a RAK 11200 was detected.\n\nVerify it is in BOOT mode.\n\nThere should be a single, solid red light.\nThere should not be any other lights, solid nor flashing.\n\nIf not, disconnect the device and provide a jumper between GND and BOOT0 pins while device is plugged in.\n\n",
-            "es": "Parece que se ha detectado un RAK 11200.\n\nVerifique que est\u00e1 en modo BOOT.\n\nDeber\u00eda haber una sola luz roja fija.\nNo debe haber ninguna otra luz, s\u00f3lida o intermitente.\n\nSi no es as\u00ed, desconecte el dispositivo y coloque un puente entre los pines GND y BOOT0 mientras el dispositivo est\u00e1 conectado.\n\n"
+            "pl": "Wygl\u0105da na to, \u017ce zosta\u0142 wykryty sygna\u0142 RAK 11200.\n\nSprawd\u017a, czy jest w trybie BOOT.\n\nPowinna \u015bwieci\u0107 si\u0119 pojedyncza, sta\u0142a czerwona dioda.\nNie powinno by\u0107 \u017cadnych innych \u015bwiate\u0142, ani sta\u0142ych, ani migaj\u0105cych.\n\nJe\u015bli tak nie jest, od\u0142\u0105cz urz\u0105dzenie i za\u0142\u00f3\u017c zwork\u0119 mi\u0119dzy pinami GND i BOOT0, gdy urz\u0105dzenie jest pod\u0142\u0105czone.\n\n"
         }
     },
     "rak_bootloader_not_current": {
         "text": {
             "de": "Der RAK-Bootloader ist nicht aktuell.\n\u00dcber die Aktualisierung des RAK-Bootloaders...",
             "en": "The RAK bootloader is not current.\nAbout to update the RAK bootloader...",
-            "es": "El gestor de arranque del RAK no est\u00e1 actualizado.\nA punto de actualizar el gestor de arranque RAK..."
+            "pl": "Program rozruchowy RAK nie jest aktualny.\nTrwa aktualizacja programu rozruchowego RAK..."
         }
     },
     "range": {
         "text": {
             "de": "Range",
             "en": "Range",
-            "es": "Gama"
+            "pl": "Zasi\u0119g"
         }
     },
     "range_test_module_about": {
@@ -1306,81 +1306,81 @@
         "label": {
             "de": "Bereichstestmodul",
             "en": "Range Test Module",
-            "es": "M\u00f3dulo de Prueba de Alcance"
+            "pl": "Modu\u0142 badania zasi\u0119gu"
         }
     },
     "range_test_module_enabled": {
         "description": {
             "de": "Falls gesetzt, ist das Reichweitentestmodul aktiviert.",
             "en": "If set, the Range Test module is enabled.",
-            "es": "Si se establece, el m\u00f3dulo de Prueba de Alcance est\u00e1 habilitado."
+            "pl": "Je\u015bli jest ustawiona, modu\u0142 Test zasi\u0119gu jest w\u0142\u0105czony."
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?"
+            "pl": "W\u0142\u0105czone?"
         }
     },
     "range_test_module_save": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, speichert das Ger\u00e4t die .csv-Dateien der Bereichstests auf diesem Ger\u00e4t.",
             "en": "If set, the device will save the range test .csv files on this device.",
-            "es": "Si se establece, el dispositivo guardar\u00e1 los archivos .csv de prueba de alcance en este dispositivo."
+            "pl": "Je\u015bli jest ustawione, urz\u0105dzenie b\u0119dzie zapisywa\u0107 pliki .csv z testami zasi\u0119gu w tym urz\u0105dzeniu."
         },
         "label": {
             "de": "Sparen?",
             "en": "Save?",
-            "es": "\u00bfAhorrar?"
+            "pl": "Oszcz\u0119dno\u015bci?"
         }
     },
     "range_test_module_sender": {
         "description": {
             "de": "Sendet eine Nachricht in welcher H\u00e4ufigkeit (in Sekunden).",
             "en": "Sends a message how freqently (in seconds).",
-            "es": "Env\u00eda un mensaje con qu\u00e9 frecuencia (en segundos)."
+            "pl": "Z jak\u0105 cz\u0119stotliwo\u015bci\u0105 (w sekundach) wysy\u0142any jest komunikat."
         },
         "label": {
             "de": "Absender (Sekunden)",
             "en": "Sender (seconds)",
-            "es": "Remitente (segundos)"
+            "pl": "Nadawca (sekundy)"
         }
     },
     "range_test_module_settings": {
         "text": {
             "de": "Bereichstestmodul-Einstellungen",
             "en": "Range Test Module Settings",
-            "es": "Configuraci\u00f3n del m\u00f3dulo de prueba de alcance"
+            "pl": "Ustawienia modu\u0142u testu zasi\u0119gu"
         }
     },
     "region": {
         "description": {
             "de": "Der Regionalcode f\u00fcr mein Radio (US, CN, EU433, etc...)",
             "en": "The region code for my radio (US, CN, EU433, etc...)",
-            "es": "El c\u00f3digo de regi\u00f3n de mi radio (US, CN, EU433, etc...)"
+            "pl": "Kod regionu dla mojego radia (US, CN, EU433, itd.)"
         },
         "label": {
             "de": "Region",
             "en": "Region",
-            "es": "Regi\u00f3n"
+            "pl": "Region"
         }
     },
     "role": {
         "description": {
             "de": "Wie dieser Kanal genutzt wird (oder nicht genutzt wird).",
             "en": "How this channel is being used (or not not being used).",
-            "es": "C\u00f3mo se utiliza este canal (o no se utiliza)."
+            "pl": "W jaki spos\u00f3b ten kana\u0142 jest wykorzystywany (lub nie jest wykorzystywany)."
         },
         "label": {
             "de": "Rolle",
             "en": "Role",
-            "es": "Papel"
+            "pl": "Rola"
         }
     },
     "rotary": {
         "text": {
             "de": "Rotierend",
             "en": "Rotary",
-            "es": "Rotary"
+            "pl": "Rotary"
         }
     },
     "rotary1_about": {
@@ -1388,235 +1388,235 @@
         "label": {
             "de": "Drehgeber-Modul",
             "en": "Rotary Encoder Module",
-            "es": "M\u00f3dulo de codificador rotativo"
+            "pl": "Modu\u0142 enkodera obrotowego"
         }
     },
     "rotary1_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das Rotary-Modul aktiviert.",
             "en": "If set, the Rotary module will be enabled.",
-            "es": "Si se ajusta, el m\u00f3dulo rotatorio se activar\u00e1."
+            "pl": "Je\u015bli zostanie ustawiona, modu\u0142 obrotowy b\u0119dzie w\u0142\u0105czony."
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?"
+            "pl": "W\u0142\u0105czone?"
         }
     },
     "rotary1_event_ccw": {
         "description": {
             "de": "Erzeugen eines Eingangsereignisses bei CCW dieser Art.",
             "en": "Generate input event on CCW of this kind.",
-            "es": "Generar evento de entrada en CCW de este tipo."
+            "pl": "Wygeneruj zdarzenie wej\u015bciowe na CCW tego typu."
         },
         "label": {
             "de": "CCW",
             "en": "CCW",
-            "es": "CCW"
+            "pl": "CCW"
         }
     },
     "rotary1_event_cw": {
         "description": {
             "de": "Eingabeereignis bei CW dieser Art generieren.",
             "en": "Generate input event on CW of this kind.",
-            "es": "Generar evento de entrada en CW de este tipo."
+            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla CW tego typu."
         },
         "label": {
             "de": "CW",
             "en": "CW",
-            "es": "CW"
+            "pl": "CW"
         }
     },
     "rotary1_event_press": {
         "description": {
             "de": "Erzeugen Sie ein Eingabeereignis bei dieser Art von Presse.",
             "en": "Generate input event on Press of this kind.",
-            "es": "Generar evento de entrada en la prensa de este tipo."
+            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla prasy tego typu."
         },
         "label": {
             "de": "Presse",
             "en": "Press",
-            "es": "Pulse"
+            "pl": "Naci\u015bnij"
         }
     },
     "rotary1_pin_a": {
         "description": {
             "de": "GPIO-Pin f\u00fcr Drehgeber A-Anschluss.",
             "en": "GPIO pin for rotary encoder A port.",
-            "es": "Pin GPIO para el puerto A del codificador rotativo."
+            "pl": "Z\u0142\u0105cze GPIO dla portu A enkodera obrotowego."
         },
         "label": {
             "de": "Stift A",
             "en": "Pin A",
-            "es": "Clavija A"
+            "pl": "Szpilka A"
         }
     },
     "rotary1_pin_b": {
         "description": {
             "de": "GPIO-Pin f\u00fcr Drehgeber B-Anschluss.",
             "en": "GPIO pin for rotary encoder B port.",
-            "es": "Pin GPIO para el puerto B del codificador rotativo."
+            "pl": "Bolec GPIO dla portu B enkodera obrotowego."
         },
         "label": {
             "de": "Stift B",
             "en": "Pin B",
-            "es": "Clavija B"
+            "pl": "Szpilka B"
         }
     },
     "rotary1_pin_press": {
         "description": {
             "de": "Erzeugen Sie ein Eingabeereignis bei dieser Art von Presse.",
             "en": "Generate input event on Press of this kind.",
-            "es": "Generar evento de entrada en la prensa de este tipo."
+            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla prasy tego typu."
         },
         "label": {
             "de": "Presse",
             "en": "Press",
-            "es": "Pulse"
+            "pl": "Naci\u015bnij"
         }
     },
     "rotary_encoder_plugin_settings": {
         "text": {
             "de": "Einstellungen des Drehgebermoduls",
             "en": "Rotary Encoder Module Settings",
-            "es": "Ajustes del m\u00f3dulo del codificador rotativo"
+            "pl": "Ustawienia modu\u0142u enkodera obrotowego"
         }
     },
     "running": {
         "text": {
             "de": "Laufen",
             "en": "Running",
-            "es": "Ejecutar"
+            "pl": "Prowadzenie"
         }
     },
     "screen_on_secs": {
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 60 Sekunden (oder einer Minute).",
             "en": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute).",
-            "es": "Opci\u00f3n de m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Ver gesti\u00f3n de energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 60 segundos (o un minuto)."
+            "pl": "Opcja maszyny stanowej zarz\u0105dzania zasilaniem. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci zarz\u0105dzanie energi\u0105. 0 - domy\u015blnie 60 sekund (lub jedna minuta)."
         },
         "label": {
             "de": "Bildschirm ein (Sekunden)",
             "en": "Screen On (seconds)",
-            "es": "Pantalla encendida (segundos)"
+            "pl": "Ekran w\u0142\u0105czony (sekundy)"
         }
     },
     "sds_secs": {
         "description": {
             "de": "Super Deep Sleep (SDS) ist eine Option der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr die Voreinstellung von einem Jahr.",
             "en": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of one year.",
-            "es": "El sue\u00f1o s\u00faper profundo (SDS) es una opci\u00f3n de la m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Ver gesti\u00f3n de energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de un a\u00f1o."
+            "pl": "Super g\u0142\u0119boki sen (SDS) to opcja maszyny stanowej zarz\u0105dzania energi\u0105. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 dla warto\u015bci domy\u015blnej jednego roku."
         },
         "label": {
             "de": "SDS (Sekunden)",
             "en": "SDS (seconds)",
-            "es": "SDS (segundos)"
+            "pl": "SDS (sekundy)"
         }
     },
     "select_detect": {
         "text": {
             "de": "ERKENNUNGSVORRICHTUNG",
             "en": "DETECT DEVICE",
-            "es": "DISPOSITIVO DE DETECCI\u00d3N"
+            "pl": "URZ\u0104DZENIE WYKRYWAJ\u0104CE"
         },
         "tooltip": {
             "de": "Klicken Sie auf , um unterst\u00fctzte Ger\u00e4te- und Anschlussinformationen zu erkennen.",
             "en": "Click to detect supported device and port information.",
-            "es": "Haga clic para detectar la informaci\u00f3n sobre el dispositivo y el puerto compatibles."
+            "pl": "Kliknij, aby wykry\u0107 obs\u0142ugiwane urz\u0105dzenie i informacje o porcie."
         }
     },
     "select_device": {
         "tooltip": {
             "de": "Sie m\u00fcssen auf GET VERSIONS und DETECT DEVICE klicken, bevor Sie das Ger\u00e4t ausw\u00e4hlen k\u00f6nnen.",
             "en": "Need to click GET VERSIONS and DETECT DEVICE before you can select the device.",
-            "es": "Es necesario hacer clic en OBTENER VERSIONES y DETECTAR DISPOSITIVO antes de poder seleccionar el dispositivo."
+            "pl": "Zanim b\u0119dzie mo\u017cna wybra\u0107 urz\u0105dzenie, nale\u017cy klikn\u0105\u0107 przycisk GET VERSIONS i DETECT DEVICE."
         }
     },
     "select_device_populated": {
         "tooltip": {
             "de": "W\u00e4hlen Sie aus, welche Art von Ger\u00e4t angeschlossen ist.",
             "en": "Select which type of device is connected.",
-            "es": "Seleccione qu\u00e9 tipo de dispositivo est\u00e1 conectado."
+            "pl": "Wybierz typ urz\u0105dzenia, kt\u00f3re jest pod\u0142\u0105czone."
         }
     },
     "select_firmware_version": {
         "tooltip": {
             "de": "Klicken Sie auf GET VERSIONS, um eine Liste der Firmware-Versionen zu erhalten.",
             "en": "Click GET VERSIONS for the list of firmware versions.",
-            "es": "Haga clic en OBTENER VERSIONES para ver la lista de versiones de firmware."
+            "pl": "Kliknij przycisk GET VERSIONS, aby wy\u015bwietli\u0107 list\u0119 wersji oprogramowania sprz\u0119towego."
         }
     },
     "select_firmware_version_populated": {
         "tooltip": {
             "de": "W\u00e4hlen Sie die gew\u00fcnschte Firmware-Version zum Flashen.",
             "en": "Selected desired firmware version to flash.",
-            "es": "Seleccione la versi\u00f3n de firmware deseada para flashear."
+            "pl": "Wybierz \u017c\u0105dan\u0105 wersj\u0119 oprogramowania sprz\u0119towego do flashowania."
         }
     },
     "select_flash": {
         "tooltip": {
             "de": "Klicken Sie auf , um die Firmware zu flashen.\nWenn diese Schaltfl\u00e4che nicht aktiviert ist, m\u00fcssen Sie auf die Schaltfl\u00e4chen GET VERSIONS und DETECT DEVICE\nklicken, um die verf\u00fcgbaren Optionen aufzuf\u00fcllen.",
             "en": "Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options.",
-            "es": "Haga clic para flashear el firmware.\nSi este bot\u00f3n no est\u00e1 habilitado, deber\u00e1 pulsar los botones GET VERSIONS y DETECT DEVICE\npara rellenar las opciones disponibles."
+            "pl": "Kliknij, aby uruchomi\u0107 oprogramowanie sprz\u0119towe.\nJe\u015bli ten przycisk nie jest w\u0142\u0105czony, nale\u017cy klikn\u0105\u0107 przyciski GET VERSIONS i DETECT DEVICE\naby wy\u015bwietli\u0107 dost\u0119pne opcje."
         }
     },
     "select_flash_populated": {
         "tooltip": {
             "de": "Klicken Sie auf die Schaltfl\u00e4che FLASH, um die Meshtastic-Firmware auf das Ger\u00e4t zu schreiben.",
             "en": "Click the FLASH button to write the Meshtastic firmware to the device.",
-            "es": "Haz clic en el bot\u00f3n FLASH para escribir el firmware de Meshtastic en el dispositivo."
+            "pl": "Kliknij przycisk FLASH, aby zapisa\u0107 firmware Meshtastic w urz\u0105dzeniu."
         }
     },
     "select_port": {
         "tooltip": {
             "de": "Sie m\u00fcssen auf GET VERSIONS und DETECT DEVICE klicken, bevor Sie den Anschluss ausw\u00e4hlen k\u00f6nnen.",
             "en": "Need to click GET VERSIONS and DETECT DEVICE before you can select the port.",
-            "es": "Es necesario hacer clic en OBTENER VERSIONES y DETECTAR DISPOSITIVO antes de poder seleccionar el puerto."
+            "pl": "Zanim b\u0119dzie mo\u017cna wybra\u0107 port, nale\u017cy klikn\u0105\u0107 przycisk GET VERSIONS i DETECT DEVICE."
         }
     },
     "select_port_populated": {
         "tooltip": {
             "de": "W\u00e4hlen Sie den Kommunikationsanschluss/das Ziel.",
             "en": "Select the communication port/destination.",
-            "es": "Seleccione el puerto de comunicaci\u00f3n/destino."
+            "pl": "Wybierz port komunikacyjny/przeznaczenie."
         }
     },
     "send_owner_interval": {
         "description": {
             "de": "Senden Sie unsere Eigent\u00fcmerinformationen mindestens so oft (auch wir senden immer einmal beim Hochfahren - um das Netz wieder zu verbinden).",
             "en": "Send our owner info at least this often (also we always send once at boot - to rejoin the mesh).",
-            "es": "Enviar nuestra informaci\u00f3n de propietario al menos con esta frecuencia (tambi\u00e9n enviamos siempre una vez en el arranque - para volver a unirse a la malla)."
+            "pl": "Przynajmniej tak cz\u0119sto wysy\u0142aj informacje o w\u0142a\u015bcicielu (zawsze wysy\u0142amy te\u017c raz na start - aby ponownie do\u0142\u0105czy\u0107 do siatki)."
         },
         "label": {
             "de": "Send Owner Interval",
             "en": "Send Owner Interval",
-            "es": "Enviar intervalo del propietario"
+            "pl": "Wy\u015blij w\u0142a\u015bciciela Interwa\u0142"
         }
     },
     "send_text": {
         "text": {
             "de": "Send Text",
             "en": "Send Text",
-            "es": "Enviar texto"
+            "pl": "Wy\u015blij tekst"
         }
     },
     "serial": {
         "text": {
             "de": "Serienm\u00e4\u00dfig",
             "en": "Serial",
-            "es": "Serie"
+            "pl": "Szeregowy"
         }
     },
     "serial_disabled": {
         "description": {
             "de": "Wenn gesetzt, wird die SerialConsole deaktiviert. (indem die StreamAPI nicht initialisiert wird).",
             "en": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI).",
-            "es": "Si se establece, la SerialConsole se desactivar\u00e1. (al no inicializar la StreamAPI)."
+            "pl": "Je\u015bli jest ustawione, konsola SerialConsole zostanie wy\u0142\u0105czona. (poprzez niezainicjowanie interfejsu StreamAPI)."
         },
         "label": {
             "de": "Serielle Deaktivierung?",
             "en": "Serial Disabled?",
-            "es": "\u00bfSerial deshabilitado?"
+            "pl": "Serial Disabled?"
         }
     },
     "serial_module_about": {
@@ -1624,105 +1624,105 @@
         "label": {
             "de": "Serielles Modul",
             "en": "Serial Module",
-            "es": "M\u00f3dulo de serie"
+            "pl": "Modu\u0142 szeregowy"
         }
     },
     "serial_module_echo": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "es": "TBD"
+            "pl": "TBD"
         },
         "label": {
             "de": "Echo?",
             "en": "Echo?",
-            "es": "\u00bfEco?"
+            "pl": "Echo?"
         }
     },
     "serial_module_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das serielle Modul aktiviert.",
             "en": "If set, the Serial module will be enabled.",
-            "es": "Si se establece, el m\u00f3dulo Serial estar\u00e1 habilitado."
+            "pl": "Je\u015bli jest ustawiona, modu\u0142 szeregowy b\u0119dzie w\u0142\u0105czony."
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?"
+            "pl": "W\u0142\u0105czone?"
         }
     },
     "serial_module_mode": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "es": "TBD"
+            "pl": "TBD"
         },
         "label": {
             "de": "Modus",
             "en": "Mode",
-            "es": "Modo"
+            "pl": "Tryb"
         }
     },
     "serial_module_rxd": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "es": "TBD"
+            "pl": "TBD"
         },
         "label": {
             "de": "RXD",
             "en": "RXD",
-            "es": "RXD"
+            "pl": "RXD"
         }
     },
     "serial_module_settings": {
         "text": {
             "de": "Einstellungen des seriellen Moduls",
             "en": "Serial Module Settings",
-            "es": "Configuraci\u00f3n del m\u00f3dulo de serie"
+            "pl": "Ustawienia modu\u0142u szeregowego"
         }
     },
     "serial_module_timeout": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "es": "TBD"
+            "pl": "TBD"
         },
         "label": {
             "de": "Zeit\u00fcberschreitung",
             "en": "Timeout",
-            "es": "Timeout"
+            "pl": "Timeout"
         }
     },
     "serial_module_txd": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "es": "TBD"
+            "pl": "TBD"
         },
         "label": {
             "de": "TXD",
             "en": "TXD",
-            "es": "TXD"
+            "pl": "TXD"
         }
     },
     "settings": {
         "text": {
             "de": "Einstellungen",
             "en": "Settings",
-            "es": "Ajustes"
+            "pl": "Ustawienia"
         }
     },
     "short_name": {
         "description": {
             "de": "Sehr kurzer Name f\u00fcr das Ger\u00e4t, idealerweise zwei Zeichen.",
             "en": "Very short name for the device, ideally two characters.",
-            "es": "Nombre muy corto para el dispositivo, idealmente dos caracteres."
+            "pl": "Bardzo kr\u00f3tka nazwa urz\u0105dzenia, najlepiej dwuznakowa."
         },
         "label": {
             "de": "Short Name",
             "en": "Short Name",
-            "es": "Nombre corto"
+            "pl": "Nazwa skr\u00f3cona"
         },
         "max_size": 3
     },
@@ -1730,12 +1730,12 @@
         "description": {
             "de": "Eine Zahl von 7 bis 12. Gibt die Anzahl der Chirps pro Symbol als 1<<spread_factor an.",
             "en": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor.",
-            "es": "Un n\u00famero de 7 a 12. Indica el n\u00famero de chirridos por s\u00edmbolo como 1<<spread_factor."
+            "pl": "Liczba z zakresu od 7 do 12. Wskazuje liczb\u0119 \u0107wierka\u0144 na symbol jako 1<<spread_factor."
         },
         "label": {
             "de": "Spread-Faktor",
             "en": "Spread Factor",
-            "es": "Factor de dispersi\u00f3n"
+            "pl": "Wsp\u00f3\u0142czynnik rozprzestrzeniania si\u0119"
         }
     },
     "store_forward_module_about": {
@@ -1743,100 +1743,100 @@
         "label": {
             "de": "Modul Speichern und Weiterleiten",
             "en": "Store and Forward Module",
-            "es": "M\u00f3dulo de almacenamiento y reenv\u00edo"
+            "pl": "Modu\u0142 Store and Forward"
         }
     },
     "store_forward_module_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das Modul Speichern und Weiterleiten aktiviert.",
             "en": "If set, the Store and Forward module will be enabled.",
-            "es": "Si se establece, se activar\u00e1 el m\u00f3dulo Store and Forward."
+            "pl": "Je\u015bli zostanie ustawiona, modu\u0142 Store and Forward b\u0119dzie w\u0142\u0105czony."
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?"
+            "pl": "W\u0142\u0105czone?"
         }
     },
     "store_forward_module_heartbeat": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "es": "TBD"
+            "pl": "TBD"
         },
         "label": {
             "de": "Herzschlag",
             "en": "Heartbeat",
-            "es": "Latidos del coraz\u00f3n"
+            "pl": "Bicie serca"
         }
     },
     "store_forward_module_history_return_max": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "es": "TBD"
+            "pl": "TBD"
         },
         "label": {
             "de": "Geschichte R\u00fcckkehr Max",
             "en": "History Return Max",
-            "es": "Historia Retorno Max"
+            "pl": "Historia Zwrot maks."
         }
     },
     "store_forward_module_history_return_window": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "es": "TBD"
+            "pl": "TBD"
         },
         "label": {
             "de": "Historie R\u00fcckgabefenster",
             "en": "History Return Window",
-            "es": "Ventana de retorno de la historia"
+            "pl": "Okno powrotu do historii"
         }
     },
     "store_forward_module_records": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "es": "TBD"
+            "pl": "TBD"
         },
         "label": {
             "de": "Aufzeichnungen",
             "en": "Records",
-            "es": "Registros"
+            "pl": "Zapisy"
         }
     },
     "store_forward_module_settings": {
         "text": {
             "de": "Speichern und Weiterleiten von Moduleinstellungen",
             "en": "Store and Forward Module Settings",
-            "es": "Configuraci\u00f3n del m\u00f3dulo Store and Forward"
+            "pl": "Ustawienia modu\u0142u Store and Forward"
         }
     },
     "team": {
         "description": {
             "de": "Teilnehmer desselben Netzes k\u00f6nnen sich selbst zu verschiedenen Teams zusammenschlie\u00dfen.",
             "en": "Participants in the same network can self-group into different teams.",
-            "es": "Los participantes de una misma red pueden autoagruparse en diferentes equipos."
+            "pl": "Uczestnicy tej samej sieci mog\u0105 grupowa\u0107 si\u0119 w r\u00f3\u017cne zespo\u0142y."
         },
         "label": {
             "de": "Team",
             "en": "Team",
-            "es": "Equipo"
+            "pl": "Zesp\u00f3\u0142"
         }
     },
     "techo_bootloader_updated": {
         "text": {
             "de": "Der T-Echo-Bootloader wurde aktualisiert.\n\nWarten Sie auf den Neustart des Ger\u00e4ts.",
             "en": "T-Echo bootloader was updated.\n\nWait for the device to reboot.",
-            "es": "Se ha actualizado el cargador de arranque de T-Echo.\n\nEspere a que el dispositivo se reinicie."
+            "pl": "Zaktualizowano bootloader T-Echo.\n\nPoczekaj, a\u017c urz\u0105dzenie uruchomi si\u0119 ponownie."
         }
     },
     "telemetry": {
         "text": {
             "de": "Telemetrie",
             "en": "Telemetry",
-            "es": "Telemetr\u00eda"
+            "pl": "Telemetria"
         }
     },
     "telemetry_module_about": {
@@ -1844,280 +1844,280 @@
         "label": {
             "de": "Telemetrie-Modul",
             "en": "Telemetry Module",
-            "es": "M\u00f3dulo de telemetr\u00eda"
+            "pl": "Modu\u0142 telemetryczny"
         }
     },
     "telemetry_module_display_farenheit": {
         "description": {
             "de": "Falls eingestellt, wird die Temperatur in Farenheit angezeigt.",
             "en": "If set, the temperature will be displayed in Farenheit.",
-            "es": "Si se ajusta, la temperatura se mostrar\u00e1 en grados Farenheit."
+            "pl": "Je\u015bli jest ustawiona, temperatura b\u0119dzie wy\u015bwietlana w stopniach Farenheita."
         },
         "label": {
             "de": "Temperatur in Farenheit anzeigen?",
             "en": "Display Temperature in Farenheit?",
-            "es": "\u00bfMostrar la temperatura en Farenheit?"
+            "pl": "Wy\u015bwietla\u0107 temperatur\u0119 w stopniach Farenheita?"
         }
     },
     "telemetry_module_measurement_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das Telemetriemodul aktiviert.",
             "en": "If set, the Telemetry module will be enabled.",
-            "es": "Si se establece, el m\u00f3dulo de telemetr\u00eda estar\u00e1 habilitado."
+            "pl": "Je\u015bli jest ustawiona, modu\u0142 telemetrii b\u0119dzie w\u0142\u0105czony."
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?"
+            "pl": "W\u0142\u0105czone?"
         }
     },
     "telemetry_module_read_error_count_threshold": {
         "description": {
             "de": "Manchmal kann das Lesen von Sensoren fehlschlagen. In diesem Fall wird eine konfigurierbare Anzahl von Versuchen wiederholt, wobei jeder Versuch um die f\u00fcr diesen Sensor erforderliche Mindestaktualisierungsrate verz\u00f6gert wird.",
             "en": "Sometimes sensor reads can fail. If this happens, we will retry a configurable number of attempts, each attempt will be delayed by the minimum required refresh rate for that sensor.",
-            "es": "A veces las lecturas de los sensores pueden fallar. Si esto sucede, reintentaremos un n\u00famero configurable de intentos, cada intento ser\u00e1 retrasado por la tasa de refresco m\u00ednima requerida para ese sensor."
+            "pl": "Czasami odczyt z czujnika mo\u017ce si\u0119 nie powie\u015b\u0107. W takim przypadku ponawiamy konfigurowaln\u0105 liczb\u0119 pr\u00f3b, przy czym ka\u017cda pr\u00f3ba jest op\u00f3\u017aniona o minimaln\u0105 wymagan\u0105 cz\u0119stotliwo\u015b\u0107 od\u015bwie\u017cania dla danego czujnika."
         },
         "label": {
             "de": "Schwellenwert f\u00fcr Lesefehlerz\u00e4hlung",
             "en": "Read Error Count Threshold",
-            "es": "Umbral de recuento de errores de lectura"
+            "pl": "Pr\u00f3g liczby b\u0142\u0119d\u00f3w odczytu"
         }
     },
     "telemetry_module_recovery_interval": {
         "description": {
             "de": "Manchmal kann es vorkommen, dass mehr als read_error_count_threshold-Fehler auftreten. In diesem Fall wird der Versuch, vom Sensor zu lesen, f\u00fcr eine Weile unterbrochen. Warten Sie so lange, bis Sie erneut versuchen, aus dem Sensor zu lesen.",
             "en": "Sometimes we can end up with more than read_error_count_threshold failures. In this case, we will stop trying to read from the sensor for a while. Wait this long until trying to read from the sensor again.",
-            "es": "A veces podemos acabar con m\u00e1s fallos de read_error_count_threshold. En este caso, dejaremos de intentar leer del sensor durante un tiempo. Espere este tiempo hasta intentar leer del sensor de nuevo."
+            "pl": "Czasami mo\u017ce si\u0119 zdarzy\u0107, \u017ce liczba b\u0142\u0119d\u00f3w przekracza pr\u00f3g read_error_count_threshold. W takim przypadku przerwiemy na jaki\u015b czas pr\u00f3by odczytu z czujnika. Odczekaj tyle czasu, a\u017c ponownie spr\u00f3bujesz odczyta\u0107 dane z czujnika."
         },
         "label": {
             "de": "Erholungsintervall",
             "en": "Recovery Interval",
-            "es": "Intervalo de recuperaci\u00f3n"
+            "pl": "Okres regeneracji"
         }
     },
     "telemetry_module_screen_enabled": {
         "description": {
             "de": "Aktivieren/Deaktivieren der Anzeige des Telemetriemoduls auf dem Ger\u00e4t.",
             "en": "Enable/Disable the Telemetry module on-device display.",
-            "es": "Activar/desactivar la visualizaci\u00f3n del m\u00f3dulo de telemetr\u00eda en el dispositivo."
+            "pl": "W\u0142\u0105czanie/wy\u0142\u0105czanie wy\u015bwietlania modu\u0142u telemetrii na urz\u0105dzeniu."
         },
         "label": {
             "de": "Bildschirm Aktiviert?",
             "en": "Screen Enabled?",
-            "es": "\u00bfPantalla habilitada?"
+            "pl": "Czy ekran jest w\u0142\u0105czony?"
         }
     },
     "telemetry_module_sensor_pin": {
         "description": {
             "de": "Geben Sie den bevorzugten GPIO-Pin f\u00fcr Sensormessungen an. Gilt nicht f\u00fcr Sensoren, die I2C verwenden.",
             "en": "Specify the peferred GPIO Pin for sensor readings. Not applicable to sensors that use I2C.",
-            "es": "Especifica el pin GPIO preferido para las lecturas del sensor. No se aplica a los sensores que utilizan I2C."
+            "pl": "Okre\u015blenie preferowanego pinu GPIO dla odczyt\u00f3w z czujnika. Nie dotyczy czujnik\u00f3w korzystaj\u0105cych z I2C."
         },
         "label": {
             "de": "Sensor-Pin",
             "en": "Sensor Pin",
-            "es": "Pin del sensor"
+            "pl": "Ko\u0142ek czujnika"
         }
     },
     "telemetry_module_sensor_type": {
         "description": {
             "de": "Geben Sie den Sensortyp an.",
             "en": "Specify the sensor type.",
-            "es": "Especifique el tipo de sensor."
+            "pl": "Okre\u015bl typ czujnika."
         },
         "label": {
             "de": "Sensor Type",
             "en": "Sensor Type",
-            "es": "Tipo de sensor"
+            "pl": "Typ czujnika"
         }
     },
     "telemetry_module_settings": {
         "text": {
             "de": "Einstellungen des Telemetriemoduls",
             "en": "Telemetry Module Settings",
-            "es": "Configuraci\u00f3n del m\u00f3dulo de telemetr\u00eda"
+            "pl": "Ustawienia modu\u0142u telemetrycznego"
         }
     },
     "telemetry_module_update_interval": {
         "description": {
             "de": "Intervall in Sekunden, in dem wir versuchen sollen, unsere Messungen an das Netz zu senden.",
             "en": "Interval in seconds of how often we should try to send our measurements to the mesh.",
-            "es": "Intervalo en segundos de la frecuencia con la que debemos intentar enviar nuestras mediciones a la malla."
+            "pl": "Interwa\u0142 w sekundach okre\u015blaj\u0105cy, jak cz\u0119sto powinni\u015bmy pr\u00f3bowa\u0107 wysy\u0142a\u0107 nasze pomiary do sieci."
         },
         "label": {
             "de": "Aktualisierungsintervall (Sekunden)",
             "en": "Update Interval (seconds)",
-            "es": "Intervalo de actualizaci\u00f3n (segundos)"
+            "pl": "Cz\u0119stotliwo\u015b\u0107 aktualizacji (sekundy)"
         }
     },
     "tx_power": {
         "description": {
             "de": "Wenn Null, dann verwenden Sie die standardm\u00e4\u00dfige maximale zul\u00e4ssige Dauerleistung (d.h. etwas, das die Funkhardware nicht durchbrennen l\u00e4sst). In den meisten F\u00e4llen sollten Sie 0 verwenden (Einheiten sind in dBm).",
             "en": "If zero then, use default max legal continuous power (i.e., something that will not burn out the radio hardware). In most cases, you should use 0. (Units are in dBm).",
-            "es": "Si es cero, utilice la potencia m\u00e1xima legal continua por defecto (es decir, algo que no queme el hardware de la radio). En la mayor\u00eda de los casos, deber\u00eda usar 0. (Las unidades est\u00e1n en dBm)."
+            "pl": "Je\u015bli jest to zero, nale\u017cy u\u017cy\u0107 domy\u015blnej maksymalnej legalnej mocy ci\u0105g\u0142ej (tzn. takiej, kt\u00f3ra nie spowoduje spalenia sprz\u0119tu radiowego). W wi\u0119kszo\u015bci przypadk\u00f3w nale\u017cy u\u017cy\u0107 warto\u015bci 0. (Jednostki s\u0105 podawane w dBm)."
         },
         "label": {
             "de": "Sendeleistung (dBm)",
             "en": "TX Power (dBm)",
-            "es": "Potencia de transmisi\u00f3n (dBm)"
+            "pl": "Moc TX (dBm)"
         }
     },
     "update": {
         "text": {
             "de": "Update",
             "en": "Update",
-            "es": "Actualizaci\u00f3n"
+            "pl": "Aktualizacja"
         }
     },
     "update_available": {
         "text": {
             "de": "Update verf\u00fcgbar",
             "en": "update available",
-            "es": "actualizaci\u00f3n disponible"
+            "pl": "dost\u0119pna aktualizacja"
         }
     },
     "update_only": {
         "text": {
             "de": "Nur aktualisieren",
             "en": "Update only",
-            "es": "S\u00f3lo actualizaci\u00f3n"
+            "pl": "Tylko aktualizacja"
         },
         "tooltip": {
             "de": "Wenn diese Option aktiviert ist, wird das Ger\u00e4t nur aktualisiert und nicht vollst\u00e4ndig gel\u00f6scht.",
             "en": "If enabled, the device will be updated only - not completely erased.",
-            "es": "Si se activa, el dispositivo s\u00f3lo se actualizar\u00e1, no se borrar\u00e1 por completo."
+            "pl": "Je\u015bli opcja ta jest w\u0142\u0105czona, urz\u0105dzenie zostanie tylko zaktualizowane, a nie ca\u0142kowicie usuni\u0119te."
         }
     },
     "update_step1": {
         "text": {
             "de": "Schritt 1 von 2 aktualisieren",
             "en": "Update step 1 of 2",
-            "es": "Actualizar el paso 1 de 2"
+            "pl": "Aktualizacja krok 1 z 2"
         }
     },
     "update_step1_done": {
         "text": {
             "de": "Update Schritt 1 von 2 ist erledigt",
             "en": "Update step 1 of 2 is done",
-            "es": "La actualizaci\u00f3n del paso 1 de 2 est\u00e1 hecha"
+            "pl": "Aktualizacja krok 1 z 2 zosta\u0142 wykonany"
         }
     },
     "update_step2_done": {
         "text": {
             "de": "Update Schritt 2 von 2 ist erledigt",
             "en": "Update step 2 of 2 is done",
-            "es": "Actualizaci\u00f3n paso 2 de 2 est\u00e1 hecho"
+            "pl": "Aktualizacja krok 2 z 2 zosta\u0142 wykonany"
         }
     },
     "uplink_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, werden Nachrichten im Mesh von jedem Gateway-Knoten an das \u00f6ffentliche Internet gesendet.",
             "en": "If set, messages on the mesh will be sent to the public internet by any gateway node.",
-            "es": "Si se establece, los mensajes en la malla ser\u00e1n enviados a la Internet p\u00fablica por cualquier nodo de la puerta de enlace."
+            "pl": "Je\u015bli jest ustawione, wiadomo\u015bci w sieci mesh b\u0119d\u0105 wysy\u0142ane do publicznego Internetu przez dowolny w\u0119ze\u0142 bramy."
         },
         "label": {
             "de": "Uplink Aktiviert?",
             "en": "Uplink Enabled?",
-            "es": "\u00bfEnlace ascendente habilitado?"
+            "pl": "Uplink Enabled?"
         }
     },
     "user": {
         "text": {
             "de": "Benutzer",
             "en": "User",
-            "es": "Usuario"
+            "pl": "U\u017cytkownik"
         }
     },
     "user_settings": {
         "text": {
             "de": "Benutzereinstellungen",
             "en": "User Settings",
-            "es": "Configuraci\u00f3n del usuario"
+            "pl": "Ustawienia u\u017cytkownika"
         }
     },
     "wait_bluetooth_secs": {
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 60 Sekunden (oder 1 Minute).",
             "en": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or 1 minute).",
-            "es": "Opci\u00f3n de m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Ver gesti\u00f3n de energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 60 segundos (o 1 minuto)."
+            "pl": "Opcja maszyny stanowej zarz\u0105dzania zasilaniem. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci zarz\u0105dzanie zasilaniem. 0 oznacza warto\u015b\u0107 domy\u015bln\u0105 60 sekund (lub 1 minut\u0119)."
         },
         "label": {
             "de": "Bluetooth-Wartezeit (Sekunden)",
             "en": "Bluetooth Wait (seconds)",
-            "es": "Espera de Bluetooth (segundos)"
+            "pl": "Bluetooth Czekaj (sekundy)"
         }
     },
     "warning": {
         "text": {
             "de": "Warnung",
             "en": "Warning",
-            "es": "Advertencia"
+            "pl": "Ostrze\u017cenie"
         }
     },
     "warning_cannot_open_port_exclusively": {
         "text": {
             "de": "Warnung: Der serielle Anschluss kann nicht exklusiv ge\u00f6ffnet werden.\nSchlie\u00dfen Sie alle anderen Programme, die diesen Anschluss m\u00f6glicherweise verwenden, und versuchen Sie es erneut.",
             "en": "Warning: Cannot open the serial port exclusively.\nClose any other programs that might be using that port and try again.",
-            "es": "Advertencia: No se puede abrir el puerto serie exclusivamente.\nCierre cualquier otro programa que pueda estar utilizando ese puerto e int\u00e9ntelo de nuevo."
+            "pl": "Ostrze\u017cenie: Nie mo\u017cna otworzy\u0107 wy\u0142\u0105cznie portu szeregowego.\nZamknij wszystkie inne programy, kt\u00f3re mog\u0105 korzysta\u0107 z tego portu, i spr\u00f3buj ponownie."
         }
     },
     "warning_issue_downloading": {
         "text": {
             "de": "Warnung: Es gab ein Problem beim Herunterladen/Extrahieren.",
             "en": "Warning: There was an issue downloading/extracting.",
-            "es": "Advertencia: Hubo un problema de descarga/extracci\u00f3n."
+            "pl": "Ostrze\u017cenie: Wyst\u0105pi\u0142 problem z pobieraniem/rozpakowywaniem plik\u00f3w."
         }
     },
     "warning_need_channel_name": {
         "text": {
             "de": "Sie m\u00fcssen einen Kanalnamen haben.",
             "en": "Need to have a channel name.",
-            "es": "Necesita tener un nombre de canal."
+            "pl": "Konieczne jest posiadanie nazwy kana\u0142u."
         }
     },
     "warning_not_admin": {
         "text": {
             "de": "Warnung: Dieser Prozess wird nicht als Administrator ausgef\u00fchrt.\nSchlie\u00dfen Sie ihn und f\u00fchren Sie ihn erneut als Administrator aus.",
             "en": "Warning: This process is not running as Administrator.\nClose and re-run as Administrator.",
-            "es": "Advertencia: Este proceso no se est\u00e1 ejecutando como Administrador.\nCierre y vuelva a ejecutarlo como Administrador."
+            "pl": "Ostrze\u017cenie: Ten proces nie jest uruchomiony jako Administrator.\nZamknij i uruchom ponownie jako Administrator."
         }
     },
     "warning_problem_connecting": {
         "text": {
             "de": "Es gab ein Problem bei der Verbindung mit dem Ger\u00e4t.\n\nTrennen Sie das Ger\u00e4t vom Stromnetz oder starten Sie das Programm neu.",
             "en": "There was a problem connecting to the device.\n\nPerhaps unplug device or restart this program.",
-            "es": "Hubo un problema de conexi\u00f3n con el dispositivo.\n\nQuiz\u00e1s desenchufe el dispositivo o reinicie este programa."
+            "pl": "Wyst\u0105pi\u0142 problem z po\u0142\u0105czeniem z urz\u0105dzeniem.\n\nBy\u0107 mo\u017ce nale\u017cy od\u0142\u0105czy\u0107 urz\u0105dzenie lub ponownie uruchomi\u0107 program."
         }
     },
     "warning_talking_to_device": {
         "text": {
             "de": "Ich hatte ein Problem bei der Kommunikation mit dem Ger\u00e4t.\nVielleicht sollten Sie das Ger\u00e4t aus- und wieder einstecken?\nWenn das Ger\u00e4t ein nrf52 (T-Echo oder RAK) ist,\ndann versetzen Sie das Ger\u00e4t in den Boot-Modus, indem Sie zweimal die RST-Taste dr\u00fccken.",
             "en": "Had a problem talking with the device.\nPerhaps unplug and re-plugin the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put the device into boot mode by pressing RST button twice.",
-            "es": "Tuvo un problema al hablar con el dispositivo.\n\u00bfQuiz\u00e1s desenchufar y volver a enchufar el dispositivo?\nSi el dispositivo es un nrf52 (T-Echo o RAK),\nentonces ponga el dispositivo en modo de arranque pulsando dos veces el bot\u00f3n RST."
+            "pl": "Wyst\u0105pi\u0142 problem z nawi\u0105zaniem po\u0142\u0105czenia z urz\u0105dzeniem.\nMo\u017ce nale\u017cy od\u0142\u0105czy\u0107 i ponownie pod\u0142\u0105czy\u0107 urz\u0105dzenie?\nJe\u015bli urz\u0105dzenie to nrf52 (T-Echo lub RAK),\nto prze\u0142\u0105cz urz\u0105dzenie w tryb startowy, naciskaj\u0105c dwukrotnie przycisk RST."
         }
     },
     "wifi_ap_mode": {
         "description": {
             "de": "Wenn diese Option eingestellt ist, arbeitet der Knoten als Zugangspunkt und DHCP-Server. Andernfalls ist der Knoten eine Station.",
             "en": "If set, the node will operate as an access point and DHCP server. Otherwise, the node will be a station.",
-            "es": "Si se establece, el nodo funcionar\u00e1 como punto de acceso y servidor DHCP. En caso contrario, el nodo ser\u00e1 una estaci\u00f3n."
+            "pl": "Je\u015bli jest ustawione, w\u0119ze\u0142 b\u0119dzie dzia\u0142a\u0142 jako punkt dost\u0119powy i serwer DHCP. W przeciwnym razie w\u0119ze\u0142 b\u0119dzie dzia\u0142a\u0142 jako stacja."
         },
         "label": {
             "de": "WiFi AP Mode?",
             "en": "WiFi AP Mode?",
-            "es": "\u00bfModo WiFi AP?"
+            "pl": "Tryb AP WiFi?"
         }
     },
     "wifi_password": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird sie f\u00fcr die Authentifizierung am benannten WiFi verwendet.",
             "en": "If set, will be use to authenticate to the named WiFi.",
-            "es": "Si se establece, se utilizar\u00e1 para autenticar a la WiFi nombrada."
+            "pl": "Je\u015bli jest ustawiona, b\u0119dzie u\u017cywana do uwierzytelniania w nazwanym WiFi."
         },
         "label": {
             "de": "WiFi-Passwort",
             "en": "WiFi Password",
-            "es": "Contrase\u00f1a WiFi"
+            "pl": "Has\u0142o WiFi"
         },
         "max_size": 64
     },
@@ -2125,12 +2125,12 @@
         "description": {
             "de": "Wenn diese Option gesetzt ist, versucht dieser Knoten, dem angegebenen WiFi-Netzwerk beizutreten und eine Adresse \u00fcber DHCP zu erhalten.",
             "en": "If set, this node will try to join the specified WiFi network and acquire an address via DHCP.",
-            "es": "Si se establece, este nodo intentar\u00e1 unirse a la red WiFi especificada y adquirir una direcci\u00f3n a trav\u00e9s de DHCP."
+            "pl": "Je\u015bli jest ustawione, ten w\u0119ze\u0142 b\u0119dzie pr\u00f3bowa\u0142 do\u0142\u0105czy\u0107 do okre\u015blonej sieci WiFi i uzyska\u0107 adres za pomoc\u0105 protoko\u0142u DHCP."
         },
         "label": {
             "de": "WiFi SSID",
             "en": "WiFi SSID",
-            "es": "WiFi SSID"
+            "pl": "SSID WiFi"
         },
         "max_size": 33
     }
