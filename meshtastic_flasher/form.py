@@ -155,19 +155,16 @@ class Form(QDialog):
         #link_style = "color:#67EA94; font-weight: bold; text-decoration: underline"
         # this link_style gets added to tool tip too, which we do not want
         self.label_version = QLabel(self)
-        # TODO: translate
-        self.label_version.setText("Version")
+        self.label_version.setText(self.main.text('version'))
         #self.label_version.setStyleSheet(link_style)
         self.label_version.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.label_version.setToolTip(self.main.tooltip('label_version'))
 
         self.label_port = QLabel(self)
-        # TODO: translate
-        self.label_port.setText("Port")
+        self.label_port.setText(self.main.text('port'))
 
         self.label_device = QLabel(self)
-        # TODO: translate
-        self.label_device.setText("Device")
+        self.label_device.setText(self.main.text('device'))
         #self.label_device.setStyleSheet(link_style)
         self.label_device.setCursor(QCursor(QtCore.Qt.PointingHandCursor))
         self.label_device.setToolTip(self.main.tooltip('label_device'))
@@ -299,8 +296,9 @@ class Form(QDialog):
         """Populate the languages dropdown.
            When adding a new language:
              1) ./bin/translate_entries.py IT
-             2)  "pip install ."
+             2) run "pip install ."
              3) add language to this list
+             4) add to bin/translate_more.bash
         """
         self.select_language.addItem("Deutsch", "de")
         self.select_language.addItem("Español", "es")
@@ -390,11 +388,17 @@ class Form(QDialog):
         self.advanced_form.show()
 
 
+    # pylint: disable=unused-argument
+    def closeEvent(self, event):
+        """Override the close event so the user can just click the close window in corner."""
+        self.accept()
+
+
     def on_select_language_changed(self, value):
         """When the select_language drop down value is changed."""
         lang = self.select_language.currentData()
-        print(f'lang:{lang}')
-        print(f'sys.argv:{sys.argv}')
+        #print(f'lang:{lang}')
+        #print(f'sys.argv:{sys.argv}')
         if len(sys.argv) == 1:
             sys.argv.append(lang)
         else:

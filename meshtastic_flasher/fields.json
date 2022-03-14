@@ -482,6 +482,17 @@
             "zh": "\u68c0\u6d4b\u5230"
         }
     },
+    "device": {
+        "text": {
+            "de": "Ger\u00e4t",
+            "en": "Device",
+            "es": "Dispositivo",
+            "fr": "Dispositif",
+            "it": "Dispositivo",
+            "pl": "Urz\u0105dzenie",
+            "zh": "\u8bbe\u5907"
+        }
+    },
     "device_backed_up_to_file": {
         "text": {
             "de": "Die Ger\u00e4tekonfiguration wird in einer Datei gesichert.",
@@ -1754,6 +1765,17 @@
             "it": "Timeout del telefono (secondi)",
             "pl": "Limit czasu telefonu (sekundy)",
             "zh": "\u7535\u8bdd\u8d85\u65f6\uff08\u79d2\uff09"
+        }
+    },
+    "port": {
+        "text": {
+            "de": "Hafen",
+            "en": "Port",
+            "es": "Puerto",
+            "fr": "Port",
+            "it": "Porto",
+            "pl": "Port",
+            "zh": "\u6e2f\u53e3"
         }
     },
     "position": {
@@ -3313,6 +3335,17 @@
             "it": "Impostazioni dell'utente",
             "pl": "Ustawienia u\u017cytkownika",
             "zh": "\u7528\u6237\u8bbe\u7f6e"
+        }
+    },
+    "version": {
+        "text": {
+            "de": "Version",
+            "en": "Version",
+            "es": "Versi\u00f3n",
+            "fr": "Version",
+            "it": "Versione",
+            "pl": "Wersja",
+            "zh": "\u7248\u672c"
         }
     },
     "wait_bluetooth_secs": {
