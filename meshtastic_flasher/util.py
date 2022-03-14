@@ -159,10 +159,10 @@ def check_if_newer_version():
         url = "https://pypi.org/pypi/meshtastic-flasher/json"
         data = requests.get(url).json()
         pypi_version = data["info"]["version"]
-        print(f"pypi_version:{pypi_version}")
+        #print(f"pypi_version:{pypi_version}")
     except Exception as e:
         print(f"could not get version from pypi e:{e}")
-    print(f'running: {meshtastic_flasher.version.__version__}')
+    #print(f'running: {meshtastic_flasher.version.__version__}')
     if pypi_version and meshtastic_flasher.version.__version__ != pypi_version:
         if 'alpha' not in pypi_version and 'alpha' in meshtastic_flasher.version.__version__:
             is_newer_version = False
@@ -190,3 +190,9 @@ def load_fields():
     with open(get_path('fields.json'), encoding='utf-8') as json_file:
         fields = json.load(json_file)
     return fields
+
+
+def write_fields(data):
+    """Write updated json file to fields.json"""
+    with open('./meshtastic_flasher/fields.json', 'w', encoding='utf-8') as json_file:
+        json.dump(data, json_file, indent=4, sort_keys=True)
