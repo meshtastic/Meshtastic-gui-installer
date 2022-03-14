@@ -3,109 +3,109 @@
         "text": {
             "de": "\u00dcber Meshtastic Flasher",
             "en": "About Meshtastic Flasher",
-            "pl": "O programie Meshtastic Flasher"
+            "zh": "\u5173\u4e8eMeshtastic Flasher"
         }
     },
     "about_button": {
         "tooltip": {
             "de": "Klicken Sie hier, um Informationen \u00fcber das Projekt zu erhalten.",
             "en": "Click for information about the project.",
-            "pl": "Kliknij, aby uzyska\u0107 informacje o projekcie."
+            "zh": "\u70b9\u51fb\u67e5\u770b\u8be5\u9879\u76ee\u4fe1\u606f\u3002"
         }
     },
     "about_text": {
         "text": {
             "de": "Meshtastic Flasher ist Teil des <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> \u00d6kosystems. Es ist eine plattform\u00fcbergreifende, einfach zu bedienende grafische Benutzeroberfl\u00e4che zum Aktualisieren und Installieren von Meshtastic-Firmware.",
             "en": "Meshtastic Flasher is part of the <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> ecosystem. It is a cross platform, easy to use graphical user interface for updating and installing Meshtastic firmware.",
-            "pl": "Meshtastic Flasher jest cz\u0119\u015bci\u0105 ekosystemu <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. Jest to wieloplatformowy, \u0142atwy w u\u017cyciu graficzny interfejs u\u017cytkownika do aktualizacji i instalacji firmware Meshtastic."
+            "zh": "Meshtastic Flasher\u662f<a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic>\u751f\u6001\u7cfb\u7edf\u7684\u4e00\u90e8\u5206\u3002\u5b83\u662f\u4e00\u4e2a\u8de8\u5e73\u53f0\u3001\u6613\u4e8e\u4f7f\u7528\u7684\u56fe\u5f62\u7528\u6237\u754c\u9762\uff0c\u7528\u4e8e\u66f4\u65b0\u548c\u5b89\u88c5Meshtastic\u56fa\u4ef6\u3002"
         }
     },
     "adc_multiplier_override": {
         "description": {
             "de": "Verh\u00e4ltnis des Spannungsteilers f\u00fcr den Batterie-Pin z.B. 3.20 (R1=100k, R2=220k) \u00dcbersteuert den in der Variante definierten ADC_MULTIPLIER f\u00fcr die Batteriespannungsberechnung.",
             "en": "Ratio of voltage divider for battery pin eg. 3.20 (R1=100k, R2=220k) Overrides the ADC_MULTIPLIER defined in variant for battery voltage calculation.",
-            "pl": "Wsp\u00f3\u0142czynnik dzielnika napi\u0119cia dla styku akumulatora, np. 3,20 (R1=100k, R2=220k) Zast\u0119puje ADC_MULTIPLIER zdefiniowany w wariancie do obliczania napi\u0119cia akumulatora."
+            "zh": "3.20 (R1=100k, R2=220k) \u8986\u76d6\u53d8\u91cf\u4e2d\u5b9a\u4e49\u7684ADC_MULTIPLIER\uff0c\u7528\u4e8e\u8ba1\u7b97\u7535\u6c60\u7535\u538b\u3002"
         },
         "label": {
             "de": "ADC-Multiplikator \u00dcbersteuerung",
             "en": "ADC Multiplier Override",
-            "pl": "Odst\u0105pienie mno\u017cnika przetwornika ADC"
+            "zh": "ADC\u4e58\u6cd5\u5668\u8d85\u63a7"
         }
     },
     "admin": {
         "text": {
             "de": "Verwaltung",
             "en": "Admin",
-            "pl": "Administrator"
+            "zh": "\u7ba1\u7406\u5458"
         }
     },
     "admin_settings": {
         "text": {
             "de": "Admin-Einstellungen",
             "en": "Admin Settings",
-            "pl": "Ustawienia administratora"
+            "zh": "\u7ba1\u7406\u5458\u8bbe\u7f6e"
         }
     },
     "advanced_options": {
         "text": {
             "de": "Erweiterte Optionen",
             "en": "Advanced Options",
-            "pl": "Opcje zaawansowane"
+            "zh": "\u9ad8\u7ea7\u9009\u9879"
         },
         "tooltip": {
             "de": "Klicken Sie hier f\u00fcr erweiterte Meshtastic Flasher-Optionen.",
             "en": "Click for advanced Meshtastic Flasher options.",
-            "pl": "Kliknij, aby wy\u015bwietli\u0107 zaawansowane opcje Meshtastic Flasher."
+            "zh": "\u70b9\u51fb\u67e5\u770b\u9ad8\u7ea7Meshtastic Flasher\u9009\u9879\u3002"
         }
     },
     "all": {
         "text": {
             "de": "Alle",
             "en": "All",
-            "pl": "Wszystkie"
+            "zh": "\u5168\u90e8"
         }
     },
     "alt": {
         "description": {
             "de": "Die H\u00f6henlage ist die Entfernung \u00fcber dem Meeresspiegel.",
             "en": "Altitude is the distance above sea level.",
-            "pl": "Wysoko\u015b\u0107 to odleg\u0142o\u015b\u0107 nad poziomem morza."
+            "zh": "\u6d77\u62d4\u662f\u6307\u9ad8\u4e8e\u6d77\u5e73\u9762\u7684\u8ddd\u79bb\u3002"
         },
         "label": {
             "de": "H\u00f6henlage (Meter)",
             "en": "Altitude (meters)",
-            "pl": "Wysoko\u015b\u0107 nad poziomem morza (w metrach)"
+            "zh": "\u6d77\u62d4\u9ad8\u5ea6\uff08\u7c73\uff09"
         }
     },
     "auto_screen_carousel_secs": {
         "description": {
             "de": "Wechselt automatisch zur n\u00e4chsten Seite auf dem Bildschirm wie ein Karussell, basierend auf dem angegebenen Intervall in Sekunden. Potenziell n\u00fctzlich f\u00fcr Ger\u00e4te ohne Benutzertasten.",
             "en": "Automatically toggles to the next page on the screen like a carousel, based the specified interval in seconds. Potentially useful for devices without user buttons.",
-            "pl": "Automatycznie prze\u0142\u0105cza do nast\u0119pnej strony na ekranie, jak karuzela, na podstawie okre\u015blonego interwa\u0142u w sekundach. Potencjalnie przydatne w urz\u0105dzeniach bez przycisk\u00f3w u\u017cytkownika."
+            "zh": "\u50cf\u65cb\u8f6c\u6728\u9a6c\u4e00\u6837\u81ea\u52a8\u5207\u6362\u5230\u5c4f\u5e55\u4e0a\u7684\u4e0b\u4e00\u9875\uff0c\u57fa\u4e8e\u6307\u5b9a\u7684\u95f4\u9694\u65f6\u95f4\uff08\u79d2\uff09\u3002\u5bf9\u6ca1\u6709\u7528\u6237\u6309\u94ae\u7684\u8bbe\u5907\u53ef\u80fd\u5f88\u6709\u7528\u3002"
         },
         "label": {
             "de": "Automatisches Bildschirmkarussell (Sekunden)",
             "en": "Auto Screen Carousel (seconds)",
-            "pl": "Automatyczna karuzela ekranowa (sekundy)"
+            "zh": "\u81ea\u52a8\u5c4f\u5e55\u8f6c\u76d8\uff08\u79d2\uff09"
         }
     },
     "bandwidth": {
         "description": {
             "de": "Bestimmte Bandbreitenzahlen sind \"speziell\" und werden in den entsprechenden Flie\u00dfkommawert umgewandelt: 31 -> 31,25MHz.",
             "en": "Certain bandwidth numbers are 'special' and will be converted to the appropriate floating point value: 31 -> 31.25MHz.",
-            "pl": "Niekt\u00f3re liczby szeroko\u015bci pasma s\u0105 \"specjalne\" i zostan\u0105 przekonwertowane na odpowiedni\u0105 warto\u015b\u0107 zmiennoprzecinkow\u0105: 31 -> 31,25MHz."
+            "zh": "\u67d0\u4e9b\u5e26\u5bbd\u6570\u5b57\u662f \"\u7279\u6b8a \"\u7684\uff0c\u5c06\u88ab\u8f6c\u6362\u4e3a\u9002\u5f53\u7684\u6d6e\u70b9\u503c\u300231 -> 31.25MHz\u3002"
         },
         "label": {
             "de": "Bandbreite (MHz)",
             "en": "Bandwidth (MHz)",
-            "pl": "Szeroko\u015b\u0107 pasma (MHz)"
+            "zh": "\u5e26\u5bbd(MHz)"
         }
     },
     "canned": {
         "text": {
             "de": "Dose",
             "en": "Canned",
-            "pl": "Puszka"
+            "zh": "\u7f50\u5934"
         }
     },
     "canned_message_module_about": {
@@ -113,269 +113,269 @@
         "label": {
             "de": "Modul f\u00fcr gespeicherte Nachrichten",
             "en": "Canned Message Module",
-            "pl": "Modu\u0142 wiadomo\u015bci w puszce"
+            "zh": "\u9884\u5236\u4fe1\u606f\u6a21\u5757"
         }
     },
     "canned_message_module_allow_input_source": {
         "description": {
             "de": "Herkunft des Eingangsereignisses, das vom Canned Message-Modul akzeptiert wird. Kann z. B. \"rotEnc1\" oder das Schl\u00fcsselwort \"_any\" sein.",
             "en": "Input event origin accepted by the Canned Message module. Can be e.g. 'rotEnc1' or keyword '_any'.",
-            "pl": "Pochodzenie zdarzenia wej\u015bciowego akceptowanego przez modu\u0142 Canned Message. Mo\u017ce to by\u0107 np. \"rotEnc1\" lub s\u0142owo kluczowe \"_any\"."
+            "zh": "\u7f50\u88c5\u6d88\u606f\u6a21\u5757\u63a5\u53d7\u7684\u8f93\u5165\u4e8b\u4ef6\u539f\u70b9\u3002\u53ef\u4ee5\u662f\u4f8b\u5982 \"rotEnc1 \"\u6216\u5173\u952e\u8bcd\"_any\"\u3002"
         },
         "label": {
             "de": "Eingabequelle zulassen",
             "en": "Allow Input Source",
-            "pl": "Zezw\u00f3l na \u017ar\u00f3d\u0142o wej\u015bcia"
+            "zh": "\u5141\u8bb8\u8f93\u5165\u6e90"
         }
     },
     "canned_message_module_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das Modul \"Canned Message\" aktiviert.",
             "en": "If set, the Canned Message module will be enabled.",
-            "pl": "Je\u015bli zostanie ustawiona, modu\u0142 Canned Message b\u0119dzie w\u0142\u0105czony."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u5c06\u542f\u7528\u9884\u5236\u4fe1\u606f\u6a21\u5757\u3002"
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "pl": "W\u0142\u0105czone?"
+            "zh": "\u542f\u7528\u4e86\u5417\uff1f"
         }
     },
     "canned_message_module_messages": {
         "description": {
             "de": "Vordefinierte Nachrichten f\u00fcr das Modul Canned Message, getrennt durch das Zeichen \"|\".",
             "en": "Pre-defined messages for the Canned Message module separated by '|' character.",
-            "pl": "Wst\u0119pnie zdefiniowane komunikaty dla modu\u0142u Canned Message oddzielone znakiem \"|\"."
+            "zh": "\u9884\u5236\u4fe1\u606f\u6a21\u5757\u7684\u9884\u5b9a\u4e49\u4fe1\u606f\uff0c\u7528'|'\u5b57\u7b26\u5206\u9694\u3002"
         },
         "label": {
             "de": "Nachrichten",
             "en": "Messages",
-            "pl": "Wiadomo\u015bci"
+            "zh": "\u7559\u8a00"
         }
     },
     "canned_message_module_send_bell": {
         "description": {
             "de": "Das Modul \"Canned Message\" sendet auch ein Klingelzeichen mit den Nachrichten. Das Modul Externe Benachrichtigung kann von dieser Funktion profitieren.",
             "en": "The Canned Message module also sends a bell character with the messages. The External Notification module can benefit from this feature.",
-            "pl": "Modu\u0142 Canned Message wysy\u0142a r\u00f3wnie\u017c znak dzwonka wraz z wiadomo\u015bciami. Z funkcji tej mo\u017ce korzysta\u0107 modu\u0142 Powiadomienia zewn\u0119trzne."
+            "zh": "Canned Message\u6a21\u5757\u4e5f\u4f1a\u968f\u4fe1\u606f\u53d1\u9001\u4e00\u4e2a\u94c3\u94db\u5b57\u7b26\u3002\u5916\u90e8\u901a\u77e5\u6a21\u5757\u53ef\u4ee5\u4ece\u8fd9\u4e2a\u529f\u80fd\u4e2d\u53d7\u76ca\u3002"
         },
         "label": {
             "de": "Send Bell?",
             "en": "Send Bell?",
-            "pl": "Wys\u0142a\u0107 dzwonek?"
+            "zh": "\u53d1\u9001\u8d1d\u5c14\uff1f"
         }
     },
     "canned_message_module_settings": {
         "text": {
             "de": "Einstellungen f\u00fcr das Modul f\u00fcr gespeicherte Nachrichten",
             "en": "Canned Message Module Settings",
-            "pl": "Ustawienia modu\u0142u wiadomo\u015bci w puszkach"
+            "zh": "\u9884\u5236\u4fe1\u606f\u6a21\u5757\u8bbe\u7f6e"
         }
     },
     "channel_settings": {
         "text": {
             "de": "Kanal-Einstellungen",
             "en": "Channel Settings",
-            "pl": "Ustawienia kana\u0142\u00f3w"
+            "zh": "\u9891\u9053\u8bbe\u7f6e"
         }
     },
     "channels": {
         "text": {
             "de": "Kan\u00e4le",
             "en": "Channels",
-            "pl": "Kana\u0142y"
+            "zh": "\u6e20\u9053"
         }
     },
     "charge_current": {
         "description": {
             "de": "Stellt den Strom des Batterieladeger\u00e4ts ein.",
             "en": "Sets the current of the battery charger.",
-            "pl": "Umo\u017cliwia ustawienie nat\u0119\u017cenia pr\u0105du \u0142adowarki akumulator\u00f3w."
+            "zh": "\u8bbe\u5b9a\u7535\u6c60\u5145\u7535\u5668\u7684\u7535\u6d41\u3002"
         },
         "label": {
             "de": "Ladung Strom",
             "en": "Charge Current",
-            "pl": "Na\u0142aduj pr\u0105d"
+            "zh": "\u5145\u7535\u7535\u6d41"
         }
     },
     "clear_firmware_files": {
         "text": {
             "de": "Firmware-Dateien l\u00f6schen",
             "en": "Clear Firmware Files",
-            "pl": "Wyczy\u015b\u0107 pliki oprogramowania uk\u0142adowego"
+            "zh": "\u6e05\u9664\u56fa\u4ef6\u6587\u4ef6"
         }
     },
     "coding_rate": {
         "description": {
             "de": "Der Nenner der Kodierungsrate, d.h. f\u00fcr 4/8 ist der Wert 8. F\u00fcr 5/8 ist der Wert 5.",
             "en": "The denominator of the coding rate. ie for 4/8, the value is 8. 5/8 the value is 5.",
-            "pl": "Mianownik wsp\u00f3\u0142czynnika kodowania, np. dla 4/8 warto\u015b\u0107 wynosi 8, a dla 5/8 warto\u015b\u0107 wynosi 5."
+            "zh": "\u7f16\u7801\u7387\u7684\u5206\u6bcd\u3002\u53734/8\uff0c\u6570\u503c\u4e3a8\u30025/8\uff0c\u6570\u503c\u4e3a5\u3002"
         },
         "label": {
             "de": "Kodierungsrate",
             "en": "Coding Rate",
-            "pl": "Szybko\u015b\u0107 kodowania"
+            "zh": "\u7f16\u7801\u7387"
         }
     },
     "configure_from_file": {
         "text": {
             "de": "Aus Datei konfigurieren",
             "en": "Configure From File",
-            "pl": "Konfiguruj z pliku"
+            "zh": "\u4ece\u6587\u4ef6\u914d\u7f6e"
         }
     },
     "confirm": {
         "text": {
             "de": "Best\u00e4tigen Sie",
             "en": "Confirm",
-            "pl": "Potwierd\u017a"
+            "zh": "\u786e\u8ba4"
         }
     },
     "confirm_flash_first_part": {
         "text": {
             "de": "Sind Sie sicher, dass Sie das wollen?",
             "en": "Are you sure you want to",
-            "pl": "Czy jeste\u015b pewien, \u017ce chcesz"
+            "zh": "\u4f60\u786e\u5b9a\u4f60\u60f3"
         }
     },
     "confirm_remove_firmware_files": {
         "text": {
             "de": "Sind Sie sicher, dass Sie die Firmware-Dateien entfernen m\u00f6chten?",
             "en": "Are you sure you want to remove the firmware files?",
-            "pl": "Czy na pewno chcesz usun\u0105\u0107 pliki oprogramowania uk\u0142adowego?"
+            "zh": "\u4f60\u786e\u5b9a\u4f60\u8981\u5220\u9664\u56fa\u4ef6\u6587\u4ef6\u5417\uff1f"
         }
     },
     "confirm_reset_device": {
         "text": {
             "de": "Sind Sie sicher, dass Sie das Ger\u00e4t zur\u00fccksetzen wollen?",
             "en": "Are you sure you want to reset the device?",
-            "pl": "Czy na pewno chcesz zresetowa\u0107 urz\u0105dzenie?"
+            "zh": "\u4f60\u786e\u5b9a\u4f60\u8981\u91cd\u7f6e\u8bbe\u5907\u5417\uff1f"
         }
     },
     "confirm_update_techo_bootloader": {
         "text": {
             "de": "M\u00f6chten Sie den T-Echo-Bootloader aktualisieren?",
             "en": "Do you want to update the T-Echo bootloader?",
-            "pl": "Czy chcesz zaktualizowa\u0107 bootloader T-Echo?"
+            "zh": "\u4f60\u60f3\u66f4\u65b0T-Echo\u7684\u5f15\u5bfc\u7a0b\u5e8f\u5417\uff1f"
         }
     },
     "copy": {
         "text": {
             "de": "kopieren.",
             "en": "copy",
-            "pl": "kopia"
+            "zh": "\u62f7\u8d1d"
         }
     },
     "could_not_find_partition": {
         "text": {
             "de": "Die Partition konnte nicht gefunden werden.\nDr\u00fccken Sie die RST-Taste ZWEIMAL\nund versuchen Sie dann erneut, die Taste DETECT zu dr\u00fccken.",
             "en": "Could not find the partition.\nPress the RST button TWICE\nthen re-try pressing the DETECT button again.",
-            "pl": "Nie mo\u017cna znale\u017a\u0107 partycji.\nNaci\u015bnij dwukrotnie przycisk RST\na nast\u0119pnie ponownie spr\u00f3buj nacisn\u0105\u0107 przycisk DETECT."
+            "zh": "\u65e0\u6cd5\u627e\u5230\u8be5\u5206\u533a\u3002\n\u6309\u4e24\u6b21RST\u6309\u94ae\n\u7136\u540e\u518d\u8bd5\u7740\u6309\u4e00\u4e0bDETECT\u6309\u94ae\u3002"
         }
     },
     "debug_log_enabled": {
         "description": {
             "de": "Standardm\u00e4\u00dfig wird die Protokollierung ausgeschaltet, sobald ein API-Client eine Verbindung herstellt (um die gemeinsame serielle Verbindung ruhig zu halten). Setzen Sie diesen Wert auf true, damit das Debug-Protokoll auch dann ausgegeben wird, wenn die API aktiv ist.",
             "en": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active.",
-            "pl": "Domy\u015blnie logowanie jest wy\u0142\u0105czane zaraz po nawi\u0105zaniu po\u0142\u0105czenia przez klienta API (aby zachowa\u0107 cisz\u0119 na wsp\u00f3\u0142dzielonym \u0142\u0105czu szeregowym). Ustaw warto\u015b\u0107 true, aby dziennik debugowania by\u0142 wy\u015bwietlany nawet wtedy, gdy interfejs API jest aktywny."
+            "zh": "\u9ed8\u8ba4\u60c5\u51b5\u4e0b\uff0c\u4e00\u65e6\u6709API\u5ba2\u6237\u7aef\u8fde\u63a5\uff0c\u65e5\u5fd7\u5c31\u4f1a\u88ab\u5173\u95ed\uff08\u4ee5\u4fdd\u6301\u5171\u4eab\u4e32\u884c\u94fe\u8def\u7684\u5b89\u9759\uff09\u3002\u5c06\u6b64\u8bbe\u7f6e\u4e3a \"true\"\uff0c\u5373\u4f7fAPI\u5904\u4e8e\u6d3b\u52a8\u72b6\u6001\uff0c\u4e5f\u4f1a\u4fdd\u6301\u8c03\u8bd5\u65e5\u5fd7\u7684\u8f93\u51fa\u3002"
         },
         "label": {
             "de": "Debug-Protokoll aktiviert?",
             "en": "Debug Log Enabled?",
-            "pl": "Czy dziennik debugowania jest w\u0142\u0105czony?"
+            "zh": "\u8c03\u8bd5\u65e5\u5fd7\u5df2\u542f\u7528\uff1f"
         }
     },
     "delete_this_channel": {
         "text": {
             "de": "Diesen Kanal l\u00f6schen",
             "en": "Delete This Channel",
-            "pl": "Usu\u0144 ten kana\u0142"
+            "zh": "\u5220\u9664\u8fd9\u4e2a\u9891\u9053"
         }
     },
     "detected": {
         "text": {
             "de": "Entdeckt",
             "en": "Detected",
-            "pl": "Wykryto"
+            "zh": "\u68c0\u6d4b\u5230"
         }
     },
     "device_backed_up_to_file": {
         "text": {
             "de": "Die Ger\u00e4tekonfiguration wird in einer Datei gesichert.",
             "en": "Device configuration backed up to file.",
-            "pl": "Kopia zapasowa konfiguracji urz\u0105dzenia zapisana w pliku."
+            "zh": "\u8bbe\u5907\u914d\u7f6e\u5df2\u5907\u4efd\u5230\u6587\u4ef6\u3002"
         }
     },
     "device_configured_from_file": {
         "text": {
             "de": "Ger\u00e4t aus Datei konfiguriert.",
             "en": "Device configured from file.",
-            "pl": "Urz\u0105dzenie skonfigurowane z pliku."
+            "zh": "\u4ece\u6587\u4ef6\u4e2d\u914d\u7f6e\u7684\u8bbe\u5907\u3002"
         }
     },
     "device_has_meshtastic": {
         "text": {
             "de": "Verf\u00fcgt das Ger\u00e4t derzeit \u00fcber Meshtastic Version 1.2 oder neuer?",
             "en": "Does the device currently have Meshtastic version 1.2 or newer?",
-            "pl": "Czy urz\u0105dzenie posiada Meshtastic w wersji 1.2 lub nowszej?"
+            "zh": "\u8bbe\u5907\u76ee\u524d\u662f\u5426\u6709Meshtastic 1.2\u6216\u66f4\u65b0\u7684\u7248\u672c\uff1f"
         }
     },
     "device_id": {
         "description": {
             "de": "Ein weltweit eindeutiger Bezeichner f\u00fcr dieses Ger\u00e4t.",
             "en": "A globally unique identifier for this device.",
-            "pl": "Globalnie unikalny identyfikator tego urz\u0105dzenia."
+            "zh": "\u8be5\u8bbe\u5907\u7684\u5168\u7403\u552f\u4e00\u6807\u8bc6\u7b26\u3002"
         },
         "label": {
             "de": "Ger\u00e4te-ID",
             "en": "Device ID",
-            "pl": "Identyfikator urz\u0105dzenia"
+            "zh": "\u8bbe\u5907ID"
         }
     },
     "device_settings": {
         "text": {
             "de": "Ger\u00e4teeinstellungen",
             "en": "Device Settings",
-            "pl": "Ustawienia urz\u0105dzenia"
+            "zh": "\u8bbe\u5907\u8bbe\u7f6e"
         }
     },
     "device_settings_button": {
         "tooltip": {
             "de": "Klicken Sie auf , um die Einstellungen des Ger\u00e4ts anzuzeigen oder zu aktualisieren.",
             "en": "Click to view or update settings on the device.",
-            "pl": "Kliknij, aby wy\u015bwietli\u0107 lub zaktualizowa\u0107 ustawienia urz\u0105dzenia."
+            "zh": "\u70b9\u51fb\u67e5\u770b\u6216\u66f4\u65b0\u8bbe\u5907\u4e0a\u7684\u8bbe\u7f6e\u3002"
         }
     },
     "device_was_reset": {
         "text": {
             "de": "Das Ger\u00e4t wurde zur\u00fcckgesetzt. Trennen Sie das Ger\u00e4t vom Stromnetz und schlie\u00dfen Sie es erneut an oder\n\ndr\u00fccken Sie die RESET-Taste.\n\nDas Formular Einstellungen wird nun geschlossen.",
             "en": "The device was reset. May want to unplug and re-plugin the device or\n\npress the RESET button.\n\nThe Settings form will now close.",
-            "pl": "Urz\u0105dzenie zosta\u0142o zresetowane. Mo\u017ce by\u0107 konieczne od\u0142\u0105czenie i ponowne pod\u0142\u0105czenie urz\u0105dzenia lub\n\nnacisn\u0105\u0107 przycisk RESET.\n\nFormularz Ustawienia zostanie teraz zamkni\u0119ty."
+            "zh": "\u8bbe\u5907\u88ab\u91cd\u7f6e\u4e86\u3002\u53ef\u80fd\u8981\u62d4\u6389\u8bbe\u5907\u7684\u63d2\u5934\u5e76\u91cd\u65b0\u63d2\u4e0a\uff0c\u6216\n\n\u6309RESET\u6309\u94ae\u3002\n\n\u8bbe\u7f6e\u8868\u683c\u73b0\u5728\u5c06\u5173\u95ed\u3002"
         }
     },
     "done_updating_bootloader": {
         "text": {
             "de": "Die Aktualisierung des Bootloaders ist abgeschlossen.\nJetzt sind Sie bereit, mit der Meshtastic-Firmware zu flashen.",
             "en": "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware.",
-            "pl": "Zako\u0144czono aktualizacj\u0119 bootloadera.\nTeraz jeste\u015b gotowy do Flashowania z Meshtastic firmware."
+            "zh": "\u5b8c\u6210\u4e86\u66f4\u65b0\u5f15\u5bfc\u7a0b\u5e8f\u3002\n\u73b0\u5728\u4f60\u5df2\u7ecf\u51c6\u5907\u597d\u7528Meshtastic\u56fa\u4ef6\u8fdb\u884c\u95ea\u5b58\u3002"
         }
     },
     "downlink_enabled": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, werden im Internet gesehene Nachrichten an das lokale Netz weitergeleitet.",
             "en": "If set, messages seen on the internet will be forwarded to the local mesh.",
-            "pl": "Je\u015bli jest ustawione, wiadomo\u015bci widziane w Internecie b\u0119d\u0105 przekazywane do sieci lokalnej."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\u4e86\uff0c\u5728\u4e92\u8054\u7f51\u4e0a\u770b\u5230\u7684\u4fe1\u606f\u5c06\u88ab\u8f6c\u53d1\u5230\u672c\u5730\u7f51\u76d8\u3002"
         },
         "label": {
             "de": "Downlink Aktiviert?",
             "en": "Downlink Enabled?",
-            "pl": "Downlink Enabled?"
+            "zh": "\u4e0b\u884c\u94fe\u8def\u5df2\u542f\u7528\uff1f"
         }
     },
     "export_configuration": {
         "text": {
             "de": "Konfiguration exportieren",
             "en": "Export Configuration",
-            "pl": "Konfiguracja eksportu"
+            "zh": "\u51fa\u53e3\u914d\u7f6e"
         }
     },
     "ext_notification_module_about": {
@@ -383,447 +383,447 @@
         "label": {
             "de": "Externes Benachrichtigungsmodul",
             "en": "External Notification Module",
-            "pl": "Zewn\u0119trzny modu\u0142 powiadamiania"
+            "zh": "\u5916\u90e8\u901a\u77e5\u6a21\u5757"
         }
     },
     "ext_notification_module_active": {
         "description": {
             "de": "Wenn gesetzt, erfolgen Benachrichtigungen, wenn der GPIO aktiv-high ist. Wenn nicht gesetzt, erfolgen die Benachrichtigungen, wenn der GPIO aktiv-low ist.",
             "en": "If set, notifications will happen when the the GPIO is active-high. If not set, notifications will happen when GPIO is active-low.",
-            "pl": "Je\u015bli jest ustawione, powiadomienia b\u0119d\u0105 wysy\u0142ane, gdy GPIO b\u0119dzie mia\u0142o stan aktywny-wysoki. Je\u015bli nie jest ustawione, powiadomienia b\u0119d\u0105 wysy\u0142ane, gdy GPIO b\u0119dzie mia\u0142o stan aktywny niski."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u901a\u77e5\u5c06\u5728GPIO\u4e3a\u9ad8\u7535\u5e73\u65f6\u53d1\u751f\u3002\u5982\u679c\u4e0d\u8bbe\u7f6e\uff0c\u901a\u77e5\u5c06\u5728GPIO\u4e3a\u4f4e\u7535\u5e73\u65f6\u53d1\u751f\u3002"
         },
         "label": {
             "de": "Aktiv hoch?",
             "en": "Active High?",
-            "pl": "Active High?"
+            "zh": "\u9ad8\u7535\u5e73\u6709\u6548\uff1f"
         }
     },
     "ext_notification_module_alert_bell": {
         "description": {
             "de": "L\u00f6sen Sie die Benachrichtigung nur aus, wenn das ASCII-Glockenzeichen in der Nachricht enthalten ist.",
             "en": "Only trigger the notification if the ASCII bell character is in the message.",
-            "pl": "Powiadomienie jest uruchamiane tylko wtedy, gdy w wiadomo\u015bci znajduje si\u0119 znak dzwonka ASCII."
+            "zh": "\u53ea\u6709\u5728\u4fe1\u606f\u4e2d\u51fa\u73b0ASCII\u949f\u5f62\u5b57\u7b26\u65f6\u624d\u4f1a\u89e6\u53d1\u901a\u77e5\u3002"
         },
         "label": {
             "de": "Alert Bell?",
             "en": "Alert Bell?",
-            "pl": "Dzwonek alarmowy?"
+            "zh": "\u8b66\u62a5\u94c3\uff1f"
         }
     },
     "ext_notification_module_alert_message": {
         "description": {
             "de": "Benachrichtigung bei jeder empfangenen Nachricht ausl\u00f6sen.",
             "en": "Trigger notification on any message received.",
-            "pl": "Wyzwalaj powiadomienia o ka\u017cdej otrzymanej wiadomo\u015bci."
+            "zh": "\u5bf9\u6536\u5230\u7684\u4efb\u4f55\u6d88\u606f\u89e6\u53d1\u901a\u77e5\u3002"
         },
         "label": {
             "de": "Alert Message",
             "en": "Alert Message",
-            "pl": "Komunikat alarmowy"
+            "zh": "\u63d0\u9192\u4fe1\u606f"
         }
     },
     "ext_notification_module_enabled": {
         "description": {
             "de": "Falls gesetzt, ist das Modul Externe Benachrichtigungen aktiviert.",
             "en": "If set, the External Notifications module is enabled.",
-            "pl": "Je\u015bli jest ustawiona, modu\u0142 Powiadomienia zewn\u0119trzne jest w\u0142\u0105czony."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u5219\u542f\u7528\u5916\u90e8\u901a\u77e5\u6a21\u5757\u3002"
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "pl": "W\u0142\u0105czone?"
+            "zh": "\u542f\u7528\u4e86\u5417\uff1f"
         }
     },
     "ext_notification_module_output": {
         "description": {
             "de": "GPIO des Ausgangs.",
             "en": "GPIO of the output.",
-            "pl": "GPIO wyj\u015bcia."
+            "zh": "\u8f93\u51fa\u7684GPIO\u3002"
         },
         "label": {
             "de": "Ausgabe",
             "en": "Output",
-            "pl": "Wyj\u015bcie"
+            "zh": "\u8f93\u51fa"
         }
     },
     "ext_notification_module_output_ms": {
         "description": {
             "de": "Zeitspanne in ms f\u00fcr den Alarm. Standardwert ist 1.000 ms (oder 1 Sekunde).",
             "en": "Amount of time in ms for the alert. Default is 1,000 ms (or 1 second).",
-            "pl": "Czas trwania alertu w milisekundach. Warto\u015b\u0107 domy\u015blna to 1000 ms (lub 1 sekunda)."
+            "zh": "\u8b66\u62a5\u7684\u65f6\u95f4\u91cf\uff0c\u5355\u4f4d\u662fms\u3002\u9ed8\u8ba4\u662f1,000ms\uff08\u62161\u79d2\uff09\u3002"
         },
         "label": {
             "de": "Ausgang (ms)",
             "en": "Output (ms)",
-            "pl": "Wyj\u015bcie (ms)"
+            "zh": "\u8f93\u51fa\uff08\u6beb\u79d2\uff09"
         }
     },
     "ext_notification_module_settings": {
         "text": {
             "de": "Einstellungen des externen Benachrichtigungsmoduls",
             "en": "External Notification Module Settings",
-            "pl": "Ustawienia zewn\u0119trznego modu\u0142u powiadamiania"
+            "zh": "\u5916\u90e8\u901a\u77e5\u6a21\u5757\u8bbe\u7f6e"
         }
     },
     "factory_reset": {
         "text": {
             "de": "Werksreset",
             "en": "Factory Reset",
-            "pl": "Reset fabryczny"
+            "zh": "\u5de5\u5382\u91cd\u7f6e"
         }
     },
     "file_was_copied": {
         "text": {
             "de": "Die Datei wurde kopiert.\nWarten Sie auf den Neustart des Ger\u00e4ts.",
             "en": "File was copied.\nWait for the device to reboot.",
-            "pl": "Plik zosta\u0142 skopiowany.\nZaczekaj na ponowne uruchomienie urz\u0105dzenia."
+            "zh": "\u6587\u4ef6\u88ab\u590d\u5236\u4e86\u3002\n\u7b49\u5f85\u8bbe\u5907\u91cd\u65b0\u542f\u52a8\u3002"
         }
     },
     "fixed_position": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, befindet sich dieser Knoten an einer festen Position. GPS-Positionsaktualisierungen werden in regelm\u00e4\u00dfigen Abst\u00e4nden gesendet, aber es wird der letzte Breiten-/L\u00e4ngen-/H\u00f6henwert verwendet.",
             "en": "If set, this node is at a fixed position. GPS position updates will be sent at regular intervals, but the last lat/lon/alt will be used.",
-            "pl": "Je\u015bli jest ustawione, w\u0119ze\u0142 ten znajduje si\u0119 na sta\u0142ej pozycji. Aktualizacje pozycji GPS b\u0119d\u0105 wysy\u0142ane w regularnych odst\u0119pach czasu, ale zostanie u\u017cyta ostatnia szeroko\u015b\u0107/lon/alt."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u8fd9\u4e2a\u8282\u70b9\u5c31\u5904\u4e8e\u4e00\u4e2a\u56fa\u5b9a\u7684\u4f4d\u7f6e\u3002GPS\u4f4d\u7f6e\u66f4\u65b0\u5c06\u5b9a\u671f\u53d1\u9001\uff0c\u4f46\u5c06\u4f7f\u7528\u6700\u540e\u7684\u7eac\u5ea6/\u9ad8\u5ea6\u3002"
         },
         "label": {
             "de": "Feste Position verwenden?",
             "en": "Use Fixed position?",
-            "pl": "U\u017cyj opcji Sta\u0142a pozycja?"
+            "zh": "\u4f7f\u7528\u56fa\u5b9a\u4f4d\u7f6e\uff1f"
         }
     },
     "fixed_position_settings": {
         "text": {
             "de": "Feste Positionseinstellungen",
             "en": "Fixed Position Settings",
-            "pl": "Ustawienia sta\u0142ego po\u0142o\u017cenia"
+            "zh": "\u56fa\u5b9a\u4f4d\u7f6e\u8bbe\u7f6e"
         }
     },
     "flash": {
         "text": {
             "de": "Blitzlicht",
             "en": "Flash",
-            "pl": "Flash"
+            "zh": "\u95ea\u5149\u706f"
         }
     },
     "flashing": {
         "text": {
             "de": "Blinkend",
             "en": "Flashing",
-            "pl": "Migaj\u0105ca strona"
+            "zh": "\u95ea\u70c1"
         }
     },
     "frequency_offset": {
         "description": {
             "de": "Dieser Parameter ist f\u00fcr fortgeschrittene Benutzer mit fortgeschrittener Testausr\u00fcstung gedacht, wir empfehlen den meisten Benutzern nicht, ihn zu verwenden. Ein Frequenzoffset, der zur berechneten Bandmittenfrequenz addiert wird. Wird zur Korrektur von Quarzkalibrierungsfehlern verwendet.",
             "en": "This parameter is for advanced users with advanced test equipment, we do not recommend most users use it. A frequency offset that is added to to the calculated band center frequency. Used to correct for crystal calibration errors.",
-            "pl": "Ten parametr jest przeznaczony dla zaawansowanych u\u017cytkownik\u00f3w dysponuj\u0105cych zaawansowanym sprz\u0119tem testowym, nie zaleca si\u0119 jego stosowania przez wi\u0119kszo\u015b\u0107 u\u017cytkownik\u00f3w. Przesuni\u0119cie cz\u0119stotliwo\u015bci, kt\u00f3re jest dodawane do obliczonej cz\u0119stotliwo\u015bci \u015brodkowej pasma. S\u0142u\u017cy do korygowania b\u0142\u0119d\u00f3w kalibracji kryszta\u0142\u00f3w."
+            "zh": "\u8fd9\u4e2a\u53c2\u6570\u662f\u4e3a\u62e5\u6709\u9ad8\u7ea7\u6d4b\u8bd5\u8bbe\u5907\u7684\u9ad8\u7ea7\u7528\u6237\u51c6\u5907\u7684\uff0c\u6211\u4eec\u4e0d\u5efa\u8bae\u5927\u591a\u6570\u7528\u6237\u4f7f\u7528\u5b83\u3002\u5728\u8ba1\u7b97\u51fa\u7684\u9891\u5e26\u4e2d\u5fc3\u9891\u7387\u4e0a\u52a0\u4e00\u4e2a\u9891\u7387\u504f\u79fb\u3002\u7528\u6765\u6821\u6b63\u6676\u4f53\u6821\u51c6\u8bef\u5dee\u3002"
         },
         "label": {
             "de": "Frequenz-Offset",
             "en": "Frequency Offset",
-            "pl": "Przesuni\u0119cie cz\u0119stotliwo\u015bci"
+            "zh": "\u9891\u7387\u504f\u79fb"
         }
     },
     "full_step1": {
         "text": {
             "de": "Voller Blitz Schritt 1 von 4",
             "en": "Full flash step 1 of 4",
-            "pl": "Pe\u0142ny b\u0142ysk krok 1 z 4"
+            "zh": "\u5b8c\u6574\u7684\u95ea\u5149\u6b65\u9aa41 of 4"
         }
     },
     "full_step1_done": {
         "text": {
             "de": "Volles Blitzen Schritt 1 von 4 ist erledigt",
             "en": "Full flash step 1 of 4 is done",
-            "pl": "Wykonano pe\u0142ny flash krok 1 z 4"
+            "zh": "\u5168\u95ea\u7684\u7b2c4\u6b65\u5df2\u7ecf\u5b8c\u6210"
         }
     },
     "full_step2_done": {
         "text": {
             "de": "Volles Blitzen Schritt 2 von 4 ist erledigt",
             "en": "Full flash step 2 of 4 is done",
-            "pl": "Wykonano pe\u0142ny flash krok 2 z 4"
+            "zh": "\u5168\u95ea\u7684\u7b2c2\u6b65\uff084\uff09\u5df2\u7ecf\u5b8c\u6210"
         }
     },
     "full_step3_done": {
         "text": {
             "de": "Volles Blitzen Schritt 3 von 4 ist erledigt",
             "en": "Full flash step 3 of 4 is done",
-            "pl": "Wykonano pe\u0142ny flash krok 3 z 4"
+            "zh": "\u5168\u95ea\u7684\u7b2c4\u6b65\u5df2\u7ecf\u5b8c\u6210"
         }
     },
     "full_step4_done": {
         "text": {
             "de": "Volles Blitzen Schritt 4 von 4 ist erledigt",
             "en": "Full flash step 4 of 4 is done",
-            "pl": "Wykonano krok 4 z 4 pe\u0142nej lampy b\u0142yskowej"
+            "zh": "\u5168\u5957\u95ea\u5149\u706f\u7684\u7b2c4\u6b65\u5df2\u7ecf\u5b8c\u6210"
         }
     },
     "get_lat_lon_using_ip": {
         "text": {
             "de": "Lat/Lon \u00fcber Ihre IP abrufen",
             "en": "Get Lat/Lon using your IP",
-            "pl": "Uzyskaj szeroko\u015b\u0107 i d\u0142ugo\u015b\u0107 geograficzn\u0105 przy u\u017cyciu adresu IP"
+            "zh": "\u4f7f\u7528\u4f60\u7684IP\u83b7\u53d6\u7ecf\u7eac\u5ea6"
         }
     },
     "get_versions": {
         "text": {
             "de": "VERSIONEN ERHALTEN",
             "en": "GET VERSIONS",
-            "pl": "ZNAJD\u0179 WERSJE"
+            "zh": "\u83b7\u53d6\u7248\u672c"
         },
         "tooltip": {
             "de": "Klicken Sie hier, um nach neuerer Firmware zu suchen.",
             "en": "Click to check for more recent firmware.",
-            "pl": "Kliknij, aby sprawdzi\u0107 dost\u0119pno\u015b\u0107 nowszego oprogramowania sprz\u0119towego."
+            "zh": "\u70b9\u51fb\u68c0\u67e5\u66f4\u591a\u6700\u65b0\u7684\u56fa\u4ef6\u3002"
         }
     },
     "gps_accept_2d": {
         "description": {
             "de": "Wenn gesetzt, werden 2D-GPS-Fixes akzeptiert. Standardm\u00e4\u00dfig werden nur 3D-Fixes akzeptiert. Bei einer 2D-Fixierung sind die H\u00f6henwerte unzuverl\u00e4ssig und werden ausgeschlossen.",
             "en": "If set, accept 2D GPS fixes. By default, only 3D fixes are accepted. During a 2D fix, altitude values are unreliable and will be excluded.",
-            "pl": "Je\u015bli jest ustawione, akceptuj ustalenia GPS 2D. Domy\u015blnie akceptowane s\u0105 tylko poprawki 3D. Podczas ustalania 2D warto\u015bci wysoko\u015bci s\u0105 niewiarygodne i nie b\u0119d\u0105 uwzgl\u0119dniane."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\u4e86\uff0c\u5c31\u63a5\u53d7\u4e8c\u7ef4GPS\u5b9a\u4f4d\u3002\u9ed8\u8ba4\u60c5\u51b5\u4e0b\uff0c\u53ea\u63a5\u53d7\u4e09\u7ef4\u56fa\u5b9a\u3002\u5728\u4e8c\u7ef4\u56fa\u5b9a\u671f\u95f4\uff0c\u9ad8\u5ea6\u503c\u662f\u4e0d\u53ef\u9760\u7684\uff0c\u5c06\u88ab\u6392\u9664\u5728\u5916\u3002"
         },
         "label": {
             "de": "GPS Accept 2D Fix?",
             "en": "GPS Accept 2D Fix?",
-            "pl": "GPS akceptuje ustalenie pozycji 2D?"
+            "zh": "GPS\u63a5\u53d72D\u4fee\u590d\u5417\uff1f"
         }
     },
     "gps_format": {
         "description": {
             "de": "Wie die GPS-Koordinaten auf dem OLED-Bildschirm angezeigt werden.",
             "en": "How the GPS coordinates are displayed on the OLED screen.",
-            "pl": "Spos\u00f3b wy\u015bwietlania wsp\u00f3\u0142rz\u0119dnych GPS na ekranie OLED."
+            "zh": "GPS\u5750\u6807\u5982\u4f55\u5728OLED\u5c4f\u5e55\u4e0a\u663e\u793a\u3002"
         },
         "label": {
             "de": "GPS-Koordinatenformat",
             "en": "GPS Coordinate Format",
-            "pl": "Format wsp\u00f3\u0142rz\u0119dnych GPS"
+            "zh": "GPS\u5750\u6807\u683c\u5f0f"
         }
     },
     "gps_max_dop": {
         "description": {
             "de": "Akzeptierte maximale GPS-Pr\u00e4zisionsverd\u00fcnnung (DOP). Legen Sie einen Schwellenwert f\u00fcr die Zur\u00fcckweisung von GPS-Messwerten fest, der auf ihrer Genauigkeit im Verh\u00e4ltnis zur GPS-Nenngenauigkeit (die normalerweise ~3 m betr\u00e4gt) basiert. L\u00f6sungen, die \u00fcber diesem Wert liegen, werden als wiederholbare Fehler behandelt. Der sinnvolle Bereich liegt zwischen 1 - 64 (3m - <~200m). Standardm\u00e4\u00dfig (wenn Null) werden alle GPS-Messwerte akzeptiert.",
             "en": "GPS maximum dilution of precition (DOP) accepted. Set a rejection threshold for GPS readings based on their precision, relative to the GPS rated accuracy (which is typically ~3m). Solutions above this value will be treated as re-tryable errors. Useful range is between 1 - 64 (3m - <~200m). By default, (if zero), accept all GPS readings.",
-            "pl": "Maksymalna akceptacja rozcie\u0144czenia predykcji GPS (DOP). Ustaw pr\u00f3g odrzucania dla odczyt\u00f3w GPS na podstawie ich dok\u0142adno\u015bci w stosunku do dok\u0142adno\u015bci znamionowej GPS (kt\u00f3ra zwykle wynosi ~3 m). Rozwi\u0105zania powy\u017cej tej warto\u015bci b\u0119d\u0105 traktowane jako b\u0142\u0119dy mo\u017cliwe do ponownego sprawdzenia. Przydatny zakres to 1 - 64 (3m - <~200m). Domy\u015blnie (je\u015bli wynosi zero) akceptuje wszystkie odczyty GPS."
+            "zh": "\u63a5\u53d7GPS\u7684\u6700\u5927\u7a00\u91ca\u7cbe\u5ea6\uff08DOP\uff09\u3002\u6839\u636eGPS\u8bfb\u6570\u7684\u7cbe\u5ea6\uff0c\u76f8\u5bf9\u4e8eGPS\u7684\u989d\u5b9a\u7cbe\u5ea6\uff08\u901a\u5e38\u662f~3\u7c73\uff09\uff0c\u4e3aGPS\u8bfb\u6570\u8bbe\u7f6e\u4e00\u4e2a\u62d2\u7edd\u9608\u503c\u3002\u8d85\u8fc7\u8fd9\u4e2a\u503c\u7684\u89e3\u51b3\u65b9\u6848\u5c06\u88ab\u89c6\u4e3a\u53ef\u91cd\u8bd5\u7684\u9519\u8bef\u3002\u6709\u7528\u7684\u8303\u56f4\u662f1-64\uff083\u7c73-<~200\u7c73\uff09\u3002\u9ed8\u8ba4\u60c5\u51b5\u4e0b\uff0c\uff08\u5982\u679c\u4e3a\u96f6\uff09\uff0c\u63a5\u53d7\u6240\u6709\u7684GPS\u8bfb\u6570\u3002"
         },
         "label": {
             "de": "GPS Max DOP",
             "en": "GPS Max DOP",
-            "pl": "GPS Maks. DOP"
+            "zh": "GPS\u6700\u5927DOP"
         }
     },
     "gps_operation": {
         "description": {
             "de": "Wie die GPS-Hardware in diesem Ger\u00e4t betrieben wird.",
             "en": "How the GPS hardware in this unit is operated.",
-            "pl": "Jak dzia\u0142a sprz\u0119t GPS w tym urz\u0105dzeniu."
+            "zh": "\u672c\u88c5\u7f6e\u4e2d\u7684GPS\u786c\u4ef6\u662f\u5982\u4f55\u64cd\u4f5c\u7684\u3002"
         },
         "label": {
             "de": "GPS-Betrieb",
             "en": "GPS Operation",
-            "pl": "Dzia\u0142anie GPS"
+            "zh": "GPS\u64cd\u4f5c"
         }
     },
     "help": {
         "text": {
             "de": "Hilfe",
             "en": "Help",
-            "pl": "Pomoc"
+            "zh": "\u5e2e\u52a9"
         }
     },
     "help_button": {
         "tooltip": {
             "de": "Klicken Sie f\u00fcr Hilfe | Dr\u00fccken Sie H f\u00fcr Hotkeys.",
             "en": "Click for help | Press H for hotkeys.",
-            "pl": "Kliknij, aby uzyska\u0107 pomoc | Naci\u015bnij klawisz H, aby uzyska\u0107 klawisze skr\u00f3t\u00f3w."
+            "zh": "\u70b9\u51fb\u83b7\u53d6\u5e2e\u52a9|\u6309H\u952e\u83b7\u53d6\u70ed\u952e\u3002"
         }
     },
     "help_text": {
         "text": {
             "de": "Wenn Sie Probleme beim Flashen des Ger\u00e4ts haben, vergewissern Sie sich, dass nur ein <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>unterst\u00fctztes Ger\u00e4t</a> angeschlossen ist und dass keine anderen Anwendungen diesen Kommunikationsanschluss verwenden.<br><br>Wenn Sie immer noch Probleme haben, ziehen Sie den Stecker des Ger\u00e4ts ab und schlie\u00dfen Sie es dann wieder an.<br><br>Wenn die Probleme weiterhin bestehen, erw\u00e4gen Sie die Verwendung eines anderen USB-Anschlusses, vielleicht eines externen USB-Hubs oder sogar eines anderen Computers und/oder eines anderen Betriebssystems.<br><br>Wenn die Probleme weiterhin bestehen, m\u00fcssen Sie m\u00f6glicherweise einen Treiber installieren.<br>Weitere Informationen finden Sie unter <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a>. Neuere T-Lora und neuere T-Beams ben\u00f6tigen in der Regel den Treiber CH9102, der sich in der Datei CH343SER.ZIP befindet. Der RAK 11200 ben\u00f6tigt m\u00f6glicherweise den CP210X-Treiber.<br><u>Windows</u>: Pr\u00fcfen Sie dies, indem Sie den Ger\u00e4temanager aufrufen und nach \"gelben\" Warnanzeigen Ausschau halten.<br><u>Mac</u>: Pr\u00fcfen Sie, indem Sie oben links auf '\u00dcber diesen Mac', 'Systembericht', 'USB' klicken. Je nach Ger\u00e4t wird dort ein CP2102 USB to UART Bridge Controller angezeigt.<br><u>Linux</u>: Linux ben\u00f6tigt in der Regel keine Treiber f\u00fcr Meshtastic-Ger\u00e4te. Wenn Sie einen Computer f\u00fcr das anf\u00e4ngliche Flashen zur Verf\u00fcgung haben, sollten Sie dieses Betriebssystem verwenden.<br><br>Wenn Sie immer noch Probleme haben, versuchen Sie, den PC neu zu starten.<br><br>Wenn Sie einen 'Critical Fault #6' auf einem T-Beam erhalten, bedeutet das wahrscheinlich, dass Sie die Firmware v1.1 oder v2.1.1.6 verwenden m\u00fcssen.<br><br>Treten Sie der <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord Gruppe</a> bei und stellen Sie Fragen im #help channel.",
             "en": "If having issues flashing the device, be sure there is only one <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>supported device</a> connected and no other applications are using that communications port.<br><br>If still having problems, unplug the device, then re-plugin the device.<br><br>If still having problems, consider using a different usb port, perhaps an external usb hub or even a different computer and/or different operating system.<br><br>If still having problems, may need to install driver.<br>See <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a> for more info. Newer T-Lora and newer T-Beams tend to need the CH9102 driver, which is in the CH343SER.ZIP file. The RAK 11200 may need the CP210X driver.<br><u>Windows</u>: Check by going into DeviceManager and looking for any 'yellow' warning indicators.<br><u>Mac</u>: Check by clicking in top left corner, 'About This Mac', 'System Report', 'USB'. Depending on which device it may show a CP2102 USB to UART Bridge Controller.<br><u>Linux</u>: Linux tends to not need drivers for Meshtastic devices. If you have a computer available for the initial flashing, consider using this OS.<br><br>If still having problems, try rebooting the pc.<br><br>If you get a 'Critical Fault #6' on a T-Beam, it probably means you need to use v1.1 or v2.1.1.6 firmware.<br><br>Join the <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord group</a> and post questions in #help channel.",
-            "pl": "Je\u015bli nadal wyst\u0119puj\u0105 problemy z flashowaniem urz\u0105dzenia, upewnij si\u0119, \u017ce pod\u0142\u0105czone jest tylko jedno <a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>obs\u0142ugiwane urz\u0105dzenie</a> i \u017cadne inne aplikacje nie korzystaj\u0105 z tego portu komunikacyjnego.<br><br>Je\u015bli nadal wyst\u0119puj\u0105 problemy, od\u0142\u0105cz urz\u0105dzenie, a nast\u0119pnie pod\u0142\u0105cz je ponownie.<br><br>Je\u015bli nadal wyst\u0119puj\u0105 problemy, rozwa\u017c u\u017cycie innego portu usb, by\u0107 mo\u017ce zewn\u0119trznego koncentratora usb lub nawet innego komputera i/lub innego systemu operacyjnego.<br><br>Je\u015bli nadal wyst\u0119puj\u0105 problemy, by\u0107 mo\u017ce trzeba b\u0119dzie zainstalowa\u0107 sterownik.<br>Wi\u0119cej informacji mo\u017cna znale\u017a\u0107 w <a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a>. Nowsze modele T-Lora i nowsze modele T-Beams wymagaj\u0105 sterownika CH9102, kt\u00f3ry znajduje si\u0119 w pliku CH343SER.ZIP. Model RAK 11200 mo\u017ce potrzebowa\u0107 sterownika CP210X.<br><u>Windows</u>: Sprawd\u017a, wchodz\u0105c do DeviceManager i szukaj\u0105c wszelkich \"\u017c\u00f3\u0142tych\" wska\u017anik\u00f3w ostrzegawczych.<br><u>Mac</u>: Sprawd\u017a, klikaj\u0105c w lewym g\u00f3rnym rogu, \"About This Mac\", \"System Report\", \"USB\". W zale\u017cno\u015bci od urz\u0105dzenia mo\u017ce tam by\u0107 widoczny kontroler mostka CP2102 USB to UART Bridge Controller.<br><u>Linux</u>: Linux zazwyczaj nie potrzebuje sterownik\u00f3w do urz\u0105dze\u0144 Meshtastic. Je\u015bli masz komputer dost\u0119pny do pierwszego flashowania, rozwa\u017c u\u017cycie tego systemu operacyjnego.<br><br>Je\u015bli nadal masz problemy, spr\u00f3buj zrestartowa\u0107 komputer.<br><br>Je\u015bli otrzymujesz 'B\u0142\u0105d krytyczny #6' na wi\u0105zce T, prawdopodobnie oznacza to, \u017ce musisz u\u017cy\u0107 firmware v1.1 lub v2.1.1.6.<br><br>Do\u0142\u0105cz do <a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>grupy Discord Meshtastic</a> i zadawaj pytania na kanale #help."
+            "zh": "\u5982\u679c\u6709\u95ee\u9898\uff0c\u8bf7\u786e\u4fdd\u53ea\u6709\u4e00\u4e2a<a href='https://meshtastic.org/docs/hardware' style='color:#67EA94'>\u652f\u6301\u7684\u8bbe\u5907</a>\u8fde\u63a5\uff0c\u5e76\u4e14\u6ca1\u6709\u5176\u4ed6\u5e94\u7528\u7a0b\u5e8f\u6b63\u5728\u4f7f\u7528\u8be5\u901a\u4fe1\u7aef\u53e3\u3002<br><br>\u5982\u679c\u4ecd\u7136\u6709\u95ee\u9898\uff0c\u8bf7\u62d4\u6389\u8bbe\u5907\uff0c\u7136\u540e\u91cd\u65b0\u63d2\u5165\u8bbe\u5907\u3002<br><br>\u5982\u679c\u4ecd\u7136\u6709\u95ee\u9898\uff0c\u8003\u8651\u4f7f\u7528\u4e0d\u540c\u7684usb\u7aef\u53e3\uff0c\u4e5f\u8bb8\u662f\u5916\u90e8usb\u96c6\u7ebf\u5668\uff0c\u751a\u81f3\u662f\u4e0d\u540c\u7684\u8ba1\u7b97\u673a\u548c/\u6216\u4e0d\u540c\u7684\u64cd\u4f5c\u7cfb\u7edf\u3002<br><br>\u5982\u679c\u4ecd\u7136\u6709\u95ee\u9898\uff0c\u53ef\u80fd\u9700\u8981\u5b89\u88c5\u9a71\u52a8\u7a0b\u5e8f\u3002<br>\u53c2\u89c1<a href='https://meshtastic.org/docs/getting-started/flashing-esp32' style='color:#67EA94'>Flashing</a>\u83b7\u53d6\u66f4\u591a\u4fe1\u606f\u3002\u8f83\u65b0\u7684T-Lora\u548c\u8f83\u65b0\u7684T-Beam\u5f80\u5f80\u9700\u8981CH9102\u9a71\u52a8\uff0c\u5b83\u5728CH343SER.ZIP\u6587\u4ef6\u4e2d\u3002RAK 11200\u53ef\u80fd\u9700\u8981CP210X\u9a71\u52a8\u7a0b\u5e8f\u3002<br><u>Windows</u>\u3002\u901a\u8fc7\u8fdb\u5165DeviceManager\u5e76\u5bfb\u627e\u4efb\u4f55 \"\u9ec4\u8272 \"\u8b66\u544a\u6307\u793a\u5668\u8fdb\u884c\u68c0\u67e5\u3002<br><u>Mac</u>\u3002\u901a\u8fc7\u70b9\u51fb\u5de6\u4e0a\u89d2\u7684 \"\u5173\u4e8e\u672c\u673a\"\u3001\"\u7cfb\u7edf\u62a5\u544a\"\u3001\"USB \"\u8fdb\u884c\u68c0\u67e5\u3002\u6839\u636e\u4e0d\u540c\u7684\u8bbe\u5907\uff0c\u5b83\u53ef\u80fd\u4f1a\u663e\u793aCP2102 USB to UART Bridge Controller\u3002<br><u>Linux</u>\u3002Linux\u5f80\u5f80\u4e0d\u9700\u8981Meshtastic\u8bbe\u5907\u7684\u9a71\u52a8\u7a0b\u5e8f\u3002<br><br>\u5982\u679c\u4f60\u6709\u4e00\u53f0\u7535\u8111\u53ef\u7528\u4e8e\u521d\u59cb\u95ea\u5149\u706f\uff0c\u8003\u8651\u4f7f\u7528\u8fd9\u4e2a\u64cd\u4f5c\u7cfb\u7edf\u3002<br><br>\u5982\u679c\u4ecd\u7136\u6709\u95ee\u9898\uff0c\u5c1d\u8bd5\u91cd\u65b0\u542f\u52a8PC\u3002<br><br>\u5982\u679c\u4f60\u5728T\u578b\u6881\u4e0a\u5f97\u5230\u4e00\u4e2a \"\u5173\u952e\u6545\u969c\uff036\"\uff0c\u8fd9\u53ef\u80fd\u610f\u5473\u7740\u4f60\u9700\u8981\u4f7f\u7528v1.1\u6216v2.1.1.6\u56fa\u4ef6\u3002<br><br>\u52a0\u5165<a href='https://discord.com/invite/UQJ5QuM7vq' style='color:#67EA94'>Meshtastic Discord\u7ec4</a>\u5e76\u5728#help\u9891\u9053\u53d1\u5e03\u95ee\u9898\u3002"
         }
     },
     "hop_limit": {
         "description": {
             "de": "Hat Vorrang vor HOPS_RELIABLE und legt die maximale Anzahl von Hops fest. Diese kann nicht gr\u00f6\u00dfer als 7 sein.",
             "en": "Overrides HOPS_RELIABLE and sets the maximum number of hops. This cannot be greater than 7.",
-            "pl": "Zast\u0119puje HOPS_RELIABLE i ustawia maksymaln\u0105 liczb\u0119 w\u0119z\u0142\u00f3w. Liczba ta nie mo\u017ce by\u0107 wi\u0119ksza ni\u017c 7."
+            "zh": "\u8986\u76d6HOPS_RELIABLE\u5e76\u8bbe\u7f6e\u6700\u5927\u8df3\u6570\u3002\u8fd9\u4e0d\u80fd\u5927\u4e8e7\u3002"
         },
         "label": {
             "de": "Hopfengrenze",
             "en": "Hop Limit",
-            "pl": "Limit skoku"
+            "zh": "\u8df3\u6570\u9650\u5236"
         }
     },
     "hotkeys": {
         "text": {
             "de": "Tastenkombinationen",
             "en": "Hotkeys",
-            "pl": "Klawisze skr\u00f3t\u00f3w"
+            "zh": "\u70ed\u952e"
         }
     },
     "hotkeys_text": {
         "text": {
             "de": "A - Erweiterte Optionen\nD - Erkennen\nG - Versionen erhalten\nH - Hotkeys\nS - Einstellungen\nT - Tipps\n Q - Beenden",
             "en": "A - Advanced options\nD - Detect\nG - Get versions\nH - Hotkeys\nS - Settings\nT - Tips\n Q - Quit",
-            "pl": "A - Opcje zaawansowane\nD - Wykryj\nG - Uzyskaj wersje\nH - Klawisze skr\u00f3t\u00f3w\nS - Ustawienia\nT - Porady\n Q - Zako\u0144cz"
+            "zh": "A - \u9ad8\u7ea7\u9009\u9879\nD - \u68c0\u6d4b\nG - \u83b7\u53d6\u7248\u672c\nH - \u70ed\u952e\nS - \u8bbe\u7f6e\nT - \u63d0\u793a\n Q - \u8f9e\u804c"
         }
     },
     "hw_model": {
         "description": {
             "de": "Das Hardwaremodell, wie es von Meshtastic definiert wurde.",
             "en": "The hardware model as defined by Meshtastic.",
-            "pl": "Model sprz\u0119tu zdefiniowany przez Meshtastic."
+            "zh": "\u7531Meshtastic\u5b9a\u4e49\u7684\u786c\u4ef6\u6a21\u578b\u3002"
         },
         "label": {
             "de": "Hardware-Modell",
             "en": "Hardware Model",
-            "pl": "Model sprz\u0119tu"
+            "zh": "\u786c\u4ef6\u6a21\u578b"
         }
     },
     "information": {
         "text": {
             "de": "Informationen",
             "en": "Information",
-            "pl": "Informacje"
+            "zh": "\u4fe1\u606f"
         }
     },
     "is_always_powered": {
         "description": {
             "de": "Umgeht den Logikblock zur Feststellung, ob das Ger\u00e4t mit Strom versorgt wird oder nicht. N\u00fctzlich f\u00fcr Ger\u00e4te mit heiklen ADC-Problemen an den Batterie-Sense-Pins.",
             "en": "Circumvents the logic block for determining whether the device is powered or not. Useful for devices with finicky ADC issues on the battery sense pins.",
-            "pl": "Omija blok logiczny s\u0142u\u017c\u0105cy do okre\u015blania, czy urz\u0105dzenie jest zasilane, czy nie. Przydatne w przypadku urz\u0105dze\u0144 z problemami z przetwornikiem ADC na stykach wyczuwaj\u0105cych bateri\u0119."
+            "zh": "\u907f\u5f00\u4e86\u786e\u5b9a\u8bbe\u5907\u662f\u5426\u6709\u7535\u7684\u903b\u8f91\u5757\u3002\u5bf9\u4e8e\u7535\u6c60\u611f\u5e94\u5f15\u811a\u4e0a\u6709\u68d8\u624b\u7684ADC\u95ee\u9898\u7684\u8bbe\u5907\u5f88\u6709\u7528\u3002"
         },
         "label": {
             "de": "Ist immer eingeschaltet?",
             "en": "Is Always Powered?",
-            "pl": "Czy zawsze jest zasilany?"
+            "zh": "\u603b\u662f\u6709\u7535\u5417\uff1f"
         }
     },
     "is_licensed": {
         "description": {
             "de": "Wenn dieser Benutzer ein lizenzierter Betreiber ist, setzen Sie dieses Flag. Au\u00dferdem sollte \"long_name\" die Lizenznummer sein.",
             "en": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number.",
-            "pl": "Je\u015bli ten u\u017cytkownik jest licencjonowanym operatorem, ustaw t\u0119 flag\u0119. Ponadto \"long_name\" powinien by\u0107 numerem licencji."
+            "zh": "\u5982\u679c\u8fd9\u4e2a\u7528\u6237\u662f\u4e00\u4e2a\u6709\u6267\u7167\u7684\u64cd\u4f5c\u5458\uff0c\u8bf7\u8bbe\u7f6e\u8fd9\u4e2a\u6807\u5fd7\u3002\u53e6\u5916\uff0c'long_name'\u5e94\u8be5\u662f\u4ed6\u4eec\u7684\u6267\u7167\u53f7\u7801\u3002"
         },
         "label": {
             "de": "Ist er lizenziert?",
             "en": "Is Licensed?",
-            "pl": "Czy jest licencjonowany?"
+            "zh": "\u6709\u6267\u7167\u5417\uff1f"
         }
     },
     "is_lora_tx_disabled": {
         "description": {
             "de": "Deaktiviert das Senden vom LoRa-Funkger\u00e4t. N\u00fctzlich f\u00fcr Hot-Swapping-Antennen und andere Tests. Standardm\u00e4\u00dfig auf false eingestellt.",
             "en": "Disable TX from the LoRa radio. Useful for hot-swapping antennas and other tests. Defaults to false.",
-            "pl": "Wy\u0142\u0105czenie nadawania przez radio LoRa. Przydatne przy wymianie anten i innych testach. Domy\u015blnie ustawiona na false."
+            "zh": "\u7981\u7528LoRa\u65e0\u7ebf\u7535\u7684\u53d1\u5c04\u3002\u5bf9\u4e8e\u70ed\u63d2\u62d4\u5929\u7ebf\u548c\u5176\u4ed6\u6d4b\u8bd5\u5f88\u6709\u7528\u3002\u9ed8\u8ba4\u4e3afalse\u3002"
         },
         "label": {
             "de": "Ist LoRa TX deaktiviert?",
             "en": "Is LoRa TX Disabled?",
-            "pl": "Czy LoRa TX jest wy\u0142\u0105czona?"
+            "zh": "LoRa TX\u662f\u5426\u5df2\u7981\u7528\uff1f"
         }
     },
     "is_low_power": {
         "description": {
             "de": "Wenn dieser Wert gesetzt ist, wird das Ger\u00e4t von einer Schwachstromquelle (z.B. Solar) gespeist. Auch wenn es so aussieht, als ob Strom flie\u00dft, sollten wir versuchen, den Stromverbrauch so gering wie m\u00f6glich zu halten. Setzen Sie dies nicht, wenn 'is_router' aktiviert ist.",
             "en": "If set, device is powered from a low-current source (i.e. solar), so even if it looks like we have power flowing in we should try to minimize power consumption as much as possible. Do not set this if 'is_router' is enabled.",
-            "pl": "Je\u015bli ustawione, urz\u0105dzenie jest zasilane ze \u017ar\u00f3d\u0142a niskopr\u0105dowego (np. z energii s\u0142onecznej), wi\u0119c nawet je\u015bli wygl\u0105da na to, \u017ce zasilanie jest doprowadzane, powinni\u015bmy stara\u0107 si\u0119 jak najbardziej zminimalizowa\u0107 zu\u017cycie energii. Nie nale\u017cy ustawia\u0107 tej opcji, je\u015bli w\u0142\u0105czona jest opcja \"is_router\"."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\u4e86\uff0c\u8bbe\u5907\u7531\u4f4e\u7535\u6d41\u6e90\uff08\u5373\u592a\u9633\u80fd\uff09\u4f9b\u7535\uff0c\u6240\u4ee5\u5373\u4f7f\u770b\u8d77\u6765\u6211\u4eec\u6709\u7535\u6e90\u6d41\u5165\uff0c\u6211\u4eec\u4e5f\u5e94\u8be5\u5c3d\u53ef\u80fd\u5730\u51cf\u5c11\u7535\u529b\u6d88\u8017\u3002\u5982\u679c'is_router'\u88ab\u542f\u7528\uff0c\u8bf7\u4e0d\u8981\u8bbe\u7f6e\u8fd9\u4e2a\u3002"
         },
         "label": {
             "de": "Stromversorgung durch Low Power (Solar)?",
             "en": "Powered by Low Power (solar)?",
-            "pl": "Czy zasilane energi\u0105 o niskim poborze mocy (s\u0142oneczn\u0105)?"
+            "zh": "\u7531\u4f4e\u529f\u7387\uff08\u592a\u9633\u80fd\uff09\u4f9b\u7535\uff1f"
         }
     },
     "is_power_saving": {
         "description": {
             "de": "Falls gesetzt, werden die Energiesparfunktionen des esp32-Ger\u00e4ts aktiviert.",
             "en": "If set, enable power saving features of the esp32 device.",
-            "pl": "Je\u015bli jest ustawione, w\u0142\u0105cza funkcje oszcz\u0119dzania energii w urz\u0105dzeniu esp32."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u542f\u7528esp32\u8bbe\u5907\u7684\u7701\u7535\u529f\u80fd\u3002"
         },
         "label": {
             "de": "Wird Strom gespart?",
             "en": "Is Power Saving?",
-            "pl": "Czy oszcz\u0119dzanie energii jest mo\u017cliwe?"
+            "zh": "\u662f\u7701\u7535\u5417\uff1f"
         }
     },
     "is_router": {
         "description": {
             "de": "Funktionieren wir als Router? \u00c4ndert das Verhalten auf folgende Weise: Das Ger\u00e4t geht nur bei kritisch niedrigem Batteriestand in den Ruhezustand (d. h. es versucht immer, f\u00fcr das Netz am Leben zu bleiben). In Zukunft werden Routing-Entscheidungen Pakete bevorzugt \u00fcber Knoten mit diesem Attribut leiten (da eine gute Sichtverbindung vorausgesetzt wird).",
             "en": "Are we operating as a router? Changes behavior in the following ways: The device will only sleep for critically low battery level (i.e. always tries to stay alive for the mesh). In the future, routing decisions will preferentially route packets through nodes with this attribute (because assumed good line of sight).",
-            "pl": "Czy dzia\u0142amy jako router? Zmienia zachowanie w nast\u0119puj\u0105cy spos\u00f3b: Urz\u0105dzenie b\u0119dzie usypia\u0107 tylko w przypadku krytycznie niskiego poziomu baterii (tzn. zawsze b\u0119dzie pr\u00f3bowa\u0142o pozosta\u0107 przy \u017cyciu dla sieci mesh). W przysz\u0142o\u015bci decyzje dotycz\u0105ce routingu b\u0119d\u0105 preferencyjnie kierowa\u0107 pakiety przez w\u0119z\u0142y z tym atrybutem (ze wzgl\u0119du na zak\u0142adan\u0105 dobr\u0105 lini\u0119 widzenia)."
+            "zh": "\u6211\u4eec\u662f\u5426\u4f5c\u4e3a\u4e00\u4e2a\u8def\u7531\u5668\u5728\u8fd0\u4f5c\uff1f\u4ee5\u4e0b\u5217\u65b9\u5f0f\u6539\u53d8\u884c\u4e3a\u3002\u8bbe\u5907\u53ea\u4f1a\u5728\u7535\u6c60\u7535\u91cf\u6781\u4f4e\u7684\u60c5\u51b5\u4e0b\u8fdb\u884c\u7761\u7720\uff08\u5373\u603b\u662f\u8bd5\u56fe\u4e3a\u7f51\u72b6\u7ed3\u6784\u4fdd\u6301\u6d3b\u529b\uff09\u3002\u5728\u672a\u6765\uff0c\u8def\u7531\u51b3\u7b56\u5c06\u4f18\u5148\u901a\u8fc7\u5177\u6709\u8fd9\u79cd\u5c5e\u6027\u7684\u8282\u70b9\u6765\u8def\u7531\u6570\u636e\u5305\uff08\u56e0\u4e3a\u5047\u5b9a\u89c6\u7ebf\u826f\u597d\uff09\u3002"
         },
         "label": {
             "de": "Ist Router?",
             "en": "Is Router?",
-            "pl": "Czy Router?"
+            "zh": "\u8def\u7531\u5668\u662f\u5417\uff1f"
         }
     },
     "label_device": {
         "tooltip": {
             "de": "Klicken Sie hier, um mehr \u00fcber die von Meshtastic unterst\u00fctzten Ger\u00e4te zu erfahren.",
             "en": "Click to see more about Meshtastic supported devices.",
-            "pl": "Kliknij, aby dowiedzie\u0107 si\u0119 wi\u0119cej o obs\u0142ugiwanych urz\u0105dzeniach Meshtastic."
+            "zh": "\u70b9\u51fb\u67e5\u770b\u66f4\u591a\u5173\u4e8eMeshtastic\u652f\u6301\u7684\u8bbe\u5907\u3002"
         }
     },
     "label_version": {
         "tooltip": {
             "de": "Klicken Sie hier, um mehr \u00fcber Firmware-Versionen zu erfahren.",
             "en": "Click to see more about firmware releases.",
-            "pl": "Kliknij, aby dowiedzie\u0107 si\u0119 wi\u0119cej o wersjach oprogramowania sprz\u0119towego."
+            "zh": "\u70b9\u51fb\u67e5\u770b\u66f4\u591a\u5173\u4e8e\u56fa\u4ef6\u53d1\u5e03\u7684\u4fe1\u606f\u3002"
         }
     },
     "lat": {
         "description": {
             "de": "Der Breitengrad ist die Messung der Entfernung n\u00f6rdlich oder s\u00fcdlich des \u00c4quators. Er wird mit 180 imagin\u00e4ren Linien gemessen, die in Ost-West-Richtung parallel zum \u00c4quator um die Erde kreisen.",
             "en": "Latitude is the measurement of distance north or south of the Equator. It is measured with 180 imaginary lines that form circles around the Earth east-west, parallel to the Equator.",
-            "pl": "Szeroko\u015b\u0107 geograficzna jest miar\u0105 odleg\u0142o\u015bci na p\u00f3\u0142noc lub po\u0142udnie od r\u00f3wnika. Mierzy si\u0119 j\u0105 za pomoc\u0105 180 wyimaginowanych linii, kt\u00f3re tworz\u0105 okr\u0119gi wok\u00f3\u0142 Ziemi w kierunku wsch\u00f3d-zach\u00f3d, r\u00f3wnolegle do r\u00f3wnika."
+            "zh": "\u7eac\u5ea6\u662f\u5bf9\u8d64\u9053\u4ee5\u5317\u6216\u4ee5\u5357\u8ddd\u79bb\u7684\u6d4b\u91cf\u3002\u5b83\u662f\u7528180\u6761\u5047\u60f3\u7ebf\u6d4b\u91cf\u7684\uff0c\u8fd9\u4e9b\u5047\u60f3\u7ebf\u56f4\u7ed5\u5730\u7403\u4e1c\u897f\u65b9\u5411\u5f62\u6210\u5706\u5708\uff0c\u4e0e\u8d64\u9053\u5e73\u884c\u3002"
         },
         "label": {
             "de": "Breitengrad",
             "en": "Latitude",
-            "pl": "Szeroko\u015b\u0107 geograficzna"
+            "zh": "\u7eac\u5ea6"
         }
     },
     "location_share": {
         "description": {
             "de": "Wie der Standort mit anderen Knoten (oder dem lokalen Telefon) geteilt wird.",
             "en": "How location is shared with other nodes (or the local phone).",
-            "pl": "W jaki spos\u00f3b lokalizacja jest udost\u0119pniana innym w\u0119z\u0142om (lub telefonowi lokalnemu)."
+            "zh": "\u5982\u4f55\u4e0e\u5176\u4ed6\u8282\u70b9\uff08\u6216\u672c\u5730\u7535\u8bdd\uff09\u5171\u4eab\u4f4d\u7f6e\u3002"
         },
         "label": {
             "de": "Standort-Sharing",
             "en": "Location sharing",
-            "pl": "Udost\u0119pnianie lokalizacji"
+            "zh": "\u5730\u70b9\u5171\u4eab"
         }
     },
     "lon": {
         "description": {
             "de": "Der L\u00e4ngengrad ist eine geografische Koordinate, die die Ost-West-Position eines Punktes auf der Erdoberfl\u00e4che angibt.",
             "en": "Longitude is a geographic coordinate that specifies the east\u2013west position of a point on the Earth's surface.",
-            "pl": "D\u0142ugo\u015b\u0107 geograficzna to wsp\u00f3\u0142rz\u0119dna geograficzna okre\u015blaj\u0105ca po\u0142o\u017cenie punktu na powierzchni Ziemi w kierunku wsch\u00f3d-zach\u00f3d."
+            "zh": "\u7ecf\u5ea6\u662f\u4e00\u4e2a\u5730\u7406\u5750\u6807\uff0c\u5b83\u89c4\u5b9a\u4e86\u5730\u7403\u8868\u9762\u4e0a\u4e00\u4e2a\u70b9\u7684\u4e1c\u897f\u4f4d\u7f6e\u3002"
         },
         "label": {
             "de": "L\u00e4ngengrad",
             "en": "Longitude",
-            "pl": "D\u0142ugo\u015b\u0107 geograficzna"
+            "zh": "\u7ecf\u5ea6"
         }
     },
     "long_name": {
         "description": {
             "de": "Vollst\u00e4ndiger Name des Ger\u00e4ts. Wenn \"is_licensed\" aktiviert ist, sollte dieser Wert die Ham-Lizenznummer sein.",
             "en": "Full name for the device. If 'is_licensed' is enabled, this value should be the Ham license number.",
-            "pl": "Pe\u0142na nazwa urz\u0105dzenia. Je\u015bli w\u0142\u0105czona jest opcja \"is_licensed\", warto\u015b\u0107 ta powinna by\u0107 numerem licencji Ham."
+            "zh": "\u8bbe\u5907\u7684\u5168\u540d\u3002\u5982\u679c'is_licensed'\u88ab\u542f\u7528\uff0c\u8fd9\u4e2a\u503c\u5e94\u8be5\u662f\u706b\u817f\u7684\u8bb8\u53ef\u8bc1\u53f7\u7801\u3002"
         },
         "label": {
             "de": "Langer Name",
             "en": "Long Name",
-            "pl": "Nazwa d\u0142uga"
+            "zh": "\u957f\u540d"
         },
         "max_size": 40
     },
@@ -831,143 +831,143 @@
         "description": {
             "de": "Der leichte Ruhezustand (LS) ist eine Option des Energieverwaltungssystems. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 3600 Sekunden (oder 1 Stunde).",
             "en": "Light sleep (LS) is a power management state machine option. See power management for details. 0 for default of 3600 seconds (or 1 hour).",
-            "pl": "Lekki sen (LS) to opcja maszyny stanowej zarz\u0105dzania energi\u0105. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 oznacza warto\u015b\u0107 domy\u015bln\u0105 3600 sekund (lub 1 godzin\u0119)."
+            "zh": "\u8f7b\u5ea6\u7761\u7720\uff08LS\uff09\u662f\u4e00\u4e2a\u7535\u6e90\u7ba1\u7406\u72b6\u6001\u673a\u9009\u9879\u3002\u8be6\u89c1\u7535\u6e90\u7ba1\u7406\u30020\u4e3a\u9ed8\u8ba4\u76843600\u79d2\uff08\u62161\u5c0f\u65f6\uff09\u3002"
         },
         "label": {
             "de": "LS (Sekunden)",
             "en": "LS (seconds)",
-            "pl": "LS (sekundy)"
+            "zh": "LS (\u79d2)"
         }
     },
     "macaddr": {
         "description": {
             "de": "Die Adresse des Ger\u00e4ts.",
             "en": "The address of the device.",
-            "pl": "Adres urz\u0105dzenia."
+            "zh": "\u8bbe\u5907\u7684\u5730\u5740\u3002"
         },
         "label": {
             "de": "MAC-Adresse",
             "en": "MAC Address",
-            "pl": "Adres MAC"
+            "zh": "MAC\u5730\u5740"
         }
     },
     "mesh_sds_timeout_secs": {
         "description": {
             "de": "Super Deep Sleep (SDS) ist eine Option der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr die Standardeinstellung von 7200 Sekunden (oder zwei Stunden), MAXUINT oder 4294967295 f\u00fcr deaktiviert.",
             "en": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 seconds (or two hours), MAXUINT or 4294967295 for disabled.",
-            "pl": "Super g\u0142\u0119boki sen (SDS) to opcja maszyny stanowej zarz\u0105dzania energi\u0105. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 dla warto\u015bci domy\u015blnej 7200 sekund (lub dwie godziny), MAXUINT lub 4294967295 dla warto\u015bci wy\u0142\u0105czonej."
+            "zh": "\u8d85\u7ea7\u6df1\u5ea6\u7761\u7720\uff08SDS\uff09\u662f\u4e00\u4e2a\u7535\u6e90\u7ba1\u7406\u72b6\u6001\u673a\u9009\u9879\u3002\u8be6\u89c1\u7535\u6e90\u7ba1\u7406\u30020\u8868\u793a\u9ed8\u8ba4\u76847200\u79d2\uff08\u6216\u4e24\u5c0f\u65f6\uff09\uff0cMAXUINT\u62164294967295\u8868\u793a\u7981\u7528\u3002"
         },
         "label": {
             "de": "Mesh SDS Timeout (Sekunden)",
             "en": "Mesh SDS Timeout (seconds)",
-            "pl": "Siatka SDS Timeout (sekundy)"
+            "zh": "\u7f51\u683cSDS\u8d85\u65f6\uff08\u79d2\uff09\u3002"
         }
     },
     "message": {
         "description": {
             "de": "Die zu sendende Nachricht.",
             "en": "The message to be sent.",
-            "pl": "Komunikat, kt\u00f3ry ma zosta\u0107 wys\u0142any."
+            "zh": "\u8981\u53d1\u9001\u7684\u4fe1\u606f\u3002"
         },
         "label": {
             "de": "Nachricht",
             "en": "Message",
-            "pl": "Komunikat"
+            "zh": "\u7559\u8a00"
         }
     },
     "message_sent": {
         "text": {
             "de": "Die Nachricht wurde gesendet.",
             "en": "The message was sent.",
-            "pl": "Wiadomo\u015b\u0107 zosta\u0142a wys\u0142ana."
+            "zh": "\u6d88\u606f\u5df2\u7ecf\u53d1\u51fa\u3002"
         }
     },
     "message_to_send": {
         "text": {
             "de": "Geben Sie eine Nachricht an, die Sie senden m\u00f6chten.",
             "en": "Provide a message to send.",
-            "pl": "Podaj wiadomo\u015b\u0107 do wys\u0142ania."
+            "zh": "\u63d0\u4f9b\u4e00\u4e2a\u8981\u53d1\u9001\u7684\u4fe1\u606f\u3002"
         }
     },
     "min_wake_secs": {
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr den Standardwert von 10 Sekunden.",
             "en": "Power management state machine option. See power management for details. 0 for default of 10 seconds.",
-            "pl": "Opcja maszyny stanowej zarz\u0105dzania zasilaniem. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 - warto\u015b\u0107 domy\u015blna to 10 sekund."
+            "zh": "\u7535\u6e90\u7ba1\u7406\u72b6\u6001\u673a\u9009\u9879\u3002\u8be6\u89c1\u7535\u6e90\u7ba1\u7406\u30020\u4e3a\u9ed8\u8ba4\u768410\u79d2\u3002"
         },
         "label": {
             "de": "Minimale Weckzeit (Sekunden)",
             "en": "Minimum Wake (seconds)",
-            "pl": "Minimalny czas czuwania (sekundy)"
+            "zh": "\u6700\u5c0f\u5524\u9192\uff08\u79d2\uff09"
         }
     },
     "modem_config": {
         "description": {
             "de": "Die Konfiguration des Modems. (Geschwindigkeit/Entfernung)",
             "en": "The configuration of the modem. (speed/distance)",
-            "pl": "Konfiguracja modemu. (pr\u0119dko\u015b\u0107/odleg\u0142o\u015b\u0107)"
+            "zh": "\u8c03\u5236\u89e3\u8c03\u5668\u7684\u914d\u7f6e\u3002(\u901f\u5ea6/\u8ddd\u79bb)"
         },
         "label": {
             "de": "Modem-Konfiguration",
             "en": "Modem Config",
-            "pl": "Konfiguracja modemu"
+            "zh": "\u8c03\u5236\u89e3\u8c03\u5668\u914d\u7f6e"
         }
     },
     "module_link": {
         "tooltip": {
             "de": "Link zeigt weitere Informationen zu den Einstellungen f\u00fcr dieses Modul.",
             "en": "Link shows more information about the settings for this module.",
-            "pl": "\u0141\u0105cze pokazuje wi\u0119cej informacji o ustawieniach tego modu\u0142u."
+            "zh": "\u94fe\u63a5\u663e\u793a\u6709\u5173\u8be5\u6a21\u5757\u8bbe\u7f6e\u7684\u66f4\u591a\u4fe1\u606f\u3002"
         }
     },
     "module_settings": {
         "text": {
             "de": "Modul-Einstellungen",
             "en": "Module Settings",
-            "pl": "Ustawienia modu\u0142u"
+            "zh": "\u6a21\u5757\u8bbe\u7f6e"
         }
     },
     "modules": {
         "text": {
             "de": "Module",
             "en": "Modules",
-            "pl": "Modu\u0142y"
+            "zh": "\u6a21\u5757"
         }
     },
     "mqtt_disabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, werden alle MQTT-Funktionen deaktiviert.",
             "en": "If set, all MQTT features will be disabled.",
-            "pl": "Je\u015bli jest ustawione, wszystkie funkcje MQTT b\u0119d\u0105 wy\u0142\u0105czone."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u6240\u6709MQTT\u529f\u80fd\u5c06\u88ab\u7981\u7528\u3002"
         },
         "label": {
             "de": "MQTT Deaktiviert?",
             "en": "MQTT Disabled?",
-            "pl": "MQTT Wy\u0142\u0105czone?"
+            "zh": "MQTT\u5df2\u88ab\u7981\u7528\uff1f"
         }
     },
     "mqtt_encryption_enabled": {
         "description": {
             "de": "Wenn gesetzt, werden verschl\u00fcsselte Pakete an den in 'mqtt_server' angegebenen Server gesendet. Andernfalls werden die Pakete nicht verschl\u00fcsselt.",
             "en": "If set, encrypted packets are sent to server specified in 'mqtt_server. Otherwise, the packets are not encrypted.",
-            "pl": "Je\u015bli jest ustawione, zaszyfrowane pakiety s\u0105 wysy\u0142ane do serwera okre\u015blonego w 'mqtt_server. W przeciwnym razie pakiety nie s\u0105 szyfrowane."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u52a0\u5bc6\u7684\u6570\u636e\u5305\u5c06\u88ab\u53d1\u9001\u5230'mqtt_server'\u4e2d\u6307\u5b9a\u7684\u670d\u52a1\u5668\u3002\u5426\u5219\uff0c\u6570\u636e\u5305\u4e0d\u88ab\u52a0\u5bc6\u3002"
         },
         "label": {
             "de": "Ist die MQTT-Verschl\u00fcsselung aktiviert?",
             "en": "MQTT Encryption Enabled?",
-            "pl": "Szyfrowanie MQTT w\u0142\u0105czone?"
+            "zh": "\u542f\u7528\u4e86MQTT\u52a0\u5bc6\u529f\u80fd\uff1f"
         }
     },
     "mqtt_password": {
         "description": {
             "de": "MQTT-Passwort, das bei Verwendung von \"mqtt_server\" verwendet werden soll. Wenn es nicht gesetzt ist, wird das Standardpasswort verwendet.",
             "en": "MQTT password to use when 'mqtt_server' is used. If not set, the default password will be used.",
-            "pl": "Has\u0142o MQTT, kt\u00f3re ma by\u0107 u\u017cywane, gdy u\u017cywane jest has\u0142o 'mqtt_server'. Je\u015bli nie zostanie ustawione, zostanie u\u017cyte has\u0142o domy\u015blne."
+            "zh": "\u4f7f\u7528'mqtt_server'\u65f6\u8981\u4f7f\u7528\u7684MQTT\u5bc6\u7801\u3002\u5982\u679c\u6ca1\u6709\u8bbe\u7f6e\uff0c\u5c06\u4f7f\u7528\u9ed8\u8ba4\u5bc6\u7801\u3002"
         },
         "label": {
             "de": "MQTT-Kennwort",
             "en": "MQTT Password",
-            "pl": "Has\u0142o MQTT"
+            "zh": "MQTT\u5bc6\u7801"
         },
         "max_size": 32
     },
@@ -975,12 +975,12 @@
         "description": {
             "de": "Der Server, der f\u00fcr die Funktion des globalen MQTT-Nachrichtengateways verwendet werden soll. Wenn er nicht gesetzt ist, wird der Standardserver verwendet.",
             "en": "The server to use for our MQTT global message gateway feature. If not set, the default server will be used.",
-            "pl": "Serwer, kt\u00f3ry ma by\u0107 u\u017cywany przez nasz\u0105 funkcj\u0119 globalnej bramy komunikat\u00f3w MQTT. Je\u015bli nie zostanie ustawiony, zostanie u\u017cyty serwer domy\u015blny."
+            "zh": "\u7528\u4e8e\u6211\u4eec\u7684MQTT\u5168\u7403\u6d88\u606f\u7f51\u5173\u529f\u80fd\u7684\u670d\u52a1\u5668\u3002\u5982\u679c\u6ca1\u6709\u8bbe\u7f6e\uff0c\u5c06\u4f7f\u7528\u9ed8\u8ba4\u670d\u52a1\u5668\u3002"
         },
         "label": {
             "de": "MQTT-Server",
             "en": "MQTT Server",
-            "pl": "Serwer MQTT"
+            "zh": "MQTT\u670d\u52a1\u5668"
         },
         "max_size": 32
     },
@@ -988,12 +988,12 @@
         "description": {
             "de": "MQTT-Benutzername, der verwendet werden soll, wenn \"mqtt_server\" verwendet wird. Wenn nicht gesetzt, wird der Standard-Benutzername verwendet.",
             "en": "MQTT username to use when 'mqtt_server' is used. If not set, the default username will be used.",
-            "pl": "Nazwa u\u017cytkownika MQTT, kt\u00f3ra ma by\u0107 u\u017cywana, gdy u\u017cywane jest 'mqtt_server'. Je\u015bli nie zostanie ustawiona, zostanie u\u017cyta domy\u015blna nazwa u\u017cytkownika."
+            "zh": "\u4f7f\u7528'mqtt_server'\u65f6\u8981\u4f7f\u7528\u7684MQTT\u7528\u6237\u540d\u3002\u5982\u679c\u6ca1\u6709\u8bbe\u7f6e\uff0c\u5c06\u4f7f\u7528\u9ed8\u8ba4\u7684\u7528\u6237\u540d\u3002"
         },
         "label": {
             "de": "MQTT Username",
             "en": "MQTT Username",
-            "pl": "Nazwa u\u017cytkownika MQTT"
+            "zh": "MQTT\u7528\u6237\u540d"
         },
         "max_size": 32
     },
@@ -1001,304 +1001,304 @@
         "description": {
             "de": "Ein kurzer Name, der in die URL eingef\u00fcgt wird. Weniger als 12 Bytes. Dieses Feld ist nur editierbar, wenn der vorherige Kanal einen Namen hat. Es gibt spezielle Kanalnamen wie \"admin\" (f\u00fcr die Fernverwaltung) und \"gpio\" (f\u00fcr die Fernabfrage/-manipulation von gpio).",
             "en": "A short name that will be packed into the URL. Less than 12 bytes. This field will only be editable if the prior channel has a name. There are special channel names like 'admin' (for remote management) and 'gpio' (for remote gpio query/manipulation).",
-            "pl": "Kr\u00f3tka nazwa, kt\u00f3ra zostanie umieszczona w adresie URL. Mniej ni\u017c 12 bajt\u00f3w. To pole b\u0119dzie mo\u017cna edytowa\u0107 tylko wtedy, gdy wcze\u015bniejszy kana\u0142 ma nazw\u0119. Istniej\u0105 specjalne nazwy kana\u0142\u00f3w, takie jak \"admin\" (do zdalnego zarz\u0105dzania) i \"gpio\" (do zdalnego odpytywania/manipulowania gpio)."
+            "zh": "\u4e00\u4e2a\u5c06\u88ab\u88c5\u5165URL\u7684\u77ed\u540d\u79f0\u3002\u5c0f\u4e8e12\u4e2a\u5b57\u8282\u3002\u8fd9\u4e2a\u5b57\u6bb5\u53ea\u6709\u5728\u5148\u524d\u7684\u901a\u9053\u6709\u540d\u5b57\u7684\u60c5\u51b5\u4e0b\u624d\u53ef\u4ee5\u7f16\u8f91\u3002\u6709\u4e00\u4e9b\u7279\u6b8a\u7684\u901a\u9053\u540d\u79f0\uff0c\u5982'admin'\uff08\u7528\u4e8e\u8fdc\u7a0b\u7ba1\u7406\uff09\u548c'gpio'\uff08\u7528\u4e8e\u8fdc\u7a0bgpio\u67e5\u8be2/\u64cd\u4f5c\uff09\u3002"
         },
         "label": {
             "de": "Name des Kanals",
             "en": "Channel Name",
-            "pl": "Nazwa kana\u0142u"
+            "zh": "\u9891\u9053\u540d\u79f0"
         }
     },
     "no_devices_detected": {
         "text": {
             "de": "Es wurden keine Ger\u00e4te gefunden.\n\nVerwenden Sie ein Datenkabel?\n\nM\u00fcssen Sie einen Ger\u00e4tetreiber installieren?\n\nSchlie\u00dfen Sie ein Ger\u00e4t an?",
             "en": "No devices were detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?",
-            "pl": "Nie wykryto \u017cadnych urz\u0105dze\u0144.\n\nCzy u\u017cywasz kabla do transmisji danych?\n\nCzy trzeba zainstalowa\u0107 sterownik urz\u0105dzenia?\n\nPod\u0142\u0105czy\u0107 urz\u0105dzenie?"
+            "zh": "\u6ca1\u6709\u68c0\u6d4b\u5230\u4efb\u4f55\u8bbe\u5907\u3002\n\n\u4f60\u662f\u5426\u4f7f\u7528\u4e86\u6570\u636e\u7ebf\uff1f\n\n\u4f60\u9700\u8981\u5b89\u88c5\u8bbe\u5907\u9a71\u52a8\u7a0b\u5e8f\u5417\uff1f\n\n\u63d2\u5165\u4e00\u4e2a\u8bbe\u5907\uff1f"
         }
     },
     "note_all_settings_will_be_erased": {
         "text": {
             "de": "HINWEIS: Alle Meshtastic-Einstellungen werden gel\u00f6scht.",
             "en": "NOTE: All Meshtastic settings will be erased.",
-            "pl": "UWAGA: Wszystkie ustawienia programu Meshtastic zostan\u0105 usuni\u0119te."
+            "zh": "\u6ce8\u610f\uff1a\u6240\u6709\u7684Meshtastic\u8bbe\u7f6e\u5c06\u88ab\u5220\u9664\u3002"
         }
     },
     "notifications": {
         "text": {
             "de": "Benachrichtigungen",
             "en": "Notifications",
-            "pl": "Powiadomienia"
+            "zh": "\u901a\u77e5"
         }
     },
     "nrf_detected": {
         "text": {
             "de": "NRF-Ger\u00e4t erkannt.\n\nDr\u00fccken Sie zweimal die Taste RST und klicken Sie dann erneut auf die Taste DETECT.",
             "en": "NRF device detected.\n\nPress RST button twice then click DETECT button again.",
-            "pl": "Wykryto urz\u0105dzenie NRF.\n\nNaci\u015bnij dwukrotnie przycisk RST, a nast\u0119pnie ponownie kliknij przycisk DETECT."
+            "zh": "\u68c0\u6d4b\u5230NRF\u8bbe\u5907\u3002\n\n\u6309\u4e24\u6b21RST\u6309\u94ae\uff0c\u7136\u540e\u518d\u6b21\u70b9\u51fbDETECT\u6309\u94ae\u3002"
         }
     },
     "on_battery_shutdown_after_secs": {
         "description": {
             "de": "Wenn dieser Wert nicht Null ist, schaltet sich das Ger\u00e4t so viele Sekunden nach dem Abschalten der externen Stromversorgung vollst\u00e4ndig ab.",
             "en": "If non-zero, the device will fully power off this many seconds after external power is removed.",
-            "pl": "Je\u015bli warto\u015b\u0107 jest r\u00f3\u017cna od zera, urz\u0105dzenie wy\u0142\u0105czy si\u0119 ca\u0142kowicie po up\u0142ywie tylu sekund od od\u0142\u0105czenia zasilania zewn\u0119trznego."
+            "zh": "\u5982\u679c\u975e\u96f6\uff0c\u8bbe\u5907\u5c06\u5728\u79fb\u9664\u5916\u90e8\u7535\u6e90\u540e\u7684\u8fd9\u4e48\u591a\u79d2\u5185\u5b8c\u5168\u65ad\u7535\u3002"
         },
         "label": {
             "de": "Ein Batterieabschaltung nach (Sekunden)",
             "en": "On Battery Shutdown After (seconds)",
-            "pl": "W\u0142\u0105czony Wy\u0142\u0105czenie akumulatora po (sekundy)"
+            "zh": "\u5728\u7535\u6c60\u5173\u673a\u540e\uff08\u79d2\uff09\u3002"
         }
     },
     "other": {
         "text": {
             "de": "Andere",
             "en": "Other",
-            "pl": "Inne"
+            "zh": "\u5176\u4ed6"
         }
     },
     "phone_sds_timeout_sec": {
         "description": {
             "de": "Super Deep Sleep (SDS) ist eine Option der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 7200 (oder zwei Stunden), MAXUINT oder 4294967295 f\u00fcr deaktiviert.",
             "en": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of 7200 (or two hours), MAXUINT or 4294967295 for disabled.",
-            "pl": "Super g\u0142\u0119boki sen (SDS) to opcja maszyny stanowej zarz\u0105dzania energi\u0105. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 dla warto\u015bci domy\u015blnej 7200 (lub dwie godziny), MAXUINT lub 4294967295 dla warto\u015bci wy\u0142\u0105czonej."
+            "zh": "\u8d85\u7ea7\u6df1\u5ea6\u7761\u7720\uff08SDS\uff09\u662f\u4e00\u4e2a\u7535\u6e90\u7ba1\u7406\u72b6\u6001\u673a\u9009\u9879\u3002\u8be6\u89c1\u7535\u6e90\u7ba1\u7406\u30020\u8868\u793a\u9ed8\u8ba4\u4e3a7200\uff08\u6216\u4e24\u4e2a\u5c0f\u65f6\uff09\uff0cMAXUINT\u62164294967295\u8868\u793a\u7981\u7528\u3002"
         },
         "label": {
             "de": "Telefon-SDS-Zeit\u00fcberschreitung (Sekunden)",
             "en": "Phone SDS Timeout (seconds)",
-            "pl": "Telefon SDS Timeout (sekundy)"
+            "zh": "\u7535\u8bddSDS\u8d85\u65f6\uff08\u79d2\uff09"
         }
     },
     "phone_timeout_secs": {
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr Standardwert von 900 (oder 15 Minuten).",
             "en": "Power management state machine option. See power management for details. 0 for default of 900 (or 15 minutes).",
-            "pl": "Opcja maszyny stanowej zarz\u0105dzania zasilaniem. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci zarz\u0105dzanie zasilaniem. 0 dla warto\u015bci domy\u015blnej 900 (lub 15 minut)."
+            "zh": "\u7535\u6e90\u7ba1\u7406\u72b6\u6001\u673a\u9009\u9879\u3002\u8be6\u89c1\u7535\u6e90\u7ba1\u7406\u30020\u4e3a\u9ed8\u8ba4\u7684900\uff08\u621615\u5206\u949f\uff09\u3002"
         },
         "label": {
             "de": "Telefon-Timeout (Sekunden)",
             "en": "Phone Timeout (seconds)",
-            "pl": "Limit czasu telefonu (sekundy)"
+            "zh": "\u7535\u8bdd\u8d85\u65f6\uff08\u79d2\uff09"
         }
     },
     "position": {
         "text": {
             "de": "Position",
             "en": "Position",
-            "pl": "Pozycja"
+            "zh": "\u804c\u52a1"
         }
     },
     "position_broadcast_secs": {
         "description": {
             "de": "Senden Sie unsere Position so oft (aber nur, wenn sie sich stark ver\u00e4ndert hat). Die Standardeinstellung ist 900 Sekunden. (15 Minuten)",
             "en": "Send our position this often (but only if it has changed significantly). Defaults to 900 seconds. (15 minutes)",
-            "pl": "Wysy\u0142aj nasze po\u0142o\u017cenie tak cz\u0119sto (ale tylko wtedy, gdy uleg\u0142o ono znacznej zmianie). Warto\u015b\u0107 domy\u015blna to 900 sekund. (15 minut)"
+            "zh": "\u5982\u6b64\u9891\u7e41\u5730\u53d1\u9001\u6211\u4eec\u7684\u4f4d\u7f6e\uff08\u4f46\u53ea\u6709\u5f53\u5b83\u53d1\u751f\u4e86\u91cd\u5927\u53d8\u5316\u65f6\uff09\u3002\u9ed8\u8ba4\u4e3a900\u79d2\u3002(15\u5206\u949f)"
         },
         "label": {
             "de": "Sendeintervall (Sekunden)",
             "en": "Broadcast interval (seconds)",
-            "pl": "Interwa\u0142 rozsy\u0142ania (sekundy)"
+            "zh": "\u5e7f\u64ad\u65f6\u95f4\u95f4\u9694\uff08\u79d2\uff09"
         }
     },
     "position_broadcast_smart": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, wird ein ideales Intervall f\u00fcr die Positionsaktualisierung auf der Grundlage der Datenrate Ihrer Kanalkonfiguration berechnet.",
             "en": "If set, calculates an ideal position update interval based on the data rate of your channel configuration.",
-            "pl": "Je\u015bli jest ustawione, oblicza idealny interwa\u0142 aktualizacji pozycji na podstawie szybko\u015bci transmisji danych konfiguracji kana\u0142u."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u6839\u636e\u4f60\u7684\u901a\u9053\u914d\u7f6e\u7684\u6570\u636e\u901f\u7387\u8ba1\u7b97\u51fa\u4e00\u4e2a\u7406\u60f3\u7684\u4f4d\u7f6e\u66f4\u65b0\u95f4\u9694\u3002"
         },
         "label": {
             "de": "Verwenden Sie Broadcast smart?",
             "en": "Use Broadcast smart?",
-            "pl": "Korzystanie z funkcji Nadawanie inteligentne?"
+            "zh": "\u4f7f\u7528\u5e7f\u64ad\u667a\u80fd\uff1f"
         }
     },
     "position_flag_alt_msl": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, wird die H\u00f6he \u00fcber dem Meeresspiegel (Mean Sea Level, MSL) in die Positionsmeldung aufgenommen.",
             "en": "If set, Mean Sea Level (MSL) altitude will be included in the position message.",
-            "pl": "Je\u015bli jest ustawiona, w komunikacie o pozycji b\u0119dzie uwzgl\u0119dniana wysoko\u015b\u0107 nad poziomem morza (MSL)."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u5e73\u5747\u6d77\u5e73\u9762\uff08MSL\uff09\u9ad8\u5ea6\u5c06\u5305\u62ec\u5728\u4f4d\u7f6e\u4fe1\u606f\u4e2d\u3002"
         },
         "label": {
             "de": "Die H\u00f6he ist MSL?",
             "en": "Altitude is MSL?",
-            "pl": "Wysoko\u015b\u0107 nad poziomem morza to MSL?"
+            "zh": "\u6d77\u62d4\u9ad8\u5ea6\u4e3aMSL\uff1f"
         }
     },
     "position_flag_altitude": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird die H\u00f6he in die Positionsmeldung aufgenommen.",
             "en": "If set, altitude will be included in the position message.",
-            "pl": "Je\u015bli jest ustawiona, do komunikatu o pozycji b\u0119dzie do\u0142\u0105czana wysoko\u015b\u0107."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u9ad8\u5ea6\u5c06\u5305\u62ec\u5728\u4f4d\u7f6e\u4fe1\u606f\u4e2d\u3002"
         },
         "label": {
             "de": "H\u00f6he einbeziehen?",
             "en": "Include altitude?",
-            "pl": "Uwzgl\u0119dni\u0107 wysoko\u015b\u0107 nad poziomem morza?"
+            "zh": "\u5305\u62ec\u6d77\u62d4\u9ad8\u5ea6\uff1f"
         }
     },
     "position_flag_battery": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, wird der Batteriestand in der Positionsmeldung angezeigt.",
             "en": "If set, battery level will included in the position message.",
-            "pl": "Je\u015bli jest ustawiony, poziom na\u0142adowania baterii b\u0119dzie uwzgl\u0119dniany w komunikacie o po\u0142o\u017ceniu."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u7535\u6c60\u7535\u91cf\u5c06\u5305\u62ec\u5728\u4f4d\u7f6e\u4fe1\u606f\u4e2d\u3002"
         },
         "label": {
             "de": "Batteriestand einbeziehen?",
             "en": "Include battery level?",
-            "pl": "Uwzgl\u0119dnia\u0107 poziom na\u0142adowania baterii?"
+            "zh": "\u5305\u62ec\u7535\u6c60\u7535\u91cf\u5417\uff1f"
         }
     },
     "position_flag_dop": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, wird der DOP-Wert (Dilution of Precision) in die Positionsmeldung aufgenommen. (Standardm\u00e4\u00dfig wird PDOP verwendet)",
             "en": "If set, dilution of precision (DOP) value will be included in the position message. (PDOP is used by default)",
-            "pl": "Je\u015bli jest ustawiona, do komunikatu o po\u0142o\u017ceniu b\u0119dzie do\u0142\u0105czana warto\u015b\u0107 rozcie\u0144czenia precyzji (DOP). (Domy\u015blnie u\u017cywana jest warto\u015b\u0107 PDOP)"
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u7cbe\u5ea6\u7a00\u91ca\uff08DOP\uff09\u503c\u5c06\u5305\u62ec\u5728\u4f4d\u7f6e\u4fe1\u606f\u4e2d\u3002(\u9ed8\u8ba4\u4f7f\u7528PDOP)"
         },
         "label": {
             "de": "DOP-Wert einbeziehen?",
             "en": "Include DOP value?",
-            "pl": "Uwzgl\u0119dni\u0107 warto\u015b\u0107 DOP?"
+            "zh": "\u5305\u62ecDOP\u503c\uff1f"
         }
     },
     "position_flag_geo_sep": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird die geoidale Trennung in die Positionsmeldung aufgenommen.",
             "en": "If set, geoidal separation will be included in the position message.",
-            "pl": "Je\u015bli jest ustawiona, w komunikacie o pozycji b\u0119dzie uwzgl\u0119dniana separacja geoidalna."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u5730\u5e73\u7ebf\u5206\u79bb\u5c06\u5305\u62ec\u5728\u4f4d\u7f6e\u4fe1\u606f\u4e2d\u3002"
         },
         "label": {
             "de": "Geod\u00e4tische Trennung einbeziehen?",
             "en": "Include geoidal separation?",
-            "pl": "Uwzgl\u0119dni\u0107 separacj\u0119 geoidaln\u0105?"
+            "zh": "\u5305\u62ec\u5730\u6f6e\u5206\u79bb\u5417\uff1f"
         }
     },
     "position_flag_hvdop": {
         "description": {
             "de": "Wenn DOP eingestellt ist, senden Sie die Trennungswerte HDOP / VDOP anstelle von PDOP in der Positionsmeldung.",
             "en": "If DOP is set, send separation HDOP / VDOP values instead of PDOP in the position message.",
-            "pl": "Je\u015bli ustawiona jest funkcja DOP, w komunikacie o po\u0142o\u017ceniu nale\u017cy wys\u0142a\u0107 warto\u015bci HDOP / VDOP zamiast PDOP."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\u4e86DOP\uff0c\u5728\u4f4d\u7f6e\u4fe1\u606f\u4e2d\u53d1\u9001\u5206\u79bb\u7684HDOP/VDOP\u503c\uff0c\u800c\u4e0d\u662fPDOP\u3002"
         },
         "label": {
             "de": "Separate HDOP/VDOP-Werte anstelle von PDOP senden?",
             "en": "Send separate HDOP/VDOP values instead of PDOP?",
-            "pl": "Wys\u0142a\u0107 oddzielne warto\u015bci HDOP/VDOP zamiast PDOP?"
+            "zh": "\u53d1\u9001\u5355\u72ec\u7684HDOP/VDOP\u503c\u800c\u4e0d\u662fPDOP\uff1f"
         }
     },
     "position_flag_satinview": {
         "description": {
             "de": "Wenn gesetzt, wird die Anzahl der sichtbaren Satelliten in der Positionsmeldung gesendet.",
             "en": "If set, send number of satellites in view in the position message.",
-            "pl": "Je\u015bli jest ustawiona, w komunikacie o pozycji wysy\u0142ana jest liczba satelit\u00f3w w polu widzenia."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u5219\u5728\u4f4d\u7f6e\u4fe1\u606f\u4e2d\u53d1\u9001\u89c6\u56fe\u4e2d\u7684\u536b\u661f\u6570\u91cf\u3002"
         },
         "label": {
             "de": "Anzahl der sichtbaren Satelliten einbeziehen?",
             "en": "Include number of satellites in view?",
-            "pl": "Uwzgl\u0119dni\u0107 liczb\u0119 satelit\u00f3w w polu widzenia?"
+            "zh": "\u5305\u62ec\u89c6\u91ce\u4e2d\u7684\u536b\u661f\u6570\u91cf\uff1f"
         }
     },
     "position_flag_seq_nos": {
         "description": {
             "de": "Wenn gesetzt, wird eine Sequenznummer, die pro Paket erh\u00f6ht wird, in die Positionsmeldung aufgenommen.",
             "en": "If set, include a sequence number incremented per packet in the position message.",
-            "pl": "Je\u015bli jest ustawiona, do komunikatu o pozycji do\u0142\u0105czany jest numer sekwencyjny inkrementowany dla ka\u017cdego pakietu."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u5728\u4f4d\u7f6e\u4fe1\u606f\u4e2d\u5305\u62ec\u4e00\u4e2a\u6bcf\u5305\u9012\u589e\u7684\u5e8f\u5217\u53f7\u3002"
         },
         "label": {
             "de": "Sequenznummern einbeziehen?",
             "en": "Include sequence numbers?",
-            "pl": "Uwzgl\u0119dni\u0107 numery sekwencji?"
+            "zh": "\u5305\u62ec\u5e8f\u5217\u53f7\uff1f"
         }
     },
     "position_flag_timestamp": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird der Zeitstempel der Position (von der GPS-L\u00f6sung) in die Positionsmeldung aufgenommen.",
             "en": "If set, include positional timestamp (from GPS solution) in the position message.",
-            "pl": "Je\u015bli jest ustawiona, do komunikatu o pozycji do\u0142\u0105czany jest znacznik czasu pozycji (z rozwi\u0105zania GPS)."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u5728\u4f4d\u7f6e\u4fe1\u606f\u4e2d\u5305\u62ec\u4f4d\u7f6e\u7684\u65f6\u95f4\u6233\uff08\u6765\u81eaGPS\u89e3\u51b3\u65b9\u6848\uff09\u3002"
         },
         "label": {
             "de": "Zeitstempel einschlie\u00dfen?",
             "en": "Include timestamp?",
-            "pl": "Do\u0142\u0105czy\u0107 znacznik czasu?"
+            "zh": "\u5305\u62ec\u65f6\u95f4\u6233\uff1f"
         }
     },
     "position_flags": {
         "description": {
             "de": "Die \"position_flags\" werden aus den Positionsflaggen-\"Bits\" aller verschiedenen Positionsflags berechnet.",
             "en": "The 'position_flags' is calculated from the position flag 'bits' from all of the various position flags.",
-            "pl": "Warto\u015b\u0107 \"position_flags\" oblicza si\u0119 na podstawie \"bit\u00f3w\" znacznik\u00f3w pozycji ze wszystkich r\u00f3\u017cnych znacznik\u00f3w pozycji."
+            "zh": "position_flags'\u662f\u7531\u6240\u6709\u5404\u79cd\u4f4d\u7f6e\u6807\u5fd7\u7684\u4f4d\u7f6e\u6807\u5fd7'\u4f4d'\u8ba1\u7b97\u51fa\u6765\u7684\u3002"
         },
         "label": {
             "de": "Positionsflaggen (berechnet)",
             "en": "Position flags (calculated)",
-            "pl": "Znaczniki pozycji (obliczone)"
+            "zh": "\u4f4d\u7f6e\u6807\u5fd7\uff08\u8ba1\u7b97\uff09\u3002"
         }
     },
     "position_settings": {
         "text": {
             "de": "Position Einstellungen",
             "en": "Position Settings",
-            "pl": "Ustawienia pozycji"
+            "zh": "\u4f4d\u7f6e\u8bbe\u7f6e"
         }
     },
     "power": {
         "text": {
             "de": "Strom",
             "en": "Power",
-            "pl": "Moc"
+            "zh": "\u6743\u529b"
         }
     },
     "power_settings": {
         "text": {
             "de": "Leistungseinstellungen",
             "en": "Power Settings",
-            "pl": "Ustawienia zasilania"
+            "zh": "\u7535\u6e90\u8bbe\u7f6e"
         }
     },
     "progress": {
         "tooltip": {
             "de": "Der Fortschritt wird w\u00e4hrend des FLASH-Schrittes angezeigt.",
             "en": "Progress will be shown during the FLASH step.",
-            "pl": "Post\u0119p b\u0119dzie widoczny podczas kroku FLASH."
+            "zh": "\u5728FLASH\u6b65\u9aa4\u4e2d\u4f1a\u663e\u793a\u8fdb\u5ea6\u3002"
         }
     },
     "question": {
         "text": {
             "de": "Frage",
             "en": "Question",
-            "pl": "Pytanie"
+            "zh": "\u95ee\u9898"
         }
     },
     "radio": {
         "text": {
             "de": "Radio",
             "en": "Radio",
-            "pl": "Radio"
+            "zh": "\u7535\u53f0"
         }
     },
     "radio_settings": {
         "text": {
             "de": "Radio-Einstellungen",
             "en": "Radio Settings",
-            "pl": "Ustawienia radia"
+            "zh": "\u65e0\u7ebf\u7535\u8bbe\u7f6e"
         }
     },
     "rak_11200_detected": {
         "text": {
             "de": "Es sieht so aus, als ob ein RAK 11200 entdeckt wurde.\n\nPr\u00fcfen Sie, ob es sich im BOOT-Modus befindet.\n\nEs sollte ein einzelnes, rotes Dauerlicht leuchten.\nEs sollte keine anderen Lichter geben, weder durchgehend noch blinkend.\n\nIst dies nicht der Fall, trennen Sie das Ger\u00e4t und setzen Sie eine Br\u00fccke zwischen den Pins GND und BOOT0, w\u00e4hrend das Ger\u00e4t eingesteckt ist.\n\n",
             "en": "Looks like a RAK 11200 was detected.\n\nVerify it is in BOOT mode.\n\nThere should be a single, solid red light.\nThere should not be any other lights, solid nor flashing.\n\nIf not, disconnect the device and provide a jumper between GND and BOOT0 pins while device is plugged in.\n\n",
-            "pl": "Wygl\u0105da na to, \u017ce zosta\u0142 wykryty sygna\u0142 RAK 11200.\n\nSprawd\u017a, czy jest w trybie BOOT.\n\nPowinna \u015bwieci\u0107 si\u0119 pojedyncza, sta\u0142a czerwona dioda.\nNie powinno by\u0107 \u017cadnych innych \u015bwiate\u0142, ani sta\u0142ych, ani migaj\u0105cych.\n\nJe\u015bli tak nie jest, od\u0142\u0105cz urz\u0105dzenie i za\u0142\u00f3\u017c zwork\u0119 mi\u0119dzy pinami GND i BOOT0, gdy urz\u0105dzenie jest pod\u0142\u0105czone.\n\n"
+            "zh": "\u770b\u8d77\u6765\u50cf\u662f\u68c0\u6d4b\u5230\u4e86RAK 11200\u3002\n\n\u9a8c\u8bc1\u5b83\u662f\u5426\u5904\u4e8eBOOT\u6a21\u5f0f\u3002\n\n\u5e94\u8be5\u6709\u4e00\u4e2a\u5355\u4e00\u7684\u3001\u56fa\u4f53\u7684\u7ea2\u706f\u3002\n\u4e0d\u5e94\u8be5\u6709\u4efb\u4f55\u5176\u4ed6\u7684\u706f\uff0c\u5b9e\u5fc3\u7684\u6216\u95ea\u70c1\u7684\u3002\n\n\u5982\u679c\u4e0d\u662f\uff0c\u65ad\u5f00\u8bbe\u5907\u7684\u8fde\u63a5\uff0c\u5728\u8bbe\u5907\u63d2\u5165\u65f6\uff0c\u5728GND\u548cBOOT0\u5f15\u811a\u4e4b\u95f4\u63d0\u4f9b\u4e00\u4e2a\u8df3\u7ebf\u3002\n\n"
         }
     },
     "rak_bootloader_not_current": {
         "text": {
             "de": "Der RAK-Bootloader ist nicht aktuell.\n\u00dcber die Aktualisierung des RAK-Bootloaders...",
             "en": "The RAK bootloader is not current.\nAbout to update the RAK bootloader...",
-            "pl": "Program rozruchowy RAK nie jest aktualny.\nTrwa aktualizacja programu rozruchowego RAK..."
+            "zh": "RAK\u7684\u5f15\u5bfc\u7a0b\u5e8f\u4e0d\u662f\u6700\u65b0\u7684\u3002\n\u5173\u4e8e\u66f4\u65b0RAK\u5f15\u5bfc\u7a0b\u5e8f..."
         }
     },
     "range": {
         "text": {
             "de": "Range",
             "en": "Range",
-            "pl": "Zasi\u0119g"
+            "zh": "\u8303\u56f4"
         }
     },
     "range_test_module_about": {
@@ -1306,81 +1306,81 @@
         "label": {
             "de": "Bereichstestmodul",
             "en": "Range Test Module",
-            "pl": "Modu\u0142 badania zasi\u0119gu"
+            "zh": "\u5c04\u7a0b\u6d4b\u8bd5\u6a21\u5757"
         }
     },
     "range_test_module_enabled": {
         "description": {
             "de": "Falls gesetzt, ist das Reichweitentestmodul aktiviert.",
             "en": "If set, the Range Test module is enabled.",
-            "pl": "Je\u015bli jest ustawiona, modu\u0142 Test zasi\u0119gu jest w\u0142\u0105czony."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u8303\u56f4\u6d4b\u8bd5\u6a21\u5757\u88ab\u542f\u7528\u3002"
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "pl": "W\u0142\u0105czone?"
+            "zh": "\u542f\u7528\u4e86\u5417\uff1f"
         }
     },
     "range_test_module_save": {
         "description": {
             "de": "Wenn diese Option aktiviert ist, speichert das Ger\u00e4t die .csv-Dateien der Bereichstests auf diesem Ger\u00e4t.",
             "en": "If set, the device will save the range test .csv files on this device.",
-            "pl": "Je\u015bli jest ustawione, urz\u0105dzenie b\u0119dzie zapisywa\u0107 pliki .csv z testami zasi\u0119gu w tym urz\u0105dzeniu."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u8bbe\u5907\u5c06\u5728\u6b64\u8bbe\u5907\u4e0a\u4fdd\u5b58\u8303\u56f4\u6d4b\u8bd5\u7684.csv\u6587\u4ef6\u3002"
         },
         "label": {
             "de": "Sparen?",
             "en": "Save?",
-            "pl": "Oszcz\u0119dno\u015bci?"
+            "zh": "\u62ef\u6551\uff1f"
         }
     },
     "range_test_module_sender": {
         "description": {
             "de": "Sendet eine Nachricht in welcher H\u00e4ufigkeit (in Sekunden).",
             "en": "Sends a message how freqently (in seconds).",
-            "pl": "Z jak\u0105 cz\u0119stotliwo\u015bci\u0105 (w sekundach) wysy\u0142any jest komunikat."
+            "zh": "\u53d1\u9001\u4fe1\u606f\u7684\u9891\u7387\uff08\u4ee5\u79d2\u4e3a\u5355\u4f4d\uff09\u3002"
         },
         "label": {
             "de": "Absender (Sekunden)",
             "en": "Sender (seconds)",
-            "pl": "Nadawca (sekundy)"
+            "zh": "\u53d1\u9001\u8005\uff08\u79d2\uff09"
         }
     },
     "range_test_module_settings": {
         "text": {
             "de": "Bereichstestmodul-Einstellungen",
             "en": "Range Test Module Settings",
-            "pl": "Ustawienia modu\u0142u testu zasi\u0119gu"
+            "zh": "\u8303\u56f4\u6d4b\u8bd5\u6a21\u5757\u8bbe\u7f6e"
         }
     },
     "region": {
         "description": {
             "de": "Der Regionalcode f\u00fcr mein Radio (US, CN, EU433, etc...)",
             "en": "The region code for my radio (US, CN, EU433, etc...)",
-            "pl": "Kod regionu dla mojego radia (US, CN, EU433, itd.)"
+            "zh": "\u6211\u7684\u6536\u97f3\u673a\u7684\u5730\u533a\u4ee3\u7801\uff08\u7f8e\u56fd\u3001\u4e2d\u56fd\u3001EU433\u7b49\uff09\u3002"
         },
         "label": {
             "de": "Region",
             "en": "Region",
-            "pl": "Region"
+            "zh": "\u5730\u533a"
         }
     },
     "role": {
         "description": {
             "de": "Wie dieser Kanal genutzt wird (oder nicht genutzt wird).",
             "en": "How this channel is being used (or not not being used).",
-            "pl": "W jaki spos\u00f3b ten kana\u0142 jest wykorzystywany (lub nie jest wykorzystywany)."
+            "zh": "\u8fd9\u4e2a\u6e20\u9053\u5982\u4f55\u88ab\u4f7f\u7528\uff08\u6216\u4e0d\u88ab\u4f7f\u7528\uff09\u3002"
         },
         "label": {
             "de": "Rolle",
             "en": "Role",
-            "pl": "Rola"
+            "zh": "\u89d2\u8272"
         }
     },
     "rotary": {
         "text": {
             "de": "Rotierend",
             "en": "Rotary",
-            "pl": "Rotary"
+            "zh": "\u65cb\u8f6c\u5f0f"
         }
     },
     "rotary1_about": {
@@ -1388,235 +1388,235 @@
         "label": {
             "de": "Drehgeber-Modul",
             "en": "Rotary Encoder Module",
-            "pl": "Modu\u0142 enkodera obrotowego"
+            "zh": "\u65cb\u8f6c\u7f16\u7801\u5668\u6a21\u5757"
         }
     },
     "rotary1_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das Rotary-Modul aktiviert.",
             "en": "If set, the Rotary module will be enabled.",
-            "pl": "Je\u015bli zostanie ustawiona, modu\u0142 obrotowy b\u0119dzie w\u0142\u0105czony."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u65cb\u8f6c\u6a21\u5757\u5c06\u88ab\u542f\u7528\u3002"
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "pl": "W\u0142\u0105czone?"
+            "zh": "\u542f\u7528\u4e86\u5417\uff1f"
         }
     },
     "rotary1_event_ccw": {
         "description": {
             "de": "Erzeugen eines Eingangsereignisses bei CCW dieser Art.",
             "en": "Generate input event on CCW of this kind.",
-            "pl": "Wygeneruj zdarzenie wej\u015bciowe na CCW tego typu."
+            "zh": "\u5728\u8fd9\u79cdCCW\u4e0a\u4ea7\u751f\u8f93\u5165\u4e8b\u4ef6\u3002"
         },
         "label": {
             "de": "CCW",
             "en": "CCW",
-            "pl": "CCW"
+            "zh": "\u5211\u6cd5"
         }
     },
     "rotary1_event_cw": {
         "description": {
             "de": "Eingabeereignis bei CW dieser Art generieren.",
             "en": "Generate input event on CW of this kind.",
-            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla CW tego typu."
+            "zh": "\u5bf9\u8fd9\u7c7bCW\u4ea7\u751f\u8f93\u5165\u4e8b\u4ef6\u3002"
         },
         "label": {
             "de": "CW",
             "en": "CW",
-            "pl": "CW"
+            "zh": "\u5987\u4ea7\u79d1"
         }
     },
     "rotary1_event_press": {
         "description": {
             "de": "Erzeugen Sie ein Eingabeereignis bei dieser Art von Presse.",
             "en": "Generate input event on Press of this kind.",
-            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla prasy tego typu."
+            "zh": "\u5bf9\u8fd9\u79cd\u65b0\u95fb\u4ea7\u751f\u8f93\u5165\u4e8b\u4ef6\u3002"
         },
         "label": {
             "de": "Presse",
             "en": "Press",
-            "pl": "Naci\u015bnij"
+            "zh": "\u65b0\u95fb"
         }
     },
     "rotary1_pin_a": {
         "description": {
             "de": "GPIO-Pin f\u00fcr Drehgeber A-Anschluss.",
             "en": "GPIO pin for rotary encoder A port.",
-            "pl": "Z\u0142\u0105cze GPIO dla portu A enkodera obrotowego."
+            "zh": "\u7528\u4e8e\u65cb\u8f6c\u7f16\u7801\u5668A\u53e3\u7684GPIO\u5f15\u811a\u3002"
         },
         "label": {
             "de": "Stift A",
             "en": "Pin A",
-            "pl": "Szpilka A"
+            "zh": "\u5f15\u811aA"
         }
     },
     "rotary1_pin_b": {
         "description": {
             "de": "GPIO-Pin f\u00fcr Drehgeber B-Anschluss.",
             "en": "GPIO pin for rotary encoder B port.",
-            "pl": "Bolec GPIO dla portu B enkodera obrotowego."
+            "zh": "\u7528\u4e8e\u65cb\u8f6c\u7f16\u7801\u5668B\u7aef\u53e3\u7684GPIO\u5f15\u811a\u3002"
         },
         "label": {
             "de": "Stift B",
             "en": "Pin B",
-            "pl": "Szpilka B"
+            "zh": "\u9488\u811aB"
         }
     },
     "rotary1_pin_press": {
         "description": {
             "de": "Erzeugen Sie ein Eingabeereignis bei dieser Art von Presse.",
             "en": "Generate input event on Press of this kind.",
-            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla prasy tego typu."
+            "zh": "\u5bf9\u8fd9\u79cd\u65b0\u95fb\u4ea7\u751f\u8f93\u5165\u4e8b\u4ef6\u3002"
         },
         "label": {
             "de": "Presse",
             "en": "Press",
-            "pl": "Naci\u015bnij"
+            "zh": "\u65b0\u95fb"
         }
     },
     "rotary_encoder_plugin_settings": {
         "text": {
             "de": "Einstellungen des Drehgebermoduls",
             "en": "Rotary Encoder Module Settings",
-            "pl": "Ustawienia modu\u0142u enkodera obrotowego"
+            "zh": "\u65cb\u8f6c\u7f16\u7801\u5668\u6a21\u5757\u8bbe\u7f6e"
         }
     },
     "running": {
         "text": {
             "de": "Laufen",
             "en": "Running",
-            "pl": "Prowadzenie"
+            "zh": "\u8dd1\u6b65"
         }
     },
     "screen_on_secs": {
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 60 Sekunden (oder einer Minute).",
             "en": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or one minute).",
-            "pl": "Opcja maszyny stanowej zarz\u0105dzania zasilaniem. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci zarz\u0105dzanie energi\u0105. 0 - domy\u015blnie 60 sekund (lub jedna minuta)."
+            "zh": "\u7535\u6e90\u7ba1\u7406\u72b6\u6001\u673a\u9009\u9879\u3002\u8be6\u89c1\u7535\u6e90\u7ba1\u7406\u30020\u4e3a\u9ed8\u8ba4\u768460\u79d2\uff08\u62161\u5206\u949f\uff09\u3002"
         },
         "label": {
             "de": "Bildschirm ein (Sekunden)",
             "en": "Screen On (seconds)",
-            "pl": "Ekran w\u0142\u0105czony (sekundy)"
+            "zh": "\u5f00\u5c4f\uff08\u79d2\uff09"
         }
     },
     "sds_secs": {
         "description": {
             "de": "Super Deep Sleep (SDS) ist eine Option der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr die Voreinstellung von einem Jahr.",
             "en": "Super deep sleep (SDS) is a power management state machine option. See power management for details. 0 for default of one year.",
-            "pl": "Super g\u0142\u0119boki sen (SDS) to opcja maszyny stanowej zarz\u0105dzania energi\u0105. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci Zarz\u0105dzanie energi\u0105. 0 dla warto\u015bci domy\u015blnej jednego roku."
+            "zh": "\u8d85\u7ea7\u6df1\u5ea6\u7761\u7720\uff08SDS\uff09\u662f\u4e00\u4e2a\u7535\u6e90\u7ba1\u7406\u72b6\u6001\u673a\u9009\u9879\u3002\u8be6\u89c1\u7535\u6e90\u7ba1\u7406\u30020\u4e3a\u9ed8\u8ba4\u7684\u4e00\u5e74\u3002"
         },
         "label": {
             "de": "SDS (Sekunden)",
             "en": "SDS (seconds)",
-            "pl": "SDS (sekundy)"
+            "zh": "SDS (\u79d2)"
         }
     },
     "select_detect": {
         "text": {
             "de": "ERKENNUNGSVORRICHTUNG",
             "en": "DETECT DEVICE",
-            "pl": "URZ\u0104DZENIE WYKRYWAJ\u0104CE"
+            "zh": "\u63a2\u6d4b\u88c5\u7f6e"
         },
         "tooltip": {
             "de": "Klicken Sie auf , um unterst\u00fctzte Ger\u00e4te- und Anschlussinformationen zu erkennen.",
             "en": "Click to detect supported device and port information.",
-            "pl": "Kliknij, aby wykry\u0107 obs\u0142ugiwane urz\u0105dzenie i informacje o porcie."
+            "zh": "\u5355\u51fb\u4ee5\u68c0\u6d4b\u652f\u6301\u7684\u8bbe\u5907\u548c\u7aef\u53e3\u4fe1\u606f\u3002"
         }
     },
     "select_device": {
         "tooltip": {
             "de": "Sie m\u00fcssen auf GET VERSIONS und DETECT DEVICE klicken, bevor Sie das Ger\u00e4t ausw\u00e4hlen k\u00f6nnen.",
             "en": "Need to click GET VERSIONS and DETECT DEVICE before you can select the device.",
-            "pl": "Zanim b\u0119dzie mo\u017cna wybra\u0107 urz\u0105dzenie, nale\u017cy klikn\u0105\u0107 przycisk GET VERSIONS i DETECT DEVICE."
+            "zh": "\u9700\u8981\u70b9\u51fbGET VERSIONS\u548cDETECT DEVICE\u624d\u80fd\u9009\u62e9\u8bbe\u5907\u3002"
         }
     },
     "select_device_populated": {
         "tooltip": {
             "de": "W\u00e4hlen Sie aus, welche Art von Ger\u00e4t angeschlossen ist.",
             "en": "Select which type of device is connected.",
-            "pl": "Wybierz typ urz\u0105dzenia, kt\u00f3re jest pod\u0142\u0105czone."
+            "zh": "\u9009\u62e9\u54ea\u79cd\u7c7b\u578b\u7684\u8bbe\u5907\u88ab\u8fde\u63a5\u3002"
         }
     },
     "select_firmware_version": {
         "tooltip": {
             "de": "Klicken Sie auf GET VERSIONS, um eine Liste der Firmware-Versionen zu erhalten.",
             "en": "Click GET VERSIONS for the list of firmware versions.",
-            "pl": "Kliknij przycisk GET VERSIONS, aby wy\u015bwietli\u0107 list\u0119 wersji oprogramowania sprz\u0119towego."
+            "zh": "\u5355\u51fb \"GET VERSIONS \"\u67e5\u770b\u56fa\u4ef6\u7248\u672c\u5217\u8868\u3002"
         }
     },
     "select_firmware_version_populated": {
         "tooltip": {
             "de": "W\u00e4hlen Sie die gew\u00fcnschte Firmware-Version zum Flashen.",
             "en": "Selected desired firmware version to flash.",
-            "pl": "Wybierz \u017c\u0105dan\u0105 wersj\u0119 oprogramowania sprz\u0119towego do flashowania."
+            "zh": "\u9009\u62e9\u6240\u9700\u7684\u56fa\u4ef6\u7248\u672c\u8fdb\u884c\u95ea\u5b58\u3002"
         }
     },
     "select_flash": {
         "tooltip": {
             "de": "Klicken Sie auf , um die Firmware zu flashen.\nWenn diese Schaltfl\u00e4che nicht aktiviert ist, m\u00fcssen Sie auf die Schaltfl\u00e4chen GET VERSIONS und DETECT DEVICE\nklicken, um die verf\u00fcgbaren Optionen aufzuf\u00fcllen.",
             "en": "Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options.",
-            "pl": "Kliknij, aby uruchomi\u0107 oprogramowanie sprz\u0119towe.\nJe\u015bli ten przycisk nie jest w\u0142\u0105czony, nale\u017cy klikn\u0105\u0107 przyciski GET VERSIONS i DETECT DEVICE\naby wy\u015bwietli\u0107 dost\u0119pne opcje."
+            "zh": "\u70b9\u51fb\u6765\u95ea\u73b0\u56fa\u4ef6\u3002\n\u5982\u679c\u8fd9\u4e2a\u6309\u94ae\u6ca1\u6709\u542f\u7528\uff0c\u9700\u8981\u70b9\u51fbGET VERSIONS\u548cDETECT DEVICE\n\u6309\u94ae\u6765\u586b\u5165\u53ef\u7528\u7684\u9009\u9879\u3002"
         }
     },
     "select_flash_populated": {
         "tooltip": {
             "de": "Klicken Sie auf die Schaltfl\u00e4che FLASH, um die Meshtastic-Firmware auf das Ger\u00e4t zu schreiben.",
             "en": "Click the FLASH button to write the Meshtastic firmware to the device.",
-            "pl": "Kliknij przycisk FLASH, aby zapisa\u0107 firmware Meshtastic w urz\u0105dzeniu."
+            "zh": "\u70b9\u51fbFLASH\u6309\u94ae\uff0c\u5c06Meshtastic\u56fa\u4ef6\u5199\u5165\u8bbe\u5907\u4e2d\u3002"
         }
     },
     "select_port": {
         "tooltip": {
             "de": "Sie m\u00fcssen auf GET VERSIONS und DETECT DEVICE klicken, bevor Sie den Anschluss ausw\u00e4hlen k\u00f6nnen.",
             "en": "Need to click GET VERSIONS and DETECT DEVICE before you can select the port.",
-            "pl": "Zanim b\u0119dzie mo\u017cna wybra\u0107 port, nale\u017cy klikn\u0105\u0107 przycisk GET VERSIONS i DETECT DEVICE."
+            "zh": "\u9700\u8981\u70b9\u51fbGET VERSIONS\u548cDETECT DEVICE\u624d\u80fd\u9009\u62e9\u7aef\u53e3\u3002"
         }
     },
     "select_port_populated": {
         "tooltip": {
             "de": "W\u00e4hlen Sie den Kommunikationsanschluss/das Ziel.",
             "en": "Select the communication port/destination.",
-            "pl": "Wybierz port komunikacyjny/przeznaczenie."
+            "zh": "\u9009\u62e9\u901a\u4fe1\u7aef\u53e3/\u76ee\u7684\u5730\u3002"
         }
     },
     "send_owner_interval": {
         "description": {
             "de": "Senden Sie unsere Eigent\u00fcmerinformationen mindestens so oft (auch wir senden immer einmal beim Hochfahren - um das Netz wieder zu verbinden).",
             "en": "Send our owner info at least this often (also we always send once at boot - to rejoin the mesh).",
-            "pl": "Przynajmniej tak cz\u0119sto wysy\u0142aj informacje o w\u0142a\u015bcicielu (zawsze wysy\u0142amy te\u017c raz na start - aby ponownie do\u0142\u0105czy\u0107 do siatki)."
+            "zh": "\u81f3\u5c11\u8981\u8fd9\u4e48\u9891\u7e41\u5730\u53d1\u9001\u6211\u4eec\u7684\u4e3b\u4eba\u4fe1\u606f\uff08\u540c\u65f6\u6211\u4eec\u603b\u662f\u5728\u5f00\u673a\u65f6\u53d1\u9001\u4e00\u6b21--\u91cd\u65b0\u52a0\u5165\u7f51\u773c\uff09\u3002"
         },
         "label": {
             "de": "Send Owner Interval",
             "en": "Send Owner Interval",
-            "pl": "Wy\u015blij w\u0142a\u015bciciela Interwa\u0142"
+            "zh": "\u53d1\u9001\u4e1a\u4e3b\u95f4\u9694"
         }
     },
     "send_text": {
         "text": {
             "de": "Send Text",
             "en": "Send Text",
-            "pl": "Wy\u015blij tekst"
+            "zh": "\u53d1\u9001\u6587\u672c"
         }
     },
     "serial": {
         "text": {
             "de": "Serienm\u00e4\u00dfig",
             "en": "Serial",
-            "pl": "Szeregowy"
+            "zh": "\u4e32\u884c"
         }
     },
     "serial_disabled": {
         "description": {
             "de": "Wenn gesetzt, wird die SerialConsole deaktiviert. (indem die StreamAPI nicht initialisiert wird).",
             "en": "If set, the SerialConsole will be disabled. (by not initializing the StreamAPI).",
-            "pl": "Je\u015bli jest ustawione, konsola SerialConsole zostanie wy\u0142\u0105czona. (poprzez niezainicjowanie interfejsu StreamAPI)."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0cSerialConsole\u5c06\u88ab\u7981\u7528\u3002(\u901a\u8fc7\u4e0d\u521d\u59cb\u5316StreamAPI)\u3002"
         },
         "label": {
             "de": "Serielle Deaktivierung?",
             "en": "Serial Disabled?",
-            "pl": "Serial Disabled?"
+            "zh": "\u4e32\u884c\u7981\u7528\uff1f"
         }
     },
     "serial_module_about": {
@@ -1624,105 +1624,105 @@
         "label": {
             "de": "Serielles Modul",
             "en": "Serial Module",
-            "pl": "Modu\u0142 szeregowy"
+            "zh": "\u4e32\u884c\u6a21\u5757"
         }
     },
     "serial_module_echo": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "pl": "TBD"
+            "zh": "TBD"
         },
         "label": {
             "de": "Echo?",
             "en": "Echo?",
-            "pl": "Echo?"
+            "zh": "Echo?"
         }
     },
     "serial_module_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das serielle Modul aktiviert.",
             "en": "If set, the Serial module will be enabled.",
-            "pl": "Je\u015bli jest ustawiona, modu\u0142 szeregowy b\u0119dzie w\u0142\u0105czony."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u4e32\u884c\u6a21\u5757\u5c06\u88ab\u542f\u7528\u3002"
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "pl": "W\u0142\u0105czone?"
+            "zh": "\u542f\u7528\u4e86\u5417\uff1f"
         }
     },
     "serial_module_mode": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "pl": "TBD"
+            "zh": "TBD"
         },
         "label": {
             "de": "Modus",
             "en": "Mode",
-            "pl": "Tryb"
+            "zh": "\u6a21\u5f0f"
         }
     },
     "serial_module_rxd": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "pl": "TBD"
+            "zh": "TBD"
         },
         "label": {
             "de": "RXD",
             "en": "RXD",
-            "pl": "RXD"
+            "zh": "\u8363\u4e8b\u8fbe"
         }
     },
     "serial_module_settings": {
         "text": {
             "de": "Einstellungen des seriellen Moduls",
             "en": "Serial Module Settings",
-            "pl": "Ustawienia modu\u0142u szeregowego"
+            "zh": "\u4e32\u884c\u6a21\u5757\u8bbe\u7f6e"
         }
     },
     "serial_module_timeout": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "pl": "TBD"
+            "zh": "TBD"
         },
         "label": {
             "de": "Zeit\u00fcberschreitung",
             "en": "Timeout",
-            "pl": "Timeout"
+            "zh": "\u8d85\u65f6"
         }
     },
     "serial_module_txd": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "pl": "TBD"
+            "zh": "TBD"
         },
         "label": {
             "de": "TXD",
             "en": "TXD",
-            "pl": "TXD"
+            "zh": "TXD"
         }
     },
     "settings": {
         "text": {
             "de": "Einstellungen",
             "en": "Settings",
-            "pl": "Ustawienia"
+            "zh": "\u8bbe\u7f6e"
         }
     },
     "short_name": {
         "description": {
             "de": "Sehr kurzer Name f\u00fcr das Ger\u00e4t, idealerweise zwei Zeichen.",
             "en": "Very short name for the device, ideally two characters.",
-            "pl": "Bardzo kr\u00f3tka nazwa urz\u0105dzenia, najlepiej dwuznakowa."
+            "zh": "\u8bbe\u5907\u7684\u975e\u5e38\u7b80\u77ed\u7684\u540d\u79f0\uff0c\u6700\u597d\u662f\u4e24\u4e2a\u5b57\u7b26\u3002"
         },
         "label": {
             "de": "Short Name",
             "en": "Short Name",
-            "pl": "Nazwa skr\u00f3cona"
+            "zh": "\u7b80\u79f0"
         },
         "max_size": 3
     },
@@ -1730,12 +1730,12 @@
         "description": {
             "de": "Eine Zahl von 7 bis 12. Gibt die Anzahl der Chirps pro Symbol als 1<<spread_factor an.",
             "en": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor.",
-            "pl": "Liczba z zakresu od 7 do 12. Wskazuje liczb\u0119 \u0107wierka\u0144 na symbol jako 1<<spread_factor."
+            "zh": "\u4e00\u4e2a\u4ece7\u523012\u7684\u6570\u5b57\u3002\u8868\u793a\u6bcf\u4e2a\u7b26\u53f7\u7684\u9e23\u53eb\u6b21\u6570\u4e3a1<<spread_factor\u3002"
         },
         "label": {
             "de": "Spread-Faktor",
             "en": "Spread Factor",
-            "pl": "Wsp\u00f3\u0142czynnik rozprzestrzeniania si\u0119"
+            "zh": "\u4f20\u64ad\u7cfb\u6570"
         }
     },
     "store_forward_module_about": {
@@ -1743,100 +1743,100 @@
         "label": {
             "de": "Modul Speichern und Weiterleiten",
             "en": "Store and Forward Module",
-            "pl": "Modu\u0142 Store and Forward"
+            "zh": "\u5b58\u50a8\u548c\u8f6c\u53d1\u6a21\u5757"
         }
     },
     "store_forward_module_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das Modul Speichern und Weiterleiten aktiviert.",
             "en": "If set, the Store and Forward module will be enabled.",
-            "pl": "Je\u015bli zostanie ustawiona, modu\u0142 Store and Forward b\u0119dzie w\u0142\u0105czony."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u5b58\u50a8\u548c\u8f6c\u53d1\u6a21\u5757\u5c06\u88ab\u542f\u7528\u3002"
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "pl": "W\u0142\u0105czone?"
+            "zh": "\u542f\u7528\u4e86\u5417\uff1f"
         }
     },
     "store_forward_module_heartbeat": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "pl": "TBD"
+            "zh": "TBD"
         },
         "label": {
             "de": "Herzschlag",
             "en": "Heartbeat",
-            "pl": "Bicie serca"
+            "zh": "\u5fc3\u8df3"
         }
     },
     "store_forward_module_history_return_max": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "pl": "TBD"
+            "zh": "TBD"
         },
         "label": {
             "de": "Geschichte R\u00fcckkehr Max",
             "en": "History Return Max",
-            "pl": "Historia Zwrot maks."
+            "zh": "\u5386\u53f2\u56de\u62a5\u7387\u6700\u9ad8"
         }
     },
     "store_forward_module_history_return_window": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "pl": "TBD"
+            "zh": "TBD"
         },
         "label": {
             "de": "Historie R\u00fcckgabefenster",
             "en": "History Return Window",
-            "pl": "Okno powrotu do historii"
+            "zh": "\u5386\u53f2\u56de\u6eaf\u7a97\u53e3"
         }
     },
     "store_forward_module_records": {
         "description": {
             "de": "TBD",
             "en": "TBD",
-            "pl": "TBD"
+            "zh": "TBD"
         },
         "label": {
             "de": "Aufzeichnungen",
             "en": "Records",
-            "pl": "Zapisy"
+            "zh": "\u8bb0\u5f55"
         }
     },
     "store_forward_module_settings": {
         "text": {
             "de": "Speichern und Weiterleiten von Moduleinstellungen",
             "en": "Store and Forward Module Settings",
-            "pl": "Ustawienia modu\u0142u Store and Forward"
+            "zh": "\u5b58\u50a8\u548c\u8f6c\u53d1\u6a21\u5757\u8bbe\u7f6e"
         }
     },
     "team": {
         "description": {
             "de": "Teilnehmer desselben Netzes k\u00f6nnen sich selbst zu verschiedenen Teams zusammenschlie\u00dfen.",
             "en": "Participants in the same network can self-group into different teams.",
-            "pl": "Uczestnicy tej samej sieci mog\u0105 grupowa\u0107 si\u0119 w r\u00f3\u017cne zespo\u0142y."
+            "zh": "\u540c\u4e00\u7f51\u7edc\u4e2d\u7684\u53c2\u4e0e\u8005\u53ef\u4ee5\u81ea\u6211\u7ec4\u5408\u6210\u4e0d\u540c\u7684\u56e2\u961f\u3002"
         },
         "label": {
             "de": "Team",
             "en": "Team",
-            "pl": "Zesp\u00f3\u0142"
+            "zh": "\u56e2\u961f"
         }
     },
     "techo_bootloader_updated": {
         "text": {
             "de": "Der T-Echo-Bootloader wurde aktualisiert.\n\nWarten Sie auf den Neustart des Ger\u00e4ts.",
             "en": "T-Echo bootloader was updated.\n\nWait for the device to reboot.",
-            "pl": "Zaktualizowano bootloader T-Echo.\n\nPoczekaj, a\u017c urz\u0105dzenie uruchomi si\u0119 ponownie."
+            "zh": "T-Echo bootloader\u5df2\u7ecf\u66f4\u65b0\u3002\n\n\u7b49\u5f85\u8bbe\u5907\u91cd\u65b0\u542f\u52a8\u3002"
         }
     },
     "telemetry": {
         "text": {
             "de": "Telemetrie",
             "en": "Telemetry",
-            "pl": "Telemetria"
+            "zh": "\u9065\u6d4b"
         }
     },
     "telemetry_module_about": {
@@ -1844,280 +1844,280 @@
         "label": {
             "de": "Telemetrie-Modul",
             "en": "Telemetry Module",
-            "pl": "Modu\u0142 telemetryczny"
+            "zh": "\u9065\u6d4b\u6a21\u5757"
         }
     },
     "telemetry_module_display_farenheit": {
         "description": {
             "de": "Falls eingestellt, wird die Temperatur in Farenheit angezeigt.",
             "en": "If set, the temperature will be displayed in Farenheit.",
-            "pl": "Je\u015bli jest ustawiona, temperatura b\u0119dzie wy\u015bwietlana w stopniach Farenheita."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\u4e86\uff0c\u6e29\u5ea6\u5c06\u4ee5\u534e\u6c0f\u6e29\u5ea6\u663e\u793a\u3002"
         },
         "label": {
             "de": "Temperatur in Farenheit anzeigen?",
             "en": "Display Temperature in Farenheit?",
-            "pl": "Wy\u015bwietla\u0107 temperatur\u0119 w stopniach Farenheita?"
+            "zh": "\u663e\u793a\u6e29\u5ea6\u7684\u5355\u4f4d\u662f\u534e\u6c0f\u5ea6\uff1f"
         }
     },
     "telemetry_module_measurement_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das Telemetriemodul aktiviert.",
             "en": "If set, the Telemetry module will be enabled.",
-            "pl": "Je\u015bli jest ustawiona, modu\u0142 telemetrii b\u0119dzie w\u0142\u0105czony."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u9065\u6d4b\u6a21\u5757\u5c06\u88ab\u542f\u7528\u3002"
         },
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "pl": "W\u0142\u0105czone?"
+            "zh": "\u542f\u7528\u4e86\u5417\uff1f"
         }
     },
     "telemetry_module_read_error_count_threshold": {
         "description": {
             "de": "Manchmal kann das Lesen von Sensoren fehlschlagen. In diesem Fall wird eine konfigurierbare Anzahl von Versuchen wiederholt, wobei jeder Versuch um die f\u00fcr diesen Sensor erforderliche Mindestaktualisierungsrate verz\u00f6gert wird.",
             "en": "Sometimes sensor reads can fail. If this happens, we will retry a configurable number of attempts, each attempt will be delayed by the minimum required refresh rate for that sensor.",
-            "pl": "Czasami odczyt z czujnika mo\u017ce si\u0119 nie powie\u015b\u0107. W takim przypadku ponawiamy konfigurowaln\u0105 liczb\u0119 pr\u00f3b, przy czym ka\u017cda pr\u00f3ba jest op\u00f3\u017aniona o minimaln\u0105 wymagan\u0105 cz\u0119stotliwo\u015b\u0107 od\u015bwie\u017cania dla danego czujnika."
+            "zh": "\u6709\u65f6\u4f20\u611f\u5668\u7684\u8bfb\u53d6\u4f1a\u5931\u8d25\u3002\u5982\u679c\u53d1\u751f\u8fd9\u79cd\u60c5\u51b5\uff0c\u6211\u4eec\u5c06\u91cd\u8bd5\u53ef\u914d\u7f6e\u7684\u5c1d\u8bd5\u6b21\u6570\uff0c\u6bcf\u6b21\u5c1d\u8bd5\u5c06\u88ab\u8be5\u4f20\u611f\u5668\u6240\u9700\u7684\u6700\u5c0f\u5237\u65b0\u7387\u5ef6\u8fdf\u3002"
         },
         "label": {
             "de": "Schwellenwert f\u00fcr Lesefehlerz\u00e4hlung",
             "en": "Read Error Count Threshold",
-            "pl": "Pr\u00f3g liczby b\u0142\u0119d\u00f3w odczytu"
+            "zh": "\u8bfb\u53d6\u9519\u8bef\u8ba1\u6570\u9608\u503c"
         }
     },
     "telemetry_module_recovery_interval": {
         "description": {
             "de": "Manchmal kann es vorkommen, dass mehr als read_error_count_threshold-Fehler auftreten. In diesem Fall wird der Versuch, vom Sensor zu lesen, f\u00fcr eine Weile unterbrochen. Warten Sie so lange, bis Sie erneut versuchen, aus dem Sensor zu lesen.",
             "en": "Sometimes we can end up with more than read_error_count_threshold failures. In this case, we will stop trying to read from the sensor for a while. Wait this long until trying to read from the sensor again.",
-            "pl": "Czasami mo\u017ce si\u0119 zdarzy\u0107, \u017ce liczba b\u0142\u0119d\u00f3w przekracza pr\u00f3g read_error_count_threshold. W takim przypadku przerwiemy na jaki\u015b czas pr\u00f3by odczytu z czujnika. Odczekaj tyle czasu, a\u017c ponownie spr\u00f3bujesz odczyta\u0107 dane z czujnika."
+            "zh": "\u6709\u65f6\uff0c\u6211\u4eec\u53ef\u80fd\u6700\u7ec8\u51fa\u73b0\u8d85\u8fc7read_error_count_threshold\u7684\u5931\u8d25\u3002\u5728\u8fd9\u79cd\u60c5\u51b5\u4e0b\uff0c\u6211\u4eec\u5c06\u505c\u6b62\u5c1d\u8bd5\u4ece\u4f20\u611f\u5668\u8bfb\u53d6\u6570\u636e\u4e00\u6bb5\u65f6\u95f4\u3002\u7b49\u5f85\u8fd9\u4e48\u957f\u65f6\u95f4\uff0c\u76f4\u5230\u518d\u6b21\u5c1d\u8bd5\u4ece\u4f20\u611f\u5668\u4e2d\u8bfb\u53d6\u3002"
         },
         "label": {
             "de": "Erholungsintervall",
             "en": "Recovery Interval",
-            "pl": "Okres regeneracji"
+            "zh": "\u6062\u590d\u95f4\u9694"
         }
     },
     "telemetry_module_screen_enabled": {
         "description": {
             "de": "Aktivieren/Deaktivieren der Anzeige des Telemetriemoduls auf dem Ger\u00e4t.",
             "en": "Enable/Disable the Telemetry module on-device display.",
-            "pl": "W\u0142\u0105czanie/wy\u0142\u0105czanie wy\u015bwietlania modu\u0142u telemetrii na urz\u0105dzeniu."
+            "zh": "\u542f\u7528/\u505c\u7528\u8bbe\u5907\u4e0a\u7684\u9065\u6d4b\u6a21\u5757\u663e\u793a\u3002"
         },
         "label": {
             "de": "Bildschirm Aktiviert?",
             "en": "Screen Enabled?",
-            "pl": "Czy ekran jest w\u0142\u0105czony?"
+            "zh": "\u5c4f\u5e55\u542f\u7528\u4e86\u5417\uff1f"
         }
     },
     "telemetry_module_sensor_pin": {
         "description": {
             "de": "Geben Sie den bevorzugten GPIO-Pin f\u00fcr Sensormessungen an. Gilt nicht f\u00fcr Sensoren, die I2C verwenden.",
             "en": "Specify the peferred GPIO Pin for sensor readings. Not applicable to sensors that use I2C.",
-            "pl": "Okre\u015blenie preferowanego pinu GPIO dla odczyt\u00f3w z czujnika. Nie dotyczy czujnik\u00f3w korzystaj\u0105cych z I2C."
+            "zh": "\u6307\u5b9a\u4f20\u611f\u5668\u8bfb\u6570\u7684\u9996\u9009GPIO\u9488\u811a\u3002\u4e0d\u9002\u7528\u4e8e\u4f7f\u7528I2C\u7684\u4f20\u611f\u5668\u3002"
         },
         "label": {
             "de": "Sensor-Pin",
             "en": "Sensor Pin",
-            "pl": "Ko\u0142ek czujnika"
+            "zh": "\u4f20\u611f\u5668\u5f15\u811a"
         }
     },
     "telemetry_module_sensor_type": {
         "description": {
             "de": "Geben Sie den Sensortyp an.",
             "en": "Specify the sensor type.",
-            "pl": "Okre\u015bl typ czujnika."
+            "zh": "\u6307\u5b9a\u4f20\u611f\u5668\u7c7b\u578b\u3002"
         },
         "label": {
             "de": "Sensor Type",
             "en": "Sensor Type",
-            "pl": "Typ czujnika"
+            "zh": "\u4f20\u611f\u5668\u7c7b\u578b"
         }
     },
     "telemetry_module_settings": {
         "text": {
             "de": "Einstellungen des Telemetriemoduls",
             "en": "Telemetry Module Settings",
-            "pl": "Ustawienia modu\u0142u telemetrycznego"
+            "zh": "\u9065\u6d4b\u6a21\u5757\u8bbe\u7f6e"
         }
     },
     "telemetry_module_update_interval": {
         "description": {
             "de": "Intervall in Sekunden, in dem wir versuchen sollen, unsere Messungen an das Netz zu senden.",
             "en": "Interval in seconds of how often we should try to send our measurements to the mesh.",
-            "pl": "Interwa\u0142 w sekundach okre\u015blaj\u0105cy, jak cz\u0119sto powinni\u015bmy pr\u00f3bowa\u0107 wysy\u0142a\u0107 nasze pomiary do sieci."
+            "zh": "\u4ee5\u79d2\u4e3a\u5355\u4f4d\u7684\u95f4\u9694\uff0c\u6211\u4eec\u5e94\u8be5\u5c1d\u8bd5\u5c06\u6211\u4eec\u7684\u6d4b\u91cf\u7ed3\u679c\u53d1\u9001\u5230\u7f51\u683c\u3002"
         },
         "label": {
             "de": "Aktualisierungsintervall (Sekunden)",
             "en": "Update Interval (seconds)",
-            "pl": "Cz\u0119stotliwo\u015b\u0107 aktualizacji (sekundy)"
+            "zh": "\u66f4\u65b0\u95f4\u9694\uff08\u79d2\uff09"
         }
     },
     "tx_power": {
         "description": {
             "de": "Wenn Null, dann verwenden Sie die standardm\u00e4\u00dfige maximale zul\u00e4ssige Dauerleistung (d.h. etwas, das die Funkhardware nicht durchbrennen l\u00e4sst). In den meisten F\u00e4llen sollten Sie 0 verwenden (Einheiten sind in dBm).",
             "en": "If zero then, use default max legal continuous power (i.e., something that will not burn out the radio hardware). In most cases, you should use 0. (Units are in dBm).",
-            "pl": "Je\u015bli jest to zero, nale\u017cy u\u017cy\u0107 domy\u015blnej maksymalnej legalnej mocy ci\u0105g\u0142ej (tzn. takiej, kt\u00f3ra nie spowoduje spalenia sprz\u0119tu radiowego). W wi\u0119kszo\u015bci przypadk\u00f3w nale\u017cy u\u017cy\u0107 warto\u015bci 0. (Jednostki s\u0105 podawane w dBm)."
+            "zh": "\u5982\u679c\u4e3a\u96f6\uff0c\u5219\u4f7f\u7528\u9ed8\u8ba4\u7684\u6700\u5927\u5408\u6cd5\u8fde\u7eed\u529f\u7387\uff08\u5373\u4e0d\u4f1a\u70e7\u6bc1\u65e0\u7ebf\u7535\u786c\u4ef6\u7684\u4e1c\u897f\uff09\u3002\u5728\u5927\u591a\u6570\u60c5\u51b5\u4e0b\uff0c\u4f60\u5e94\u8be5\u4f7f\u75280\u3002\uff08\u5355\u4f4d\u662fdBm\uff09\u3002"
         },
         "label": {
             "de": "Sendeleistung (dBm)",
             "en": "TX Power (dBm)",
-            "pl": "Moc TX (dBm)"
+            "zh": "\u53d1\u5c04\u529f\u7387\uff08dBm\uff09"
         }
     },
     "update": {
         "text": {
             "de": "Update",
             "en": "Update",
-            "pl": "Aktualizacja"
+            "zh": "\u66f4\u65b0"
         }
     },
     "update_available": {
         "text": {
             "de": "Update verf\u00fcgbar",
             "en": "update available",
-            "pl": "dost\u0119pna aktualizacja"
+            "zh": "\u53ef\u66f4\u65b0"
         }
     },
     "update_only": {
         "text": {
             "de": "Nur aktualisieren",
             "en": "Update only",
-            "pl": "Tylko aktualizacja"
+            "zh": "\u4ec5\u66f4\u65b0"
         },
         "tooltip": {
             "de": "Wenn diese Option aktiviert ist, wird das Ger\u00e4t nur aktualisiert und nicht vollst\u00e4ndig gel\u00f6scht.",
             "en": "If enabled, the device will be updated only - not completely erased.",
-            "pl": "Je\u015bli opcja ta jest w\u0142\u0105czona, urz\u0105dzenie zostanie tylko zaktualizowane, a nie ca\u0142kowicie usuni\u0119te."
+            "zh": "\u5982\u679c\u542f\u7528\uff0c\u8bbe\u5907\u5c06\u53ea\u88ab\u66f4\u65b0--\u800c\u4e0d\u662f\u5b8c\u5168\u88ab\u5220\u9664\u3002"
         }
     },
     "update_step1": {
         "text": {
             "de": "Schritt 1 von 2 aktualisieren",
             "en": "Update step 1 of 2",
-            "pl": "Aktualizacja krok 1 z 2"
+            "zh": "\u66f4\u65b0\u6b65\u9aa41\u76842"
         }
     },
     "update_step1_done": {
         "text": {
             "de": "Update Schritt 1 von 2 ist erledigt",
             "en": "Update step 1 of 2 is done",
-            "pl": "Aktualizacja krok 1 z 2 zosta\u0142 wykonany"
+            "zh": "\u66f4\u65b02\u7684\u7b2c1\u6b65\u5df2\u7ecf\u5b8c\u6210"
         }
     },
     "update_step2_done": {
         "text": {
             "de": "Update Schritt 2 von 2 ist erledigt",
             "en": "Update step 2 of 2 is done",
-            "pl": "Aktualizacja krok 2 z 2 zosta\u0142 wykonany"
+            "zh": "\u7b2c2\u6b65\u7684\u66f4\u65b0\u5df2\u7ecf\u5b8c\u6210"
         }
     },
     "uplink_enabled": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, werden Nachrichten im Mesh von jedem Gateway-Knoten an das \u00f6ffentliche Internet gesendet.",
             "en": "If set, messages on the mesh will be sent to the public internet by any gateway node.",
-            "pl": "Je\u015bli jest ustawione, wiadomo\u015bci w sieci mesh b\u0119d\u0105 wysy\u0142ane do publicznego Internetu przez dowolny w\u0119ze\u0142 bramy."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u7f51\u72b6\u7ed3\u6784\u4e0a\u7684\u4fe1\u606f\u5c06\u7531\u4efb\u4f55\u7f51\u5173\u8282\u70b9\u53d1\u9001\u5230\u516c\u5171\u4e92\u8054\u7f51\u3002"
         },
         "label": {
             "de": "Uplink Aktiviert?",
             "en": "Uplink Enabled?",
-            "pl": "Uplink Enabled?"
+            "zh": "\u542f\u7528\u4e86\u4e0a\u884c\u94fe\u8def\uff1f"
         }
     },
     "user": {
         "text": {
             "de": "Benutzer",
             "en": "User",
-            "pl": "U\u017cytkownik"
+            "zh": "\u7528\u6237"
         }
     },
     "user_settings": {
         "text": {
             "de": "Benutzereinstellungen",
             "en": "User Settings",
-            "pl": "Ustawienia u\u017cytkownika"
+            "zh": "\u7528\u6237\u8bbe\u7f6e"
         }
     },
     "wait_bluetooth_secs": {
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 60 Sekunden (oder 1 Minute).",
             "en": "Power management state machine option. See power management for details. 0 for default of 60 seconds (or 1 minute).",
-            "pl": "Opcja maszyny stanowej zarz\u0105dzania zasilaniem. Szczeg\u00f3\u0142owe informacje mo\u017cna znale\u017a\u0107 w cz\u0119\u015bci zarz\u0105dzanie zasilaniem. 0 oznacza warto\u015b\u0107 domy\u015bln\u0105 60 sekund (lub 1 minut\u0119)."
+            "zh": "\u7535\u6e90\u7ba1\u7406\u72b6\u6001\u673a\u9009\u9879\u3002\u8be6\u89c1\u7535\u6e90\u7ba1\u7406\u30020\u8868\u793a\u9ed8\u8ba4\u4e3a60\u79d2\uff08\u62161\u5206\u949f\uff09\u3002"
         },
         "label": {
             "de": "Bluetooth-Wartezeit (Sekunden)",
             "en": "Bluetooth Wait (seconds)",
-            "pl": "Bluetooth Czekaj (sekundy)"
+            "zh": "\u84dd\u7259\u7b49\u5f85\uff08\u79d2\uff09"
         }
     },
     "warning": {
         "text": {
             "de": "Warnung",
             "en": "Warning",
-            "pl": "Ostrze\u017cenie"
+            "zh": "\u8b66\u544a"
         }
     },
     "warning_cannot_open_port_exclusively": {
         "text": {
             "de": "Warnung: Der serielle Anschluss kann nicht exklusiv ge\u00f6ffnet werden.\nSchlie\u00dfen Sie alle anderen Programme, die diesen Anschluss m\u00f6glicherweise verwenden, und versuchen Sie es erneut.",
             "en": "Warning: Cannot open the serial port exclusively.\nClose any other programs that might be using that port and try again.",
-            "pl": "Ostrze\u017cenie: Nie mo\u017cna otworzy\u0107 wy\u0142\u0105cznie portu szeregowego.\nZamknij wszystkie inne programy, kt\u00f3re mog\u0105 korzysta\u0107 z tego portu, i spr\u00f3buj ponownie."
+            "zh": "\u8b66\u544a\u3002\u4e0d\u80fd\u4e13\u95e8\u6253\u5f00\u4e32\u884c\u7aef\u53e3\u3002\n\u5173\u95ed\u4efb\u4f55\u53ef\u80fd\u6b63\u5728\u4f7f\u7528\u8be5\u7aef\u53e3\u7684\u5176\u4ed6\u7a0b\u5e8f\uff0c\u7136\u540e\u518d\u8bd5\u4e00\u6b21\u3002"
         }
     },
     "warning_issue_downloading": {
         "text": {
             "de": "Warnung: Es gab ein Problem beim Herunterladen/Extrahieren.",
             "en": "Warning: There was an issue downloading/extracting.",
-            "pl": "Ostrze\u017cenie: Wyst\u0105pi\u0142 problem z pobieraniem/rozpakowywaniem plik\u00f3w."
+            "zh": "\u8b66\u544a\u3002\u5728\u4e0b\u8f7d/\u89e3\u538b\u65f6\u51fa\u73b0\u4e86\u95ee\u9898\u3002"
         }
     },
     "warning_need_channel_name": {
         "text": {
             "de": "Sie m\u00fcssen einen Kanalnamen haben.",
             "en": "Need to have a channel name.",
-            "pl": "Konieczne jest posiadanie nazwy kana\u0142u."
+            "zh": "\u9700\u8981\u6709\u4e00\u4e2a\u9891\u9053\u540d\u79f0\u3002"
         }
     },
     "warning_not_admin": {
         "text": {
             "de": "Warnung: Dieser Prozess wird nicht als Administrator ausgef\u00fchrt.\nSchlie\u00dfen Sie ihn und f\u00fchren Sie ihn erneut als Administrator aus.",
             "en": "Warning: This process is not running as Administrator.\nClose and re-run as Administrator.",
-            "pl": "Ostrze\u017cenie: Ten proces nie jest uruchomiony jako Administrator.\nZamknij i uruchom ponownie jako Administrator."
+            "zh": "\u8b66\u544a\u3002\u8be5\u8fdb\u7a0b\u6ca1\u6709\u4ee5\u7ba1\u7406\u5458\u8eab\u4efd\u8fd0\u884c\u3002\n\u5173\u95ed\u5e76\u4ee5\u7ba1\u7406\u5458\u8eab\u4efd\u91cd\u65b0\u8fd0\u884c\u3002"
         }
     },
     "warning_problem_connecting": {
         "text": {
             "de": "Es gab ein Problem bei der Verbindung mit dem Ger\u00e4t.\n\nTrennen Sie das Ger\u00e4t vom Stromnetz oder starten Sie das Programm neu.",
             "en": "There was a problem connecting to the device.\n\nPerhaps unplug device or restart this program.",
-            "pl": "Wyst\u0105pi\u0142 problem z po\u0142\u0105czeniem z urz\u0105dzeniem.\n\nBy\u0107 mo\u017ce nale\u017cy od\u0142\u0105czy\u0107 urz\u0105dzenie lub ponownie uruchomi\u0107 program."
+            "zh": "\u4e0e\u8bbe\u5907\u7684\u8fde\u63a5\u51fa\u73b0\u4e86\u95ee\u9898\u3002\n\n\u4e5f\u8bb8\u53ef\u4ee5\u62d4\u6389\u8bbe\u5907\u63d2\u5934\u6216\u91cd\u65b0\u542f\u52a8\u8fd9\u4e2a\u7a0b\u5e8f\u3002"
         }
     },
     "warning_talking_to_device": {
         "text": {
             "de": "Ich hatte ein Problem bei der Kommunikation mit dem Ger\u00e4t.\nVielleicht sollten Sie das Ger\u00e4t aus- und wieder einstecken?\nWenn das Ger\u00e4t ein nrf52 (T-Echo oder RAK) ist,\ndann versetzen Sie das Ger\u00e4t in den Boot-Modus, indem Sie zweimal die RST-Taste dr\u00fccken.",
             "en": "Had a problem talking with the device.\nPerhaps unplug and re-plugin the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put the device into boot mode by pressing RST button twice.",
-            "pl": "Wyst\u0105pi\u0142 problem z nawi\u0105zaniem po\u0142\u0105czenia z urz\u0105dzeniem.\nMo\u017ce nale\u017cy od\u0142\u0105czy\u0107 i ponownie pod\u0142\u0105czy\u0107 urz\u0105dzenie?\nJe\u015bli urz\u0105dzenie to nrf52 (T-Echo lub RAK),\nto prze\u0142\u0105cz urz\u0105dzenie w tryb startowy, naciskaj\u0105c dwukrotnie przycisk RST."
+            "zh": "\u4e0e\u8bbe\u5907\u7684\u901a\u8bdd\u51fa\u73b0\u4e86\u95ee\u9898\u3002\n\u4e5f\u8bb8\u53ef\u4ee5\u62d4\u6389\u8bbe\u5907\u7684\u63d2\u5934\u518d\u91cd\u65b0\u63d2\u4e0a\uff1f\n\u5982\u679c\u8be5\u8bbe\u5907\u662fnrf52\uff08T-Echo\u6216RAK\uff09\u3002\n\u90a3\u5c31\u6309\u4e24\u6b21RST\u6309\u94ae\uff0c\u8ba9\u8bbe\u5907\u8fdb\u5165\u542f\u52a8\u6a21\u5f0f\u3002"
         }
     },
     "wifi_ap_mode": {
         "description": {
             "de": "Wenn diese Option eingestellt ist, arbeitet der Knoten als Zugangspunkt und DHCP-Server. Andernfalls ist der Knoten eine Station.",
             "en": "If set, the node will operate as an access point and DHCP server. Otherwise, the node will be a station.",
-            "pl": "Je\u015bli jest ustawione, w\u0119ze\u0142 b\u0119dzie dzia\u0142a\u0142 jako punkt dost\u0119powy i serwer DHCP. W przeciwnym razie w\u0119ze\u0142 b\u0119dzie dzia\u0142a\u0142 jako stacja."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u8282\u70b9\u5c06\u4f5c\u4e3a\u4e00\u4e2a\u63a5\u5165\u70b9\u548cDHCP\u670d\u52a1\u5668\u8fd0\u884c\u3002\u5426\u5219\uff0c\u8be5\u8282\u70b9\u5c06\u662f\u4e00\u4e2a\u7ad9\u3002"
         },
         "label": {
             "de": "WiFi AP Mode?",
             "en": "WiFi AP Mode?",
-            "pl": "Tryb AP WiFi?"
+            "zh": "WiFi AP\u6a21\u5f0f\uff1f"
         }
     },
     "wifi_password": {
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird sie f\u00fcr die Authentifizierung am benannten WiFi verwendet.",
             "en": "If set, will be use to authenticate to the named WiFi.",
-            "pl": "Je\u015bli jest ustawiona, b\u0119dzie u\u017cywana do uwierzytelniania w nazwanym WiFi."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\u4e86\uff0c\u5c06\u7528\u4e8e\u9a8c\u8bc1\u6307\u5b9a\u7684WiFi\u3002"
         },
         "label": {
             "de": "WiFi-Passwort",
             "en": "WiFi Password",
-            "pl": "Has\u0142o WiFi"
+            "zh": "WiFi\u5bc6\u7801"
         },
         "max_size": 64
     },
@@ -2125,12 +2125,12 @@
         "description": {
             "de": "Wenn diese Option gesetzt ist, versucht dieser Knoten, dem angegebenen WiFi-Netzwerk beizutreten und eine Adresse \u00fcber DHCP zu erhalten.",
             "en": "If set, this node will try to join the specified WiFi network and acquire an address via DHCP.",
-            "pl": "Je\u015bli jest ustawione, ten w\u0119ze\u0142 b\u0119dzie pr\u00f3bowa\u0142 do\u0142\u0105czy\u0107 do okre\u015blonej sieci WiFi i uzyska\u0107 adres za pomoc\u0105 protoko\u0142u DHCP."
+            "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u8fd9\u4e2a\u8282\u70b9\u5c06\u5c1d\u8bd5\u52a0\u5165\u6307\u5b9a\u7684WiFi\u7f51\u7edc\uff0c\u5e76\u901a\u8fc7DHCP\u83b7\u5f97\u5730\u5740\u3002"
         },
         "label": {
             "de": "WiFi SSID",
             "en": "WiFi SSID",
-            "pl": "SSID WiFi"
+            "zh": "WiFi SSID"
         },
         "max_size": 33
     }
