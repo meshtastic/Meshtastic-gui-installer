@@ -295,10 +295,9 @@ class Form(QDialog):
     def populate_languages(self):
         """Populate the languages dropdown.
            When adding a new language:
-             1) ./bin/translate_entries.py IT
+             1) add to and run: ./bin/translate_entries.py
              2) run "pip install ."
              3) add language to this list
-             4) add to bin/translate_more.bash
         """
         self.select_language.addItem("Deutsch", "de")
         self.select_language.addItem("Español", "es")
@@ -306,6 +305,8 @@ class Form(QDialog):
         self.select_language.addItem("Italiano", "it")
         self.select_language.addItem("Polski", "pl")
         self.select_language.addItem("Chinese", "zh")
+        self.select_language.addItem("русский", "ru")
+        self.select_language.addItem("日本語", "ja")
         index = self.select_language.findData(self.lang)
         self.select_language.setCurrentIndex(index)
 
