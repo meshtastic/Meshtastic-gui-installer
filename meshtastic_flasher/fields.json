@@ -57,7 +57,7 @@
             "fr": "Annulation du multiplicateur ADC",
             "it": "Override del moltiplicatore ADC",
             "ja": "ADC\u30de\u30eb\u30c1\u30d7\u30e9\u30a4\u30e4\u30fc\u30aa\u30fc\u30d0\u30fc\u30e9\u30a4\u30c9",
-            "pl": "Odst\u0105pienie mno\u017cnika przetwornika ADC",
+            "pl": "Nadpisanie mno\u017cnika przetwornika ADC",
             "ru": "\u041f\u0435\u0440\u0435\u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u0435 \u043c\u043d\u043e\u0436\u0438\u0442\u0435\u043b\u044f \u0410\u0426\u041f",
             "zh": "ADC\u4e58\u6cd5\u5668\u8d85\u63a7"
         }
@@ -133,7 +133,7 @@
             "fr": "L'altitude est la distance par rapport au niveau de la mer.",
             "it": "L'altitudine \u00e8 la distanza sul livello del mare.",
             "ja": "\u9ad8\u5ea6\u3068\u306f\u3001\u6d77\u9762\u304b\u3089\u306e\u8ddd\u96e2\u306e\u3053\u3068\u3067\u3059\u3002",
-            "pl": "Wysoko\u015b\u0107 to odleg\u0142o\u015b\u0107 nad poziomem morza.",
+            "pl": "Wysoko\u015b\u0107 to wysoko\u015b\u0107 nad poziomem morza.",
             "ru": "\u0412\u044b\u0441\u043e\u0442\u0430 - \u044d\u0442\u043e \u0440\u0430\u0441\u0441\u0442\u043e\u044f\u043d\u0438\u0435 \u043d\u0430\u0434 \u0443\u0440\u043e\u0432\u043d\u0435\u043c \u043c\u043e\u0440\u044f.",
             "zh": "\u6d77\u62d4\u662f\u6307\u9ad8\u4e8e\u6d77\u5e73\u9762\u7684\u8ddd\u79bb\u3002"
         },
@@ -378,7 +378,7 @@
             "fr": "Courant de charge",
             "it": "Corrente di carica",
             "ja": "\u5145\u96fb\u96fb\u6d41",
-            "pl": "Na\u0142aduj pr\u0105d",
+            "pl": "Pr\u0105d \u0142adowania",
             "ru": "\u0417\u0430\u0440\u044f\u0434\u043d\u044b\u0439 \u0442\u043e\u043a",
             "zh": "\u5145\u7535\u7535\u6d41"
         }
@@ -721,7 +721,7 @@
             "fr": "Liaison descendante activ\u00e9e ?",
             "it": "Downlink abilitato?",
             "ja": "Downlink Enabled?",
-            "pl": "Downlink Enabled?",
+            "pl": "Downlink w\0142\0105czony?",
             "ru": "Downlink Enabled?",
             "zh": "\u4e0b\u884c\u94fe\u8def\u5df2\u542f\u7528\uff1f"
         }
@@ -994,7 +994,7 @@
             "fr": "Clignotant",
             "it": "Lampeggiante",
             "ja": "\u30d5\u30e9\u30c3\u30b7\u30f3\u30b0",
-            "pl": "Migaj\u0105ca strona",
+            "pl": "Flashowanie",
             "ru": "\u041c\u0438\u0433\u0430\u044e\u0449\u0438\u0439",
             "zh": "\u95ea\u70c1"
         }
@@ -1031,7 +1031,7 @@
             "fr": "Flash complet \u00e9tape 1 de 4",
             "it": "Flash completo passo 1 di 4",
             "ja": "\u30d5\u30eb\u30d5\u30e9\u30c3\u30b7\u30e5 \u30b9\u30c6\u30c3\u30d71/4",
-            "pl": "Pe\u0142ny b\u0142ysk krok 1 z 4",
+            "pl": "Pe\u0142ny flash krok 1 z 4",
             "ru": "\u041f\u043e\u043b\u043d\u0430\u044f \u0432\u0441\u043f\u044b\u0448\u043a\u0430 \u0448\u0430\u0433 1 \u0438\u0437 4",
             "zh": "\u5b8c\u6574\u7684\u95ea\u5149\u6b65\u9aa41 of 4"
         }
@@ -1083,7 +1083,7 @@
             "fr": "L'\u00e9tape 4 sur 4 de Full Flash est termin\u00e9e",
             "it": "Flash completo passo 4 di 4 \u00e8 fatto",
             "ja": "\u30d5\u30eb\u30d5\u30e9\u30c3\u30b7\u30e5 \u30b9\u30c6\u30c3\u30d74\u306e4\u304c\u7d42\u4e86",
-            "pl": "Wykonano krok 4 z 4 pe\u0142nej lampy b\u0142yskowej",
+            "pl": "Wykonano pe\u0142ny flash krok 4 z 4",
             "ru": "\u041f\u043e\u043b\u043d\u0430\u044f \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0430 \u0448\u0430\u0433 4 \u0438\u0437 4 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d",
             "zh": "\u5168\u5957\u95ea\u5149\u706f\u7684\u7b2c4\u6b65\u5df2\u7ecf\u5b8c\u6210"
         }
@@ -1268,7 +1268,7 @@
             "fr": "Remplace HOPS_RELIABLE et d\u00e9finit le nombre maximum de sauts. Ce nombre ne peut pas \u00eatre sup\u00e9rieur \u00e0 7.",
             "it": "Sovrascrive HOPS_RELIABLE e imposta il numero massimo di salti. Non pu\u00f2 essere maggiore di 7.",
             "ja": "HOPS_RELIABLE\u3092\u4e0a\u66f8\u304d\u3057\u3001\u6700\u5927\u30db\u30c3\u30d7\u6570\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u30027\u3088\u308a\u5927\u304d\u304f\u3059\u308b\u3053\u3068\u306f\u3067\u304d\u306a\u3044\u3002",
-            "pl": "Zast\u0119puje HOPS_RELIABLE i ustawia maksymaln\u0105 liczb\u0119 w\u0119z\u0142\u00f3w. Liczba ta nie mo\u017ce by\u0107 wi\u0119ksza ni\u017c 7.",
+            "pl": "Zast\u0119puje HOPS_RELIABLE i ustawia maksymaln\u0105 liczb\u0119 skok\u00F3w. Liczba ta nie mo\u017ce by\u0107 wi\u0119ksza ni\u017c 7.",
             "ru": "\u041e\u0442\u043c\u0435\u043d\u044f\u0435\u0442 HOPS_RELIABLE \u0438 \u0443\u0441\u0442\u0430\u043d\u0430\u0432\u043b\u0438\u0432\u0430\u0435\u0442 \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e\u0435 \u043a\u043e\u043b\u0438\u0447\u0435\u0441\u0442\u0432\u043e \u043f\u0435\u0440\u0435\u0445\u043e\u0434\u043e\u0432. \u041e\u043d\u043e \u043d\u0435 \u043c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c \u0431\u043e\u043b\u044c\u0448\u0435 7.",
             "zh": "\u8986\u76d6HOPS_RELIABLE\u5e76\u8bbe\u7f6e\u6700\u5927\u8df3\u6570\u3002\u8fd9\u4e0d\u80fd\u5927\u4e8e7\u3002"
         },
@@ -1462,7 +1462,7 @@
             "fr": "Est-ce que Power Saving ?",
             "it": "\u00c8 il risparmio energetico?",
             "ja": "\u30d1\u30ef\u30fc\u30bb\u30fc\u30d6\u306f\u53ef\u80fd\u3067\u3059\u304b\uff1f",
-            "pl": "Czy oszcz\u0119dzanie energii jest mo\u017cliwe?",
+            "pl": "Oszcz\u0119dzanie energii?",
             "ru": "\u042f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043b\u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u0441\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u0438\u0435?",
             "zh": "\u662f\u7701\u7535\u5417\uff1f"
         }
@@ -1850,12 +1850,12 @@
     "mqtt_encryption_enabled": {
         "description": {
             "de": "Wenn gesetzt, werden verschl\u00fcsselte Pakete an den in 'mqtt_server' angegebenen Server gesendet. Andernfalls werden die Pakete nicht verschl\u00fcsselt.",
-            "en": "If set, encrypted packets are sent to server specified in 'mqtt_server. Otherwise, the packets are not encrypted.",
+            "en": "If set, encrypted packets are sent to server specified in 'mqtt_server'. Otherwise, the packets are not encrypted.",
             "es": "Si se establece, los paquetes cifrados se env\u00edan al servidor especificado en 'mqtt_server'. En caso contrario, los paquetes no se cifran.",
             "fr": "S'il est d\u00e9fini, les paquets chiffr\u00e9s sont envoy\u00e9s au serveur sp\u00e9cifi\u00e9 dans 'mqtt_server'. Sinon, les paquets ne sont pas chiffr\u00e9s.",
             "it": "Se impostato, i pacchetti criptati sono inviati al server specificato in 'mqtt_server. Altrimenti, i pacchetti non sono criptati.",
             "ja": "\u8a2d\u5b9a\u3055\u308c\u305f\u5834\u5408\u3001\u6697\u53f7\u5316\u3055\u308c\u305f\u30d1\u30b1\u30c3\u30c8\u306f'mqtt_server'\u3067\u6307\u5b9a\u3055\u308c\u305f\u30b5\u30fc\u30d0\u30fc\u306b\u9001\u4fe1\u3055\u308c\u307e\u3059\u3002\u305d\u308c\u4ee5\u5916\u306e\u5834\u5408\u306f\u3001\u30d1\u30b1\u30c3\u30c8\u306f\u6697\u53f7\u5316\u3055\u308c\u306a\u3044\u3002",
-            "pl": "Je\u015bli jest ustawione, zaszyfrowane pakiety s\u0105 wysy\u0142ane do serwera okre\u015blonego w 'mqtt_server. W przeciwnym razie pakiety nie s\u0105 szyfrowane.",
+            "pl": "Je\u015bli jest ustawione, zaszyfrowane pakiety s\u0105 wysy\u0142ane do serwera okre\u015blonego w 'mqtt_server'. W przeciwnym razie pakiety nie s\u0105 szyfrowane.",
             "ru": "\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e, \u0437\u0430\u0448\u0438\u0444\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u0435 \u043f\u0430\u043a\u0435\u0442\u044b \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u044e\u0442\u0441\u044f \u043d\u0430 \u0441\u0435\u0440\u0432\u0435\u0440, \u0443\u043a\u0430\u0437\u0430\u043d\u043d\u044b\u0439 \u0432 'mqtt_server. \u0412 \u043f\u0440\u043e\u0442\u0438\u0432\u043d\u043e\u043c \u0441\u043b\u0443\u0447\u0430\u0435 \u043f\u0430\u043a\u0435\u0442\u044b \u043d\u0435 \u0448\u0438\u0444\u0440\u0443\u044e\u0442\u0441\u044f.",
             "zh": "\u5982\u679c\u8bbe\u7f6e\uff0c\u52a0\u5bc6\u7684\u6570\u636e\u5305\u5c06\u88ab\u53d1\u9001\u5230'mqtt_server'\u4e2d\u6307\u5b9a\u7684\u670d\u52a1\u5668\u3002\u5426\u5219\uff0c\u6570\u636e\u5305\u4e0d\u88ab\u52a0\u5bc6\u3002"
         },
@@ -2608,7 +2608,7 @@
             "fr": "Sauver ?",
             "it": "Salvare?",
             "ja": "\u4fdd\u5b58\u3059\u308b\uff1f",
-            "pl": "Oszcz\u0119dno\u015bci?",
+            "pl": "Zapisa\u0107?",
             "ru": "\u0421\u043f\u0430\u0441\u0442\u0438?",
             "zh": "\u62ef\u6551\uff1f"
         }
@@ -2805,7 +2805,7 @@
             "fr": "G\u00e9n\u00e9rer un \u00e9v\u00e9nement d'entr\u00e9e sur ce type de presse.",
             "it": "Genera un evento di input su Press di questo tipo.",
             "ja": "\u3053\u306e\u7a2e\u306e\u30d7\u30ec\u30b9\u306b\u95a2\u3059\u308b\u5165\u529b\u30a4\u30d9\u30f3\u30c8\u3092\u767a\u751f\u3055\u305b\u308b\u3002",
-            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla prasy tego typu.",
+            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla naci\u015Bni\u0119cia tego typu.",
             "ru": "\u0413\u0435\u043d\u0435\u0440\u0438\u0440\u0443\u0439\u0442\u0435 \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0432\u0432\u043e\u0434\u0430 \u043f\u0440\u0438 \u043d\u0430\u0436\u0430\u0442\u0438\u0438 \u0442\u0430\u043a\u043e\u0433\u043e \u0442\u0438\u043f\u0430.",
             "zh": "\u5bf9\u8fd9\u79cd\u65b0\u95fb\u4ea7\u751f\u8f93\u5165\u4e8b\u4ef6\u3002"
         },
@@ -2840,7 +2840,7 @@
             "fr": "Pin A",
             "it": "Pin A",
             "ja": "A\u7aef\u5b50",
-            "pl": "Szpilka A",
+            "pl": "Pin A",
             "ru": "\u041a\u043e\u043d\u0442\u0430\u043a\u0442 A",
             "zh": "\u5f15\u811aA"
         }
@@ -2853,7 +2853,7 @@
             "fr": "Broche GPIO pour le port B du codeur rotatif.",
             "it": "Pin GPIO per la porta B dell'encoder rotativo.",
             "ja": "\u30ed\u30fc\u30bf\u30ea\u30a8\u30f3\u30b3\u30fc\u30c0 B \u30dd\u30fc\u30c8\u306e GPIO \u7aef\u5b50\u3067\u3059\u3002",
-            "pl": "Bolec GPIO dla portu B enkodera obrotowego.",
+            "pl": "Pin GPIO dla portu B enkodera obrotowego.",
             "ru": "\u041a\u043e\u043d\u0442\u0430\u043a\u0442 GPIO \u0434\u043b\u044f \u043f\u043e\u0440\u0442\u0430 B \u043f\u043e\u0432\u043e\u0440\u043e\u0442\u043d\u043e\u0433\u043e \u044d\u043d\u043a\u043e\u0434\u0435\u0440\u0430.",
             "zh": "\u7528\u4e8e\u65cb\u8f6c\u7f16\u7801\u5668B\u7aef\u53e3\u7684GPIO\u5f15\u811a\u3002"
         },
@@ -2864,7 +2864,7 @@
             "fr": "Broche B",
             "it": "Pin B",
             "ja": "B\u7aef\u5b50",
-            "pl": "Szpilka B",
+            "pl": "Pin B",
             "ru": "\u041a\u043e\u043d\u0442\u0430\u043a\u0442 B",
             "zh": "\u9488\u811aB"
         }
@@ -2877,7 +2877,7 @@
             "fr": "G\u00e9n\u00e9rer un \u00e9v\u00e9nement d'entr\u00e9e sur ce type de presse.",
             "it": "Genera un evento di input su Press di questo tipo.",
             "ja": "\u3053\u306e\u7a2e\u306e\u30d7\u30ec\u30b9\u306b\u95a2\u3059\u308b\u5165\u529b\u30a4\u30d9\u30f3\u30c8\u3092\u767a\u751f\u3055\u305b\u308b\u3002",
-            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla prasy tego typu.",
+            "pl": "Wygeneruj zdarzenie wej\u015bciowe dla naci tego typu.",
             "ru": "\u0413\u0435\u043d\u0435\u0440\u0438\u0440\u0443\u0439\u0442\u0435 \u0441\u043e\u0431\u044b\u0442\u0438\u0435 \u0432\u0432\u043e\u0434\u0430 \u043f\u0440\u0438 \u043d\u0430\u0436\u0430\u0442\u0438\u0438 \u0442\u0430\u043a\u043e\u0433\u043e \u0442\u0438\u043f\u0430.",
             "zh": "\u5bf9\u8fd9\u79cd\u65b0\u95fb\u4ea7\u751f\u8f93\u5165\u4e8b\u4ef6\u3002"
         },
@@ -2914,7 +2914,7 @@
             "fr": "Running",
             "it": "Correre",
             "ja": "\u30e9\u30f3\u30cb\u30f3\u30b0",
-            "pl": "Prowadzenie",
+            "pl": "Uruchomiony",
             "ru": "\u0411\u0435\u0433",
             "zh": "\u8dd1\u6b65"
         }
@@ -2975,7 +2975,7 @@
             "fr": "DISPOSITIF DE D\u00c9TECTION",
             "it": "DISPOSITIVO DI RILEVAMENTO",
             "ja": "\u30c7\u30a3\u30c6\u30af\u30c8\u30c7\u30d0\u30a4\u30b9",
-            "pl": "URZ\u0104DZENIE WYKRYWAJ\u0104CE",
+            "pl": "WYKRYJ URZ\u0104DZENIE",
             "ru": "\u0423\u0421\u0422\u0420\u041e\u0419\u0421\u0422\u0412\u041e \u041e\u0411\u041d\u0410\u0420\u0423\u0416\u0415\u041d\u0418\u042f",
             "zh": "\u63a2\u6d4b\u88c5\u7f6e"
         },
