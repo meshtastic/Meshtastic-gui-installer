@@ -306,6 +306,7 @@ class Form(QDialog):
         self.select_language.addItem("Polski", "pl")
         self.select_language.addItem("Chinese", "zh")
         self.select_language.addItem("русский", "ru")
+        self.select_language.addItem("日本語", "ja")
         index = self.select_language.findData(self.lang)
         self.select_language.setCurrentIndex(index)
 
