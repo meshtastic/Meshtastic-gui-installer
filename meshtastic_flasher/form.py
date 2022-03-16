@@ -303,14 +303,14 @@ class Form(QDialog):
              2) run "pip install ."
              3) add language to this list
         """
-        self.select_language.addItem("Deutsch", "de")
-        self.select_language.addItem("Español", "es")
-        self.select_language.addItem("Français", "fr")
-        self.select_language.addItem("Italiano", "it")
-        self.select_language.addItem("Polski", "pl")
-        self.select_language.addItem("Chinese", "zh")
-        self.select_language.addItem("русский", "ru")
-        self.select_language.addItem("日本語", "ja")
+        self.select_language.addItem("Deutsch - German", "de")
+        self.select_language.addItem("Español - Spanish", "es")
+        self.select_language.addItem("Français - French", "fr")
+        self.select_language.addItem("Italiano - Italian", "it")
+        self.select_language.addItem("Polski - Polish", "pl")
+        self.select_language.addItem("中国 - Simplified Chinese", "zh")
+        self.select_language.addItem("русский - Russian", "ru")
+        self.select_language.addItem("日本語 - Japanese", "ja")
         index = self.select_language.findData(self.lang)
         self.select_language.setCurrentIndex(index)
 

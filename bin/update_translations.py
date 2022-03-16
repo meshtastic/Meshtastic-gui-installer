@@ -33,22 +33,30 @@ with open(filename, encoding='utf-8') as input_file:
 
     for line in lines:
         if line.startswith('** field:'):
+            # update the last entry processed (Note: need to deal with the last entry.)
+            if en_entry is not None and tr_entry is not None:
+                # remove the trailing new lines (which separate the entries)
+                tmp = tr_entry[:-4]
+                # if there still is a trailing new line, remove it
+                if tmp[-1:] == '\n':
+                    tmp = tmp[:-1]
+                fields[field][key][lang] = tmp
+                print(f'tr_entry:{tr_entry}')
             tmp = line.split(' ')
             tmp2 = tmp[1].split(':')
             tmp3 = tmp[2].split(':')
             field = tmp2[1]
-            key = tmp3[1]
-            print(f'field:{field} key:{key}')
+            key = tmp3[1].strip()
+            #print(f'field:{field} key:{key}')
             en_entry = None
             tr_entry = None
-
-        if line.startswith('en:'):
-            en_entry = line[3:].strip()
-            print(f'en_entry:{en_entry}')
-
-        if line.startswith(f'{lang}:'):
-            tr_entry = line[3:]
-            print(f'tr_entry:{tr_entry}')
-            fields[field][key][lang] = tr_entry.strip()
+        elif line.startswith('en:'):
+            en_entry = line[3:]
+        elif line.startswith(f'{lang}:'):
+            tr_entry = line[3:].strip()
+        else:
+            if en_entry is not None:
+                if tr_entry is not None:
+                    tr_entry = tr_entry + '\n' + line
 
 write_fields(fields)

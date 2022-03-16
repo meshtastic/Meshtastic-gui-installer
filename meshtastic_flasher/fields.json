@@ -29,7 +29,7 @@
         "text": {
             "de": "Meshtastic Flasher ist Teil des <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> \u00d6kosystems. Es ist eine plattform\u00fcbergreifende, einfach zu bedienende grafische Benutzeroberfl\u00e4che zum Aktualisieren und Installieren von Meshtastic-Firmware.",
             "en": "Meshtastic Flasher is part of the <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> ecosystem. It is a cross platform, easy to use graphical user interface for updating and installing Meshtastic firmware.",
-            "es": "Meshtastic Flasher es parte del ecosistema <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. Es una plataforma cruzada, f\u00e1cil de usar interfaz gr\u00e1fica de usuario para actualizar e instalar el firmware Meshtastic.",
+            "es": "Meshtastic Flasher es parte del ecosistema <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. Es una plataforma cruzada, de f\u00e1cil uso. con interfaz gr\u00e1fica de usuario para actualizar e instalar el firmware Meshtastic.",
             "fr": "Meshtastic Flasher fait partie de l'\u00e9cosyst\u00e8me <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. Il s'agit d'une interface graphique multiplateforme et facile \u00e0 utiliser pour la mise \u00e0 jour et l'installation du firmware Meshtastic.",
             "it": "Meshtastic Flasher fa parte dell'ecosistema <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. \u00c8 una multi-piattaforma, un'interfaccia grafica facile da usare per aggiornare e installare il firmware Meshtastic.",
             "ja": "Meshtastic Flasher \u306f\u3001<a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> \u306e\u30a8\u30b3\u30b7\u30b9\u30c6\u30e0\u306e\u4e00\u90e8\u3067\u3059\u3002\u3053\u308c\u306f\u3001\u30af\u30ed\u30b9\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u3067\u3001Meshtastic\u30d5\u30a1\u30fc\u30e0\u30a6\u30a7\u30a2\u306e\u30a2\u30c3\u30d7\u30c7\u30fc\u30c8\u3084\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u3092\u884c\u3046\u305f\u3081\u306e\u3001\u4f7f\u3044\u3084\u3059\u3044\u30b0\u30e9\u30d5\u30a3\u30ab\u30eb\u30fb\u30e6\u30fc\u30b6\u30fc\u30fb\u30a4\u30f3\u30bf\u30fc\u30d5\u30a7\u30fc\u30b9\u3067\u3059\u3002",
@@ -79,7 +79,7 @@
         "text": {
             "de": "Admin-Einstellungen",
             "en": "Admin Settings",
-            "es": "Configuraci\u00f3n de la administraci\u00f3n",
+            "es": "Configuraci\u00f3n de administraci\u00f3n",
             "fr": "Param\u00e8tres administratifs",
             "it": "Impostazioni amministrative",
             "ja": "\u7ba1\u7406\u8005\u8a2d\u5b9a",
@@ -164,7 +164,7 @@
         "label": {
             "de": "Automatischer Bildschirmwechsel (Sekunden)",
             "en": "Auto Screen Carousel (seconds)",
-            "es": "Carrusel de pantallas autom\u00e1tico (segundos)",
+            "es": "Carrusel autom\u00e1tico de pantallas (segundos)",
             "fr": "Auto Screen Carousel (secondes)",
             "it": "Menu a giostra automatico sullo schermo (secondi)",
             "ja": "\u81ea\u52d5\u753b\u9762\u30ab\u30eb\u30fc\u30bb\u30eb\uff08\u79d2\uff09",
@@ -201,7 +201,7 @@
         "text": {
             "de": "Schnellnachrichten",
             "en": "Canned",
-            "es": "Conservas",
+            "es": "Enlatados",
             "fr": "Bo\u00eete de conserve",
             "it": "Predefiniti",
             "ja": "\u7f36\u8a70",
@@ -263,7 +263,7 @@
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?",
+            "es": "\u00bfActivar?",
             "fr": "Activ\u00e9 ?",
             "it": "Abilitato?",
             "ja": "\u6709\u52b9\u5316\uff1f",
@@ -300,7 +300,7 @@
         "description": {
             "de": "Das Modul \"Schnellnachrichten\" sendet auch ein Klingelzeichen mit den Nachrichten. Das Modul Externe Benachrichtigung kann dieses dann auswerten.",
             "en": "The Canned Message module also sends a bell character with the messages. The External Notification module can benefit from this feature.",
-            "es": "El m\u00f3dulo de mensajes enlatados tambi\u00e9n env\u00eda un car\u00e1cter de campana con los mensajes. El m\u00f3dulo de Notificaci\u00f3n Externa puede beneficiarse de esta funci\u00f3n.",
+            "es": "El m\u00f3dulo de mensajes enlatados tambi\u00e9n env\u00eda un car\u00e1cter de tono de aviso con los mensajes. El m\u00f3dulo de Notificaci\u00f3n Externa puede beneficiarse de esta funci\u00f3n.",
             "fr": "Le module Canned Message envoie \u00e9galement un caract\u00e8re de cloche avec les messages. Le module de notification externe peut b\u00e9n\u00e9ficier de cette fonctionnalit\u00e9.",
             "it": "Il modulo Messaggi Predefiniti invia anche un carattere BELL con i messaggi. Il modulo di notifica esterna pu\u00f2 beneficiare di questa caratteristica.",
             "ja": "\u307e\u305f\u3001\u5b9a\u578b\u6587\u30e2\u30b8\u30e5\u30fc\u30eb\u3067\u306f\u3001\u30e1\u30c3\u30bb\u30fc\u30b8\u3068\u4e00\u7dd2\u306b\u30d9\u30eb\u6587\u5b57\u3082\u9001\u4fe1\u3055\u308c\u307e\u3059\u3002\u5916\u90e8\u901a\u77e5\u30e2\u30b8\u30e5\u30fc\u30eb\u306f\u3001\u3053\u306e\u6a5f\u80fd\u306e\u6069\u6075\u3092\u53d7\u3051\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
@@ -311,7 +311,7 @@
         "label": {
             "de": "Sende Klingel?",
             "en": "Send Bell?",
-            "es": "\u00bfEnviar a Bell?",
+            "es": "\u00bfEnviar tono de aviso?",
             "fr": "Envoyer une cloche ?",
             "it": "Mandare BELL?",
             "ja": "\u30d9\u30eb\u3092\u9001\u308b\uff1f",
@@ -363,7 +363,7 @@
         "description": {
             "de": "Stellt den internen Ladestrom des Akkus ein.",
             "en": "Sets the current of the battery charger.",
-            "es": "Establece la corriente del cargador de bater\u00edas.",
+            "es": "Establece la corriente del cargador de bater\u00eda.",
             "fr": "R\u00e8gle le courant du chargeur de batterie.",
             "it": "Imposta la corrente del caricabatterie.",
             "ja": "\u30d0\u30c3\u30c6\u30ea\u30fc\u30c1\u30e3\u30fc\u30b8\u30e3\u30fc\u306e\u96fb\u6d41\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002",
@@ -450,7 +450,7 @@
         "text": {
             "de": "Sind Sie sicher, dass Sie das wollen?",
             "en": "Are you sure you want to",
-            "es": "\u00bfEst\u00e1s seguro de que quieres",
+            "es": "\u00bfEst\u00e1s seguro que quieres",
             "fr": "Vous \u00eates s\u00fbr de vouloir",
             "it": "Sei sicuro di voler",
             "ja": "\u672c\u5f53\u306b\u3044\u3044\u3093\u3067\u3059\u304b\uff1f",
@@ -463,7 +463,7 @@
         "text": {
             "de": "Sind Sie sicher, dass Sie die Firmware-Dateien entfernen m\u00f6chten?",
             "en": "Are you sure you want to remove the firmware files?",
-            "es": "\u00bfEst\u00e1s seguro de que quieres eliminar los archivos del firmware?",
+            "es": "\u00bfEst\u00e1s seguro que quieres eliminar los archivos del firmware?",
             "fr": "Etes-vous s\u00fbr de vouloir supprimer les fichiers du firmware ?",
             "it": "Sei sicuro di voler rimuovere i file del firmware?",
             "ja": "\u672c\u5f53\u306b\u30d5\u30a1\u30fc\u30e0\u30a6\u30a7\u30a2\u306e\u30d5\u30a1\u30a4\u30eb\u3092\u524a\u9664\u3059\u308b\u306e\u3067\u3059\u304b\uff1f",
@@ -476,7 +476,7 @@
         "text": {
             "de": "Sind Sie sicher, dass Sie das Ger\u00e4t zur\u00fccksetzen wollen?",
             "en": "Are you sure you want to reset the device?",
-            "es": "\u00bfEst\u00e1s seguro de que quieres reiniciar el dispositivo?",
+            "es": "\u00bfEst\u00e1s seguro que quieres reiniciar el dispositivo?",
             "fr": "Vous \u00eates s\u00fbr de vouloir r\u00e9initialiser l'appareil ?",
             "it": "Sei sicuro di voler resettare il dispositivo?",
             "ja": "\u672c\u5f53\u306b\u30ea\u30bb\u30c3\u30c8\u3057\u307e\u3059\u304b\uff1f",
@@ -515,20 +515,20 @@
         "text": {
             "de": "Die Partition konnte nicht gefunden werden.\nDr\u00fccken Sie die RST-Taste ZWEIMAL\nund versuchen Sie es dann erneut.",
             "en": "Could not find the partition.\nPress the RST button TWICE\nthen re-try pressing the DETECT button again.",
-            "es": "No se ha podido encontrar la partici\u00f3n.\nPulse DOS veces el bot\u00f3n RST\ny vuelva a intentar pulsar el bot\u00f3n DETECT de nuevo.",
+            "es": "No se ha podido encontrar la partici\u00f3n.\nPulse DOS veces el bot\u00f3n RST\n\ny vuelva a intentar pulsar el bot\u00f3n DETECT de nuevo.",
             "fr": "Impossible de trouver la partition.\nAppuyez deux fois sur le bouton RST\npuis r\u00e9essayez d'appuyer sur le bouton DETECT.",
             "it": "Impossibile trovare la partizione.\nPremere due volte il pulsante RST\npoi prova di nuovo a premere il pulsante DETECT.",
             "ja": "\u30d1\u30fc\u30c6\u30a3\u30b7\u30e7\u30f3\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002\nRST\u30dc\u30bf\u30f3\u30922\u56de\u62bc\u3057\u3066\u304f\u3060\u3055\u3044\u3002\nDETECT\u30dc\u30bf\u30f3\u3092\u3082\u3046\u4e00\u5ea6\u62bc\u3057\u3066\u307f\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Nie mo\u017cna znale\u017a\u0107 partycji.\nNaci\u015bnij dwukrotnie przycisk RST\na nast\u0119pnie ponownie spr\u00f3buj nacisn\u0105\u0107 przycisk DETECT.",
             "ru": "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043d\u0430\u0439\u0442\u0438 \u0440\u0430\u0437\u0434\u0435\u043b.\n\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 RST \u0414\u0412\u0410 \u0440\u0430\u0437\u0430\n\u0437\u0430\u0442\u0435\u043c \u043f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443 \u043d\u0430\u0436\u0430\u0442\u0438\u044f \u043a\u043d\u043e\u043f\u043a\u0438 DETECT.",
-            "zh": "\u65e0\u6cd5\u627e\u5230\u5206\u533a\u3002"
+            "zh": "\u65e0\u6cd5\u627e\u5230\u5206\u533a\u3002\n\u8bf7\u6309\u4e24\u6b21\u590d\u4f4d\u6309\u94ae\n\n\u7136\u540e\u6309\u201c\u68c0\u6d4b\u201d\u6309\u94ae\u518d\u8bd5\u4e00\u6b21\u3002"
         }
     },
     "debug_log_enabled": {
         "description": {
             "de": "Standardm\u00e4\u00dfig wird die Protokollierung ausgeschaltet, sobald ein API-Client eine Verbindung herstellt (um die gemeinsame serielle Verbindung nicht zu \u00fcberlasten). Setzen Sie diesen Wert auf true, damit das Debug-Protokoll auch dann ausgegeben wird, wenn die API aktiv ist.",
             "en": "By default logging is turned off as soon as an API client connects (to keep shared serial link quiet). Set this to true to leave the debug log outputting even when API is active.",
-            "es": "Por defecto, el registro se desactiva en cuanto se conecta un cliente de la API (para mantener el enlace serie compartido en silencio). Establezca este valor en true para dejar la salida del registro de depuraci\u00f3n incluso cuando la API est\u00e9 activa.",
+            "es": "Por defecto, el registro se desactiva en cuanto se conecta un cliente de la API (para mantener el enlace serie compartido en silencio). Establezca este valor en True para dejar la salida del registro de depuraci\u00f3n incluso cuando la API est\u00e9 activa.",
             "fr": "Par d\u00e9faut, la journalisation est d\u00e9sactiv\u00e9e d\u00e8s qu'un client API se connecte (pour que la liaison s\u00e9rie partag\u00e9e reste silencieuse). D\u00e9finissez cette valeur sur true pour laisser le journal de d\u00e9bogage en sortie m\u00eame lorsque l'API est active.",
             "it": "Di default il log viene spento non appena un client API si connette (per mantenere tranquillo il collegamento seriale condiviso). Impostatelo a true per lasciare il log di debug in uscita anche quando l'API \u00e8 attiva.",
             "ja": "\u30c7\u30d5\u30a9\u30eb\u30c8\u3067\u306f\u3001API\u30af\u30e9\u30a4\u30a2\u30f3\u30c8\u304c\u63a5\u7d9a\u3059\u308b\u3068\u3059\u3050\u306b\u30ed\u30ae\u30f3\u30b0\u304c\u30aa\u30d5\u306b\u306a\u308a\u307e\u3059(\u5171\u6709\u30b7\u30ea\u30a2\u30eb\u30ea\u30f3\u30af\u3092\u9759\u304b\u306b\u4fdd\u3064\u305f\u3081)\u3002\u3053\u308c\u3092true\u306b\u8a2d\u5b9a\u3059\u308b\u3068\u3001API\u304c\u30a2\u30af\u30c6\u30a3\u30d6\u306a\u72b6\u614b\u3067\u3082\u30c7\u30d0\u30c3\u30b0\u30ed\u30b0\u3092\u51fa\u529b\u3057\u7d9a\u3051\u307e\u3059\u3002",
@@ -539,7 +539,7 @@
         "label": {
             "de": "Debug-Protokoll aktiviert?",
             "en": "Debug Log Enabled?",
-            "es": "\u00bfRegistro de depuraci\u00f3n activado?",
+            "es": "\u00bfActivar registro de depuraci\u00f3n?",
             "fr": "Le journal de d\u00e9bogage est activ\u00e9 ?",
             "it": "Registro di debug abilitato?",
             "ja": "Debug Log Enabled?",
@@ -591,7 +591,7 @@
         "text": {
             "de": "Die Ger\u00e4tekonfiguration wird in einer Datei gesichert.",
             "en": "Device configuration backed up to file.",
-            "es": "La configuraci\u00f3n del dispositivo se ha guardado en un archivo.",
+            "es": "La configuraci\u00f3n del dispositivo se ha guardado en el archivo.",
             "fr": "La configuration du dispositif est sauvegard\u00e9e dans un fichier.",
             "it": "La configurazione del dispositivo \u00e8 stata salvata su file.",
             "ja": "\u6a5f\u5668\u69cb\u6210\u3092\u30d5\u30a1\u30a4\u30eb\u306b\u30d0\u30c3\u30af\u30a2\u30c3\u30d7\u3002",
@@ -617,7 +617,7 @@
         "text": {
             "de": "Verf\u00fcgt das Ger\u00e4t derzeit \u00fcber Meshtastic Version 1.2 oder neuer?",
             "en": "Does the device currently have Meshtastic version 1.2 or newer?",
-            "es": "\u00bfEl dispositivo tiene actualmente la versi\u00f3n 1.2 o m\u00e1s reciente de Meshtastic?",
+            "es": "\u00bfEl dispositivo tiene actualmente la versi\u00f3n 1.2 o posterior de Meshtastic?",
             "fr": "L'appareil dispose-t-il actuellement de Meshtastic version 1.2 ou plus r\u00e9cente ?",
             "it": "Il dispositivo possiede la versione Meshtastic 1.2 o pi\u00f9 recente?",
             "ja": "\u73fe\u5728\u3001Meshtastic\u306e\u30d0\u30fc\u30b8\u30e7\u30f31.2\u4ee5\u964d\u3092\u642d\u8f09\u3057\u3066\u3044\u308b\u7aef\u672b\u3067\u3057\u3087\u3046\u304b\uff1f",
@@ -680,26 +680,26 @@
         "text": {
             "de": "Das Ger\u00e4t wurde zur\u00fcckgesetzt. Trennen Sie das Ger\u00e4t vom Stromnetz und schlie\u00dfen Sie es erneut an oder\n\ndr\u00fccken Sie die RESET-Taste.\n\nDieses Fenster wird nun geschlossen.",
             "en": "The device was reset. May want to unplug and re-plugin the device or\n\npress the RESET button.\n\nThe Settings form will now close.",
-            "es": "El dispositivo se ha reiniciado. Puede querer desconectar y volver a conectar el dispositivo o\n\npulsar el bot\u00f3n RESET.\n\nAhora se cerrar\u00e1 el formulario de configuraci\u00f3n.",
+            "es": "El dispositivo se ha reiniciado. Puede desconectar y volver a conectar el dispositivo o\n\n\npulsar el bot\u00f3n RESET.\n\n\n\nAhora se cerrar\u00e1 el formulario de configuraci\u00f3n.",
             "fr": "L'appareil a \u00e9t\u00e9 r\u00e9initialis\u00e9. Vous pouvez d\u00e9brancher et rebrancher l'appareil ou...\n\nappuyer sur le bouton RESET.\n\nLe formulaire Param\u00e8tres se ferme maintenant.",
             "it": "Il dispositivo \u00e8 stato resettato. E' possibile scollegare e ricollegare il dispositivo o\n\npremere il pulsante RESET.\n\nIl modulo Impostazioni ora si chiuder\u00e0.",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u304c\u30ea\u30bb\u30c3\u30c8\u3055\u308c\u307e\u3057\u305f\u3002\u30c7\u30d0\u30a4\u30b9\u306e\u30d7\u30e9\u30b0\u3092\u629c\u304d\u3001\u518d\u5ea6\u63a5\u7d9a\u3059\u308b\u3053\u3068\u3092\u304a\u52e7\u3081\u3057\u307e\u3059\u3002\n\nRESET\u30dc\u30bf\u30f3\u3092\u62bc\u3059\u3002\n\n\u3053\u308c\u3067\u8a2d\u5b9a\u30d5\u30a9\u30fc\u30e0\u304c\u9589\u3058\u3089\u308c\u307e\u3059\u3002",
             "pl": "Urz\u0105dzenie zosta\u0142o zresetowane. Mo\u017ce by\u0107 konieczne od\u0142\u0105czenie i ponowne pod\u0142\u0105czenie urz\u0105dzenia lub\n\nnacisn\u0105\u0107 przycisk RESET.\n\nFormularz Ustawienia zostanie teraz zamkni\u0119ty.",
             "ru": "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0431\u044b\u043b\u043e \u043f\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d\u043e. \u041c\u043e\u0436\u0435\u0442 \u043f\u043e\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0438 \u0441\u043d\u043e\u0432\u0430 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0438\u043b\u0438\n\n\u043d\u0430\u0436\u0430\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0443 RESET.\n\n\u0424\u043e\u0440\u043c\u0430 \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0437\u0430\u043a\u0440\u043e\u0435\u0442\u0441\u044f.",
-            "zh": "\u8bbe\u5907\u88ab\u91cd\u7f6e\u4e86\u3002\u53ef\u80fd\u8981\u62d4\u6389\u5e76\u91cd\u65b0\u63d2\u4e0a\uff0c\u6216"
+            "zh": "\u8bbe\u5907\u88ab\u91cd\u7f6e\u4e86\u3002\u53ef\u80fd\u8981\u62d4\u6389\u5e76\u91cd\u65b0\u63d2\u4e0a\uff0c\u6216\n\n\n\u6309\u91cd\u7f6e\u6309\u94ae\u3002\n\n\n\n\u8bbe\u7f6e\u9875\u9762\u5c06\u4f1a\u5173\u95ed\u3002"
         }
     },
     "done_updating_bootloader": {
         "text": {
             "de": "Die Aktualisierung des Bootloaders ist abgeschlossen.\nJetzt k\u00f6nnen Sie die Meshtastic-Firmware zu flashen.",
             "en": "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware.",
-            "es": "Terminada la actualizaci\u00f3n del bootloader.\nAhora est\u00e1 listo para flashear con el firmware Meshtastic.",
+            "es": "Terminada la actualizaci\u00f3n del bootloader.\nAhora est\u00e1 preparado para flashear con el firmware Meshtastic.",
             "fr": "Termin\u00e9 la mise \u00e0 jour du bootloader.\nMaintenant vous \u00eates pr\u00eat \u00e0 Flash avec le firmware Meshtastic.",
             "it": "Fatto l'aggiornamento del bootloader.\nOra siete pronti a flashare con il firmware Meshtastic.",
             "ja": "\u30d6\u30fc\u30c8\u30ed\u30fc\u30c0\u30fc\u306e\u30a2\u30c3\u30d7\u30c7\u30fc\u30c8\u304c\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\n\u3053\u308c\u3067Meshtastic\u30d5\u30a1\u30fc\u30e0\u30a6\u30a7\u30a2\u3067\u30d5\u30e9\u30c3\u30b7\u30e5\u3059\u308b\u6e96\u5099\u304c\u6574\u3044\u307e\u3057\u305f\u3002",
             "pl": "Zako\u0144czono aktualizacj\u0119 bootloadera.\nTeraz jeste\u015b gotowy do Flashowania firmware Meshtastic.",
             "ru": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u0433\u0440\u0443\u0437\u0447\u0438\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e.\n\u0422\u0435\u043f\u0435\u0440\u044c \u0432\u044b \u0433\u043e\u0442\u043e\u0432\u044b \u043a \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0435 \u043c\u0438\u043a\u0440\u043e\u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u043e\u0439 Meshtastic.",
-            "zh": "\u5b8c\u6210\u4e86\u5f15\u5bfc\u7a0b\u5e8f\u66f4\u65b0\u3002"
+            "zh": "\u5b8c\u6210\u4e86\u5f15\u5bfc\u7a0b\u5e8f\u66f4\u65b0\u3002\n\u73b0\u53ef\u5237\u5165 Meshtastic \u56fa\u4ef6\u3002"
         }
     },
     "downlink_enabled": {
@@ -717,7 +717,7 @@
         "label": {
             "de": "Downlink Aktiviert?",
             "en": "Downlink Enabled?",
-            "es": "\u00bfEnlace descendente habilitado?",
+            "es": "\u00bfHabilitar enlace descendente?",
             "fr": "Liaison descendante activ\u00e9e ?",
             "it": "Downlink abilitato?",
             "ja": "Downlink Enabled?",
@@ -781,7 +781,7 @@
         "description": {
             "de": "L\u00f6sen Sie die Benachrichtigung nur aus, wenn das ASCII-Zeichen \"Glocke\" in der Nachricht enthalten ist.",
             "en": "Only trigger the notification if the ASCII bell character is in the message.",
-            "es": "S\u00f3lo se activa la notificaci\u00f3n si el car\u00e1cter de campana ASCII est\u00e1 en el mensaje.",
+            "es": "S\u00f3lo se activa la notificaci\u00f3n si el car\u00e1cter de tono de aviso ASCII est\u00e1 en el mensaje.",
             "fr": "Ne d\u00e9clenche la notification que si le caract\u00e8re de cloche ASCII se trouve dans le message.",
             "it": "Attiva la notifica solo se il carattere ASCII bell \u00e8 nel messaggio.",
             "ja": "\u30e1\u30c3\u30bb\u30fc\u30b8\u5185\u306bASCII\u30d9\u30eb\u6587\u5b57\u304c\u3042\u308b\u5834\u5408\u306e\u307f\u3001\u901a\u77e5\u3092\u30c8\u30ea\u30ac\u30fc\u3057\u307e\u3059\u3002",
@@ -792,7 +792,7 @@
         "label": {
             "de": "Benachrichtigung mit Glocke?",
             "en": "Alert Bell?",
-            "es": "\u00bfAlerta de campana?",
+            "es": "\u00bfTono de aviso?",
             "fr": "La cloche d'alerte ?",
             "it": "Campanello d'allarme?",
             "ja": "\u8b66\u5831\u30d9\u30eb\uff1f",
@@ -840,7 +840,7 @@
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?",
+            "es": "\u00bfActivar?",
             "fr": "Activ\u00e9 ?",
             "it": "Abilitato?",
             "ja": "\u6709\u52b9\u5316\uff1f",
@@ -933,7 +933,7 @@
             "ja": "\u30d5\u30a1\u30a4\u30eb\u304c\u30b3\u30d4\u30fc\u3055\u308c\u307e\u3057\u305f\u3002\n\u30c7\u30d0\u30a4\u30b9\u306e\u518d\u8d77\u52d5\u3092\u5f85\u3061\u307e\u3059\u3002",
             "pl": "Plik zosta\u0142 skopiowany.\nZaczekaj na ponowne uruchomienie urz\u0105dzenia.",
             "ru": "\u0424\u0430\u0439\u043b \u0431\u044b\u043b \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d.\n\u041f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435, \u043f\u043e\u043a\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u043f\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0441\u044f.",
-            "zh": "\u6587\u4ef6\u5df2\u590d\u5236\u3002"
+            "zh": "\u6587\u4ef6\u5df2\u590d\u5236\u3002\n\u7b49\u5f85\u8bbe\u5907\u91cd\u65b0\u542f\u52a8\u3002"
         }
     },
     "fixed_position": {
@@ -1092,7 +1092,7 @@
         "text": {
             "de": "Breiten- und L\u00e4ngengrad \u00fcber Ihre IP abrufen",
             "en": "Get Lat/Lon using your IP",
-            "es": "Obtenga el Lat/Lon usando su IP",
+            "es": "Obtenga la Lat/Lon usando su IP",
             "fr": "Obtenir Lat/Lon en utilisant votre IP",
             "it": "Ottieni Lat/Lon usando il tuo IP",
             "ja": "IP\u3092\u5229\u7528\u3057\u305f\u7def\u5ea6\u30fb\u7d4c\u5ea6\u306e\u53d6\u5f97",
@@ -1301,13 +1301,13 @@
         "text": {
             "de": "A - Erweiterte Optionen\nD - Erkennen\nG - Versionen erhalten\nH - Hotkeys\nS - Einstellungen\nT - Tipps\n Q - Beenden",
             "en": "A - Advanced options\nD - Detect\nG - Get versions\nH - Hotkeys\nS - Settings\nT - Tips\n Q - Quit",
-            "es": "A - Opciones avanzadas\nD - Detectar\nG - Obtener versiones\nH - Teclas de acceso r\u00e1pido\nS - Ajustes\nT - Consejos\n Q - Abandonar",
+            "es": "A - Opciones avanzadas\nD - Detectar\n\nG - Obtener versiones\n\nH - Teclas de acceso r\u00e1pido\n\nS - Ajustes\n\nT - Consejos\n\n Q - Salir",
             "fr": "A - Options avanc\u00e9es\nD - D\u00e9tecter\nG - Obtenir des versions\nH - Touches de raccourci\nS - Param\u00e8tres\nT - Conseils\n Q - Quitter",
             "it": "A - Opzioni avanzate\nD - Rilevare\nG - Ottieni versioni\nH - Tasti di scelta rapida\nS - Impostazioni\nT - Suggerimenti\n Q - Abbandono",
             "ja": "A - \u8a73\u7d30\u30aa\u30d7\u30b7\u30e7\u30f3\nD - \u691c\u51fa\nG - \u30d0\u30fc\u30b8\u30e7\u30f3\u53d6\u5f97\nH - \u30db\u30c3\u30c8\u30ad\u30fc\nS - \u8a2d\u5b9a\nT - \u30c1\u30c3\u30d7\n Q - \u7d42\u4e86\u3059\u308b",
             "pl": "A - Opcje zaawansowane\nD - Wykryj\nG - Uzyskaj wersje\nH - Klawisze skr\u00f3t\u00f3w\nS - Ustawienia\nT - Porady\n Q - Zako\u0144cz",
             "ru": "A - \u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b\nD - \u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0438\u0442\u044c\nG - \u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0432\u0435\u0440\u0441\u0438\u0438\nH - \u0413\u043e\u0440\u044f\u0447\u0438\u0435 \u043a\u043b\u0430\u0432\u0438\u0448\u0438\nS - \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438\nT - \u0421\u043e\u0432\u0435\u0442\u044b\n Q - \u0412\u044b\u0445\u043e\u0434",
-            "zh": "A - \u9ad8\u7ea7\u9009\u9879"
+            "zh": "A - \u9ad8\u7ea7\u9009\u9879\nD - \u68c0\u6d4b\n\nG - \u83b7\u53d6\u7248\u672c\n\nH - \u5feb\u6377\u952e\n\nS - \u8bbe\u7f6e\n\nT - \u63d0\u793a\n\n Q - \u9000\u51fa"
         }
     },
     "hw_model": {
@@ -1362,7 +1362,7 @@
         "label": {
             "de": "Ist immer mit Strom versorgt?",
             "en": "Is Always Powered?",
-            "es": "\u00bfSiempre tiene energ\u00eda?",
+            "es": "\u00bfSiempre est\u00e1 alimentada?",
             "fr": "Est-il toujours aliment\u00e9 ?",
             "it": "\u00c8 sempre alimentato?",
             "ja": "\u5e38\u6642\u7d66\u96fb\u306f\u53ef\u80fd\u304b\uff1f",
@@ -1375,7 +1375,7 @@
         "description": {
             "de": "Wenn dieser Benutzer ein lizenzierter Funkamateur ist, setzen Sie dieses Flag. Au\u00dferdem muss dann \"long_name\" das Rufzeichen sein.",
             "en": "If this user is a licensed operator, set this flag. Also, 'long_name' should be their licence number.",
-            "es": "Si este usuario es un operador con licencia, establezca esta bandera. Adem\u00e1s, 'nombre_largo' debe ser su n\u00famero de licencia.",
+            "es": "Si este usuario es un operador con licencia, establezca esta bandera. Adem\u00e1s, 'nombre_largo' debe ser su n\u00famero de licencia o indicativo.",
             "fr": "Si cet utilisateur est un op\u00e9rateur sous licence, activez ce drapeau. En outre, le nom long doit \u00eatre le num\u00e9ro de la licence.",
             "it": "Se questo utente \u00e8 un operatore con licenza, imposta questo flag. Inoltre, 'long_name' dovrebbe essere il loro numero di licenza.",
             "ja": "\u3053\u306e\u30e6\u30fc\u30b6\u304c\u514d\u8a31\u3092\u6301\u3063\u305f\u30aa\u30da\u30ec\u30fc\u30bf\u3067\u3042\u308b\u5834\u5408\u3001\u3053\u306e\u30d5\u30e9\u30b0\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\u307e\u305f\u3001'long_name' \u306f\u514d\u8a31\u8a3c\u756a\u53f7\u3067\u306a\u3051\u308c\u3070\u306a\u308a\u307e\u305b\u3093\u3002",
@@ -1458,7 +1458,7 @@
         "label": {
             "de": "Strom sparen?",
             "en": "Is Power Saving?",
-            "es": "\u00bfEs el ahorro de energ\u00eda?",
+            "es": "\u00bfAhorro de energ\u00eda?",
             "fr": "Est-ce que Power Saving ?",
             "it": "\u00c8 il risparmio energetico?",
             "ja": "\u30d1\u30ef\u30fc\u30bb\u30fc\u30d6\u306f\u53ef\u80fd\u3067\u3059\u304b\uff1f",
@@ -1482,7 +1482,7 @@
         "label": {
             "de": "Router-Mode?",
             "en": "Is Router?",
-            "es": "\u00bfEs el router?",
+            "es": "\u00bfEs un router?",
             "fr": "Is Router?",
             "it": "\u00c8 Router?",
             "ja": "\u30eb\u30fc\u30bf\u30fc\u3067\u3059\u304b\uff1f",
@@ -1545,7 +1545,7 @@
         "description": {
             "de": "Wie der Standort mit anderen Knoten (oder dem lokalen Telefon) geteilt wird.",
             "en": "How location is shared with other nodes (or the local phone).",
-            "es": "C\u00f3mo se comparte la ubicaci\u00f3n con otros nodos (o el tel\u00e9fono local).",
+            "es": "C\u00f3mo se comparte la ubicaci\u00f3n con otros nodos (o el tel\u00e9fono m\u00f3vil).",
             "fr": "Comment la localisation est partag\u00e9e avec les autres n\u0153uds (ou le t\u00e9l\u00e9phone local).",
             "it": "Come la posizione \u00e8 condivisa con altri nodi (o con il telefono locale).",
             "ja": "\u4f4d\u7f6e\u60c5\u5831\u304c\u4ed6\u306e\u30ce\u30fc\u30c9\uff08\u307e\u305f\u306f\u30ed\u30fc\u30ab\u30eb\u96fb\u8a71\uff09\u3068\u3069\u306e\u3088\u3046\u306b\u5171\u6709\u3055\u308c\u308b\u304b\u3002",
@@ -1593,7 +1593,7 @@
         "description": {
             "de": "Vollst\u00e4ndiger Name des Ger\u00e4ts. Wenn \"is_licensed\" aktiviert ist, sollte dieser Wert das Rufzeichen sein.",
             "en": "Full name for the device. If 'is_licensed' is enabled, this value should be the Ham license number.",
-            "es": "Nombre completo del dispositivo. Si 'is_licensed' est\u00e1 activado, este valor debe ser el n\u00famero de licencia de Ham.",
+            "es": "Nombre completo del dispositivo. Si 'is_licensed' est\u00e1 activado, este valor debe ser el indicativo de radioaficionado.",
             "fr": "Nom complet de l'appareil. Si l'option \"is_licensed\" est activ\u00e9e, cette valeur doit \u00eatre le num\u00e9ro de licence du Ham.",
             "it": "Nome completo del dispositivo. Se 'is_licensed' \u00e8 abilitato, questo valore dovrebbe essere il numero di licenza di Ham.",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u306e\u30d5\u30eb\u30cd\u30fc\u30e0\u3002is_licensed' \u304c\u6709\u52b9\u306a\u5834\u5408\u3001\u3053\u306e\u5024\u306f Ham \u306e\u30e9\u30a4\u30bb\u30f3\u30b9\u756a\u53f7\u3067\u3042\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002",
@@ -1618,7 +1618,7 @@
         "description": {
             "de": "Der Ruhezustand (LS) ist eine Option des Energieverwaltungssystems. Siehe Energieverwaltung f\u00fcr weitere Einzelheiten. 0 f\u00fcr den Standardwert von 3600 Sekunden (oder 1 Stunde).",
             "en": "Light sleep (LS) is a power management state machine option. See power management for details. 0 for default of 3600 seconds (or 1 hour).",
-            "es": "La suspensi\u00f3n ligera (LS) es una opci\u00f3n de la m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Consulte la gesti\u00f3n de la energ\u00eda para obtener m\u00e1s detalles. 0 para el valor por defecto de 3600 segundos (o 1 hora).",
+            "es": "El sue\u00f1o ligero (LS) es una opci\u00f3n de la m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Consulte la gesti\u00f3n de la energ\u00eda para obtener m\u00e1s detalles. 0 para el valor por defecto de 3600 segundos (o 1 hora).",
             "fr": "Le sommeil l\u00e9ger (LS) est une option de la machine d'\u00e9tat de gestion de l'\u00e9nergie. Voir la gestion de l'\u00e9nergie pour plus de d\u00e9tails. 0 pour la valeur par d\u00e9faut de 3600 secondes (ou 1 heure).",
             "it": "Light sleep (LS) \u00e8 un'opzione della macchina di stato per la gestione dell'energia. Vedi gestione energetica per i dettagli. 0 per l'impostazione predefinita di 3600 secondi (o 1 ora).",
             "ja": "\u30e9\u30a4\u30c8\u30b9\u30ea\u30fc\u30d7\uff08LS\uff09\u306f\u3001\u30d1\u30ef\u30fc\u30de\u30cd\u30b8\u30e1\u30f3\u30c8\u306e\u30b9\u30c6\u30fc\u30c8\u30de\u30b7\u30f3\u30fb\u30aa\u30d7\u30b7\u30e7\u30f3\u3067\u3059\u3002\u8a73\u7d30\u306f\u30d1\u30ef\u30fc\u30de\u30cd\u30fc\u30b8\u30e1\u30f3\u30c8\u3092\u53c2\u7167\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u30c7\u30d5\u30a9\u30eb\u30c8\u306e3600\u79d2\uff08\u307e\u305f\u306f1\u6642\u9593\uff09\u306b\u306f0\u3092\u6307\u5b9a\u3057\u307e\u3059\u3002",
@@ -1740,7 +1740,7 @@
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr den Standardwert von 10 Sekunden.",
             "en": "Power management state machine option. See power management for details. 0 for default of 10 seconds.",
-            "es": "Opci\u00f3n de m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Ver gesti\u00f3n de energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 10 segundos.",
+            "es": "Opci\u00f3n estado de gesti\u00f3n de la energ\u00eda. Ver gesti\u00f3n de la energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 10 segundos.",
             "fr": "Option de machine d'\u00e9tat de gestion de l'alimentation. Voir la gestion de l'alimentation pour plus de d\u00e9tails. 0 pour une valeur par d\u00e9faut de 10 secondes.",
             "it": "Opzione della macchina di stato per la gestione dell'energia. Vedere gestione dell'alimentazione per i dettagli. 0 per l'impostazione predefinita di 10 secondi.",
             "ja": "\u30d1\u30ef\u30fc\u30de\u30cd\u30b8\u30e1\u30f3\u30c8\u306e\u30b9\u30c6\u30fc\u30c8\u30de\u30b7\u30f3\u30fb\u30aa\u30d7\u30b7\u30e7\u30f3\u3002\u8a73\u7d30\u306f\u30d1\u30ef\u30fc\u30de\u30cd\u30fc\u30b8\u30e1\u30f3\u30c8\u3092\u53c2\u7167\u3057\u3066\u304f\u3060\u3055\u3044\u30020\u3067\u30c7\u30d5\u30a9\u30eb\u30c8\u306e10\u79d2\u306b\u306a\u308a\u307e\u3059\u3002",
@@ -1838,7 +1838,7 @@
         "label": {
             "de": "MQTT Deaktiviert?",
             "en": "MQTT Disabled?",
-            "es": "\u00bfMQTT deshabilitado?",
+            "es": "\u00bfDeshabilitar MQTT?",
             "fr": "MQTT d\u00e9sactiv\u00e9 ?",
             "it": "MQTT disattivato?",
             "ja": "MQTT\u7121\u52b9\u5316\uff1f",
@@ -1862,7 +1862,7 @@
         "label": {
             "de": "Ist die MQTT-Verschl\u00fcsselung aktiviert?",
             "en": "MQTT Encryption Enabled?",
-            "es": "\u00bfEncriptaci\u00f3n MQTT habilitada?",
+            "es": "\u00bfHabilitar la Encriptaci\u00f3n MQTT?",
             "fr": "Cryptage MQTT activ\u00e9 ?",
             "it": "Crittografia MQTT abilitata?",
             "ja": "MQTT\u6697\u53f7\u5316\u6a5f\u80fd\u3092\u6709\u52b9\u306b\u3057\u307e\u3059\u304b\uff1f",
@@ -1950,7 +1950,7 @@
         "description": {
             "de": "Ein kurzer Name, der in die URL eingef\u00fcgt wird. Weniger als 12 Bytes. Dieses Feld ist nur editierbar, wenn der vorherige Kanal einen Namen hat. Es gibt spezielle Kanalnamen wie \"admin\" (f\u00fcr die Fernverwaltung) und \"gpio\" (f\u00fcr die Fernabfrage/-manipulation von gpio).",
             "en": "A short name that will be packed into the URL. Less than 12 bytes. This field will only be editable if the prior channel has a name. There are special channel names like 'admin' (for remote management) and 'gpio' (for remote gpio query/manipulation).",
-            "es": "Un nombre corto que se incluir\u00e1 en la URL. Menos de 12 bytes. Este campo s\u00f3lo ser\u00e1 editable si el canal anterior tiene un nombre. Hay nombres de canales especiales como 'admin' (para la gesti\u00f3n remota) y 'gpio' (para la consulta/manipulaci\u00f3n remota de gpio).",
+            "es": "Un nombre corto se incluir\u00e1 en la URL. Menos de 12 bytes. Este campo s\u00f3lo ser\u00e1 editable si el canal anterior tiene un nombre. Hay nombres de canales especiales como 'admin' (para la gesti\u00f3n remota) y 'gpio' (para la consulta/manipulaci\u00f3n remota de gpio).",
             "fr": "Un nom court qui sera int\u00e9gr\u00e9 dans l'URL. Moins de 12 octets. Ce champ ne sera modifiable que si le canal pr\u00e9c\u00e9dent a un nom. Il existe des noms de canaux sp\u00e9ciaux comme 'admin' (pour la gestion \u00e0 distance) et 'gpio' (pour l'interrogation/manipulation \u00e0 distance de gpio).",
             "it": "Un nome breve che sar\u00e0 impacchettato nell'URL. Meno di 12 byte. Questo campo sar\u00e0 modificabile solo se il canale precedente ha un nome. Ci sono nomi di canali speciali come 'admin' (per la gestione remota) e 'gpio' (per l'interrogazione/manipolazione remota di gpio).",
             "ja": "URL\u306b\u30d1\u30c3\u30af\u3055\u308c\u308b\u77ed\u3044\u540d\u524d\u300212\u30d0\u30a4\u30c8\u4ee5\u4e0b\u3002\u3053\u306e\u30d5\u30a3\u30fc\u30eb\u30c9\u306f\u3001\u5148\u884c\u3059\u308b\u30c1\u30e3\u30f3\u30cd\u30eb\u306b\u540d\u524d\u304c\u3042\u308b\u5834\u5408\u306b\u306e\u307f\u7de8\u96c6\u53ef\u80fd\u3067\u3059\u3002admin' (\u30ea\u30e2\u30fc\u30c8\u7ba1\u7406\u7528) \u3084 'gpio' (\u30ea\u30e2\u30fc\u30c8 gpio \u30af\u30a8\u30ea/\u30de\u30cb\u30d4\u30e5\u30ec\u30fc\u30b7\u30e7\u30f3\u7528) \u306e\u3088\u3046\u306a\u7279\u5225\u306a\u30c1\u30e3\u30f3\u30cd\u30eb\u540d\u304c\u3042\u308a\u307e\u3059\u3002",
@@ -1974,13 +1974,13 @@
         "text": {
             "de": "Es wurden keine Ger\u00e4te gefunden.\n\nVerwenden Sie ein datenf\u00e4higes Kabel?\n\nM\u00fcssen Sie einen Ger\u00e4tetreiber installieren?\n\nSchlie\u00dfen Sie ein Ger\u00e4t an?",
             "en": "No devices were detected.\n\nAre you using a data cable?\n\nDo you need to have a device driver installed?\n\nPlugin a device?",
-            "es": "No se ha detectado ning\u00fan dispositivo.\n\n\u00bfEst\u00e1 utilizando un cable de datos?\n\n\u00bfNecesita tener instalado un controlador de dispositivo?\n\n\u00bfConectar un dispositivo?",
+            "es": "No se ha detectado ning\u00fan dispositivo.\n\n\n\u00bfEst\u00e1s utilizando un cable de datos?\n\n\n\n\u00bfNecesitas tener instalado un controlador de dispositivo?\n\n\n\n\u00bfConectar un dispositivo?",
             "fr": "Aucun dispositif n'a \u00e9t\u00e9 d\u00e9tect\u00e9.\n\nUtilisez-vous un c\u00e2ble de donn\u00e9es ?\n\nAvez-vous besoin d'installer un pilote de p\u00e9riph\u00e9rique ?\n\nBrancher un p\u00e9riph\u00e9rique ?",
             "it": "Nessun dispositivo \u00e8 stato rilevato.\n\nStai usando un cavo dati?\n\nHai bisogno di un driver di dispositivo installato?\n\nCollegare un dispositivo?",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u306f\u691c\u51fa\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\n\n\u30c7\u30fc\u30bf\u901a\u4fe1\u30b1\u30fc\u30d6\u30eb\u3092\u4f7f\u7528\u3057\u3066\u3044\u307e\u3059\u304b\uff1f\n\n\u30c7\u30d0\u30a4\u30b9\u30c9\u30e9\u30a4\u30d0\u30fc\u306e\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u306f\u5fc5\u8981\u3067\u3059\u304b\uff1f\n\n\u30c7\u30d0\u30a4\u30b9\u3092\u30d7\u30e9\u30b0\u30a4\u30f3\u3059\u308b\uff1f",
             "pl": "Nie wykryto \u017cadnych urz\u0105dze\u0144.\n\nCzy u\u017cywasz kabla do transmisji danych?\n\nCzy trzeba zainstalowa\u0107 sterownik urz\u0105dzenia?\n\nPod\u0142\u0105czy\u0107 urz\u0105dzenie?",
             "ru": "\u041d\u0438\u043a\u0430\u043a\u0438\u0445 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432 \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u043e \u043d\u0435 \u0431\u044b\u043b\u043e.\n\n\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0435 \u043b\u0438 \u0432\u044b \u043a\u0430\u0431\u0435\u043b\u044c \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0438 \u0434\u0430\u043d\u043d\u044b\u0445?\n\n\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u044c \u0434\u0440\u0430\u0439\u0432\u0435\u0440 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430?\n\n\u041f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e?",
-            "zh": "\u6ca1\u6709\u68c0\u6d4b\u5230\u4efb\u4f55\u8bbe\u5907\u3002"
+            "zh": "\u6ca1\u6709\u68c0\u6d4b\u5230\u4efb\u4f55\u8bbe\u5907\u3002\n\n\n\u4f60\u662f\u5426\u4f7f\u7528\u4e86\u201c\u6570\u636e\u201d\u7ebf\uff1f\n\n\n\n\u5b89\u88c5\u4e86\u8bbe\u5907\u9a71\u52a8\u7a0b\u5e8f\u5417\uff1f\n\n\n\n\u63d2\u5165\u4e00\u4e2a\u8bbe\u5907\uff1f"
         }
     },
     "note_all_settings_will_be_erased": {
@@ -2013,20 +2013,20 @@
         "text": {
             "de": "NRF-Ger\u00e4t erkannt.\n\nDr\u00fccken Sie zweimal die Taste RST und klicken Sie dann erneut auf die Taste DETECT.",
             "en": "NRF device detected.\n\nPress RST button twice then click DETECT button again.",
-            "es": "Dispositivo NRF detectado.\n\nPulse dos veces el bot\u00f3n RST y luego vuelva a pulsar el bot\u00f3n DETECT.",
+            "es": "Dispositivo NRF detectado.\n\n\nPulse dos veces el bot\u00f3n RST y luego vuelva a pulsar el bot\u00f3n DETECT.",
             "fr": "Dispositif NRF d\u00e9tect\u00e9.\n\nAppuyez deux fois sur le bouton RST puis cliquez \u00e0 nouveau sur le bouton DETECT.",
             "it": "Rilevato dispositivo NRF.\n\nPremi due volte il pulsante RST e poi clicca nuovamente sul pulsante DETECT.",
             "ja": "NRF\u30c7\u30d0\u30a4\u30b9\u3092\u691c\u51fa\u3057\u307e\u3057\u305f\u3002\n\nRST\u30dc\u30bf\u30f3\u30922\u56de\u62bc\u3057\u3001\u518d\u5ea6DETECT\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Wykryto urz\u0105dzenie NRF.\n\nNaci\u015bnij dwukrotnie przycisk RST, a nast\u0119pnie ponownie kliknij przycisk DETECT.",
             "ru": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e NRF.\n\n\u0414\u0432\u0430\u0436\u0434\u044b \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 RST, \u0437\u0430\u0442\u0435\u043c \u0441\u043d\u043e\u0432\u0430 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 DETECT.",
-            "zh": "\u68c0\u6d4b\u5230 NRF \u8bbe\u5907\u3002"
+            "zh": "\u68c0\u6d4b\u5230 NRF \u8bbe\u5907\u3002\n\n\n\u6309\u4e24\u6b21\u91cd\u7f6e\u6309\u94ae\uff0c\u7136\u540e\u518d\u6b21\u70b9\u51fb\u201c\u68c0\u6d4b\u201d\u6309\u94ae\u3002"
         }
     },
     "on_battery_shutdown_after_secs": {
         "description": {
             "de": "Wenn dieser Wert nicht Null ist, schaltet sich das Ger\u00e4t so viele Sekunden nach dem Abschalten der externen Stromversorgung vollst\u00e4ndig ab.",
             "en": "If non-zero, the device will fully power off this many seconds after external power is removed.",
-            "es": "Si es distinto de cero, el dispositivo se apagar\u00e1 por completo esta cantidad de segundos despu\u00e9s de quitar la alimentaci\u00f3n externa.",
+            "es": "Si no es cero, el dispositivo se apagar\u00e1 en esa cantidad de segundos despu\u00e9s de quitar la alimentaci\u00f3n externa.",
             "fr": "S'il est diff\u00e9rent de z\u00e9ro, l'appareil s'\u00e9teindra compl\u00e8tement ce nombre de secondes apr\u00e8s la coupure de l'alimentation externe.",
             "it": "Se non \u00e8 zero, il dispositivo si spegner\u00e0 completamente per molti secondi dopo che l'alimentazione esterna \u00e8 stata rimossa.",
             "ja": "\u975e\u30bc\u30ed\u306e\u5834\u5408\u3001\u5916\u90e8\u96fb\u6e90\u906e\u65ad\u5f8c\u3001\u3053\u306e\u79d2\u6570\u3060\u3051\u30c7\u30d0\u30a4\u30b9\u306e\u96fb\u6e90\u304c\u5b8c\u5168\u306b\u30aa\u30d5\u306b\u306a\u308a\u307e\u3059\u3002",
@@ -2037,7 +2037,7 @@
         "label": {
             "de": "Abschaltung nach (Sekunden)",
             "en": "On Battery Shutdown After (seconds)",
-            "es": "Encendido Apagado de la bater\u00eda Despu\u00e9s (segundos)",
+            "es": "Apagar la bater\u00eda despues de (segundos)",
             "fr": "On Battery Shutdown After (seconds)",
             "it": "Su Spegnimento della batteria dopo (secondi)",
             "ja": "\u30aa\u30f3 \u30d0\u30c3\u30c6\u30ea\u30fc\u30b7\u30e3\u30c3\u30c8\u30c0\u30a6\u30f3\u5f8c\uff08\u79d2\uff09",
@@ -2087,7 +2087,7 @@
         "description": {
             "de": "Option f\u00fcr die Zustandsmaschine der Energieverwaltung. Siehe Energieverwaltung f\u00fcr Details. 0 f\u00fcr Standardwert von 900 (oder 15 Minuten).",
             "en": "Power management state machine option. See power management for details. 0 for default of 900 (or 15 minutes).",
-            "es": "Opci\u00f3n de m\u00e1quina de estado de gesti\u00f3n de energ\u00eda. Ver gesti\u00f3n de energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 900 (o 15 minutos).",
+            "es": "Opci\u00f3n de estado de gesti\u00f3n de la energ\u00eda. Ver gesti\u00f3n de la energ\u00eda para m\u00e1s detalles. 0 para el valor por defecto de 900 (o 15 minutos).",
             "fr": "Option de machine d'\u00e9tat de gestion de l'alimentation. Voir la gestion de l'alimentation pour plus de d\u00e9tails. 0 pour la valeur par d\u00e9faut de 900 (ou 15 minutes).",
             "it": "Opzione della macchina di stato per la gestione dell'energia. Vedi gestione dell'alimentazione per i dettagli. 0 per il valore predefinito di 900 (o 15 minuti).",
             "ja": "\u30d1\u30ef\u30fc\u30de\u30cd\u30b8\u30e1\u30f3\u30c8\u306e\u30b9\u30c6\u30fc\u30c8\u30de\u30b7\u30f3\u30fb\u30aa\u30d7\u30b7\u30e7\u30f3\u3002\u8a73\u7d30\u306f\u30d1\u30ef\u30fc\u30de\u30cd\u30fc\u30b8\u30e1\u30f3\u30c8\u3092\u53c2\u7167\u3057\u3066\u304f\u3060\u3055\u3044\u3002\u30c7\u30d5\u30a9\u30eb\u30c8\u306e900\uff08\u307e\u305f\u306f15\u5206\uff09\u306b\u306f0\u3092\u6307\u5b9a\u3057\u307e\u3059\u3002",
@@ -2185,7 +2185,7 @@
         "description": {
             "de": "Wenn diese Option aktiviert ist, wird die H\u00f6he \u00fcber dem Meeresspiegel (Mean Sea Level, MSL) in die Positionsmeldung aufgenommen.",
             "en": "If set, Mean Sea Level (MSL) altitude will be included in the position message.",
-            "es": "Si se establece, la altitud del nivel medio del mar (MSL) se incluir\u00e1 en el mensaje de posici\u00f3n.",
+            "es": "Si se establece, la altura sobre el nivel del mar (MSL) se incluir\u00e1 en el mensaje de posici\u00f3n.",
             "fr": "Si elle est d\u00e9finie, l'altitude du niveau moyen de la mer (MSL) sera incluse dans le message de position.",
             "it": "Se impostato, l'altitudine del livello medio del mare (MSL) sar\u00e0 inclusa nel messaggio di posizione.",
             "ja": "\u8a2d\u5b9a\u3059\u308b\u3068\u3001\u5e73\u5747\u6d77\u629c\uff08MSL\uff09\u9ad8\u5ea6\u304c\u4f4d\u7f6e\u30e1\u30c3\u30bb\u30fc\u30b8\u306b\u542b\u307e\u308c\u308b\u3088\u3046\u306b\u306a\u308a\u307e\u3059\u3002",
@@ -2503,7 +2503,7 @@
         "text": {
             "de": "Radio-Einstellungen",
             "en": "Radio Settings",
-            "es": "Ajustes de la radio",
+            "es": "Ajustes de radio",
             "fr": "Param\u00e8tres de la radio",
             "it": "Radio Settings",
             "ja": "\u30e9\u30b8\u30aa\u8a2d\u5b9a",
@@ -2516,33 +2516,33 @@
         "text": {
             "de": "Es sieht so aus, als ob ein RAK 11200 entdeckt wurde.\n\nPr\u00fcfen Sie, ob es sich im BOOT-Modus befindet.\n\nEs sollte ein einzelnes, rotes Dauerlicht leuchten.\nEs sollte keine anderen Lichter geben, weder durchgehend noch blinkend.\n\nIst dies nicht der Fall, trennen Sie das Ger\u00e4t und setzen Sie eine Br\u00fccke zwischen den Pins GND und BOOT0, w\u00e4hrend das Ger\u00e4t wieder eingesteckt wird.\n\n",
             "en": "Looks like a RAK 11200 was detected.\n\nVerify it is in BOOT mode.\n\nThere should be a single, solid red light.\nThere should not be any other lights, solid nor flashing.\n\nIf not, disconnect the device and provide a jumper between GND and BOOT0 pins while device is plugged in.\n\n",
-            "es": "Parece que se ha detectado un RAK 11200.\n\nVerifique que est\u00e1 en modo BOOT.\n\nDeber\u00eda haber una sola luz roja fija.\nNo debe haber ninguna otra luz, s\u00f3lida o intermitente.\n\nSi no es as\u00ed, desconecte el dispositivo y coloque un puente entre los pines GND y BOOT0 mientras el dispositivo est\u00e1 conectado.\n\n",
+            "es": "Parece que se ha detectado un RAK 11200.\n\n\nVerifique que est\u00e1 en modo BOOT.\n\n\n\nDeber\u00eda haber una sola luz roja fija.\n\nNo debe haber ninguna otra luz, fija o intermitente.\n\n\n\nSi no es as\u00ed, desconecte el dispositivo y coloque un puente entre los pines GND y BOOT0 mientras el dispositivo est\u00e1 conectado.\n\n\n\n",
             "fr": "On dirait qu'un RAK 11200 a \u00e9t\u00e9 d\u00e9tect\u00e9.\n\nV\u00e9rifiez qu'il est en mode BOOT.\n\nIl doit y avoir une seule lumi\u00e8re rouge fixe.\nIl ne doit pas y avoir d'autres lumi\u00e8res, fixes ou clignotantes.\n\nSi ce n'est pas le cas, d\u00e9connectez le dispositif et placez un cavalier entre les broches GND et BOOT0 lorsque le dispositif est branch\u00e9.\n\n",
             "it": "Sembra che sia stato rilevato un RAK 11200.\n\nVerificare che sia in modalit\u00e0 BOOT.\n\nCi dovrebbe essere una singola luce rossa fissa.\nNon ci dovrebbero essere altre luci, solide o lampeggianti.\n\nIn caso contrario, scollegare il dispositivo e fornire un ponticello tra i pin GND e BOOT0 mentre il dispositivo \u00e8 collegato.\n\n",
             "ja": "RAK11200\u304c\u691c\u51fa\u3055\u308c\u305f\u3088\u3046\u3067\u3059\u3002\n\nBOOT\u30e2\u30fc\u30c9\u306b\u306a\u3063\u3066\u3044\u308b\u3053\u3068\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\n\n\u8d64\u3044\u30e9\u30f3\u30d7\u304c1\u3064\u70b9\u706f\u3057\u3066\u3044\u308b\u306f\u305a\u3067\u3059\u3002\n\u4ed6\u306e\u30e9\u30a4\u30c8\u306f\u70b9\u706f\u3082\u70b9\u6ec5\u3082\u3057\u306a\u3044\u306f\u305a\u3067\u3059\u3002\n\n\u305d\u3046\u3067\u306a\u3044\u5834\u5408\u306f\u3001\u30c7\u30d0\u30a4\u30b9\u3092\u53d6\u308a\u5916\u3057\u3001\u30c7\u30d0\u30a4\u30b9\u3092\u63a5\u7d9a\u3057\u305f\u72b6\u614b\u3067GND\u30d4\u30f3\u3068BOOT0\u30d4\u30f3\u306e\u9593\u306b\u30b8\u30e3\u30f3\u30d1\u3092\u8a2d\u3051\u3066\u304f\u3060\u3055\u3044\u3002\n\n",
             "pl": "Wygl\u0105da na to, \u017ce zosta\u0142 wykryty sygna\u0142 RAK 11200.\n\nSprawd\u017a, czy jest w trybie BOOT.\n\nPowinna \u015bwieci\u0107 si\u0119 pojedyncza, sta\u0142a czerwona dioda.\nNie powinno by\u0107 \u017cadnych innych \u015bwiate\u0142, ani sta\u0142ych, ani migaj\u0105cych.\n\nJe\u015bli tak nie jest, od\u0142\u0105cz urz\u0105dzenie i za\u0142\u00f3\u017c zwork\u0119 mi\u0119dzy pinami GND i BOOT0, gdy urz\u0105dzenie jest pod\u0142\u0105czone.\n\n",
             "ru": "\u041f\u043e\u0445\u043e\u0436\u0435, \u0447\u0442\u043e \u0431\u044b\u043b \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d RAK 11200.\n\n\u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u043e\u043d \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0432 \u0440\u0435\u0436\u0438\u043c\u0435 BOOT.\n\n\u0414\u043e\u043b\u0436\u0435\u043d \u0433\u043e\u0440\u0435\u0442\u044c \u043e\u0434\u0438\u043d \u043f\u043e\u0441\u0442\u043e\u044f\u043d\u043d\u044b\u0439 \u043a\u0440\u0430\u0441\u043d\u044b\u0439 \u0438\u043d\u0434\u0438\u043a\u0430\u0442\u043e\u0440.\n\u041d\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u043d\u0438\u043a\u0430\u043a\u0438\u0445 \u0434\u0440\u0443\u0433\u0438\u0445 \u0438\u043d\u0434\u0438\u043a\u0430\u0442\u043e\u0440\u043e\u0432, \u043d\u0438 \u043f\u043e\u0441\u0442\u043e\u044f\u043d\u043d\u044b\u0445, \u043d\u0438 \u043c\u0438\u0433\u0430\u044e\u0449\u0438\u0445.\n\n\u0415\u0441\u043b\u0438 \u044d\u0442\u043e \u043d\u0435 \u0442\u0430\u043a, \u043e\u0442\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0435 \u043f\u0435\u0440\u0435\u043c\u044b\u0447\u043a\u0443 \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u0430\u043c\u0438 GND \u0438 BOOT0 \u043f\u0440\u0438 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u043e\u043c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435.\n\n",
-            "zh": "\u770b\u8d77\u6765\u68c0\u6d4b\u5230\u4e86 RAK 11200\u3002"
+            "zh": "\u770b\u8d77\u6765\u68c0\u6d4b\u5230\u4e86 RAK 11200\u3002\n\n\n\u8bf7\u9a8c\u8bc1\u5b83\u662f\u5426\u5904\u4e8e BOOT \u6a21\u5f0f\u3002\n\n\n\n\u5e94\u8be5\u6709\u4e00\u4e2a\u5355\u4e00\u7684\u3001\u5e38\u4eae\u7684\u7ea2\u706f\u3002\n\n\u4e0d\u5e94\u8be5\u6709\u4efb\u4f55\u5176\u4ed6\u7684\u706f\u4eae\u8d77\u6216\u95ea\u70c1\u3002\n\n\n\n\u5982\u679c\u4e0d\u662f\uff0c\u65ad\u5f00\u8bbe\u5907\u7684\u8fde\u63a5\uff0c\u8bf7\u5728\u8bbe\u5907\u63d2\u5165\u65f6\uff0c\u77ed\u63a5 GND \u548c BOOT0 \u5f15\u811a\u3002\n\n\n\n"
         }
     },
     "rak_bootloader_not_current": {
         "text": {
             "de": "Der RAK-Bootloader ist nicht aktuell.\n\u00dcber die Aktualisierung des RAK-Bootloaders...",
             "en": "The RAK bootloader is not current.\nAbout to update the RAK bootloader...",
-            "es": "El gestor de arranque del RAK no est\u00e1 actualizado.\nA punto de actualizar el gestor de arranque RAK...",
+            "es": "El bootloader del RAK no est\u00e1 actualizado.\nSobre actualizar el bootloader RAK...",
             "fr": "Le chargeur de d\u00e9marrage RAK n'est pas \u00e0 jour.\nSur le point de mettre \u00e0 jour le bootloader RAK...",
             "it": "Il bootloader RAK non \u00e8 aggiornato.\nIn procinto di aggiornare il bootloader RAK...",
             "ja": "RAK\u30d6\u30fc\u30c8\u30ed\u30fc\u30c0\u304c\u6700\u65b0\u3067\u306f\u3042\u308a\u307e\u305b\u3093\u3002\nRAK\u30d6\u30fc\u30c8\u30ed\u30fc\u30c0\u30fc\u306e\u66f4\u65b0\u306b\u3064\u3044\u3066...",
             "pl": "Program rozruchowy RAK nie jest aktualny.\nTrwa aktualizacja programu rozruchowego RAK...",
             "ru": "\u0417\u0430\u0433\u0440\u0443\u0437\u0447\u0438\u043a RAK \u043d\u0435 \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0430\u043a\u0442\u0443\u0430\u043b\u044c\u043d\u044b\u043c.\n\u041d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0447\u0438\u043a RAK...",
-            "zh": "RAK \u7684\u5f15\u5bfc\u7a0b\u5e8f\u4e0d\u662f\u6700\u65b0\u7684\u3002"
+            "zh": "RAK \u7684\u5f15\u5bfc\u7a0b\u5e8f\u4e0d\u662f\u6700\u65b0\u7684\u3002\n\u51c6\u5907\u66f4\u65b0 RAK \u5f15\u5bfc\u7a0b\u5e8f\u2026"
         }
     },
     "range": {
         "text": {
             "de": "Reichweite",
             "en": "Range",
-            "es": "Gama",
+            "es": "Alcance",
             "fr": "Range",
             "it": "Gamma",
             "ja": "\u7bc4\u56f2",
@@ -2580,7 +2580,7 @@
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?",
+            "es": "\u00bfActivar?",
             "fr": "Activ\u00e9 ?",
             "it": "Abilitato?",
             "ja": "\u6709\u52b9\u5316\uff1f",
@@ -2593,7 +2593,7 @@
         "description": {
             "de": "Wenn diese Option aktiviert ist, speichert das Ger\u00e4t die .csv-Dateien des Reichweitentests auf diesem Ger\u00e4t.",
             "en": "If set, the device will save the range test .csv files on this device.",
-            "es": "Si se establece, el dispositivo guardar\u00e1 los archivos .csv de prueba de alcance en este dispositivo.",
+            "es": "Si se establece, el dispositivo guardar\u00e1 los archivos .csv de la prueba de alcance en este dispositivo.",
             "fr": "S'il est d\u00e9fini, l'appareil enregistrera les fichiers .csv des tests de port\u00e9e sur cet appareil.",
             "it": "Se impostato, il dispositivo salver\u00e0 i file .csv del test dell'intervallo su questo dispositivo.",
             "ja": "\u8a2d\u5b9a\u3055\u308c\u305f\u5834\u5408\u3001\u30c7\u30d0\u30a4\u30b9\u306f\u3053\u306e\u30c7\u30d0\u30a4\u30b9\u306b\u30ec\u30f3\u30b8\u30c6\u30b9\u30c8.csv\u30d5\u30a1\u30a4\u30eb\u3092\u4fdd\u5b58\u3057\u307e\u3059\u3002",
@@ -2604,7 +2604,7 @@
         "label": {
             "de": "Speichern?",
             "en": "Save?",
-            "es": "\u00bfAhorrar?",
+            "es": "\u00bfGuardar?",
             "fr": "Sauver ?",
             "it": "Salvare?",
             "ja": "\u4fdd\u5b58\u3059\u308b\uff1f",
@@ -2641,7 +2641,7 @@
         "text": {
             "de": "Reichweitentest-Einstellungen",
             "en": "Range Test Module Settings",
-            "es": "Configuraci\u00f3n del m\u00f3dulo de prueba de alcance",
+            "es": "Configuraci\u00f3n del M\u00f3dulo de Prueba de Alcance",
             "fr": "R\u00e9glages du module de test de gamme",
             "it": "Impostazioni del modulo di test della gamma",
             "ja": "\u30ec\u30f3\u30b8\u30c6\u30b9\u30c8\u30e2\u30b8\u30e5\u30fc\u30eb\u306e\u8a2d\u5b9a",
@@ -2689,7 +2689,7 @@
         "label": {
             "de": "Rolle",
             "en": "Role",
-            "es": "Papel",
+            "es": "Rol",
             "fr": "R\u00f4le",
             "it": "Ruolo",
             "ja": "\u5f79\u5272",
@@ -2702,7 +2702,7 @@
         "text": {
             "de": "Drehgeber",
             "en": "Rotary",
-            "es": "Rotary",
+            "es": "Rotativo",
             "fr": "Rotary",
             "it": "Rotary",
             "ja": "\u30ed\u30fc\u30bf\u30ea\u30fc",
@@ -2716,7 +2716,7 @@
         "label": {
             "de": "Drehgeber-Modul",
             "en": "Rotary Encoder Module",
-            "es": "M\u00f3dulo de codificador rotativo",
+            "es": "M\u00f3dulo de Codificador Rotativo",
             "fr": "Module de codeur rotatif",
             "it": "Modulo encoder rotativo",
             "ja": "\u30ed\u30fc\u30bf\u30ea\u30a8\u30f3\u30b3\u30fc\u30c0\u30e2\u30b8\u30e5\u30fc\u30eb",
@@ -2729,7 +2729,7 @@
         "description": {
             "de": "Wenn diese Option gesetzt ist, wird das Drehgeber-Modul aktiviert.",
             "en": "If set, the Rotary module will be enabled.",
-            "es": "Si se ajusta, el m\u00f3dulo rotatorio se activar\u00e1.",
+            "es": "Si se ajusta, el m\u00f3dulo Rotativo se activar\u00e1.",
             "fr": "S'il est d\u00e9fini, le module rotatif sera activ\u00e9.",
             "it": "Se impostato, il modulo Rotary sar\u00e0 abilitato.",
             "ja": "\u8a2d\u5b9a\u3055\u308c\u305f\u5834\u5408\u3001\u30ed\u30fc\u30bf\u30ea\u30fc\u30e2\u30b8\u30e5\u30fc\u30eb\u306f\u6709\u52b9\u306b\u306a\u308a\u307e\u3059\u3002",
@@ -2740,7 +2740,7 @@
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?",
+            "es": "\u00bfActivar?",
             "fr": "Activ\u00e9 ?",
             "it": "Abilitato?",
             "ja": "\u6709\u52b9\u5316\uff1f",
@@ -2801,7 +2801,7 @@
         "description": {
             "de": "Eingangsereignis bei Druck auf den Drehgeber",
             "en": "Generate input event on Press of this kind.",
-            "es": "Generar evento de entrada en la prensa de este tipo.",
+            "es": "Generar evento de entrada en prensa de este tipo.",
             "fr": "G\u00e9n\u00e9rer un \u00e9v\u00e9nement d'entr\u00e9e sur ce type de presse.",
             "it": "Genera un evento di input su Press di questo tipo.",
             "ja": "\u3053\u306e\u7a2e\u306e\u30d7\u30ec\u30b9\u306b\u95a2\u3059\u308b\u5165\u529b\u30a4\u30d9\u30f3\u30c8\u3092\u767a\u751f\u3055\u305b\u308b\u3002",
@@ -3047,13 +3047,13 @@
         "tooltip": {
             "de": "Klicken Sie, um die Firmware zu flashen.\nWenn diese Schaltfl\u00e4che nicht aktiviert ist, m\u00fcssen Sie zuerst auf die Schaltfl\u00e4chen AKTUALISIEREN und GER\u00c4T FINDEN\nklicken.",
             "en": "Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options.",
-            "es": "Haga clic para flashear el firmware.\nSi este bot\u00f3n no est\u00e1 habilitado, deber\u00e1 pulsar los botones GET VERSIONS y DETECT DEVICE\npara rellenar las opciones disponibles.",
+            "es": "Haga clic para flashear el firmware.\nSi este bot\u00f3n no est\u00e1 habilitado, deber\u00e1 pulsar los botones GET VERSIONS y DETECT DEVICE\n\npara rellenar las opciones disponibles.",
             "fr": "Cliquez pour flasher le firmware.\nSi ce bouton n'est pas activ\u00e9, vous devez cliquer sur les boutons GET VERSIONS et DETECT DEVICE\npour faire appara\u00eetre les options disponibles.",
             "it": "Cliccare per flashare il firmware.\nSe questo pulsante non \u00e8 abilitato, \u00e8 necessario fare clic sui pulsanti GET VERSIONS e DETECT DEVICE\nper popolare le opzioni disponibili.",
             "ja": "\u30af\u30ea\u30c3\u30af\u3059\u308b\u3068\u3001\u30d5\u30a1\u30fc\u30e0\u30a6\u30a7\u30a2\u304c\u30d5\u30e9\u30c3\u30b7\u30e5\u3055\u308c\u307e\u3059\u3002\n\u3053\u306e\u30dc\u30bf\u30f3\u304c\u6709\u52b9\u3067\u306a\u3044\u5834\u5408\u3001GET VERSIONS \u3068 DETECT DEVICE \u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002\n\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u3068\u3001\u5229\u7528\u53ef\u80fd\u306a\u30aa\u30d7\u30b7\u30e7\u30f3\u304c\u5165\u529b\u3055\u308c\u307e\u3059\u3002",
             "pl": "Kliknij, aby uruchomi\u0107 oprogramowanie sprz\u0119towe.\nJe\u015bli ten przycisk nie jest w\u0142\u0105czony, nale\u017cy klikn\u0105\u0107 przyciski GET VERSIONS i DETECT DEVICE\naby wy\u015bwietli\u0107 dost\u0119pne opcje.",
             "ru": "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0434\u043b\u044f \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0438 \u043c\u0438\u043a\u0440\u043e\u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b.\n\u0415\u0441\u043b\u0438 \u044d\u0442\u0430 \u043a\u043d\u043e\u043f\u043a\u0430 \u043d\u0435 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0430, \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u043d\u0430\u0436\u0430\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0438 GET VERSIONS \u0438 DETECT DEVICE\n\u0447\u0442\u043e\u0431\u044b \u0437\u0430\u043f\u043e\u043b\u043d\u0438\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0435 \u043e\u043f\u0446\u0438\u0438.",
-            "zh": "\u70b9\u51fb\u6765\u5237\u5199\u56fa\u4ef6\u3002"
+            "zh": "\u70b9\u51fb\u6765\u5237\u5199\u56fa\u4ef6\u3002\n\u5982\u679c\u8fd9\u4e2a\u6309\u94ae\u6ca1\u6709\u542f\u7528\uff0c\u9700\u8981\u70b9\u51fb\u201c\u83b7\u53d6\u7248\u672c\u201d\u548c\u201c\u68c0\u6d4b\u8bbe\u5907\u201d\n\n\u6309\u94ae\u6765\u586b\u5165\u53ef\u7528\u7684\u9009\u9879\u3002"
         }
     },
     "select_flash_populated": {
@@ -3198,7 +3198,7 @@
         "label": {
             "de": "Echo?",
             "en": "Echo?",
-            "es": "\u00bfEco?",
+            "es": "\u00bfEcho?",
             "fr": "Echo ?",
             "it": "Echo?",
             "ja": "\u30a8\u30b3\u30fc\uff1f",
@@ -3222,7 +3222,7 @@
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?",
+            "es": "\u00bfActivar?",
             "fr": "Activ\u00e9 ?",
             "it": "Abilitato?",
             "ja": "\u6709\u52b9\u5316\uff1f",
@@ -3382,7 +3382,7 @@
         "description": {
             "de": "Eine Zahl von 7 bis 12. Gibt die Anzahl der Chirps pro Symbol als 1<<spread_factor an.",
             "en": "A number from 7 to 12. Indicates number of chirps per symbol as 1<<spread_factor.",
-            "es": "Un n\u00famero de 7 a 12. Indica el n\u00famero de chirridos por s\u00edmbolo como 1<<spread_factor.",
+            "es": "Un n\u00famero de 7 a 12. Indica el n\u00famero de pitidos por s\u00edmbolo como 1<<spread_factor.",
             "fr": "Un nombre de 7 \u00e0 12. Indique le nombre de chirps par symbole comme 1<<spread_factor.",
             "it": "Un numero da 7 a 12. Indica il numero di chirps per simbolo come 1<<fattore di diffusione.",
             "ja": "7\uff5e12\u307e\u3067\u306e\u6570\u5b57\u30021\u30b7\u30f3\u30dc\u30eb\u3042\u305f\u308a\u306e\u30c1\u30e3\u30fc\u30d7\u6570\u30921<<spread_factor\u3067\u793a\u3059\u3002",
@@ -3431,7 +3431,7 @@
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?",
+            "es": "\u00bfActivar?",
             "fr": "Activ\u00e9 ?",
             "it": "Abilitato?",
             "ja": "\u6709\u52b9\u5316\uff1f",
@@ -3455,7 +3455,7 @@
         "label": {
             "de": "Herzschlag",
             "en": "Heartbeat",
-            "es": "Latidos del coraz\u00f3n",
+            "es": "Latidos",
             "fr": "Battement de c\u0153ur",
             "it": "Battito cardiaco",
             "ja": "\u30cf\u30fc\u30c8\u30d3\u30fc\u30c8",
@@ -3577,13 +3577,13 @@
         "text": {
             "de": "Der T-Echo-Bootloader wurde aktualisiert.\n\nWarten Sie auf den Neustart des Ger\u00e4ts.",
             "en": "T-Echo bootloader was updated.\n\nWait for the device to reboot.",
-            "es": "Se ha actualizado el cargador de arranque de T-Echo.\n\nEspere a que el dispositivo se reinicie.",
+            "es": "Se ha actualizado el cargador de arranque de T-Echo.\n\n\nEspere a que el dispositivo se reinicie.",
             "fr": "Le bootloader de T-Echo a \u00e9t\u00e9 mis \u00e0 jour.\n\nAttendez que l'appareil red\u00e9marre.",
             "it": "Il bootloader T-Echo \u00e8 stato aggiornato.\n\nAspettate che il dispositivo si riavvii.",
             "ja": "T-Echo\u30d6\u30fc\u30c8\u30ed\u30fc\u30c0\u3092\u66f4\u65b0\u3057\u307e\u3057\u305f\u3002\n\n\u30c7\u30d0\u30a4\u30b9\u304c\u518d\u8d77\u52d5\u3059\u308b\u306e\u3092\u5f85\u3061\u307e\u3059\u3002",
             "pl": "Zaktualizowano bootloader T-Echo.\n\nPoczekaj, a\u017c urz\u0105dzenie uruchomi si\u0119 ponownie.",
             "ru": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d \u0437\u0430\u0433\u0440\u0443\u0437\u0447\u0438\u043a T-Echo.\n\n\u041f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435, \u043f\u043e\u043a\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u043f\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0441\u044f.",
-            "zh": "T-Echo \u5f15\u5bfc\u7a0b\u5e8f\u5df2\u7ecf\u66f4\u65b0\u3002"
+            "zh": "T-Echo \u5f15\u5bfc\u7a0b\u5e8f\u5df2\u7ecf\u66f4\u65b0\u3002\n\n\n\u7b49\u5f85\u8bbe\u5907\u91cd\u65b0\u542f\u52a8\u3002"
         }
     },
     "telemetry": {
@@ -3628,7 +3628,7 @@
         "label": {
             "de": "Temperatur in Farenheit anzeigen?",
             "en": "Display Temperature in Farenheit?",
-            "es": "\u00bfMostrar la temperatura en Farenheit?",
+            "es": "\u00bfMostrar la temperatura en grados Farenheit?",
             "fr": "Afficher la temp\u00e9rature en Farenheit ?",
             "it": "Visualizzare la temperatura in Farenheit?",
             "ja": "\u8868\u793a\u6e29\u5ea6\u306f\u83ef\u6c0f\u3067\u3059\u304b\uff1f",
@@ -3652,7 +3652,7 @@
         "label": {
             "de": "Aktiviert?",
             "en": "Enabled?",
-            "es": "\u00bfActivado?",
+            "es": "\u00bfActivar?",
             "fr": "Activ\u00e9 ?",
             "it": "Abilitato?",
             "ja": "\u6709\u52b9\u5316\uff1f",
@@ -3859,7 +3859,7 @@
         "text": {
             "de": "Update verf\u00fcgbar",
             "en": "update available",
-            "es": "actualizaci\u00f3n disponible",
+            "es": "Actualizaci\u00f3n disponible",
             "fr": "mise \u00e0 jour disponible",
             "it": "aggiornamento disponibile",
             "ja": "\u66f4\u65b0\u3042\u308a",
@@ -3896,7 +3896,7 @@
         "text": {
             "de": "Schritt 1 von 2 aktualisieren",
             "en": "Update step 1 of 2",
-            "es": "Actualizar el paso 1 de 2",
+            "es": "Actualizando el paso 1 de 2",
             "fr": "Mise \u00e0 jour \u00e9tape 1 sur 2",
             "it": "Aggiornare il passo 1 di 2",
             "ja": "\u30a2\u30c3\u30d7\u30c7\u30fc\u30c8\u624b\u98061/2",
@@ -3946,7 +3946,7 @@
         "label": {
             "de": "Uplink Aktiviert?",
             "en": "Uplink Enabled?",
-            "es": "\u00bfEnlace ascendente habilitado?",
+            "es": "\u00bfEnlace de subida habilitado?",
             "fr": "Liaison montante activ\u00e9e ?",
             "it": "Uplink abilitato?",
             "ja": "\u30a2\u30c3\u30d7\u30ea\u30f3\u30af\u30a4\u30cd\u30fc\u30d6\u30eb\uff1f",
@@ -4035,13 +4035,13 @@
         "text": {
             "de": "Warnung: Der serielle Anschluss kann nicht exklusiv ge\u00f6ffnet werden.\nSchlie\u00dfen Sie alle anderen Programme, die diesen Anschluss m\u00f6glicherweise verwenden, und versuchen Sie es erneut.",
             "en": "Warning: Cannot open the serial port exclusively.\nClose any other programs that might be using that port and try again.",
-            "es": "Advertencia: No se puede abrir el puerto serie exclusivamente.\nCierre cualquier otro programa que pueda estar utilizando ese puerto e int\u00e9ntelo de nuevo.",
+            "es": "Advertencia: No se puede abrir el puerto serie.\nCierre cualquier otro programa que pueda estar utilizando ese puerto e int\u00e9ntelo de nuevo.",
             "fr": "Avertissement : Impossible d'ouvrir le port s\u00e9rie exclusivement.\nFermez tous les autres programmes qui pourraient utiliser ce port et r\u00e9essayez.",
             "it": "Attenzione: Impossibile aprire esclusivamente la porta seriale.\nChiudi qualsiasi altro programma che potrebbe usare quella porta e prova di nuovo.",
             "ja": "\u8b66\u544a\u30b7\u30ea\u30a2\u30eb\u30dd\u30fc\u30c8\u3092\u6392\u4ed6\u7684\u306b\u958b\u304f\u3053\u3068\u304c\u3067\u304d\u307e\u305b\u3093\u3002\n\u305d\u306e\u30dd\u30fc\u30c8\u3092\u4f7f\u7528\u3057\u3066\u3044\u308b\u53ef\u80fd\u6027\u306e\u3042\u308b\u4ed6\u306e\u30d7\u30ed\u30b0\u30e9\u30e0\u3092\u3059\u3079\u3066\u9589\u3058\u3066\u304b\u3089\u3001\u3082\u3046\u4e00\u5ea6\u8a66\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Ostrze\u017cenie: Nie mo\u017cna otworzy\u0107 wy\u0142\u0105cznie portu szeregowego.\nZamknij wszystkie inne programy, kt\u00f3re mog\u0105 korzysta\u0107 z tego portu, i spr\u00f3buj ponownie.",
             "ru": "\u041f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435: \u041d\u0435 \u0443\u0434\u0430\u0435\u0442\u0441\u044f \u043e\u0442\u043a\u0440\u044b\u0442\u044c \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043f\u043e\u0440\u0442.\n\u0417\u0430\u043a\u0440\u043e\u0439\u0442\u0435 \u0432\u0441\u0435 \u0434\u0440\u0443\u0433\u0438\u0435 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b, \u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u043c\u043e\u0433\u0443\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u044d\u0442\u043e\u0442 \u043f\u043e\u0440\u0442, \u0438 \u043f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443.",
-            "zh": "\u8b66\u544a\u3002\u4e0d\u80fd\u72ec\u5360\u6253\u5f00\u4e32\u53e3\u3002"
+            "zh": "\u8b66\u544a\u3002\u4e0d\u80fd\u72ec\u5360\u6253\u5f00\u4e32\u53e3\u3002\n\u5173\u95ed\u4efb\u4f55\u53ef\u80fd\u6b63\u5728\u4f7f\u7528\u8be5\u7aef\u53e3\u7684\u5176\u4ed6\u7a0b\u5e8f\uff0c\u7136\u540e\u518d\u8bd5\u4e00\u6b21\u3002"
         }
     },
     "warning_issue_downloading": {
@@ -4080,33 +4080,33 @@
             "ja": "\u8b66\u544a\u3053\u306e\u30d7\u30ed\u30bb\u30b9\u306f\u7ba1\u7406\u8005\u3068\u3057\u3066\u5b9f\u884c\u3055\u308c\u3066\u3044\u307e\u305b\u3093\u3002\n\u4e00\u65e6\u7d42\u4e86\u3057\u3001\u7ba1\u7406\u8005\u3068\u3057\u3066\u518d\u5b9f\u884c\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Ostrze\u017cenie: Ten proces nie jest uruchomiony jako Administrator.\nZamknij i uruchom ponownie jako Administrator.",
             "ru": "\u041f\u0440\u0435\u0434\u0443\u043f\u0440\u0435\u0436\u0434\u0435\u043d\u0438\u0435: \u042d\u0442\u043e\u0442 \u043f\u0440\u043e\u0446\u0435\u0441\u0441 \u0437\u0430\u043f\u0443\u0449\u0435\u043d \u043d\u0435 \u043e\u0442 \u0438\u043c\u0435\u043d\u0438 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430.\n\u0417\u0430\u043a\u0440\u043e\u0439\u0442\u0435 \u0438 \u0441\u043d\u043e\u0432\u0430 \u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0435 \u043e\u0442 \u0438\u043c\u0435\u043d\u0438 \u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430.",
-            "zh": "\u8b66\u544a\u3002\u8be5\u8fdb\u7a0b\u6ca1\u6709\u4ee5\u7ba1\u7406\u5458\u8eab\u4efd\u8fd0\u884c\u3002"
+            "zh": "\u8b66\u544a\u3002\u8be5\u8fdb\u7a0b\u6ca1\u6709\u4ee5\u7ba1\u7406\u5458\u8eab\u4efd\u8fd0\u884c\u3002\n\u5173\u95ed\u5e76\u4ee5\u7ba1\u7406\u5458\u8eab\u4efd\u91cd\u65b0\u8fd0\u884c\u3002"
         }
     },
     "warning_problem_connecting": {
         "text": {
             "de": "Es gab ein Problem bei der Verbindung mit dem Ger\u00e4t.\n\nTrennen Sie das Ger\u00e4t vom Stromnetz oder starten Sie das Programm neu.",
             "en": "There was a problem connecting to the device.\n\nPerhaps unplug device or restart this program.",
-            "es": "Hubo un problema de conexi\u00f3n con el dispositivo.\n\nQuiz\u00e1s desenchufe el dispositivo o reinicie este programa.",
+            "es": "Hubo un problema de conexi\u00f3n con el dispositivo.\n\n\nPruebe a desconectar el dispositivo o reinicie este programa.",
             "fr": "Il y a eu un probl\u00e8me de connexion \u00e0 l'appareil.\n\nPeut-\u00eatre d\u00e9brancher l'appareil ou red\u00e9marrer ce programme.",
             "it": "C'\u00e8 stato un problema di connessione al dispositivo.\n\nForse scollegare il dispositivo o riavviare questo programma.",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u3078\u306e\u63a5\u7d9a\u306b\u554f\u984c\u304c\u767a\u751f\u3057\u307e\u3057\u305f\u3002\n\n\u30c7\u30d0\u30a4\u30b9\u3092\u53d6\u308a\u5916\u3059\u304b\u3001\u3053\u306e\u30d7\u30ed\u30b0\u30e9\u30e0\u3092\u518d\u8d77\u52d5\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Wyst\u0105pi\u0142 problem z po\u0142\u0105czeniem z urz\u0105dzeniem.\n\nBy\u0107 mo\u017ce nale\u017cy od\u0142\u0105czy\u0107 urz\u0105dzenie lub ponownie uruchomi\u0107 program.",
             "ru": "\u0412\u043e\u0437\u043d\u0438\u043a\u043b\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0430 \u043f\u0440\u0438 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0438 \u043a \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0443.\n\n\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u043e\u0442 \u0441\u0435\u0442\u0438 \u0438\u043b\u0438 \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0435 \u044d\u0442\u0443 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0443.",
-            "zh": "\u4e0e\u8bbe\u5907\u7684\u8fde\u63a5\u51fa\u73b0\u4e86\u95ee\u9898\u3002"
+            "zh": "\u4e0e\u8bbe\u5907\u7684\u8fde\u63a5\u51fa\u73b0\u4e86\u95ee\u9898\u3002\n\n\n\u4e5f\u8bb8\u53ef\u4ee5\u62d4\u6389\u8bbe\u5907\u6216\u91cd\u65b0\u542f\u52a8\u8fd9\u4e2a\u7a0b\u5e8f\u3002"
         }
     },
     "warning_talking_to_device": {
         "text": {
             "de": "Ich hatte ein Problem bei der Kommunikation mit dem Ger\u00e4t.\nVielleicht sollten Sie das Ger\u00e4t aus- und wieder einstecken?\nWenn das Ger\u00e4t ein nrf52 (T-Echo oder RAK) ist,\ndann versetzen Sie das Ger\u00e4t in den Boot-Modus, indem Sie zweimal die RST-Taste dr\u00fccken.",
             "en": "Had a problem talking with the device.\nPerhaps unplug and re-plugin the device?\nIf the device is an nrf52 (T-Echo or RAK),\nthen put the device into boot mode by pressing RST button twice.",
-            "es": "Tuvo un problema al hablar con el dispositivo.\n\u00bfQuiz\u00e1s desenchufar y volver a enchufar el dispositivo?\nSi el dispositivo es un nrf52 (T-Echo o RAK),\nentonces ponga el dispositivo en modo de arranque pulsando dos veces el bot\u00f3n RST.",
+            "es": "Ha habido un problema al hablar con el dispositivo.\nPruebe a desconectar y volver a conectar el dispositivo\n\nSi el dispositivo es un nrf52 (T-Echo o RAK),\n\nentonces ponga el dispositivo en modo de arranque pulsando dos veces el bot\u00f3n RST.",
             "fr": "J'ai eu un probl\u00e8me pour parler avec l'appareil.\nPeut-\u00eatre d\u00e9brancher et rebrancher l'appareil ?\nSi l'appareil est un nrf52 (T-Echo ou RAK),\nalors mettez l'appareil en mode de d\u00e9marrage en appuyant deux fois sur le bouton RST.",
             "it": "Ha avuto un problema a parlare con il dispositivo.\nForse scollegare e ricollegare il dispositivo?\nSe il dispositivo \u00e8 un nrf52 (T-Echo o RAK),\nallora metti il dispositivo in modalit\u00e0 di avvio premendo il pulsante RST due volte.",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u3068\u306e\u901a\u4fe1\u306b\u554f\u984c\u304c\u3042\u308a\u307e\u3057\u305f\u3002\n\u30c7\u30d0\u30a4\u30b9\u306e\u30d7\u30e9\u30b0\u3092\u629c\u304d\u5dee\u3057\u3057\u3066\u307f\u3066\u306f\u3044\u304b\u304c\u3067\u3057\u3087\u3046\u304b\uff1f\n\u30c7\u30d0\u30a4\u30b9\u304cnrf52\uff08T-Echo\u307e\u305f\u306fRAK\uff09\u3067\u3042\u308b\u5834\u5408\u3002\nRST\u30dc\u30bf\u30f3\u30922\u56de\u62bc\u3057\u3066\u3001\u30d6\u30fc\u30c8\u30e2\u30fc\u30c9\u306b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Wyst\u0105pi\u0142 problem z nawi\u0105zaniem po\u0142\u0105czenia z urz\u0105dzeniem.\nMo\u017ce nale\u017cy od\u0142\u0105czy\u0107 i ponownie pod\u0142\u0105czy\u0107 urz\u0105dzenie?\nJe\u015bli urz\u0105dzenie to nrf52 (T-Echo lub RAK),\nto prze\u0142\u0105cz urz\u0105dzenie w tryb startowy, naciskaj\u0105c dwukrotnie przycisk RST.",
             "ru": "\u0412\u043e\u0437\u043d\u0438\u043a\u043b\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0430 \u043f\u0440\u0438 \u0440\u0430\u0437\u0433\u043e\u0432\u043e\u0440\u0435 \u0441 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e\u043c.\n\u0412\u043e\u0437\u043c\u043e\u0436\u043d\u043e, \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u0438 \u0441\u043d\u043e\u0432\u0430 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e?\n\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f nrf52 (T-Echo \u0438\u043b\u0438 RAK),\n\u0442\u043e \u043f\u0435\u0440\u0435\u0432\u0435\u0434\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0432 \u0440\u0435\u0436\u0438\u043c \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438, \u0434\u0432\u0430\u0436\u0434\u044b \u043d\u0430\u0436\u0430\u0432 \u043a\u043d\u043e\u043f\u043a\u0443 RST.",
-            "zh": "\u4e0e\u8bbe\u5907\u7684\u901a\u8baf\u51fa\u73b0\u4e86\u95ee\u9898\u3002"
+            "zh": "\u4e0e\u8bbe\u5907\u7684\u901a\u8baf\u51fa\u73b0\u4e86\u95ee\u9898\u3002\n\u4e5f\u8bb8\u53ef\u4ee5\u62d4\u6389\u8bbe\u5907\u7684\u63d2\u5934\u518d\u91cd\u65b0\u63d2\u4e0a\uff1f\n\n\u5982\u679c\u8be5\u8bbe\u5907\u662f nrf52\uff08T-Echo \u6216 RAK\uff09\u3002\n\n\u90a3\u5c31\u6309\u4e24\u6b21\u91cd\u7f6e\u6309\u94ae\uff0c\u8ba9\u8bbe\u5907\u8fdb\u5165\u542f\u52a8\u6a21\u5f0f\u3002"
         }
     },
     "wifi_ap_mode": {
