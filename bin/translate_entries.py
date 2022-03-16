@@ -15,7 +15,7 @@ print(f'There are {len(fields)} fields.')
 new_fields = fields
 
 # If you add a new language, add it here and form.py populate_languages()
-for lang in ["de", "es", "fr", "it", "pl", "zh", "ru", "ja"]:
+for lang in ["de", "es", "fr", "it", "pl", "zh", "ru", "ja", "ro"]:
     for field in fields:
         for key in ['text', 'tooltip', 'description', 'label']:
             if key in fields[field]:
