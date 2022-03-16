@@ -36,6 +36,7 @@ with open(filename, encoding='utf-8') as input_file:
             # update the last entry processed (Note: need to deal with the last entry.)
             if en_entry is not None and tr_entry is not None:
                 # remove the trailing new lines (which separate the entries)
+                # pylint: disable=unsubscriptable-object
                 tmp = tr_entry[:-4]
                 # if there still is a trailing new line, remove it
                 if tmp[-1:] == '\n':
