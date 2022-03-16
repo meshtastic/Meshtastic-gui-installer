@@ -29,6 +29,7 @@ from meshtastic_flasher.version import __version__
 from meshtastic_flasher.advanced_form import AdvancedForm
 from meshtastic_flasher.esptool_form import EsptoolForm
 from meshtastic_flasher.settings import Settings
+from meshtastic_flasher.radio_picker_form import RadioPickerForm
 import meshtastic_flasher.util
 
 MESHTASTIC_LOGO_FILENAME = "logo.png"
@@ -65,10 +66,13 @@ class Form(QDialog):
         self.system_info_file = None
         self.bin_file = None
         self.detected_meshtastic_version = None
+        self.detected_list = []
+        self.device_from_picker = None
 
         self.advanced_form = AdvancedForm(self)
         self.esptool_form = EsptoolForm()
         self.settings = Settings()
+        self.radio_picker_form = RadioPickerForm(self)
 
         update_available = ''
         if meshtastic_flasher.util.check_if_newer_version():
@@ -318,8 +322,6 @@ class Form(QDialog):
             # Note: unzip into directory named the same name as the firmware_version
             meshtastic_flasher.util.unzip_if_necessary(self.firmware_version, zip_file_name)
 
-            #self.all_devices()
-
             if self.select_port.count() > 0 and self.firmware_version:
                 self.select_flash.setEnabled(True)
 
@@ -479,6 +481,7 @@ class Form(QDialog):
                 # If not already in the list, add it
                 if self.select_device.findText(device.for_firmware) == -1:
                     self.select_device.addItem(device.for_firmware)
+                    self.detected_list.append(device.for_firmware)
             if self.select_device.count() > 1:
                 self.select_device.setCurrentIndex(1)
         else:
@@ -664,6 +667,7 @@ class Form(QDialog):
                     # do not make the label 'Detected' selectable
                     self.select_device.model().item(0).setEnabled(False)
                     self.select_device.addItem('t-echo')
+                    self.detected_list.append('t-echo')
                     self.select_device.insertSeparator(self.select_device.count())
                     self.select_device.addItem('Other')
                     count = self.select_device.count() - 1
@@ -677,6 +681,10 @@ class Form(QDialog):
                     self.select_device.model().item(0).setEnabled(False)
                     self.select_device.addItem('rak4631_5005')
                     self.select_device.addItem('rak4631_19003')
+
+                    self.detected_list.append('rak4631_5005')
+                    self.detected_list.append('rak4631_19003')
+
                     self.select_device.insertSeparator(self.select_device.count())
                     self.select_device.addItem('Other')
                     count = self.select_device.count() - 1
@@ -781,9 +789,10 @@ class Form(QDialog):
         if device:
             self.select_device.clear()
             self.select_device.addItem('Detected')
-            # not make the label 'Detected' selectable
+            # do not make the label 'Detected' selectable
             self.select_device.model().item(0).setEnabled(False)
             self.select_device.addItem(device)
+            self.detected_list.append(device)
             if self.select_device.count() > 1:
                 self.select_device.setCurrentIndex(1)
 
@@ -844,6 +853,8 @@ class Form(QDialog):
         self.select_device.setEnabled(False)
         self.detected_meshtastic_version = None
         self.label_detected_meshtastic_version.setText('')
+        self.detected_list.clear()
+        self.device_from_picker = None
 
 
     def enable_at_end_of_detect(self):
@@ -909,6 +920,7 @@ class Form(QDialog):
             use_meshtastic_check = self.confirm_check_using_meshtastic()
             if use_meshtastic_check:
                 self.select_port.clear()
+                self.detected_list.clear()
                 ports = self.detect_ports_using_find_ports(ports, supported_devices_detected)
                 print(f'from find_ports ports:{ports}')
 
@@ -939,6 +951,15 @@ class Form(QDialog):
                 else:
                     if self.select_port.count() > 0:
                         self.all_devices()
+
+        print(f'self.detected_list:{self.detected_list}')
+        if len(self.detected_list) > 1:
+            self.radio_picker_form.run(self.detected_list)
+            print(f'self.device_from_picker:{self.device_from_picker}')
+            if self.device_from_picker is not None:
+                index = self.select_device.findText(self.device_from_picker)
+                print(f'index:{index}')
+                self.select_device.setCurrentIndex(index)
 
         self.enable_at_end_of_detect()
 

@@ -80,4 +80,4 @@ ignore-imports=yes
 max-args=10
 
 # Maximum number of attributes for a class (see R0902).
-max-attributes=30
+max-attributes=60
