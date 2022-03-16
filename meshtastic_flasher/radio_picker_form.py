@@ -17,8 +17,8 @@ class RadioPickerForm(QDialog):
         self.layout = QGridLayout()
         self.setLayout(self.layout)
 
-        self.scale_x = 192
-        self.scale_y = 192
+        self.scale_x = 256
+        self.scale_y = 256
 
         self.radios = None
 
