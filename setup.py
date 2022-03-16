@@ -37,7 +37,7 @@ setup(
     packages=["meshtastic_flasher"],
     include_package_data=True,
     package_data={
-        '': ['logo.png', 'help.svg', 'info.svg', 'options.svg', 'cog.svg', 'meshtastic_theme.xml', 'fields.json'],
+        '': ['logo.png', 'help.svg', 'info.svg', 'options.svg', 'cog.svg', 'meshtastic_theme.xml', 'fields.json', 'radios/*'],
     },
     install_requires=["pyside6", "PyGithub", "esptool", "meshtastic>=1.3alpha.6", "qt-material",
                       "psutil", "adafruit-nrfutil", "pyserial", "geocoder"],
