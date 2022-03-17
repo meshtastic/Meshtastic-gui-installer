@@ -305,6 +305,7 @@ class Form(QDialog):
         """
         self.select_language.addItem("Deutsch - German", "de")
         self.select_language.addItem("Español - Spanish", "es")
+        self.select_language.addItem("eestlane - Estonian", "et")
         self.select_language.addItem("Français - French", "fr")
         self.select_language.addItem("Italiano - Italian", "it")
         self.select_language.addItem("Polski - Polish", "pl")
