@@ -485,17 +485,17 @@
             "zh": "\u4f60\u786e\u5b9a\u8981\u91cd\u7f6e\u8bbe\u5907\u5417\uff1f"
         }
     },
-    "confirm_update_techo_bootloader": {
+    "confirm_update_bootloader": {
         "text": {
-            "de": "M\u00f6chten Sie den T-Echo-Bootloader aktualisieren?",
-            "en": "Do you want to update the T-Echo bootloader?",
-            "es": "\u00bfQuieres actualizar el bootloader de T-Echo?",
-            "fr": "Voulez-vous mettre \u00e0 jour le bootloader de T-Echo ?",
-            "it": "Vuoi aggiornare il bootloader del T-Echo?",
-            "ja": "T-Echo\u306e\u30d6\u30fc\u30c8\u30ed\u30fc\u30c0\u3092\u30a2\u30c3\u30d7\u30c7\u30fc\u30c8\u3057\u307e\u3059\u304b\uff1f",
-            "pl": "Czy chcesz zaktualizowa\u0107 bootloader T-Echo?",
-            "ru": "\u0412\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0447\u0438\u043a T-Echo?",
-            "zh": "\u8981\u66f4\u65b0 T-Echo \u7684\u5f15\u5bfc\u7a0b\u5e8f\u5417\uff1f"
+            "de": "M\u00f6chten Sie Bootloader aktualisieren?",
+            "en": "Do you want to update the bootloader?",
+            "es": "\u00bfQuieres actualizar el bootloader?",
+            "fr": "Voulez-vous mettre \u00e0 jour le bootloader?",
+            "it": "Vuoi aggiornare il bootloader?",
+            "ja": "\u306e\u30d6\u30fc\u30c8\u30ed\u30fc\u30c0\u3092\u30a2\u30c3\u30d7\u30c7\u30fc\u30c8\u3057\u307e\u3059\u304b\uff1f",
+            "pl": "Czy chcesz zaktualizowa\u0107 bootloader?",
+            "ru": "\u0412\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0447\u0438\u043a?",
+            "zh": "\u8981\u66f4\u65b0\u7684\u5f15\u5bfc\u7a0b\u5e8f\u5417\uff1f"
         }
     },
     "copy": {
