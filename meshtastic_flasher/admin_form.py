@@ -46,6 +46,7 @@ class AdminForm(QDialog):
     def factory_reset(self):
         """Do a factory reset."""
         print('factory reset button clicked')
+        QMessageBox.information(self, "Info", "Note: For RAK devices, you need to update the bootloader to do a factory reset.")
         reply = QMessageBox.question(self, 'Flash', "Are you sure you want to reset the device?", QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             print("User confirmed they want to do a factory reset")
