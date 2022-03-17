@@ -327,6 +327,7 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_linux(fake_partitio
     fake_data = 'some fake stuff\nDate: Dec  1 2021\neven more'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.No)
 
     # make the call under test
     with patch("builtins.open", mock_open(read_data=fake_data)):
@@ -375,6 +376,7 @@ def test_detect_nrf_stuff_with_techo_and_current_bootloader_on_linux(fake_partit
     fake_data = 'some fake stuff\nDate: Oct 13 2021\neven more\nModel: LilyGo T-Echo\nfoo'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.No)
 
     # make the call under test
     with patch("builtins.open", mock_open(read_data=fake_data)):
@@ -426,6 +428,7 @@ def test_detect_nrf_stuff_with_rak_and_old_bootloader_on_linux(fake_partitions, 
     fake_data = 'some fake stuff\nDate: Sep  1 2020\neven more'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.Yes)
 
     # make the call under test
     with patch("builtins.open", mock_open(read_data=fake_data)):
@@ -483,6 +486,7 @@ def test_detect_nrf_stuff_with_rak_and_current_bootloader_on_windows(fake_partit
     fake_data = 'some fake stuff\nDate: Dec  1 2021\neven more\nRAK4631\n'
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.No)
 
     # make the call under test
     with patch("builtins.open", mock_open(read_data=fake_data)):
@@ -573,6 +577,7 @@ def test_detect_nrf_stuff_with_rak_and_not_current_bootloader_on_linux(fake_part
     widget.detect_nrf(fake_supported_devices)
 
     monkeypatch.setattr(QMessageBox, "information", lambda *args: None)
+    monkeypatch.setattr(QMessageBox, "question", lambda *args: QMessageBox.Yes)
 
     # make the call under test
     with patch("builtins.open", mock_open(read_data=fake_data)):
