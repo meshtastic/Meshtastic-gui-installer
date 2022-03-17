@@ -696,7 +696,7 @@ class Form(QDialog):
                 if is_techo:
                     if not techo_bootloader_current:
                         print("t-echo bootloader is not current")
-                        if self.confirm_update_techo_bootloader():
+                        if self.confirm_update_bootloader('T-Echo'):
                             bootloader_zip_url = "https://github.com/lyusupov/SoftRF/blob/master/software/firmware/binaries/nRF52840/Adafruit_nRF52_Bootloader/LilyGO_TEcho_bootloader-0.6.1.zip?raw=true"
                             bootloader_zip_filename = "LilyGO_TEcho_bootloader-0.6.1.zip"
                             utf_filename = "update-lilygo_techo_bootloader-0.6.1_nosd.uf2"
@@ -721,29 +721,28 @@ class Form(QDialog):
                                 print('done copying')
                                 QMessageBox.information(self, "Info", 'T-Echo bootloader updated.\n\nWait for it to reboot.')
                 else:
-                    if (not rak_bootloader_current) and self.select_device.currentText().startswith('rak'):
-                        print('rak bootloader is not current')
-                        QMessageBox.information(self, "Info", ("RAK bootloader is not current.\n"
-                                                "About to update RAK bootloader..."))
+                    if self.select_device.currentText().startswith('rak'):
+                        if not rak_bootloader_current:
+                            print('rak bootloader is not current')
+                        if self.confirm_update_bootloader('RAK'):
+                            print('Checking boot loader version')
+                            # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
+                            bootloader_zip_url = "https://github.com/RAKWireless/WisBlock/releases/download/0.4.2/WisCore_RAK4631_Board_Bootloader.zip"
+                            bootloader_zip_filename = "WisCore_RAK4631_Board_Bootloader.zip"
+                            if not os.path.exists(bootloader_zip_filename):
+                                print(f"Need to download the {bootloader_zip_filename} downloading...")
+                                ssl._create_default_https_context = ssl._create_unverified_context
+                                urllib.request.urlretrieve(bootloader_zip_url, bootloader_zip_filename)
+                                print("done downloading")
 
-                        print('Checking boot loader version')
-                        # instructions https://github.com/RAKWireless/WisBlock/tree/master/bootloader/RAK4630
-                        bootloader_zip_url = "https://github.com/RAKWireless/WisBlock/releases/download/0.4.2/WisCore_RAK4631_Board_Bootloader.zip"
-                        bootloader_zip_filename = "WisCore_RAK4631_Board_Bootloader.zip"
-                        if not os.path.exists(bootloader_zip_filename):
-                            print(f"Need to download the {bootloader_zip_filename} downloading...")
-                            ssl._create_default_https_context = ssl._create_unverified_context
-                            urllib.request.urlretrieve(bootloader_zip_url, bootloader_zip_filename)
-                            print("done downloading")
+                            query_ports_again = meshtastic_flasher.util.wrapped_findPorts()
+                            if len(query_ports_again) == 1:
+                                port_to_use = query_ports_again[0]
+                                command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
+                                _, nrfutil_output = subprocess.getstatusoutput(command)
+                                print(nrfutil_output)
 
-                        query_ports_again = meshtastic_flasher.util.wrapped_findPorts()
-                        if len(query_ports_again) == 1:
-                            port_to_use = query_ports_again[0]
-                            command = f"adafruit-nrfutil --verbose dfu serial --package {bootloader_zip_filename} -p {port_to_use} -b 115200 --singlebank --touch 1200"
-                            _, nrfutil_output = subprocess.getstatusoutput(command)
-                            print(nrfutil_output)
-
-                            QMessageBox.information(self, "Info", "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware.")
+                                QMessageBox.information(self, "Info", "Done updating bootloader.\nNow you are ready to Flash with Meshtastic firmware.")
 
             else:
                 print("Could not find the partition")
@@ -993,18 +992,18 @@ class Form(QDialog):
         return update_only_message
 
 
-    def confirm_update_techo_bootloader(self):
-        """Prompt the user to confirm if they want to proceed with the updating the T-Echo bootloader.
+    def confirm_update_bootloader(self, name='T-Echo'):
+        """Prompt the user to confirm if they want to proceed with the updating the {name} bootloader.
            Returns True if user answered Yes, otherwise returns False
         """
         want_to_proceed = False
-        confirm_msg = 'Do you want to update the T-Echo bootloader?'
+        confirm_msg = f'Do you want to update the {name} bootloader?'
         reply = QMessageBox.question(self, 'Update', confirm_msg, QMessageBox.Yes | QMessageBox.No)
         if reply == QMessageBox.Yes:
             want_to_proceed = True
-            print("User confirmed they want to update the techo bootloader")
+            print(f"User confirmed they want to update the {name} bootloader")
         else:
-            print("User does not want to update the techo bootloader")
+            print(f"User does not want to update the {name} bootloader")
         return want_to_proceed
 
 
