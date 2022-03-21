@@ -4,10 +4,6 @@
 from PySide6 import QtCore
 from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QDialogButtonBox, QLineEdit, QLabel, QTextEdit
 
-import meshtastic.serial_interface
-import meshtastic.util
-import meshtastic.mesh_pb2
-import meshtastic.radioconfig_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
 
@@ -76,9 +72,6 @@ class CannedMessageForm(QDialog):
     def get_values(self):
         """Get values from device"""
         try:
-            if self.interface is None:
-                print('interface was none?')
-                self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 

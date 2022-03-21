@@ -3,7 +3,6 @@
 
 from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QLineEdit, QDialogButtonBox
 
-import meshtastic.serial_interface
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
 
@@ -130,9 +129,6 @@ class Wifi_and_MQTT_Form(QDialog):
     def get_prefs(self):
         """Get preferences from device"""
         try:
-            if self.interface is None:
-                print('interface was none?')
-                self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
         except Exception as e:

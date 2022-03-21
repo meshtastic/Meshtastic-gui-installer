@@ -50,11 +50,12 @@ class AdminForm(QDialog):
         reply = QMessageBox.question(self, self.main.text('flash'), self.main.text('confirm_reset_device'), QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             print("User confirmed they want to do a factory reset")
-            prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-            setPref(prefs, 'factory_reset', 'true')
-            self.interface.getNode(BROADCAST_ADDR).writeConfig()
-            self.interface.getNode(BROADCAST_ADDR).reboot()
-            QMessageBox.information(self, self.main.text('info'), self.main.text('device_was_reset'))
+            if self.interface:
+                prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
+                setPref(prefs, 'factory_reset', 'true')
+                self.interface.getNode(BROADCAST_ADDR).writeConfig()
+                self.interface.getNode(BROADCAST_ADDR).reboot()
+                QMessageBox.information(self, self.main.text('info'), self.main.text('device_was_reset'))
             self.parent.my_close()
         else:
             print("User does not want to do a factory reset")

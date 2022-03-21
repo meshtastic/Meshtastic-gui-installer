@@ -4,10 +4,6 @@ import geocoder
 
 from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QDialogButtonBox, QLineEdit, QPushButton
 
-import meshtastic.serial_interface
-import meshtastic.util
-import meshtastic.mesh_pb2
-import meshtastic.radioconfig_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
 
@@ -69,21 +65,17 @@ class FixedPositionForm(QDialog):
         if self.port:
             print(f'using port:{self.port}')
             self.get_values()
-            self.show()
+        self.show()
 
 
     def get_values(self):
         """Get values from device"""
         try:
-            if self.interface is None:
-                print('interface was none?')
-                self.interface = meshtastic.serial_interface.SerialInterface(devPath=self.port)
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
                 if self.prefs.fixed_position and self.prefs.fixed_position is True:
                     self.fixed_position.setChecked(True)
-
         except Exception as e:
             print(f'Exception:{e}')
 
