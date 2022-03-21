@@ -485,6 +485,11 @@
             "zh": "\u4f60\u786e\u5b9a\u8981\u91cd\u7f6e\u8bbe\u5907\u5417\uff1f"
         }
     },
+    "confirm_use_fake_device": {
+        "text": {
+            "en": "Did you want to simulate using a fake device?"
+        }
+    },
     "confirm_update_techo_bootloader": {
         "text": {
             "de": "M\u00f6chten Sie den T-Echo-Bootloader aktualisieren?",

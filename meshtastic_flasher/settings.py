@@ -133,6 +133,21 @@ QTabBar::tab:only-one {
         self.my_close()
 
 
+    def confirm_use_fake_device(self):
+        """Prompt the user to confirm if they want to use a 'fake' device.
+           Returns True if user answered Yes, otherwise returns False
+        """
+        want_to_proceed = False
+        confirm_msg = self.main.text('confirm_use_fake_device')
+        reply = QMessageBox.question(self, self.main.text('question'), confirm_msg, QMessageBox.Yes | QMessageBox.No)
+        if reply == QMessageBox.Yes:
+            want_to_proceed = True
+            print("User confirmed they want to use a fake device")
+        else:
+            print("User does not want to use a fake device")
+        return want_to_proceed
+
+
     def run(self):
         """load the form"""
         print('in settings')
@@ -150,5 +165,9 @@ QTabBar::tab:only-one {
             self.user_form.run(port=self.port, interface=self.interface)
         else:
             QMessageBox.warning(self, self.main.text('warning'), self.main.text('warning_problem_connecting'))
-            print("closing")
-            self.my_close()
+            if self.confirm_use_fake_device():
+                self.show()
+                self.user_form.run(port=None, interface=None)
+            else:
+                print("closing")
+                self.my_close()
