@@ -7,8 +7,8 @@
 #pragma compile(UPX, False)
 #pragma compile(FileDescription, Meshtastic Flasher WinApp)
 #pragma compile(ProductName, Meshtastic Flasher)
-#pragma compile(ProductVersion, 1.0.2)
-#pragma compile(FileVersion, 1.0.2.0)
+#pragma compile(ProductVersion, 1.0.3)
+#pragma compile(FileVersion, 1.0.3.0)
 #pragma compile(CompanyName, 'Meshtastic.org')
 
 #include <AutoItConstants.au3>
@@ -63,9 +63,21 @@ Endif
 ; if we found a valid python
 If $sPython <> "" Then
 	If Not FileExists("venv\") Then
+		MsgBox($MB_SYSTEMMODAL, "Info", "Creating a python virtual environment 'venv' directory.")
 		$CMD = $sPython & " -m venv venv"
 		RunWait(@ComSpec & " /c " & $CMD)
 	Endif
+	
+	$CMD = "venv\Scripts\activate"
+	Local $iRetVal  = RunWait(@ComSpec & " /c " & $CMD)
+	
+	If $iRetVal <> 0 Then
+		; need to re-create the venv
+		MsgBox($MB_SYSTEMMODAL, "Warning", "There was a problem with the python virtual environment 'venv' directory. Going to re-create it.")
+		DirRemove("venv", 1);
+		$CMD = $sPython & " -m venv venv"
+		RunWait(@ComSpec & " /c " & $CMD)
+	EndIf
 
 	$CMD = "venv\Scripts\activate & " & $sPython & " -m pip install --upgrade pip & pip install --upgrade meshtastic-flasher & meshtastic-flasher"
 	RunWait(@ComSpec & " /c " & $CMD)
