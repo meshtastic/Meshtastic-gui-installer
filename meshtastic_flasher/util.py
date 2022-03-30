@@ -178,7 +178,10 @@ def zero_if_blank(some_input):
         retval = 0
     else:
         try:
-            retval = int(some_input)
+            if '.' in some_input:
+                retval = float(some_input)
+            else:
+                retval = int(some_input)
         except:
             pass
     return f'{retval}'
