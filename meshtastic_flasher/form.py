@@ -104,7 +104,7 @@ class Form(QDialog):
 
         self.select_language = QComboBox()
         self.select_language.setToolTip(self.main.tooltip('select_language'))
-        self.select_language.setMinimumContentsLength(18)
+        self.select_language.setMinimumContentsLength(25)
 
         self.select_language.addItem("English", "en")
         self.populate_languages()
@@ -312,6 +312,7 @@ class Form(QDialog):
         self.select_language.addItem("中国 - Simplified Chinese", "zh")
         self.select_language.addItem("русский - Russian", "ru")
         self.select_language.addItem("日本語 - Japanese", "ja")
+        self.select_language.addItem("Română - Romanian", "ro")
         index = self.select_language.findData(self.lang)
         self.select_language.setCurrentIndex(index)
 
