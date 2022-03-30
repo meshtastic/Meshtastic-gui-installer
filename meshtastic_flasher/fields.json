@@ -24,7 +24,7 @@
             "it": "Clicca per informazioni sul progetto.",
             "ja": "\u30af\u30ea\u30c3\u30af\u3059\u308b\u3068\u30d7\u30ed\u30b8\u30a7\u30af\u30c8\u306e\u60c5\u5831\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002",
             "pl": "Kliknij, aby uzyska\u0107 informacje o projekcie.",
-            "ro": "Face\u021bi clic pentru informa\u021bii despre proiect.",
+            "ro": "Pentru mai multe informa\u021bii, ap\u0103sa\u021bi aici.",
             "ru": "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0434\u043b\u044f \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438 \u043e \u043f\u0440\u043e\u0435\u043a\u0442\u0435.",
             "zh": "\u70b9\u51fb\u67e5\u770b\u9879\u76ee\u4fe1\u606f\u3002"
         }
@@ -39,7 +39,7 @@
             "it": "Meshtastic Flasher fa parte dell'ecosistema <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. \u00c8 una multi-piattaforma, un'interfaccia grafica facile da usare per aggiornare e installare il firmware Meshtastic.",
             "ja": "Meshtastic Flasher \u306f\u3001<a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> \u306e\u30a8\u30b3\u30b7\u30b9\u30c6\u30e0\u306e\u4e00\u90e8\u3067\u3059\u3002\u3053\u308c\u306f\u3001\u30af\u30ed\u30b9\u30d7\u30e9\u30c3\u30c8\u30d5\u30a9\u30fc\u30e0\u3067\u3001Meshtastic\u30d5\u30a1\u30fc\u30e0\u30a6\u30a7\u30a2\u306e\u30a2\u30c3\u30d7\u30c7\u30fc\u30c8\u3084\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u3092\u884c\u3046\u305f\u3081\u306e\u3001\u4f7f\u3044\u3084\u3059\u3044\u30b0\u30e9\u30d5\u30a3\u30ab\u30eb\u30fb\u30e6\u30fc\u30b6\u30fc\u30fb\u30a4\u30f3\u30bf\u30fc\u30d5\u30a7\u30fc\u30b9\u3067\u3059\u3002",
             "pl": "Meshtastic Flasher jest cz\u0119\u015bci\u0105 ekosystemu <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. Jest to wieloplatformowy, \u0142atwy w u\u017cyciu graficzny interfejs u\u017cytkownika do aktualizacji i instalacji firmware Meshtastic.",
-            "ro": "Meshtastic Flasher face parte din ecosistemul <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. Este o interfa\u021b\u0103 grafic\u0103 de utilizator interplatform\u0103, u\u0219or de utilizat, pentru actualizarea \u0219i instalarea firmware-ului Meshtastic.",
+            "ro": "Meshtastic Flasher face parte din ecosistemul <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. Este o interfa\u021b\u0103 grafic\u0103 de utilizator inter-platform\u0103, u\u0219or de folosire, pentru actualizarea \u0219i instalarea firmware-ului Meshtastic.",
             "ru": "Meshtastic Flasher \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u0447\u0430\u0441\u0442\u044c\u044e \u044d\u043a\u043e\u0441\u0438\u0441\u0442\u0435\u043c\u044b <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a>. \u042d\u0442\u043e \u043a\u0440\u043e\u0441\u0441\u043f\u043b\u0430\u0442\u0444\u043e\u0440\u043c\u0435\u043d\u043d\u044b\u0439, \u043f\u0440\u043e\u0441\u0442\u043e\u0439 \u0432 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u043d\u0438\u0438 \u0433\u0440\u0430\u0444\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0438\u043d\u0442\u0435\u0440\u0444\u0435\u0439\u0441 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044f \u0434\u043b\u044f \u043e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f \u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043a\u0438 \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0438 Meshtastic.",
             "zh": "Meshtastic Flasher \u662f <a href='https://meshtastic.org' style='color:#67EA94'>Meshtastic</a> \u751f\u6001\u7cfb\u7edf\u7684\u4e00\u90e8\u5206\u3002\u5b83\u662f\u4e00\u4e2a\u8de8\u5e73\u53f0\u3001\u6613\u4e8e\u4f7f\u7528\u7684\u56fe\u5f62\u5316\u56fa\u4ef6\u66f4\u65b0\u5de5\u5177\uff0c\u7528\u4e8e\u66f4\u65b0\u548c\u5b89\u88c5 Meshtastic \u56fa\u4ef6\u3002"
         }
@@ -97,7 +97,7 @@
             "it": "Impostazioni amministrative",
             "ja": "\u7ba1\u7406\u8005\u8a2d\u5b9a",
             "pl": "Ustawienia administratora",
-            "ro": "Set\u0103ri administrative",
+            "ro": "Set\u0103rile administrative",
             "ru": "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0430\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440\u0430",
             "zh": "\u7ba1\u7406\u8bbe\u7f6e"
         }
@@ -125,7 +125,7 @@
             "it": "Clicca per le opzioni avanzate di Meshtastic Flasher.",
             "ja": "\u30af\u30ea\u30c3\u30af\u3059\u308b\u3068\u3001Meshtastic Flasher\u306e\u8a73\u7d30\u30aa\u30d7\u30b7\u30e7\u30f3\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002",
             "pl": "Kliknij, aby wy\u015bwietli\u0107 zaawansowane opcje Meshtastic Flasher.",
-            "ro": "Face\u021bi clic pentru op\u021biunile avansate ale Meshtastic Flasher.",
+            "ro": "Pentru op\u021biunile avansate ale Meshtastic Flasher, ap\u0103sa\u021bi aici .",
             "ru": "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0434\u043b\u044f \u043f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u044f \u0440\u0430\u0441\u0448\u0438\u0440\u0435\u043d\u043d\u044b\u0445 \u043e\u043f\u0446\u0438\u0439 Meshtastic Flasher.",
             "zh": "\u70b9\u51fb\u67e5\u770b Meshtastic Flasher \u9ad8\u7ea7\u9009\u9879\u3002"
         }
@@ -183,7 +183,7 @@
             "it": "Passa automaticamente alla pagina successiva sullo schermo come una giostra, in base all'intervallo specificato in secondi. Potenzialmente utile per i dispositivi senza pulsanti utente.",
             "ja": "\u79d2\u5358\u4f4d\u3067\u6307\u5b9a\u3057\u305f\u9593\u9694\u3067\u3001\u30ab\u30eb\u30fc\u30bb\u30eb\u306e\u3088\u3046\u306b\u753b\u9762\u4e0a\u306e\u6b21\u306e\u30da\u30fc\u30b8\u306b\u81ea\u52d5\u7684\u306b\u5207\u308a\u66ff\u308f\u308a\u307e\u3059\u3002\u30e6\u30fc\u30b6\u30fc\u30dc\u30bf\u30f3\u304c\u306a\u3044\u7aef\u672b\u3067\u6709\u52b9\u306a\u6a5f\u80fd\u3067\u3059\u3002",
             "pl": "Automatycznie prze\u0142\u0105cza do nast\u0119pnej strony na ekranie, jak karuzela, na podstawie okre\u015blonego interwa\u0142u w sekundach. Potencjalnie przydatne w urz\u0105dzeniach bez przycisk\u00f3w u\u017cytkownika.",
-            "ro": "Trece automat la pagina urm\u0103toare de pe ecran, ca un carusel, pe baza intervalului specificat \u00een secunde. Poten\u021bial util pentru dispozitivele f\u0103r\u0103 butoane de utilizator.",
+            "ro": "Trece automat la pagina urm\u0103toare de pe ecran, rotind, pe baza intervalului specificat \u00een secunde. Bun de utilizat pentru aparat f\u0103r\u0103 butoane.",
             "ru": "\u0410\u0432\u0442\u043e\u043c\u0430\u0442\u0438\u0447\u0435\u0441\u043a\u043e\u0435 \u043f\u0435\u0440\u0435\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 \u043d\u0430 \u0441\u043b\u0435\u0434\u0443\u044e\u0449\u0443\u044e \u0441\u0442\u0440\u0430\u043d\u0438\u0446\u0443 \u043d\u0430 \u044d\u043a\u0440\u0430\u043d\u0435, \u043f\u043e\u0434\u043e\u0431\u043d\u043e \u043a\u0430\u0440\u0443\u0441\u0435\u043b\u0438, \u043d\u0430 \u043e\u0441\u043d\u043e\u0432\u0435 \u0437\u0430\u0434\u0430\u043d\u043d\u043e\u0433\u043e \u0438\u043d\u0442\u0435\u0440\u0432\u0430\u043b\u0430 \u0432 \u0441\u0435\u043a\u0443\u043d\u0434\u0430\u0445. \u041f\u043e\u0442\u0435\u043d\u0446\u0438\u0430\u043b\u044c\u043d\u043e \u043f\u043e\u043b\u0435\u0437\u043d\u043e \u0434\u043b\u044f \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432 \u0431\u0435\u0437 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u0441\u043a\u0438\u0445 \u043a\u043d\u043e\u043f\u043e\u043a.",
             "zh": "\u6309\u8bbe\u5b9a\u7684\u65f6\u95f4\u95f4\u9694\u81ea\u52a8\u5207\u6362\u5230\u4e0b\u4e00\u5c4f\uff0c\u4ee5\u79d2\u4e3a\u5355\u4f4d\u3002\u5bf9\u6ca1\u6709\u7528\u6237\u6309\u94ae\u7684\u8bbe\u5907\u53ef\u80fd\u5f88\u6709\u7528\u3002"
         },
@@ -196,7 +196,7 @@
             "it": "Menu a giostra automatico sullo schermo (secondi)",
             "ja": "\u81ea\u52d5\u753b\u9762\u30ab\u30eb\u30fc\u30bb\u30eb\uff08\u79d2\uff09",
             "pl": "Automatyczna karuzela ekranowa (sekundy)",
-            "ro": "Carusel automat al ecranului (secunde)",
+            "ro": "Rotire automat\u0103 a textului (secunde)",
             "ru": "\u0410\u0432\u0442\u043e\u044d\u043a\u0440\u0430\u043d\u043d\u0430\u044f \u043a\u0430\u0440\u0443\u0441\u0435\u043b\u044c (\u0441\u0435\u043a\u0443\u043d\u0434\u044b)",
             "zh": "\u81ea\u52a8\u5c4f\u5e55\u5207\u6362\u95f4\u9694\uff08\u79d2\uff09"
         }
@@ -211,7 +211,7 @@
             "it": "Alcuni numeri di larghezza di banda sono 'speciali' e saranno convertiti nel valore in virgola mobile appropriato: 31 -> 31,25MHz.",
             "ja": "\u7279\u5b9a\u306e\u5e2f\u57df\u5e45\u306e\u6570\u5024\u306f\u300c\u7279\u6b8a\u300d\u3067\u3042\u308a\u3001\u9069\u5207\u306a\u6d6e\u52d5\u5c0f\u6570\u70b9\u5024\u306b\u5909\u63db\u3055\u308c\u307e\u3059\u300231 \u2192 31.25MHz \u3068\u306a\u308a\u307e\u3059\u3002",
             "pl": "Niekt\u00f3re liczby szeroko\u015bci pasma s\u0105 \"specjalne\" i zostan\u0105 przekonwertowane na odpowiedni\u0105 warto\u015b\u0107 zmiennoprzecinkow\u0105: 31 -> 31,25MHz.",
-            "ro": "Anumite numere de l\u0103\u021bime de band\u0103 sunt \"speciale\" \u0219i vor fi convertite \u00een valoarea corespunz\u0103toare \u00een virgul\u0103 mobil\u0103: 31 -> 31,25 MHz.",
+            "ro": "Anumite numere de l\u0103\u021bime de bandwidth sunt \"speciale\" \u0219i vor fi convertite \u00een valoarea corespunz\u0103toare \u00een virgul\u0103 mobil\u0103: 31 -> 31,25 MHz.",
             "ru": "\u041d\u0435\u043a\u043e\u0442\u043e\u0440\u044b\u0435 \u0447\u0438\u0441\u043b\u0430 \u0434\u0438\u0430\u043f\u0430\u0437\u043e\u043d\u0430 \u0447\u0430\u0441\u0442\u043e\u0442 \u044f\u0432\u043b\u044f\u044e\u0442\u0441\u044f \"\u0441\u043f\u0435\u0446\u0438\u0430\u043b\u044c\u043d\u044b\u043c\u0438\" \u0438 \u0431\u0443\u0434\u0443\u0442 \u043f\u0440\u0435\u043e\u0431\u0440\u0430\u0437\u043e\u0432\u0430\u043d\u044b \u0432 \u0441\u043e\u043e\u0442\u0432\u0435\u0442\u0441\u0442\u0432\u0443\u044e\u0449\u0435\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u0441 \u043f\u043b\u0430\u0432\u0430\u044e\u0449\u0435\u0439 \u0442\u043e\u0447\u043a\u043e\u0439: 31 -> 31,25 \u041c\u0413\u0446.",
             "zh": "\u67d0\u4e9b\u5e26\u5bbd\u503c\u662f\u201c\u7279\u6b8a\u201d\u7684\uff0c\u4f1a\u88ab\u8f6c\u6362\u4e3a\u5bf9\u5e94\u7684\u6d6e\u70b9\u503c\uff0c\u6bd4\u5982 31 -> 31.25MHz\u3002"
         },
@@ -224,7 +224,7 @@
             "it": "Larghezza di banda (MHz)",
             "ja": "\u5e2f\u57df\u5e45(MHz)",
             "pl": "Szeroko\u015b\u0107 pasma (MHz)",
-            "ro": "L\u0103\u021bimea de band\u0103 (MHz)",
+            "ro": "L\u0103\u021bimea de bandwidth (MHz)",
             "ru": "\u0414\u0438\u0430\u043f\u0430\u0437\u043e\u043d \u0447\u0430\u0441\u0442\u043e\u0442 (\u041c\u0413\u0446)",
             "zh": "\u5e26\u5bbd\uff08MHz\uff09"
         }
@@ -239,7 +239,7 @@
             "it": "Predefiniti",
             "ja": "\u7f36\u8a70",
             "pl": "Puszka",
-            "ro": "Conserv\u0103",
+            "ro": "Mesaje  predefinit",
             "ru": "\u0428\u0430\u0431\u043b\u043e\u043d\u044b",
             "zh": "\u9884\u5b9a\u4e49\u6d88\u606f"
         }
@@ -255,7 +255,7 @@
             "it": "Modulo messaggi predefiniti",
             "ja": "\u5b9a\u578b\u6587\u30e2\u30b8\u30e5\u30fc\u30eb",
             "pl": "Modu\u0142 wiadomo\u015bci w puszce",
-            "ro": "Modulul de mesaje conservate",
+            "ro": "Modulul de mesaje predefinit",
             "ru": "\u041c\u043e\u0434\u0443\u043b\u044c \u0428\u0430\u0431\u043b\u043e\u043d\u043d\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439",
             "zh": "\u9884\u5b9a\u4e49\u6d88\u606f\u6a21\u5757"
         }
@@ -270,7 +270,7 @@
             "it": "Origine dell'evento in ingresso accettata dal modulo dei messaggi predefinito. Pu\u00f2 essere ad esempio 'rotEnc1' o la parola chiave '_any'.",
             "ja": "Canned Message\u30e2\u30b8\u30e5\u30fc\u30eb\u304c\u53d7\u3051\u5165\u308c\u308b\u5165\u529b\u30a4\u30d9\u30f3\u30c8\u306e\u8d77\u6e90\u3002rotEnc1'\u3084\u30ad\u30fc\u30ef\u30fc\u30c9'_any'\u306a\u3069\u3068\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
             "pl": "Pochodzenie zdarzenia wej\u015bciowego akceptowanego przez modu\u0142 Canned Message. Mo\u017ce to by\u0107 np. \"rotEnc1\" lub s\u0142owo kluczowe \"_any\".",
-            "ro": "Originea evenimentului de intrare acceptat\u0103 de modulul de mesaje conservate. Poate fi, de exemplu, \"rotEnc1\" sau cuv\u00e2ntul cheie \"_any\".",
+            "ro": "Originea evenimentului de intrare acceptat\u0103 de modulul de mesaje predefinit. Poate fi, de exemplu, \"rotEnc1\" sau cuv\u00e2ntul cheie \"_any\".",
             "ru": "\u041d\u0430\u0447\u0430\u043b\u043e \u0432\u0445\u043e\u0434\u043d\u043e\u0433\u043e \u0441\u043e\u0431\u044b\u0442\u0438\u044f, \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u0435\u043c\u043e\u0435 \u043c\u043e\u0434\u0443\u043b\u0435\u043c \u0428\u0430\u0431\u043b\u043e\u043d\u043d\u044b\u0445 \u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439. \u041c\u043e\u0436\u0435\u0442 \u0431\u044b\u0442\u044c, \u043d\u0430\u043f\u0440\u0438\u043c\u0435\u0440, 'rotEnc1' \u0438\u043b\u0438 \u043a\u043b\u044e\u0447\u0435\u0432\u043e\u0435 \u0441\u043b\u043e\u0432\u043e '_any'.",
             "zh": "\u9884\u5b9a\u4e49\u6d88\u606f\u63a5\u53d7\u7684\u8f93\u5165\u4e8b\u4ef6\u6e90\u3002\u53ef\u4ee5\u662f\u201crotEnc1\u201d\u7b49\u503c\uff0c\u6216\u662f\u5173\u952e\u8bcd\u201c_any\u201d\u8868\u793a\u4efb\u610f\u8f93\u5165\u6e90\u3002"
         },
@@ -326,7 +326,7 @@
             "it": "Messaggi predefiniti per il modulo separati dal carattere '|'.",
             "ja": "\u5b9a\u578b\u6587\u30e2\u30b8\u30e5\u30fc\u30eb\u3067\u3042\u3089\u304b\u3058\u3081\u5b9a\u7fa9\u3055\u308c\u305f\u30e1\u30c3\u30bb\u30fc\u30b8\u3092'|'\u6587\u5b57\u3067\u533a\u5207\u3063\u3066\u8868\u793a\u3057\u307e\u3059\u3002",
             "pl": "Wst\u0119pnie zdefiniowane komunikaty dla modu\u0142u Canned Message oddzielone znakiem \"|\".",
-            "ro": "Mesajele predefinite pentru modulul de mesaje conservate, separate prin caracterul \"|\".",
+            "ro": "Mesajele predefinite pentru modulul de mesaje predefinit, separate prin caracterul \"|\".",
             "ru": "\u041f\u0440\u0435\u0434\u0432\u0430\u0440\u0438\u0442\u0435\u043b\u044c\u043d\u043e \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f \u0434\u043b\u044f \u043c\u043e\u0434\u0443\u043b\u044f \u0428\u0430\u0431\u043b\u043e\u043d\u043d\u044b\u0435 \u0421\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f, \u0440\u0430\u0437\u0434\u0435\u043b\u0435\u043d\u043d\u044b\u0435 \u0441\u0438\u043c\u0432\u043e\u043b\u043e\u043c '|'.",
             "zh": "\u9884\u5b9a\u4e49\u7684\u6d88\u606f\uff0c\u591a\u6761\u6d88\u606f\u7528\u201c|\u201d\u5b57\u7b26\u5206\u9694\u3002"
         },
@@ -354,7 +354,7 @@
             "it": "Il modulo Messaggi Predefiniti invia anche un carattere BELL con i messaggi. Il modulo di notifica esterna pu\u00f2 beneficiare di questa caratteristica.",
             "ja": "\u307e\u305f\u3001\u5b9a\u578b\u6587\u30e2\u30b8\u30e5\u30fc\u30eb\u3067\u306f\u3001\u30e1\u30c3\u30bb\u30fc\u30b8\u3068\u4e00\u7dd2\u306b\u30d9\u30eb\u6587\u5b57\u3082\u9001\u4fe1\u3055\u308c\u307e\u3059\u3002\u5916\u90e8\u901a\u77e5\u30e2\u30b8\u30e5\u30fc\u30eb\u306f\u3001\u3053\u306e\u6a5f\u80fd\u306e\u6069\u6075\u3092\u53d7\u3051\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002",
             "pl": "Modu\u0142 Canned Message wysy\u0142a r\u00f3wnie\u017c znak dzwonka wraz z wiadomo\u015bciami. Z funkcji tej mo\u017ce korzysta\u0107 modu\u0142 Powiadomienia zewn\u0119trzne.",
-            "ro": "De asemenea, modulul de mesaje conservate trimite un caracter de clopo\u021bel \u00eempreun\u0103 cu mesajele. Modulul de notificare extern\u0103 poate beneficia de aceast\u0103 func\u021bie.",
+            "ro": "De asemenea, modulul de mesaje predefinit trimite un caracter de clopo\u021bel \u00eempreun\u0103 cu mesajele. Modulul de notificare extern\u0103 poate beneficia de aceast\u0103 func\u021bie.",
             "ru": "\u041c\u043e\u0434\u0443\u043b\u044c \"\u0428\u0430\u0431\u043b\u043e\u043d\u043d\u044b\u0435 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\" \u0442\u0430\u043a\u0436\u0435 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0435\u0442 \u0432\u043c\u0435\u0441\u0442\u0435 \u0441 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f\u043c\u0438 \u0441\u0438\u043c\u0432\u043e\u043b \u0437\u0432\u043e\u043d\u043a\u0430. \u041c\u043e\u0434\u0443\u043b\u044c \u0432\u043d\u0435\u0448\u043d\u0438\u0445 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0439 \u043c\u043e\u0436\u0435\u0442 \u0432\u043e\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u044d\u0442\u043e\u0439 \u0444\u0443\u043d\u043a\u0446\u0438\u0435\u0439.",
             "zh": "\u9884\u5b9a\u4e49\u6d88\u606f\u6a21\u5757\u4f1a\u968f\u4fe1\u606f\u53d1\u9001\u4e00\u4e2a\u94c3\u94db\u5b57\u7b26\u3002\u5916\u90e8\u901a\u77e5\u6a21\u5757\u53ef\u4ee5\u4ece\u8fd9\u4e2a\u529f\u80fd\u4e2d\u53d7\u76ca\u3002"
         },
@@ -367,7 +367,7 @@
             "it": "Mandare BELL?",
             "ja": "\u30d9\u30eb\u3092\u9001\u308b\uff1f",
             "pl": "Wys\u0142a\u0107 dzwonek?",
-            "ro": "Trimite Bell?",
+            "ro": "Trimite Clopo\u021bel?",
             "ru": "\u041f\u043e\u0441\u043b\u0430\u0442\u044c \u0441\u0438\u043c\u0432\u043e\u043b \u0417\u0432\u043e\u043d\u043a\u0430?",
             "zh": "\u53d1\u9001\u94c3\u94db\u7b26"
         }
@@ -382,7 +382,7 @@
             "it": "Impostazioni del modulo messaggi predefiniti",
             "ja": "\u5b9a\u578b\u6587\u30e2\u30b8\u30e5\u30fc\u30eb\u306e\u8a2d\u5b9a",
             "pl": "Ustawienia modu\u0142u wiadomo\u015bci w puszkach",
-            "ro": "Set\u0103ri ale modulului de mesaje conservate",
+            "ro": "Set\u0103ri ale modulului de mesaje predefinit",
             "ru": "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u043c\u043e\u0434\u0443\u043b\u044f \u0448\u0430\u0431\u043b\u043e\u043d\u043d\u044b\u0445 \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u0439",
             "zh": "\u9884\u5b9a\u4e49\u6d88\u606f\u6a21\u5757\u8bbe\u7f6e"
         }
@@ -422,7 +422,7 @@
             "de": "Stellt den internen Ladestrom des Akkus ein.",
             "en": "Sets the current of the battery charger.",
             "es": "Establece la corriente del cargador de bater\u00eda.",
-            "et": "Määrab akulaadija laadimisvoolu.",
+            "et": "M\u00e4\u00e4rab akulaadija laadimisvoolu.",
             "fr": "R\u00e8gle le courant du chargeur de batterie.",
             "it": "Imposta la corrente del caricabatterie.",
             "ja": "\u30d0\u30c3\u30c6\u30ea\u30fc\u30c1\u30e3\u30fc\u30b8\u30e3\u30fc\u306e\u96fb\u6d41\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002",
@@ -563,11 +563,6 @@
             "zh": "\u4f60\u786e\u5b9a\u8981\u91cd\u7f6e\u8bbe\u5907\u5417\uff1f"
         }
     },
-    "confirm_use_fake_device": {
-        "text": {
-            "en": "Did you want to simulate using a fake device?"
-        }
-    },
     "confirm_update_bootloader": {
         "text": {
             "de": "M\u00f6chten Sie Bootloader aktualisieren?",
@@ -579,6 +574,11 @@
             "pl": "Czy chcesz zaktualizowa\u0107 bootloader?",
             "ru": "\u0412\u044b \u0445\u043e\u0442\u0438\u0442\u0435 \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u0437\u0430\u0433\u0440\u0443\u0437\u0447\u0438\u043a?",
             "zh": "\u8981\u66f4\u65b0\u7684\u5f15\u5bfc\u7a0b\u5e8f\u5417\uff1f"
+        }
+    },
+    "confirm_use_fake_device": {
+        "text": {
+            "en": "Did you want to simulate using a fake device?"
         }
     },
     "copy": {
@@ -606,7 +606,7 @@
             "it": "Impossibile trovare la partizione.\nPremere due volte il pulsante RST\npoi prova di nuovo a premere il pulsante DETECT.",
             "ja": "\u30d1\u30fc\u30c6\u30a3\u30b7\u30e7\u30f3\u304c\u898b\u3064\u304b\u308a\u307e\u305b\u3093\u3067\u3057\u305f\u3002\nRST\u30dc\u30bf\u30f3\u30922\u56de\u62bc\u3057\u3066\u304f\u3060\u3055\u3044\u3002\nDETECT\u30dc\u30bf\u30f3\u3092\u3082\u3046\u4e00\u5ea6\u62bc\u3057\u3066\u307f\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Nie mo\u017cna znale\u017a\u0107 partycji.\nNaci\u015bnij dwukrotnie przycisk RST\na nast\u0119pnie ponownie spr\u00f3buj nacisn\u0105\u0107 przycisk DETECT.",
-            "ro": "Nu a putut g\u0103si parti\u021bia.\nAp\u0103sa\u021bi butonul RST de DOU\u0102 ori\napoi \u00eencerca\u021bi din nou s\u0103 ap\u0103sa\u021bi din nou butonul DETECT.",
+            "ro": "Nu a putut g\u0103si parti\u021bia.\nAp\u0103sa\u021bi butonul RST de DOU\u0102 ori\n\napoi \u00eencerca\u021bi din nou s\u0103 ap\u0103sa\u021bi din nou butonul DETECT.",
             "ru": "\u041d\u0435 \u0443\u0434\u0430\u043b\u043e\u0441\u044c \u043d\u0430\u0439\u0442\u0438 \u0440\u0430\u0437\u0434\u0435\u043b.\n\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 RST \u0414\u0412\u0410 \u0440\u0430\u0437\u0430\n\n\u0437\u0430\u0442\u0435\u043c \u043f\u043e\u0432\u0442\u043e\u0440\u0438\u0442\u0435 \u043f\u043e\u043f\u044b\u0442\u043a\u0443 \u043d\u0430\u0436\u0430\u0442\u0438\u044f \u043a\u043d\u043e\u043f\u043a\u0438 DETECT.",
             "zh": "\u65e0\u6cd5\u627e\u5230\u5206\u533a\u3002\n\u8bf7\u6309\u4e24\u6b21\u590d\u4f4d\u6309\u94ae\n\n\u7136\u540e\u6309\u201c\u68c0\u6d4b\u201d\u6309\u94ae\u518d\u8bd5\u4e00\u6b21\u3002"
         }
@@ -621,7 +621,7 @@
             "it": "Di default il log viene spento non appena un client API si connette (per mantenere tranquillo il collegamento seriale condiviso). Impostatelo a true per lasciare il log di debug in uscita anche quando l'API \u00e8 attiva.",
             "ja": "\u30c7\u30d5\u30a9\u30eb\u30c8\u3067\u306f\u3001API\u30af\u30e9\u30a4\u30a2\u30f3\u30c8\u304c\u63a5\u7d9a\u3059\u308b\u3068\u3059\u3050\u306b\u30ed\u30ae\u30f3\u30b0\u304c\u30aa\u30d5\u306b\u306a\u308a\u307e\u3059(\u5171\u6709\u30b7\u30ea\u30a2\u30eb\u30ea\u30f3\u30af\u3092\u9759\u304b\u306b\u4fdd\u3064\u305f\u3081)\u3002\u3053\u308c\u3092true\u306b\u8a2d\u5b9a\u3059\u308b\u3068\u3001API\u304c\u30a2\u30af\u30c6\u30a3\u30d6\u306a\u72b6\u614b\u3067\u3082\u30c7\u30d0\u30c3\u30b0\u30ed\u30b0\u3092\u51fa\u529b\u3057\u7d9a\u3051\u307e\u3059\u3002",
             "pl": "Domy\u015blnie logowanie jest wy\u0142\u0105czane zaraz po nawi\u0105zaniu po\u0142\u0105czenia przez klienta API (aby zachowa\u0107 cisz\u0119 na wsp\u00f3\u0142dzielonym \u0142\u0105czu szeregowym). Ustaw warto\u015b\u0107 true, aby dziennik debugowania by\u0142 wy\u015bwietlany nawet wtedy, gdy interfejs API jest aktywny.",
-            "ro": "\u00cen mod implicit, jurnalizarea este dezactivat\u0103 imediat ce un client API se conecteaz\u0103 (pentru a p\u0103stra lini\u0219tea leg\u0103turii seriale partajate). Seta\u021bi acest lucru la true pentru a l\u0103sa jurnalul de depanare s\u0103 ias\u0103 chiar \u0219i atunci c\u00e2nd API este activ\u0103.",
+            "ro": "\u00cen mod implicit, crearea de fi\u0219iere jurnaleste este dezactivat\u0103 imediat c\u00e2nd un client API se conecteaz\u0103 (pentru a p\u0103stra lini\u0219tea pe conexiune serial\u0103). Seta\u021bi aceast\u0103 setare la adev\u0103rat pentru a activa jurnalul de depanare chiar \u0219i atunci c\u00e2nd API-ul este activ.",
             "ru": "\u041f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u0432\u0435\u0434\u0435\u043d\u0438\u0435 \u0436\u0443\u0440\u043d\u0430\u043b\u0430 \u043e\u0442\u043a\u043b\u044e\u0447\u0430\u0435\u0442\u0441\u044f, \u043a\u0430\u043a \u0442\u043e\u043b\u044c\u043a\u043e \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0430\u0435\u0442\u0441\u044f \u043a\u043b\u0438\u0435\u043d\u0442 API (\u0447\u0442\u043e\u0431\u044b \u0441\u043e\u0445\u0440\u0430\u043d\u0438\u0442\u044c \u043e\u0431\u0449\u0438\u0439 \u043f\u043e\u0441\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u0439 \u043a\u0430\u043d\u0430\u043b). \u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0435 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 true, \u0447\u0442\u043e\u0431\u044b \u043e\u0441\u0442\u0430\u0432\u0438\u0442\u044c \u0432\u044b\u0432\u043e\u0434 \u0436\u0443\u0440\u043d\u0430\u043b\u0430 \u043e\u0442\u043b\u0430\u0434\u043a\u0438 \u0434\u0430\u0436\u0435 \u043f\u0440\u0438 \u0430\u043a\u0442\u0438\u0432\u043d\u043e\u043c API.",
             "zh": "\u9ed8\u8ba4\u60c5\u51b5\u4e0b\uff0c\u4e00\u65e6\u6709API\u5ba2\u6237\u7aef\u8fde\u63a5\uff0c\u65e5\u5fd7\u5c31\u4f1a\u88ab\u5173\u95ed\uff08\u4ee5\u4fdd\u6301\u5171\u4eab\u4e32\u884c\u94fe\u8def\u7684\u5b89\u9759\uff09\u3002\u5c06\u6b64\u8bbe\u7f6e\u4e3a\u201ctrue\u201d\u540e\uff0c\u5373\u4f7fAPI\u5904\u4e8e\u6d3b\u8dc3\u72b6\u6001\uff0c\u4e5f\u4f1a\u4fdd\u6301\u8c03\u8bd5\u65e5\u5fd7\u7684\u8f93\u51fa\u3002"
         },
@@ -679,7 +679,7 @@
             "it": "Dispositivo",
             "ja": "\u30c7\u30d0\u30a4\u30b9",
             "pl": "Urz\u0105dzenie",
-            "ro": "Dispozitiv",
+            "ro": "Aparat",
             "ru": "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e",
             "zh": "\u8bbe\u5907"
         }
@@ -724,7 +724,7 @@
             "it": "Il dispositivo possiede la versione Meshtastic 1.2 o pi\u00f9 recente?",
             "ja": "\u73fe\u5728\u3001Meshtastic\u306e\u30d0\u30fc\u30b8\u30e7\u30f31.2\u4ee5\u964d\u3092\u642d\u8f09\u3057\u3066\u3044\u308b\u7aef\u672b\u3067\u3057\u3087\u3046\u304b\uff1f",
             "pl": "Czy urz\u0105dzenie posiada Meshtastic w wersji 1.2 lub nowszej?",
-            "ro": "Dispozitivul are \u00een prezent versiunea Meshtastic 1.2 sau mai nou\u0103?",
+            "ro": "Are aparat Meshtastic 1.2 \u00een prezent versiunea, sau mai nou\u0103?",
             "ru": "\u0418\u043c\u0435\u0435\u0442\u0441\u044f \u043b\u0438 \u0432 \u043d\u0430\u0441\u0442\u043e\u044f\u0449\u0435\u0435 \u0432\u0440\u0435\u043c\u044f \u043d\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435 Meshtastic \u0432\u0435\u0440\u0441\u0438\u044f 1.2 \u0438\u043b\u0438 \u0431\u043e\u043b\u0435\u0435 \u043d\u043e\u0432\u0430\u044f?",
             "zh": "\u8bbe\u5907\u76ee\u524d\u662f\u5426\u8fd0\u884c Meshtastic 1.2 \u6216\u66f4\u65b0\u7684\u7248\u672c\uff1f"
         }
@@ -739,7 +739,7 @@
             "it": "Un identificatore globalmente unico per questo dispositivo.",
             "ja": "\u3053\u306e\u30c7\u30d0\u30a4\u30b9\u306e\u30b0\u30ed\u30fc\u30d0\u30eb\u306b\u4e00\u610f\u306a\u8b58\u5225\u5b50\u3002",
             "pl": "Globalnie unikalny identyfikator tego urz\u0105dzenia.",
-            "ro": "Un identificator unic la nivel mondial pentru acest dispozitiv.",
+            "ro": "Un identificator unic la nivel mondial pentru acest aparat.",
             "ru": "\u0413\u043b\u043e\u0431\u0430\u043b\u044c\u043d\u043e \u0443\u043d\u0438\u043a\u0430\u043b\u044c\u043d\u044b\u0439 \u0438\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0434\u043b\u044f \u0434\u0430\u043d\u043d\u043e\u0433\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430.",
             "zh": "\u8be5\u8bbe\u5907\u7684\u5168\u5c40\u552f\u4e00\u6807\u8bc6\u7b26\u3002"
         },
@@ -752,7 +752,7 @@
             "it": "ID dispositivo",
             "ja": "\u30c7\u30d0\u30a4\u30b9ID",
             "pl": "Identyfikator urz\u0105dzenia",
-            "ro": "ID-ul dispozitivului",
+            "ro": "ID-ul aparat",
             "ru": "\u0418\u0434\u0435\u043d\u0442\u0438\u0444\u0438\u043a\u0430\u0442\u043e\u0440 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
             "zh": "\u8bbe\u5907 ID"
         }
@@ -762,12 +762,12 @@
             "de": "Ger\u00e4teeinstellungen",
             "en": "Device Settings",
             "es": "Ajustes del dispositivo",
-            "et": "Seadme sätted",
+            "et": "Seadme s\u00e4tted",
             "fr": "Param\u00e8tres du dispositif",
             "it": "Impostazioni del dispositivo",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u306e\u8a2d\u5b9a",
             "pl": "Ustawienia urz\u0105dzenia",
-            "ro": "Set\u0103ri dispozitiv",
+            "ro": "Set\u0103ri aparat",
             "ru": "\u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430",
             "zh": "\u8bbe\u5907\u8bbe\u7f6e"
         }
@@ -777,12 +777,12 @@
             "de": "Klicken Sie, um die Einstellungen des Ger\u00e4ts anzuzeigen oder zu aktualisieren.",
             "en": "Click to view or update settings on the device.",
             "es": "Haga clic para ver o actualizar la configuraci\u00f3n del dispositivo.",
-            "et": "Kl\u00f5psa seadme sättete vaatamiseks v\u00f5i uuendamiseks.",
+            "et": "Kl\u00f5psa seadme s\u00e4ttete vaatamiseks v\u00f5i uuendamiseks.",
             "fr": "Cliquez pour afficher ou mettre \u00e0 jour les param\u00e8tres de l'appareil.",
             "it": "Clicca per visualizzare o aggiornare le impostazioni del dispositivo.",
             "ja": "\u30af\u30ea\u30c3\u30af\u3059\u308b\u3068\u3001\u7aef\u672b\u306e\u8a2d\u5b9a\u3092\u8868\u793a\u307e\u305f\u306f\u66f4\u65b0\u3057\u307e\u3059\u3002",
             "pl": "Kliknij, aby wy\u015bwietli\u0107 lub zaktualizowa\u0107 ustawienia urz\u0105dzenia.",
-            "ro": "Face\u021bi clic pentru a vizualiza sau actualiza set\u0103rile dispozitivului.",
+            "ro": "Ap\u0103sa\u021bi aici pentru a vedea sau actualiza set\u0103rile aparat.",
             "ru": "\u041d\u0430\u0436\u043c\u0438\u0442\u0435, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u043e\u0441\u043c\u043e\u0442\u0440\u0435\u0442\u044c \u0438\u043b\u0438 \u043e\u0431\u043d\u043e\u0432\u0438\u0442\u044c \u043d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430.",
             "zh": "\u70b9\u51fb\u67e5\u770b\u6216\u66f4\u65b0\u8bbe\u5907\u4e0a\u7684\u8bbe\u7f6e\u3002"
         }
@@ -797,7 +797,7 @@
             "it": "Il dispositivo \u00e8 stato resettato. E' possibile scollegare e ricollegare il dispositivo o\n\npremere il pulsante RESET.\n\nIl modulo Impostazioni ora si chiuder\u00e0.",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u304c\u30ea\u30bb\u30c3\u30c8\u3055\u308c\u307e\u3057\u305f\u3002\u30c7\u30d0\u30a4\u30b9\u306e\u30d7\u30e9\u30b0\u3092\u629c\u304d\u3001\u518d\u5ea6\u63a5\u7d9a\u3059\u308b\u3053\u3068\u3092\u304a\u52e7\u3081\u3057\u307e\u3059\u3002\n\nRESET\u30dc\u30bf\u30f3\u3092\u62bc\u3059\u3002\n\n\u3053\u308c\u3067\u8a2d\u5b9a\u30d5\u30a9\u30fc\u30e0\u304c\u9589\u3058\u3089\u308c\u307e\u3059\u3002",
             "pl": "Urz\u0105dzenie zosta\u0142o zresetowane. Mo\u017ce by\u0107 konieczne od\u0142\u0105czenie i ponowne pod\u0142\u0105czenie urz\u0105dzenia lub\n\nnacisn\u0105\u0107 przycisk RESET.\n\nFormularz Ustawienia zostanie teraz zamkni\u0119ty.",
-            "ro": "Dispozitivul a fost resetat. Este posibil s\u0103 dori\u021bi s\u0103 deconecta\u021bi \u0219i s\u0103 reconecta\u021bi dispozitivul sau\n\nap\u0103sa\u021bi butonul RESET.\n\nFormularul Settings (Set\u0103ri) se va \u00eenchide acum.",
+            "ro": "Aparat a fost resetat. Este posibil s\u0103 dori\u021bi s\u0103 deconecta\u021bi \u0219i s\u0103 reconecta\u021bi aparat sau\n\n\nap\u0103sa\u021bi butonul RESET.\n\n\n\nFormularul pentru set\u0103ri se va \u00eenchide acum.",
             "ru": "\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0431\u044b\u043b\u043e \u043f\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0436\u0435\u043d\u043e. \u041c\u043e\u0436\u0435\u0442 \u043f\u043e\u0442\u0440\u0435\u0431\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0438 \u0441\u043d\u043e\u0432\u0430 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0438\u043b\u0438\n\n\n\u043d\u0430\u0436\u0430\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0443 RESET.\n\n\n\n\u0424\u043e\u0440\u043c\u0430 \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438 \u0437\u0430\u043a\u0440\u043e\u0435\u0442\u0441\u044f.",
             "zh": "\u8bbe\u5907\u88ab\u91cd\u7f6e\u4e86\u3002\u53ef\u80fd\u8981\u62d4\u6389\u5e76\u91cd\u65b0\u63d2\u4e0a\uff0c\u6216\n\n\n\u6309\u91cd\u7f6e\u6309\u94ae\u3002\n\n\n\n\u8bbe\u7f6e\u9875\u9762\u5c06\u4f1a\u5173\u95ed\u3002"
         }
@@ -812,7 +812,7 @@
             "it": "Fatto l'aggiornamento del bootloader.\nOra siete pronti a flashare con il firmware Meshtastic.",
             "ja": "\u30d6\u30fc\u30c8\u30ed\u30fc\u30c0\u30fc\u306e\u30a2\u30c3\u30d7\u30c7\u30fc\u30c8\u304c\u5b8c\u4e86\u3057\u307e\u3057\u305f\u3002\n\u3053\u308c\u3067Meshtastic\u30d5\u30a1\u30fc\u30e0\u30a6\u30a7\u30a2\u3067\u30d5\u30e9\u30c3\u30b7\u30e5\u3059\u308b\u6e96\u5099\u304c\u6574\u3044\u307e\u3057\u305f\u3002",
             "pl": "Zako\u0144czono aktualizacj\u0119 bootloadera.\nTeraz jeste\u015b gotowy do Flashowania firmware Meshtastic.",
-            "ro": "Am terminat de actualizat bootloaderul.\nAcum sunte\u021bi gata s\u0103 face\u021bi flash cu firmware-ul Meshtastic.",
+            "ro": "Actualizarea bootloaderului este finalizat\u0103.\nAcum sunte\u021bi gata s\u0103 face\u021bi flash cu firmware-ul Meshtastic.",
             "ru": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u0435 \u0437\u0430\u0433\u0440\u0443\u0437\u0447\u0438\u043a\u0430 \u0437\u0430\u0432\u0435\u0440\u0448\u0435\u043d\u043e.\n\u0422\u0435\u043f\u0435\u0440\u044c \u0432\u044b \u0433\u043e\u0442\u043e\u0432\u044b \u043a \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0435 \u043c\u0438\u043a\u0440\u043e\u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u043e\u0439 Meshtastic.",
             "zh": "\u5b8c\u6210\u4e86\u5f15\u5bfc\u7a0b\u5e8f\u66f4\u65b0\u3002\n\u73b0\u53ef\u5237\u5165 Meshtastic \u56fa\u4ef6\u3002"
         }
@@ -827,7 +827,7 @@
             "it": "Se impostato, i messaggi visti su Internet saranno inoltrati alla rete locale.",
             "ja": "\u8a2d\u5b9a\u3059\u308b\u3068\u3001\u30a4\u30f3\u30bf\u30fc\u30cd\u30c3\u30c8\u4e0a\u3067\u898b\u305f\u30e1\u30c3\u30bb\u30fc\u30b8\u304c\u30ed\u30fc\u30ab\u30eb\u30e1\u30c3\u30b7\u30e5\u306b\u8ee2\u9001\u3055\u308c\u307e\u3059\u3002",
             "pl": "Je\u015bli jest ustawione, wiadomo\u015bci widziane w Internecie b\u0119d\u0105 przekazywane do sieci lokalnej.",
-            "ro": "Dac\u0103 este setat, mesajele v\u0103zute pe internet vor fi transmise c\u0103tre re\u021beaua local\u0103.",
+            "ro": "Dac\u0103 aceast\u0103 setare este configurat\u0103, mesajele v\u0103zute pe internet vor fi transmise la mesh-ul local\u0103.",
             "ru": "\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e, \u0441\u043e\u043e\u0431\u0449\u0435\u043d\u0438\u044f, \u0443\u0432\u0438\u0434\u0435\u043d\u043d\u044b\u0435  \u0432 \u0418\u043d\u0442\u0435\u0440\u043d\u0435\u0442\u0435, \u0431\u0443\u0434\u0443\u0442 \u043f\u0435\u0440\u0435\u0441\u044b\u043b\u0430\u0442\u044c\u0441\u044f \u0432 \u043b\u043e\u043a\u0430\u043b\u044c\u043d\u0443\u044e \u0441\u0435\u0442\u044c.",
             "zh": "\u5982\u679c\u5f00\u542f\uff0c\u4e92\u8054\u7f51\u4e0a\u7684\u4fe1\u606f\u5c06\u88ab\u8f6c\u53d1\u5230\u672c\u5730\u7f51\u7edc\u3002"
         },
@@ -855,7 +855,7 @@
             "it": "Configurazione di esportazione",
             "ja": "\u30a8\u30af\u30b9\u30dd\u30fc\u30c8\u8a2d\u5b9a",
             "pl": "Konfiguracja eksportu",
-            "ro": "Configura\u021bia de export",
+            "ro": "Exporta\u021bi configura\u021bia",
             "ru": "\u042d\u043a\u0441\u043f\u043e\u0440\u0442 \u043a\u043e\u043d\u0444\u0438\u0433\u0443\u0440\u0430\u0446\u0438\u0438",
             "zh": "\u5bfc\u51fa\u914d\u7f6e"
         }
@@ -886,7 +886,7 @@
             "it": "Se impostato, le notifiche avverranno quando il GPIO \u00e8 attivo-alto. Se non impostato, le notifiche avverranno quando il GPIO \u00e8 attivo-basso.",
             "ja": "\u8a2d\u5b9a\u3059\u308b\u3068\u3001GPIO\u304c\u30a2\u30af\u30c6\u30a3\u30d6High\u306e\u3068\u304d\u306b\u901a\u77e5\u304c\u884c\u308f\u308c\u307e\u3059\u3002\u8a2d\u5b9a\u3057\u306a\u3044\u5834\u5408\u306f\u3001GPIO\u304c\u30a2\u30af\u30c6\u30a3\u30d6LOW\u306e\u3068\u304d\u306b\u901a\u77e5\u3055\u308c\u307e\u3059\u3002",
             "pl": "Je\u015bli jest ustawione, powiadomienia b\u0119d\u0105 wysy\u0142ane, gdy GPIO b\u0119dzie mia\u0142o stan aktywny-wysoki. Je\u015bli nie jest ustawione, powiadomienia b\u0119d\u0105 wysy\u0142ane, gdy GPIO b\u0119dzie mia\u0142o stan aktywny niski.",
-            "ro": "Dac\u0103 este setat, notific\u0103rile vor avea loc atunci c\u00e2nd GPIO este activ-\u00eenalt. Dac\u0103 nu este setat, notific\u0103rile vor avea loc atunci c\u00e2nd GPIO este activ-jos.",
+            "ro": "Dac\u0103 aceast\u0103 setare este configurat\u0103, notific\u0103rile va fi trimis atunci c\u00e2nd GPIO este activ-ridicat. Dac\u0103 nu este setat, notific\u0103rile va fi trimis atunci c\u00e2nd GPIO este activ-cobor\u00ee.",
             "ru": "\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e, \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442\u044c, \u043a\u043e\u0433\u0434\u0430 GPIO \u0430\u043a\u0442\u0438\u0432\u0435\u043d-\u0432\u044b\u0441\u043e\u043a\u0438\u0439. \u0415\u0441\u043b\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 \u043d\u0435 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e, \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u043f\u0440\u0438\u0445\u043e\u0434\u0438\u0442\u044c, \u043a\u043e\u0433\u0434\u0430 GPIO \u0430\u043a\u0442\u0438\u0432\u0435\u043d-\u043d\u0438\u0437\u043a\u0438\u0439.",
             "zh": "\u5982\u679c\u5f00\u542f\uff0c\u5c06\u4ee5 GPIO \u62c9\u81f3\u9ad8\u7535\u5e73\u7684\u65b9\u5f0f\u53d1\u51fa\u901a\u77e5\u3002\u5426\u5219\u5219\u4ee5\u4f4e\u7535\u5e73\u53d1\u51fa\u3002"
         },
@@ -899,7 +899,7 @@
             "it": "Attivo alto?",
             "ja": "\u30a2\u30af\u30c6\u30a3\u30d6\u30cf\u30a4\uff1f",
             "pl": "Aktywny wysoki?",
-            "ro": "Active High?",
+            "ro": "Active Ridicat?",
             "ru": "\u0410\u043a\u0442\u0438\u0432\u043d\u044b\u0439 \u0432\u044b\u0441\u043e\u043a\u0438\u0439 \u0443\u0440\u043e\u0432\u0435\u043d\u044c?",
             "zh": "\u9ad8\u7535\u5e73\u4f7f\u80fd"
         }
@@ -927,7 +927,7 @@
             "it": "Campanello d'allarme?",
             "ja": "\u8b66\u5831\u30d9\u30eb\uff1f",
             "pl": "Dzwonek alarmowy?",
-            "ro": "Alert Bell?",
+            "ro": "Alert Clopot?",
             "ru": "\u041a\u043e\u043b\u043e\u043a\u043e\u043b \u041e\u043f\u043e\u0432\u0435\u0449\u0435\u043d\u0438\u044f?",
             "zh": "\u9047\u5230\u94c3\u94db\u5b57\u7b26\u65f6\u901a\u77e5"
         }
@@ -970,7 +970,7 @@
             "it": "Se impostato, il modulo Notifiche esterne \u00e8 abilitato.",
             "ja": "\u8a2d\u5b9a\u3059\u308b\u3068\u3001External Notification\u30e2\u30b8\u30e5\u30fc\u30eb\u304c\u6709\u52b9\u306b\u306a\u308a\u307e\u3059\u3002",
             "pl": "Je\u015bli jest ustawiona, modu\u0142 Powiadomienia zewn\u0119trzne jest w\u0142\u0105czony.",
-            "ro": "Dac\u0103 este setat, modulul Notific\u0103ri externe este activat.",
+            "ro": "Dac\u0103 este configurat, modulul Notific\u0103ri externe este activat.",
             "ru": "\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e, \u043c\u043e\u0434\u0443\u043b\u044c \u0432\u043d\u0435\u0448\u043d\u0438\u0445 \u0443\u0432\u0435\u0434\u043e\u043c\u043b\u0435\u043d\u0438\u0439 \u0432\u043a\u043b\u044e\u0447\u0435\u043d.",
             "zh": "\u5982\u679c\u542f\u7528\uff0c\u5219\u542f\u7528\u5916\u90e8\u901a\u77e5\u6a21\u5757\u3002"
         },
@@ -1084,7 +1084,7 @@
             "it": "Il file \u00e8 stato copiato.\nAspettate che il dispositivo si riavvii.",
             "ja": "\u30d5\u30a1\u30a4\u30eb\u304c\u30b3\u30d4\u30fc\u3055\u308c\u307e\u3057\u305f\u3002\n\u30c7\u30d0\u30a4\u30b9\u306e\u518d\u8d77\u52d5\u3092\u5f85\u3061\u307e\u3059\u3002",
             "pl": "Plik zosta\u0142 skopiowany.\nZaczekaj na ponowne uruchomienie urz\u0105dzenia.",
-            "ro": "Fi\u0219ierul a fost copiat.\nA\u0219tepta\u021bi repornirea dispozitivului.",
+            "ro": "Fi\u0219ierul a fost copiat.\nA\u0219tepta\u021bi repornirea aparat.",
             "ru": "\u0424\u0430\u0439\u043b \u0431\u044b\u043b \u0441\u043a\u043e\u043f\u0438\u0440\u043e\u0432\u0430\u043d.\n\u041f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435, \u043f\u043e\u043a\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u043f\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0441\u044f.",
             "zh": "\u6587\u4ef6\u5df2\u590d\u5236\u3002\n\u7b49\u5f85\u8bbe\u5907\u91cd\u65b0\u542f\u52a8\u3002"
         }
@@ -1099,7 +1099,7 @@
             "it": "Se impostato, questo nodo \u00e8 in una posizione fissa. Gli aggiornamenti della posizione GPS saranno inviati a intervalli regolari, ma sar\u00e0 usata l'ultima lat/lon/alt.",
             "ja": "\u8a2d\u5b9a\u3055\u308c\u305f\u5834\u5408\u3001\u3053\u306e\u30ce\u30fc\u30c9\u306f\u56fa\u5b9a\u3055\u308c\u305f\u4f4d\u7f6e\u306b\u3042\u308b\u3002GPS\u306b\u3088\u308b\u4f4d\u7f6e\u306e\u66f4\u65b0\u304c\u4e00\u5b9a\u9593\u9694\u3067\u9001\u4fe1\u3055\u308c\u307e\u3059\u304c\u3001\u6700\u5f8c\u306e\u7def\u5ea6/\u7d4c\u5ea6/\u9ad8\u5ea6\u304c\u4f7f\u7528\u3055\u308c\u307e\u3059\u3002",
             "pl": "Je\u015bli jest ustawione, w\u0119ze\u0142 ten znajduje si\u0119 na sta\u0142ej pozycji. Aktualizacje pozycji GPS b\u0119d\u0105 wysy\u0142ane w regularnych odst\u0119pach czasu, ale zostanie u\u017cyta ostatnia szeroko\u015b\u0107/lon/alt.",
-            "ro": "Dac\u0103 este setat, acest nod se afl\u0103 \u00eentr-o pozi\u021bie fix\u0103. Actualiz\u0103rile pozi\u021biei GPS vor fi trimise la intervale regulate, dar se va utiliza ultima lat/lon/alt.",
+            "ro": "Dac\u0103 este configurat, acest aparat se afl\u0103 \u00eentr-o pozi\u021bie fix\u0103. Actualiz\u0103rile pozi\u021biei GPS vor fi trimise la intervale regulate, dar se va utiliza ultima latitudine/longitudine/altitudine.",
             "ru": "\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e, \u044d\u0442\u043e\u0442 \u0443\u0437\u0435\u043b \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0432 \u0444\u0438\u043a\u0441\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u043c \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0438. \u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d\u0438\u044f GPS-\u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u044f \u0431\u0443\u0434\u0443\u0442 \u043e\u0442\u043f\u0440\u0430\u0432\u043b\u044f\u0442\u044c\u0441\u044f \u0447\u0435\u0440\u0435\u0437 \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u044b\u0435 \u043f\u0440\u043e\u043c\u0435\u0436\u0443\u0442\u043a\u0438 \u0432\u0440\u0435\u043c\u0435\u043d\u0438, \u043d\u043e \u0431\u0443\u0434\u0443\u0442 \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c\u0441\u044f \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0438\u0435 lat/lon/alt.",
             "zh": "\u542f\u7528\u8868\u793a\u8fd9\u4e2a\u8282\u70b9\u5904\u4e8e\u4e00\u4e2a\u56fa\u5b9a\u7684\u4f4d\u7f6e\u3002\u4f9d\u7136\u4f1a\u5b9a\u671f\u53d1\u9001GPS\u4f4d\u7f6e\u66f4\u65b0\u6d88\u606f\uff0c\u4f46\u5c06\u4f7f\u7528\u6700\u540e\u7684\u7ecf\u7eac\u5ea6/\u9ad8\u5ea6\u3002"
         },
@@ -1112,7 +1112,7 @@
             "it": "Usare Posizione fissa?",
             "ja": "\u4f7f\u7528 \u4f4d\u7f6e\u56fa\u5b9a\uff1f",
             "pl": "U\u017cyj opcji Sta\u0142a pozycja?",
-            "ro": "Utiliza\u021bi Pozi\u021bia fix\u0103?",
+            "ro": "Folosin\u0163\u0103 pozi\u021bia fix\u0103?",
             "ru": "\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c \u0444\u0438\u043a\u0441\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u043e\u0435 \u043f\u043e\u043b\u043e\u0436\u0435\u043d\u0438\u0435?",
             "zh": "\u4f7f\u7528\u56fa\u5b9a\u4f4d\u7f6e"
         }
@@ -1157,7 +1157,7 @@
             "it": "Lampeggiante",
             "ja": "\u30d5\u30e9\u30c3\u30b7\u30f3\u30b0",
             "pl": "Flashowanie",
-            "ro": "Clipe\u0219te",
+            "ro": "Scriere intermitent\u0103.",
             "ru": "\u041f\u0440\u043e\u0448\u0438\u0432\u0430\u043d\u0438\u0435",
             "zh": "\u6b63\u5728\u5237\u5199"
         }
@@ -1172,7 +1172,7 @@
             "it": "Questo parametro \u00e8 per utenti avanzati con attrezzature di prova avanzate, non raccomandiamo alla maggior parte degli utenti di usarlo. Un offset di frequenza che viene aggiunto alla frequenza centrale della banda calcolata. Usato per correggere gli errori di calibrazione del cristallo.",
             "ja": "\u3053\u306e\u30d1\u30e9\u30e1\u30fc\u30bf\u306f\u3001\u9ad8\u5ea6\u306a\u30c6\u30b9\u30c8\u6a5f\u5668\u3092\u4f7f\u7528\u3059\u308b\u4e0a\u7d1a\u8005\u5411\u3051\u3067\u3042\u308a\u3001\u4e00\u822c\u306e\u30e6\u30fc\u30b6\u30fc\u306b\u306f\u4f7f\u7528\u3057\u306a\u3044\u3053\u3068\u3092\u63a8\u5968\u3057\u307e\u3059\u3002\u7b97\u51fa\u3055\u308c\u305f\u30d0\u30f3\u30c9\u4e2d\u5fc3\u5468\u6ce2\u6570\u306b\u52a0\u7b97\u3055\u308c\u308b\u5468\u6ce2\u6570\u30aa\u30d5\u30bb\u30c3\u30c8\u3002\u6c34\u6676\u632f\u52d5\u5b50\u306e\u6821\u6b63\u8aa4\u5dee\u3092\u88dc\u6b63\u3059\u308b\u305f\u3081\u306b\u4f7f\u7528\u3059\u308b\u3002",
             "pl": "Ten parametr jest przeznaczony dla zaawansowanych u\u017cytkownik\u00f3w dysponuj\u0105cych zaawansowanym sprz\u0119tem testowym, nie zaleca si\u0119 jego stosowania przez wi\u0119kszo\u015b\u0107 u\u017cytkownik\u00f3w. Przesuni\u0119cie cz\u0119stotliwo\u015bci, kt\u00f3re jest dodawane do obliczonej cz\u0119stotliwo\u015bci \u015brodkowej pasma. S\u0142u\u017cy do korygowania b\u0142\u0119d\u00f3w kalibracji kryszta\u0142\u00f3w.",
-            "ro": "Acest parametru este destinat utilizatorilor avansa\u021bi care dispun de echipamente de testare avansate; nu recomand\u0103m utilizarea lui de c\u0103tre majoritatea utilizatorilor. Un decalaj de frecven\u021b\u0103 care se adaug\u0103 la frecven\u021ba central\u0103 calculat\u0103 a benzii. Utilizat pentru a corecta erorile de calibrare a cristalului.",
+            "ro": "Acest parametru sunt pentru persoane cu echipamente avansate de testare. Nu este recomandat pentru majoritatea oamenilor. Se adaug\u0103 un offset de frecven\u021b\u0103 pentru a calcula frecven\u021ba central\u0103 a benzii. Folosit pentru a corecta erorile de calibrare a cristalului.",
             "ru": "\u042d\u0442\u043e\u0442 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 \u043f\u0440\u0435\u0434\u043d\u0430\u0437\u043d\u0430\u0447\u0435\u043d \u0434\u043b\u044f \u043e\u043f\u044b\u0442\u043d\u044b\u0445 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u0441 \u0441\u043e\u0432\u0440\u0435\u043c\u0435\u043d\u043d\u044b\u043c \u0438\u0441\u043f\u044b\u0442\u0430\u0442\u0435\u043b\u044c\u043d\u044b\u043c \u043e\u0431\u043e\u0440\u0443\u0434\u043e\u0432\u0430\u043d\u0438\u0435\u043c, \u0431\u043e\u043b\u044c\u0448\u0438\u043d\u0441\u0442\u0432\u0443 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u0435\u0439 \u043c\u044b \u043d\u0435 \u0440\u0435\u043a\u043e\u043c\u0435\u043d\u0434\u0443\u0435\u043c \u0435\u0433\u043e \u0438\u0441\u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u044c. \u0421\u043c\u0435\u0449\u0435\u043d\u0438\u0435 \u0447\u0430\u0441\u0442\u043e\u0442\u044b, \u043a\u043e\u0442\u043e\u0440\u043e\u0435 \u0434\u043e\u0431\u0430\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043a \u0440\u0430\u0441\u0441\u0447\u0438\u0442\u0430\u043d\u043d\u043e\u0439 \u0446\u0435\u043d\u0442\u0440\u0430\u043b\u044c\u043d\u043e\u0439 \u0447\u0430\u0441\u0442\u043e\u0442\u0435 \u0434\u0438\u0430\u043f\u0430\u0437\u043e\u043d\u0430. \u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0441\u044f \u0434\u043b\u044f \u043a\u043e\u0440\u0440\u0435\u043a\u0446\u0438\u0438 \u043e\u0448\u0438\u0431\u043e\u043a \u043a\u0430\u043b\u0438\u0431\u0440\u043e\u0432\u043a\u0438 \u043a\u0440\u0438\u0441\u0442\u0430\u043b\u043b\u0430.",
             "zh": "\u8fd9\u4e2a\u53c2\u6570\u662f\u4e3a\u62e5\u6709\u9ad8\u7ea7\u6d4b\u8bd5\u8bbe\u5907\u7684\u9ad8\u7ea7\u7528\u6237\u51c6\u5907\u7684\uff0c\u6211\u4eec\u4e0d\u5efa\u8bae\u4e00\u822c\u7528\u6237\u4f7f\u7528\u5b83\u3002\u5728\u8ba1\u7b97\u51fa\u7684\u9891\u5e26\u4e2d\u5fc3\u9891\u7387\u4e0a\u52a0\u4e00\u4e2a\u9891\u7387\u504f\u79fb\u3002\u7528\u6765\u6821\u6b63\u6676\u4f53\u6821\u51c6\u8bef\u5dee\u3002"
         },
@@ -1185,7 +1185,7 @@
             "it": "Offset di frequenza",
             "ja": "\u5468\u6ce2\u6570\u30aa\u30d5\u30bb\u30c3\u30c8",
             "pl": "Przesuni\u0119cie cz\u0119stotliwo\u015bci",
-            "ro": "Frecven\u021ba de decalaj",
+            "ro": "Compensarea frecven\u021bei",
             "ru": "\u0421\u043c\u0435\u0449\u0435\u043d\u0438\u0435 \u0447\u0430\u0441\u0442\u043e\u0442\u044b",
             "zh": "\u9891\u7387\u504f\u79fb"
         }
@@ -1200,7 +1200,7 @@
             "it": "Flash completo passo 1 di 4",
             "ja": "\u30d5\u30eb\u30d5\u30e9\u30c3\u30b7\u30e5 \u30b9\u30c6\u30c3\u30d71/4",
             "pl": "Pe\u0142ny flash krok 1 z 4",
-            "ro": "Full flash pasul 1 din 4",
+            "ro": "Complet flash pasul 1 din 4",
             "ru": "\u041f\u043e\u043b\u043d\u0430\u044f \u0432\u0441\u043f\u044b\u0448\u043a\u0430 \u0448\u0430\u0433 1 \u0438\u0437 4",
             "zh": "\u5b8c\u6574\u5237\u5199\u6b65\u9aa4 1/4"
         }
@@ -1215,7 +1215,7 @@
             "it": "Flash completo passo 1 di 4 \u00e8 fatto",
             "ja": "\u30d5\u30eb\u30d5\u30e9\u30c3\u30b7\u30e5\u306e\u30b9\u30c6\u30c3\u30d71/4\u304c\u7d42\u4e86\u3057\u307e\u3057\u305f",
             "pl": "Wykonano pe\u0142ny flash krok 1 z 4",
-            "ro": "Full flash pasul 1 din 4 este f\u0103cut",
+            "ro": "Complet flash pasul 1 din 4 este f\u0103cut",
             "ru": "\u041f\u043e\u043b\u043d\u0430\u044f \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0430 \u0448\u0430\u0433 1 \u0438\u0437 4 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d",
             "zh": "\u5b8c\u6574\u5237\u5199\u6b65\u9aa4 \u7b2c 1 \u6b65\u5b8c\u6210 \u5171 4 \u6b65"
         }
@@ -1230,7 +1230,7 @@
             "it": "Flash completo passo 2 di 4 \u00e8 fatto",
             "ja": "\u30d5\u30eb\u30d5\u30e9\u30c3\u30b7\u30e5 \u30b9\u30c6\u30c3\u30d72/4\u304c\u5b8c\u4e86",
             "pl": "Wykonano pe\u0142ny flash krok 2 z 4",
-            "ro": "Full flash pasul 2 din 4 este gata",
+            "ro": "Complet flash pasul 2 din 4 este gata",
             "ru": "\u041f\u043e\u043b\u043d\u0430\u044f \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0430 \u0448\u0430\u0433 2 \u0438\u0437 4 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d",
             "zh": "\u5b8c\u6574\u5237\u5199\u6b65\u9aa4 \u7b2c 2 \u6b65\u5b8c\u6210 \u5171 4 \u6b65"
         }
@@ -1245,7 +1245,7 @@
             "it": "Flash completo passo 3 di 4 \u00e8 fatto",
             "ja": "\u30d5\u30eb\u30d5\u30e9\u30c3\u30b7\u30e5\u306e\u30b9\u30c6\u30c3\u30d74\u306e3\u304c\u7d42\u4e86\u3057\u307e\u3057\u305f",
             "pl": "Wykonano pe\u0142ny flash krok 3 z 4",
-            "ro": "Full flash pasul 3 din 4 este gata",
+            "ro": "Complet flash pasul 3 din 4 este gata",
             "ru": "\u041f\u043e\u043b\u043d\u0430\u044f \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0430 \u0448\u0430\u0433 3 \u0438\u0437 4 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d",
             "zh": "\u5b8c\u6574\u5237\u5199\u6b65\u9aa4 \u7b2c 3 \u6b65\u5b8c\u6210 \u5171 4 \u6b65"
         }
@@ -1260,7 +1260,7 @@
             "it": "Flash completo passo 4 di 4 \u00e8 fatto",
             "ja": "\u30d5\u30eb\u30d5\u30e9\u30c3\u30b7\u30e5 \u30b9\u30c6\u30c3\u30d74\u306e4\u304c\u7d42\u4e86",
             "pl": "Wykonano pe\u0142ny flash krok 4 z 4",
-            "ro": "Full flash pasul 4 din 4 este gata",
+            "ro": "Complet flash pasul 4 din 4 este gata",
             "ru": "\u041f\u043e\u043b\u043d\u0430\u044f \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0430 \u0448\u0430\u0433 4 \u0438\u0437 4 \u0432\u044b\u043f\u043e\u043b\u043d\u0435\u043d",
             "zh": "\u5b8c\u6574\u5237\u5199\u6b65\u9aa4 \u7b2c 4 \u6b65\u5b8c\u6210 \u5171 4 \u6b65"
         }
@@ -1275,7 +1275,7 @@
             "it": "Ottieni Lat/Lon usando il tuo IP",
             "ja": "IP\u3092\u5229\u7528\u3057\u305f\u7def\u5ea6\u30fb\u7d4c\u5ea6\u306e\u53d6\u5f97",
             "pl": "Uzyskaj szeroko\u015b\u0107 i d\u0142ugo\u015b\u0107 geograficzn\u0105 przy u\u017cyciu adresu IP",
-            "ro": "Ob\u021bine\u021bi Lat/Lon folosind IP-ul dvs.",
+            "ro": "Ob\u021bine\u021bi latitudine \u0219i longitudine IP-ul aparat folosind.",
             "ru": "\u041f\u043e\u043b\u0443\u0447\u0435\u043d\u0438\u0435 \u0448\u0438\u0440\u043e\u0442\u044b/\u0434\u043e\u043b\u0433\u043e\u0442\u044b \u0441 \u043f\u043e\u043c\u043e\u0449\u044c\u044e \u0432\u0430\u0448\u0435\u0433\u043e IP-\u0430\u0434\u0440\u0435\u0441\u0430",
             "zh": "\u4f7f\u7528\u4f60\u7684 IP \u83b7\u53d6\u7ecf\u7eac\u5ea6"
         }
@@ -1285,7 +1285,7 @@
             "de": "VERSIONEN AKTUALISIEREN",
             "en": "GET VERSIONS",
             "es": "OBTENER VERSIONES",
-            "et": "V\u00C4RSKENDA VERSIOONE",
+            "et": "V\u00c4RSKENDA VERSIOONE",
             "fr": "GET VERSIONS",
             "it": "OTTENERE VERSIONI",
             "ja": "GET VERSION",
@@ -1303,7 +1303,7 @@
             "it": "Clicca per verificare la presenza di un firmware pi\u00f9 recente.",
             "ja": "\u30af\u30ea\u30c3\u30af\u3059\u308b\u3068\u3001\u3088\u308a\u65b0\u3057\u3044\u30d5\u30a1\u30fc\u30e0\u30a6\u30a7\u30a2\u3092\u78ba\u8a8d\u3067\u304d\u307e\u3059\u3002",
             "pl": "Kliknij, aby sprawdzi\u0107 dost\u0119pno\u015b\u0107 nowszego oprogramowania sprz\u0119towego.",
-            "ro": "Face\u021bi clic pentru a verifica dac\u0103 exist\u0103 un firmware mai recent.",
+            "ro": "Apasa aici pentru a verifica dac\u0103 exist\u0103 un firmware mai recent.",
             "ru": "\u041d\u0430\u0436\u043c\u0438\u0442\u0435, \u0447\u0442\u043e\u0431\u044b \u043f\u0440\u043e\u0432\u0435\u0440\u0438\u0442\u044c \u043d\u0430\u043b\u0438\u0447\u0438\u0435 \u043f\u043e\u0441\u043b\u0435\u0434\u043d\u0435\u0439 \u0432\u0435\u0440\u0441\u0438\u0438 \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0438.",
             "zh": "\u70b9\u51fb\u68c0\u67e5\u6700\u65b0\u56fa\u4ef6\u3002"
         }
@@ -1318,7 +1318,7 @@
             "it": "Se impostato, accetta i fix 2D del GPS. Per impostazione predefinita, vengono accettati solo i fix 3D. Durante un fix 2D, i valori di altitudine non sono affidabili e saranno esclusi.",
             "ja": "\u8a2d\u5b9a\u3059\u308b\u3068\u30012D GPS\u56fa\u5b9a\u3092\u53d7\u3051\u5165\u308c\u308b\u3002\u30c7\u30d5\u30a9\u30eb\u30c8\u3067\u306f\u30013D \u30d5\u30a3\u30c3\u30af\u30b9\u306e\u307f\u53d7\u3051\u4ed8\u3051\u307e\u3059\u30022D\u30d5\u30a3\u30c3\u30af\u30b9\u306e\u5834\u5408\u3001\u9ad8\u5ea6\u306e\u5024\u306f\u4fe1\u983c\u3067\u304d\u306a\u3044\u305f\u3081\u3001\u9664\u5916\u3055\u308c\u307e\u3059\u3002",
             "pl": "Je\u015bli jest ustawione, akceptuj ustalenia GPS 2D. Domy\u015blnie akceptowane s\u0105 tylko poprawki 3D. Podczas ustalania 2D warto\u015bci wysoko\u015bci s\u0105 niewiarygodne i nie b\u0119d\u0105 uwzgl\u0119dniane.",
-            "ro": "Dac\u0103 este setat, accept\u0103 fix\u0103rile GPS 2D. \u00cen mod implicit, sunt acceptate numai fix\u0103rile 3D. \u00cen timpul unei fix\u0103ri 2D, valorile de altitudine nu sunt fiabile \u0219i vor fi excluse.",
+            "ro": "Dac\u0103 aceasta este configurat\u0103, accept\u0103 fix\u0103rile GPS 2D. \u00cen mod implicit, sunt acceptate numai fix\u0103rile 3D. \u00cen timpul unei fix\u0103ri 2D, valorile de altitudine nu sunt fiabile \u0219i vor fi excluse.",
             "ru": "\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e, \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u044e\u0442\u0441\u044f 2D GPS-\u043f\u0440\u0438\u0432\u044f\u0437\u043a\u0438. \u041f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u043f\u0440\u0438\u043d\u0438\u043c\u0430\u044e\u0442\u0441\u044f \u0442\u043e\u043b\u044c\u043a\u043e 3D-\u043f\u0440\u0438\u0432\u044f\u0437\u043a\u0438. \u0412\u043e \u0432\u0440\u0435\u043c\u044f 2D-\u043f\u0440\u0438\u0432\u044f\u0437\u043a\u0438 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u044f \u0432\u044b\u0441\u043e\u0442\u044b \u043d\u0435\u043d\u0430\u0434\u0435\u0436\u043d\u044b \u0438 \u0431\u0443\u0434\u0443\u0442 \u0438\u0441\u043a\u043b\u044e\u0447\u0435\u043d\u044b.",
             "zh": "\u542f\u7528\u540e\u5c06\u63a5\u53d7\u4e8c\u7ef4 GPS \u5b9a\u4f4d\u3002\u9ed8\u8ba4\u60c5\u51b5\u4e0b\uff0c\u53ea\u63a5\u53d7\u4e09\u7ef4\u5b9a\u4f4d\u3002\u5728\u4e8c\u7ef4\u56fa\u5b9a\u671f\u95f4\uff0c\u9ad8\u5ea6\u503c\u662f\u4e0d\u53ef\u9760\u7684\uff0c\u5c06\u4e0d\u4f1a\u88ab\u53d1\u9001\u3002"
         },
@@ -1402,7 +1402,7 @@
             "it": "Come funziona l'hardware GPS in questa unit\u00e0.",
             "ja": "\u672c\u6a5f\u306eGPS\u30cf\u30fc\u30c9\u30a6\u30a7\u30a2\u306e\u904b\u7528\u65b9\u6cd5\u306b\u3064\u3044\u3066\u3002",
             "pl": "Jak dzia\u0142a sprz\u0119t GPS w tym urz\u0105dzeniu.",
-            "ro": "Modul de func\u021bionare a hardware-ului GPS din aceast\u0103 unitate.",
+            "ro": "Modul de func\u021bionare a hardware-ului GPS din aceast\u0103 aparat.",
             "ru": "\u041a\u0430\u043a \u0440\u0430\u0431\u043e\u0442\u0430\u0435\u0442 \u0430\u043f\u043f\u0430\u0440\u0430\u0442\u0443\u0440\u0430 GPS \u0432 \u0434\u0430\u043d\u043d\u043e\u043c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435.",
             "zh": "\u672c\u88c5\u7f6e\u4e2d\u7684 GPS \u786c\u4ef6\u662f\u5982\u4f55\u64cd\u4f5c\u7684\u3002"
         },
@@ -1445,7 +1445,7 @@
             "it": "Cliccare per la guida | Premere H per i tasti di scelta rapida.",
             "ja": "\u30af\u30ea\u30c3\u30af\u3067\u30d8\u30eb\u30d7\uff5cH\u30dc\u30bf\u30f3\u3067\u30db\u30c3\u30c8\u30ad\u30fc\u3002",
             "pl": "Kliknij, aby uzyska\u0107 pomoc | Naci\u015bnij klawisz H, aby uzyska\u0107 klawisze skr\u00f3t\u00f3w.",
-            "ro": "Face\u021bi clic pentru ajutor | Ap\u0103sa\u021bi H pentru taste rapide.",
+            "ro": "Ap\u0103sa\u021bi aici pentru ajutor | Ap\u0103sa\u021bi H pentru scurt\u0103tur\u0103 de comand\u0103 rapid\u0103.",
             "ru": "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0434\u043b\u044f \u0441\u043f\u0440\u0430\u0432\u043a\u0438 | \u041d\u0430\u0436\u043c\u0438\u0442\u0435 H \u0434\u043b\u044f \u043e\u0442\u043e\u0431\u0440\u0430\u0436\u0435\u043d\u0438\u044f \u043a\u043b\u0430\u0432\u0438\u0448.",
             "zh": "\u70b9\u51fb\u83b7\u53d6\u5e2e\u52a9 | \u6309 H \u952e\u83b7\u53d6\u5feb\u6377\u952e\u3002"
         }
@@ -1488,7 +1488,7 @@
             "it": "Limite del luppolo",
             "ja": "\u30db\u30c3\u30d7\u30ea\u30df\u30c3\u30c8",
             "pl": "Limit skoku",
-            "ro": "Limita de salt",
+            "ro": "Limita de deplasare de la aparat la aparat",
             "ru": "\u041f\u0440\u0435\u0434\u0435\u043b \u043f\u0440\u044b\u0436\u043a\u0430",
             "zh": "\u8df3\u6570\u9650\u5236"
         }
@@ -1503,7 +1503,7 @@
             "it": "Tasti di scelta rapida",
             "ja": "\u30db\u30c3\u30c8\u30ad\u30fc",
             "pl": "Klawisze skr\u00f3t\u00f3w",
-            "ro": "Tastele de acces rapid",
+            "ro": "Scurt\u0103tur\u0103 de comand\u0103 rapid\u0103",
             "ru": "\u0413\u043e\u0440\u044f\u0447\u0438\u0435 \u043a\u043b\u0430\u0432\u0438\u0448\u0438",
             "zh": "\u5feb\u6377\u952e"
         }
@@ -1518,7 +1518,7 @@
             "it": "A - Opzioni avanzate\nD - Rilevare\nG - Ottieni versioni\nH - Tasti di scelta rapida\nS - Impostazioni\nT - Suggerimenti\n Q - Abbandono",
             "ja": "A - \u8a73\u7d30\u30aa\u30d7\u30b7\u30e7\u30f3\nD - \u691c\u51fa\nG - \u30d0\u30fc\u30b8\u30e7\u30f3\u53d6\u5f97\nH - \u30db\u30c3\u30c8\u30ad\u30fc\nS - \u8a2d\u5b9a\nT - \u30c1\u30c3\u30d7\n Q - \u7d42\u4e86\u3059\u308b",
             "pl": "A - Opcje zaawansowane\nD - Wykryj\nG - Uzyskaj wersje\nH - Klawisze skr\u00f3t\u00f3w\nS - Ustawienia\nT - Porady\n Q - Zako\u0144cz",
-            "ro": "A - Op\u021biuni avansate\nD - Detectare\nG - Ob\u021bine\u021bi versiuni\nH - taste rapide\nS - Set\u0103ri\nT - Sfaturi\n Q - Renun\u021bare",
+            "ro": "A - Op\u021biuni avansate\nD - Detectare\n\nG - Ob\u021bine\u021bi versiuni\n\nH - Scurt\u0103tur\u0103 de comand\u0103 rapid\u0103\n\nS - Set\u0103ri\n\nT - Sfaturi\n\n Q - Renun\u021bare",
             "ru": "A - \u0414\u043e\u043f\u043e\u043b\u043d\u0438\u0442\u0435\u043b\u044c\u043d\u044b\u0435 \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440\u044b\nD - \u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0438\u0442\u044c\n\nG - \u041f\u043e\u043b\u0443\u0447\u0438\u0442\u044c \u0432\u0435\u0440\u0441\u0438\u0438\n\nH - \u0413\u043e\u0440\u044f\u0447\u0438\u0435 \u043a\u043b\u0430\u0432\u0438\u0448\u0438\n\nS - \u041d\u0430\u0441\u0442\u0440\u043e\u0439\u043a\u0438\n\nT - \u041f\u043e\u0434\u0441\u043a\u0430\u0437\u043a\u0438\n\n Q - \u0412\u044b\u0445\u043e\u0434",
             "zh": "A - \u9ad8\u7ea7\u9009\u9879\nD - \u68c0\u6d4b\n\nG - \u83b7\u53d6\u7248\u672c\n\nH - \u5feb\u6377\u952e\n\nS - \u8bbe\u7f6e\n\nT - \u63d0\u793a\n\n Q - \u9000\u51fa"
         }
@@ -1576,7 +1576,7 @@
             "it": "Elude il blocco logico per determinare se il dispositivo \u00e8 alimentato o meno. Utile per i dispositivi con problemi di ADC schizzinosi sui pin di rilevamento della batteria.",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u306b\u96fb\u6e90\u304c\u4f9b\u7d66\u3055\u308c\u3066\u3044\u308b\u304b\u3069\u3046\u304b\u3092\u5224\u65ad\u3059\u308b\u305f\u3081\u306e\u30ed\u30b8\u30c3\u30af\u30d6\u30ed\u30c3\u30af\u3092\u56de\u907f\u3059\u308b\u3053\u3068\u304c\u3067\u304d\u307e\u3059\u3002\u30d0\u30c3\u30c6\u30ea\u30fc\u30bb\u30f3\u30b9\u30fb\u30d4\u30f3\u306eADC\u306b\u554f\u984c\u304c\u3042\u308b\u30c7\u30d0\u30a4\u30b9\u306b\u6709\u52b9\u3067\u3059\u3002",
             "pl": "Omija blok logiczny s\u0142u\u017c\u0105cy do okre\u015blania, czy urz\u0105dzenie jest zasilane, czy nie. Przydatne w przypadku urz\u0105dze\u0144 z problematycznymi przetwornikami ADC na stykach wyczuwania baterii.",
-            "ro": "Ocole\u0219te blocul logic pentru a determina dac\u0103 dispozitivul este alimentat sau nu. Este util pentru dispozitivele cu probleme de ADC preten\u021bioase pe pinii de detectare a bateriei.",
+            "ro": "Logica de ocolire pentru a determina dac\u0103 dispozitivul este pornit sau nu. Bun pentru aparat cu probleme ADC pe pinii de detectare a bateriei.",
             "ru": "\u041e\u0431\u0445\u043e\u0434\u0438\u0442 \u043b\u043e\u0433\u0438\u0447\u0435\u0441\u043a\u0438\u0439 \u0431\u043b\u043e\u043a \u0434\u043b\u044f \u043e\u043f\u0440\u0435\u0434\u0435\u043b\u0435\u043d\u0438\u044f \u043d\u0430\u043b\u0438\u0447\u0438\u044f \u0438\u043b\u0438 \u043e\u0442\u0441\u0443\u0442\u0441\u0442\u0432\u0438\u044f \u043f\u0438\u0442\u0430\u043d\u0438\u044f \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430. \u041f\u043e\u043b\u0435\u0437\u043d\u043e \u0434\u043b\u044f \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432 \u0441 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u043d\u044b\u043c\u0438 ADC \u043d\u0430 \u0432\u044b\u0432\u043e\u0434\u0430\u0445 \u0431\u0430\u0442\u0430\u0440\u0435\u0438.",
             "zh": "\u907f\u5f00\u8bbe\u5907\u662f\u5426\u4f9b\u7535\u7684\u68c0\u6d4b\u3002\u5bf9\u4e8e\u7535\u6c60\u611f\u5e94\u5f15\u811a\u4e0a\u6709\u68d8\u624b\u7684 ADC \u95ee\u9898\u7684\u8bbe\u5907\u5f88\u6709\u7528\u3002"
         },
@@ -1589,7 +1589,7 @@
             "it": "\u00c8 sempre alimentato?",
             "ja": "\u5e38\u6642\u7d66\u96fb\u306f\u53ef\u80fd\u304b\uff1f",
             "pl": "Czy zawsze jest zasilany?",
-            "ro": "Este \u00eentotdeauna alimentat?",
+            "ro": "Este \u00eentotdeauna aprins?",
             "ru": "\u0412\u043a\u043b\u044e\u0447\u0435\u043d \u0432\u0441\u0435\u0433\u0434\u0430?",
             "zh": "\u603b\u662f\u4f9b\u7535"
         }
@@ -1604,7 +1604,7 @@
             "it": "Se questo utente \u00e8 un operatore con licenza, imposta questo flag. Inoltre, 'long_name' dovrebbe essere il loro numero di licenza.",
             "ja": "\u3053\u306e\u30e6\u30fc\u30b6\u304c\u514d\u8a31\u3092\u6301\u3063\u305f\u30aa\u30da\u30ec\u30fc\u30bf\u3067\u3042\u308b\u5834\u5408\u3001\u3053\u306e\u30d5\u30e9\u30b0\u3092\u8a2d\u5b9a\u3057\u307e\u3059\u3002\u307e\u305f\u3001'long_name' \u306f\u514d\u8a31\u8a3c\u756a\u53f7\u3067\u306a\u3051\u308c\u3070\u306a\u308a\u307e\u305b\u3093\u3002",
             "pl": "Je\u015bli ten u\u017cytkownik jest licencjonowanym operatorem, ustaw t\u0119 flag\u0119. Ponadto \"long_name\" powinien by\u0107 numerem licencji.",
-            "ro": "Dac\u0103 acest utilizator este un operator licen\u021biat, seta\u021bi acest indicator. De asemenea, \"long_name\" ar trebui s\u0103 fie num\u0103rul de licen\u021b\u0103 al acestuia.",
+            "ro": "Dac\u0103 acest persoan\u0103 este un operator licen\u021biat, seta\u021bi acest indicator. De asemenea, \"long_name\" ar trebui s\u0103 fie num\u0103rul de licen\u021b\u0103 al acestuia.",
             "ru": "\u0415\u0441\u043b\u0438 \u044d\u0442\u043e\u0442 \u043f\u043e\u043b\u044c\u0437\u043e\u0432\u0430\u0442\u0435\u043b\u044c \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u0440\u043e\u0432\u0430\u043d\u043d\u044b\u043c \u043e\u043f\u0435\u0440\u0430\u0442\u043e\u0440\u043e\u043c, \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0435 \u044d\u0442\u043e\u0442 \u0444\u043b\u0430\u0433. \u041a\u0440\u043e\u043c\u0435 \u0442\u043e\u0433\u043e, 'long_name' \u0434\u043e\u043b\u0436\u0435\u043d \u0431\u044b\u0442\u044c \u043d\u043e\u043c\u0435\u0440\u043e\u043c \u043b\u0438\u0446\u0435\u043d\u0437\u0438\u0438.",
             "zh": "\u5982\u679c\u8fd9\u4e2a\u7528\u6237\u662f\u4e00\u4e2a\u6709\u6267\u7167\u7684\u64cd\u4f5c\u5458\uff0c\u8bf7\u8bbe\u7f6e\u8fd9\u4e2a\u6807\u5fd7\u3002\u540c\u65f6\uff0c\u201clong_name\u201d\u5e94\u88ab\u8bbe\u5b9a\u4e3a\u6267\u7167\u53f7\u7801\u3002"
         },
@@ -1632,7 +1632,7 @@
             "it": "Disabilita il TX dalla radio LoRa. Utile per l'hot-swapping delle antenne e altri test. Il valore predefinito \u00e8 false.",
             "ja": "LoRa\u7121\u7dda\u6a5f\u304b\u3089\u306eTX\u3092\u7121\u52b9\u306b\u3059\u308b\u3002\u30a2\u30f3\u30c6\u30ca\u306e\u30db\u30c3\u30c8\u30b9\u30ef\u30c3\u30d7\u306a\u3069\u306e\u30c6\u30b9\u30c8\u306b\u6709\u52b9\u3002\u30c7\u30d5\u30a9\u30eb\u30c8\u306ffalse\u3002",
             "pl": "Wy\u0142\u0105czenie nadawania przez radio LoRa. Przydatne przy wymianie anten i innych testach. Domy\u015blnie ustawiona na false.",
-            "ro": "Dezactiva\u021bi TX de la radioul LoRa. Util pentru schimbarea la cald a antenelor \u0219i pentru alte teste. Valoarea implicit\u0103 este false.",
+            "ro": "Dezactiva\u021bi TX de la radioul LoRa. Util pentru schimbarea antenelor f\u0103r\u0103 a opri aparat, \u0219i pentru alte teste. Setarea implicit\u0103 este dezactivat\u0103.",
             "ru": "\u041e\u0442\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0435 TX \u043e\u0442 \u0440\u0430\u0434\u0438\u043e\u0441\u0442\u0430\u043d\u0446\u0438\u0438 LoRa. \u041f\u043e\u043b\u0435\u0437\u043d\u043e \u0434\u043b\u044f \u0433\u043e\u0440\u044f\u0447\u0435\u0439 \u0437\u0430\u043c\u0435\u043d\u044b \u0430\u043d\u0442\u0435\u043d\u043d \u0438 \u0434\u0440\u0443\u0433\u0438\u0445 \u0442\u0435\u0441\u0442\u043e\u0432. \u041f\u043e \u0443\u043c\u043e\u043b\u0447\u0430\u043d\u0438\u044e \u0438\u043c\u0435\u0435\u0442 \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435 false.",
             "zh": "\u7981\u7528 LoRa \u65e0\u7ebf\u7535\u53d1\u5c04\u3002\u5bf9\u4e8e\u70ed\u63d2\u62d4\u5929\u7ebf\u548c\u5176\u4ed6\u6d4b\u8bd5\u5f88\u6709\u7528\u3002\u9ed8\u8ba4\u4e3a false\u3002"
         },
@@ -1660,7 +1660,7 @@
             "it": "Se impostato, il dispositivo \u00e8 alimentato da una fonte a bassa corrente (cio\u00e8 solare), quindi anche se sembra che ci sia un flusso di corrente dovremmo cercare di ridurre al minimo il consumo di energia il pi\u00f9 possibile. Non impostarlo se 'is_router' \u00e8 abilitato.",
             "ja": "\u8a2d\u5b9a\u3055\u308c\u3066\u3044\u308b\u5834\u5408\u3001\u30c7\u30d0\u30a4\u30b9\u306f\u4f4e\u96fb\u6d41\u6e90\uff08\u4f8b\uff1a\u30bd\u30fc\u30e9\u30fc\uff09\u304b\u3089\u96fb\u529b\u3092\u4f9b\u7d66\u3055\u308c\u308b\u306e\u3067\u3001\u305f\u3068\u3048\u96fb\u529b\u304c\u6d41\u308c\u3066\u3044\u308b\u3088\u3046\u306b\u898b\u3048\u3066\u3082\u3001\u3067\u304d\u308b\u3060\u3051\u96fb\u529b\u6d88\u8cbb\u3092\u6291\u3048\u308b\u3088\u3046\u306b\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002is_router' \u304c\u6709\u52b9\u306a\u5834\u5408\u306f\u3001\u3053\u308c\u3092\u8a2d\u5b9a\u3057\u306a\u3044\u3067\u304f\u3060\u3055\u3044\u3002",
             "pl": "Je\u015bli ustawione, urz\u0105dzenie jest zasilane ze \u017ar\u00f3d\u0142a niskopr\u0105dowego (np. z energii s\u0142onecznej), wi\u0119c nawet je\u015bli wygl\u0105da na to, \u017ce zasilanie jest dostarczane, powinni\u015bmy stara\u0107 si\u0119 jak najbardziej zminimalizowa\u0107 zu\u017cycie energii. Nie nale\u017cy ustawia\u0107 tej opcji, je\u015bli w\u0142\u0105czona jest opcja \"is_router\".",
-            "ro": "Dac\u0103 este setat, dispozitivul este alimentat de la o surs\u0103 de curent redus (de exemplu, de la energia solar\u0103), astfel \u00eenc\u00e2t, chiar dac\u0103 se pare c\u0103 avem un flux de energie electric\u0103, trebuie s\u0103 \u00eencerc\u0103m s\u0103 reducem consumul de energie c\u00e2t mai mult posibil. Nu seta\u021bi acest lucru dac\u0103 \"is_router\" este activat.",
+            "ro": "DaDac\u0103 este configurat, aparat este aprins de la o surs\u0103 de curent redus (de exemplu, de la energia solar\u0103), astfel \u00eenc\u00e2t, chiar dac\u0103 se pare c\u0103 avem un flux de energie electric\u0103, trebuie s\u0103 \u00eencerc\u0103m s\u0103 reducem consumul de energie c\u00e2t mai mult posibil. Nu seta\u021bi acest lucru dac\u0103 \"is_router\" este activat.",
             "ru": "\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e, \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u043f\u0438\u0442\u0430\u0435\u0442\u0441\u044f \u043e\u0442 \u0441\u043b\u0430\u0431\u043e\u0442\u043e\u0447\u043d\u043e\u0433\u043e \u0438\u0441\u0442\u043e\u0447\u043d\u0438\u043a\u0430 (\u0442.\u0435. \u043e\u0442 \u0441\u043e\u043b\u043d\u0435\u0447\u043d\u043e\u0439 \u0431\u0430\u0442\u0430\u0440\u0435\u0438), \u043f\u043e\u044d\u0442\u043e\u043c\u0443 \u0434\u0430\u0436\u0435 \u0435\u0441\u043b\u0438 \u043a\u0430\u0436\u0435\u0442\u0441\u044f, \u0447\u0442\u043e \u044d\u043d\u0435\u0440\u0433\u0438\u044f \u043f\u043e\u0441\u0442\u0443\u043f\u0430\u0435\u0442, \u043c\u044b \u0434\u043e\u043b\u0436\u043d\u044b \u043f\u043e\u0441\u0442\u0430\u0440\u0430\u0442\u044c\u0441\u044f \u043c\u0430\u043a\u0441\u0438\u043c\u0430\u043b\u044c\u043d\u043e \u0441\u043d\u0438\u0437\u0438\u0442\u044c \u044d\u043d\u0435\u0440\u0433\u043e\u043f\u043e\u0442\u0440\u0435\u0431\u043b\u0435\u043d\u0438\u0435. \u041d\u0435 \u0443\u0441\u0442\u0430\u043d\u0430\u0432\u043b\u0438\u0432\u0430\u0439\u0442\u0435 \u044d\u0442\u043e \u0437\u043d\u0430\u0447\u0435\u043d\u0438\u0435, \u0435\u0441\u043b\u0438 \u0432\u043a\u043b\u044e\u0447\u0435\u043d \u043f\u0430\u0440\u0430\u043c\u0435\u0442\u0440 'is_router'.",
             "zh": "\u8bbe\u5907\u7531\u4f4e\u7535\u6d41\u6e90\uff08\u592a\u9633\u80fd\uff09\u4f9b\u7535\uff0c\u5373\u4f7f\u6709\u7535\u6e90\u4f9b\u5e94\uff0c\u4e5f\u5e94\u8be5\u5c3d\u53ef\u80fd\u5730\u51cf\u5c11\u7535\u529b\u6d88\u8017\u3002\u5982\u679c\u542f\u7528\u4e86\u201cis_router\u201d\uff0c\u8bf7\u4e0d\u8981\u5f00\u542f\u3002"
         },
@@ -1688,7 +1688,7 @@
             "it": "Se impostato, abilita le funzioni di risparmio energetico del dispositivo esp32.",
             "ja": "\u8a2d\u5b9a\u3059\u308b\u3068\u3001esp32\u30c7\u30d0\u30a4\u30b9\u306e\u30d1\u30ef\u30fc\u30bb\u30fc\u30d6\u6a5f\u80fd\u3092\u6709\u52b9\u306b\u3057\u307e\u3059\u3002",
             "pl": "Je\u015bli jest ustawione, w\u0142\u0105cza funkcje oszcz\u0119dzania energii w urz\u0105dzeniu esp32.",
-            "ro": "Dac\u0103 este setat, activeaz\u0103 caracteristicile de economisire a energiei ale dispozitivului esp32.",
+            "ro": "Dac\u0103 este configurat, activeaz\u0103 caracteristicile de economisire a energiei ale aparat esp32.",
             "ru": "\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u043b\u0435\u043d\u043e, \u0432\u043a\u043b\u044e\u0447\u0438\u0442\u0435 \u0444\u0443\u043d\u043a\u0446\u0438\u0438 \u044d\u043d\u0435\u0440\u0433\u043e\u0441\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u0438\u044f \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430 esp32.",
             "zh": "\u542f\u7528 ESP32 \u8bbe\u5907\u7684\u7701\u7535\u529f\u80fd\u3002"
         },
@@ -1701,7 +1701,7 @@
             "it": "\u00c8 il risparmio energetico?",
             "ja": "\u30d1\u30ef\u30fc\u30bb\u30fc\u30d6\u306f\u53ef\u80fd\u3067\u3059\u304b\uff1f",
             "pl": "Oszcz\u0119dzanie energii?",
-            "ro": "Este de economisire a energiei?",
+            "ro": "Este activat\u0103 economisirea energiei?",
             "ru": "\u0420\u0435\u0436\u0438\u043c \u044d\u043d\u0435\u0440\u0433\u043e\u0441\u0431\u0435\u0440\u0435\u0436\u0435\u043d\u0438\u044f?",
             "zh": "\u7701\u7535"
         }
@@ -2301,7 +2301,7 @@
             "it": "Nessun dispositivo \u00e8 stato rilevato.\n\nStai usando un cavo dati?\n\nHai bisogno di un driver di dispositivo installato?\n\nCollegare un dispositivo?",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u306f\u691c\u51fa\u3055\u308c\u307e\u305b\u3093\u3067\u3057\u305f\u3002\n\n\u30c7\u30fc\u30bf\u901a\u4fe1\u30b1\u30fc\u30d6\u30eb\u3092\u4f7f\u7528\u3057\u3066\u3044\u307e\u3059\u304b\uff1f\n\n\u30c7\u30d0\u30a4\u30b9\u30c9\u30e9\u30a4\u30d0\u30fc\u306e\u30a4\u30f3\u30b9\u30c8\u30fc\u30eb\u306f\u5fc5\u8981\u3067\u3059\u304b\uff1f\n\n\u30c7\u30d0\u30a4\u30b9\u3092\u30d7\u30e9\u30b0\u30a4\u30f3\u3059\u308b\uff1f",
             "pl": "Nie wykryto \u017cadnych urz\u0105dze\u0144.\n\nCzy u\u017cywasz kabla do transmisji danych?\n\nCzy trzeba zainstalowa\u0107 sterownik urz\u0105dzenia?\n\nPod\u0142\u0105czy\u0107 urz\u0105dzenie?",
-            "ro": "Nu a fost detectat niciun dispozitiv.\n\nFolosi\u021bi un cablu de date?\n\nTrebuie s\u0103 ave\u021bi instalat un driver de dispozitiv?\n\nS\u0103 conecta\u021bi un dispozitiv?",
+            "ro": "Nu a fost detectat niciun dispozitiv.\n\n\nFolosi\u021bi un cablu de date?\n\n\n\nTrebuie s\u0103 ave\u021bi instalat un driver de dispozitiv?\n\n\n\nS\u0103 conecta\u021bi un dispozitiv?",
             "ru": "\u041d\u0438\u043a\u0430\u043a\u0438\u0445 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432 \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u043e \u043d\u0435 \u0431\u044b\u043b\u043e.\n\n\n\u0418\u0441\u043f\u043e\u043b\u044c\u0437\u0443\u0435\u0442\u0435 \u043b\u0438 \u0432\u044b \u043a\u0430\u0431\u0435\u043b\u044c \u0434\u043b\u044f \u043f\u0435\u0440\u0435\u0434\u0430\u0447\u0438 \u0434\u0430\u043d\u043d\u044b\u0445 \u0430 \u043d\u0435 \u043f\u0440\u043e\u0441\u0442\u043e \u043a\u0430\u0431\u0435\u043b\u044c \u043f\u0438\u0442\u0430\u043d\u0438\u044f?\n\n\n\n\u0423\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u043b\u0438 \u043b\u0438 \u0432\u044b \u0434\u0440\u0430\u0439\u0432\u0435\u0440 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0430?\n\n\n\n\u0423\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043e?",
             "zh": "\u6ca1\u6709\u68c0\u6d4b\u5230\u4efb\u4f55\u8bbe\u5907\u3002\n\n\n\u4f60\u662f\u5426\u4f7f\u7528\u4e86\u201c\u6570\u636e\u201d\u7ebf\uff1f\n\n\n\n\u5b89\u88c5\u4e86\u8bbe\u5907\u9a71\u52a8\u7a0b\u5e8f\u5417\uff1f\n\n\n\n\u63d2\u5165\u4e00\u4e2a\u8bbe\u5907\uff1f"
         }
@@ -2346,7 +2346,7 @@
             "it": "Rilevato dispositivo NRF.\n\nPremi due volte il pulsante RST e poi clicca nuovamente sul pulsante DETECT.",
             "ja": "NRF\u30c7\u30d0\u30a4\u30b9\u3092\u691c\u51fa\u3057\u307e\u3057\u305f\u3002\n\nRST\u30dc\u30bf\u30f3\u30922\u56de\u62bc\u3057\u3001\u518d\u5ea6DETECT\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Wykryto urz\u0105dzenie NRF.\n\nNaci\u015bnij dwukrotnie przycisk RST, a nast\u0119pnie ponownie kliknij przycisk DETECT.",
-            "ro": "A fost detectat un dispozitiv NRF.\n\nAp\u0103sa\u021bi butonul RST de dou\u0103 ori, apoi face\u021bi clic din nou pe butonul DETECT.",
+            "ro": "A fost detectat un dispozitiv NRF.\n\n\nAp\u0103sa\u021bi butonul RST de dou\u0103 ori, apoi face\u021bi clic din nou pe butonul DETECT.",
             "ru": "\u041e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d\u043e \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e NRF.\n\n\n\u0414\u0432\u0430\u0436\u0434\u044b \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 RST, \u0437\u0430\u0442\u0435\u043c \u0441\u043d\u043e\u0432\u0430 \u043d\u0430\u0436\u043c\u0438\u0442\u0435 \u043a\u043d\u043e\u043f\u043a\u0443 DETECT.",
             "zh": "\u68c0\u6d4b\u5230 NRF \u8bbe\u5907\u3002\n\n\n\u6309\u4e24\u6b21\u91cd\u7f6e\u6309\u94ae\uff0c\u7136\u540e\u518d\u6b21\u70b9\u51fb\u201c\u68c0\u6d4b\u201d\u6309\u94ae\u3002"
         }
@@ -2931,7 +2931,7 @@
             "it": "Sembra che sia stato rilevato un RAK 11200.\n\nVerificare che sia in modalit\u00e0 BOOT.\n\nCi dovrebbe essere una singola luce rossa fissa.\nNon ci dovrebbero essere altre luci, solide o lampeggianti.\n\nIn caso contrario, scollegare il dispositivo e fornire un ponticello tra i pin GND e BOOT0 mentre il dispositivo \u00e8 collegato.\n\n",
             "ja": "RAK11200\u304c\u691c\u51fa\u3055\u308c\u305f\u3088\u3046\u3067\u3059\u3002\n\nBOOT\u30e2\u30fc\u30c9\u306b\u306a\u3063\u3066\u3044\u308b\u3053\u3068\u3092\u78ba\u8a8d\u3057\u3066\u304f\u3060\u3055\u3044\u3002\n\n\u8d64\u3044\u30e9\u30f3\u30d7\u304c1\u3064\u70b9\u706f\u3057\u3066\u3044\u308b\u306f\u305a\u3067\u3059\u3002\n\u4ed6\u306e\u30e9\u30a4\u30c8\u306f\u70b9\u706f\u3082\u70b9\u6ec5\u3082\u3057\u306a\u3044\u306f\u305a\u3067\u3059\u3002\n\n\u305d\u3046\u3067\u306a\u3044\u5834\u5408\u306f\u3001\u30c7\u30d0\u30a4\u30b9\u3092\u53d6\u308a\u5916\u3057\u3001\u30c7\u30d0\u30a4\u30b9\u3092\u63a5\u7d9a\u3057\u305f\u72b6\u614b\u3067GND\u30d4\u30f3\u3068BOOT0\u30d4\u30f3\u306e\u9593\u306b\u30b8\u30e3\u30f3\u30d1\u3092\u8a2d\u3051\u3066\u304f\u3060\u3055\u3044\u3002\n\n",
             "pl": "Wygl\u0105da na to, \u017ce zosta\u0142 wykryty sygna\u0142 RAK 11200.\n\nSprawd\u017a, czy jest w trybie BOOT.\n\nPowinna \u015bwieci\u0107 si\u0119 pojedyncza, sta\u0142a czerwona dioda.\nNie powinno by\u0107 \u017cadnych innych \u015bwiate\u0142, ani sta\u0142ych, ani migaj\u0105cych.\n\nJe\u015bli tak nie jest, od\u0142\u0105cz urz\u0105dzenie i za\u0142\u00f3\u017c zwork\u0119 mi\u0119dzy pinami GND i BOOT0, gdy urz\u0105dzenie jest pod\u0142\u0105czone.\n\n",
-            "ro": "Se pare c\u0103 a fost detectat un RAK 11200.\n\nVerifica\u021bi dac\u0103 este \u00een modul BOOT.\n\nAr trebui s\u0103 fie o singur\u0103 lumin\u0103 ro\u0219ie continu\u0103.\nNu ar trebui s\u0103 existe alte lumini, nici fixe, nici intermitente.\n\n\u00cen caz contrar, deconecta\u021bi dispozitivul \u0219i pune\u021bi un jumper \u00eentre pinii GND \u0219i BOOT0 \u00een timp ce dispozitivul este conectat.\n\n",
+            "ro": "Se pare c\u0103 a fost detectat un RAK 11200.\n\n\nVerifica\u021bi dac\u0103 este \u00een modul BOOT.\n\n\n\nAr trebui s\u0103 fie o singur\u0103 lumin\u0103 ro\u0219ie continu\u0103.\n\nNu ar trebui s\u0103 existe alte lumini, nici fixe, nici intermitente.\n\n\n\n\u00cen caz contrar, deconecta\u021bi dispozitivul \u0219i pune\u021bi un jumper \u00eentre pinii GND \u0219i BOOT0 \u00een timp ce dispozitivul este conectat.\n\n\n\n",
             "ru": "\u041f\u043e\u0445\u043e\u0436\u0435, \u0447\u0442\u043e \u0431\u044b\u043b \u043e\u0431\u043d\u0430\u0440\u0443\u0436\u0435\u043d RAK 11200.\n\n\n\u0423\u0431\u0435\u0434\u0438\u0442\u0435\u0441\u044c, \u0447\u0442\u043e \u043e\u043d \u043d\u0430\u0445\u043e\u0434\u0438\u0442\u0441\u044f \u0432 \u0440\u0435\u0436\u0438\u043c\u0435 BOOT.\n\n\n\n\u0414\u043e\u043b\u0436\u0435\u043d \u0433\u043e\u0440\u0435\u0442\u044c \u043e\u0434\u0438\u043d \u043f\u043e\u0441\u0442\u043e\u044f\u043d\u043d\u044b\u0439 \u043a\u0440\u0430\u0441\u043d\u044b\u0439 \u0438\u043d\u0434\u0438\u043a\u0430\u0442\u043e\u0440.\n\n\u041d\u0435 \u0434\u043e\u043b\u0436\u043d\u043e \u0431\u044b\u0442\u044c \u043d\u0438\u043a\u0430\u043a\u0438\u0445 \u0434\u0440\u0443\u0433\u0438\u0445 \u0438\u043d\u0434\u0438\u043a\u0430\u0442\u043e\u0440\u043e\u0432, \u043d\u0438 \u043f\u043e\u0441\u0442\u043e\u044f\u043d\u043d\u044b\u0445, \u043d\u0438 \u043c\u0438\u0433\u0430\u044e\u0449\u0438\u0445.\n\n\n\n\u0415\u0441\u043b\u0438 \u044d\u0442\u043e \u043d\u0435 \u0442\u0430\u043a, \u043e\u0442\u0441\u043e\u0435\u0434\u0438\u043d\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0438 \u0443\u0441\u0442\u0430\u043d\u043e\u0432\u0438\u0442\u0435 \u043f\u0435\u0440\u0435\u043c\u044b\u0447\u043a\u0443 \u043c\u0435\u0436\u0434\u0443 \u043a\u043e\u043d\u0442\u0430\u043a\u0442\u0430\u043c\u0438 GND \u0438 BOOT0 \u043f\u0440\u0438 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u043d\u043e\u043c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0435.\n\n\n\n",
             "zh": "\u770b\u8d77\u6765\u68c0\u6d4b\u5230\u4e86 RAK 11200\u3002\n\n\n\u8bf7\u9a8c\u8bc1\u5b83\u662f\u5426\u5904\u4e8e BOOT \u6a21\u5f0f\u3002\n\n\n\n\u5e94\u8be5\u6709\u4e00\u4e2a\u5355\u4e00\u7684\u3001\u5e38\u4eae\u7684\u7ea2\u706f\u3002\n\n\u4e0d\u5e94\u8be5\u6709\u4efb\u4f55\u5176\u4ed6\u7684\u706f\u4eae\u8d77\u6216\u95ea\u70c1\u3002\n\n\n\n\u5982\u679c\u4e0d\u662f\uff0c\u65ad\u5f00\u8bbe\u5907\u7684\u8fde\u63a5\uff0c\u8bf7\u5728\u8bbe\u5907\u63d2\u5165\u65f6\uff0c\u77ed\u63a5 GND \u548c BOOT0 \u5f15\u811a\u3002\n\n\n\n"
         }
@@ -3483,7 +3483,7 @@
             "de": "Sie m\u00fcssen auf AKTUALISIEREN und GER\u00c4T FINDEN klicken, bevor Sie das Ger\u00e4t ausw\u00e4hlen k\u00f6nnen.",
             "en": "Need to click GET VERSIONS and DETECT DEVICE before you can select the device.",
             "es": "Es necesario hacer clic en OBTENER VERSIONES y DETECTAR DISPOSITIVO antes de poder seleccionar el dispositivo.",
-            "et": "Enne seadme valimist tuleb kl\u00f5psata nuppu V\u00C4RSKENDA VERSIOONE ja TUVASTA SEADE.",
+            "et": "Enne seadme valimist tuleb kl\u00f5psata nuppu V\u00c4RSKENDA VERSIOONE ja TUVASTA SEADE.",
             "fr": "Il faut cliquer sur GET VERSIONS et DETECT DEVICE avant de pouvoir s\u00e9lectionner le p\u00e9riph\u00e9rique.",
             "it": "\u00c8 necessario cliccare su GET VERSIONS e DETECT DEVICE prima di poter selezionare il dispositivo.",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u3092\u9078\u629e\u3059\u308b\u524d\u306b\u3001GET VERSIONS\u3068DETECT DEVICE\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002",
@@ -3513,7 +3513,7 @@
             "de": "Klicken Sie auf AKTUALISIEREN, um eine Liste der Firmware-Versionen zu erhalten.",
             "en": "Click GET VERSIONS for the list of firmware versions.",
             "es": "Haga clic en OBTENER VERSIONES para ver la lista de versiones de firmware.",
-            "et": "Firmware versioonide loendi saamiseks kl\u00f5psa nuppu V\u00C4RSKENDA VERSIOONE.",
+            "et": "Firmware versioonide loendi saamiseks kl\u00f5psa nuppu V\u00c4RSKENDA VERSIOONE.",
             "fr": "Cliquez sur GET VERSIONS pour obtenir la liste des versions du micrologiciel.",
             "it": "Cliccate su GET VERSIONS per l'elenco delle versioni del firmware.",
             "ja": "GET VERSIONS\uff3d\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u3068\u3001\u30d5\u30a1\u30fc\u30e0\u30a6\u30a7\u30a2\u306e\u30d0\u30fc\u30b8\u30e7\u30f3\u4e00\u89a7\u304c\u8868\u793a\u3055\u308c\u307e\u3059\u3002",
@@ -3543,12 +3543,12 @@
             "de": "Klicken Sie, um die Firmware zu flashen.\nWenn diese Schaltfl\u00e4che nicht aktiviert ist, m\u00fcssen Sie zuerst auf die Schaltfl\u00e4chen AKTUALISIEREN und GER\u00c4T FINDEN\nklicken.",
             "en": "Click to flash the firmware.\nIf this button is not enabled, need to click the GET VERSIONS and DETECT DEVICE \nbuttons to populate the available options.",
             "es": "Haga clic para flashear el firmware.\nSi este bot\u00f3n no est\u00e1 habilitado, deber\u00e1 pulsar los botones GET VERSIONS y DETECT DEVICE\n\npara rellenar las opciones disponibles.",
-            "et": "Kl\u00f5psa püsivara kirjutamiseks.\nKui see nupp ei ole aktiveeritud, peate kl\u00f5psama nuppu V\u00C4RSKENDA VERSIOONE ja TUVASTA SEADE\nnuppu, et t\u00e4ita olemasolevad valikud.",
+            "et": "Kl\u00f5psa p\u00fcsivara kirjutamiseks.\nKui see nupp ei ole aktiveeritud, peate kl\u00f5psama nuppu V\u00c4RSKENDA VERSIOONE ja TUVASTA SEADE\nnuppu, et t\u00e4ita olemasolevad valikud.",
             "fr": "Cliquez pour flasher le firmware.\nSi ce bouton n'est pas activ\u00e9, vous devez cliquer sur les boutons GET VERSIONS et DETECT DEVICE\npour faire appara\u00eetre les options disponibles.",
             "it": "Cliccare per flashare il firmware.\nSe questo pulsante non \u00e8 abilitato, \u00e8 necessario fare clic sui pulsanti GET VERSIONS e DETECT DEVICE\nper popolare le opzioni disponibili.",
             "ja": "\u30af\u30ea\u30c3\u30af\u3059\u308b\u3068\u3001\u30d5\u30a1\u30fc\u30e0\u30a6\u30a7\u30a2\u304c\u30d5\u30e9\u30c3\u30b7\u30e5\u3055\u308c\u307e\u3059\u3002\n\u3053\u306e\u30dc\u30bf\u30f3\u304c\u6709\u52b9\u3067\u306a\u3044\u5834\u5408\u3001GET VERSIONS \u3068 DETECT DEVICE \u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002\n\u30dc\u30bf\u30f3\u3092\u30af\u30ea\u30c3\u30af\u3059\u308b\u3068\u3001\u5229\u7528\u53ef\u80fd\u306a\u30aa\u30d7\u30b7\u30e7\u30f3\u304c\u5165\u529b\u3055\u308c\u307e\u3059\u3002",
             "pl": "Kliknij, aby uruchomi\u0107 oprogramowanie sprz\u0119towe.\nJe\u015bli ten przycisk nie jest w\u0142\u0105czony, nale\u017cy klikn\u0105\u0107 przyciski GET VERSIONS i DETECT DEVICE\naby wy\u015bwietli\u0107 dost\u0119pne opcje.",
-            "ro": "Face\u021bi clic pe pentru a activa firmware-ul.\nDac\u0103 acest buton nu este activat, trebuie s\u0103 face\u021bi clic pe GET VERSIONS (Ob\u021bine versiunile) \u0219i DETECT DEVICE (Detecteaz\u0103 dispozitivul).\npentru a completa op\u021biunile disponibile.",
+            "ro": "Face\u021bi clic pe pentru a activa firmware-ul.\nDac\u0103 acest buton nu este activat, trebuie s\u0103 face\u021bi clic pe GET VERSIONS (Ob\u021bine versiunile) \u0219i DETECT DEVICE (Detecteaz\u0103 dispozitivul).\n\npentru a completa op\u021biunile disponibile.",
             "ru": "\u041d\u0430\u0436\u043c\u0438\u0442\u0435 \u0434\u043b\u044f \u043f\u0440\u043e\u0448\u0438\u0432\u043a\u0438 \u043c\u0438\u043a\u0440\u043e\u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u044b.\n\u0415\u0441\u043b\u0438 \u044d\u0442\u0430 \u043a\u043d\u043e\u043f\u043a\u0430 \u043d\u0435 \u0432\u043a\u043b\u044e\u0447\u0435\u043d\u0430, \u043d\u0435\u043e\u0431\u0445\u043e\u0434\u0438\u043c\u043e \u043d\u0430\u0436\u0430\u0442\u044c \u043a\u043d\u043e\u043f\u043a\u0438 \u041f\u041e\u041b\u0423\u0427\u0418\u0422\u042c \u0412\u0415\u0420\u0421\u0418\u0418 \u0438 \u041e\u041f\u0420\u0415\u0414\u0415\u041b\u0418\u0422\u042c \u0423\u0421\u0422\u0420\u041e\u0419\u0421\u0422\u0412\u041e \u0447\u0442\u043e\u0431\u044b \u0437\u0430\u043f\u043e\u043b\u043d\u0438\u0442\u044c \u0434\u043e\u0441\u0442\u0443\u043f\u043d\u044b\u0435 \u043e\u043f\u0446\u0438\u0438.",
             "zh": "\u70b9\u51fb\u6765\u5237\u5199\u56fa\u4ef6\u3002\n\u5982\u679c\u8fd9\u4e2a\u6309\u94ae\u6ca1\u6709\u542f\u7528\uff0c\u9700\u8981\u70b9\u51fb\u201c\u83b7\u53d6\u7248\u672c\u201d\u548c\u201c\u68c0\u6d4b\u8bbe\u5907\u201d\n\n\u6309\u94ae\u6765\u586b\u5165\u53ef\u7528\u7684\u9009\u9879\u3002"
         }
@@ -3573,7 +3573,7 @@
             "de": "Sie m\u00fcssen auf AKTUALISIEREN und GER\u00c4T FINDEN klicken, bevor Sie den Anschluss ausw\u00e4hlen k\u00f6nnen.",
             "en": "Need to click GET VERSIONS and DETECT DEVICE before you can select the port.",
             "es": "Es necesario hacer clic en OBTENER VERSIONES y DETECTAR DISPOSITIVO antes de poder seleccionar el puerto.",
-            "et": "Enne pordi valimist tuleb kl\u00f5psata nuppu V\u00C4RSKENDA VERSIOONE ja TUVASTA SEADE.",
+            "et": "Enne pordi valimist tuleb kl\u00f5psata nuppu V\u00c4RSKENDA VERSIOONE ja TUVASTA SEADE.",
             "fr": "Il faut cliquer sur GET VERSIONS et DETECT DEVICE avant de pouvoir s\u00e9lectionner le port.",
             "it": "\u00c8 necessario cliccare su GET VERSIONS e DETECT DEVICE prima di poter selezionare la porta.",
             "ja": "GET VERSIONS\u3068DETECT DEVICE\u3092\u30af\u30ea\u30c3\u30af\u3057\u3066\u304b\u3089\u3001\u30dd\u30fc\u30c8\u3092\u9078\u629e\u3059\u308b\u5fc5\u8981\u304c\u3042\u308a\u307e\u3059\u3002",
@@ -4164,7 +4164,7 @@
             "it": "Il bootloader T-Echo \u00e8 stato aggiornato.\n\nAspettate che il dispositivo si riavvii.",
             "ja": "T-Echo\u30d6\u30fc\u30c8\u30ed\u30fc\u30c0\u3092\u66f4\u65b0\u3057\u307e\u3057\u305f\u3002\n\n\u30c7\u30d0\u30a4\u30b9\u304c\u518d\u8d77\u52d5\u3059\u308b\u306e\u3092\u5f85\u3061\u307e\u3059\u3002",
             "pl": "Zaktualizowano bootloader T-Echo.\n\nPoczekaj, a\u017c urz\u0105dzenie uruchomi si\u0119 ponownie.",
-            "ro": "T-Echo bootloader a fost actualizat.\n\nA\u0219tepta\u021bi ca dispozitivul s\u0103 se reporneasc\u0103.",
+            "ro": "T-Echo bootloader a fost actualizat.\n\n\nA\u0219tepta\u021bi ca dispozitivul s\u0103 se reporneasc\u0103.",
             "ru": "\u041e\u0431\u043d\u043e\u0432\u043b\u0435\u043d \u0437\u0430\u0433\u0440\u0443\u0437\u0447\u0438\u043a T-Echo.\n\n\n\u041f\u043e\u0434\u043e\u0436\u0434\u0438\u0442\u0435, \u043f\u043e\u043a\u0430 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u043f\u0435\u0440\u0435\u0437\u0430\u0433\u0440\u0443\u0437\u0438\u0442\u0441\u044f.",
             "zh": "T-Echo \u5f15\u5bfc\u7a0b\u5e8f\u5df2\u7ecf\u66f4\u65b0\u3002\n\n\n\u7b49\u5f85\u8bbe\u5907\u91cd\u65b0\u542f\u52a8\u3002"
         }
@@ -4756,7 +4756,7 @@
             "it": "C'\u00e8 stato un problema di connessione al dispositivo.\n\nForse scollegare il dispositivo o riavviare questo programma.",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u3078\u306e\u63a5\u7d9a\u306b\u554f\u984c\u304c\u767a\u751f\u3057\u307e\u3057\u305f\u3002\n\n\u30c7\u30d0\u30a4\u30b9\u3092\u53d6\u308a\u5916\u3059\u304b\u3001\u3053\u306e\u30d7\u30ed\u30b0\u30e9\u30e0\u3092\u518d\u8d77\u52d5\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Wyst\u0105pi\u0142 problem z po\u0142\u0105czeniem z urz\u0105dzeniem.\n\nBy\u0107 mo\u017ce nale\u017cy od\u0142\u0105czy\u0107 urz\u0105dzenie lub ponownie uruchomi\u0107 program.",
-            "ro": "A existat o problem\u0103 la conectarea la dispozitiv.\n\nPoate deconecta\u021bi dispozitivul sau reporni\u021bi acest program.",
+            "ro": "A existat o problem\u0103 la conectarea la dispozitiv.\n\n\nPoate deconecta\u021bi dispozitivul sau reporni\u021bi acest program.",
             "ru": "\u0412\u043e\u0437\u043d\u0438\u043a\u043b\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0430 \u043f\u0440\u0438 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0435\u043d\u0438\u0438 \u043a \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u0443.\n\n\n\u041f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435, \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u043e\u0442 \u0441\u0435\u0442\u0438 \u0438\u043b\u0438 \u043f\u0435\u0440\u0435\u0437\u0430\u043f\u0443\u0441\u0442\u0438\u0442\u0435 \u044d\u0442\u0443 \u043f\u0440\u043e\u0433\u0440\u0430\u043c\u043c\u0443.",
             "zh": "\u4e0e\u8bbe\u5907\u7684\u8fde\u63a5\u51fa\u73b0\u4e86\u95ee\u9898\u3002\n\n\n\u4e5f\u8bb8\u53ef\u4ee5\u62d4\u6389\u8bbe\u5907\u6216\u91cd\u65b0\u542f\u52a8\u8fd9\u4e2a\u7a0b\u5e8f\u3002"
         }
@@ -4771,7 +4771,7 @@
             "it": "Ha avuto un problema a parlare con il dispositivo.\nForse scollegare e ricollegare il dispositivo?\nSe il dispositivo \u00e8 un nrf52 (T-Echo o RAK),\nallora metti il dispositivo in modalit\u00e0 di avvio premendo il pulsante RST due volte.",
             "ja": "\u30c7\u30d0\u30a4\u30b9\u3068\u306e\u901a\u4fe1\u306b\u554f\u984c\u304c\u3042\u308a\u307e\u3057\u305f\u3002\n\u30c7\u30d0\u30a4\u30b9\u306e\u30d7\u30e9\u30b0\u3092\u629c\u304d\u5dee\u3057\u3057\u3066\u307f\u3066\u306f\u3044\u304b\u304c\u3067\u3057\u3087\u3046\u304b\uff1f\n\u30c7\u30d0\u30a4\u30b9\u304cnrf52\uff08T-Echo\u307e\u305f\u306fRAK\uff09\u3067\u3042\u308b\u5834\u5408\u3002\nRST\u30dc\u30bf\u30f3\u30922\u56de\u62bc\u3057\u3066\u3001\u30d6\u30fc\u30c8\u30e2\u30fc\u30c9\u306b\u3057\u3066\u304f\u3060\u3055\u3044\u3002",
             "pl": "Wyst\u0105pi\u0142 problem z nawi\u0105zaniem po\u0142\u0105czenia z urz\u0105dzeniem.\nMo\u017ce nale\u017cy od\u0142\u0105czy\u0107 i ponownie pod\u0142\u0105czy\u0107 urz\u0105dzenie?\nJe\u015bli urz\u0105dzenie to nrf52 (T-Echo lub RAK),\nto prze\u0142\u0105cz urz\u0105dzenie w tryb startowy, naciskaj\u0105c dwukrotnie przycisk RST.",
-            "ro": "A avut o problem\u0103 \u00een a vorbi cu dispozitivul.\nPoate deconecta\u021bi \u0219i reconecta\u021bi dispozitivul?\nDac\u0103 dispozitivul este un nrf52 (T-Echo sau RAK),\natunci pune\u021bi dispozitivul \u00een modul de pornire ap\u0103s\u00e2nd de dou\u0103 ori butonul RST.",
+            "ro": "A avut o problem\u0103 \u00een a vorbi cu dispozitivul.\nPoate deconecta\u021bi \u0219i reconecta\u021bi dispozitivul?\n\nDac\u0103 dispozitivul este un nrf52 (T-Echo sau RAK),\n\natunci pune\u021bi dispozitivul \u00een modul de pornire ap\u0103s\u00e2nd de dou\u0103 ori butonul RST.",
             "ru": "\u0412\u043e\u0437\u043d\u0438\u043a\u043b\u0430 \u043f\u0440\u043e\u0431\u043b\u0435\u043c\u0430 \u043f\u0440\u0438 \u043a\u043e\u043c\u043c\u0443\u043d\u0438\u043a\u0430\u0446\u0438\u0438 \u0441 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e\u043c.\n\u041f\u043e\u043f\u0440\u043e\u0431\u0443\u0439\u0442\u0435, \u043e\u0442\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0438 \u0441\u043d\u043e\u0432\u0430 \u043f\u043e\u0434\u043a\u043b\u044e\u0447\u0438\u0442\u044c \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e?\n\n\u0415\u0441\u043b\u0438 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u044f\u0432\u043b\u044f\u0435\u0442\u0441\u044f nrf52 (T-Echo \u0438\u043b\u0438 RAK),\n\n\u0442\u043e \u043f\u0435\u0440\u0435\u0432\u0435\u0434\u0438\u0442\u0435 \u0443\u0441\u0442\u0440\u043e\u0439\u0441\u0442\u0432\u043e \u0432 \u0440\u0435\u0436\u0438\u043c \u0437\u0430\u0433\u0440\u0443\u0437\u043a\u0438, \u0434\u0432\u0430\u0436\u0434\u044b \u043d\u0430\u0436\u0430\u0432 \u043a\u043d\u043e\u043f\u043a\u0443 RST.",
             "zh": "\u4e0e\u8bbe\u5907\u7684\u901a\u8baf\u51fa\u73b0\u4e86\u95ee\u9898\u3002\n\u4e5f\u8bb8\u53ef\u4ee5\u62d4\u6389\u8bbe\u5907\u7684\u63d2\u5934\u518d\u91cd\u65b0\u63d2\u4e0a\uff1f\n\n\u5982\u679c\u8be5\u8bbe\u5907\u662f nrf52\uff08T-Echo \u6216 RAK\uff09\u3002\n\n\u90a3\u5c31\u6309\u4e24\u6b21\u91cd\u7f6e\u6309\u94ae\uff0c\u8ba9\u8bbe\u5907\u8fdb\u5165\u542f\u52a8\u6a21\u5f0f\u3002"
         }
