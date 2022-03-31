@@ -23,5 +23,6 @@ for field in fields:
             tmp = fields[field][key]
             if not isinstance(tmp, str):
                 en_entry = fields[field][key]['en']
-                lang_entry = fields[field][key][lang]
-                print(f'** field:{field} key:{key} \nen:{en_entry}\n{lang}:{lang_entry}\n\n')
+                if lang in fields[field][key]:
+                    lang_entry = fields[field][key][lang]
+                    print(f'** field:{field} key:{key} \nen:{en_entry}\n{lang}:{lang_entry}\n\n')
