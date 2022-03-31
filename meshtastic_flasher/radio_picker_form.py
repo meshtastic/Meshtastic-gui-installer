@@ -58,6 +58,9 @@ class RadioPickerForm(QDialog):
         self.rak4631_5005 = None
         self.rak4631_5005_image = None
         self.rak4631_5005_pixmap = None
+        self.rak4631_5005_epaper = None
+        self.rak4631_5005_epaper_image = None
+        self.rak4631_5005_epaper_pixmap = None
         self.rak4631_19003 = None
         self.rak4631_19003_image = None
         self.rak4631_19003_pixmap = None
@@ -224,6 +227,19 @@ class RadioPickerForm(QDialog):
             self.rak4631_5005_image.setPixmap(self.rak4631_5005_pixmap.scaled(self.scale_x, self.scale_y, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
             self.rak4631_5005_image.setAlignment(QtCore.Qt.AlignCenter)
             self.layout.addWidget(self.rak4631_5005_image, grid_row, 1)
+            grid_row = grid_row + 1
+
+        if "rak4631_5005_epaper" in self.radios:
+            self.rak4631_5005_epaper = QRadioButton("RAK 4631/5005/14000 epaper")
+            self.rak4631_5005_epaper.radio = "rak4631_5005_epaper"
+            self.rak4631_5005_epaper.toggled.connect(self.onClicked)
+            self.layout.addWidget(self.rak4631_5005_epaper, grid_row, 0)
+
+            self.rak4631_5005_epaper_image = QLabel(self)
+            self.rak4631_5005_epaper_pixmap = QPixmap(meshtastic_flasher.util.get_path('radios/rak4631_5005_epaper.jpg'))
+            self.rak4631_5005_epaper_image.setPixmap(self.rak4631_5005_epaper_pixmap.scaled(self.scale_x, self.scale_y, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
+            self.rak4631_5005_epaper_image.setAlignment(QtCore.Qt.AlignCenter)
+            self.layout.addWidget(self.rak4631_5005_epaper_image, grid_row, 1)
             grid_row = grid_row + 1
 
         if "rak4631_19003" in self.radios:

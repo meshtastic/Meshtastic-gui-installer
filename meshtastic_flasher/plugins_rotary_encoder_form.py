@@ -39,21 +39,21 @@ class RotaryEncoderForm(QDialog):
         self.rotary1_about.setToolTip(self.main.tooltip('module_link'))
         self.rotary1_enabled = QCheckBox()
         self.rotary1_enabled.setToolTip(self.main.description('rotary1_enabled'))
-        self.rotary1_event_cw = QComboBox()
-        self.rotary1_event_cw.setToolTip(self.main.description('rotary1_event_cw'))
-        self.rotary1_event_cw.setMinimumContentsLength(17)
-        self.rotary1_event_ccw = QComboBox()
-        self.rotary1_event_ccw.setToolTip(self.main.description('rotary1_event_ccw'))
-        self.rotary1_event_ccw.setMinimumContentsLength(17)
-        self.rotary1_event_press = QComboBox()
-        self.rotary1_event_press.setToolTip(self.main.description('rotary1_event_press'))
-        self.rotary1_event_press.setMinimumContentsLength(17)
-        self.rotary1_pin_a = QLineEdit()
-        self.rotary1_pin_a.setToolTip(self.main.description('rotary1_pin_a'))
-        self.rotary1_pin_b = QLineEdit()
-        self.rotary1_pin_b.setToolTip(self.main.description('rotary1_pin_b'))
-        self.rotary1_pin_press = QLineEdit()
-        self.rotary1_pin_press.setToolTip(self.main.description('rotary1_pin_press'))
+        self.inputbroker_event_cw = QComboBox()
+        self.inputbroker_event_cw.setToolTip(self.main.description('inputbroker_event_cw'))
+        self.inputbroker_event_cw.setMinimumContentsLength(17)
+        self.inputbroker_event_ccw = QComboBox()
+        self.inputbroker_event_ccw.setToolTip(self.main.description('inputbroker_event_ccw'))
+        self.inputbroker_event_ccw.setMinimumContentsLength(17)
+        self.inputbroker_event_press = QComboBox()
+        self.inputbroker_event_press.setToolTip(self.main.description('inputbroker_event_press'))
+        self.inputbroker_event_press.setMinimumContentsLength(17)
+        self.inputbroker_pin_a = QLineEdit()
+        self.inputbroker_pin_a.setToolTip(self.main.description('inputbroker_pin_a'))
+        self.inputbroker_pin_b = QLineEdit()
+        self.inputbroker_pin_b.setToolTip(self.main.description('inputbroker_pin_b'))
+        self.inputbroker_pin_press = QLineEdit()
+        self.inputbroker_pin_press.setToolTip(self.main.description('inputbroker_pin_press'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -65,12 +65,12 @@ class RotaryEncoderForm(QDialog):
         form_layout = QFormLayout()
         form_layout.addRow(self.main.label("rotary1_about"), self.rotary1_about)
         form_layout.addRow(self.main.label("rotary1_enabled"), self.rotary1_enabled)
-        form_layout.addRow(self.main.label("rotary1_event_cw"), self.rotary1_event_cw)
-        form_layout.addRow(self.main.label("rotary1_event_ccw"), self.rotary1_event_ccw)
-        form_layout.addRow(self.main.label("rotary1_event_press"), self.rotary1_event_press)
-        form_layout.addRow(self.main.label("rotary1_pin_a"), self.rotary1_pin_a)
-        form_layout.addRow(self.main.label("rotary1_pin_b"), self.rotary1_pin_b)
-        form_layout.addRow(self.main.label("rotary1_pin_press"), self.rotary1_pin_press)
+        form_layout.addRow(self.main.label("inputbroker_event_cw"), self.inputbroker_event_cw)
+        form_layout.addRow(self.main.label("inputbroker_event_ccw"), self.inputbroker_event_ccw)
+        form_layout.addRow(self.main.label("inputbroker_event_press"), self.inputbroker_event_press)
+        form_layout.addRow(self.main.label("inputbroker_pin_a"), self.inputbroker_pin_a)
+        form_layout.addRow(self.main.label("inputbroker_pin_b"), self.inputbroker_pin_b)
+        form_layout.addRow(self.main.label("inputbroker_pin_press"), self.inputbroker_pin_press)
         form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
@@ -95,58 +95,58 @@ class RotaryEncoderForm(QDialog):
                     self.rotary1_enabled.setChecked(True)
 
                 temp = 0
-                if self.prefs.rotary1_event_cw:
-                    temp = int(self.prefs.rotary1_event_cw)
+                if self.prefs.inputbroker_event_cw:
+                    temp = int(self.prefs.inputbroker_event_cw)
                 print(f'temp:{temp}')
-                self.rotary1_event_cw.clear()
+                self.inputbroker_event_cw.clear()
                 desc = meshtastic.radioconfig_pb2.InputEventChar.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     print(f'k:{k} v.number:{v.number}')
-                    self.rotary1_event_cw.addItem(k, v.number)
-                temp2 = self.rotary1_event_cw.findData(temp)
+                    self.inputbroker_event_cw.addItem(k, v.number)
+                temp2 = self.inputbroker_event_cw.findData(temp)
                 if temp2 != -1:
-                    self.rotary1_event_cw.setCurrentIndex(temp2)
+                    self.inputbroker_event_cw.setCurrentIndex(temp2)
 
                 temp = 0
-                if self.prefs.rotary1_event_ccw:
-                    temp = int(self.prefs.rotary1_event_ccw)
+                if self.prefs.inputbroker_event_ccw:
+                    temp = int(self.prefs.inputbroker_event_ccw)
                 print(f'temp:{temp}')
-                self.rotary1_event_ccw.clear()
+                self.inputbroker_event_ccw.clear()
                 desc = meshtastic.radioconfig_pb2.InputEventChar.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     print(f'k:{k} v.number:{v.number}')
-                    self.rotary1_event_ccw.addItem(k, v.number)
-                temp2 = self.rotary1_event_ccw.findData(temp)
+                    self.inputbroker_event_ccw.addItem(k, v.number)
+                temp2 = self.inputbroker_event_ccw.findData(temp)
                 if temp2 != -1:
-                    self.rotary1_event_ccw.setCurrentIndex(temp2)
+                    self.inputbroker_event_ccw.setCurrentIndex(temp2)
 
                 temp = 0
-                if self.prefs.rotary1_event_press:
-                    temp = int(self.prefs.rotary1_event_press)
+                if self.prefs.inputbroker_event_press:
+                    temp = int(self.prefs.inputbroker_event_press)
                 print(f'temp:{temp}')
-                self.rotary1_event_press.clear()
+                self.inputbroker_event_press.clear()
                 desc = meshtastic.radioconfig_pb2.InputEventChar.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     print(f'k:{k} v.number:{v.number}')
-                    self.rotary1_event_press.addItem(k, v.number)
-                temp2 = self.rotary1_event_press.findData(temp)
+                    self.inputbroker_event_press.addItem(k, v.number)
+                temp2 = self.inputbroker_event_press.findData(temp)
                 if temp2 != -1:
-                    self.rotary1_event_press.setCurrentIndex(temp2)
+                    self.inputbroker_event_press.setCurrentIndex(temp2)
 
-                if self.prefs.rotary1_pin_a:
-                    self.rotary1_pin_a.setText(f'{self.prefs.rotary1_pin_a}')
+                if self.prefs.inputbroker_pin_a:
+                    self.inputbroker_pin_a.setText(f'{self.prefs.inputbroker_pin_a}')
                 else:
-                    self.rotary1_pin_a.setText("0")
+                    self.inputbroker_pin_a.setText("0")
 
-                if self.prefs.rotary1_pin_b:
-                    self.rotary1_pin_b.setText(f'{self.prefs.rotary1_pin_b}')
+                if self.prefs.inputbroker_pin_b:
+                    self.inputbroker_pin_b.setText(f'{self.prefs.inputbroker_pin_b}')
                 else:
-                    self.rotary1_pin_b.setText("0")
+                    self.inputbroker_pin_b.setText("0")
 
-                if self.prefs.rotary1_pin_press:
-                    self.rotary1_pin_press.setText(f'{self.prefs.rotary1_pin_press}')
+                if self.prefs.inputbroker_pin_press:
+                    self.inputbroker_pin_press.setText(f'{self.prefs.inputbroker_pin_press}')
                 else:
-                    self.rotary1_pin_press.setText("0")
+                    self.inputbroker_pin_press.setText("0")
 
 
         except Exception as e:
@@ -160,12 +160,12 @@ class RotaryEncoderForm(QDialog):
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'rotary1_enabled', f'{self.rotary1_enabled.isChecked()}')
-                setPref(prefs, 'rotary1_event_cw', f'{self.rotary1_event_cw.currentData()}')
-                setPref(prefs, 'rotary1_event_ccw', f'{self.rotary1_event_ccw.currentData()}')
-                setPref(prefs, 'rotary1_event_press', f'{self.rotary1_event_press.currentData()}')
-                setPref(prefs, 'rotary1_pin_a', zero_if_blank(self.rotary1_pin_a.text()))
-                setPref(prefs, 'rotary1_pin_b', zero_if_blank(self.rotary1_pin_b.text()))
-                setPref(prefs, 'rotary1_pin_press', zero_if_blank(self.rotary1_pin_press.text()))
+                setPref(prefs, 'inputbroker_event_cw', f'{self.inputbroker_event_cw.currentData()}')
+                setPref(prefs, 'inputbroker_event_ccw', f'{self.inputbroker_event_ccw.currentData()}')
+                setPref(prefs, 'inputbroker_event_press', f'{self.inputbroker_event_press.currentData()}')
+                setPref(prefs, 'inputbroker_pin_a', zero_if_blank(self.inputbroker_pin_a.text()))
+                setPref(prefs, 'inputbroker_pin_b', zero_if_blank(self.inputbroker_pin_b.text()))
+                setPref(prefs, 'inputbroker_pin_press', zero_if_blank(self.inputbroker_pin_press.text()))
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

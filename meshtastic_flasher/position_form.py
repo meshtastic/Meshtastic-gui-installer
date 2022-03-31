@@ -37,8 +37,8 @@ class PositionForm(QDialog):
         # Create widgets
         self.position_broadcast_secs = QLineEdit()
         self.position_broadcast_secs.setToolTip(self.main.description('position_broadcast_secs'))
-        self.position_broadcast_smart = QCheckBox()
-        self.position_broadcast_smart.setToolTip(self.main.description('position_broadcast_smart'))
+        self.position_broadcast_smart_disabled = QCheckBox()
+        self.position_broadcast_smart_disabled.setToolTip(self.main.description('position_broadcast_smart_disabled'))
         self.position_flag_altitude = QCheckBox(self.main.label('position_flag_altitude'), self)
         self.position_flag_altitude.setToolTip(self.main.description('position_flag_altitude'))
         self.position_flag_alt_msl = QCheckBox(self.main.label('position_flag_alt_msl'), self)
@@ -88,7 +88,7 @@ class PositionForm(QDialog):
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.main.label("position_broadcast_secs"), self.position_broadcast_secs)
-        form_layout.addRow(self.main.label("position_broadcast_smart"), self.position_broadcast_smart)
+        form_layout.addRow(self.main.label("position_broadcast_smart_disabled"), self.position_broadcast_smart_disabled)
         form_layout.addRow('Position flags', self.position_flag_altitude)
         form_layout.addRow('', self.position_flag_alt_msl)
         form_layout.addRow('', self.position_flag_geo_sep)
@@ -197,9 +197,9 @@ class PositionForm(QDialog):
                 else:
                     self.position_broadcast_secs.setText("0")
 
-                print(f'self.prefs.position_broadcast_smart:{self.prefs.position_broadcast_smart}')
-                if self.prefs.position_broadcast_smart:
-                    self.position_broadcast_smart.setChecked(True)
+                print(f'self.prefs.position_broadcast_smart_disabled:{self.prefs.position_broadcast_smart_disabled}')
+                if self.prefs.position_broadcast_smart_disabled:
+                    self.position_broadcast_smart_disabled.setChecked(True)
 
                 if self.prefs.position_flags:
                     self.position_flags.setText(f'{self.prefs.position_flags}')
@@ -261,7 +261,7 @@ class PositionForm(QDialog):
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
                 setPref(prefs, 'position_broadcast_secs', zero_if_blank(self.position_broadcast_secs.text()))
-                setPref(prefs, 'position_broadcast_smart', f'{self.position_broadcast_smart.isChecked()}')
+                setPref(prefs, 'position_broadcast_smart_disabled', f'{self.position_broadcast_smart_disabled.isChecked()}')
                 setPref(prefs, 'position_flags', self.position_flags.text())
                 setPref(prefs, 'location_share', f'{self.location_share.currentData()}')
                 setPref(prefs, 'gps_operation', f'{self.gps_operation.currentData()}')
