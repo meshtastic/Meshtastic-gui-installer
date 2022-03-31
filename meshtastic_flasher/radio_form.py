@@ -32,8 +32,6 @@ class RadioForm(QDialog):
         self.prefs = None
 
         # Create widgets
-        self.is_router = QCheckBox()
-        self.is_router.setToolTip(self.main.description('is_router'))
         self.region = QComboBox()
         self.region.setToolTip(self.main.description('region'))
         self.region.setMinimumContentsLength(17)
@@ -64,7 +62,6 @@ class RadioForm(QDialog):
 
         # create form
         form_layout = QFormLayout()
-        form_layout.addRow(self.main.label("is_router"), self.is_router)
         form_layout.addRow(self.main.label("region"), self.region)
         form_layout.addRow(self.main.label("debug_log_enabled"), self.debug_log_enabled)
         form_layout.addRow(self.main.label("serial_disabled"), self.serial_disabled)
@@ -94,13 +91,9 @@ class RadioForm(QDialog):
             if self.interface:
                 self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
 
-                if self.prefs.is_router and self.prefs.is_router is True:
-                    self.is_router.setChecked(True)
-
                 tmp_r = 'Unset'
                 if self.prefs.region:
                     tmp_r = self.prefs.region
-                    print(f'tmp_r:{tmp_r}')
                 count = 0
                 self.region.clear()
                 desc = meshtastic.radioconfig_pb2.RegionCode.DESCRIPTOR
@@ -154,7 +147,6 @@ class RadioForm(QDialog):
             if self.interface:
                 print("Writing preferences to device")
                 prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'is_router', f'{self.is_router.isChecked()}')
                 setPref(prefs, 'region', f'{self.region.currentData()}')
                 setPref(prefs, 'debug_log_enabled', f'{self.debug_log_enabled.isChecked()}')
                 setPref(prefs, 'serial_disabled', f'{self.serial_disabled.isChecked()}')
