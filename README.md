@@ -3,6 +3,7 @@
 [![Pylint](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml/badge.svg)](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml)
 [![codecov](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer/branch/master/graph/badge.svg?token=CEnDhjIJFU)](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/meshtastic-flasher)
+[![CLA assistant](https://cla-assistant.io/readme/badge/meshtastic/Meshtastic-gui-installer)](https://cla-assistant.io/meshtastic/Meshtastic-gui-installer)
 
 Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmware](https://github.com/meshtastic/Meshtastic-device). It also checks and updates the [RAK 4631](https://docs.rakwireless.com/Product-Categories/WisBlock/RAK4631/Overview/) and [LilyGo T-Echo](https://github.com/Xinyuan-LilyGO/LilyGO-T-Echo) bootloaders.
 
