@@ -63,12 +63,6 @@ class PositionForm(QDialog):
         self.fixed_position_button = QPushButton("Fixed Position")
         self.fixed_position_button.clicked.connect(self.fixed_position)
 
-        self.location_share = QComboBox()
-        self.location_share.setToolTip(self.main.description('location_share'))
-        self.location_share.setMinimumContentsLength(17)
-        self.gps_operation = QComboBox()
-        self.gps_operation.setToolTip(self.main.description('gps_operation'))
-        self.gps_operation.setMinimumContentsLength(17)
         self.gps_format = QComboBox()
         self.gps_format.setToolTip(self.main.description('gps_format'))
         self.gps_format.setMinimumContentsLength(17)
@@ -100,8 +94,6 @@ class PositionForm(QDialog):
         form_layout.addRow('', self.position_flag_timestamp)
         form_layout.addRow(self.main.label("position_flags"), self.position_flags)
         form_layout.addRow("", self.fixed_position_button)
-        form_layout.addRow(self.main.label("location_share"), self.location_share)
-        form_layout.addRow(self.main.label("gps_operation"), self.gps_operation)
         form_layout.addRow(self.main.label("gps_format"), self.gps_format)
         form_layout.addRow(self.main.label("gps_accept_2d"), self.gps_accept_2d)
         form_layout.addRow(self.main.label("gps_max_dop"), self.gps_max_dop)
@@ -208,31 +200,12 @@ class PositionForm(QDialog):
                 self.set_position_flags(self.position_flags.text())
 
                 temp = 0
-                if self.prefs.location_share:
-                    temp = int(self.prefs.location_share)
-                self.location_share.clear()
-                desc = meshtastic.radioconfig_pb2.LocationSharing.DESCRIPTOR
-                for k,v in desc.values_by_name.items():
-                    self.location_share.addItem(k, v.number)
-                    if v.number == temp:
-                        self.location_share.setCurrentIndex(v.number)
-
-                temp = 0
-                if self.prefs.gps_operation:
-                    temp = int(self.prefs.gps_operation)
-                self.gps_operation.clear()
-                desc = meshtastic.radioconfig_pb2.GpsOperation.DESCRIPTOR
-                for k,v in desc.values_by_name.items():
-                    self.gps_operation.addItem(k, v.number)
-                    if v.number == temp:
-                        self.gps_operation.setCurrentIndex(v.number)
-
-                temp = 0
                 if self.prefs.gps_format:
                     temp = int(self.prefs.gps_format)
                 self.gps_format.clear()
                 desc = meshtastic.radioconfig_pb2.GpsCoordinateFormat.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
+                    print(f'gps_format k:{k} v.number:{v.number}')
                     self.gps_format.addItem(k, v.number)
                     if v.number == temp:
                         self.gps_format.setCurrentIndex(v.number)
@@ -263,8 +236,6 @@ class PositionForm(QDialog):
                 setPref(prefs, 'position_broadcast_secs', zero_if_blank(self.position_broadcast_secs.text()))
                 setPref(prefs, 'position_broadcast_smart_disabled', f'{self.position_broadcast_smart_disabled.isChecked()}')
                 setPref(prefs, 'position_flags', self.position_flags.text())
-                setPref(prefs, 'location_share', f'{self.location_share.currentData()}')
-                setPref(prefs, 'gps_operation', f'{self.gps_operation.currentData()}')
                 setPref(prefs, 'gps_format', f'{self.gps_format.currentData()}')
                 setPref(prefs, 'gps_accept_2d', f'{self.gps_accept_2d.isChecked()}')
                 setPref(prefs, 'gps_max_dop', zero_if_blank(self.gps_max_dop.text()))
