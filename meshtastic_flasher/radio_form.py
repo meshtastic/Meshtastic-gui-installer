@@ -50,8 +50,6 @@ class RadioForm(QDialog):
         #self.ignore_incoming = QLineEdit()
         self.is_lora_tx_disabled = QCheckBox()
         self.is_lora_tx_disabled.setToolTip(self.main.description('is_lora_tx_disabled'))
-        self.send_owner_interval = QLineEdit()
-        self.send_owner_interval.setToolTip(self.main.description('send_owner_interval'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -70,7 +68,6 @@ class RadioForm(QDialog):
         form_layout.addRow(self.main.label("hop_limit"), self.hop_limit)
         #form_layout.addRow(self.main.label("Ignore Incoming"), self.ignore_incoming)
         form_layout.addRow(self.main.label("is_lora_tx_disabled"), self.is_lora_tx_disabled)
-        form_layout.addRow(self.main.label("send_owner_interval"), self.send_owner_interval)
         form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
@@ -132,11 +129,6 @@ class RadioForm(QDialog):
                 if self.prefs.is_lora_tx_disabled and self.prefs.is_lora_tx_disabled is True:
                     self.is_lora_tx_disabled.setChecked(True)
 
-                if self.prefs.send_owner_interval:
-                    self.send_owner_interval.setText(f'{self.prefs.send_owner_interval}')
-                else:
-                    self.send_owner_interval.setText("0")
-
         except Exception as e:
             print(f'Exception:{e}')
 
@@ -155,7 +147,6 @@ class RadioForm(QDialog):
                 setPref(prefs, 'hop_limit', zero_if_blank(self.hop_limit.text()))
                 #setPref(prefs, 'ignore_incoming', zero_if_blank(self.ignore_incoming.text()))
                 setPref(prefs, 'is_lora_tx_disabled', f'{self.is_lora_tx_disabled.isChecked()}')
-                setPref(prefs, 'send_owner_interval', zero_if_blank(self.send_owner_interval.text()))
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:

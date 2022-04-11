@@ -37,7 +37,6 @@ class CannedMessageForm(QDialog):
         self.canned_message_module_allow_input_source = QLineEdit()
         self.canned_message_module_allow_input_source.setToolTip(self.main.description('canned_message_module_allow_input_source'))
         self.canned_message_module_messages = QTextEdit()
-        # TODO: where is the canned_message_module_messages in protobufs?
         self.canned_message_module_messages.setToolTip(self.main.description('canned_message_module_messages'))
         self.canned_message_module_send_bell = QCheckBox()
         self.canned_message_module_send_bell.setToolTip(self.main.description('canned_message_module_send_bell'))
@@ -86,10 +85,11 @@ class CannedMessageForm(QDialog):
                 if self.prefs.canned_message_module_send_bell and self.prefs.canned_message_module_send_bell is True:
                     self.canned_message_module_send_bell.setChecked(True)
 
-                if self.prefs.canned_message_module_messages:
-                    self.canned_message_module_messages.setText(f'{self.prefs.canned_message_module_messages}')
-                else:
-                    self.canned_message_module_messages.setText("")
+                # TODO: change me
+                #if self.prefs.canned_message_module_messages:
+                    #self.canned_message_module_messages.setText(f'{self.prefs.canned_message_module_messages}')
+                #else:
+                    #self.canned_message_module_messages.setText("")
 
 
         except Exception as e:
@@ -105,7 +105,7 @@ class CannedMessageForm(QDialog):
                 setPref(prefs, 'canned_message_module_enabled', f'{self.canned_message_module_enabled.isChecked()}')
                 setPref(prefs, 'canned_message_module_allow_input_source', f'{self.canned_message_module_allow_input_source.text()}')
                 setPref(prefs, 'canned_message_module_send_bell', f'{self.canned_message_module_send_bell.isChecked()}')
-                setPref(prefs, 'canned_message_module_messages', self.canned_message_module_messages.toPlainText())
+                # TODO setPref(prefs, 'canned_message_module_messages', self.canned_message_module_messages.toPlainText())
                 self.interface.getNode(BROADCAST_ADDR).writeConfig()
 
         except Exception as e:
