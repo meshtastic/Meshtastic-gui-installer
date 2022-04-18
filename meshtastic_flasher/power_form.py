@@ -51,8 +51,6 @@ class PowerForm(QDialog):
         self.min_wake_secs.setToolTip(self.main.description('min_wake_secs'))
         self.on_battery_shutdown_after_secs = QLineEdit()
         self.on_battery_shutdown_after_secs.setToolTip(self.main.description('on_battery_shutdown_after_secs'))
-        self.phone_sds_timeout_sec = QLineEdit()
-        self.phone_sds_timeout_sec.setToolTip(self.main.description('phone_sds_timeout_sec'))
         self.phone_timeout_secs = QLineEdit()
         self.phone_timeout_secs.setToolTip(self.main.description('phone_timeout_secs'))
         self.screen_on_secs = QLineEdit()
@@ -79,7 +77,6 @@ class PowerForm(QDialog):
         form_layout.addRow(self.main.label("mesh_sds_timeout_secs"), self.mesh_sds_timeout_secs)
         form_layout.addRow(self.main.label("min_wake_secs"), self.min_wake_secs)
         form_layout.addRow(self.main.label("on_battery_shutdown_after_secs"), self.on_battery_shutdown_after_secs)
-        form_layout.addRow(self.main.label("phone_sds_timeout_sec"), self.phone_sds_timeout_sec)
         form_layout.addRow(self.main.label("phone_timeout_secs"), self.phone_timeout_secs)
         form_layout.addRow(self.main.label("screen_on_secs"), self.screen_on_secs)
         form_layout.addRow(self.main.label("sds_secs"), self.sds_secs)
@@ -148,11 +145,6 @@ class PowerForm(QDialog):
                 else:
                     self.on_battery_shutdown_after_secs.setText("0")
 
-                if self.prefs.phone_sds_timeout_sec:
-                    self.phone_sds_timeout_sec.setText(f'{self.prefs.phone_sds_timeout_sec}')
-                else:
-                    self.phone_sds_timeout_sec.setText("0")
-
                 if self.prefs.phone_timeout_secs:
                     self.phone_timeout_secs.setText(f'{self.prefs.phone_timeout_secs}')
                 else:
@@ -192,7 +184,6 @@ class PowerForm(QDialog):
                 setPref(prefs, 'mesh_sds_timeout_secs', zero_if_blank(self.mesh_sds_timeout_secs.text()))
                 setPref(prefs, 'min_wake_secs', zero_if_blank(self.min_wake_secs.text()))
                 setPref(prefs, 'on_battery_shutdown_after_secs', zero_if_blank(self.on_battery_shutdown_after_secs.text()))
-                setPref(prefs, 'phone_sds_timeout_sec', zero_if_blank(self.phone_sds_timeout_sec.text()))
                 setPref(prefs, 'phone_timeout_secs', zero_if_blank(self.phone_timeout_secs.text()))
                 setPref(prefs, 'screen_on_secs', zero_if_blank(self.screen_on_secs.text()))
                 setPref(prefs, 'sds_secs', zero_if_blank(self.sds_secs.text()))
