@@ -599,7 +599,7 @@ class Form(QDialog):
 
             partitions = psutil.disk_partitions()
             #print(f'partitions:{partitions}')
-            search_for_partition = ['FTHR840BOOT', 'TECHOBOOT', 'RAK4631']
+            search_for_partition = ['FTHR840BOOT', 'TECHOBOOT', 'NRF52BOOT', 'RAK4631']
             found_partition = False
 
             if platform.system() == "Windows":
