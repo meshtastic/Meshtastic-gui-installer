@@ -1,0 +1,25 @@
+#!/bin/bash
+#instructions:
+#after downloading this file go to terminal and run
+#cd /home/$USER/Downloads
+#sudo chmod u+x install_flasher
+#source install_flasher
+#
+#this should run the instalation from begining to end. if an error occures it should drop out and tell you what happened
+#this has only been tested on ubuntu 20.04 but should work for any newer version of ubuntu.
+#be sure to run this with the command source or it will NOT work. do NOT use ./   this is very important.
+
+
+sudo apt update -y 
+sudo apt upgrade -y # run updates
+sudo apt install -y python3 python3-pip python3-venv # install requirments
+
+mkdir /home/$USER/meshtastic_flasher # make a directory for flasher
+
+cd /home/$USER/meshtastic_flasher # move over to the directory
+
+python3 -m venv venv # setup python virtual environment
+
+source venv/bin/activate # activate python virtual environment
+pip install --upgrade pip # update
+pip install meshtastic-flasher # Install Flasher
