@@ -1,13 +1,16 @@
 #!/bin/bash
 #instructions:
 #after downloading this file go to terminal and run
-#cd /home/$USER/Downloads
-#sudo chmod u+x install_flasher
-#source install_flasher
+#sudo chmod u+x /home/$USER/Downloads/install_flasher
+#source /home/$USER/Downloads/install_flasher
 #
 #this should run the instalation from begining to end. if an error occures it should drop out and tell you what happened
 #this has only been tested on ubuntu 20.04 but should work for any newer version of ubuntu.
-#be sure to run this with the command source or it will NOT work. do NOT use ./   this is very important.
+#be sure to run this with the command source or it will not work do not use ./
+#this program will create a file on your desktop caller Meshtastic-Flasher. you should be able to just double click on this file and the flasher should open
+#if you prefer to launch the flasher from terminal its now a system program as well so just type meshtastic-flasher in the termainal and it will launch
+#
+#Note: i have yet to figure out how to set the logo the the launcher on the desktop. if anyone reads this and actualy knows how feel free to submit it un a pull request
 
 
 sudo apt update -y 
@@ -23,3 +26,15 @@ python3 -m venv venv # setup python virtual environment
 source venv/bin/activate # activate python virtual environment
 pip install --upgrade pip # update
 pip install meshtastic-flasher # Install Flasher
+
+cat > meshtastic-flasher.sh <<EOF #make launcher bash
+#!/bin/bash
+cd /home/$USER/meshtastic_flasher  # move over to the directory
+source venv/bin/activate  # activate python virtual environment
+meshtastic-flasher
+EOF 
+
+sudo chmod u+x /home/$USER/meshtastic_flasher/meshtastic-flasher.sh #make launcher bash executable
+
+sudo ln -s /home/$USER/meshtastic_flasher/meshtastic-flasher.sh /bin/meshtastic-flasher #put launcher in system programs
+sudo ln -s /bin/meshtastic-flasher /home/$USER/Desktop/Meshtastic-Flasher #put luancher on desktop
