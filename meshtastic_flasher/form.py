@@ -915,6 +915,8 @@ class Form(QDialog):
             device = 'tlora_v1_3'
         elif hwModel == 'RAK11200':
             device = 'rak11200'
+        elif hwModel == 'NANO_G1':
+            device = 'nano-g1'
         return device
 
     def is_hwModel_nrf(self, hwModel):

@@ -67,6 +67,9 @@ class RadioPickerForm(QDialog):
         self.techo = None
         self.techo_image = None
         self.techo_pixmap = None
+        self.nano_g1 = None
+        self.nano_g1_image = None
+        self.nano_g1_pixmap = None
 
 
     def populate_radios(self):
@@ -266,6 +269,19 @@ class RadioPickerForm(QDialog):
             self.techo_image.setPixmap(self.techo_pixmap.scaled(self.scale_x, self.scale_y, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
             self.techo_image.setAlignment(QtCore.Qt.AlignCenter)
             self.layout.addWidget(self.techo_image, grid_row, 1)
+            grid_row = grid_row + 1
+
+        if "nano-g1" in self.radios:
+            self.nano_g1 = QRadioButton("Nano G1")
+            self.nano_g1.radio = "nano-g1"
+            self.nano_g1.toggled.connect(self.onClicked)
+            self.layout.addWidget(self.nano_g1, grid_row, 0)
+
+            self.nano_g1_image = QLabel(self)
+            self.nano_g1_pixmap = QPixmap(meshtastic_flasher.util.get_path('radios/nano-g1.jpeg'))
+            self.nano_g1_image.setPixmap(self.nano_g1_pixmap.scaled(self.scale_x, self.scale_y, QtCore.Qt.KeepAspectRatio, QtCore.Qt.SmoothTransformation))
+            self.nano_g1_image.setAlignment(QtCore.Qt.AlignCenter)
+            self.layout.addWidget(self.nano_g1_image, grid_row, 1)
             grid_row = grid_row + 1
 
 
