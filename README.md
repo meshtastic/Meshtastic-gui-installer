@@ -20,7 +20,7 @@ Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmwar
 
 # To install:
 
-See https://meshtastic.org/docs/getting-started/meshtastic-flasher
+See https://meshtastic.org/docs/getting-started/flashing-firmware/meshtastic-flasher
 
 Note: The "single executable" installation option has been deprecated as of March 10, 2022.
 
