@@ -7,7 +7,7 @@ from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialo
 import meshtastic.serial_interface
 import meshtastic.util
 import meshtastic.mesh_pb2
-import meshtastic.radioconfig_pb2
+import meshtastic.config_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
 from meshtastic_flasher.util import zero_if_blank
@@ -121,7 +121,7 @@ class TelemetryForm(QDialog):
                     temp = int(self.prefs.telemetry_module_environment_sensor_type)
                 self.telemetry_module_environment_sensor_type.clear()
                 # pylint: disable=no-member
-                desc = meshtastic.radioconfig_pb2.RadioConfig.UserPreferences.TelemetrySensorType.DESCRIPTOR
+                desc = meshtastic.config_pb2.RadioConfig.UserPreferences.TelemetrySensorType.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.telemetry_module_environment_sensor_type.addItem(k, v.number)
                     if v.number == temp:
