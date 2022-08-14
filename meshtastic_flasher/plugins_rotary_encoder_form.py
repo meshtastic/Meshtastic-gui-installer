@@ -7,7 +7,7 @@ from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QDialogButtonBox,
 import meshtastic.serial_interface
 import meshtastic.util
 import meshtastic.mesh_pb2
-import meshtastic.radioconfig_pb2
+import meshtastic.config_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
 from meshtastic_flasher.util import zero_if_blank
@@ -99,7 +99,7 @@ class RotaryEncoderForm(QDialog):
                     temp = int(self.prefs.inputbroker_event_cw)
                 print(f'temp:{temp}')
                 self.inputbroker_event_cw.clear()
-                desc = meshtastic.radioconfig_pb2.InputEventChar.DESCRIPTOR
+                desc = meshtastic.config_pb2.InputEventChar.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     print(f'k:{k} v.number:{v.number}')
                     self.inputbroker_event_cw.addItem(k, v.number)
@@ -112,7 +112,7 @@ class RotaryEncoderForm(QDialog):
                     temp = int(self.prefs.inputbroker_event_ccw)
                 print(f'temp:{temp}')
                 self.inputbroker_event_ccw.clear()
-                desc = meshtastic.radioconfig_pb2.InputEventChar.DESCRIPTOR
+                desc = meshtastic.config_pb2.InputEventChar.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     print(f'k:{k} v.number:{v.number}')
                     self.inputbroker_event_ccw.addItem(k, v.number)
@@ -125,7 +125,7 @@ class RotaryEncoderForm(QDialog):
                     temp = int(self.prefs.inputbroker_event_press)
                 print(f'temp:{temp}')
                 self.inputbroker_event_press.clear()
-                desc = meshtastic.radioconfig_pb2.InputEventChar.DESCRIPTOR
+                desc = meshtastic.config_pb2.InputEventChar.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     print(f'k:{k} v.number:{v.number}')
                     self.inputbroker_event_press.addItem(k, v.number)

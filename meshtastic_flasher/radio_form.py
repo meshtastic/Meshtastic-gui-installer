@@ -6,7 +6,7 @@ from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QComboBox, QDialo
 import meshtastic.serial_interface
 import meshtastic.util
 import meshtastic.mesh_pb2
-import meshtastic.radioconfig_pb2
+import meshtastic.config_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
 from meshtastic_flasher.util import zero_if_blank
@@ -93,7 +93,7 @@ class RadioForm(QDialog):
                     tmp_r = self.prefs.region
                 count = 0
                 self.region.clear()
-                desc = meshtastic.radioconfig_pb2.RegionCode.DESCRIPTOR
+                desc = meshtastic.config_pb2.RegionCode.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.region.addItem(k, v.number)
                     if v.number == tmp_r:

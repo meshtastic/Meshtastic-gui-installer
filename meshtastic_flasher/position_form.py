@@ -6,7 +6,7 @@ from PySide6.QtWidgets import QDialog, QCheckBox, QFormLayout, QLineEdit, QLabel
 import meshtastic.serial_interface
 import meshtastic.util
 import meshtastic.mesh_pb2
-import meshtastic.radioconfig_pb2
+import meshtastic.config_pb2
 from meshtastic.__init__ import BROADCAST_ADDR
 from meshtastic.__main__ import setPref
 from meshtastic_flasher.util import zero_if_blank
@@ -203,7 +203,7 @@ class PositionForm(QDialog):
                 if self.prefs.gps_format:
                     temp = int(self.prefs.gps_format)
                 self.gps_format.clear()
-                desc = meshtastic.radioconfig_pb2.GpsCoordinateFormat.DESCRIPTOR
+                desc = meshtastic.config_pb2.GpsCoordinateFormat.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     print(f'gps_format k:{k} v.number:{v.number}')
                     self.gps_format.addItem(k, v.number)
