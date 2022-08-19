@@ -35,21 +35,21 @@ class RadioForm(QDialog):
         self.region = QComboBox()
         self.region.setToolTip(self.main.description('region'))
         self.region.setMinimumContentsLength(17)
-        self.debug_log_enabled = QCheckBox()
-        self.debug_log_enabled.setToolTip(self.main.description('debug_log_enabled'))
-        self.serial_disabled = QCheckBox()
-        self.serial_disabled.setToolTip(self.main.description('serial_disabled'))
-        self.auto_screen_carousel_secs = QLineEdit()
-        self.auto_screen_carousel_secs.setToolTip(self.main.description('auto_screen_carousel_secs'))
-        self.frequency_offset = QLineEdit()
-        self.frequency_offset.setToolTip(self.main.description('frequency_offset'))
-        self.hop_limit = QLineEdit()
-        # TODO: hops_reliable?
-        self.hop_limit.setToolTip(self.main.description('hop_limit'))
-        # TODO: see https://github.com/meshtastic/Meshtastic-python/issues/280 (add when fixed)
-        #self.ignore_incoming = QLineEdit()
-        self.is_lora_tx_disabled = QCheckBox()
-        self.is_lora_tx_disabled.setToolTip(self.main.description('is_lora_tx_disabled'))
+        # self.debug_log_enabled = QCheckBox()
+        # self.debug_log_enabled.setToolTip(self.main.description('debug_log_enabled'))
+        # self.serial_disabled = QCheckBox()
+        # self.serial_disabled.setToolTip(self.main.description('serial_disabled'))
+        # self.auto_screen_carousel_secs = QLineEdit()
+        # self.auto_screen_carousel_secs.setToolTip(self.main.description('auto_screen_carousel_secs'))
+        # self.frequency_offset = QLineEdit()
+        # self.frequency_offset.setToolTip(self.main.description('frequency_offset'))
+        # self.hop_limit = QLineEdit()
+        # # TODO: hops_reliable?
+        # self.hop_limit.setToolTip(self.main.description('hop_limit'))
+        # # TODO: see https://github.com/meshtastic/Meshtastic-python/issues/280 (add when fixed)
+        # #self.ignore_incoming = QLineEdit()
+        # self.is_lora_tx_disabled = QCheckBox()
+        # self.is_lora_tx_disabled.setToolTip(self.main.description('is_lora_tx_disabled'))
 
         # Add a button box
         self.button_box = QDialogButtonBox()
@@ -61,13 +61,13 @@ class RadioForm(QDialog):
         # create form
         form_layout = QFormLayout()
         form_layout.addRow(self.main.label("region"), self.region)
-        form_layout.addRow(self.main.label("debug_log_enabled"), self.debug_log_enabled)
-        form_layout.addRow(self.main.label("serial_disabled"), self.serial_disabled)
-        form_layout.addRow(self.main.label("auto_screen_carousel_secs"), self.auto_screen_carousel_secs)
-        form_layout.addRow(self.main.label("frequency_offset"), self.frequency_offset)
-        form_layout.addRow(self.main.label("hop_limit"), self.hop_limit)
-        #form_layout.addRow(self.main.label("Ignore Incoming"), self.ignore_incoming)
-        form_layout.addRow(self.main.label("is_lora_tx_disabled"), self.is_lora_tx_disabled)
+        # form_layout.addRow(self.main.label("debug_log_enabled"), self.debug_log_enabled)
+        # form_layout.addRow(self.main.label("serial_disabled"), self.serial_disabled)
+        # form_layout.addRow(self.main.label("auto_screen_carousel_secs"), self.auto_screen_carousel_secs)
+        # form_layout.addRow(self.main.label("frequency_offset"), self.frequency_offset)
+        # form_layout.addRow(self.main.label("hop_limit"), self.hop_limit)
+        # #form_layout.addRow(self.main.label("Ignore Incoming"), self.ignore_incoming)
+        # form_layout.addRow(self.main.label("is_lora_tx_disabled"), self.is_lora_tx_disabled)
         form_layout.addRow("", self.button_box)
         self.setLayout(form_layout)
 
@@ -86,48 +86,49 @@ class RadioForm(QDialog):
         """Get values from device"""
         try:
             if self.interface:
-                self.prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
+                self.prefs = self.interface.getNode(BROADCAST_ADDR).localConfig
 
-                tmp_r = 'Unset'
-                if self.prefs.region:
-                    tmp_r = self.prefs.region
+                # Handle the int/float/bool arguments
+                tmp_r = self.prefs.lora.region or 'Unset'
+
                 count = 0
                 self.region.clear()
-                desc = meshtastic.config_pb2.RegionCode.DESCRIPTOR
+
+                desc = meshtastic.config_pb2.Config.LoRaConfig.RegionCode.DESCRIPTOR
                 for k,v in desc.values_by_name.items():
                     self.region.addItem(k, v.number)
                     if v.number == tmp_r:
                         self.region.setCurrentIndex(count)
                     count = count + 1
 
-                if self.prefs.debug_log_enabled and self.prefs.debug_log_enabled is True:
-                    self.debug_log_enabled.setChecked(True)
+                # if self.prefs.debug_log_enabled and self.prefs.debug_log_enabled is True:
+                #     self.debug_log_enabled.setChecked(True)
 
-                if self.prefs.serial_disabled and self.prefs.serial_disabled is True:
-                    self.serial_disabled.setChecked(True)
+                # if self.prefs.serial_disabled and self.prefs.serial_disabled is True:
+                #     self.serial_disabled.setChecked(True)
 
-                if self.prefs.auto_screen_carousel_secs:
-                    self.auto_screen_carousel_secs.setText(f'{self.prefs.auto_screen_carousel_secs}')
-                else:
-                    self.auto_screen_carousel_secs.setText("0")
+                # if self.prefs.auto_screen_carousel_secs:
+                #     self.auto_screen_carousel_secs.setText(f'{self.prefs.auto_screen_carousel_secs}')
+                # else:
+                #     self.auto_screen_carousel_secs.setText("0")
 
-                if self.prefs.frequency_offset:
-                    self.frequency_offset.setText(f'{self.prefs.frequency_offset}')
-                else:
-                    self.frequency_offset.setText("0")
+                # if self.prefs.frequency_offset:
+                #     self.frequency_offset.setText(f'{self.prefs.frequency_offset}')
+                # else:
+                #     self.frequency_offset.setText("0")
 
-                if self.prefs.hop_limit:
-                    self.hop_limit.setText(f'{self.prefs.hop_limit}')
-                else:
-                    self.hop_limit.setText("0")
+                # if self.prefs.hop_limit:
+                #     self.hop_limit.setText(f'{self.prefs.hop_limit}')
+                # else:
+                #     self.hop_limit.setText("0")
 
 #                if self.prefs.ignore_incoming:
 #                    self.ignore_incoming.setText(f'{self.prefs.ignore_incoming}')
 #                else:
 #                    self.ignore_incoming.setText("0")
 
-                if self.prefs.is_lora_tx_disabled and self.prefs.is_lora_tx_disabled is True:
-                    self.is_lora_tx_disabled.setChecked(True)
+                # if self.prefs.is_lora_tx_disabled and self.prefs.is_lora_tx_disabled is True:
+                #     self.is_lora_tx_disabled.setChecked(True)
 
         except Exception as e:
             print(f'Exception:{e}')
@@ -138,16 +139,16 @@ class RadioForm(QDialog):
         try:
             if self.interface:
                 print("Writing preferences to device")
-                prefs = self.interface.getNode(BROADCAST_ADDR).radioConfig.preferences
-                setPref(prefs, 'region', f'{self.region.currentData()}')
-                setPref(prefs, 'debug_log_enabled', f'{self.debug_log_enabled.isChecked()}')
-                setPref(prefs, 'serial_disabled', f'{self.serial_disabled.isChecked()}')
-                setPref(prefs, 'auto_screen_carousel_secs', zero_if_blank(self.auto_screen_carousel_secs.text()))
-                setPref(prefs, 'frequency_offset', zero_if_blank(self.frequency_offset.text()))
-                setPref(prefs, 'hop_limit', zero_if_blank(self.hop_limit.text()))
-                #setPref(prefs, 'ignore_incoming', zero_if_blank(self.ignore_incoming.text()))
-                setPref(prefs, 'is_lora_tx_disabled', f'{self.is_lora_tx_disabled.isChecked()}')
-                self.interface.getNode(BROADCAST_ADDR).writeConfig()
+                prefs = self.interface.getNode(BROADCAST_ADDR).localConfig
+                setPref(prefs, 'lora.region', f'{self.region.currentData()}')
+                # setPref(prefs, 'debug_log_enabled', f'{self.debug_log_enabled.isChecked()}')
+                # setPref(prefs, 'serial_disabled', f'{self.serial_disabled.isChecked()}')
+                # setPref(prefs, 'auto_screen_carousel_secs', zero_if_blank(self.auto_screen_carousel_secs.text()))
+                # setPref(prefs, 'frequency_offset', zero_if_blank(self.frequency_offset.text()))
+                # setPref(prefs, 'hop_limit', zero_if_blank(self.hop_limit.text()))
+                # #setPref(prefs, 'ignore_incoming', zero_if_blank(self.ignore_incoming.text()))
+                # setPref(prefs, 'is_lora_tx_disabled', f'{self.is_lora_tx_disabled.isChecked()}')
+                self.interface.getNode(BROADCAST_ADDR).writeConfig('lora')
 
         except Exception as e:
             print(f'Exception:{e}')

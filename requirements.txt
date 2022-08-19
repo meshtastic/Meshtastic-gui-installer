@@ -1,6 +1,6 @@
 pyside6
 PyGithub
-meshtastic>=1.3alpha.16
+meshtastic>=1.3alpha.24
 esptool==3.3.1
 qt-material
 psutil

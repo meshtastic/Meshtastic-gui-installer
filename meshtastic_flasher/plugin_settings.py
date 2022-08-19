@@ -36,7 +36,7 @@ class PluginSettings(QMainWindow):
         self.serial_form = SerialForm(self)
         self.rotary_encoder_form = RotaryEncoderForm(self)
         self.canned_message_form = CannedMessageForm(self)
-        #self.store_and_forward_form = StoreAndForwardForm(self)
+        # self.store_and_forward_form = StoreAndForwardForm(self)
 
         self.tabs = QTabWidget()
 
@@ -45,12 +45,12 @@ class PluginSettings(QMainWindow):
 
         self.tabs.setTabPosition(QTabWidget.North)
 
-        self.tabs.addTab(self.range_test_form, self.main.text('range'))
-        self.tabs.addTab(self.external_notifications_form, self.main.text("notifications"))
-        self.tabs.addTab(self.telemetry_form, self.main.text("telemetry"))
-        self.tabs.addTab(self.serial_form, self.main.text("serial"))
-        self.tabs.addTab(self.rotary_encoder_form, self.main.text("rotary"))
-        self.tabs.addTab(self.canned_message_form, self.main.text("canned"))
+        # self.tabs.addTab(self.range_test_form, self.main.text('range'))
+        # self.tabs.addTab(self.external_notifications_form, self.main.text("notifications"))
+        # self.tabs.addTab(self.telemetry_form, self.main.text("telemetry"))
+        # self.tabs.addTab(self.serial_form, self.main.text("serial"))
+        # self.tabs.addTab(self.rotary_encoder_form, self.main.text("rotary"))
+        # self.tabs.addTab(self.canned_message_form, self.main.text("canned"))
         #self.tabs.addTab(self.store_and_forward_form, "Store/Forward")
 
         self.setCentralWidget(self.tabs)
