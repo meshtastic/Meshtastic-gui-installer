@@ -33,14 +33,14 @@ class Settings(QMainWindow):
         self.setMinimumSize(width, height)
         self.setWindowTitle(self.main.text('settings'))
 
-        self.admin_form = AdminForm(self)
-        self.wifi_and_mqtt_form = Wifi_and_MQTT_Form(self)
-        self.user_form = UserForm(self)
-        self.position_form = PositionForm(self)
-        self.power_form = PowerForm(self)
+        # self.admin_form = AdminForm(self)
+        # self.wifi_and_mqtt_form = Wifi_and_MQTT_Form(self)
+        # self.user_form = UserForm(self)
+        # self.position_form = PositionForm(self)
+        # self.power_form = PowerForm(self)
         self.radio_form = RadioForm(self)
-        self.plugin_settings = PluginSettings(self)
-        self.channel_settings = ChannelSettings(self)
+        # self.plugin_settings = PluginSettings(self)
+        # self.channel_settings = ChannelSettings(self)
 
         self.tabs = QTabWidget()
 
@@ -73,14 +73,14 @@ QTabBar::tab:only-one {
 
         self.tabs.setTabPosition(QTabWidget.North)
 
-        self.tabs.addTab(self.user_form, self.main.text('user'))
-        self.tabs.addTab(self.wifi_and_mqtt_form, "Wifi/MQTT")
-        self.tabs.addTab(self.position_form, self.main.text('position'))
-        self.tabs.addTab(self.power_form, self.main.text('power'))
+        # self.tabs.addTab(self.user_form, self.main.text('user'))
+        # self.tabs.addTab(self.wifi_and_mqtt_form, "Wifi/MQTT")
+        # self.tabs.addTab(self.position_form, self.main.text('position'))
+        # self.tabs.addTab(self.power_form, self.main.text('power'))
         self.tabs.addTab(self.radio_form, self.main.text('radio'))
-        self.tabs.addTab(self.plugin_settings, self.main.text('modules'))
-        self.tabs.addTab(self.channel_settings, self.main.text('channels'))
-        self.tabs.addTab(self.admin_form, self.main.text('admin'))
+        # self.tabs.addTab(self.plugin_settings, self.main.text('modules'))
+        # self.tabs.addTab(self.channel_settings, self.main.text('channels'))
+        # self.tabs.addTab(self.admin_form, self.main.text('admin'))
 
         self.setCentralWidget(self.tabs)
 
@@ -90,30 +90,30 @@ QTabBar::tab:only-one {
     def on_change_tabs(self, i):
         """On change of each tab """
         print(f'on_change_tabs:{i}')
-        if i == 0:
-            print('user run()')
-            self.user_form.run(port=self.port, interface=self.interface)
-        elif i == 1:
-            print('wifi_and_mqtt_form run()')
-            self.wifi_and_mqtt_form.run(port=self.port, interface=self.interface)
-        elif i == 2:
-            print('position run()')
-            self.position_form.run(port=self.port, interface=self.interface)
-        elif i == 3:
-            print('power run()')
-            self.power_form.run(port=self.port, interface=self.interface)
-        elif i == 4:
-            print('radio run()')
-            self.radio_form.run(port=self.port, interface=self.interface)
-        elif i == 5:
-            print('plugin settings run()')
-            self.plugin_settings.run(port=self.port, interface=self.interface)
-        elif i == 6:
-            print('channel settings run()')
-            self.channel_settings.run(port=self.port, interface=self.interface)
-        elif i == 7:
-            print('admin form run()')
-            self.admin_form.run(port=self.port, interface=self.interface)
+        # if i == 0:
+        #     print('user run()')
+        #     self.user_form.run(port=self.port, interface=self.interface)
+        # elif i == 1:
+        #     print('wifi_and_mqtt_form run()')
+        #     self.wifi_and_mqtt_form.run(port=self.port, interface=self.interface)
+        # elif i == 2:
+        #     print('position run()')
+        #     self.position_form.run(port=self.port, interface=self.interface)
+        # elif i == 3:
+        #     print('power run()')
+        #     self.power_form.run(port=self.port, interface=self.interface)
+        # elif i == 4:
+        print('radio run()')
+        self.radio_form.run(port=self.port, interface=self.interface)
+        # elif i == 5:
+        #     print('plugin settings run()')
+        #     self.plugin_settings.run(port=self.port, interface=self.interface)
+        # elif i == 6:
+        #     print('channel settings run()')
+        #     self.channel_settings.run(port=self.port, interface=self.interface)
+        # elif i == 7:
+        #     print('admin form run()')
+        #     self.admin_form.run(port=self.port, interface=self.interface)
 
 
     def my_close(self):
@@ -162,12 +162,12 @@ QTabBar::tab:only-one {
                 pass
         if self.interface:
             self.show()
-            self.user_form.run(port=self.port, interface=self.interface)
+            self.radio_form.run(port=self.port, interface=self.interface)
         else:
             QMessageBox.warning(self, self.main.text('warning'), self.main.text('warning_problem_connecting'))
             if self.confirm_use_fake_device():
                 self.show()
-                self.user_form.run(port=None, interface=None)
+                self.radio_form.run(port=None, interface=None)
             else:
                 print("closing")
                 self.my_close()

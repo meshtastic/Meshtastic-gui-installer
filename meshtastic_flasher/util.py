@@ -92,7 +92,7 @@ def get_tags_from_github():
             r = repo.get_release(release.id)
             tags.append(r.tag_name)
             count = count + 1
-            if count > 20:
+            if count > 1:
                 break
     except Exception as e:
         print(e)
@@ -107,8 +107,6 @@ def get_tags():
         #print(f'tag:{tag}')
         if populate_tag_in_firmware_dropdown(tag):
             tags.append(tag)
-    if len(tags) == 0:
-        tags.append('1.3.4.2b20bf3')
     return tags
 
 
