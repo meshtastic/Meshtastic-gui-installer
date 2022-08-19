@@ -587,7 +587,7 @@ class Form(QDialog):
         """Warn if the we cannot open the serial port exclusively"""
         exclusive = False
         try:
-            ser = serial.Serial(self.select_port.currentText(), baudrate=921600, exclusive=True, timeout=0.5)
+            ser = serial.Serial(self.select_port.currentText(), baudrate=115200, exclusive=True, timeout=0.5)
             ser.close()
             exclusive = True
         except:

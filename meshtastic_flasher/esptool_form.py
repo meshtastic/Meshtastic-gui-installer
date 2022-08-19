@@ -48,14 +48,14 @@ class Worker(QRunnable):
         if self.update_only:
             print("Step 1/2 esp32 update only")
             self.signals.status.emit(self.main.text('update_step1'))
-            command = ["-b", "921600", "--port", self.port, "write_flash", "0x10000", self.device_file]
+            command = ["-b", "115200", "--port", self.port, "write_flash", "0x10000", self.device_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
             self.signals.status.emit(self.main.text('update_step1_done'))
 
             print("Step 2/2 esp32 update only")
-            command = ["-b", "921600", "--port", self.port, "erase_region", "0xe000", "0x2000"]
+            command = ["-b", "115200", "--port", self.port, "erase_region", "0xe000", "0x2000"]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
@@ -65,28 +65,28 @@ class Worker(QRunnable):
             # do full flash
             print("Step 1/4 esp32 full")
             self.signals.status.emit(self.main.text('full_step1'))
-            command = ["-b", "921600", "--port", self.port, "erase_flash"]
+            command = ["-b", "115200", "--port", self.port, "erase_flash"]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
             self.signals.status.emit(self.main.text('full_step1_done'))
 
             print("Step 2/4 esp32 full")
-            command = ["-b", "921600", "--port", self.port, "write_flash", "0x1000", self.system_info_file]
+            command = ["-b", "115200", "--port", self.port, "write_flash", "0x1000", self.system_info_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
             self.signals.status.emit(self.main.text('full_step2_done'))
 
             print("Step 3/4 esp32 full")
-            command = ["-b", "921600", "--port", self.port, "write_flash", "0x00390000", self.bin_file]
+            command = ["-b", "115200", "--port", self.port, "write_flash", "0x00390000", self.bin_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
             self.signals.status.emit(self.main.text('full_step3_done'))
 
             print("Step 4/4 esp32 full")
-            command = ["-b", "921600", "--port", self.port, "write_flash", "0x10000", self.device_file]
+            command = ["-b", "115200", "--port", self.port, "write_flash", "0x10000", self.device_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
