@@ -452,7 +452,9 @@ class Form(QDialog):
         self.select_firmware_version.clear()
         # for item in items:
         #     self.select_firmware_version.addItem(item)
-        self.select_firmware_version.addItem(items[0])
+        if items.count > 0:
+            self.select_firmware_version.addItem(items[0])
+            
         self.select_firmware_version.setCurrentIndex(0)
 
 
