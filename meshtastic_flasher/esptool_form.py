@@ -46,20 +46,13 @@ class Worker(QRunnable):
             sys.stderr = self
 
         if self.update_only:
-            print("Step 1/2 esp32 update only")
+            print("Esp32 update only")
             self.signals.status.emit(self.main.text('update_step1'))
             command = ["-b", "115200", "--port", self.port, "write_flash", "0x10000", self.device_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
             self.signals.status.emit(self.main.text('update_step1_done'))
-
-            print("Step 2/2 esp32 update only")
-            command = ["-b", "115200", "--port", self.port, "erase_region", "0xe000", "0x2000"]
-            print(f"ESPTOOL Using command:{' '.join(command)}")
-            if not self.test:
-                esptool.main(command)
-            self.signals.status.emit(self.main.text('update_step2_done'))
 
         else:
             # do full flash
@@ -79,7 +72,7 @@ class Worker(QRunnable):
             self.signals.status.emit(self.main.text('full_step2_done'))
 
             print("Step 3/4 esp32 full")
-            command = ["-b", "115200", "--port", self.port, "write_flash", "0x00390000", self.bin_file]
+            command = ["-b", "115200", "--port", self.port, "write_flash", "0x2B0000", self.bin_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
