@@ -1,3 +1,3 @@
 """File to hold the version"""
 
-__version__ = '1.3.22alpha'
+__version__ = '1.3.23alpha'
