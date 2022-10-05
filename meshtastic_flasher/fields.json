@@ -245,7 +245,7 @@
         }
     },
     "canned_message_module_about": {
-        "doc_url": "https://meshtastic.org/docs/software/modules/canned-message-module",
+        "doc_url": "https://meshtastic.org/docs/settings/moduleconfig/canned-message",
         "label": {
             "de": "Modul f\u00fcr Schnellnachrichten",
             "en": "Canned Message Module",
@@ -873,7 +873,7 @@
         }
     },
     "ext_notification_module_about": {
-        "doc_url": "https://meshtastic.org/docs/software/modules/ext-notif-module",
+        "doc_url": "https://meshtastic.org/docs/settings/moduleconfig/external-notification",
         "label": {
             "de": "Benachrichtigungsmodul",
             "en": "External Notification Module",
@@ -3035,7 +3035,7 @@
         }
     },
     "range_test_module_about": {
-        "doc_url": "https://meshtastic.org/docs/software/modules/range-test-module",
+        "doc_url": "https://meshtastic.org/docs/settings/moduleconfig/range-test",
         "label": {
             "de": "Reichweitentest",
             "en": "Range Test Module",
@@ -3221,7 +3221,7 @@
         }
     },
     "rotary1_about": {
-        "doc_url": "https://meshtastic.org/docs/software/modules/canned-message-module#rotary-encoder",
+        "doc_url": "https://meshtastic.org/docs/settings/moduleconfig/canned-message#rotary-encoder",
         "label": {
             "de": "Drehgeber-Modul",
             "en": "Rotary Encoder Module",
@@ -3585,7 +3585,7 @@
         }
     },
     "serial_module_about": {
-        "doc_url": "https://meshtastic.org/docs/software/modules/serial-module",
+        "doc_url": "https://meshtastic.org/docs/settings/moduleconfig/serial",
         "label": {
             "de": "Serielles Modul",
             "en": "Serial Module",
@@ -3856,7 +3856,7 @@
         }
     },
     "store_forward_module_about": {
-        "doc_url": "https://meshtastic.org/docs/software/modules/store-forward-module",
+        "doc_url": "https://meshtastic.org/docs/1.2-End-of-life/settings/store-and-forward-module",
         "label": {
             "de": "Modul Zwischenspeicher",
             "en": "Store and Forward Module",
@@ -4085,7 +4085,7 @@
         }
     },
     "telemetry_module_about": {
-        "doc_url": "https://meshtastic.org/docs/software/modules/telemetry-module",
+        "doc_url": "https://meshtastic.org/docs/settings/moduleconfig/telemetry",
         "label": {
             "de": "Telemetrie-Modul",
             "en": "Telemetry Module",
