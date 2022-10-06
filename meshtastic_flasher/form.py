@@ -67,8 +67,8 @@ class Form(QDialog):
         self.device = None
         self.update_only = None
         self.device_file = None
-        self.system_info_file = None
-        self.bin_file = None
+        self.ble_ota_file = None
+        self.littlefs_file = None
         self.detected_meshtastic_version = None
         self.detected_list = []
         self.device_from_picker = None
@@ -553,7 +553,7 @@ class Form(QDialog):
         self.esptool_form.show()
 
         if self.update_only is not None:
-            self.esptool_form.start(update_only=self.update_only, port=self.port, device_file=self.device_file, system_info_file=self.system_info_file, main=self.main, bin_file=self.bin_file)
+            self.esptool_form.start(update_only=self.update_only, port=self.port, device_file=self.device_file, ble_ota_file=self.ble_ota_file, main=self.main, littlefs_file=self.littlefs_file)
 
 
     def hotkeys(self):
@@ -937,8 +937,8 @@ class Form(QDialog):
         self.nrf = False
         self.device = None
         self.device_file = None
-        self.system_info_file = None
-        self.bin_file = None
+        self.ble_ota_file = None
+        self.littlefs_file = None
         self.update_only = None
         self.select_device.clear()
         self.select_port.clear()
@@ -1167,6 +1167,6 @@ class Form(QDialog):
                 if self.update_only:
                     self.do_esptool()
                 else:
-                    self.system_info_file = f"{self.firmware_version}/system-info.bin"
-                    self.bin_file = f"{self.firmware_version}/littlefs-{self.firmware_version}.bin"
+                    self.ble_ota_file = f"{self.firmware_version}/bleota.bin"
+                    self.littlefs_file = f"{self.firmware_version}/littlefs-{self.firmware_version}.bin"
                     self.do_esptool()

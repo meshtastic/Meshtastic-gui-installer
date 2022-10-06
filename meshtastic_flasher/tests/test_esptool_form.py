@@ -13,7 +13,7 @@ def test_EsptoolForm(qtbot):
     qtbot.addWidget(f)
     qtbot.addWidget(espf)
     espf.start(port='foo', device_file='bar',
-                 system_info_file='baz', bin_file='bam',
+                 ble_ota_file='baz', littlefs_file='bam',
                  main=f.main, test=True)
 
 def test_Worker_run_full(capsys, qtbot):
@@ -21,7 +21,7 @@ def test_Worker_run_full(capsys, qtbot):
     f = Form()
     qtbot.addWidget(f)
     a_worker = Worker(update_only=False, port='foo', device_file='bar',
-                      system_info_file='baz', bin_file='bam',
+                      ble_ota_file='baz', littlefs_file='bam',
                       main=f.main, test=True)
     a_worker.run()
     out, err = capsys.readouterr()
@@ -37,7 +37,7 @@ def test_Worker_run_update(capsys, qtbot):
     f = Form()
     qtbot.addWidget(f)
     a_worker = Worker(update_only=True, port='foo', device_file='bar',
-                      system_info_file='baz', bin_file='bam',
+                      ble_ota_file='baz', littlefs_file='bam',
                       main=f.main, test=True)
     a_worker.run()
     out, err = capsys.readouterr()

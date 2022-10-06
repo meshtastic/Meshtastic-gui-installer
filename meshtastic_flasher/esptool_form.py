@@ -22,7 +22,7 @@ class Worker(QRunnable):
     and wrap-up.
     """
 
-    def __init__(self, update_only=False, port=None, device_file=None, system_info_file=None, bin_file=None, main=None, test=False):
+    def __init__(self, update_only=False, port=None, device_file=None, ble_ota_file=None, littlefs_file=None, main=None, test=False):
         """constructor for the Worker class"""
         super().__init__()
         self.signals = WorkerSignals()
@@ -31,8 +31,8 @@ class Worker(QRunnable):
         self.main = main
         self.port = port
         self.device_file = device_file
-        self.system_info_file = system_info_file
-        self.bin_file = bin_file
+        self.ble_ota_file = ble_ota_file
+        self.littlefs_file = littlefs_file
         self.test = test # for unit testing (could not figure out how to patch)
 
     @Slot()
@@ -48,7 +48,7 @@ class Worker(QRunnable):
         if self.update_only:
             print("Esp32 update only")
             self.signals.status.emit(self.main.text('update_step1'))
-            command = ["-b", "115200", "--port", self.port, "write_flash", "0x10000", self.device_file]
+            command = ["-b", "115200", "--port", self.port, "write_flash", "0x00", self.device_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
@@ -64,22 +64,22 @@ class Worker(QRunnable):
                 esptool.main(command)
             self.signals.status.emit(self.main.text('full_step1_done'))
 
-            print("Step 2/4 esp32 full")
-            command = ["-b", "115200", "--port", self.port, "write_flash", "0x1000", self.system_info_file]
+            print("Step 1/4 esp32 full")
+            command = ["-b", "115200", "--port", self.port, "write_flash", "0x00", self.device_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
             self.signals.status.emit(self.main.text('full_step2_done'))
 
             print("Step 3/4 esp32 full")
-            command = ["-b", "115200", "--port", self.port, "write_flash", "0x2B0000", self.bin_file]
+            command = ["-b", "115200", "--port", self.port, "write_flash", "0x260000", self.ble_ota_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
             self.signals.status.emit(self.main.text('full_step3_done'))
 
             print("Step 4/4 esp32 full")
-            command = ["-b", "115200", "--port", self.port, "write_flash", "0x10000", self.device_file]
+            command = ["-b", "115200", "--port", self.port, "write_flash", "0x300000", self.littlefs_file]
             print(f"ESPTOOL Using command:{' '.join(command)}")
             if not self.test:
                 esptool.main(command)
@@ -150,12 +150,12 @@ class EsptoolForm(QDialog):
         print('OK button was clicked in esptool form')
         self.close()
 
-    def start(self, update_only=False, port=None, device_file=None, system_info_file=None, bin_file=None, main=None, test=False):
+    def start(self, update_only=False, port=None, device_file=None, ble_ota_file=None, littlefs_file=None, main=None, test=False):
         """Create a thread to do the work."""
         # hide the button in case they are calling the esptool a subsequent time
         self.ok_button.hide()
 
-        worker = Worker(update_only, port, device_file, system_info_file, bin_file, main, test)
+        worker = Worker(update_only, port, device_file, ble_ota_file, littlefs_file, main, test)
         worker.signals.data.connect(self.receive_data)
         worker.signals.finished.connect(self.do_finished)
         worker.signals.status.connect(self.update_status)
