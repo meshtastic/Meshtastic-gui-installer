@@ -449,11 +449,12 @@ class Form(QDialog):
         for i in range(0, self.select_firmware_version.count()):
             items.append(self.select_firmware_version.itemText(i))
         items = sorted(set(items), reverse=True)
+
         self.select_firmware_version.clear()
-        # for item in items:
-        #     self.select_firmware_version.addItem(item)
+        curated_versions = filter(lambda item: item.startswith("1.3.42"), items)
+        
         if len(items) > 0:
-            for item in items:
+            for item in curated_versions:
                 self.select_firmware_version.addItem(item)
             
         self.select_firmware_version.setCurrentIndex(0)
