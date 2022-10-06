@@ -15,8 +15,6 @@ Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmwar
 # Example showing a RAK WisBlock Core RAK4631:
 <img width="806" alt="Screen Shot 2022-02-24 at 12 41 05 PM" src="https://user-images.githubusercontent.com/2219838/155604298-c45ff068-c63b-4e96-af1c-820f396f036c.png">
 
-# Settings
-<img width="1072" alt="Screen Shot 2022-02-24 at 12 41 51 PM" src="https://user-images.githubusercontent.com/2219838/155604372-64c087e9-104e-4397-94f0-7992391bca49.png">
 
 # To install:
 
