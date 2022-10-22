@@ -451,8 +451,7 @@ class Form(QDialog):
         items = sorted(set(items), reverse=True)
 
         self.select_firmware_version.clear()
-        curated_versions = filter(lambda item: item.startswith("1.3.44") or item.startswith("1.3.45"), items)
-        
+        curated_versions = [items[0], items[1]]
         if len(items) > 0:
             for item in curated_versions:
                 self.select_firmware_version.addItem(item)
