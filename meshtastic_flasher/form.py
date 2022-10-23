@@ -451,9 +451,8 @@ class Form(QDialog):
         items = sorted(set(items), reverse=True)
 
         self.select_firmware_version.clear()
-        curated_versions = [items[0], items[1]]
         if len(items) > 0:
-            for item in curated_versions:
+            for item in items:
                 self.select_firmware_version.addItem(item)
             
         self.select_firmware_version.setCurrentIndex(0)
