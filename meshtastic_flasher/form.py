@@ -460,7 +460,7 @@ class Form(QDialog):
 
     def get_versions_from_disk(self):
         """Populate the versions from the directories on disk, "newest" first"""
-        directories = glob.glob('1.*.*.*')
+        directories = glob.glob('2.*.*.*')
         for directory in sorted(directories, reverse=True):
             self.select_firmware_version.addItem(directory)
         self.sort_firmware_versions()

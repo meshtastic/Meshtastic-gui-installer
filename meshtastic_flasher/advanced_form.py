@@ -130,6 +130,10 @@ class AdvancedForm(QDialog):
         reply = QMessageBox.question(self, self.main.text('confirm'), confirm_msg, QMessageBox.Yes | QMessageBox.No, QMessageBox.No)
         if reply == QMessageBox.Yes:
             print("User confirmed they want remove the firmware files")
+            directories = glob.glob('2.*.*.*')
+            for directory in directories:
+                print(f'removing directory:{directory}')
+                shutil.rmtree(directory)
             directories = glob.glob('1.*.*.*')
             for directory in directories:
                 print(f'removing directory:{directory}')
