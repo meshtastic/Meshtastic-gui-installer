@@ -18,7 +18,7 @@ Cross Platform GUI for installing [Meshtastic](https://meshtastic.org/) [Firmwar
 
 # To install:
 
-See https://meshtastic.org/docs/getting-started/flashing-firmware/meshtastic-flasher
+See https://meshtastic.org/docs/software/python/flasher
 
 Note: The "single executable" installation option has been deprecated as of March 10, 2022.
 
@@ -37,7 +37,7 @@ Capabilities:
 # Device Settings
 
 * Click on the "Device Settings" at the top of the main screen to change settings.
-* "Factory Reset" is availaable in the Admin tab
+* "Factory Reset" is available in the Admin tab
 * "Hotkeys" and "Tips" are also options
 
 
