@@ -37,7 +37,7 @@ Capabilities:
 # Device Settings
 
 * Click on the "Device Settings" at the top of the main screen to change settings.
-* "Factory Reset" is availaable in the Admin tab
+* "Factory Reset" is available in the Admin tab
 * "Hotkeys" and "Tips" are also options
 
 
