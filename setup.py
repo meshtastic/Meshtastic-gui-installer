@@ -21,11 +21,11 @@ setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/meshtastic/Meshtastic-gui-installer",
-    author="Kevin Hester",
-    author_email="kevinh@geeksville.com",
-    license="MIT",
+    author="Meshtastic Developers",
+    author_email="contact@meshtastic.org",
+    license="GPL-3.0-only",
     classifiers=[
-        "License :: OSI Approved :: MIT License",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
         "Development Status :: 4 - Beta",
         "Programming Language :: Python :: 3",
         "Programming Language :: Python :: 3.6",
@@ -39,7 +39,7 @@ setup(
     package_data={
         '': ['logo.png', 'help.svg', 'info.svg', 'options.svg', 'cog.svg', 'meshtastic_theme.xml', 'fields.json', 'radios/*'],
     },
-    install_requires=["pyside6", "PyGithub", "esptool==4.2.1", "meshtastic>=2.0.0", "qt-material",
+    install_requires=["pyside6", "PyGithub", "esptool==4.2.1", "meshtastic>=2.0.1", "qt-material",
                       "psutil", "adafruit-nrfutil", "pyserial", "geocoder"],
     extras_require={
     },
