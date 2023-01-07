@@ -39,7 +39,7 @@ setup(
     package_data={
         '': ['logo.png', 'help.svg', 'info.svg', 'options.svg', 'cog.svg', 'meshtastic_theme.xml', 'fields.json', 'radios/*'],
     },
-    install_requires=["pyside6", "PyGithub", "esptool==4.2.1", "meshtastic>=2.0.1", "qt-material",
+    install_requires=["pyside6", "PyGithub", "esptool==4.2.1", "meshtastic>=2.0.8", "qt-material",
                       "psutil", "adafruit-nrfutil", "pyserial", "geocoder"],
     extras_require={
     },

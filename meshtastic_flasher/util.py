@@ -89,6 +89,8 @@ def get_tags_from_github():
         releases = repo.get_releases()
         count = 0
         for release in releases:
+            if "Revoked" in release.title:
+                continue
             r = repo.get_release(release.id)
             tags.append(r.tag_name)
             count = count + 1
