@@ -1,5 +1,11 @@
 # Meshtastic-gui-installer
 
+## The python flasher tool is no longer being actively maintained
+
+Currently supported flashing methods are documented [here](https://meshtastic.org/docs/getting-started/flashing-firmware).
+
+If you would like to maintain the python flasher please post on discord.
+
 [![Pylint](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml/badge.svg)](https://github.com/meshtastic/Meshtastic-gui-installer/actions/workflows/pylint.yml)
 [![codecov](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer/branch/master/graph/badge.svg?token=CEnDhjIJFU)](https://codecov.io/gh/meshtastic/Meshtastic-gui-installer)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/meshtastic-flasher)
