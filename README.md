@@ -1,6 +1,6 @@
 # Meshtastic-gui-installer
 
-## The python flasher tool is no longer being actively maintained
+# The python flasher tool is no longer being actively maintained
 
 Currently supported flashing methods are documented [here](https://meshtastic.org/docs/getting-started/flashing-firmware).
 
